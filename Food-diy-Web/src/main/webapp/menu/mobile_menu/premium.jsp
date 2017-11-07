@@ -107,12 +107,13 @@
 						<div class="col-md-12">
 							<ul class="breadcrumb">
 								<li><a href="#">Menu</a></li>
+								<li class="active">Preminum</li>
 							</ul>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<h1>전체메뉴</h1>
+							<h1>프리미엄</h1>
 						</div>
 					</div>
 				</div>

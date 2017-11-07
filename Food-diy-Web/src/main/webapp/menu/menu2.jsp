@@ -124,6 +124,7 @@ $(function(){
 						<div class="col-md-12">
 							<ul class="breadcrumb">
 								<li><a href="#">Menu</a></li>
+								<li class="active">All menu</li>
 							</ul>
 						</div>
 					</div>
@@ -134,7 +135,7 @@ $(function(){
 					</div>
 				</div>
 			</section>
-
+			
 			<div class="container">
 
 				<div class="row">
@@ -161,6 +162,7 @@ $(function(){
 
 
 					<div class="col-md-9">
+					
 						<aside id="lnb" class="hidden-md hidden-lg">
 							<nav>
 								<ul>
@@ -194,13 +196,6 @@ $(function(){
 								</ul>
 							</nav>						
 						</aside>
-						
-						
-						
-						
-						
-						
-						
 
 						<ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>
 						<div class="row">
