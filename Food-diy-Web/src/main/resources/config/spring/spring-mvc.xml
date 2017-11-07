@@ -16,49 +16,61 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
-	<context:component-scan base-package="kr.co.bit" />
-	<!-- asepect 설정 -->
+	<!-- url 패턴 중 /를 인식하기 위해서 설정 -->
+	<mvc:default-servlet-handler />
+	
+	<!-- resources 파일 쓰려고 설정해 둔 것 -->  
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	
+	<!-- 객체 생성을 선언해 주는 태그 & annotation 사용 가능하게 할 태그 -->
+	<context:component-scan base-package="kr.co.bit"/>
+	
+	
+	<!-- aop annotation으로 이용 -->
 	<aop:aspectj-autoproxy/>
 	
-	<!-- DB관련 객체를 file로 불러오기 -->
-	<context:property-placeholder location="classpath:config/mybatis/db.properties"/>
-	
-	<!-- DB 접속 객체 생성-->
+	<!-- java에서 db 접속할 때 필요로 하는 사용자 정보를 저장하는 클래스 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-	
-		<!-- 직접 쓸 때 --> 
+		
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@192.168.1.5:1521:xe"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
 		<property name="username" value="hr"/>
 		<property name="password" value="hr"/>
-		
-		
-		<!-- file로 읽어 올 때 -->
-		<!-- <property name="driverClassName" value="${jdbc.driverName}"/>
-		<property name="url" value="${jdbc.url}"/>
-		<property name="username" value="${jdbc.user}"/>
-		<property name="password" value="${jdbc.password}"/> -->
+	
 	</bean>
 	
-	<!-- DB객체 저장하는 장소: DB접속 객체, DB config객체, DB mapper객체 -->
+	<!-- java에서 db접속을 가능하게 해 주는 클래스 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 접속할 DB의 사용자 정보 -->
 		<property name="dataSource" ref="dataSource"/>
+		
+		<!-- mybatis 기본 설정 -->
 		<property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml"/>
-		<!-- mapper파일은 여러개 쓸 수 있으므로 s 붙임 -->
+		
+		<!-- sql문 => mapper파일은 여러개 쓸 수 있으므로 s 붙임 -->
 		<property name="mapperLocations" value="classpath:config/sqlmap/oracle/*.xml"/>
 	</bean>
 	
-	<!-- DB와 스프링 연동  -->
+	<!-- spring에서는 sqlSessionFactory 객체를 직접 사용할 수 없어서 대체해서 사용하는 객체  -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
 	
-	<!-- transaction 객체 -->	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
-    <mvc:annotation-driven>
+	<!-- 첨부 파일 관리를 위한 객체-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<!-- 최대 업로드 파일 사이즈: 10MB -->
+    		<property name="maxUploadSize" value="10485760"/>
+    </bean>
+	
+	
+	<!-- spring 프로젝트에 mvc 패턴 도입하기 위한 설정 -->
+	<mvc:annotation-driven>
+	
+	<!-- 전달하는 data가 깨지지 않도록 하게 해 주는 설정 -->
     <mvc:message-converters>
     	<bean class="org.springframework.http.converter.StringHttpMessageConverter">
     	<property name="supportedMediaTypes">
@@ -78,30 +90,12 @@
     	</bean>
     
     </mvc:message-converters>
+    
     </mvc:annotation-driven>
     
-    <!-- 파일 업로드 -->
-    	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    	<!-- 최대 업로드 파일 사이즈: 10MB -->
-    		<property name="maxUploadSize" value="10485760"/>
-    	</bean>
-    
-	<mvc:default-servlet-handler /><!-- url패턴에서 /를 인식하기 위해서 -->
-	
-	<mvc:view-resolvers><!-- 매핑할 때 공통으로 사용하는 부분을 써 놓은 것 -->
-		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" /><!-- 주소는 prefix를 시작으로 하고, 확장자는 꼭 .jsp여야 함 -->
+    <!-- controller에서 요청에 대한 응답을 보여 줄 jsp의 위치를 공통적으로 설정 -->
+    <mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/" suffix=".jsp" /><!-- 주소는 prefix를 시작으로 하고, 확장자는 꼭 .jsp여야 함 -->
 	</mvc:view-resolvers>
 	
-	
-	<!--  Controller를 사용하지 않고 매핑
-	<mvc:view-controller path="/file/uploadForm.do"
-						view-name="file/fileUploadForm"/>jsp만 됨! .do는 사용할 수 없음
-	-->		
-						
 </beans>
-
-
-
-
-
-

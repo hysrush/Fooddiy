@@ -3,33 +3,33 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.bit.board.dao.BoardDAO">
+<mapper namespace="kr.co.bit.event.dao.EventDAO">
   	
   	<sql id="selectAll">
 		select no, title, writer, content, view_cnt, to_char(reg_date, 'yy-mm-dd') as reg_date
-		from t_board
+		from t_event
 	</sql>
   	
   	<!-- t_board의 view_cnt와 reg_date와 BoardVO의 변수와 맞지 않으므로 mapping  -->
-  	<resultMap type="boardVO" id="MapBoardVO">
+  	<resultMap type="eventVO" id="MapEventVO">
   		<result column="view_cnt" property="viewCnt"/>
   		<result column="reg_date" property="regDate"/>
   	</resultMap>
 	
 	<!-- 전체 게시글 조회 -->
-	<select id="selectAllBoard" resultMap="MapBoardVO">
+	<select id="selectAllEvent" resultMap="MapEventVO">
 		select no, title, writer, content, view_cnt, to_char(reg_date, 'yy-mm-dd') as reg_date
-		from t_board
+		from t_event
 		order by no desc
 	</select>
 	
 	<!-- 새 글 등록 -->
-	<insert id="insertBoard" parameterType="boardVO">
-		insert into t_board(no, title, writer, content)
-			values(seq_t_board_no.nextval, #{title}, #{writer}, #{content})
+	<insert id="insertEvent" parameterType="eventVO">
+		insert into t_event(no, title, writer, content)
+			values(seq_t_event_no.nextval, #{title}, #{writer}, #{content})
 	</insert>
 	
-	<select id="selectByNo" parameterType="int" resultMap="MapBoardVO" >
+	<select id="selectByNo" parameterType="int" resultMap="MapEventVO" >
 		<include refid="selectAll"/>
 		where no = #{no}
 	</select>

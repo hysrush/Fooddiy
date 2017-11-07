@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DAO에서 sql문 불러 올 때 사용해야 하는 이름 -->
+<mapper namespace="kr.co.bit.member.dao">
+
+
+	<!-- sql문 적는 공간 -->
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="kr.co.bit.sign.vo.LoginVO" resultType="kr.co.bit.sign.vo.LoginVO" >
+		select id, pw from t_user
+		where id = #{id} and pw = #{pw}
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="signUp" parameterType="kr.co.bit.member.vo.MemberVO">
+		insert into t_user(no, id, name, pw, birth, sex, email, phone)
+		values(seq_t_user_no.nextval, #{id}, #{name}, #{pw}, #{birth}, #{sex}, #{email})
+	</insert>
+	
+
+
+</mapper>
