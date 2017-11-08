@@ -3,14 +3,7 @@
 
 <ul class="list list-icons list-primary list-borders">
 
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/topping_.jpg" />
-				 <strong>위트 Wheat</strong>
-			</a>
-		</figure>
-	</li>
+	
 	<li><i class="fa fa-check"></i>
 		<figure class="product-image-area">
 			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 

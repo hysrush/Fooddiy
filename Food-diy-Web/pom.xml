@@ -5,11 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 	  <build>
-<<<<<<< HEAD
-	     <finalName>Foody-diy-web</finalName>
-=======
 	     <finalName>Food-diy-Web</finalName>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 	     <plugins>
 	
 	        <plugin>

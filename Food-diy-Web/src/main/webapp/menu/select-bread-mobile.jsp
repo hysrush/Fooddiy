@@ -3,49 +3,48 @@
 
 <ul class="list list-icons list-primary list-borders">
 
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-bread"></i>
+		<figure class="product-image-area product-bread-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/bread/bread_wheat.jpg" />
-				 <strong>위트 Wheat</strong>
-			</a>
+				 <strong class = "name">위트 Wheat</strong>
 		</figure>
 	</li>
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-bread"></i>
+		<figure class="product-image-area product-bread-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/bread/bread_honeyoats.jpg" /> 
-				<strong>허니오트 Honey Oat</strong>
-			</a>
-
+				<strong class = "name">허니오트 Honey Oat</strong>
 		</figure>	
 	</li>
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-bread"></i>
+		<figure class="product-image-area product-bread-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/bread/bread_white.jpg" /> 
-				<strong>화이트 White</strong>
-			</a>
-
+				<strong class = "name">화이트 White</strong>
 		</figure>
 	</li>
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-bread"></i>
+		<figure class="product-image-area product-bread-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/bread/bread_sesame.jpg" /> 
-				<strong>하티이탈리안 Hearty Italian</strong>
-			</a>
-
+				<strong class = "name">하티이탈리안 Hearty Italian</strong>
 		</figure>
 	</li>
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-bread"></i>
+		<figure class="product-image-area product-bread-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/bread/bread_flat.jpg" /> 
-				<strong>플랫브래드 Flat Bread</strong>
-			</a>
-
+				<strong class = "name">플랫브래드 Flat Bread</strong>
 		</figure>
 	</li>
 </ul>
 
+<script>
+	$(document).ready(function() {
+		
+		$('.fa-check-bread').hide();
+		
+		$('li .product-bread-area').each(function () {
+			 $(this).click(function(){
+				 $('.fa-check-bread').hide();
+				 $(this).siblings('.fa-check').show();
+			 });
+		});
+	});
+</script>

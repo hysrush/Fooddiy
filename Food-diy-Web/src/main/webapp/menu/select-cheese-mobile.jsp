@@ -3,40 +3,45 @@
 
 <ul class="list list-icons list-primary list-borders">
 
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-cheese"></i>
+		<figure class="product-image-area product-cheese-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_cheddar.jpg" />
-				 <strong>체다 치즈 Cheddar</strong>
-			</a>
+				 <strong class = "name">체다 치즈 Cheddar</strong>
 		</figure>
 	</li>
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-cheese"></i>
+		<figure class="product-image-area product-cheese-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_mozzarella.jpg" /> 
-				<strong>모짜렐라 치즈 Mozzarella</strong>
-			</a>
-
+				<strong class = "name">모짜렐라 치즈 Mozzarella</strong>
 		</figure>	
 	</li>
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-cheese"></i>
+		<figure class="product-image-area product-cheese-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_natural_swiss.jpg" /> 
-				<strong>스위스 치즈 Natural Swiss</strong>
-			</a>
-
+				<strong class = "name">스위스 치즈 Natural Swiss</strong>
 		</figure>
 	</li>
-	<li><i class="fa fa-check"></i>
-		<figure class="product-image-area">
-			<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> 
+	<li><i class="fa fa-check fa-check-cheese"></i>
+		<figure class="product-image-area product-cheese-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_old_english.jpg"/>
-				<strong>아메리칸 치즈 America</strong>
-			</a>
-
+				<strong class = "name">아메리칸 치즈 America</strong>
 		</figure>
 	</li>
 </ul>
 
+
+<script>
+	$(document).ready(function() {
+		
+		$('.fa-check-cheese').hide();
+		
+		$('li .product-cheese-area').each(function () {
+			 
+			 $(this).click(function(){
+				 
+				 $('.fa-check-cheese').hide();
+				 $(this).siblings('.fa-check').show();
+			 });
+		});
+	});
+</script>
