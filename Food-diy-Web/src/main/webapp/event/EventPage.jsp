@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 브랜드 EVENT | </title>	
+		<title> | EVENT | </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -51,6 +51,11 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
+		<!-- 이미지 캐러셀 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
@@ -82,7 +87,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>브랜드 EVENT</h1>
+								<h1>Event</h1>
 							</div>
 						</div>
 					</div>
@@ -104,7 +109,7 @@
 							<!-- START -->
 							<div class="row">
 								<div class="col-md-12">
-		
+									-
 									<div class="tabs tabs-bottom tabs-center tabs-simple">
 										
 										<ul class="nav nav-tabs" style = "align:center">
@@ -118,8 +123,8 @@
 										
 										<div class="tab-content">
 											<div class="tab-pane active" id="tabsNavigationSimple1">
-												<div class="center">
 													
+												<div class="center">
 														<div class="recent-posts">
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
