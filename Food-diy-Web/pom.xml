@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 	  <build>
-	     <finalName>finalName</finalName>
+	     <finalName>Food-diy-Web</finalName>
 	     <plugins>
 	
 	        <plugin>
