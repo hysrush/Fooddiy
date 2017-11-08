@@ -12,9 +12,7 @@
 						<span class="thumb-info-title"> 
 						 	<span class="thumb-info-inner">치즈</span>
 							<span class="thumb-info-type">Flat Bread</span>
-							
 						</span>
-						 
 						<span class="thumb-info-action"> 
 							<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
 								<span class="thumb-info-action-icon"> <i class="fa fa-plus"></i></span>
