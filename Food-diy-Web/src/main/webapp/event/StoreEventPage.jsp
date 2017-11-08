@@ -123,7 +123,7 @@
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 												<div class="center">
 												<!--  cart -->
-														<div class="col-md-12">
+											<!-- 			<div class="col-md-12">
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
@@ -161,6 +161,7 @@
 											</div>
 										</div>
 									</div>
+												 -->
 												
 												
 												
@@ -173,8 +174,7 @@
 												
 												
 												
-												
-													<!--  -->
+													<!-- 1 -->
 													<div class="col-md-12">
 														<div class="recent-posts">
 															<article class="post">

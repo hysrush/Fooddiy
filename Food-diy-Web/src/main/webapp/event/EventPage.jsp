@@ -125,7 +125,7 @@
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 													
 												<div class="center">
-													<!-- 반복  -->
+													<!-- 진행중인 이벤트 탭 -->
 													<c:forEach items="${ eventList }" var="event">
 														<div class="recent-posts">
 															<article class="post">
@@ -147,8 +147,8 @@
 														</div>
 														
 													</c:forEach>
-													<!-- 2 -->
-													
+													<!-- 2  종료된 이벤트 탭 -->
+												<c:forEach items="${ eventList }" var="event">
 													<div class="recent-posts">
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
@@ -165,8 +165,8 @@
 																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
 															</article>
 														</div>
-														
-													
+													</c:forEach>	
+															
 													<!--  -->
 										<div class="col-md-12">
 											<ul class="pagination">
