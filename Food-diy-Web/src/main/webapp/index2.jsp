@@ -71,6 +71,9 @@
 			<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 			
+			<a href="${ pageContext.request.contextPath}/notice/qnaWrite.do">새글등록</a><br/>
+			<a href="${ pageContext.request.contextPath}/notice/qna.do">Q&A게시판</a><br/>
+
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>
 		

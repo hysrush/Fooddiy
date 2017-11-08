@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> | 1:1 문의 등록 | </title>
+<title> | 등록 | </title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -18,20 +18,29 @@
 <body>
 	<div align="center" >
 		<h2>글등록 페이지</h2>
-		<form:form commandName="boardVO" method="POST" >
+		<form:form commandName="qnaVO" method="POST" >
 			<div style="max-width: 800px;">
 				<div class="form-group" align="left">
-					<label for="exampleInputEmail1">제목</label>
-					<form:input path="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="title"/>
-					<form:errors path="title" class="form-control"></form:errors>
+					<label for="type">T > 타입</label>
+					<form:select path="type" class="form-control" id="type">
+						<form:option value="F">푸디오더</form:option>
+						<form:option value="P">포인트</form:option>
+						<form:option value="O">단체주문</form:option>
+						<form:option value="M">회원정보</form:option>
+						<form:option value="X">기타</form:option>
+					</form:select>
+					<form:errors path="type" class="form-control"></form:errors>
 				</div>
 				<div class="form-group" align="left">
-					<label for="exampleInputPassword1">내용</label>
-					<form:textarea path="content" class="form-control" rows="5" id="comment" placeholder="contents"/>
-					<form:errors path="content" class="form-control"></form:errors>
+					<label for="question">Q > 질문</label>
+					<form:input path="question" type="text" class="form-control" id="question" placeholder="질문"/>
+					<form:errors path="question" class="form-control"></form:errors>
 				</div>
-				<form:hidden path="writer" value="admin"/>
-				<!-- <input type="hidden" id="writer" value="admin"> -->
+				<div class="form-group" align="left">
+					<label for="answer">A > 대답</label>
+					<form:textarea path="answer" class="form-control" rows="5" id="answer" placeholder="대답"/>
+					<form:errors path="answer" class="form-control"></form:errors>
+				</div>
 				<button type="submit" class="btn btn-default">등록</button>
 			</div>
 		</form:form>
