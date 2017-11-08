@@ -71,6 +71,7 @@
 			<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 			
+			<!-- QnA 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/notice/qnaWrite.do">새글등록</a><br/>
 			<a href="${ pageContext.request.contextPath}/notice/qna.do">Q&A게시판</a><br/>
 

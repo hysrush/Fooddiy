@@ -241,9 +241,20 @@ li {
 	text-align: center;	
 	}
 	
+	.web{
+		display: none;
+	}
+	
+	.panel-group .panel {
+		display: block;
+	}
 }
 
-		
+@media ( min-width : 992px) {
+	.panel-group .panel {
+		display: none;
+	}	
+}		
 	
  	
 

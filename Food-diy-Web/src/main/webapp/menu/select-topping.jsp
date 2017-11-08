@@ -12,9 +12,7 @@
 						<span class="thumb-info-title"> 
 						 	<span class="thumb-info-inner">치즈</span>
 							<span class="thumb-info-type">Flat Bread</span>
-							
 						</span>
-						 
 						<span class="thumb-info-action"> 
 							<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
 								<span class="thumb-info-action-icon"> <i class="fa fa-plus"></i></span>
@@ -29,7 +27,7 @@
 			data-target="#largeModal">
 			<span class="thumb-info thumb-info-lighten"> <span
 				class="thumb-info-wrapper"> <img
-					src="${ pageContext.request.contextPath }/resources/img/toppings/cream_type_cheese.jpg"
+					src="${ pageContext.request.contextPath }/resources/img/toppings/topping_cream_cheese.jpg"
 					class="img-responsive" alt=""
 					style="margin-top: 50px; margin-bottom: 50px"> <span
 					class="thumb-info-title"> <span class="thumb-info-inner">크림치즈</span>
