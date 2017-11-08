@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
   <fixed facet="wst.jsdt.web"/>
+<<<<<<< HEAD
+=======
+  <installed facet="jst.web" version="3.0"/>
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
   <installed facet="wst.jsdt.web" version="1.0"/>
   <installed facet="java" version="1.8"/>
+<<<<<<< HEAD
   <installed facet="jst.web" version="3.1"/>
+=======
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 </faceted-project>

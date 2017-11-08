@@ -74,7 +74,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<ul class="breadcrumb">
-								<li><a href="${ pageContext.request.contextPath }/notice/qna.jsp">커뮤니티</a></li>
+								<li><a href="#">커뮤니티</a></li>
 								<li class="active">자주묻는 질문</li>
 							</ul>
 						</div>
