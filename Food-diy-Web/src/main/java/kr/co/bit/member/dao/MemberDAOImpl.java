@@ -30,14 +30,16 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
-	public void update(MemberVO board) {
-		// TODO Auto-generated method stub
-		
-	}
+	    public void update(MemberVO vo) {
+	        sqlSession.update("member.memberUpdate", vo);
+	 
+	    }
 
 	public void delete(int no) {
 		// TODO Auto-generated method stub
 		
 	}
 
-}
+		
+	}
+

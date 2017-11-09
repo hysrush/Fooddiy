@@ -184,6 +184,12 @@
 			<div class="header-nav-main">
 				<nav>
 					<ul class="nav nav-pills" id="mainNav">
+						<li class="">
+						<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
+						<li class="dropdown dropdown-mega active">
+						<a href="${ pageContext.request.contextPath }/menu/menu2.jsp" class="dropdown-toggle">
+								Menu
+						</a>
 						<li class=""><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
 						<li class="dropdown dropdown-mega active"><a href="${ pageContext.request.contextPath }/menu/menu.jsp" class="dropdown-toggle"> Menu </a>
 							<ul class="dropdown-menu">
@@ -205,30 +211,51 @@
 														</a>
 													</div>
 													<div class="col-md-3">
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#classic" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#classic" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">클래식<br>CLASSICS</a>
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">클래식<br>CLASSICS
 														</a>
 													</div>
 													<div class="col-md-3">
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#best" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#best" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">베스트<br>SIGNATURE</a>
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">베스트<br>SIGNATURE
 														</a>
 													</div>
 													<div class="col-md-3">
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#recommend" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#recommend" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추천메뉴<br>FAVORITES</a>
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추천메뉴<br>FAVORITES
 														</a>
 													</div>
 													<div class="col-md-3">
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#premium" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#premium" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">프리미엄<br>PREMIUM</a>
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">프리미엄<br>PREMIUM
 														</a>
 													</div>
 													<div class="col-md-3">
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#additiom" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#addition" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">음료&추가<br>Drink&Extras</a>
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">음료&추가<br>Drink&Extras
 														</a>
 													</div>
 													<div class="col-md-3">
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#salad" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#salad" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">찹샐러드<br>Chopped Salads</a>
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">찹샐러드<br>Chopped Salads
 														</a>
 													</div>
 													<div class="col-md-3">
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#breakfast" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#breakfast" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">아침식사<br>Breakfast</a>
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">아침식사<br>Breakfast
 														</a>
 													</div>
@@ -277,12 +304,24 @@
 						</c:if>
 						<c:choose>
 							<c:when test="${ empty userVO }">
+								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/login.do">
+										<i class="fa fa-user"></i> Sign IN
+									</a>
+								</li>
+								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/signUp.do">
+										<i class="fa fa-user"></i> Sign UP
+									</a>
+								</li>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/login.do"> <i class="fa fa-user"></i> Sign IN
 								</a></li>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/phoneCert.do"> <i class="fa fa-user"></i> Sign UP
 								</a></li>
 							</c:when>
 							<c:otherwise>
+								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ userVO.name }</a>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount"><a class="dropdown-toggle" href="page-login.html"> <i class="fa fa-user"></i>이름
 								</a>
 									<ul class="dropdown-menu">
@@ -295,14 +334,14 @@
 																<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.jpg" alt="">
 															</div>
 															<p>
-																<strong>그린</strong> <span>등급</span>
+																<strong>${ userVO.type }</strong> <span>${ userVO.grade }</span>
 															</p>
 														</div>
 													</div>
 													<div class="col-md-4">
 														<ul class="list-account-options">
 															<li><a href="${ pageContext.request.contextPath }/member/memberDetail.jsp">My Page</a></li>
-															<li><a href="${ pageContext.request.contextPath }/sign/logout.jsp">Log Out</a></li>
+															<li><a href="${ pageContext.request.contextPath }/sign/logout.do">Log Out</a></li>
 														</ul>
 													</div>
 												</div>

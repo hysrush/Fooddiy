@@ -113,7 +113,7 @@
 				
 
 					<div class="row">
-					<div style="width: 600px">
+					<div style="width: 550px">
 						<div style="margin-top: 2%" class="col-md-3">
 							<aside  class="sidebar">
 
@@ -126,75 +126,80 @@
 								</ul>
 		</aside></div></div>
 		
-		<div class="container">
-				<div style="margin-left: 5%" class="col-md-5 col-sm-8 col-xs-8">
-					<img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="margin-left: 20%; margin-top: 8%; width: 300px;">
-				</div>
-				<div class="col-md-3 col-sm-8 col-xs-12" style="margin-top: 8%">
-					<h2 class="mb-none"><strong>등급</strong></h2>
-					<div class="feature-box feature-box-style-2">
-						<div class="feature-box-icon">
-							<i class="fa fa-star"></i>
-						</div>
-					</div>
-					<br /> <br /> <br />
-					<h2 class="mb-none"><strong>포인트 : 4250P</strong></h2>
+		<div class=" container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+       <br>
+      </div>
+                <div class="col-md-3 col-lg-3 " align="left"> <img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;"></div>
+        <div  style="margin-top: 2%" class="col-xs-12 col-sm-12 col-md-6 col-lg-6  toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">${member.id}님의 프로필 정보</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+ 
+                <div class=" col-md-12 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                       <td><strong>  ID :</strong></td>
+                        <td>${member.id}</td>
+                      </tr>                 
+                      <tr>
+                      <td><strong> 이 름:</strong></td>
+                        <td>${member.name}</td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                      </tr>
+                        <tr>
+                       	<td><strong>생 일:</strong></td>
+                        <td>${member.birth}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>전화번호:</strong></td>
+                        <td>${member.phone}</td>
+                           
+                      </tr>
+                      <tr>
+                        <td><strong>E-mail :</strong></td>
+                        <td><a href="mailto:info@support.com">${userinfo.bEmail}</a></td>
+                      </tr>
+                       <tr>
+                        <td><strong>등 급 : </strong></td>
+                        <td>${member.star}</td>
+                           
+                      </tr>
+                       <tr>
+                        <td><strong>포인트 : </strong></td>
+                        <td>${member.point}</td>
+                           
+                      </tr>
+                      
+                     
+                    </tbody>
+                  </table>
+                  
+                 <!--   <a href="#" class="btn btn-primary">My Sales Performance</a>
+                  <a href="#" class="btn btn-primary">Team Sales Performance</a>-->
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
 
-				</div>
-			</div>
-		</div>
-				<div class="container" >
-					<div class="row">
-					<div  class="col-md-3">
-					</div>
-						<div class="col-md-4" style=" margin-top: 1%; margin-right: 3%;">
-										<div  class="featured-box featured-box-primary align-left mt-xlg">
-											<div class="box-content">
-												<table class="member">
-													<tbody>
-														<tr class="member-ID">
-															<th>
-																<strong>ID : </strong><br/><br/>
-															</th>
-															<td>
-																<strong><span class="amount"> </span></strong>
-															</td>
-														</tr>
-														<tr class="member-birth">
-															<th>
-																생년월일 :<br/><br/>
-															</th>
-															<td>  <input type="hidden" value="member-birth" id="member_birth" name="member_birth"></td>
-														</tr>
-														<tr class="phone">
-															<th>
-																<strong>전화번호 : </strong><br/><br/>
-															</th>
-															<td>
-																<strong><span class="amount">  </span></strong>
-															</td>
-														</tr>
-														<tr class="email">
-															<th>
-																<strong>E-mail : </strong><br/><br/>
-															</th>
-															<td>
-																<strong><span class="amount">  </span></strong>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-
-							</div>
-							
 							<div style="margin-top: 1%;  ">
 							<div class="row">
-							<div  style="margin-left: 58%">
+							<div  style="margin-left:68%">
 									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
 									<button id="memberDel" type="button" class="btn  btn-info">회원탈퇴</button>
 							</div>
@@ -226,6 +231,8 @@
 							</div>
 			</div>
 	</div>
+	</div>
+	
 		<!-- ---------------------------------------------------------------------------------------------- -->
 		<div>
 		<footer id="footer">

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.event.dao.EventDAO;
-import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.QnABoardVO;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -14,22 +14,22 @@ public class EventServiceImpl implements EventService{
 	@Autowired
 	private EventDAO eventDAO;
 	
-	public List<EventBoardVO> selectAllEvent(){
+	public List<QnABoardVO> selectAllEvent(){
 		
-		List<EventBoardVO> list = eventDAO.selectAll();
+		List<QnABoardVO> list = eventDAO.selectAll();
 		return list;
 		
 	}
 	
-	public EventBoardVO selectOneEvent(int no) {
+	public QnABoardVO selectOneEvent(int no) {
 		return eventDAO.selectOne(no);
 	}
 	
-	public void insertEvent(EventBoardVO event) {
+	public void insertEvent(QnABoardVO event) {
 		eventDAO.insert(event);
 	}
 	
-	public void modifyEvent(EventBoardVO event) {
+	public void modifyEvent(QnABoardVO event) {
 		eventDAO.update(event);
 	}
 	

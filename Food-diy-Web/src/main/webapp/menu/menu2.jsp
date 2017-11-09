@@ -75,12 +75,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+
 <!-- Head Libs -->
 <script
 	src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js">
 </script>
 	
 <script>
+$(document).ready(function(){
+	$('#lnb').stick_in_parent({offset_top:74});
+});
+
+
+
 $(function(){
     $(".portfolio-item").click(function(){
     	var menu = $(this).attr("id");
@@ -94,6 +107,9 @@ $(function(){
         $('div.modal').modal({remote : 'detail_menu/steakcheese.jsp'});
     })
 }) */
+
+
+
 
 </script>
 
@@ -136,7 +152,7 @@ $(function(){
 
 					<div class="col-md-3">
 						<aside class="sidebar hidden-sm hidden-xs" data-plugin-sticky
-							data-plugin-options="{ 'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110} }">
+							data-plugin-options="{ 'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 150} }">
 							<h4 class="heading-primary">MENU</h4>
 							<ul class="nav nav-list sort-source" data-sort-id="portfolio"
 								data-option-key="filter"
@@ -157,7 +173,7 @@ $(function(){
 
 					<div class="col-md-9">
 					
-						<aside id="lnb" class="hidden-md hidden-lg">
+						<aside class="sidebar hidden-md hidden-lg" id="lnb">
 							<nav>
 								<ul>
 									<li class="active">
@@ -190,8 +206,14 @@ $(function(){
 								</ul>
 							</nav>						
 						</aside>
+						
+						
+						
+						<div id="slidemenu">
+						
 
-						<ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>
+						<ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>		
+						
 						<div class="row">
 							<div class="sort-destination-loader sort-destination-loader-showing">
 								<ul class="portfolio-list sort-destination"	data-sort-id="portfolio">
@@ -1198,6 +1220,11 @@ $(function(){
 								</ul>
 							</div>
 						</div>
+						
+						</div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
@@ -1273,7 +1300,7 @@ $(function(){
 
 	<!-- Theme Custom -->
 	<script
-		src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 
 	<!-- Theme Initialization Files -->
 	<script

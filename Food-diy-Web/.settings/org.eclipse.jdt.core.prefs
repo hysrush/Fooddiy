@@ -36,6 +36,8 @@ org.eclipse.jdt.core.compiler.problem.finallyBlockNotCompletingNormally=warning
 org.eclipse.jdt.core.compiler.problem.forbiddenReference=warning
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 org.eclipse.jdt.core.compiler.problem.hiddenCatchBlock=warning
 org.eclipse.jdt.core.compiler.problem.includeNullInfoFromAsserts=disabled
 org.eclipse.jdt.core.compiler.problem.incompatibleNonInheritedInterfaceMethod=warning
@@ -106,4 +108,5 @@ org.eclipse.jdt.core.compiler.problem.unusedTypeParameter=ignore
 org.eclipse.jdt.core.compiler.problem.unusedWarningToken=warning
 org.eclipse.jdt.core.compiler.problem.varargsArgumentNeedCast=warning
 >>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 org.eclipse.jdt.core.compiler.source=1.8

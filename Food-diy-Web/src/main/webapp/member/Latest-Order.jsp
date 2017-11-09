@@ -131,21 +131,22 @@
 							<div style="@media screen and (max-width:670px) " class="featured-boxes">
 									<div class="col-md-8 col-xs-12">
 										<div class="featured-box featured-box-primary align-left mt-xlg">
-											<div  align="center" class="box-content">
-												<h4 align="left" style="font-size:100%; width: 35px; float: left;" class="heading-primary text-uppercase mb-md">번호</h4>
-												<h4  align="center" style="font-size:100%; width: 120px; float: left;" class="heading-primary text-uppercase mb-md">메뉴사진</h4>
-												<h4 align="center" style="font-size:100%; width: 200px; float: left;" class="heading-primary text-uppercase mb-md">제목</h4>
-												<h4 style="font-size:100%; width: 50px; float: left; margin-left: 7%" class="heading-primary text-uppercase mb-md">날짜</h4>
-												<h4 align="center" style="margin-left:4%; font-size:100%; width: 150px; float: left;" class="heading-primary text-uppercase mb-md">주문상태</h4>
-												</div> 
-												<table class="cart-totals">
-													<tbody>
-														<tr class="cart-subtotal">
+										<table >
+											<div class="box-content">
+												<td style="width: 150px; text-align: center; " class=" col-xs-8"><h4  align="center" style="margin-left:65%; font-size:100%; width: 60px;" class="heading-primary text-uppercase mb-md">메뉴사진</h4></td>
+												<td><h4 align="center" style="margin-left:%;font-size:100%; width: 300px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4></td>
+												<td><h4 style=" margin-left:17%;font-size:100%; width: 80px; float: left; margin-left: 7%" class="heading-primary text-uppercase mb-md hidden-xs">날짜</h4></td>
+												<td><h4 align="center" style="margin-left:40%; font-size:100%; width: 150px; float: right;;" class="heading-primary text-uppercase mb-md hidden-xs">주문상태</h4></td>
+											</div> 
+											</table>	
+												<table  class="cart-totals">  
+													<tbody >
+														<tr  class="cart-subtotal">
 																
-															<th style="width: 66px">
+															<th  style="text-align: center; width: 66px">
 																<strong >1</strong>
 															</th>
-															<td style="width:20%;" style="" class="product-thumbnail">
+															<td style="padding: 0px; width:20%;" style="" class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
 																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
 																	</a>
@@ -165,8 +166,8 @@
 																	</a>
 																</td>
 														</tr>
-														<tr class="shipping">
-															<th style="width: 66px">
+														<tr  class="shipping">
+															<th style="text-align: center; width: 66px">
 																<strong >2</strong>
 															</th>
 															<td style="width:20%;" style="" class="product-thumbnail">
@@ -190,7 +191,7 @@
 																</td>
 														</tr>
 														<tr class="shipping">
-															<th style="width: 66px">
+															<th style="text-align: center; width: 66px">
 																<strong >3</strong>
 															</th>
 															<td style="width:20%;" style="" class="product-thumbnail">
@@ -214,7 +215,7 @@
 																</td>
 														</tr>
 														<tr class="shipping">
-															<th style="width: 66px">
+															<th style="text-align: center; width: 66px">
 																<strong >4</strong>
 															</th>
 															<td style="width:20%;" style="" class="product-thumbnail">
@@ -238,7 +239,7 @@
 																</td>
 														</tr>
 														<tr class="shipping">
-															<th style="width: 66px">
+															<th style="text-align: center; width: 66px">
 																<strong >5</strong>
 															</th>
 															<td style="width:20%;" style="" class="product-thumbnail">
