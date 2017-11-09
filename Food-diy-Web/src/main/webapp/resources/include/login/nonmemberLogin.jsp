@@ -9,7 +9,7 @@
 				<div class="tabs tabs-bottom tabs-center tabs-simple">
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#nonmemberLoginDetail" data-toggle="tab"
-							aria-expanded="true"> 비회원 로그인</a></li>
+							aria-expanded="true"> 로그인</a></li>
 						<li class=""><a href="#nonmemberMenu"
 							data-toggle="tab" aria-expanded="false"> 주문조회</a></li>
 					</ul>

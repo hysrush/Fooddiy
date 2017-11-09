@@ -101,11 +101,11 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="tabs tabs-bottom tabs-center tabs-simple">
-										<div class="tab-content">
-											<div class="tab-pane active" id="memberLogin">
-												<jsp:include page="/resources/include/login/signUpform.jsp"/>
-											</div>
+									<div class="tab-content">
+										<div class="tab-pane active" id="memberLogin">
+											<jsp:include page="/resources/include/login/signUpform.jsp"/>
 										</div>
+									</div>
 								</div>
 							</div>
 						</div>

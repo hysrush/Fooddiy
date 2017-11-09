@@ -10,9 +10,9 @@
 </head>
 <body>
   <!-- 네이버아이디로로그인 버튼 노출 영역 -->
-  <div class="col-md-6">
+
   <div id="naver_id_login"></div>
-  </div>
+
   <!-- //네이버아이디로로그인 버튼 노출 영역 -->
   <script type="text/javascript">
  

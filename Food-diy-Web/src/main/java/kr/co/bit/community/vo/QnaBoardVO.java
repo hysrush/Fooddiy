@@ -1,10 +1,12 @@
 package kr.co.bit.community.vo;
 
+
 public class QnaBoardVO {
 	
 	private int no;
-	private String Q;
-	private String A;
+	private String type;
+	private String question;
+	private String answer;
 	private String regDate;
 	
 	public int getNo() {
@@ -13,17 +15,23 @@ public class QnaBoardVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getQ() {
-		return Q;
+	public String getType() {
+		return type;
 	}
-	public void setQ(String q) {
-		Q = q;
+	public void setType(String type) {
+		this.type = type;
 	}
-	public String getA() {
-		return A;
+	public String getQuestion() {
+		return question;
 	}
-	public void setA(String a) {
-		A = a;
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -33,8 +41,8 @@ public class QnaBoardVO {
 	}
 	@Override
 	public String toString() {
-		return "QnaBoardVO [no=" + no + ", Q=" + Q + ", A=" + A + ", regDate=" + regDate + "]";
+		return "QnaBoardVO [no=" + no + ", type=" + type + ", question=" + question + ", answer=" + answer
+				+ ", regDate=" + regDate + "]";
 	}
 	
-
 }
