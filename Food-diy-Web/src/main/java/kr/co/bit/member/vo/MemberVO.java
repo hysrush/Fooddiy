@@ -139,4 +139,9 @@ public class MemberVO {
 				+ ", grade=" + grade + ", root=" + root + ", type=" + type + ", regDate=" + regDate + "]";
 	}
 
+	public static void memberUpdate(MemberVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

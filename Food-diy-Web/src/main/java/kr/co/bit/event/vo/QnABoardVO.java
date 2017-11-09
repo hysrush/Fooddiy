@@ -2,7 +2,7 @@ package kr.co.bit.event.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class EventBoardVO {
+public class QnABoardVO {
 
 	private int no;
 	private String title;

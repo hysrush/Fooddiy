@@ -20,6 +20,16 @@
 		values(seq_t_user_no.nextval, #{id}, #{name}, #{pw}, #{birth}, #{sex}, #{email})
 	</insert>
 	
-
-
+	<!-- 회원 정보 수정 -->
+	<update id="memberUpdate">
+	 Update tbl_member
+	 SET
+	 	user_pw = #{PW},
+	 	user_name = #{NAME},
+	 	user_phone = #{PHONE},
+	 	user_email = #{EMAIL},
+	 	user_updatedate = SYSDATE
+	 WHRE
+	 	user_id + #ID}
+	</update>
 </mapper>

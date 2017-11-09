@@ -129,15 +129,16 @@
 							<div class="featured-boxes">
 									<div class="col-sm-7  ">
 										<div class="featured-box featured-box-primary align-left mt-xlg">
-											<div class="box-content">
-												<h4  style="width: 50px; float: left;" class="heading-primary text-uppercase mb-md">번호</h4>
-												<h4 align="center" style="width: 190px; float: left;" class="heading-primary text-uppercase mb-md">제목</h4>
-												<h4 style="margin-left:5%; width: 130px; float: left;" class="heading-primary text-uppercase mb-md">등록일</h4>
-												<h4 style="width: 100px; float: left;" class="heading-primary text-uppercase mb-md">답변여부</h4>
+											<div style="text-align: center;" class="box-content">
+												<h4  style="width: 32px; margin-right:6%; float: left;" class="heading-primary text-uppercase mb-md hidden-xs">번호</h4>
+												<h4 align="center" style="width: 110px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4>
+												<h4 style="margin-left:5%; width: 125px; float: left;" class="heading-primary text-uppercase mb-md hidden-xs">등록일</h4>
+												<h4 style="margin-left:10%; width: 117px; float: left;" class="heading-primary text-uppercase mb-md">답변여부</h4>
+												
 												<table class="cart-totals"> 
 													<tbody>
 														<tr class="cart-subtotal">
-															<th>
+															<th style="text-align: center;">
 																<strong >1</strong>
 															</th>
 															<td class="col-md-4" align="center">
@@ -147,21 +148,22 @@
 																<span class="amount ">2017-10-29</span>
 															</td>
 															<td align="center">
-																<button style="margin-left:20%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
+																<button style="margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
 
 															</td>
 														</tr>
 														<tr class="shipping">
-															<th>
-																2															</th>
+															<th style="text-align: center;">
+																2															
+															</th>
 															<td align="center" style="width: 300px">
 																칭찬합니다<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
 															</td>
 															<td align="right">
-																<span > 2017.09-28<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method"></span>
+																<span > 2017-09-28<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method"></span>
 															</td>
 															<td align="center">
-																<button style="background-color:orange; margin-left:20%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 답변완료 </button>
+																<button style="background-color:orange; margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 답변완료 </button>
 															</td>
 														</tr>
 													</tbody>
