@@ -27,7 +27,6 @@
 		values(seq_t_user_no.nextval, #{id}, #{name}, #{pw}, #{birth}, #{sex}, #{email}, #{phone})
 	</insert>
 	
-<<<<<<< HEAD
 	<!-- 회원 정보 수정 -->
 	<update id="memberUpdate">
 	 Update tbl_member
@@ -40,7 +39,6 @@
 	 WHRE
 	 	user_id + #ID}
 	</update>
-=======
 	<!-- 중복 아이디 체크 -->
 	<select id="checkId" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select NVL(count(*), 0)
@@ -48,5 +46,4 @@
 		where user_id = #{ id }
 	</select>
 
->>>>>>> refs/remotes/origin/master
 </mapper>

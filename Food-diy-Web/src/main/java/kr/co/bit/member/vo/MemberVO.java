@@ -118,14 +118,5 @@ public class MemberVO {
 				+ sex + ", email=" + email + ", phone=" + phone + ", grade=" + grade + ", root=" + root + ", type="
 				+ type + ", regDate=" + regDate + "]";
 	}
-<<<<<<< HEAD
 
-	public static void memberUpdate(MemberVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-=======
-	
->>>>>>> refs/remotes/origin/master
 }
