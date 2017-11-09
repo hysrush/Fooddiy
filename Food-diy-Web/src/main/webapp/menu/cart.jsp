@@ -52,8 +52,7 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
+		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 		
 
 		<!-- 이미지 캐러셀 -->

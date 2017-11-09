@@ -3,7 +3,7 @@
 
 <ul class="list list-icons list-primary list-borders">
 
-	<li><i class="fa fa-check fa-check-topping"></i>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
 		<figure class="product-image-area product-topping-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_bacon.jpg" />
 				 <strong class = "name">베이컨 Bacon</strong>

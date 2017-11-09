@@ -41,6 +41,9 @@
 				 
 				 $('.fa-check-cheese').hide();
 				 $(this).siblings('.fa-check').show();
+				 
+				 var name = "치즈 선택 >> " + $(this).find('.name').text();
+				 $('.cheese-name').html(name);
 			 });
 		});
 	});
