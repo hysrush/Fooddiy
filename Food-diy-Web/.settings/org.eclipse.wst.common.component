@@ -2,7 +2,9 @@
     <wb-module deploy-name="finalName">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <property name="context-root" value="finalName"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="java-output-path" value="/Food-diy-Web/bin"/>
+        <property name="context-root" value="Food-diy-Web"/>
     </wb-module>
 </project-modules>

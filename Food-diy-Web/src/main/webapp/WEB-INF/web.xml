@@ -46,18 +46,10 @@
   	</init-param>
   </filter>
 
-<<<<<<< HEAD
-  <filter-mapping>
-=======
    <filter-mapping>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy
   	<filter-name>encodingFilter</filter-name>
 	<url-pattern>/*</url-pattern>  
-<<<<<<< HEAD
   </filter-mapping>
-=======
-  </filter-mapping> 
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
