@@ -226,7 +226,7 @@
 									</div>
 									<div id="vegetable-select" class="accordion-body collapse">
 										<div class="panel-body">
-											<jsp:include page="/menu/select-vegetable.jsp"/>
+											<jsp:include page="/menu/select-vegetable-mobile.jsp"/>
 										</div>
 									</div>
 								</div>
@@ -240,7 +240,7 @@
 									</div>
 									<div id="sauce-select" class="accordion-body collapse">
 										<div class="panel-body">
-											<jsp:include page="/menu/select-sauce.jsp"/>
+											<jsp:include page="/menu/select-sauce-mobile.jsp"/>
 										</div>
 									</div>
 								</div>

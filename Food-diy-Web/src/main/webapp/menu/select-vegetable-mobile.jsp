@@ -4,27 +4,51 @@
 <ul class="list list-icons list-primary list-borders">
 
 	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-topping-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_bacon.jpg" />
-				 <strong class = "name">베이컨 Bacon</strong>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_lettuce.jpg" />
+				 <strong class = "name">양상추 Lettuce</strong>
 		</figure>
 	</li>
-	<li><i class="fa fa-check fa-check-topping"></i>
-		<figure class="product-image-area product-topping-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_double_meat.jpg" /> 
-				<strong class = "name">더블미트 Double Meat</strong>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_tomato.jpg" /> 
+				<strong class = "name">토마토 Tommatoes</strong>
 		</figure>	
 	</li>
-	<li><i class="fa fa-check fa-check-topping"></i>
-		<figure class="product-image-area product-topping-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_eggmayo.jpg" /> 
-				<strong class = "name">에그마요 Aggmayo</strong>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_cucumber.jpg" /> 
+				<strong class = "name">오이 Cucumbers</strong>
 		</figure>
 	</li>
-	<li><i class="fa fa-check fa-check-topping"></i>
-		<figure class="product-image-area product-topping-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_avocado.jpg" /> 
-				<strong class = "name">아보카도 Avocado</strong>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_capsicum.jpg" /> 
+				<strong class = "name">피망 Capsicum</strong>
+		</figure>
+	</li>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_onion.jpg" /> 
+				<strong class = "name">양파 Red Onion</strong>
+		</figure>
+	</li>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_pickles.jpg" /> 
+				<strong class = "name">피클 Pickles</strong>
+		</figure>
+	</li>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_olives.jpg" /> 
+				<strong class = "name">올리브 Olives</strong>
+		</figure>
+	</li>
+	<li><i class="fa fa-check fa-check-vegetable"></i>
+		<figure class="product-image-area product-vegetable-area">
+				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_jalapenos.jpg" /> 
+				<strong class = "name">할라피뇨 Jalapenos</strong>
 		</figure>
 	</li>
 </ul>
@@ -32,15 +56,24 @@
 <script>
 	$(document).ready(function() {
 		
-		$('.fa-check-topping').hide();
 		
-		$('li .product-topping-area').each(function () {
+/* 		$('li .product-vegetable-area').each(function () {
 			 $(this).click(function(){
-				 $(this).siblings('.fa-check').show();
+				 $('.fa-check-vegetable').hide();
+				 $(this).siblings('.fa-check-vegetable').show();
 				 
-				 var name = $(this).find('.name').text();
-				 $('.topping-name').append(name);
+				 var name = "&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >> " + $(this).find('.name').text();
+				 $('.vegetable-name').html(name);
 			 });
 		});
+		 */
+		
+		$('li .product-vegetable-area').each(function () {
+			
+	 		$(this).click(function() {
+	 			$(this).siblings('.fa-check-vegetable').toggle(); 
+	 		});
+ 		
+ 		});
 	});
 </script>
