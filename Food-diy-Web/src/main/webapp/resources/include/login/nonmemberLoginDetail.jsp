@@ -56,14 +56,14 @@
 											</div><br/>
 											<div class="col-md-6">
 												<input type="submit" value="인증확인" id="pnum"
-												class="btn btn-info pull-right mb-xl" data-loading-text="Loading..."/>
+												class="btn btn-info pull-right form-control" data-loading-text="Loading..."/>
 											</div>
 										</div>
 									</div>
 								</form>
 								<div class="row mt-xlg">
 									<div class="col-md-12">
-										<input type="submit" value="확인"
+										<input type="button" id="check" value="확인"
 										 class="btn btn-info mb-md form-control"/>
 									</div>
 								</div>

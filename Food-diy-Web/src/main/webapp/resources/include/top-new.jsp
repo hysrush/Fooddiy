@@ -335,14 +335,14 @@
 									</a>
 								</li>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/phoneCert.do">
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/signUp.do">
 										<i class="fa fa-user"></i> Sign UP
 									</a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
-									<a class="dropdown-toggle" href="page-login.html"> <i class="fa fa-user"></i>이름</a>
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ userVO.name }</a>
 									<ul class="dropdown-menu">
 										<li>
 											<div class="dropdown-mega-content">
@@ -353,14 +353,14 @@
 																<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.jpg" alt="">
 															</div>
 															<p>
-																<strong>그린</strong> <span>등급</span>
+																<strong>${ userVO.type }</strong> <span>${ userVO.grade }</span>
 															</p>
 														</div>
 													</div>
 													<div class="col-md-4">
 														<ul class="list-account-options">
 															<li><a href="${ pageContext.request.contextPath }/member/memberDetail.jsp">My Page</a></li>
-															<li><a href="${ pageContext.request.contextPath }/sign/logout.jsp">Log Out</a></li>
+															<li><a href="${ pageContext.request.contextPath }/sign/logout.do">Log Out</a></li>
 														</ul>
 													</div>
 												</div>

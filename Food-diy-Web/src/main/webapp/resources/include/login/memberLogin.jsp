@@ -14,21 +14,20 @@
 								<form action="${ pageContext.request.contextPath }/sign/login.do" id="frmSignIn" method="post">
 									<div class="row">
 										<div class="form-group">
-											<div class="col-md-12">
+											<div class="col-xs-12 col-md-12">
 												<a class="pull-right" href="${ pageContext.request.contextPath }/">(Lost ID?)</a>
-												<label>ID</label> <input type="text" value="" class="form-control input-lg">
+												<label>ID</label> <input type="text" name="id" class="form-control input-lg">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="form-group">
-											<div class="col-md-12">
+											<div class="col-xs-12 col-md-12">
 												<a class="pull-right" href="${ pageContext.request.contextPath }/">(Lost Password?)</a>
-												<label>Password</label> <input type="text" value="" class="form-control input-lg">
+												<label>Password</label> <input type="text" name="pw" class="form-control input-lg">
 											</div>
 										</div>
 									</div>
-							
 									<div class="row">
 										<!-- 자동 로그인 -->
 										<div class="col-md-6">
@@ -43,14 +42,14 @@
 									</div>
 								</form>
 								<!-- API 로그인 -->
-								<div class="row mt-xlg">
-									<div class="col-md-6">	
+								<div class="row">
+									<div class="col-xs-12 col-md-6">	
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
 									<%-- <div class="col-md-4">	
 										<jsp:include page="/resources/include/login/facebookLogin.jsp"/>
 									</div> --%>
-									<div class="col-md-6">	
+									<div class="col-xs-12 col-md-6">	
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div>
 								</div>

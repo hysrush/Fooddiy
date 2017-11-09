@@ -13,7 +13,7 @@ public class SignDAOImp implements SignDAO {
 	@Autowired
 	private SqlSessionTemplate sql;
 	
-	public LoginVO signIn(LoginVO login) {
+	public MemberVO login(LoginVO login) {
 		
 		return sql.selectOne("kr.co.bit.member.dao.login", login);
 		
@@ -22,6 +22,11 @@ public class SignDAOImp implements SignDAO {
 	public void signUp(MemberVO memberVO) {
 		
 		sql.insert("kr.co.bit.member.dao.signUp", memberVO);
+	}
+	
+	public int checkId(String id) {
+		
+		return sql.selectOne("kr.co.bit.member.dao.checkId", id);
 	}
 
 	
