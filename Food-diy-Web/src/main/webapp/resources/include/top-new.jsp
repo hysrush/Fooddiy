@@ -184,17 +184,14 @@
 			<div class="header-nav-main">
 				<nav>
 					<ul class="nav nav-pills" id="mainNav">
-<<<<<<< HEAD
 						<li class="">
 						<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
 						<li class="dropdown dropdown-mega active">
 						<a href="${ pageContext.request.contextPath }/menu/menu2.jsp" class="dropdown-toggle">
 								Menu
 						</a>
-=======
 						<li class=""><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
 						<li class="dropdown dropdown-mega active"><a href="${ pageContext.request.contextPath }/menu/menu.jsp" class="dropdown-toggle"> Menu </a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 							<ul class="dropdown-menu">
 								<li>
 									<div class="dropdown-mega-content">
@@ -214,74 +211,53 @@
 														</a>
 													</div>
 													<div class="col-md-3">
-<<<<<<< HEAD
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#classic" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#classic" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">클래식<br>CLASSICS</a>
-=======
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">클래식<br>CLASSICS
 														</a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 													</div>
 													<div class="col-md-3">
-<<<<<<< HEAD
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#best" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#best" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">베스트<br>SIGNATURE</a>
-=======
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">베스트<br>SIGNATURE
 														</a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 													</div>
 													<div class="col-md-3">
-<<<<<<< HEAD
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#recommend" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#recommend" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추천메뉴<br>FAVORITES</a>
-=======
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추천메뉴<br>FAVORITES
 														</a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 													</div>
 													<div class="col-md-3">
-<<<<<<< HEAD
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#premium" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#premium" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">프리미엄<br>PREMIUM</a>
-=======
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">프리미엄<br>PREMIUM
 														</a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 													</div>
 													<div class="col-md-3">
-<<<<<<< HEAD
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#additiom" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#addition" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">음료&추가<br>Drink&Extras</a>
-=======
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">음료&추가<br>Drink&Extras
 														</a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 													</div>
 													<div class="col-md-3">
-<<<<<<< HEAD
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#salad" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#salad" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">찹샐러드<br>Chopped Salads</a>
-=======
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">찹샐러드<br>Chopped Salads
 														</a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 													</div>
 													<div class="col-md-3">
-<<<<<<< HEAD
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#breakfast" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
 														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#breakfast" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">아침식사<br>Breakfast</a>
-=======
 														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">아침식사<br>Breakfast
 														</a>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 													</div>
 												</div>
 											</div>
