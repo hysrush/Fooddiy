@@ -5,7 +5,7 @@
 <!-- DAO에서 sql문 불러 올 때 사용해야 하는 이름 -->
 <mapper namespace="kr.co.bit.member.dao">
 
-	<resultMap type="kr.co.bit.member.vo.MemberVO" id="mapLoginVO">
+	<resultMap type="memberVO" id="mapLoginVO">
 		<result column="user_id" property="id"/>
 		<result column="user_pw" property="pw"/>
 		<result column="user_name" property="name"/>

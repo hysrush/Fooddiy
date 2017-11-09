@@ -184,12 +184,6 @@
 			<div class="header-nav-main">
 				<nav>
 					<ul class="nav nav-pills" id="mainNav">
-						<li class="">
-						<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
-						<li class="dropdown dropdown-mega active">
-						<a href="${ pageContext.request.contextPath }/menu/menu2.jsp" class="dropdown-toggle">
-								Menu
-						</a>
 						<li class=""><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
 						<li class="dropdown dropdown-mega active"><a href="${ pageContext.request.contextPath }/menu/menu.jsp" class="dropdown-toggle"> Menu </a>
 							<ul class="dropdown-menu">
@@ -314,10 +308,6 @@
 										<i class="fa fa-user"></i> Sign UP
 									</a>
 								</li>
-								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/login.do"> <i class="fa fa-user"></i> Sign IN
-								</a></li>
-								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/phoneCert.do"> <i class="fa fa-user"></i> Sign UP
-								</a></li>
 							</c:when>
 							<c:otherwise>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
