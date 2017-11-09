@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +75,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<ul class="breadcrumb">
-								<li><a href="${ pageContext.request.contextPath }/notice/qna.jsp">커뮤니티</a></li>
+								<li><a href="#">커뮤니티</a></li>
 								<li class="active">자주묻는 질문</li>
 							</ul>
 						</div>
@@ -143,93 +144,15 @@
 										<div class="col-md-12">
 											<div class="toggle toggle-primary" data-plugin-toggle
 												data-plugin-options="{ 'isAccordion': true }">
-												<section class="toggle">
-													<label>Q. 온라인 주문은 몇 시부터 가능하나요?</label>
-													<div class="toggle-content">
-														<p>
-															바로 배달 주문 : 매장이 오픈 하는 오전 11시 ~ 오후 10시 30분까지 가능합니다.<br>
-															예약 배달/포장 주문 : 매일 오전 7시 30분 ~ 오후 10시 30분까지 예약 접수가 가능합니다.
-														</p>
-													</div>
-												</section>
-
-												<section class="toggle">
-													<label>Q. 온라인 주문을 변경 또는 취소하고 싶어요.</label>
-													<div class="toggle-content">
-														<p>
-															변경 및 취소를 원하신다면 고객님께서 직접 바로 매장에 전화해서 취소 가능한지 확인 후,<br>
-															고객센터(080-500-5588, 오전11시~오후10시 30분)로 취소 접수 해주세요.<br>
-															** 단, 제품 제조 후에는 취소가 불가합니다.
-														</p>
-													</div>
-												</section>
-
-												<section class="toggle">
-													<label>Q. 비회원 주문 시 주문이 가능한가요?</label>
-													<div class="toggle-content">
-														<p>
-															네. 쉽고 빠른 주문을 위해 간단한 휴대폰 인증을 통한 비회원 주문을 이용하여 주문이 가능합니다.<br>
-															그러나 회원 가입 후 멤버십 회원을 가입하면 다양한 혜택을 받을 수 있습니다.<br>
-														</p>
-														<p>
-															<a class="btn btn-primary mb-xl" href="#">멤버십 회원 혜택
-																보기</a>
-														</p>
-													</div>
-												</section>
-
-												<section class="toggle">
-													<label>Q. 비회원 주문 시 휴대폰 인증이 반드시 필요한가요?</label>
-													<div class="toggle-content">
-														<p>
-															네 정확한 배달 및 포장을 위해 홈페이지 가입 시 본인인증을 실시합니다.<br> 비회원 주문
-															시에는 휴대폰 번호인증이 있어야 주문이 가능합니다.
-														</p>
-													</div>
-												</section>
-
-												<section class="toggle">
-													<label>Q. 그동안 주문한 내역은 어디서 확인하나요?</label>
-													<div class="toggle-content">
-														<p>
-															마이 페이지 > 주문내역을 통해 확인하실 수 있습니다. <br> <a
-																class="btn btn-primary mb-xl" href="#">주문내역 바로가기</a>
-														</p>
-														<p>
-															** 단, 비회원 주문을 이용하셨을 경우 주문내역에서 확인되지 않으니<br> 온라인 고객만족팀
-															080-500-5588 로 문의 주시기 바랍니다.
-														</p>
-													</div>
-												</section>
-
-												<section class="toggle">
-													<label>Q. 포인트 적용은 어떻게 하나요?</label>
-													<div class="toggle-content">
-														<p>
-															주문/결제하기 페이지에서 4.할인적용의 쿠폰버튼을 클릭하여<br> 하단의 포인트 적용 입력란에
-															할인하고자 하는 포인트 액수를 입력하여 적용합니다.
-														</p>
-													</div>
-												</section>
-
-												<section class="toggle">
-													<label>Q. 결제 수단에는 어떤 것들이 있으며 어떻게 결제해야 하나요?</label>
-													<div class="toggle-content">
-														<p>푸디오더 결제는 신용카드, 체크카드, 휴대폰 소액결제, 네이버페이, 카카오페이와 같은
-															간편결제가 가능합니다.</p>
-													</div>
-												</section>
-
-												<section class="toggle">
-													<label>Q. 주문을 완료했는데 결제 수단을 변경하고 싶어요.</label>
-													<div class="toggle-content">
-														<p>
-															결제수단의 변경은 상담원을 통해 변경 가능합니다.<br> 단, 주문완료 후 포인트 및
-															할인적용을 위해 결제수단 변경을 요청 하실 경우 주문내역에 따라 불가할 수 있습니다.<br>
-															고객만족센터(080-500-5588, 오전10시 ~오후10시)로 문의해주세요.
-														</p>
-													</div>
-												</section>
+												<c:forEach items="${ qnaList }" var="qna">
+													<section class="toggle">
+														<label>Q. ${ qna.question }</label>
+														<div class="toggle-content">
+															<p>A. ${ qna.answer }</p>
+															<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
+														</div>
+													</section>								
+												</c:forEach>
 											</div>
 										</div>
 									</div>

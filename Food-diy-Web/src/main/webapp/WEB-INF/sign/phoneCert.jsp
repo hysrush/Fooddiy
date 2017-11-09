@@ -65,26 +65,32 @@
 	
 	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 	<script>window.name="main"</script>
+
 	<script>
 	$(document).ready(function(){
+		
+		$('#phoneCert').attr('disabled', true);
+		
+		$("#phoneCheck").change(function(){
 			
+			if($("#phoneCheck").is(":checked")){
+				$('#phoneCert').attr('disabled', false);
+			}else{
+				$('#phoneCert').attr('disabled', true);
+			}
+			
+		});
+		/*
 		$("#phoneCert").click(function(){
 			
-				if($("input:checkbox[id='phoneCheck']").is(":checked")){
-					
-						var popUrl = "${ pageContext.request.contextPath }/sign/phoneCertForm.do";	//팝업창에 출력될 페이지 URL
-
-						var popOption = "width=370, height=500, resizable=no, scrollbars=no, status=no";
-
-							window.open(popUrl,"",popOption);
-						
-				}else{
-					$("#phonecheck").focus();
-					alert('약관에 동의해 주세요');
-					
-				}
-			});
-		});
+			var popUrl = "${ pageContext.request.contextPath }/sign/phoneCertForm.do";	//팝업창에 출력될 페이지 URL
+			var popOption = "width=370, height=450, resizable=no, scrollbars=no, status=no";
+			
+			window.open(popUrl,"",popOption);
+			
+		});*/
+		
+	});
 		
 	</script>
 	
@@ -140,7 +146,7 @@
 						<span class="checkbox">
 							<label for="phoneCheck">
 								<h5>
-									<input type="checkbox" id="phoneCheck" name="phoneCert">
+									<input type="checkbox" id="phoneCheck" name="phoneCheck">
 									<strong>이용약관 및 개인정보수집 및이용에 모두 동의합니다.</strong>
 								</h5>
 							</label>
@@ -173,7 +179,8 @@
 												<!-- <a href="javascript:fnPopup();" class="btn btn-info mb-md form-control"> 인증하기 </a> -->
 												<input type="submit" id="phoneCert" value="인증하기" class="btn btn-info mb-md form-control"/>
 											</form> --%>
-											<button id="phoneCert" class="btn btn-info mb-md form-control">인증하기</button>
+											<!-- <button id="phoneCert" class="btn btn-info mb-md form-control">인증하기</button> -->
+											<a href="${ pageContext.request.contextPath }/sign/phoneCertForm.do" id="phoneCert" class="btn btn-info mb-md form-control" data-ajax-on-modal>인증하기</a>
 										</div>
 									</div>
 								</div>
@@ -224,5 +231,8 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+		
+		<!-- 모달창 띄우는 js -->
+		<script src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script> 
 </body>
 </html>

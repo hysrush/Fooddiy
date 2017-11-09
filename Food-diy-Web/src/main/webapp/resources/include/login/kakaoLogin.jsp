@@ -13,11 +13,9 @@
 <body>
 <!-- <a id="kakao-login-btn"></a>
 <a href="http://developers.kakao.com/logout"></a> -->
-<div class="col-md-6">
-	<a id="custom-login-btn" href="javascript:loginWithKakao()">
+<a id="custom-login-btn" href="javascript:loginWithKakao()">
 	<img src="${ pageContext.request.contextPath }/resources/img/login/kakao_account_login_btn_medium_narrow.png"/>
 </a>
-</div>
 <script type='text/javascript'>
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.

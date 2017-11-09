@@ -75,6 +75,7 @@
     left: 0;
     float: left;
     width: 179px;
+    table-layout: fixed;
     /* display: block; */
 }
 #lnb > nav {
@@ -169,6 +170,8 @@ li {
 	    background: #ddd;
 	}
 	
+	
+	
 	.shop .actions-continue {
 		float: none;
 	}
@@ -245,13 +248,32 @@ li {
 	text-align: center;	
 	}
 	
+<<<<<<< HEAD
 	
+=======
+	.web{
+		display: none;
+	}
+	
+	.panel-group .panel {
+		display: block;
+	}
+>>>>>>> refs/remotes/origin/master
 }
 
+<<<<<<< HEAD
 .shop .cart-totals th, .shop .cart-totals td {
 	border-top: 1px solid #DCDCDC;
 	padding: 0px 0px;
 }
+=======
+@media ( min-width : 992px) {
+	.panel-group .panel {
+		display: none;
+	}	
+}		
+	
+>>>>>>> refs/remotes/origin/master
  	
 .shop table.cart .product-name {
 	width: 33%;

@@ -120,16 +120,16 @@
 					</div>
 
 					<!-- START -->
-					<div class="col-md-9">
+					<div class="col-md-6">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="tabs tabs-bottom tabs-center tabs-simple">
 									<ul class="nav nav-tabs">
 										<li class="active">
-											<a href="#memberLogin" data-toggle="tab" aria-expanded="true"> 회원 로그인</a>
+											<a href="#memberLogin" data-toggle="tab" aria-expanded="true"> 회원</a>
 										</li>
 										<li class="">
-											<a href="#nonLogin" data-toggle="tab" aria-expanded="false"> 비회원 로그인</a>
+											<a href="#nonLogin" data-toggle="tab" aria-expanded="false"> 비회원</a>
 										</li>
 									</ul>
 									<!-- 회원 로그인 -->

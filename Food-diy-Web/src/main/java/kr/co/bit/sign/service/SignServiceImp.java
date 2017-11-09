@@ -13,15 +13,23 @@ public class SignServiceImp implements SignService {
 	@Autowired
 	private SignDAO signDAOImp;
 	
-	public LoginVO login(LoginVO login) {
+	// 로그인
+	public MemberVO login(LoginVO login) {
 		
-		return null;
+		return signDAOImp.login(login);
 	}
 	
+	//회원 가입
 	public void signUp(MemberVO memberVO) {
 		
 		signDAOImp.signUp(memberVO);
 		
+	}
+	
+	// id 중복 체크
+	public int checkId(String id) {
+		
+		return signDAOImp.checkId(id);
 	}
 
 }

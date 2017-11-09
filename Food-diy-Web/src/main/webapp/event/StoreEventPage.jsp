@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 매장별 이벤트 |  </title>	
+		<title> | 매장별 EVENT |  </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -51,11 +51,6 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
-		<!-- 이미지 캐러셀 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
@@ -89,7 +84,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>EVENT</h1>
+								<h1>매장별 EVENT</h1>
 							</div>
 						</div>
 					</div>
@@ -128,7 +123,7 @@
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 												<div class="center">
 												<!--  cart -->
-														<div class="col-md-12">
+											<!-- 			<div class="col-md-12">
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
@@ -166,6 +161,7 @@
 											</div>
 										</div>
 									</div>
+												 -->
 												
 												
 												
@@ -178,8 +174,7 @@
 												
 												
 												
-												
-													<!--  -->
+													<!-- 1 -->
 													<div class="col-md-12">
 														<div class="recent-posts">
 															<article class="post">
