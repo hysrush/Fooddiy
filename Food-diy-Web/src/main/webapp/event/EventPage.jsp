@@ -109,7 +109,7 @@
 							<!-- START -->
 							<div class="row">
 								<div class="col-md-12">
-		
+									-
 									<div class="tabs tabs-bottom tabs-center tabs-simple">
 										
 										<ul class="nav nav-tabs" style = "align:center">
@@ -123,27 +123,32 @@
 										
 										<div class="tab-content">
 											<div class="tab-pane active" id="tabsNavigationSimple1">
-												<div class="center">
 													
+												<div class="center">
+													<!-- 진행중인 이벤트 탭 -->
+													<c:forEach items="${ eventList }" var="event">
 														<div class="recent-posts">
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
 																	<div>
+																		<!--  event db 첨부파일   -->
 																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
 																	</div>
 																	
 																</div>
 																<div class="date">
+																	<!--  event db 시작일, 종료일  -->
 																	<span class="day">15</span>
 																	<span class="month">Jan</span>
 																</div>
-																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
+																<h4><a href="blog-post.html">  <c:out value="${ event.title }"/>  </a></h4>
+																<p>  <c:out value="${ event.content }"/>  <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
 															</article>
 														</div>
-													
-													<!-- 2 -->
-													
+														
+													</c:forEach>
+													<!-- 2  종료된 이벤트 탭 -->
+												<c:forEach items="${ eventList }" var="event">
 													<div class="recent-posts">
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
@@ -160,8 +165,8 @@
 																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
 															</article>
 														</div>
-														
-													
+													</c:forEach>	
+															
 													<!--  -->
 										<div class="col-md-12">
 											<ul class="pagination">

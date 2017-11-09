@@ -23,6 +23,19 @@
 		order by no desc
 	</select>
 	
+	<!--  진행중인 이벤트 조회 -->
+	
+	
+	
+	
+	
+	
+	<!--  종료된 이벤트 조회  -->
+	
+	
+	
+	
+	
 	<!-- 새 글 등록 -->
 	<insert id="insertEvent" parameterType="eventVO">
 		insert into t_event(no, title, writer, content)

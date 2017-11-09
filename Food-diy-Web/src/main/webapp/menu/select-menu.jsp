@@ -54,8 +54,8 @@
 
 <!-- Theme Custom CSS -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
-<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom
-.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -94,8 +94,7 @@
 					</div>
 				</section>
 
-				<div class="container">
-
+				<div class="container web">
 					<div class="row">
 						<div class="col-md-12">
 
@@ -168,7 +167,87 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			
+			<div class="container mobile">
 
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="panel-group panel-group-lg" id="accordion5">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle bread-name" data-toggle="collapse" data-parent="#accordion5" href="#bread-select">
+												&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >>
+											</a>
+										</h4>
+									</div>
+									<div id="bread-select" class="accordion-body collapse in">
+										<div class="panel-body">
+											<jsp:include page="/menu/select-bread-mobile.jsp"/>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle cheese-name" data-toggle="collapse" data-parent="#accordion5" href="#cheese-select">
+												치즈 선택 >>
+											</a>
+										</h4>
+									</div>
+									<div id="cheese-select" class="accordion-body collapse">
+										<div class="panel-body">
+											<jsp:include page="/menu/select-cheese-mobile.jsp"/>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle topping-name" data-toggle="collapse" data-parent="#accordion5" href="#topping-select">
+												토핑 선택 >>
+											</a>
+										</h4>
+									</div>
+									<div id="topping-select" class="accordion-body collapse">
+										<div class="panel-body">
+											<jsp:include page="/menu/select-topping-mobile.jsp"/>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle vegetable-name" data-toggle="collapse" data-parent="#accordion5" href="#vegetable-select">
+												야채 선택 >>
+											</a>
+										</h4>
+									</div>
+									<div id="vegetable-select" class="accordion-body collapse">
+										<div class="panel-body">
+											<jsp:include page="/menu/select-vegetable.jsp"/>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle sauce-name" data-toggle="collapse" data-parent="#accordion5" href="#sauce-select">
+												소스 선택 >>
+											</a>
+										</h4>
+									</div>
+									<div id="sauce-select" class="accordion-body collapse">
+										<div class="panel-body">
+											<jsp:include page="/menu/select-sauce.jsp"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<footer id="footer">

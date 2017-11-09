@@ -18,14 +18,14 @@ public class LogAspect {
    @Around("execution(* kr.co.bit..*.*(..))")
    public Object trace(ProceedingJoinPoint joinPoint) throws Throwable{
    
-      System.out.println(sdf.format(new Date()) + joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + " 시작");
+      System.out.println(sdf.format(new Date()) + " || "+ joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + " 시작");
       try {
          
          Object obj = joinPoint.proceed();
          return obj;
          
       } finally {
-         System.out.println(sdf.format(new Date()) + joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "종료");
+         System.out.println(sdf.format(new Date()) + " || "+ joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "종료");
       }
    }
 }
