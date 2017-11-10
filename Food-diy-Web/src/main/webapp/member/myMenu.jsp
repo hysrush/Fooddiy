@@ -139,11 +139,11 @@
 															</span>
 															</td>
 																
-																<td style="width: 30px" class="product-thumbnail col-sm-122 col-xs-1">
+																<td style="width: 30px" class="product-thumbnail col-sm-12 col-xs-1">
 																	<a href="shop-product-sidebar.html">
 																		<img style="width:65%; height:15%"  class="img-responsive " src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
 																	</a> 
-																</td>
+																</td >
 																<td class="product-name">
 																	<a  href="shop-product-sidebar.html">선택한 재료 내용</a>
 																	

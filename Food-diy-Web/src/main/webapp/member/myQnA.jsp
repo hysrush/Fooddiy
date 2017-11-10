@@ -121,11 +121,11 @@
 
 
 							<div class="featured-boxes">
-									<div class="col-sm-7  ">
+									<div class="col-sm-8  ">
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div style="text-align: center;" class="box-content">
-												<h4  style="width: 32px; margin-right:6%; float: left;" class="heading-primary text-uppercase mb-md hidden-xs">번호</h4>
-												<h4 align="center" style="width: 110px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4>
+												<h4  style="width: 32px; margin-left:3%; margin-right:12%; float: left;" class="heading-primary text-uppercase mb-md hidden-xs"></h4>
+												<h4 align="center" style="margin-right:5%; width: 110px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4>
 												<h4 style="margin-left:5%; width: 125px; float: left;" class="heading-primary text-uppercase mb-md hidden-xs">등록일</h4>
 												<h4 style="margin-left:10%; width: 117px; float: left;" class="heading-primary text-uppercase mb-md">답변여부</h4>
 												

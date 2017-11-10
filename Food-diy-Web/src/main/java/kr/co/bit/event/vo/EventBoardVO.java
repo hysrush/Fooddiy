@@ -8,9 +8,11 @@ public class EventBoardVO {
 	private String title;
 	private MultipartFile imgFile; // 첨부파일
 	private String content;
-	private String StartDate;
-	private String EndDate;
+	private String startDate;
+	private String endDate;
 	private String regDate;
+	
+	
 	public int getNo() {
 		return no;
 	}
@@ -24,12 +26,11 @@ public class EventBoardVO {
 		this.title = title;
 	}
 	public MultipartFile getImgFile() {
-	    return imgFile;
+		return imgFile;
 	}
 	public void setImgFile(MultipartFile imgFile) {
-	    this.imgFile = imgFile;
+		this.imgFile = imgFile;
 	}
-
 	public String getContent() {
 		return content;
 	}
@@ -37,16 +38,16 @@ public class EventBoardVO {
 		this.content = content;
 	}
 	public String getStartDate() {
-		return StartDate;
+		return startDate;
 	}
 	public void setStartDate(String startDate) {
-		StartDate = startDate;
+		this.startDate = startDate;
 	}
 	public String getEndDate() {
-		return EndDate;
+		return endDate;
 	}
 	public void setEndDate(String endDate) {
-		EndDate = endDate;
+		this.endDate = endDate;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -56,10 +57,10 @@ public class EventBoardVO {
 	}
 	@Override
 	public String toString() {
-		return "EventBoardVO [no=" + no + ", title=" + title + ", content=" + content + ", StartDate=" + StartDate
-				+ ", EndDate=" + EndDate + ", regDate=" + regDate + "]";
+		return "EventBoardVO [no=" + no + ", title=" + title + ", imgFile=" + imgFile + ", content=" + content
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", regDate=" + regDate + "]";
 	}
-	
+
 	
 	
 	

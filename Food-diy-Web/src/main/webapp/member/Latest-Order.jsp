@@ -133,7 +133,7 @@
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 										<table >
 											<div class="box-content">
-												<td style="width: 150px; text-align: center; " class=" col-xs-8"><h4  align="center" style="margin-left:65%; font-size:100%; width: 60px;" class="heading-primary text-uppercase mb-md">메뉴사진</h4></td>
+												<td style="width: 150px; text-align: center; " class=" col-xs-8"><h4  align="center" style="margin-left:65%; font-size:100%; width: 60px;" class="heading-primary text-uppercase mb-md"></h4></td>
 												<td><h4 align="center" style="margin-left:%;font-size:100%; width: 300px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4></td>
 												<td><h4 style=" margin-left:17%;font-size:100%; width: 80px; float: left; margin-left: 7%" class="heading-primary text-uppercase mb-md hidden-xs">날짜</h4></td>
 												<td><h4 align="center" style="margin-left:40%; font-size:100%; width: 150px; float: right;;" class="heading-primary text-uppercase mb-md hidden-xs">주문상태</h4></td>
@@ -148,7 +148,7 @@
 															</th>
 															<td style="padding: 0px; width:20%;" style="" class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
-																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
+																		<img style="margin-left:7%; width:86%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
 																	</a>
 																</td>
 															<td align="center" style="width: 150px; font-size:80%;">
@@ -159,10 +159,10 @@
 															</td>
 															<td align="left">
 																<button style="width: 60px; height: 30px; font-size: 12px" type="button" class="btn  btn-info"> 준비중 </button>
-															</td>
+															</td> 
 															<td  class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/rr.JPG">
+																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
 																	</a>
 																</td>
 														</tr>
@@ -186,7 +186,7 @@
 															</td>
 															<td  class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/rr.JPG">
+																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
 																	</a>
 																</td>
 														</tr>
@@ -210,7 +210,7 @@
 															</td>
 															<td  class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/rr.JPG">
+																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
 																	</a>
 																</td>
 														</tr>
@@ -234,7 +234,7 @@
 															</td>
 															<td  class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/rr.JPG">
+																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
 																	</a>
 																</td>
 														</tr>
@@ -258,7 +258,7 @@
 															</td>
 															<td  class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/rr.JPG">
+																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
 																	</a>
 																</td>
 														</tr>
