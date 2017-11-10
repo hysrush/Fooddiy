@@ -68,7 +68,7 @@
 	function doAction(type) {
 		switch (type) {
 		case 'L':
-			location.href = ${ pageContext.request.contextPath} +"/notice/noticeList.jsp";
+			location.href = ${ pageContext.request.contextPath} +"/community/notice.do";
 			break;
 		default:
 			break;
@@ -117,7 +117,7 @@
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
 								<li><a href="${ pageContext.request.contextPath }/notice/qna.jsp">자주하는 질문</a></li>
-								<li class="active"><a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">공지사항</a></li>
+								<li class="active"><a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">Subway소식</a></li>
 								<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
@@ -129,42 +129,46 @@
 							<div class="container">
 								<div class="row">
 									<div class="col-md-12">
-										<h4 class="mb-none">Subway 공지사항과 보도자료입니다.</h4>
+										<h4 class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</h4>
 										<br>
-										<p class="mb-none">Subway 공지사항과 보도자료입니다.</p>
+										<p class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</p>
 									</div>
 								</div>
 							</div>
 						</section>
-						<div class="tabs tabs-bottom tabs-center tabs-simple">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tabsNavigationSimple1"
-									data-toggle="tab">공지사항</a></li>
-								<li><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a>
-								</li>
-							</ul>
-							<div class="tab-content">
-								<div class="tab-pane active" id="tabsNavigationSimple1">
+						<div class="blog-posts single-post">
+							<article class="post post-large blog-single-post">
 									<div class="center">
 										<h4>공지사항</h4>
 										<hr>
-										<div class="col-md-12">
+										<div class="post-content col-md-12">
+											<div class="post-meta" style="float: right;">
+												<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+												<span><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a> > </span>
+												<span><a href="#">공지사항</a></span>
+											</div>
 											<form action="/Mission-Web/fileDownload" method="post"
 												id="dForm">
-												<table class="table table-bordered" style="width: 80%">
+												<table class="table table-bordered">
+														<tr>
+															<td>
+																<!-- 제목 -->
+																<h2>
+																	<c:out value="${ noticeVO.title }"></c:out>
+																</h2>
+															</td>
+															<div class="post-meta">
+																<!-- 조회수 -->
+																<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ noticeVO.viewCnt }</td>
+																<!-- 등록일 -->
+																<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ noticeVO.regDate }</td>
+															</div>
+														</tr>
 													<tr>
-														<td>
-															<!-- 제목 -->
-															<h4 class="text-uppercase">
-																<c:out value="${ notice.title }"></c:out>
-															</h4>
-														</td>
-														<td width="15%">조회 ${ notice.viewCnt }</td>
-														<td width="15%">${ notice.regDate }</td>
+														<!-- 내용 -->
+														<td colspan="3"><p><c:out value="${ noticeVO.content }"></p></c:out></td>
 													</tr>
-													<tr>
-														<td colspan="3"><c:out value="${ notice.content }"></c:out></td>
-													</tr>
+													<!-- 첨부파일 -->
 													<c:if test="${ not empty fileList }">
 														<tr>
 															<th width="15%">첨부파일</th>
@@ -195,59 +199,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="tab-pane tab-pane-navigation" id="tabsNavigation2">
-									<div class="center">
-										<h4>보도자료</h4>
-										<hr>
-										<div class="col-md-12">
-											<form action="/Mission-Web/fileDownload" method="post"
-												id="dForm">
-												<table class="table table-bordered" style="width: 80%">
-													<tr>
-														<td>
-															<!-- 제목 -->
-															<h4 class="text-uppercase">
-																<c:out value="${ notice.title }"></c:out>
-															</h4>
-														</td>
-														<td width="15%">조회 ${ notice.viewCnt }</td>
-														<td width="15%">${ notice.regDate }</td>
-													</tr>
-													<tr>
-														<td colspan="3"><c:out value="${ notice.content }"></c:out></td>
-													</tr>
-													<c:if test="${ not empty fileList }">
-														<tr>
-															<th width="15%">첨부파일</th>
-															<td colspan="5"><c:forEach items="${ fileList }"
-																	var="file">
-																	<a href="#" onclick="submit(); return false;"> <input
-																		type="hidden" value="${ file.fileSaveName }">
-																		${ file.fileOriName }
-																	</a>
-																&nbsp;(${ file.fileSize })bytes<br>
-																</c:forEach></td>
-														</tr>
-														<tr>
-															<th width="15%">미리보기</th>
-															<td colspan="5"><c:forEach items="${ fileList }"
-																	var="file">
-																	<img src="/Mission-Web/upload/${ file.fileSaveName }"
-																		style="max-width: 200px">
-																&nbsp;&nbsp;
-															</c:forEach></td>
-														</tr>
-													</c:if>
-												</table>
-											</form>
-											<div class="center">
-												<button type="button" class="btn btn-primary"
-													onclick="doAction('L')">목록</button>
-											</div>
-										</div>
-									</div>
-								</div>
+								</article>
 							</div>
 						</div>
 					</div>
@@ -258,7 +210,6 @@
 		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
-	</div>
 
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

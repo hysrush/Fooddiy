@@ -22,12 +22,6 @@ public class QnaDAOImp implements QnaDAO {
 		List<QnaBoardVO> listAll = sqlSession.selectList(url + "selectAllQnA");
 		return listAll;
 	}
-	// 타입별 QnA 전체보기
-	@Override
-	public List<QnaBoardVO> selectType(String type) {
-		List<QnaBoardVO> listType = sqlSession.selectList(url + "selectTypeQnA", type);
-		return listType;
-	}
 	// 글번호별 QnA 글보기
 	@Override
 	public QnaBoardVO selectOne(int no) {
@@ -36,13 +30,13 @@ public class QnaDAOImp implements QnaDAO {
 	}
 	// QnA 새 글쓰기
 	@Override
-	public void insert(QnaBoardVO qna) {
-		sqlSession.insert(url + "insertQnA", qna);
+	public void insert(QnaBoardVO qnaVO) {
+		sqlSession.insert(url + "insertQnA", qnaVO);
 	}
 	// QnA 글 수정
 	@Override
-	public void update(QnaBoardVO qna) {
-		sqlSession.update(url + "modifyQnA", qna);
+	public void update(QnaBoardVO qnaVO) {
+		sqlSession.update(url + "modifyQnA", qnaVO);
 	}
 	// QnA 글 삭제
 	@Override

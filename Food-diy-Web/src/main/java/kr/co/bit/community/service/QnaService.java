@@ -9,10 +9,9 @@ public interface QnaService {
 
 	// QnA Service
 	List<QnaBoardVO> selectAllQnA();
-	List<QnaBoardVO> selectTypeQnA(String type);
 	QnaBoardVO selectOneQnA(int no);
-	void insertQnA(QnaBoardVO qna);
-	void modifyQnA(QnaBoardVO qna);
+	void insertQnA(QnaBoardVO qnaVO);
+	void modifyQnA(QnaBoardVO qnaVO);
 	void removeQnA(int no);
 	
 }

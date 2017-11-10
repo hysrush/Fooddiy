@@ -6,6 +6,7 @@ public class NoticeBoardVO {
 	private String writer;
 	private String title;
 	private String content;
+	private String type;	// 공지사항 'A' / 보도자료 'B'
 //	private String file;  첨부파일임.
 	private String regDate;
 	private int viewCnt;
@@ -15,6 +16,12 @@ public class NoticeBoardVO {
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getWriter() {
 		return writer;
@@ -48,11 +55,8 @@ public class NoticeBoardVO {
 	}
 	@Override
 	public String toString() {
-		return "NoticeBoardVO [no=" + no + ", writer=" + writer + ", title=" + title + ", content=" + content
-				+ ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
+		return "NoticeBoardVO [no=" + no + ", type=" + type + ", writer=" + writer + ", title=" + title + ", content="
+				+ content + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
 	}
-	
-	
-	
 
 }

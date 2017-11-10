@@ -72,8 +72,12 @@
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 			
 			<!-- QnA 컨트롤러 테스트 -->
-			<a href="${ pageContext.request.contextPath}/notice/qnaWrite.do">새글등록</a><br/>
-			<a href="${ pageContext.request.contextPath}/notice/qna.do">Q&A게시판</a><br/>
+			<a href="${ pageContext.request.contextPath}/community/qnaWrite.do">Q&A새글등록</a><br/>
+			<a href="${ pageContext.request.contextPath}/community/qna.do">Q&A게시판</a><br/>
+			
+			<!-- notice 컨트롤러 테스트 -->
+			<a href="${ pageContext.request.contextPath}/community/noticeWrite.do">notice새글등록</a><br/>
+			<a href="${ pageContext.request.contextPath}/community/notice.do">notice게시판</a><br/>
 
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>

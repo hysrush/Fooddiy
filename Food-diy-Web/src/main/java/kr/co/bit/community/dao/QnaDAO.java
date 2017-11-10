@@ -8,10 +8,9 @@ public interface QnaDAO {
 	
 	// QnA DAO
 	List<QnaBoardVO> selectAll();
-	List<QnaBoardVO> selectType(String type);
 	QnaBoardVO selectOne(int no);
-	void insert(QnaBoardVO qna);
-	void update(QnaBoardVO qna);
+	void insert(QnaBoardVO qnaVO);
+	void update(QnaBoardVO qnaVO);
 	void delete(int no);
 
 }

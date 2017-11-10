@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> | 등록 | </title>
+<title> | 자주묻는질문 등록폼 | </title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div align="center" >
-		<h2>글등록 페이지</h2>
+		<h2>자주묻는질문 등록폼</h2>
 		<form:form commandName="qnaVO" method="POST" >
 			<div style="max-width: 800px;">
 				<div class="form-group" align="left">

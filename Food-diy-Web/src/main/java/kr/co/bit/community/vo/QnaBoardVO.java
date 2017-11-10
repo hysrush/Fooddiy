@@ -4,9 +4,9 @@ package kr.co.bit.community.vo;
 public class QnaBoardVO {
 	
 	private int no;
-	private String type;
 	private String question;
 	private String answer;
+	private String type;	// 푸디오더 'F' / 포인트 'P' / 주문 'O' / 회원정보 'M' / 기타 'X'
 	private String regDate;
 	
 	public int getNo() {

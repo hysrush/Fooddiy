@@ -61,7 +61,7 @@
 	function doAction(type) {
 		switch (type) {
 		case 'W':
-			location.href = ${ pageContext.request.contextPath} +"/notice/write.jsp";
+			location.href = ${ pageContext.request.contextPath} +"/community/noticeWrite.do";
 			break;
 		default:
 			break;
@@ -108,7 +108,7 @@
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
 									<li><a href="${ pageContext.request.contextPath }/notice/qna.jsp">자주하는 질문</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">공지사항</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">Subway소식</a></li>
 									<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
 									<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
@@ -120,9 +120,9 @@
 							<div class="container">
 								<div class="row">
 									<div class="col-md-12">
-										<h4 class="mb-none">Subway 공지사항과 보도자료입니다.</h4>
+										<h4 class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</h4>
 										<br>
-										<p class="mb-none">Subway 공지사항과 보도자료입니다.</p>
+										<p class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</p>
 									</div>
 								</div>
 							</div>
@@ -135,6 +135,7 @@
 								</li>
 							</ul>
 							<div class="tab-content">
+								<!-- 공지사항 -->
 								<div class="tab-pane active" id="tabsNavigationSimple1">
 									<div class="center">
 										<h4>공지사항</h4>
@@ -161,13 +162,27 @@
 											<table class="table table-hover" width="80%">
 												<thead>
 													<tr>
-													<th>번호</th>
-													<th>제목</th>
-													<th>작성일</th>
-													<th>조회수</th>
+														<th>번호</th>
+														<th>제목</th>
+														<th>작성일</th>
+														<th>조회수</th>
 													</tr>
 												</thead>
 												<tbody>
+													<c:forEach items="${ noticeList }" var="notice">
+														<tr>
+															<c:if test="${ notice.type eq 'A' }">
+																<td>${ notice.no }</td>
+																<td>
+																	<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ notice.no }">
+																		<c:out value="${ notice.title }" />
+																	</a>
+																</td>
+																<td>${ notice.regDate }</td>
+																<td>${ notice.viewCnt }</td>
+															</c:if>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 											<div class="center">
@@ -191,6 +206,7 @@
 										</div>
 									</div>
 								</div>
+								<!-- 보도자료 -->
 								<div class="tab-pane" id="tabsNavigationSimple2">
 									<div class="center">
 										<h4>보도자료</h4>
@@ -224,6 +240,16 @@
 													</tr>
 												</thead>
 												<tbody>
+													<c:forEach items="${ noticeList }" var="notice">
+														<tr>
+															<c:if test="${ notice.type eq 'B' }">
+																<td>${ notice.no }</td>
+																<td>${ notice.title }</td>
+																<td>${ notice.regDate }</td>
+																<td>${ notice.viewCnt }</td>
+															</c:if>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 											<div class="center">

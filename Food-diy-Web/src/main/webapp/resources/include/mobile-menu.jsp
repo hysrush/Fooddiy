@@ -27,8 +27,8 @@
 			<li><span class="mmenu-toggle"></span> <a href="#">Community
 					<span class="tip tip-hot">Hot!</span></a>
 				<ul>
-					<li><a href="${ pageContext.request.contextPath }/notice/qna.jsp">자주묻는 질문</a></li>
-					<li><a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">공지사항</a></li>
+					<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+					<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a></li>
 					<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
 					<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp"
 						data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>

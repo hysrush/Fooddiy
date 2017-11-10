@@ -12,7 +12,7 @@
 		SELECT qna_no, qna_q, qna_a, qna_type, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_qna
 	</sql>
-  	<!-- t_qna의 reg_at과 QnaBoardVO의 변수와 맞지 않으므로 mapping  -->
+  	<!-- DB t_qna와 QnaBoardVO의 변수와 맞지 않으므로 mapping  -->
   	<resultMap type="qnaVO" id="Map_qnaVO">
   		<result column="qna_no" property="no"/>
   		<result column="qna_q" property="question"/>
@@ -24,12 +24,6 @@
 	<!-- 전체 QnA 게시글 조회 -->
 	<select id="selectAllQnA" resultMap="Map_qnaVO">
 		<include refid="selectAll_qna"/>
-		ORDER BY qna_no DESC
-	</select>
-	<!-- 타입별 QnA 게시글 조회 -->
-	<select id="selectTypeQnA" parameterType="String" resultMap="Map_qnaVO" >
-		<include refid="selectAll_qna"/>
-		WHERE qna_type = #{type}
 		ORDER BY qna_no DESC
 	</select>
 	<!-- 글번호별 QnA 게시글 조회 -->

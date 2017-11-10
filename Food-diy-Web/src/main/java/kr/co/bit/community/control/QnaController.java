@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.community.service.QnaService;
 import kr.co.bit.community.vo.QnaBoardVO;
 
-@RequestMapping("/notice")
+@RequestMapping("/community")
 @Controller
 public class QnaController {
 	
@@ -23,6 +23,7 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	// <QnA 컨트롤러>
+	// QnA 전체보기
 	@RequestMapping("/qna.do")
 	public ModelAndView	listAll() {
 		
@@ -30,13 +31,13 @@ public class QnaController {
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("notice/qna");
+		mav.setViewName("community/qnaList");
 		//addObject : key 와 value 를 담아 보내는 메서드 
 		mav.addObject("qnaList", qnaList);
 		
 		return mav;
 	}
-	
+	// QnA 새 글쓰기폼
 	@RequestMapping(value="/qnaWrite.do", method=RequestMethod.GET)
 	public String writeForm(Model model) {
 		
@@ -45,20 +46,20 @@ public class QnaController {
 		// 공유영역에 등록
 		model.addAttribute("qnaVO", qnaVO);
 		
-		return "notice/qnaWrite";
+		return "community/qnaWrite";
 	}
-	
+	// QnA 새 글쓰기
 	@RequestMapping(value="/qnaWrite.do", method=RequestMethod.POST)
 	public String write(@Valid QnaBoardVO qnaVO, BindingResult result) {
 		
 		if (result.hasErrors()) {
 			// 에러일때 true => writeForm으로
-			return "notice/qnaWrite";
+			return "community/qnaWrite";
 		}
 		// QnA 새 글 등록
 		qnaService.insertQnA(qnaVO);
 		
-		return "redirect:/notice/qna.do";
+		return "redirect:/community/qnaList";
 	}
 
 }

@@ -21,12 +21,6 @@ public class QnaServiceImp implements QnaService {
 		List<QnaBoardVO> listAll = qnaDAO.selectAll();
 		return listAll;
 	}
-	// 타입별 QnA 전체보기
-	@Override
-	public List<QnaBoardVO> selectTypeQnA(String type) {
-		List<QnaBoardVO> listType = qnaDAO.selectType(type);
-		return listType;
-	}
 	// 글번호별 QnA 글보기
 	@Override
 	public QnaBoardVO selectOneQnA(int no) {
@@ -35,13 +29,13 @@ public class QnaServiceImp implements QnaService {
 	}
 	// QnA 새 글쓰기
 	@Override
-	public void insertQnA(QnaBoardVO qna) {
-		qnaDAO.insert(qna);
+	public void insertQnA(QnaBoardVO qnaVO) {
+		qnaDAO.insert(qnaVO);
 	}
 	// QnA 글 수정
 	@Override
-	public void modifyQnA(QnaBoardVO qna) {
-		qnaDAO.update(qna);
+	public void modifyQnA(QnaBoardVO qnaVO) {
+		qnaDAO.update(qnaVO);
 	}
 	// QnA 글 삭제
 	@Override
