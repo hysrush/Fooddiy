@@ -40,15 +40,15 @@
 	<!--  종료된 이벤트 조회  -->
 	
 	
+	<!-- 
 	
 	
-	
-	<!-- 새 글 등록 -->
+	새 글 등록
 	<insert id="insertEvent" parameterType="eventVO">
 		insert into t_event(eve_no, eve_title, eve_contenteve_filename, eve_start, eve_fin )
 			values(seq_t_event_no.nextval, #{title}, #{content}, #{imgFile}, #{startDate}, #{endDate})
 	</insert>
-	
+	 -->
 	
 
 	

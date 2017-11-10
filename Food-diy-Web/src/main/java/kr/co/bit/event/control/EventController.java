@@ -30,13 +30,13 @@ public class EventController {
 	private EventService eventService;
 	
 	
-	@RequestMapping("EventPage.do")
+	@RequestMapping("/EventPage.do")
 	public ModelAndView list() {
 		List<EventBoardVO> eventList = eventService.selectAllEvent();
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("event/EventPage.jsp");
+		mav.setViewName("event/EventPage");
 		//addObject : key 와 value 를 담아 보내는 메서드 
 		mav.addObject("eventList", eventList);
 		
@@ -45,7 +45,7 @@ public class EventController {
 	}
 	
 	
-	@RequestMapping(value="/eventWrite.do", method=RequestMethod.GET)
+	/*@RequestMapping(value="/eventWrite.do", method=RequestMethod.GET)
 	public String writeForm(HttpServletRequest request
             , HttpServletResponse response
             , Model model
@@ -104,7 +104,7 @@ public class EventController {
 		
 		return "redirect:/event/EventPage.do";
 		
-	}
+	}*/
 	
 
 	
