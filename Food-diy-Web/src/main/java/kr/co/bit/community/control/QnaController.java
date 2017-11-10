@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.community.service.CommunityService;
+import kr.co.bit.community.service.QnaService;
 import kr.co.bit.community.vo.QnaBoardVO;
 
 @RequestMapping("/notice")
 @Controller
-public class CommunityController {
+public class QnaController {
 	
 	@Autowired
-	private CommunityService communityService;
+	private QnaService communityService;
 	
 	// <QnA 컨트롤러>
 	@RequestMapping("/qna.do")

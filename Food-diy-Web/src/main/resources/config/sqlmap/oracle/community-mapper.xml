@@ -32,6 +32,11 @@
 		WHERE qna_type = #{type}
 		ORDER BY qna_no DESC
 	</select>
+	<!-- 글번호별 QnA 게시글 조회 -->
+	<select id="selectOneQnA" parameterType="int" resultMap="Map_qnaVO" >
+		<include refid="selectAll_qna"/>
+		WHERE qna_no = #{no}
+	</select>
 	<!-- QnA 글 등록 -->
 	<insert id="insertQnA" parameterType="qnaVO">
 		INSERT INTO t_qna(qna_no, qna_q, qna_a, qna_type)

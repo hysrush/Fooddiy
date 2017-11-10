@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.bit.community.dao.CommunityDAO;
+import kr.co.bit.community.dao.QnaDAO;
 import kr.co.bit.community.vo.QnaBoardVO;
 
 @Service
-public class CommunityServiceImp implements CommunityService {
+public class QnaServiceImp implements QnaService {
 
 	@Autowired
-	private CommunityDAO communityDAO;
+	private QnaDAO communityDAO;
 	
 	// <QnA Service>
 	// QnA 전체보기
@@ -26,6 +26,12 @@ public class CommunityServiceImp implements CommunityService {
 	public List<QnaBoardVO> selectTypeQnA(String type) {
 		List<QnaBoardVO> listType = communityDAO.selectType(type);
 		return listType;
+	}
+	// 글번호별 QnA 글보기
+	@Override
+	public QnaBoardVO selectOneQnA(int no) {
+		QnaBoardVO qnaDetail = communityDAO.selectOne(no);
+		return qnaDetail;
 	}
 	// QnA 새 글쓰기
 	@Override

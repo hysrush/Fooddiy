@@ -2,14 +2,14 @@ package kr.co.bit.event.dao;
 
 import java.util.List;
 
-import kr.co.bit.event.vo.QnABoardVO;
+import kr.co.bit.event.vo.EventBoardVO;
 
 public interface EventDAO {
 	
-	List<QnABoardVO> selectAll();
-	QnABoardVO selectOne(int no);
-	void insert(QnABoardVO event);
-	void update(QnABoardVO event);
+	List<EventBoardVO> selectAll();
+	EventBoardVO selectOne(int no);
+	void insert(EventBoardVO event);
+	void update(EventBoardVO event);
 	void delete(int no);
 	
 

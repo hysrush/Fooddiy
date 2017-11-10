@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.service.EventService;
-import kr.co.bit.event.vo.QnABoardVO;
+import kr.co.bit.event.vo.EventBoardVO;
 
 @RequestMapping("/event")
 @Controller
@@ -20,7 +20,7 @@ public class EventController {
 	
 	@RequestMapping("EventPage.do")
 	public ModelAndView list() {
-		List<QnABoardVO> eventList = eventService.selectAllEvent();
+		List<EventBoardVO> eventList = eventService.selectAllEvent();
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
