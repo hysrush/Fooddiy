@@ -13,7 +13,7 @@ public class QnaDAOImp implements QnaDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	private String url = "kr.co.bit.community.dao.CommunityDAO.";
+	private String url = "kr.co.bit.community.dao.QnaDAO.";
 	
 	// <QnA DAO>
 	// QnA 전체보기

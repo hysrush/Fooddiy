@@ -20,13 +20,13 @@ import kr.co.bit.community.vo.QnaBoardVO;
 public class QnaController {
 	
 	@Autowired
-	private QnaService communityService;
+	private QnaService qnaService;
 	
 	// <QnA 컨트롤러>
 	@RequestMapping("/qna.do")
 	public ModelAndView	listAll() {
 		
-		List<QnaBoardVO> qnaList = communityService.selectAllQnA();
+		List<QnaBoardVO> qnaList = qnaService.selectAllQnA();
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
@@ -56,7 +56,7 @@ public class QnaController {
 			return "notice/qnaWrite";
 		}
 		// QnA 새 글 등록
-		communityService.insertQnA(qnaVO);
+		qnaService.insertQnA(qnaVO);
 		
 		return "redirect:/notice/qna.do";
 	}
