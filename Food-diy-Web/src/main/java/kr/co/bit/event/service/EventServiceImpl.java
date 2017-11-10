@@ -32,7 +32,7 @@ public class EventServiceImpl implements EventService{
 	//Event 글쓰기
 	@Override
 	public void insertEvent(EventBoardVO event) {
-		eventDAO.insert(event);
+	/*	eventDAO.insert(event);*/
 	}
 	
 	@Override
