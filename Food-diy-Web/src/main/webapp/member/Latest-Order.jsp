@@ -133,7 +133,7 @@
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 										<table >
 											<div class="box-content">
-												<td style="width: 150px; text-align: center; " class=" col-xs-8"><h4  align="center" style="margin-left:65%; font-size:100%; width: 60px;" class="heading-primary text-uppercase mb-md">메뉴사진</h4></td>
+												<td style="width: 150px; text-align: center; " class=" col-xs-8"><h4  align="center" style="margin-left:65%; font-size:100%; width: 60px;" class="heading-primary text-uppercase mb-md"></h4></td>
 												<td><h4 align="center" style="margin-left:%;font-size:100%; width: 300px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4></td>
 												<td><h4 style=" margin-left:17%;font-size:100%; width: 80px; float: left; margin-left: 7%" class="heading-primary text-uppercase mb-md hidden-xs">날짜</h4></td>
 												<td><h4 align="center" style="margin-left:40%; font-size:100%; width: 150px; float: right;;" class="heading-primary text-uppercase mb-md hidden-xs">주문상태</h4></td>
