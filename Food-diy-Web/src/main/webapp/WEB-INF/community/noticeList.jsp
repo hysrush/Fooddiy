@@ -137,8 +137,10 @@
 							<div class="tab-content">
 								<!-- 공지사항 -->
 								<div class="tab-pane active" id="tabsNavigationSimple1">
+									<div class="heading heading-border heading-middle-border">
+										<h3><strong>공지사항</strong></h3>
+									</div>
 									<div class="center">
-										<h4>공지사항</h4>
 										<div class="col-md-12">
 											<div class="col-md-3" style="float: left;">
 												<select class="form-control">
@@ -208,8 +210,10 @@
 								</div>
 								<!-- 보도자료 -->
 								<div class="tab-pane" id="tabsNavigationSimple2">
+									<div class="heading heading-border heading-middle-border">
+										<h3><strong>보도자료</strong></h3>
+									</div>
 									<div class="center">
-										<h4>보도자료</h4>
 										<div class="col-md-12">
 											<div class="col-md-3" style="float: left;">
 												<select class="form-control">
@@ -244,7 +248,11 @@
 														<tr>
 															<c:if test="${ notice.type eq 'B' }">
 																<td>${ notice.no }</td>
-																<td>${ notice.title }</td>
+																<td>
+																	<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ notice.no }">
+																		<c:out value="${ notice.title }" />
+																	</a>
+																</td>
 																<td>${ notice.regDate }</td>
 																<td>${ notice.viewCnt }</td>
 															</c:if>

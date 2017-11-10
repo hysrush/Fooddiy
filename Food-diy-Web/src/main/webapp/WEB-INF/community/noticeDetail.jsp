@@ -138,8 +138,17 @@
 						</section>
 						<div class="blog-posts single-post">
 							<article class="post post-large blog-single-post">
+									<c:if test="${ noticeVO.type eq 'A' }">
+										<div class="heading heading-border heading-middle-border">
+											<h3><strong>공지사항</strong></h3>
+										</div>
+									</c:if>
+									<c:if test="${ noticeVO.type eq 'B' }">
+										<div class="heading heading-border heading-middle-border">
+											<h3><strong>보도자료</strong></h3>
+										</div>
+									</c:if>
 									<div class="center">
-										<h4>공지사항</h4>
 										<hr>
 										<div class="post-content col-md-12">
 											<div class="post-meta" style="float: right;">
@@ -166,7 +175,7 @@
 														</tr>
 													<tr>
 														<!-- 내용 -->
-														<td colspan="3"><p><c:out value="${ noticeVO.content }"></p></c:out></td>
+														<td colspan="3"><p><c:out value="${ noticeVO.content }"></c:out></p></td>
 													</tr>
 													<!-- 첨부파일 -->
 													<c:if test="${ not empty fileList }">
