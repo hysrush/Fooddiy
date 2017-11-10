@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.member.dao.MemberDAO;
-import kr.co.bit.member.dao.QnADAO;
 import kr.co.bit.member.vo.MemberVO;
-import kr.co.bit.member.vo.QnABoardVO;
 
 
 @Service
@@ -16,8 +14,7 @@ public class MemberServiceImp  implements MemberService  {
 
 	@Autowired
 	private MemberDAO memberDAO;
-	@Autowired
-	private QnADAO QnADAO;
+
 	
 	public List<MemberVO> selectAllmember() {
 		List<MemberVO> list = memberDAO.selectAll();
@@ -46,10 +43,8 @@ public class MemberServiceImp  implements MemberService  {
 	        memberDAO.update(vo);
 	    }
 
-	public List<QnABoardVO> selectAllQnA() {
-		List<QnABoardVO> list = QnADAO.selectAll();
-		return list;
-	}
+	
+	
 
 
 }

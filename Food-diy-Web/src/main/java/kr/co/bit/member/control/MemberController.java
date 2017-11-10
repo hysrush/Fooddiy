@@ -13,8 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.member.service.MemberService;
 import kr.co.bit.member.vo.MemberVO;
-import kr.co.bit.member.vo.QnABoardVO;
-
 
 @Controller
 @RequestMapping("/member")
@@ -28,26 +26,13 @@ public class MemberController {
 	 
 	  @RequestMapping("member/memberUpdate.do")
 	    public String memberUpdate(@ModelAttribute MemberVO vo){
-		   MemberVO.memberUpdate(vo);
+		  MemberService.memberUpdate(vo);
 	        return "redirect:/member/memberUpdate.do";
 	    }
 	  
 	  
 	  
-		@Autowired
-		private MemberService memberService;
-		
-		@RequestMapping("/myQnA.do")
-		public ModelAndView list() {
-			List<QnABoardVO> memberList = memberService.selectAllQnA();
-			
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("member/myQnA.jsp");
-			mav.addObject("memberList", memberList);
-			
-			return mav;
-			
-		}
+	
 	}
 	 
 
