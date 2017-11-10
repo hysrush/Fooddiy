@@ -89,7 +89,7 @@
 	
 <script>
 $(document).ready(function(){
-	$('#lnb').stick_in_parent({offset_top:274});
+	$('#lnb').stick_in_parent({offset_top:73});
 });
 
 
@@ -171,7 +171,6 @@ $(function(){
 					</div>					
 
 
-					<div class="col-md-9">
 						<aside class="sidebar hidden-md hidden-lg" id="lnb">
 							<nav>
 								<ul>
@@ -205,8 +204,6 @@ $(function(){
 								</ul>
 							</nav>						
 						</aside>
-					</div>
-					
 					
 					
 					

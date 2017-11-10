@@ -29,7 +29,7 @@
 			<div class="col-md-6">
 				<!-- <div class="owl-carousel owl-theme"	data-plugin-options="{'items': 1}"> -->
 					<div>
-						<div class="thumbnail" style="margin-top: 90px; margin-bottom: 90px">
+						<div class="thumbnail" style="margin-top: 50px; margin-bottom: 50px">
 							<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath }/resources/img/menu_detail/turkey_breast.jpg">
 						</div>
 					</div>
