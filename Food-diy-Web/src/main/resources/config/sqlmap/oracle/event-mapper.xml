@@ -11,13 +11,20 @@
 	</sql>
   	
   	<!-- t_board의 view_cnt와 reg_date와 BoardVO의 변수와 맞지 않으므로 mapping  -->
-  	<resultMap type="eventVO" id="MapEventVO">
-  		<result column="view_cnt" property="viewCnt"/>
-  		<result column="reg_date" property="regDate"/>
+  	<resultMap type="eventVO" id="Map_EventVO"> 	
+   		<result column="eve_no" property="no"/>
+  		<result column="eve_title" property="title"/>
+  		<result column="eve_content" property="content"/>
+  		<result column="eve_filename" property="imgFile"/>
+  		<result column="eve_start" property="startDate"/>
+  		<result column="eve_fin" property="endDate"/>
+  		<result column="reg_at" property="regDate"/>
   	</resultMap>
 	
+  	
+	
 	<!-- 전체 게시글 조회 -->
-	<select id="selectAllEvent" resultMap="MapEventVO">
+	<select id="selectAllEvent" resultMap="Map_EventVO">
 		select no, title, writer, content, view_cnt, to_char(reg_date, 'yy-mm-dd') as reg_date
 		from t_event
 		order by no desc
@@ -38,9 +45,12 @@
 	
 	<!-- 새 글 등록 -->
 	<insert id="insertEvent" parameterType="eventVO">
-		insert into t_event(no, title, writer, content)
-			values(seq_t_event_no.nextval, #{title}, #{writer}, #{content})
+		insert into t_event(eve_no, eve_title, eve_contenteve_filename, eve_start, eve_fin )
+			values(seq_t_event_no.nextval, #{title}, #{content}, #{imgFile}, #{startDate}, #{endDate})
 	</insert>
+	
+	
+
 	
 	<select id="selectByNo" parameterType="int" resultMap="MapEventVO" >
 		<include refid="selectAll"/>

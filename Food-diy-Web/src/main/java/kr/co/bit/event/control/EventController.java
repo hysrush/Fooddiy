@@ -1,10 +1,22 @@
 package kr.co.bit.event.control;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.service.EventService;
@@ -33,9 +45,68 @@ public class EventController {
 	}
 	
 	
+	@RequestMapping(value="/eventWrite.do", method=RequestMethod.GET)
+	public String writeForm(HttpServletRequest request
+            , HttpServletResponse response
+            , Model model
+            , @RequestParam(value="imgFile") MultipartFile[] files) throws Exception {
+		
+				///file 변환 
+			String fileName = null;
+			String msg = "";
+        
+	        if (files != null && files.length >0) {
+	            for(int i =0 ;i< files.length; i++){
+	                try {
+	                    if (true == files[i].isEmpty()) {
+	                        continue;
+	                    }
+	                       
+	                    fileName = files[i].getOriginalFilename();
+
+	                    byte[] bytes = files[i].getBytes();
+	                    BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File("./image/" + fileName)));
+	                    buffStream.write(bytes);
+	                    buffStream.close();
+	                    
+	                } catch (Exception e) {
+	                    return "You failed to upload " + fileName + ": " + e.getMessage() +"<br/>";
+	                }
+	            }
+	        } else {
+	            return "Unable to upload. File is empty.";
+	        }
+	        
+        
+		
+		// Form에서 가져온 Data를 QnaBoardVO 객체 형태로 저장
+				EventBoardVO eventVO = new EventBoardVO();
+				// 공유영역에 등록
+				model.addAttribute("eventVO", eventVO);
+				
+				return "event/EventWriteForm";
+		
+	}	
 	
+
+	@RequestMapping(value="/eventWrite.do", method=RequestMethod.POST)
+	public String write(@Valid EventBoardVO eventVO, BindingResult result) {
+		
+		// 에러일때 true => writeForm으로
+		if (result.hasErrors()) {
+			
+			return "event/EventWriteForm";
+		}
+		
+		
+		//새글등록
+		eventService.insertEvent(eventVO);
+		
+		return "redirect:/event/EventPage.do";
+		
+	}
 	
-	
+
 	
 	
 }
