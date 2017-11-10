@@ -311,9 +311,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ userVO.name }</a>
-								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount"><a class="dropdown-toggle" href="page-login.html"> <i class="fa fa-user"></i>이름
-								</a>
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ userVO.id }</a>
 									<ul class="dropdown-menu">
 										<li>
 											<div class="dropdown-mega-content">

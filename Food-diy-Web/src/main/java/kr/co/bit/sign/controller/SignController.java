@@ -1,5 +1,7 @@
 package kr.co.bit.sign.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,12 +77,13 @@ public class SignController {
 	
 	// 1. 휴대전화 인증할 것인지 확인
 	@RequestMapping(value="/signUp.do", method=RequestMethod.GET)
-	public String phoneCertForm() {
+	public String phoneCert(HttpSession session) {
 		
+		session.setAttribute("phoneCert", new MemberVO());
 		return "sign/phoneCert";
 		
 	}
-	// 2. 휴대전화 인증화면으로 이동
+/*	// 2. 휴대전화 인증화면으로 이동
 	@RequestMapping(value="/phoneCertForm.do", method=RequestMethod.GET)
 	public String phoneCert(Model model) {
 		
@@ -88,11 +91,14 @@ public class SignController {
 		
 		return "sign/phoneCertForm";
 		
-	}
+	}*/
+	
 	// 3. 인증 확인
 	@RequestMapping(value="/phoneCertForm.do", method=RequestMethod.POST)
-	public String phoneCertForm(MemberVO phoneCert, Model model) {
+	public String phoneCertForm(MemberVO phoneCert, Model model, HttpSession session) {
 		
+		System.out.println("하이");
+		session.removeAttribute("phoneCert");
 		// 휴대전화 인증할 때 받은 회원 정보 저장
 		PhoneCertVO cert = new PhoneCertVO();
 		

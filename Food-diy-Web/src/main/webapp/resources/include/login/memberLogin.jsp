@@ -28,7 +28,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="row">
+									<div class="row" align="center">
 										<!-- 자동 로그인 -->
 										<div class="col-md-6">
 											<span class="remember-box checkbox">
@@ -43,13 +43,13 @@
 								</form>
 								<!-- API 로그인 -->
 								<div class="row">
-									<div class="col-xs-12 col-md-6">	
+									<div class="col-md-6 align-left mt-xlg">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
 									<%-- <div class="col-md-4">	
 										<jsp:include page="/resources/include/login/facebookLogin.jsp"/>
 									</div> --%>
-									<div class="col-xs-12 col-md-6">	
+									<div class="col-md-6 align-left mt-xlg">	
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div>
 								</div>
