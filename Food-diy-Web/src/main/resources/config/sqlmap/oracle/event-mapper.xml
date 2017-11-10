@@ -11,15 +11,15 @@
 	</sql>
   	
   	<!-- t_board의 view_cnt와 reg_date와 BoardVO의 변수와 맞지 않으므로 mapping  -->
-  <!-- 	<resultMap type="eventVO" id="Map_EventVO"> 	
+   	<resultMap type="eventVO" id="Map_EventVO"> 	
    		<result column="eve_no" property="no"/>
-  		<result column="eve_title" property="title"/>
+  	<!-- 	<result column="eve_title" property="title"/>
   		<result column="eve_content" property="content"/>
   		<result column="eve_filename" property="imgFile"/>
   		<result column="eve_start" property="startDate"/>
-  		<result column="eve_fin" property="endDate"/>
+  		<result column="eve_fin" property="endDate"/> -->
   		<result column="reg_at" property="regDate"/>
-  	</resultMap> -->
+  	</resultMap> 
 	
   	
 	
@@ -52,7 +52,7 @@
 	
 
 	
-	<select id="selectByNo" parameterType="int" resultMap="MapEventVO" >
+	<select id="selectByNo" parameterType="int" resultMap="Map_EventVO" >
 		<include refid="selectAll"/>
 		where no = #{no}
 	</select>
