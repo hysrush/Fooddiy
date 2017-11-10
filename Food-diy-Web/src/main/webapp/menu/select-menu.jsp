@@ -206,7 +206,13 @@
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a class="accordion-toggle topping-name" data-toggle="collapse" data-parent="#accordion5" href="#topping-select">
-												토핑 선택 >>
+												<table class = "topping-table">
+														<tr>
+															<td width = "30%">
+																토핑 선택 >>
+															</td>
+														</tr>
+												</table>
 											</a>
 										</h4>
 									</div>

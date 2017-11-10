@@ -45,8 +45,11 @@
 				 $('.fa-check-bread').hide();
 				 $(this).siblings('.fa-check').show();
 				 
-				 var name = "&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >> " + $(this).find('.name').text();
+				 var name = "&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >> ";
+				 	name += '<strong class = "'+ 'name">'+  $(this).find('.name').text() + '</strong>';
+
 				 $('.bread-name').html(name);
+				 
 			 });
 		});
 	});
