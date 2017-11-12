@@ -10,7 +10,7 @@
 <body>
 
 
-	<%-- <div align="center" >
+	 <div align="center" >
 		<h2>글등록 페이지</h2>
 		<form:form commandName="eventVO" method="POST" enctype="multipart/form-data">
 			<div style="max-width: 800px;">
@@ -61,7 +61,7 @@
 		</form:form>
 	</div>
 
- --%>
+
 
 
 

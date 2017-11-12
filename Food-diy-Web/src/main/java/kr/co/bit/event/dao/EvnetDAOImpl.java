@@ -15,7 +15,7 @@ public class EvnetDAOImpl implements EventDAO {
 	private SqlSessionTemplate sqlSession;
 	private String url = "kr.co.bit.event.dao.EventDAO.";
 	
-	// 이벤트 전체보기 
+	// �씠踰ㅽ듃 �쟾泥대낫湲� 
 	@Override
 	public List<EventBoardVO> selectAll(){
 		
@@ -23,19 +23,19 @@ public class EvnetDAOImpl implements EventDAO {
 		return list;
 	}
 	
-	// 이벤트 클릭시 디테일
+	// �씠踰ㅽ듃 �겢由��떆 �뵒�뀒�씪
 	@Override
 	public EventBoardVO selectOne(int no) { 
 		return sqlSession.selectOne(url + "selectByNo" , no);
 	}
 	
 	@Override
-	public void insert(EventBoardVO event) { 
-	/*	sqlSession.insert(url + "insertEvent" , event);*/
+	public void insert(EventBoardVO eventVO) { 
+		sqlSession.insert(url + "insertEvent" , eventVO);
 	}
 	
 	@Override
-	public void update(EventBoardVO event) {
+	public void update(EventBoardVO eventVO) {
 		
 	}
 	

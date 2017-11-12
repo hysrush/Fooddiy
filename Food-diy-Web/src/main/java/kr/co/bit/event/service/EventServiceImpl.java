@@ -22,22 +22,22 @@ public class EventServiceImpl implements EventService{
 		
 	}
 	
-	//Event 글 보기
+	//Event 湲� 蹂닿린
 	@Override
 	public EventBoardVO selectOneEvent(int no) {
 		return eventDAO.selectOne(no);
 	}
 	
 	
-	//Event 글쓰기
+	//Event 湲��벐湲�
 	@Override
-	public void insertEvent(EventBoardVO event) {
-	/*	eventDAO.insert(event);*/
+	public void insertEvent(EventBoardVO eventVO) {
+		eventDAO.insert(eventVO);
 	}
 	
 	@Override
-	public void modifyEvent(EventBoardVO event) {
-		eventDAO.update(event);
+	public void modifyEvent(EventBoardVO eventVO) {
+		eventDAO.update(eventVO);
 	}
 	
 	@Override

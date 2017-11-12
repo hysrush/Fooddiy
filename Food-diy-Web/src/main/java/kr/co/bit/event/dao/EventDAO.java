@@ -8,8 +8,8 @@ public interface EventDAO {
 	
 	List<EventBoardVO> selectAll();
 	EventBoardVO selectOne(int no);
-	void insert(EventBoardVO event);
-	void update(EventBoardVO event);
+	void insert(EventBoardVO eventVO);
+	void update(EventBoardVO eventVO);
 	void delete(int no);
 	
 

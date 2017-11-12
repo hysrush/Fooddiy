@@ -6,7 +6,7 @@ public class EventBoardVO {
 
 	private int no;
 	private String title;
-	private MultipartFile imgFile; // 첨부파일
+	private String imgFileName; // 泥⑤��뙆�씪
 	private String content;
 	private String startDate;
 	private String endDate;
@@ -25,11 +25,14 @@ public class EventBoardVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public MultipartFile getImgFile() {
-		return imgFile;
+	
+	
+	
+	public String getImgFileName() {
+		return imgFileName;
 	}
-	public void setImgFile(MultipartFile imgFile) {
-		this.imgFile = imgFile;
+	public void setImgFileName(String imgFileName) {
+		this.imgFileName = imgFileName;
 	}
 	public String getContent() {
 		return content;
@@ -57,10 +60,10 @@ public class EventBoardVO {
 	}
 	@Override
 	public String toString() {
-		return "EventBoardVO [no=" + no + ", title=" + title + ", imgFile=" + imgFile + ", content=" + content
+		return "EventBoardVO [no=" + no + ", title=" + title + ", imgFileName=" + imgFileName + ", content=" + content
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", regDate=" + regDate + "]";
 	}
-
+	
 	
 	
 	

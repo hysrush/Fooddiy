@@ -81,7 +81,7 @@
 
 			<!--  event 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/event/eventWrite.do">이벤트등록</a><br/>
-			<a href="${ pageContext.request.contextPath}/event/EventPage.do">이벤트</a><br/>
+			<a href="${ pageContext.request.contextPath}/event/eventPage.do">이벤트</a><br/>
 
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>
