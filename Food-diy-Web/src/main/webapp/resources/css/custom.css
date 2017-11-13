@@ -300,7 +300,7 @@ li {
 
 .shop .cart-totals th, .shop .cart-totals td {
 	border-top: 1px solid #DCDCDC;
-	padding: 0px 0px;
+	padding: 2px 0px;
 }
 
 @media ( min-width : 992px) {
