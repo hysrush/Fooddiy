@@ -7,6 +7,7 @@ import kr.co.bit.event.vo.EventBoardVO;
 public interface EventDAO {
 	
 	List<EventBoardVO> selectAll();
+	List<EventBoardVO> selectEndEvent();
 	EventBoardVO selectOne(int no);
 	void insert(EventBoardVO eventVO);
 	void update(EventBoardVO eventVO);

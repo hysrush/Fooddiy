@@ -117,6 +117,7 @@
 											</li>
 											<li class="">
 												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 이벤트 </a>
+												
 											</li>
 										</ul>
 										<div class="tab-content">
@@ -129,68 +130,69 @@
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
 																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath }/upload/mug_obj_137592770308732714.jpg">
+																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }">
 																	</div>
 																	
 																</div>
-																<div class="date">
-																	<span class="day">15</span>
-																	<span class="month">Jan</span>
+																<div class="heading heading-tertiary heading-border heading-bottom-border">
+																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
 																</div>
 																
-																<h4>${ eventVO.title }</h4>
-																<p>${ eventVO.content } <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
-																<p>${ eventVO.startDate }</p>
-																<p>${ eventVO.endDate }</p>
+																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
+																
+																
+																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
+																								
 															
 															</article>
 														</div>
 													</div>
 												</c:forEach>	
-													<!-- 2 -->
-													<div class="col-md-12">
-													<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
-																	</div>
-																	
-																</div>
-																<div class="date">
-																	<span class="day">15</span>
-																	<span class="month">Jan</span>
-																</div>
-																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
-															</article>
-														</div>
-													</div>	
-													
-													<!--  -->
-										<div class="col-md-12">
-											<ul class="pagination">
-												<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-												<li class="active"><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-											</ul>
-										</div>
-													
-													
-													
 													
 													
 												</div>
 											</div>
 											<div class="tab-pane" id="tabsNavigationSimple2">
 												<div class="center">
-													<!-- 이벤트 사진과 일정과 내용을 넣는 곳  -->
-												
+													<!-- 종료된이벤트 탭   -->
+															
+												<c:forEach items="${ eventEndList }" var="eventVO">	
+													<div class="col-md-12">
+														<div class="recent-posts">
+															<article class="post">
+																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
+																	<div>
+																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }">
+																	</div>
+																	
+																</div>
+																<div class="heading heading-tertiary heading-border heading-bottom-border">
+																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
+																</div>
+																
+																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
+																
+																
+																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
+																								
+															
+															</article>
+														</div>
+													</div>
+												</c:forEach>	
+
+													
+													<div class="col-md-12">
+														<ul class="pagination">
+															<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+															<li class="active"><a href="#">1</a></li>
+															<li><a href="#">2</a></li>
+															<li><a href="#">3</a></li>
+															<li><a href="#">4</a></li>
+															<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+														</ul>
+													</div>
 												</div>
-											
 											</div>
 										</div>
 									</div>

@@ -23,6 +23,12 @@ public class EvnetDAOImpl implements EventDAO {
 		return list;
 	}
 	
+	@Override
+	public List<EventBoardVO> selectEndEvent() {
+		List<EventBoardVO> list = sqlSession.selectList(url +"selectEndEvent");
+		return list;
+	}
+	
 	// �씠踰ㅽ듃 �겢由��떆 �뵒�뀒�씪
 	@Override
 	public EventBoardVO selectOne(int no) { 

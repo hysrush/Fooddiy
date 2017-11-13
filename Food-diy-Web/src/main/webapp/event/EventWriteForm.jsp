@@ -14,8 +14,8 @@
 		<h2>글등록 페이지</h2>
 		<form:form commandName="eventVO" method="POST" enctype="multipart/form-data">
 			<div style="max-width: 800px;">
-				<div class="form-group" align="left">
-				  매장명은 db에서 불러와서 선택할 수 있도록  
+				<%-- <div class="form-group" align="left">
+				   매장명은 db에서 불러와서 선택할 수 있도록   
 				 	<label for="type">매장명</label>
 					<form:select path="type" class="form-control" id="type">
 						<form:option value="F">푸디오더</form:option>
@@ -27,7 +27,7 @@
 			
 					
 					<form:errors path="type" class="form-control"></form:errors>
-				</div>
+				</div> --%>
 				<div class="form-group" align="left">
 					<label for="question">이벤트 제목</label>
 					<form:input path="title" type="text" class="form-control" id="title" placeholder="제목"/>

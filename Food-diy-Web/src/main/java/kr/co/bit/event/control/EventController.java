@@ -3,6 +3,7 @@ package kr.co.bit.event.control;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ public class EventController {
 	@Autowired
 	private EventService eventService;
 	
-	
+	//진행중인 이벤트
 	@RequestMapping("/eventPage.do")
 	public ModelAndView list() {
 		List<EventBoardVO> eventList = eventService.selectAllEvent();
@@ -44,6 +45,24 @@ public class EventController {
 		
 	}
 	
+	@RequestMapping("/eventEndPage.do")
+	public ModelAndView EndList() {
+		List<EventBoardVO> eventEndList = eventService.selectEndEvent();
+		
+		ModelAndView mav = new ModelAndView();
+		//setViewName : �뼱�뼡 �럹�씠吏�瑜� 蹂댁뿬以꾧쾬�씤媛�
+		mav.setViewName("event/EventPage");
+		//addObject : key �� value 瑜� �떞�븘 蹂대궡�뒗 硫붿꽌�뱶 
+		mav.addObject("eventEndList", eventEndList);
+		
+		return mav;
+		
+	}
+	
+	
+	
+	
+	
 	// 새글등록 폼 
 		@RequestMapping(value="/eventWrite.do", method=RequestMethod.GET)
 		public String writeForm(HttpServletRequest request
@@ -56,57 +75,50 @@ public class EventController {
 					
 					return "event/EventWriteForm";
 			
+					
 		}	
 		
 		// 새글 등록 
 		@RequestMapping(value="/eventWrite.do", method=RequestMethod.POST)
 		public String write(@Valid EventBoardVO eventVO
-						  , @RequestParam(value="imgFile") MultipartFile file
-						  , BindingResult result) {
+							, BindingResult result
+							, @RequestParam(value="imgFileName") MultipartFile file
+		)throws Exception {
 			
-			try {
-				// 1. 파라미터 확인 * VO 객체 등록 
-				eventVO = new EventBoardVO();
+				System.out.println("시작");
+				
+				//1. fileName 설정 + eventVO에 fileName 저장
+				String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
+				String saveFileName = file.getOriginalFilename();
+				
+				eventVO.setImgFileName(saveFileName);
+				
+				System.out.println(fileName);
+				System.out.println(saveFileName);
+				System.out.println("들어가나");
 			
-			    String fileName = "./image/" + file.getOriginalFilename();
-			    eventVO.setImgFileName(fileName);
-	            
+				
+				//2. 경로에 이미지파일 저장
+					byte[] bytes;
+					bytes = file.getBytes();
+					BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+					buffStream.write(bytes);
+					buffStream.close();
+						
+					System.out.println("들어가나 2");
+				
+				
+				//eventVO에 저장 
+				eventService.insertEvent(eventVO);
+				
+				return "redirect:/event/eventPage.do";
+				
+		
 			    
-			    // 2. 이미지 파일 저장 
-			    byte[] bytes = file.getBytes();
-	            BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File("./image/" + fileName)));
-	            buffStream.write(bytes);
-	            buffStream.close();
+			    
 	            
-	            // 3. Vo 객체 INSERT 
-	            eventService.insertEvent(eventVO);
-	            
-	            // 4. 이동
-	            return "redirect:/event/EventPage.do";
-	            
-	            
-	        } catch (Exception e) {
-	        	return "redirect:/event/error.do";
-	        }
-	        
-			
-			
-			
-			
-			
-			
-			
-			// �뿉�윭�씪�븣 true => writeForm�쑝濡�
-//			if (result.hasErrors()) {
-//				
-//				return "event/EventWriteForm";
-//			}
-			
-			
-			//�깉湲��벑濡�
-//			eventService.insertEvent(eventVO);
-			
+					
+				
+	
 		}
-	
-	
-}
+}	

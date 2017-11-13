@@ -8,6 +8,7 @@ public interface EventService {
 
 	
 	List<EventBoardVO> selectAllEvent();
+	List<EventBoardVO> selectEndEvent();
 	EventBoardVO selectOneEvent(int no);
 	void insertEvent(EventBoardVO eventVO);
 	void modifyEvent(EventBoardVO eventVO);
