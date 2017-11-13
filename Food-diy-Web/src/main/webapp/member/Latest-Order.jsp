@@ -148,7 +148,7 @@
 															</th>
 															<td style="padding: 0px; width:20%;" style="" class="product-thumbnail">
 																	<a href="shop-product-sidebar.html">
-																		<img style="margin-left:7%; width:86%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
+																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
 																	</a>
 																</td>
 															<td align="center" style="width: 150px; font-size:80%;">
