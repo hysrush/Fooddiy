@@ -280,6 +280,24 @@ li {
 	}
 }
 
+.thumb-info.thumb-info-centered-icons .thumb-info-action-icon {
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+    position: relative;
+    z-index: 2;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 40px;
+    height: 40px;
+    line-height: 33px;
+    border-radius: 50%;
+    margin-right: 3px;
+}
+
+
 .shop .cart-totals th, .shop .cart-totals td {
 	border-top: 1px solid #DCDCDC;
 	padding: 0px 0px;

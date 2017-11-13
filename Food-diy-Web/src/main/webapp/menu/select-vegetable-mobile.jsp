@@ -6,7 +6,15 @@
 	<li><i class="fa fa-check fa-check-vegetable"></i>
 		<figure class="product-image-area product-vegetable-area">
 				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_lettuce.jpg" />
-				 <strong class = "name">양상추 Lettuce</strong>
+				<strong class = "name">양상추 Lettuce</strong>
+				<span class="thumb-info-action">
+														<a href="#">
+															<span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fa fa-play-circle"></i></span>
+														</a>
+														<a href="portfolio-single-small-slider.html">
+															<span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fa fa-plus"></i></span>
+														</a>
+													</span> 
 		</figure>
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>
