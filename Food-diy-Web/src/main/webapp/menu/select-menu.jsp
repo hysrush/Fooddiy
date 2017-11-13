@@ -240,7 +240,13 @@
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a class="accordion-toggle sauce-name" data-toggle="collapse" data-parent="#accordion5" href="#sauce-select">
-												소스 선택 >>
+												<table class = "sauce-table">
+														<tr>
+															<td width = "30%">
+																소스 선택 >>
+															</td>
+														</tr>
+												</table>
 											</a>
 										</h4>
 									</div>
@@ -255,6 +261,11 @@
 					</div>
 				</div>
 			</div>
+			
+			
+			
+			
+
 
 			<footer id="footer">
 				<jsp:include page="/resources/include/bottom.jsp" />

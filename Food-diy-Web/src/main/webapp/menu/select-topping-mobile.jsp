@@ -7,9 +7,11 @@
 		<figure class="product-image-area product-topping-area">
 				<table>
 					<tbody>
-						<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_bacon.jpg" /></td>
-						<td width="40%"><strong class = "name">베이컨 </strong> <strong class = "id">Bacon</strong></td>
-						<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+900원</strong></td>
+						<tr>
+							<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_bacon.jpg" /></td>
+							<td width="40%"><strong class = "name">베이컨 </strong> <strong class = "id">Bacon</strong></td>
+							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+900원</strong></td>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
