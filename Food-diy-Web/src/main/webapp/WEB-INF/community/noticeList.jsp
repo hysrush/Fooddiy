@@ -61,7 +61,7 @@
 	function doAction(type) {
 		switch (type) {
 		case 'W':
-			location.href = ${ pageContext.request.contextPath} +"/community/noticeWrite.do";
+			location.href = "${ pageContext.request.contextPath}/community/noticeWrite.do";
 			break;
 		default:
 			break;
@@ -107,8 +107,8 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li><a href="${ pageContext.request.contextPath }/notice/qna.jsp">자주하는 질문</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">Subway소식</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
 									<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
 									<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
@@ -202,9 +202,6 @@
 												<button type="button" class="btn btn-primary"
 													onclick="doAction('W')">글쓰기</button>
 											</div>
-											<div class="center">
-												<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -272,11 +269,7 @@
 														</li>
 													</ul>
 												</div>
-												<button type="button" class="btn btn-primary"
-													onclick="doAction('W')">글쓰기</button>
-											</div>
-											<div class="center">
-												<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
+												<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
 											</div>
 										</div>
 									</div>

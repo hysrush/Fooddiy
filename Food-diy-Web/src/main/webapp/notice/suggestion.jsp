@@ -34,6 +34,8 @@
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.carousel.min.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.theme.default.min.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.min.css">
+		<!-- 데이트피커 css -->
+		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/bootstrap-datepicker/bootstrap-datepicker3.css">
 
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme.css">
@@ -49,7 +51,7 @@
 
 		<!-- Skin CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/skins/skin-shop-9.css"> 
-
+		
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
@@ -64,6 +66,12 @@
 		
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
+
+		<!-- js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
+		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
 <script type="text/javascript">
 	function doAction(type) {
@@ -80,7 +88,44 @@
 		document.getElementById("dForm").submit();
 	}
 </script>
-
+<style type="text/css">
+	#visitingDate table tr td span.old{
+		color: white;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		//DatePicker
+		$('#visitingDate').datepicker({
+			format : 'yyyy-mm-dd',	// 날짜 포맷
+			defaultDate: '+0d',
+			endDate: '+0d',			// 오늘 이후 날짜 선택 불가
+        	todayBtn: 'linked',		// 오늘날짜 바로 선택 버튼
+			autoclose: true,		// 선택시, 자동 닫힘
+			todayHighlight: true,	// 오늘날짜 하이라이트
+			orientation: (($('html[dir="rtl"]').get(0)) ? 'bottom right' : 'bottom'),
+			container: '#header',
+			rtl: (($('html[dir="rtl"]').get(0)) ? true : false)
+		});
+		
+		//라디오 버튼 변경시 이벤트
+        $("input[name='radioVisit']:radio").change(function () {
+	         //라디오 버튼 값을 가져온다.
+	         var visit = this.value;
+	                          
+			if(visit == "Y"){							// '매장방문'일 경우,
+			    // 매장선택 & 방문일 활성화
+			    $(".visit").css("display","block");
+			} else if (visit == "N") {					// '매장방문 외'일 경우,
+				// 매장선택 & 방문일 비활성화
+				$(".visit").css("display","none");
+			}
+                                 
+         });
+		
+	});
+</script>
 </head>
 <body>
 	<div class="body">
@@ -118,8 +163,8 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-								<li><a href="${ pageContext.request.contextPath }/notice/qna.jsp">자주하는 질문</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">공지사항</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
 								<li class="active"><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
@@ -217,19 +262,21 @@
 														</td>
 														<td>
 															<div style="float: left;">
-																<input type="radio" name="optionRadios" id="optionRadio" value="" checked="checked">매장 방문
-																<input type="radio" name="optionRadios" id="optionRadio" value="" >매장 방문 외
+																<input type="radio" name="radioVisit" class="radioVisit" value="Y" checked="checked">매장 방문
+																<input type="radio" name="radioVisit" class="radioVisit" value="N" >매장 방문 외
 															</div>
-															<div style="float: left;">
-																<label for="email" style="float: left;">방문매장&nbsp;&nbsp;</label>
-																<button type="button" class="btn btn-info mr-xs mb-sm" style="float: left;">매장찾기</button>
+															<br>
+															<div class="visit col-md-12" style="float: left;">
+																<label for="email" >방문매장&nbsp;&nbsp;</label>
+																<button type="button" class="btn btn-success mr-xs mb-sm">매장찾기</button>
 															</div>
-															<div style="float: left;">
-																<label for="email" style="float: left;">방문일&nbsp;&nbsp;</label>
-																<div class="input-group date" style="width: 40%; float: left;">
-	            													<input type="text" class="form-control">
-	            													<span class="input-group-addon" id="testDatepicker"><i class="glyphicon glyphicon-calendar"></i></span>
-	       														</div>
+															<div class="visit col-md-12" style="float: left;">
+																<label for="email" >방문일&nbsp;&nbsp;</label>
+																<div class="input-group date col-md-4" >
+																	<input type="text" class="form-control" data-msg-required="This field is required." readonly="readonly"
+																			placeholder="방문일" name="visitingDate" id="visitingDate" required>
+																	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+																</div>
 															</div>
        													</td>
 													</tr>
@@ -360,6 +407,8 @@
 		<script src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
+		<!-- 데이트피커 js -->
+		<script src="${ pageContext.request.contextPath}/resources/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 		
 		<!-- Theme Base, Components and Settings -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
@@ -374,6 +423,8 @@
 
 		<!-- Demo -->
 		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
+		<!-- 호텔데모 js -->
+		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-hotel.js"></script>
 		
 		<!-- Theme Custom -->
 		<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>

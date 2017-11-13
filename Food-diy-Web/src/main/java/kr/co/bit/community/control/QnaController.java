@@ -59,7 +59,7 @@ public class QnaController {
 		// QnA 새 글 등록
 		qnaService.insertQnA(qnaVO);
 		
-		return "redirect:/community/qnaList";
+		return "redirect:/community/qna.do";
 	}
 
 }
