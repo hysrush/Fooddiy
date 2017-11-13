@@ -98,7 +98,7 @@
 
 									<h4 class="heading-primary">이벤트</h4>
 								<ul class="nav nav-list mb-xlg">
-									<li><a href="${ pageContext.request.contextPath }/event/EventPage.jsp">브랜드 이벤트</a></li>
+									<li><a href="${ pageContext.request.contextPath }/event/eventPage.do">브랜드 이벤트</a></li>
 									<li class="active">
 										<a href="${ pageContext.request.contextPath }/event/StoreEventPage.jsp">점포별 이벤트</a>
 									</li>
@@ -123,7 +123,7 @@
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 												<div class="center">
 												<!--  cart -->
-											<!-- 			<div class="col-md-12">
+											 			<div class="col-md-12">
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
@@ -161,7 +161,7 @@
 											</div>
 										</div>
 									</div>
-												 -->
+												
 												
 												
 												

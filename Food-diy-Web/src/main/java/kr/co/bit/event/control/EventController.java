@@ -30,40 +30,28 @@ public class EventController {
 	@Autowired
 	private EventService eventService;
 	
-	//진행중인 이벤트
+	//진행중인 이벤트 , 종료된 이벤트 보기 
 	@RequestMapping("/eventPage.do")
 	public ModelAndView list() {
 		List<EventBoardVO> eventList = eventService.selectAllEvent();
-		
-		ModelAndView mav = new ModelAndView();
-		//setViewName : �뼱�뼡 �럹�씠吏�瑜� 蹂댁뿬以꾧쾬�씤媛�
-		mav.setViewName("event/EventPage");
-		//addObject : key �� value 瑜� �떞�븘 蹂대궡�뒗 硫붿꽌�뱶 
-		mav.addObject("eventList", eventList);
-		
-		return mav;
-		
-	}
-	
-	@RequestMapping("/eventEndPage.do")
-	public ModelAndView EndList() {
 		List<EventBoardVO> eventEndList = eventService.selectEndEvent();
 		
+		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : �뼱�뼡 �럹�씠吏�瑜� 蹂댁뿬以꾧쾬�씤媛�
 		mav.setViewName("event/EventPage");
 		//addObject : key �� value 瑜� �떞�븘 蹂대궡�뒗 硫붿꽌�뱶 
+		
+		mav.addObject("eventList", eventList);
 		mav.addObject("eventEndList", eventEndList);
+		
 		
 		return mav;
 		
 	}
 	
-	
-	
-	
-	
-	// 새글등록 폼 
+
+	// 새글등록 폼으로 보내기 
 		@RequestMapping(value="/eventWrite.do", method=RequestMethod.GET)
 		public String writeForm(HttpServletRequest request
 	            , HttpServletResponse response
@@ -78,7 +66,7 @@ public class EventController {
 					
 		}	
 		
-		// 새글 등록 
+		// 새글 등록 하기
 		@RequestMapping(value="/eventWrite.do", method=RequestMethod.POST)
 		public String write(@Valid EventBoardVO eventVO
 							, BindingResult result
