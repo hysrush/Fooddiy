@@ -114,6 +114,36 @@ li {
 
 
 
+.plus-minus-circle-button {
+	font-size: .8em;
+    width: 1em;
+    border-radius: 3em;
+    padding: .1em  .2em;
+    line-height: 1.25em;
+    border: 1px solid #333;
+    display: inline-block;
+    text-align: center;
+	
+}
+
+
+.circle-button {
+	
+ width:40px;
+ height:40px;
+ border-radius:20px;
+ -moz-border-radius : 20px;
+ -webkit-border-radius : 20px;
+ -ms-border-radius :20px;
+ -khtml-border-radius : 20px;
+ -o-border-radius :20px;
+ background:#7aa93c;
+ font:normal 30px/40px "나눔고딕", "돋움", "굴림";
+ font-weight : bold;
+ color:#fff;
+ text-align:center;
+}
+
 
 /* Responsive */
 /* 991  */
@@ -260,42 +290,28 @@ li {
 	}
 	
 	/* seleect-topping-mobile */
-	table.topping-table td.topping-name {
+	table.topping-table td.topping-name, table.vegetable-table td.vegetable-name , table.sauce-table td.sauce-name {
 		width: 50%;
 		font-size: 15px;
 	}
 	
+	
 	strong.name {
 		color: gray;
 		font-size: 15px;
+		
 	}
 	
-	table.topping-table td.topping-price {
+	table.topping-table td.topping-price, table.vegetable-table td.vegetable-plus-minus {
 		width: 20%;
 		text-align: right;
 		color: red;
 		font-weight: bold;
 		font-size: 15px;
-		
 	}
 }
 
-.thumb-info.thumb-info-centered-icons .thumb-info-action-icon {
-    -webkit-transition: all 0.1s ease;
-    -moz-transition: all 0.1s ease;
-    transition: all 0.1s ease;
-    position: relative;
-    z-index: 2;
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: auto;
-    width: 40px;
-    height: 40px;
-    line-height: 33px;
-    border-radius: 50%;
-    margin-right: 3px;
-}
+
 
 
 .shop .cart-totals th, .shop .cart-totals td {

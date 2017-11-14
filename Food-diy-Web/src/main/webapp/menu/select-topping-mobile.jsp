@@ -8,9 +8,9 @@
 				<table>
 					<tbody>
 						<tr>
-							<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_bacon.jpg" /></td>
-							<td width="40%"><strong class = "name">베이컨 </strong> <strong class = "id">Bacon</strong></td>
-							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+900원</strong></td>
+							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_bacon.jpg" /></td>
+							<td width="50%"><strong class = "name">&nbsp;베이컨 </strong> <strong class = "id">Bacon</strong></td>
+							<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price">+900원</strong></td>
 						</tr>
 					</tbody>
 				</table>
@@ -20,9 +20,11 @@
 		<figure class="product-image-area product-topping-area">
 				<table>
 					<tbody>
-						<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_double_meat.jpg" /> </td>
-						<td width="50%"><strong class = "name">더블미트 </strong> <strong class = "id">Double meat</strong></td>
-						<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1500원</strong></td>
+						<tr>
+							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_double_meat.jpg" /> </td>
+							<td width="50%"><strong class = "name">더블미트 </strong> <strong class = "id">Double meat</strong></td>
+							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1500원</strong></td>
+						</tr>
 					</tbody>
 				</table>			
 		</figure>	
@@ -32,9 +34,11 @@
 		<figure class="product-image-area product-topping-area">
 				<table>
 					<tbody class = "ddd">
-						<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_eggmayo.jpg" /></td>
-						<td width="40%"><strong class = "name">에그마요 Aggmayo</strong></td>
-						<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1200원</strong></td>
+						<tr>
+							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_eggmayo.jpg" /></td>
+							<td width="50%"><strong class = "name">&nbsp;에그마요 </strong><strong class = "id">Aggmayo</strong></td>
+							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1200원</strong></td>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
@@ -43,9 +47,11 @@
 		<figure class="product-image-area product-topping-area">
 				<table>
 					<tbody>
-						<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_avocado.jpg" /></td>
-						<td width="40%"><strong class = "name">아보카도 Avocado</strong></td>
-						<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1100원</strong></td>
+						<tr>
+							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_avocado.jpg" /></td>
+							<td width="50%"><strong class = "name">&nbsp;아보카도 </strong><strong class = "id">Avocado</strong></td>
+							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1100원</strong></td>
+						<tr>
 					</tbody>
 				</table>
 		</figure>
@@ -72,7 +78,7 @@
 	 									
 					if($('.topping-table tr td').length == 1) {
 						var td = '<td class="' + 'topping-name" id = "'+ name + '">';
-							td += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+							td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
 							td += '</td>';
 							td += '<td class = "'+ 'topping-price">' + price + '</td>';
 							
@@ -80,7 +86,7 @@
 		 			}else { 
 		 				
 		 				var row =  '<tr id = "'+ name + '">';
-		 					row += '<td width ="' + '30%"> </td>'
+		 					row += '<td width ="' + '20%"> </td>'
 		 					row += '<td class="' + 'topping-name">';
 							row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
 							row += '</td>';
