@@ -355,7 +355,7 @@
 															</div>
 															<div id="file_AddSection"></div>
 															<p class="mb-none" style="padding: 10px;">
-																파일첨부는 아래의 파일만 등록이 가능하며 최대 3개(1개당 최대2MB), 총 10MB까지 등록이 가능합니다.<br>
+																파일첨부는 아래의 파일만 등록이 가능하며 최대 5개(1개당 최대2MB), 총 10MB까지 등록이 가능합니다.<br>
 																(등록 가능 확장자 : jpg, jpeg, png, gif, zip, doc, docx, ppt, pptx, xls, xlsx, hwp)
 															</p>
 														</td>
