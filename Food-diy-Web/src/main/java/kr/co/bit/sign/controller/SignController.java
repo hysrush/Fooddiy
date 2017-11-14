@@ -83,21 +83,82 @@ public class SignController {
 		return "sign/phoneCert";
 		
 	}
-/*	// 2. 휴대전화 인증화면으로 이동
-	@RequestMapping(value="/phoneCertForm.do", method=RequestMethod.GET)
-	public String phoneCert(Model model) {
-		
-		model.addAttribute("phoneCert", new MemberVO()); // 회원 정보(이름, 번호)를 담을 VO 준비
-		
-		return "sign/phoneCertForm";
-		
-	}*/
 	
-	// 3. 인증 확인
+	/**
+	 * 
+	 * API 로그인
+	 * 
+	 * */
+	
+	// kakao api 로그인
+	@RequestMapping(value="/kakoLogin.do", method=RequestMethod.POST)
+	public String kakaoLogin(LoginVO login, Model model) {
+		
+		MemberVO userVO = new MemberVO();
+		
+		userVO = signServiceImp.login(login);
+		
+		// 가입한 적 있는지 확인
+		if(userVO == null) {
+			
+			PhoneCertVO kakaoVO = new PhoneCertVO();
+			kakaoVO.setId(login.getId());
+			kakaoVO.setPw(login.getPw());
+			
+			model.addAttribute("kakaoVO", kakaoVO);
+			return "sign/kakaoSignUp";
+		}
+		
+		model.addAttribute("userVO", userVO);
+		
+		return "sign/sign";
+		
+	}
+	
+	// naver api 로그인
+	@RequestMapping(value="/naverLoign.do", method=RequestMethod.GET)
+	public String naverLogin(Model model) {
+		
+		
+		model.addAttribute("api", new PhoneCertVO());
+		
+		return "sign/naverSignUp";
+		
+	}
+	
+	// 카카오톡 가입
+	@RequestMapping(value = "/kakaoSignUp.do", method = RequestMethod.POST)
+	public String kakaoSignUp(PhoneCertVO kakaoVO, Model model, HttpSession session) {
+		
+		MemberVO kakao = new MemberVO();
+		
+		kakao.setId(kakaoVO.getId());
+		kakao.setPw(kakaoVO.getPw());
+		kakao.setName(kakaoVO.getName());
+		kakao.setPhone(kakaoVO.getPhone1()+"-"+kakaoVO.getPhone2()+"-"+kakaoVO.getPhone3());
+		kakao.setEmail(kakaoVO.getEmail()+kakaoVO.getEmailD());
+		kakao.setBirth(kakaoVO.getBirthYear()+"/"+kakaoVO.getBirthMonth()+"/"+kakaoVO.getBirthDay());
+		kakao.setSex(kakaoVO.getSex());
+		kakao.setRoot("카카오톡");
+		
+		signServiceImp.signUp(kakao);
+		
+		// 회원가입 후 자동 로그인
+		LoginVO login = new LoginVO();
+		login.setId(kakaoVO.getId());
+		login.setPw(kakaoVO.getPw());
+				
+		kakao = signServiceImp.login(login);
+				
+		model.addAttribute("userVO", kakao);
+		
+		return "sign/sign";
+	}
+
+	// 2. 인증 확인
 	@RequestMapping(value="/phoneCertForm.do", method=RequestMethod.POST)
 	public String phoneCertForm(MemberVO phoneCert, Model model, HttpSession session) {
 		
-		System.out.println("하이");
 		session.removeAttribute("phoneCert");
 		// 휴대전화 인증할 때 받은 회원 정보 저장
 		PhoneCertVO cert = new PhoneCertVO();
@@ -116,6 +177,7 @@ public class SignController {
 		cert.setBirthDay(birth[2]);
 		
 		cert.setSex(phoneCert.getSex());
+		cert.setRoot("일반");
 		
 		// 전달
 		model.addAttribute("phoneCert", cert);
@@ -131,11 +193,12 @@ public class SignController {
 		memberVO.setId(phoneCert.getId());
 		memberVO.setPw(phoneCert.getPw());
 		memberVO.setName(phoneCert.getName());
-		memberVO.setBirth(phoneCert.getBirthYear()+phoneCert.getBirthMonth()+phoneCert.getBirthDay());
+		memberVO.setBirth(phoneCert.getBirthYear()+"/"+phoneCert.getBirthMonth()+"/"+phoneCert.getBirthDay());
 		memberVO.setPhone(phoneCert.getPhone1() + "-" + phoneCert.getPhone2() + "-" + phoneCert.getPhone3());
 		memberVO.setEmail(phoneCert.getEmail() + phoneCert.getEmailD());
 		memberVO.setSex(phoneCert.getSex());
-		
+		memberVO.setRoot(phoneCert.getRoot());
+	
 		signServiceImp.signUp(memberVO);
 		
 		// 회원가입 후 자동 로그인

@@ -15,6 +15,13 @@ public class SignDAOImp implements SignDAO {
 	
 	public MemberVO login(LoginVO login) {
 		
+		// API 가입 확인 또는 아이디 비밀번호 확인
+		int check = sql.selectOne("kr.co.bit.member.dao.loginCheck", login);
+		
+		if(check == 0) {
+			return null;
+		}
+		
 		return sql.selectOne("kr.co.bit.member.dao.login", login);
 		
 	}

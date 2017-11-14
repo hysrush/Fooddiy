@@ -11,8 +11,6 @@ public interface SignDAO {
 	//회원가입
 	void signUp(MemberVO memberVO);
 	
-	//카카오톡 로그인
-	
 	//id 중복 체크
 	int checkId(String id);
 }
