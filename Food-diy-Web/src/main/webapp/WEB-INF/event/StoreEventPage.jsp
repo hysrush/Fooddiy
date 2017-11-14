@@ -134,8 +134,8 @@
 																<label>시,도</label>
 																<select class="form-control">
 																	<option value="">시,도 를 선택해주세요 </option>
-																	  <c:forEach var="store" items="${ storeList }" varStatus="i">
-																	     <option value="${store.City}">${ store.City }</option>
+																	  <c:forEach var="store" items="${ storeEventList }" varStatus="i">
+																	     <option value="${store.city}">${ store.city }</option>
 																	  </c:forEach>
 																</select>
 															</div>
@@ -144,8 +144,8 @@
 																<label>군,구</label>
 																<select class="form-control">
 																	<option value="">구,군 을 선택해주세요 </option>
-																	 <c:forEach var="store" items="${storeList}" varStatus="i">
-																	     <option value="${store.Location}">${store.Location}</option>
+																	 <c:forEach var="store" items="${storeEventList}" varStatus="i">
+																	     <option value="${store.location}">${store.location}</option>
 																	  </c:forEach>
 																</select>
 															</div>	
@@ -184,7 +184,7 @@
 											</div>
 										</div>
 									</div>	
-													<!-- 1 -->
+												<%-- 	<!-- 1 -->
 													<div class="col-md-12">
 														<div class="recent-posts">
 															<article class="post">
@@ -222,7 +222,7 @@
 															</article>
 														</div>
 													</div>	
-													
+													 --%>
 													
 													
 													

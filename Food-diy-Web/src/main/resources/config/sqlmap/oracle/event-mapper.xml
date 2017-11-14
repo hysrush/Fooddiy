@@ -4,7 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.bit.event.dao.EventDAO">
-  	
+ 	
   	<sql id="selectAll">
 		select no, title, writer, content, view_cnt, to_char(reg_date, 'yy-mm-dd') as reg_date
 		from t_event
@@ -20,6 +20,16 @@
   		<result column="eve_fin" property="endDate"/> 
   		<result column="reg_at" property="regDate"/>
   	</resultMap> 
+  	
+  	<resultMap type ="storeVO" id="Map_StoreVO">
+  		<result column = "sto_no" property ="storeNo"/>
+  		<result column = "sto_addr_d" property ="City"/>
+  		<result column = "sto_addr_s" property ="Location"/>
+  		<result column = "sto_name" property ="storeName"/>
+  		<result column = "sto_phone" property ="storePhone"/>
+  		<result column = "sto_addr" property ="storeAddr"/>
+  		<result column = "reg_at" property ="regDate"/>
+  	</resultMap>
 	
   	
 	
@@ -41,6 +51,13 @@
 		where to_char( SYSDATE, 'YY-MM-DD') > to_char( EVE_FIN, 'YY-MM-DD' )  
 		ORDER BY EVE_NO DESC
 	</select>
+	
+	<!--  시,도 구,군 조회  -->
+		<select id ="selectStoreList" resultMap="Map_StoreVO">
+			SELECT STO_ADDR_D , STO_ADDR_S, STO_NAME , STO_PHONE , STO_ADDR 
+			FROM hr.T_STORE
+			
+		</select>
 	
 	
 	

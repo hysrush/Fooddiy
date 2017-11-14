@@ -19,7 +19,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${ storeList }" var="store">
+						<c:forEach items="${ storeEventList }" var="store">
 							<tr>
 							<c:if test="">
 								<td>${ store.storeName  }</td>

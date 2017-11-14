@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.StoreVO;
 
 @RequestMapping("/event")
 @Controller
@@ -53,14 +54,14 @@ public class EventController {
 	@RequestMapping("/storeEventPage.do")
 	public ModelAndView StoreList() {
 		
-		
+		List<StoreVO> storeList = eventService.selectStoreList();
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("event/StoreEventPage");
 		
-		mav.addObject("storeEventList");
-		mav.addObject("storeEndEventList");
+		mav.addObject("storeEventList", storeList );
+		
 		
 		
 		return mav;

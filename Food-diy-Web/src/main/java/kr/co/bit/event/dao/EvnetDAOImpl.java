@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.StoreVO;
 
 @Repository
 public class EvnetDAOImpl implements EventDAO {
@@ -34,6 +35,17 @@ public class EvnetDAOImpl implements EventDAO {
 	public EventBoardVO selectOne(int no) { 
 		return sqlSession.selectOne(url + "selectByNo" , no);
 	}
+	@Override
+	public List<StoreVO> selectStoreList(){
+		
+		List<StoreVO> list = sqlSession.selectList(url + "selectStoreList");
+		
+		return list;
+	}
+	
+	
+	
+	
 	
 	@Override
 	public void insert(EventBoardVO eventVO) { 
