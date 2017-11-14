@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.StoreVO;
 
 @RequestMapping("/event")
 @Controller
@@ -29,84 +30,102 @@ public class EventController {
 	@Autowired
 	private EventService eventService;
 	
-	
+	//진행중인 이벤트 , 종료된 이벤트 보기 
 	@RequestMapping("/eventPage.do")
 	public ModelAndView list() {
 		List<EventBoardVO> eventList = eventService.selectAllEvent();
+		List<EventBoardVO> eventEndList = eventService.selectEndEvent();
+		
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : �뼱�뼡 �럹�씠吏�瑜� 蹂댁뿬以꾧쾬�씤媛�
 		mav.setViewName("event/EventPage");
 		//addObject : key �� value 瑜� �떞�븘 蹂대궡�뒗 硫붿꽌�뱶 
+		
 		mav.addObject("eventList", eventList);
+		mav.addObject("eventEndList", eventEndList);
+		
 		
 		return mav;
 		
 	}
 	
-	// 새글등록 폼 
+	//매장별 이벤트 , 종료된 매장별 이벤트 보기 
+	@RequestMapping("/storeEventPage.do")
+	public ModelAndView StoreList() {
+		
+		List<StoreVO> storeList = eventService.selectStoreList();
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("event/StoreEventPage");
+		
+		mav.addObject("storeEventList", storeList );
+		
+		
+		
+		return mav;
+	}
+	
+	
+	
+
+	// 새글등록 폼으로 보내기 
 		@RequestMapping(value="/eventWrite.do", method=RequestMethod.GET)
 		public String writeForm(HttpServletRequest request
 	            , HttpServletResponse response
 	            , Model model) {
-			// Form�뿉�꽌 媛��졇�삩 Data瑜� QnaBoardVO 媛앹껜 �삎�깭濡� ���옣
+			
 					EventBoardVO eventVO = new EventBoardVO();
-					// 怨듭쑀�쁺�뿭�뿉 �벑濡�
+					
 					model.addAttribute("eventVO", eventVO);
 					
 					return "event/EventWriteForm";
 			
+					
 		}	
 		
-		// 새글 등록 
+		// 새글 등록 하기
 		@RequestMapping(value="/eventWrite.do", method=RequestMethod.POST)
 		public String write(@Valid EventBoardVO eventVO
-						  , @RequestParam(value="imgFile") MultipartFile file
-						  , BindingResult result) {
+							, BindingResult result
+							, @RequestParam(value="imgFileName") MultipartFile file
+		)throws Exception {
 			
-			try {
-				// 1. 파라미터 확인 * VO 객체 등록 
-				eventVO = new EventBoardVO();
+				System.out.println("시작");
+				
+				//1. fileName 설정 + eventVO에 fileName 저장
+				String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
+				String saveFileName = file.getOriginalFilename();
+				
+				eventVO.setImgFileName(saveFileName);
+				
+				System.out.println(fileName);
+				System.out.println(saveFileName);
+				System.out.println("들어가나");
 			
-			    String fileName = "./image/" + file.getOriginalFilename();
-			    eventVO.setImgFileName(fileName);
-	            
+				
+				//2. 경로에 이미지파일 저장
+					byte[] bytes;
+					bytes = file.getBytes();
+					BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+					buffStream.write(bytes);
+					buffStream.close();
+						
+					System.out.println("들어가나 2");
+				
+				
+				//eventVO에 저장 
+				eventService.insertEvent(eventVO);
+				
+				return "redirect:/event/eventPage.do";
+				
+		
 			    
-			    // 2. 이미지 파일 저장 
-			    byte[] bytes = file.getBytes();
-	            BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File("./image/" + fileName)));
-	            buffStream.write(bytes);
-	            buffStream.close();
+			    
 	            
-	            // 3. Vo 객체 INSERT 
-	            eventService.insertEvent(eventVO);
-	            
-	            // 4. 이동
-	            return "redirect:/event/EventPage.do";
-	            
-	            
-	        } catch (Exception e) {
-	        	return "redirect:/event/error.do";
-	        }
-	        
-			
-			
-			
-			
-			
-			
-			
-			// �뿉�윭�씪�븣 true => writeForm�쑝濡�
-//			if (result.hasErrors()) {
-//				
-//				return "event/EventWriteForm";
-//			}
-			
-			
-			//�깉湲��벑濡�
-//			eventService.insertEvent(eventVO);
-			
+					
+				
+	
 		}
-	
-	
-}
+}	

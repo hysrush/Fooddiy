@@ -62,7 +62,7 @@ public class NoticeController {
 		// Notice 새 글 등록
 		noticeService.insertNotice(noticeVO);
 		
-		return "redirect:/community/noticeList";
+		return "redirect:/community/notice.do";
 	}
 	// Notice 글 상세내용 조회 & 게시글 조회수 증가 처리
 	// ex) community/noticeDetail.do?no=15

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.bit.event.dao.EventDAO;
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.StoreVO;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -21,6 +22,23 @@ public class EventServiceImpl implements EventService{
 		return list;
 		
 	}
+	
+	
+	
+	@Override
+	public List<EventBoardVO> selectEndEvent() {
+		List<EventBoardVO> list = eventDAO.selectEndEvent();
+		return list;
+	}
+	
+	
+	@Override
+	public List<StoreVO> selectStoreList(){
+		List<StoreVO> list = eventDAO.selectStoreList();
+		return list;
+	}
+	
+	
 	
 	//Event 湲� 蹂닿린
 	@Override
@@ -44,6 +62,8 @@ public class EventServiceImpl implements EventService{
 	public void removeEvent(int no) {
 		eventDAO.delete(no);
 	}
+
+
 	
 	
 	

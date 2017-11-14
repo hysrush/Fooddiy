@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-
 		<!-- Basic -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title>Fooddiy-Order</title>	
+		<title> | 진행중인 EVENT |  </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -52,11 +51,6 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
-		<!-- 이미지 캐러셀 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
@@ -64,162 +58,160 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
-<script type="text/javascript">
-	function doAction(type) {
-		switch (type) {
-		case 'L':
-			location.href = "${ pageContext.request.contextPath}/community/notice.do";
-			break;
-		default:
-			break;
-		}
-	}
-	
-	function submit() {
-		document.getElementById("dForm").submit();
-	}
-</script>
-</head>
-<body>
-	<div class="body">
-		<header id="header"
+	</head>
+	<body>
+		<div class="body">
+			<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
-		</header>
-		<!-- Mobile menu 부분 -->
+			</header>
+
+			<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
-		<div role="main" class="main">
+			
+			
+			<div role="main" class="main">
 
-			<section class="page-header">
+				<section class="page-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="breadcrumb">
+									<li><a href="#">Home</a></li>
+									<li class="active">Events</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h1>브랜드 EVENT</h1>
+							</div>
+						</div>
+					</div>
+				</section>
+
 				<div class="container">
+
 					<div class="row">
-						<div class="col-md-12">
-							<ul class="breadcrumb">
-								<li><a href="#">커뮤니티</a></li>
-								<li class="active">공지사항</li>
-							</ul>
+						<div class="col-md-3">
+							<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+
+									<h4 class="heading-primary">이벤트</h4>
+								<ul class="nav nav-list mb-xlg">
+									<li class="active"><a href="${ pageContext.request.contextPath }/event/EventPage.jsp">브랜드 이벤트</a></li>
+									<li>
+										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">점포별 이벤트</a>
+									</li>
+								</ul>
+							</aside>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Subway 소식</h1>
-						</div>
-					</div>
-				</div>
-			</section>
+						<div class="col-md-9">
+							<!-- START -->
+							<div class="row">
+								<div class="col-md-12">
+		
+									<div class="tabs tabs-bottom tabs-center tabs-simple">
+										<ul class="nav nav-tabs">
+											<li class="active">
+												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">진행중인 이벤트</a>
+											</li>
+											<li class="">
+												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 이벤트 </a>
+												
+											</li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="tabsNavigationSimple1">
+												<div class="center">	
+													<!-- 1 -->
+												<c:forEach items="${ eventList }" var="eventVO">	
+													<div class="col-md-12">
+														<div class="recent-posts">
+															<article class="post">
+																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
+																	<div>
+																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
+																	</div>
+																	
+																</div>
+																<div class="heading heading-tertiary heading-border heading-bottom-border">
+																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
+																</div>
+																
+																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
+																
+																
+																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
+																								
+																<span></span>
+																<span></span>
+															
+															</article>
+														</div>
+													</div>
+													
+												</c:forEach>	
+													
+													
+												</div>
+											</div>
+											<div class="tab-pane" id="tabsNavigationSimple2">
+												<div class="center">
+													<!-- 종료된이벤트 탭   -->
+															
+												<c:forEach items="${ eventEndList }" var="eventVO">	
+													<div class="col-md-12">
+														<div class="recent-posts">
+															<article class="post">
+																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
+																	<div>
+																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
+																	</div>
+																	
+																</div>
+																<div class="heading heading-tertiary heading-border heading-bottom-border">
+																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
+																</div>
+																
+																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
+																
+																
+																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
+																								
+															
+															</article>
+														</div>
+													</div>
+												</c:forEach>	
 
-			<div class="container">
-
-				<div class="row">
-					<div class="col-md-2 hidden-xs hidden-sm">
-						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
-							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
-
-							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-								<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
-							</ul>
-						</aside>
-					</div>
-					<!-- START! -->
-					<div class="col-md-10">
-						<section class="section section-default">
-							<div class="container">
-								<div class="row">
-									<div class="col-md-12">
-										<h4 class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</h4>
-										<br>
-										<p class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</p>
+													<div class="col-md-12">
+														<ul class="pagination">
+															<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+															<li class="active"><a href="#">1</a></li>
+															<li><a href="#">2</a></li>
+															<li><a href="#">3</a></li>
+															<li><a href="#">4</a></li>
+															<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+														</ul>
+													</div>
+													
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</section>
-						<div class="blog-posts single-post">
-							<article class="post post-large blog-single-post">
-									<c:if test="${ noticeVO.type eq 'A' }">
-										<div class="heading heading-border heading-middle-border">
-											<h3><strong>공지사항</strong></h3>
-										</div>
-									</c:if>
-									<c:if test="${ noticeVO.type eq 'B' }">
-										<div class="heading heading-border heading-middle-border">
-											<h3><strong>보도자료</strong></h3>
-										</div>
-									</c:if>
-									<div class="center">
-										<hr>
-										<div class="post-content col-md-12">
-											<div class="post-meta" style="float: right;">
-												<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
-												<span><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a> > </span>
-												<span><a href="#">공지사항</a></span>
-											</div>
-											<form action="/Mission-Web/fileDownload" method="post"
-												id="dForm">
-												<table class="table table-bordered">
-														<tr>
-															<td>
-																<!-- 제목 -->
-																<h2>
-																	<c:out value="${ noticeVO.title }"></c:out>
-																</h2>
-															</td>
-															<div class="post-meta">
-																<!-- 조회수 -->
-																<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ noticeVO.viewCnt }</td>
-																<!-- 등록일 -->
-																<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ noticeVO.regDate }</td>
-															</div>
-														</tr>
-													<tr>
-														<!-- 내용 -->
-														<td colspan="3"><p><c:out value="${ noticeVO.content }"></c:out></p></td>
-													</tr>
-													<!-- 첨부파일 -->
-													<c:if test="${ not empty fileList }">
-														<tr>
-															<th width="15%">첨부파일</th>
-															<td colspan="5"><c:forEach items="${ fileList }"
-																	var="file">
-																	<a href="#" onclick="submit(); return false;"> <input
-																		type="hidden" value="${ file.fileSaveName }">
-																		${ file.fileOriName }
-																	</a>
-																&nbsp;(${ file.fileSize })bytes<br>
-																</c:forEach></td>
-														</tr>
-														<tr>
-															<th width="15%">미리보기</th>
-															<td colspan="5"><c:forEach items="${ fileList }"
-																	var="file">
-																	<img src="/Mission-Web/upload/${ file.fileSaveName }"
-																		style="max-width: 200px">
-																&nbsp;&nbsp;
-															</c:forEach></td>
-														</tr>
-													</c:if>
-												</table>
-											</form>
-											<div class="center">
-												<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
-											</div>
-										</div>
-									</div>
-								</article>
-							</div>
+							<!-- END -->
 						</div>
 					</div>
 				</div>
 			</div>
+			<footer id="footer">
+				<jsp:include page="/resources/include/bottom.jsp"/>
+			</footer>
 		</div>
-
-		<footer id="footer">
-			<jsp:include page="/resources/include/bottom.jsp" />
-		</footer>
-
-		<!-- Vendor -->
+		
+			<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -254,5 +246,6 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-</body>
+	</body>
 </html>
+							
