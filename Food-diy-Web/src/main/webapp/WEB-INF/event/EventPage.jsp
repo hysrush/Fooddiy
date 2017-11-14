@@ -100,7 +100,7 @@
 								<ul class="nav nav-list mb-xlg">
 									<li class="active"><a href="${ pageContext.request.contextPath }/event/EventPage.jsp">브랜드 이벤트</a></li>
 									<li>
-										<a href="${ pageContext.request.contextPath }/event/StoreEventPage.jsp">점포별 이벤트</a>
+										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">점포별 이벤트</a>
 									</li>
 								</ul>
 							</aside>
@@ -130,7 +130,7 @@
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
 																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }">
+																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
 																	</div>
 																	
 																</div>
@@ -143,10 +143,13 @@
 																
 																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
 																								
+																<span></span>
+																<span></span>
 															
 															</article>
 														</div>
 													</div>
+													
 												</c:forEach>	
 													
 													
@@ -162,7 +165,7 @@
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
 																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }">
+																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
 																	</div>
 																	
 																</div>
@@ -181,7 +184,6 @@
 													</div>
 												</c:forEach>	
 
-													
 													<div class="col-md-12">
 														<ul class="pagination">
 															<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
@@ -192,6 +194,7 @@
 															<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
 														</ul>
 													</div>
+													
 												</div>
 											</div>
 										</div>
