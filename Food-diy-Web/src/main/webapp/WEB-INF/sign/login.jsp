@@ -61,7 +61,6 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
 		<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-		
 <script>
 	
 	$(document).ready(function(){
@@ -79,6 +78,13 @@
 		if("${msg}"){
 			alert("${ msg }");
 		}
+		
+		$("#lost").click(function(){
+			window.opener.name = "main"; // 부모창의 이름 설정
+	    	document.form_lost.target = opener.window.name; // 타켓을 부모창으로 설정
+	   		self.close();
+		});
+		
 	});
 
 </script>

@@ -114,10 +114,8 @@
 		<div id="collapseOne" class="accordion-body collapse in">
 			<div class="panel-body">
 				<!-- id="frmBillingAddress" -->
-				<form name="signForm"
-					action="${ pageContext.request.contextPath }/sign/signUp.do"
-					method="post">
-
+				<form name="signForm" action="${ pageContext.request.contextPath }/sign/signUp.do" method="post">
+					<input type="hidden" name="root" value="${ phoneCert.root }"/>
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-6">

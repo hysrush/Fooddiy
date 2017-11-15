@@ -2,6 +2,7 @@ package kr.co.bit.sign.dao;
 
 import kr.co.bit.member.vo.MemberVO;
 import kr.co.bit.sign.vo.LoginVO;
+import kr.co.bit.sign.vo.PhoneCertVO;
 
 public interface SignDAO {
 	
@@ -13,4 +14,10 @@ public interface SignDAO {
 	
 	//id 중복 체크
 	int checkId(String id);
+	
+	//id 찾기
+	LoginVO lostId(PhoneCertVO lost);
+	
+	//pw 찾기
+	LoginVO lostPw(PhoneCertVO lost);
 }
