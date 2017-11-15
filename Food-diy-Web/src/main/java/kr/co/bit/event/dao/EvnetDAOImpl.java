@@ -6,8 +6,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.event.vo.locationVO;
 
 @Repository
 public class EvnetDAOImpl implements EventDAO {
@@ -61,6 +63,22 @@ public class EvnetDAOImpl implements EventDAO {
 	public void delete(int no) {
 		
 		
+	}
+
+	@Override
+	public List<CityVO> selectCity() {
+		
+		List<CityVO> list = sqlSession.selectList(url + "selectCity");
+		
+		return list;
+	}
+
+	@Override
+	public List<locationVO> selectLocation() {
+		
+		List<locationVO> list = sqlSession.selectList(url + "selectLocation");
+		
+		return list;
 	}
 	
 	
