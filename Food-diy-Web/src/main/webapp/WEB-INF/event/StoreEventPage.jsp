@@ -127,15 +127,15 @@
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
-												<form action="/" id="frmCalculateShipping" method="post">
+												<form action="${ pageContext.request.contextPath }/event/storeEventPage.do" id="frmCalculateShipping" method="post">
 													<div class="row">
 														<div class="form-group">
 															<div class="col-md-6">
 																<label>시,도</label>
 																<select class="form-control">
-																	<option value="">시,도 를 선택해주세요 </option>
-																	  <c:forEach var="store" items="${ storeEventList }" varStatus="i">
-																	     <option value="${store.city}">${ store.city }</option>
+																	<option value="" selected="selected" disabled= "disabled">시,도 를 선택해주세요 </option>
+																	  <c:forEach var="city" items="${ cityList }" varStatus="i">
+																	  		<option value="${city.cityNo}">${ city.cityName }</option>																		    
 																	  </c:forEach>
 																</select>
 															</div>
@@ -143,9 +143,10 @@
 															<div class="col-md-6">
 																<label>군,구</label>
 																<select class="form-control">
-																	<option value="">구,군 을 선택해주세요 </option>
-																	 <c:forEach var="store" items="${storeEventList}" varStatus="i">
-																	     <option value="${store.location}">${store.location}</option>
+																	<option value="" selected="selected">구,군 을 선택해주세요 </option>
+																	 	<c:forEach var="location" items="${ locationList }" varStatus="i">
+																	<option value="${ location.locationNo }">${ location.locationName }</option>
+																	     
 																	  </c:forEach>
 																</select>
 															</div>	
@@ -163,7 +164,7 @@
 														<div class="col-md-12">
 																		<!--  ajax로 보내버리는 a태그  -->
 																	<a data-href= "${ pageContext.request.contextPath}/resources/ajax/test-ajax.jsp"  data-ajax-on-page>
-																		<input type="button" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+																		<input type="submit" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
 																	</a>
 														</div>
 													</div>
@@ -270,7 +271,7 @@
 				<jsp:include page="/resources/include/bottom.jsp"/>
 			</footer>
 		</div>
-		
+	</div>	
 			<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>

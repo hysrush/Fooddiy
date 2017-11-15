@@ -23,12 +23,19 @@
   	
   	<resultMap type ="storeVO" id="Map_StoreVO">
   		<result column = "sto_no" property ="storeNo"/>
-  		<result column = "sto_addr_d" property ="City"/>
-  		<result column = "sto_addr_s" property ="Location"/>
   		<result column = "sto_name" property ="storeName"/>
   		<result column = "sto_phone" property ="storePhone"/>
   		<result column = "sto_addr" property ="storeAddr"/>
   		<result column = "reg_at" property ="regDate"/>
+  	</resultMap>
+  	<resultMap type = "cityVO" id="Map_CityVO">
+  		<result column = "city_no" property = "cityNo"/>
+  		<result column = "city_name" property = "cityName"/>
+  	</resultMap>
+  	<resultMap type ="locationVO" id="Map_LocationVO">
+  		<result column = "loc_no" property ="locationNo"/>
+  		<result column = "loc_name" property = "locationName"/> 
+  			
   	</resultMap>
 	
   	
@@ -54,12 +61,23 @@
 	
 	<!--  시,도 구,군 조회  -->
 		<select id ="selectStoreList" resultMap="Map_StoreVO">
-			SELECT STO_ADDR_D , STO_ADDR_S, STO_NAME , STO_PHONE , STO_ADDR 
+			SELECT STO_NAME , STO_PHONE , STO_ADDR 
 			FROM hr.T_STORE
 			
 		</select>
-	
-	
+	<!--  시 데이터 불러오기  -->
+		<select id ="selectCity" resultMap="Map_CityVO">
+			SELECT CITY_NO , CITY_NAME
+				FROM hr.T_CITY
+				ORDER BY CITY_NO DESC			
+		</select>	
+	<!--  구 데이터 불러오기  -->	
+		<select id ="selectLocation" resultMap="Map_LocationVO">
+			SELECT LOC_NO ,LOC_NAME, CITY_NO
+			FROM hr.T_LOCATION
+			ORDER BY LOC_NO DESC
+		</select>
+		
 	
 	
 	<!-- 새글 등록  -->
