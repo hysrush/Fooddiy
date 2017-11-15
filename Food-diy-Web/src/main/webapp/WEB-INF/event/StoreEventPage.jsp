@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 진행중인 EVENT |  </title>	
+		<title> | 매장별 EVENT |  </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -84,7 +84,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>브랜드 EVENT</h1>
+								<h1>매장별 EVENT</h1>
 							</div>
 						</div>
 					</div>
@@ -98,8 +98,8 @@
 
 									<h4 class="heading-primary">이벤트</h4>
 								<ul class="nav nav-list mb-xlg">
-									<li class="active"><a href="${ pageContext.request.contextPath }/event/EventPage.jsp">브랜드 이벤트</a></li>
-									<li>
+									<li><a href="${ pageContext.request.contextPath }/event/eventPage.do">브랜드 이벤트</a></li>
+									<li class="active">
 										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">점포별 이벤트</a>
 									</li>
 								</ul>
@@ -113,91 +113,151 @@
 									<div class="tabs tabs-bottom tabs-center tabs-simple">
 										<ul class="nav nav-tabs">
 											<li class="active">
-												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">진행중인 이벤트</a>
+												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">매장별 이벤트</a>
 											</li>
 											<li class="">
-												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 이벤트 </a>
-												
+												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 매장별  이벤트 </a>
 											</li>
 										</ul>
 										<div class="tab-content">
 											<div class="tab-pane active" id="tabsNavigationSimple1">
-												<div class="center">	
-													<!-- 1 -->
-												<c:forEach items="${ eventList }" var="eventVO">	
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-																<span></span>
-																<span></span>
-															
-															</article>
-														</div>
-													</div>
-													
-												</c:forEach>	
-													
-													
-												</div>
-											</div>
-											<div class="tab-pane" id="tabsNavigationSimple2">
 												<div class="center">
-													<!-- 종료된이벤트 탭   -->
+												<!--  cart -->
+											 			<div class="col-md-12">
+										<div class="featured-box featured-box-primary align-left mt-xlg">
+											<div class="box-content">
+												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
+												<form action="/" id="frmCalculateShipping" method="post">
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>시,도</label>
+																<select class="form-control">
+																	<option value="">시,도 를 선택해주세요 </option>
+																	  <c:forEach var="store" items="${ storeEventList }" varStatus="i">
+																	     <option value="${store.city}">${ store.city }</option>
+																	  </c:forEach>
+																</select>
+															</div>
 															
-												<c:forEach items="${ eventEndList }" var="eventVO">	
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-															
-															</article>
+															<div class="col-md-6">
+																<label>군,구</label>
+																<select class="form-control">
+																	<option value="">구,군 을 선택해주세요 </option>
+																	 <c:forEach var="store" items="${storeEventList}" varStatus="i">
+																	     <option value="${store.location}">${store.location}</option>
+																	  </c:forEach>
+																</select>
+															</div>	
 														</div>
 													</div>
-												</c:forEach>	
-
-													<div class="col-md-12">
-														<ul class="pagination">
-															<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-															<li class="active"><a href="#">1</a></li>
-															<li><a href="#">2</a></li>
-															<li><a href="#">3</a></li>
-															<li><a href="#">4</a></li>
-															<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-														</ul>
+													<!-- <div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>매장별 검색</label>
+																<input type="text" value="" class="form-control">
+															</div>
+														</div>
+													</div> -->
+													<div class="row">
+														<div class="col-md-12">
+																		<!--  ajax로 보내버리는 a태그  -->
+																	<a data-href= "${ pageContext.request.contextPath}/resources/ajax/test-ajax.jsp"  data-ajax-on-page>
+																		<input type="button" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+																	</a>
+														</div>
 													</div>
-													
-												</div>
+												</form>
+													<!--  AJAX 테이블이 생성될 공간  -->
+														<div class="container">
+															<div class="col-md-8">
+															<div id="porfolioAjaxBox" class="ajax-box ajax-box-init mb-lg">
+																	<!-- <div class="bounce-loader">
+																	<div class="bounce1"></div>
+																	<div class="bounce2"></div>
+																	<div class="bounce3"></div>
+																</div> -->
+																<div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+															</div>
+														</div>
+
 											</div>
 										</div>
+									</div>	
+												<%-- 	<!-- 1 -->
+													<div class="col-md-12">
+														<div class="recent-posts">
+															<article class="post">
+																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
+																	<div>
+																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
+																	</div>
+																	
+																</div>
+																<div class="date">
+																	<span class="day">15</span>
+																	<span class="month">Jan</span>
+																</div>
+																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
+																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
+															</article>
+														</div>
+													</div>
+													<!-- 2 -->
+													<div class="col-md-12">
+													<div class="recent-posts">
+															<article class="post">
+																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
+																	<div>
+																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
+																	</div>
+																	
+																</div>
+																<div class="date">
+																	<span class="day">15</span>
+																	<span class="month">Jan</span>
+																</div>
+																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
+																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
+															</article>
+														</div>
+													</div>	
+													 --%>
+													
+													
+													
+													
+													
+													
+													<!--  -->
+										<div class="col-md-12">
+											<ul class="pagination">
+												<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+												<li class="active"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+											</ul>
+										</div>
+													
+													
+													
+													
+													
+												</div>
+											</div>
+											
+											</div>
+										</div>
+											<div class="tab-pane" id="tabsNavigationSimple2">
+											
+											
+											
+												<div class="center">
+													<!-- 이벤트 사진과 일정과 내용을 넣는 곳  -->
+												
+												</div>
 									</div>
 								</div>
 							</div>
@@ -246,6 +306,8 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+		
+		<!-- Examples -->
+		<script src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script>
 	</body>
 </html>
-							

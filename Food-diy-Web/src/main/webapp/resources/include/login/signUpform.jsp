@@ -112,52 +112,68 @@
 <div class="featured-box featured-box-primary align-left mt-xlg">
 	<div class="box-content">
 		<div id="collapseOne" class="accordion-body collapse in">
-			<div class="panel-body"><!-- id="frmBillingAddress" -->
-				<form name="signForm" action="${ pageContext.request.contextPath }/sign/signUp.do" method="post" >
-					<div class="row">
-						<div class="form-group">
-							<div class="col-md-6">
-								<label>ID*</label> <input name="id" id="id" type="text" class="form-control" maxlength="16" oninput="checkId()" placeholder="영소문자/숫자, 6~16자" required/>
-							</div>
-							<div class="col-md-6">
-								<label>이름*</label> <input type="text" name="name" value="${ phoneCert.name }" class="form-control" placeholder="영소문자/숫자, 6~16자" readonly/>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group">
-							<div class="col-md-6">
-								<label>비밀번호*</label> <input name="pw" id="pw" type="password" class="form-control" maxlength="16" required oninput="checkPw()" placeholder="영소문자/숫자, 6~16자" required>
-							</div>
-							<div class="col-md-6">
-								<label>비밀번호 확인*</label> <input name="pwCheck" id="pwCheck" type="password" class="form-control" maxlength="16" required oninput="checkPw()" required>
-							</div>
-						</div>
-					</div>
+			<div class="panel-body">
+				<!-- id="frmBillingAddress" -->
+				<form name="signForm"
+					action="${ pageContext.request.contextPath }/sign/signUp.do"
+					method="post">
 
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-4">
-								<label>전화번호 </label> <input name="phone1" type="tel" value="${ phoneCert.phone1 }" class="form-control" readonly>
+							<div class="col-md-6">
+								<label>ID*</label> <input name="id" id="id" type="text"
+									class="form-control" maxlength="16" oninput="checkId()"
+									placeholder="영소문자/숫자, 6~16자" required />
 							</div>
-							<br />
-							<div class="col-md-4">
-								<input type="tel" name="phone2" value="${ phoneCert.phone2 }" class="form-control" readonly>
-							</div>
-							<div class="col-md-4">
-								<input type="tel" name="phone3" value="${ phoneCert.phone3 }" class="form-control" readonly>
+							<div class="col-md-6">
+								<label>이름*</label> <input type="text" name="name"
+									value="${ phoneCert.name }" class="form-control"
+									placeholder="영소문자/숫자, 6~16자" readonly />
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-6">
-								<label>E-mail </label> <input name="email" type="text" class="form-control" required>
+								<label>비밀번호*</label> <input name="pw" id="pw" type="password"
+									class="form-control" maxlength="16" required
+									oninput="checkPw()" placeholder="영소문자/숫자, 6~16자" required>
+							</div>
+							<div class="col-md-6">
+								<label>비밀번호 확인*</label> <input name="pwCheck" id="pwCheck"
+									type="password" class="form-control" maxlength="16" required
+									oninput="checkPw()" required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-4">
+								<label>전화번호 </label> <input name="phone1" type="tel"
+									value="${ phoneCert.phone1 }" class="form-control" readonly>
+							</div>
+							<br />
+							<div class="col-md-4">
+								<input type="tel" name="phone2" value="${ phoneCert.phone2 }"
+									class="form-control" readonly>
+							</div>
+							<div class="col-md-4">
+								<input type="tel" name="phone3" value="${ phoneCert.phone3 }"
+									class="form-control" readonly>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-6">
+								<label>E-mail </label> <input name="email" type="text"
+									class="form-control" required>
 							</div>
 							<div class="row">
 								<div class="form-group">
 									<div class="col-md-6">
-										<label>이메일 선택</label> <select name="emailD" class="form-control" required>
+										<label>이메일 선택</label> <select name="emailD"
+											class="form-control" required>
 											<option value="@naver.com">@ naver.com</option>
 											<option value="@daum.net">@ daum.net</option>
 										</select>
@@ -169,26 +185,29 @@
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-3">
-								<label>생년월일</label>
-								<input type="text" name="birthYear" value="${ phoneCert.birthYear }년" class="form-control" readonly> 
+								<label>생년월일</label> <input type="text" name="birthYear"
+									value="${ phoneCert.birthYear }년" class="form-control" readonly>
 							</div>
 							<div class="col-md-3">
-								<label> </label> <input name="birthMonth" type="text" value="${ phoneCert.birthMonth }월" class="form-control" readonly> 
+								<label> </label> <input name="birthMonth" type="text"
+									value="${ phoneCert.birthMonth }월" class="form-control"
+									readonly>
 							</div>
 							<div class="col-md-3">
-								<label> </label> <input name="birthDay" type="text" value="${ phoneCert.birthDay }일" class="form-control" readonly> 
+								<label> </label> <input name="birthDay" type="text"
+									value="${ phoneCert.birthDay }일" class="form-control" readonly>
 							</div>
-							<br/>
+							<br />
 							<div class="col-md-3">
-								<label> 성별 </label>
-								 남 <input id="man" name="sex" type="radio" value="남자" disabled="disabled" />
-								 여 <input id="woman" name="sex" type="radio" value="여자" disabled="disabled" />
+								<label> 성별 </label> 남 <input id="man" name="sex" type="radio"
+									value="남자" disabled="disabled" /> 여 <input id="woman"
+									name="sex" type="radio" value="여자" disabled="disabled" />
 								<c:choose>
 									<c:when test="${ phoneCert.sex eq '남자'}">
-										<input id="man" name="sex" type="hidden" value="남자"/>
+										<input id="man" name="sex" type="hidden" value="남자" />
 									</c:when>
 									<c:otherwise>
-										<input id="woman" name="sex" type="hidden" value="여자"/>
+										<input id="woman" name="sex" type="hidden" value="여자" />
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -198,7 +217,7 @@
 						<div class="col-md-12">
 							<span class="member-box checkbox"> <label for="member">
 									<h5>
-										<input name="check" type="checkbox" id="member" value="확인"/>
+										<input name="check" type="checkbox" id="member" value="확인" />
 										<strong>이용약관 및 개인정보수집 및 이용에 모두 동의합니다.</strong>
 									</h5>
 							</label>
@@ -206,11 +225,14 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6"><!-- btn btn-info mb-md -->
-							<input type="submit" id="signUp" class="btn btn-info mb-md form-control" value="가입">
+						<div class="col-md-6">
+							<!-- btn btn-info mb-md -->
+							<input type="submit" id="signUp"
+								class="btn btn-info mb-md form-control" value="가입">
 						</div>
 						<div class="col-md-6">
-							<input type="button" id="reset" class="btn btn-info mb-md form-control" value="취소">
+							<input type="button" id="reset"
+								class="btn btn-info mb-md form-control" value="취소">
 						</div>
 					</div>
 				</form>

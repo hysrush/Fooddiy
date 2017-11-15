@@ -226,7 +226,13 @@
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a class="accordion-toggle vegetable-name" data-toggle="collapse" data-parent="#accordion5" href="#vegetable-select">
-												야채 선택 >>
+												<table class = "vegetable-table">
+														<tr>
+															<td width = "30%">
+																야채 선택 >>
+															</td>
+														</tr>
+												</table>
 											</a>
 										</h4>
 									</div>
@@ -243,7 +249,7 @@
 												<table class = "sauce-table">
 														<tr>
 															<td width = "30%">
-																소스 선택 >>
+																소스 선택>>
 															</td>
 														</tr>
 												</table>
@@ -261,16 +267,14 @@
 					</div>
 				</div>
 			</div>
-			
-			
-			
-			
+											
+									
 
 
 			<footer id="footer">
 				<jsp:include page="/resources/include/bottom.jsp" />
 			</footer>
-		</div>
+
 
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

@@ -8,8 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 진행중인 EVENT |  </title>	
-
+		<title> | NAVER | </title>	
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -51,167 +50,76 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
+		<!-- 이미지 캐러셀 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
-
-	</head>
-	<body>
-		<div class="body">
-			<header id="header"
+</head>
+<body>
+	<div class="body">
+		<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
-			</header>
-
-			<!-- Mobile menu 부분 -->
-			<jsp:include page="/resources/include/mobile-menu.jsp"/>
+		</header>
+		<!-- Mobile menu 부분 -->
+		<jsp:include page="/resources/include/mobile-menu.jsp"/>
 			
-			
-			<div role="main" class="main">
-
-				<section class="page-header">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="breadcrumb">
-									<li><a href="#">Home</a></li>
-									<li class="active">Events</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<h1>브랜드 EVENT</h1>
-							</div>
+		<div role="main" class="main">
+			<section class="page-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="breadcrumb">
+								<li><a href="#">Sign UP</a></li>
+							</ul>
 						</div>
 					</div>
-				</section>
-
-				<div class="container">
-
 					<div class="row">
-						<div class="col-md-3">
-							<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
-
-									<h4 class="heading-primary">이벤트</h4>
-								<ul class="nav nav-list mb-xlg">
-									<li class="active"><a href="${ pageContext.request.contextPath }/event/EventPage.jsp">브랜드 이벤트</a></li>
-									<li>
-										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">점포별 이벤트</a>
-									</li>
-								</ul>
-							</aside>
+						<div class="col-md-12">
+							<h1>회원가입</h1>
 						</div>
-						<div class="col-md-9">
-							<!-- START -->
-							<div class="row">
-								<div class="col-md-12">
-		
-									<div class="tabs tabs-bottom tabs-center tabs-simple">
-										<ul class="nav nav-tabs">
-											<li class="active">
-												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">진행중인 이벤트</a>
-											</li>
-											<li class="">
-												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 이벤트 </a>
-												
-											</li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="tabsNavigationSimple1">
-												<div class="center">	
-													<!-- 1 -->
-												<c:forEach items="${ eventList }" var="eventVO">	
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-																<span></span>
-																<span></span>
-															
-															</article>
-														</div>
-													</div>
-													
-												</c:forEach>	
-													
-													
-												</div>
-											</div>
-											<div class="tab-pane" id="tabsNavigationSimple2">
-												<div class="center">
-													<!-- 종료된이벤트 탭   -->
-															
-												<c:forEach items="${ eventEndList }" var="eventVO">	
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-															
-															</article>
-														</div>
-													</div>
-												</c:forEach>	
+					</div>
+				</div>
+			</section>
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+						</aside>
+					</div>
 
-													<div class="col-md-12">
-														<ul class="pagination">
-															<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-															<li class="active"><a href="#">1</a></li>
-															<li><a href="#">2</a></li>
-															<li><a href="#">3</a></li>
-															<li><a href="#">4</a></li>
-															<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-														</ul>
-													</div>
-													
-												</div>
-											</div>
+					<!-- START -->
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-10">
+								<div class="tabs tabs-bottom tabs-center tabs-simple">
+									<div class="tab-content">
+										<div class="tab-pane active" id="memberLogin">
+											<jsp:include page="/resources/include/login/naverSignUpForm.jsp"/>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!-- END -->
 						</div>
 					</div>
 				</div>
 			</div>
-			<footer id="footer">
-				<jsp:include page="/resources/include/bottom.jsp"/>
-			</footer>
 		</div>
-		
-			<!-- Vendor -->
+	</div>
+	
+	<footer id="footer">
+			<jsp:include page="/resources/include/bottom.jsp"/>
+	</footer>
+	
+	<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -246,6 +154,5 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-	</body>
+</body>
 </html>
-							

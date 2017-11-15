@@ -3,7 +3,6 @@ package kr.co.bit.event.control;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.StoreVO;
 
 @RequestMapping("/event")
 @Controller
@@ -50,15 +50,34 @@ public class EventController {
 		
 	}
 	
+	//매장별 이벤트 , 종료된 매장별 이벤트 보기 
+	@RequestMapping("/storeEventPage.do")
+	public ModelAndView StoreList() {
+		
+		List<StoreVO> storeList = eventService.selectStoreList();
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("event/StoreEventPage");
+		
+		mav.addObject("storeEventList", storeList );
+		
+		
+		
+		return mav;
+	}
+	
+	
+	
 
 	// 새글등록 폼으로 보내기 
 		@RequestMapping(value="/eventWrite.do", method=RequestMethod.GET)
 		public String writeForm(HttpServletRequest request
 	            , HttpServletResponse response
 	            , Model model) {
-			// Form�뿉�꽌 媛��졇�삩 Data瑜� QnaBoardVO 媛앹껜 �삎�깭濡� ���옣
+			
 					EventBoardVO eventVO = new EventBoardVO();
-					// 怨듭쑀�쁺�뿭�뿉 �벑濡�
+					
 					model.addAttribute("eventVO", eventVO);
 					
 					return "event/EventWriteForm";

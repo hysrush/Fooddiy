@@ -14,7 +14,17 @@ public class PhoneCertVO {
 	private String email;
 	private String emailD;
 	private String sex;
+	private String root;
 	
+	
+	public String getRoot() {
+		return root;
+	}
+
+	public void setRoot(String root) {
+		this.root = root;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -115,7 +125,7 @@ public class PhoneCertVO {
 	public String toString() {
 		return "PhoneCertVO [id=" + id + ", pw=" + pw + ", name=" + name + ", birthYear=" + birthYear + ", birthMonth="
 				+ birthMonth + ", birthDay=" + birthDay + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3="
-				+ phone3 + ", email=" + email + ", emailD=" + emailD + ", sex=" + sex + "]";
+				+ phone3 + ", email=" + email + ", emailD=" + emailD + ", sex=" + sex + ", root=" + root + "]";
 	}
-	
+
 }

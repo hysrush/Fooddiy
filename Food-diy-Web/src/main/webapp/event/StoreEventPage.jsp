@@ -100,7 +100,7 @@
 								<ul class="nav nav-list mb-xlg">
 									<li><a href="${ pageContext.request.contextPath }/event/eventPage.do">브랜드 이벤트</a></li>
 									<li class="active">
-										<a href="${ pageContext.request.contextPath }/event/StoreEventPage.jsp">점포별 이벤트</a>
+										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">점포별 이벤트</a>
 									</li>
 								</ul>
 							</aside>
@@ -133,48 +133,58 @@
 															<div class="col-md-6">
 																<label>시,도</label>
 																<select class="form-control">
-																	<option value="">시를 선택해주세요 </option>
+																	<option value="">시,도 를 선택해주세요 </option>
+																	  <c:forEach var="store" items="${ storeList }" varStatus="i">
+																	     <option value="${store.City}">${ store.City }</option>
+																	  </c:forEach>
 																</select>
 															</div>
+															
 															<div class="col-md-6">
 																<label>군,구</label>
 																<select class="form-control">
-																	<option value="">구를 선택해주세요 </option>
+																	<option value="">구,군 을 선택해주세요 </option>
+																	 <c:forEach var="store" items="${storeList}" varStatus="i">
+																	     <option value="${store.Location}">${store.Location}</option>
+																	  </c:forEach>
 																</select>
 															</div>	
 														</div>
 													</div>
-													<div class="row">
+													<!-- <div class="row">
 														<div class="form-group">
 															<div class="col-md-12">
 																<label>매장별 검색</label>
 																<input type="text" value="" class="form-control">
 															</div>
 														</div>
-													</div>
+													</div> -->
 													<div class="row">
 														<div class="col-md-12">
-															<input type="submit" value="Update Totals" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+																		<!--  ajax로 보내버리는 a태그  -->
+																	<a data-href= "${ pageContext.request.contextPath}/resources/ajax/test-ajax.jsp"  data-ajax-on-page>
+																		<input type="button" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+																	</a>
 														</div>
 													</div>
 												</form>
+													<!--  AJAX 테이블이 생성될 공간  -->
+														<div class="container">
+															<div class="col-md-8">
+															<div id="porfolioAjaxBox" class="ajax-box ajax-box-init mb-lg">
+																	<!-- <div class="bounce-loader">
+																	<div class="bounce1"></div>
+																	<div class="bounce2"></div>
+																	<div class="bounce3"></div>
+																</div> -->
+																<div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+															</div>
+														</div>
+
 											</div>
 										</div>
-									</div>
-												
-												
-												
-												
-												
-												
-												
-												
-												
-												
-												
-												
-												
-													<!-- 1 -->
+									</div>	
+												<%-- 	<!-- 1 -->
 													<div class="col-md-12">
 														<div class="recent-posts">
 															<article class="post">
@@ -212,6 +222,12 @@
 															</article>
 														</div>
 													</div>	
+													 --%>
+													
+													
+													
+													
+													
 													
 													<!--  -->
 										<div class="col-md-12">
@@ -231,14 +247,17 @@
 													
 												</div>
 											</div>
+											
+											</div>
+										</div>
 											<div class="tab-pane" id="tabsNavigationSimple2">
+											
+											
+											
 												<div class="center">
 													<!-- 이벤트 사진과 일정과 내용을 넣는 곳  -->
 												
 												</div>
-											
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -287,5 +306,8 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+		
+		<!-- Examples -->
+		<script src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script>
 	</body>
 </html>

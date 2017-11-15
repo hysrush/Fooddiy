@@ -8,12 +8,26 @@
 
 <script type="text/javascript">
  
-  	var naver_id_login = new naver_id_login("6Wq9FPgGRvxBLz1Lt4cC", "http://localhost:8000/Fooddiy-Web/resources/include/login/naverCallback.jsp");
+  	var naver_id_login = new naver_id_login("6Wq9FPgGRvxBLz1Lt4cC", "http://localhost:8000/Food-diy-Web/sign/naverLoign.do");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("green", 3,48);
-  	naver_id_login.setDomain("http://localhost:8000/Fooddiy-Web");
+  	naver_id_login.setDomain("naverLogin");
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
-	
+  	
+  	naver_id_login.get_naver_userprofile("naverCallback()");
+  	
+  	function naverCallback(){
+  		var param = { id : naver_id_login.getProfileData('id')
+  					, email : naver_id_login.getProfileData('email')
+  					, sex : naver_id_login.getProfileData('gender')
+  					, birth : naver_id_login.getProfileData('age') + naver_id_login.getProfileData('birthday')
+  					 
+  				};
+  		opener.naverIdLoginCallback(param);
+  		
+  		var win = window.open("naverLogin");
+  		win.close();
+  	}
 </script>
