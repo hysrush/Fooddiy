@@ -21,19 +21,15 @@
 									</div>
 									<div class="row">
 										<div class="form-group">
-											<div class="col-md-4">
-												<label>전화번호</label>
-												<select class="form-control">
-													<option>010</option>
-													<option>011</option>
-													<option>019</option>
-												</select>
+											<div class="col-md-6">
+												<label>이메일</label>&nbsp;
+												<input name="email" type="text" class="form-control" required>
 											</div><br/>
-											<div class="col-md-4">
-												<input type="text" value="" class="form-control">
-											</div>
-											<div class="col-md-4">
-												<input type="text" value="" class="form-control">
+											<div class="col-md-6">
+												<select name="emailD" class="form-control" required>
+													<option value="@naver.com">@ naver.com</option>
+													<option value="@daum.net">@ daum.net</option>
+											</select>
 											</div>
 										</div>
 									</div>

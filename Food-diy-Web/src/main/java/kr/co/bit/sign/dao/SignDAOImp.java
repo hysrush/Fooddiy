@@ -51,7 +51,7 @@ public class SignDAOImp implements SignDAO {
 	// pw 찾기
 	public MemberVO lostPw(MemberVO lost) {
 		
-		int check = sql.selectOne("kr.co.bit.member.dao.lostPw", lost);
+		int check = sql.selectOne("kr.co.bit.member.dao.lostPwCheck", lost);
 		
 		if(check == 0) {
 			return null;

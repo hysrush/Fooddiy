@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.bit.member.vo.MemberVO;
+import kr.co.bit.sign.mail.MailKey;
+import kr.co.bit.sign.service.MailService;
 import kr.co.bit.sign.service.SignService;
+import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
 
 /**
@@ -27,12 +30,96 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
+	@Autowired
+	private MailService mailService;
+	/**
+	 * 
+	 *  1. 회원
+	 * 	 (1) 가입
+	 * 
+	 */
+	
+	// - 휴대전화 인증할 것인지 확인
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
+	public String phoneCert(HttpSession session) {
+		
+		session.setAttribute("phoneCert", new MemberVO());
+		return "sign/phoneCert";
+		
+	}
+	
+	// - 인증 확인 - 이메일로 할까 생각 중
+	@RequestMapping(value = "/phoneCertForm.do", method = RequestMethod.POST)
+	public String phoneCertForm(MemberVO phoneCert, Model model) {
+		
+		// 휴대전화 인증할 때 받은 회원 정보 저장
+		PhoneCertVO cert = new PhoneCertVO();
+		
+		cert.setName(phoneCert.getName());
+		
+		String[] phone = phoneCert.getPhone().split("-");
+		String[] birth = phoneCert.getBirth().split("/");
+		
+		cert.setPhone1(phone[0]);
+		cert.setPhone2(phone[1]);
+		cert.setPhone3(phone[2]);
+		
+		cert.setBirthYear(birth[0]);
+		cert.setBirthMonth(birth[1]);
+		cert.setBirthDay(birth[2]);
+		
+		cert.setSex(phoneCert.getSex());
+		cert.setRoot("일반");
+		
+		// 전달
+		model.addAttribute("phoneCert", cert);
+		
+		return "sign/signUp";
+	}
+
+	// - 회원 등록
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
+	public String signUp(PhoneCertVO phoneCert, Model model) {
+		
+		MemberVO userVO = new MemberVO();
+		
+		userVO.setId(phoneCert.getId());
+		userVO.setPw(phoneCert.getPw());
+		userVO.setName(phoneCert.getName());
+		userVO.setBirth(phoneCert.getBirthYear() + phoneCert.getBirthMonth() + phoneCert.getBirthDay());
+		userVO.setPhone(phoneCert.getPhone1() + "-" + phoneCert.getPhone2() + "-" + phoneCert.getPhone3());
+		userVO.setEmail(phoneCert.getEmail() + phoneCert.getEmailD());
+		userVO.setSex(phoneCert.getSex());
+		userVO.setRoot(phoneCert.getRoot());
+		
+		signServiceImp.signUp(userVO);
+		
+		// 회원가입 후 자동 로그인
+		MemberVO login = new MemberVO();
+		login.setId(userVO.getId());
+		login.setPw(userVO.getPw());
+		
+		userVO = signServiceImp.login(login);
+		
+		model.addAttribute("userVO", userVO);
+		
+		return "sign/sign";
+	}
+
+	// - id 중복 체크
+	@RequestMapping("/checkId")
+	public @ResponseBody int checkId(String id, Model model) {
+		
+		return signServiceImp.checkId(id);
+	}
 
 	/**
-	 * 로그인
-	 */
-
-	// 로그인 화면 이동
+	 * 
+	 *  (2) 로그인
+	 * 
+	 * */
+	
+	// 로그인 화면
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String signInForm(Model model) {
 
@@ -40,7 +127,6 @@ public class SignController {
 		return "sign/login";
 	}
 
-	// 로그인
 	// => 로그인 실패시 다시 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String signIn(MemberVO login, Model model) {
@@ -60,6 +146,7 @@ public class SignController {
 		return "sign/sign";
 	}
 
+	// - 로그아웃
 	@RequestMapping("/logout.do")
 	public String logout(SessionStatus sessionStatus) {
 
@@ -67,24 +154,62 @@ public class SignController {
 
 		return "sign/logout";
 	}
-
-	/**
-	 * 회원가입
-	 * 
-	 */
-
-	// 1. 휴대전화 인증할 것인지 확인
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
-	public String phoneCert(HttpSession session) {
-
-		session.setAttribute("phoneCert", new MemberVO());
-		return "sign/phoneCert";
-
+	
+	// - id 찾기 - alert창
+	@RequestMapping("/lostId")
+	public String lostId(PhoneCertVO lost, Model model) {
+		
+		MemberVO lostId = new MemberVO();
+		
+		lostId.setName(lost.getName());
+		lostId.setEmail(lost.getEmail()+lost.getEmailD());
+		
+		lostId = signServiceImp.lostId(lostId);
+		
+		if(lostId == null) {
+			model.addAttribute("msg", "입력하신 정보에 해당하는 가입 이력이 없습니다. "
+					+ "회원가입 후 이용해 주세요.");
+			return "sign/login";
+		
+		}
+		// 아이디 일부 **처리
+		model.addAttribute("msg", "고객님의 아이디는 <"+lostId.getId()+"> 입니다.");
+		model.addAttribute("lostId", lostId.getId());
+		
+		return "sign/login";
+	}
+	
+	// - pw 찾기 - 이메일로 전송
+	@RequestMapping("/lostPw")
+	public String lostPw(PhoneCertVO lost, Model model) {
+		
+		MemberVO lostPw = new MemberVO();
+		MemberVO lostVO = new MemberVO();
+		
+		lostPw.setName(lost.getName());
+		lostPw.setId(lost.getId());
+		lostPw.setEmail(lost.getEmail()+lost.getEmailD());
+		
+		lostVO = signServiceImp.lostPw(lostPw);
+		
+		if( lostVO == null) {
+			model.addAttribute("msg", "고객님이 입력하신 ID에 관한 정보가 없습니다. 확인 후 다시 이용해 주세요.");
+			return "sign/login";
+		}
+		
+		// 이메일로 비밀번호 전송
+		lostVO.setName(lostPw.getName());
+		lostVO.setEmail(lostPw.getEmail());
+		
+		model.addAttribute("msg", "고객님의 이메일로 비밀번호가 전송되었습니다.");
+		
+		return "sign/login";
 	}
 
+
 	/**
 	 * 
-	 * API 로그인
+	 * 	(2)-1 API 로그인
 	 * 
 	 */
 
@@ -112,23 +237,13 @@ public class SignController {
 		return "sign/sign";
 
 	}
-
-	// naver api 로그인
-	@RequestMapping(value = "/naverLoign.do", method = RequestMethod.GET)
-	public String naverLogin(Model model) {
-
-		model.addAttribute("api", new PhoneCertVO());
-
-		return "sign/naverSignUp";
-
-	}
-
+	
 	// 카카오톡 가입
 	@RequestMapping(value = "/kakaoSignUp.do", method = RequestMethod.POST)
 	public String kakaoSignUp(PhoneCertVO kakaoVO, Model model, HttpSession session) {
-
+		
 		MemberVO kakao = new MemberVO();
-
+		
 		kakao.setId(kakaoVO.getId());
 		kakao.setPw(kakaoVO.getPw());
 		kakao.setName(kakaoVO.getName());
@@ -137,129 +252,89 @@ public class SignController {
 		kakao.setBirth(kakaoVO.getBirthYear() + "/" + kakaoVO.getBirthMonth() + "/" + kakaoVO.getBirthDay());
 		kakao.setSex(kakaoVO.getSex());
 		kakao.setRoot("카카오톡");
-
+		
 		signServiceImp.signUp(kakao);
-
+		
 		// 회원가입 후 자동 로그인
 		MemberVO login = new MemberVO();
 		login.setId(kakaoVO.getId());
 		login.setPw(kakaoVO.getPw());
-
+		
 		kakao = signServiceImp.login(login);
-
+		
 		model.addAttribute("userVO", kakao);
-
+		
 		return "sign/sign";
 	}
 
-	// 2. 인증 확인
-	@RequestMapping(value = "/phoneCertForm.do", method = RequestMethod.POST)
-	public String phoneCertForm(MemberVO phoneCert, Model model) {
+	// 네이버 로그인
+	@RequestMapping(value = "/naverLoign.do", method = RequestMethod.GET)
+	public String naverLogin(Model model) {
 
-		// 휴대전화 인증할 때 받은 회원 정보 저장
-		PhoneCertVO cert = new PhoneCertVO();
+		model.addAttribute("api", new PhoneCertVO());
 
-		cert.setName(phoneCert.getName());
+		return "sign/naverSignUp";
 
-		String[] phone = phoneCert.getPhone().split("-");
-		String[] birth = phoneCert.getBirth().split("/");
-
-		cert.setPhone1(phone[0]);
-		cert.setPhone2(phone[1]);
-		cert.setPhone3(phone[2]);
-
-		cert.setBirthYear(birth[0]);
-		cert.setBirthMonth(birth[1]);
-		cert.setBirthDay(birth[2]);
-
-		cert.setSex(phoneCert.getSex());
-		cert.setRoot("일반");
-
-		// 전달
-		model.addAttribute("phoneCert", cert);
-
-		return "sign/signUp";
-	}
-
-	// 4. 회원 가입
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
-	public String signUp(PhoneCertVO phoneCert, Model model) {
-
-		MemberVO userVO = new MemberVO();
-
-		userVO.setId(phoneCert.getId());
-		userVO.setPw(phoneCert.getPw());
-		userVO.setName(phoneCert.getName());
-		userVO.setBirth(phoneCert.getBirthYear() + phoneCert.getBirthMonth() + phoneCert.getBirthDay());
-		userVO.setPhone(phoneCert.getPhone1() + "-" + phoneCert.getPhone2() + "-" + phoneCert.getPhone3());
-		userVO.setEmail(phoneCert.getEmail() + phoneCert.getEmailD());
-		userVO.setSex(phoneCert.getSex());
-		userVO.setRoot(phoneCert.getRoot());
-
-		signServiceImp.signUp(userVO);
-
-		// 회원가입 후 자동 로그인
-		MemberVO login = new MemberVO();
-		login.setId(userVO.getId());
-		login.setPw(userVO.getPw());
-
-		userVO = signServiceImp.login(login);
-
-		model.addAttribute("userVO", userVO);
-
-		return "sign/sign";
-	}
-
-	// id 중복 체크
-	@RequestMapping("/checkId")
-	public @ResponseBody int checkId(String id, Model model) {
-
-		return signServiceImp.checkId(id);
 	}
 	
-	// id 찾기 - alert창
-	@RequestMapping("/lostId")
-	public String lostId(PhoneCertVO lost, Model model) {
+	/**
+	 * 
+	 *  2. 비회원
+	 * 	 - 가입
+	 * */
+	
+	// 이메일 인증 코드 발송
+	@RequestMapping("/nonemail")
+	public String nonMemberSign(MemberVO nonMember) {
 		
-		MemberVO lostId = new MemberVO();
+		MailVO mail = new MailVO();
+		String key = new MailKey().getkey();
 		
-		lostId.setName(lost.getName());
-		lostId.setEmail(lost.getEmail()+lost.getEmailD());
 		
-		lostId = signServiceImp.lostId(lostId);
+		mail.setSender("");
+		mail.setReceiver(nonMember.getEmail());
+		mail.setSubject("[SubWay] 비회원 인증코드");
+		mail.setContent(nonMember.getName()+" 님이 요청하신 인증 코드는 ["+key+"]입니다.<br/>"
+						+"<a href='#'>인증페이지창으로 이동</a>");
 		
-		if(lostId == null) {
-			model.addAttribute("msg", "입력하신 정보에 해당하는 가입 이력이 없습니다.<br/>회원가입 후 이용해 주세요.");
-		}
-		// 아이디 일부 **처리
-		model.addAttribute("msg", lostId.getId());
-		return "sign/login";
+		
+		mailService.sendMail(mail);
+
+		
+		return "sign";
 	}
 	
-	// pw 찾기 - 이메일로 전송
-	@RequestMapping("/lostPw")
-	public String lostPw(PhoneCertVO lost, Model model) {
-		
-		MemberVO lostPw = new MemberVO();
-		
-		lostPw.setName(lost.getName());
-		lostPw.setId(lost.getId());
-		
-		
-		MemberVO login = signServiceImp.lostPw(lostPw);
-		
-		if(login == null) {
-			model.addAttribute("msg", "고객님이 입력하신 ID에 관한 정보가 없습니다. 확인 후 다시 이용해 주세요.");
-		}
-		
-		lostPw.setId(login.getId());
-		lostPw.setPw(login.getPw());
-		lostPw.setEmail(lost.getEmail()+lost.getEmailD());
-		
-		//이메일로 비밀번호 전송
-		
-		model.addAttribute("msg", "고객님의 이메일로 비밀번호가 전송되었습니다.");
-		
-		return "sign/login";
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
 }

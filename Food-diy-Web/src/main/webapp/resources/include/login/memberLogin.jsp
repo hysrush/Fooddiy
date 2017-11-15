@@ -10,7 +10,7 @@
 						<div class="featured-box featured-box-primary align-left mt-xlg">
 							<div class="box-content">
 								<h4 class="heading-primary text-uppercase mb-md">회원</h4>
-								<form action="${ pageContext.request.contextPath }/sign/login.do" id="frmSignIn" method="post">
+								<form action="${ pageContext.request.contextPath }/sign/login.do" id="frmSignIn" name="memberForm" method="post">
 									<div class="row">
 										<div class="form-group">
 											<div class="col-xs-12 col-md-12">
@@ -27,32 +27,34 @@
 											</div>
 										</div>
 									</div>
-									<div class="row" align="center">
-										<!-- 자동 로그인 -->
-										<div class="col-md-6">
+									<div class="row">
+										<!-- 로그인 정보 저장 -->
+										<div class="col-xs-6 col-md-3">
 											<span class="remember-box checkbox">
 												<label for="rememberid"><input type="checkbox" id="rememberid" name="rememberid"/>아이디 저장</label>
-											&nbsp;&nbsp;<label for="rememberme"><input type="checkbox" id="rememberme" name="rememberme"/>자동로그인</label>
 											</span>
+											<!-- <span class="remember-box checkbox">
+												<label for="rememberme"><input type="checkbox" id="rememberme" name="rememberme"/>자동로그인</label>
+											</span> -->
 										</div>
-										<div class="col-md-6 pull-right">
+										<div class="col-xs-6 col-md-6 pull-right">
 											<input type="submit" value="Login" class="btn btn-info pull-right mb-xl" data-loading-text="Loading...">
 										</div>
 									</div>
 								</form>
 								<!-- API 로그인 -->
-								<div class="row">
-									<div class="col-md-6 align-left mt-xlg">
+								<div class="row" align="center">
+									<div class="col-xs-12 col-md-6">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
+									</div>
+									<div class="col-xs-12 col-md-6">
+										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div>
 									<%-- <div class="col-md-4">	
 										<jsp:include page="/resources/include/login/facebookLogin.jsp"/>
 									</div> --%>
-									<div class="col-md-6 align-left mt-xlg">	
-										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
-									</div>
 								</div>
-								<div class="row mt-xlg">
+								<div class="row mt-xs">
 									<div class="col-md-12">
 										<a href="${ pageContext.request.contextPath }/sign/signUp.do" class="btn btn-info mb-md form-control">회원가입</a>
 									</div>
@@ -97,12 +99,14 @@
 													</select>
 												</div>
 											</div>
-											<p>가입 시에 입력한 이메일로 전송됩니다.</p>
 										</div>
 										<div class="form-group">
-											<div class="col-xs-12 col-md-12">
+											<div class="col-xs-6 col-md-6">
 												<!-- <a href="javascript:fnPopup();" class="btn btn-info mb-md form-control"> 인증하기 </a> -->
 												<input type="submit" id="lost" value="확인" class="btn btn-info mb-md form-control" />
+											</div>
+											<div class="col-xs-6 col-md-6">
+												<input type="button" value="취소" data-dismiss="modal" class="btn btn-info mb-md form-control" />
 											</div>
 										</div>
 									</form>
@@ -145,18 +149,21 @@
 											</div>
 											<div class="form-group">
 												<div class="col-xs-6 col-md-6">
-													<label>이메일 선택</label> <select name="emailD" class="form-control" required>
+													<label> </label> <select name="emailD" class="form-control" required>
 														<option value="@naver.com">@ naver.com</option>
 														<option value="@daum.net">@ daum.net</option>
 													</select>
 												</div>
 											</div>
-											<p>가입 시에 입력한 이메일로 전송됩니다.</p>
+											<p>*&nbsp;가입 시에 입력한 이메일을 입력해 주세요.</p>
 										</div>
 										<div class="form-group">
-											<div class="col-xs-12 col-md-12">
+											<div class="col-xs-6 col-md-6">
 												<!-- <a href="javascript:fnPopup();" class="btn btn-info mb-md form-control"> 인증하기 </a> -->
 												<input type="submit" id="lost" value="확인" class="btn btn-info mb-md form-control" />
+											</div>
+											<div class="col-xs-6 col-md-6">
+												<input type="button" value="취소" data-dismiss="modal" class="btn btn-info mb-md form-control" />
 											</div>
 										</div>
 									</form>

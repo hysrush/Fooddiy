@@ -40,17 +40,23 @@
 	</insert>
 	
 	<!-- ID 찾기 -->
+	<select id="lostIdCheck" parameterType="memberVO" resultType="java.lang.Integer">
+		select NVL(count(*), 0) from t_user
+		where user_name = #{name} and user_email = #{email}
+	</select>
+
 	<select id="lostId" parameterType="memberVO" resultMap="lostVO">
 		select user_id, user_pw from t_user
 		where user_name = #{ name } and user_email = #{ email }
 	</select>
 	
-	<select id="lostIdCheck" parameterType="memberVO" resultType="java.lang.Integer">
-		select NVL(count(*), 0) from t_user
-		where user_name = #{name} and user_email = #{email}
-	</select>
 	
 	<!-- PW 찾기 -->
+	<select id="lostPwCheck" parameterType="memberVO" resultType="java.lang.Integer">
+		select NVL(count(*), 0) from t_user
+		where user_name = #{name} and user_id = #{id}
+	</select>
+	
 	<select id="lostPw" parameterType="memberVO" resultMap="lostVO">
 		select user_id, user_pw from t_user
 		where user_name = #{name} and user_id = #{id}
