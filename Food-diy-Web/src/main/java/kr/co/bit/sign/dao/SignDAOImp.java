@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.bit.member.vo.MemberVO;
-import kr.co.bit.sign.vo.LoginVO;
-import kr.co.bit.sign.vo.PhoneCertVO;
 
 @Repository
 public class SignDAOImp implements SignDAO {
@@ -14,7 +12,7 @@ public class SignDAOImp implements SignDAO {
 	@Autowired
 	private SqlSessionTemplate sql;
 	
-	public MemberVO login(LoginVO login) {
+	public MemberVO login(MemberVO	 login) {
 		
 		// API 가입 확인 또는 아이디 비밀번호 확인
 		int check = sql.selectOne("kr.co.bit.member.dao.loginCheck", login);
@@ -38,7 +36,7 @@ public class SignDAOImp implements SignDAO {
 	}
 
 	// id 찾기
-	public LoginVO lostId(PhoneCertVO lost) {
+	public MemberVO lostId(MemberVO lost) {
 		
 		// 가입한 건지 확인
 		int check = sql.selectOne("kr.co.bit.member.dao.lostIdCheck", lost);
@@ -51,9 +49,9 @@ public class SignDAOImp implements SignDAO {
 	}
 
 	// pw 찾기
-	public LoginVO lostPw(PhoneCertVO lost) {
+	public MemberVO lostPw(MemberVO lost) {
 		
-		int check = sql.selectOne("kr.co.bit.member.dao.", lost);
+		int check = sql.selectOne("kr.co.bit.member.dao.lostPw", lost);
 		
 		if(check == 0) {
 			return null;

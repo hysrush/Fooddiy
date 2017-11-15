@@ -14,7 +14,7 @@
 		<result column="user_type" property="type"/>
 	</resultMap>
 	
-	<resultMap type="loginVO" id="lostVO">
+	<resultMap type="memberVO" id="lostVO">
 		<result column="user_id" property="id"/>
 		<result column="user_pw" property="pw"/>
 	</resultMap>
@@ -22,13 +22,13 @@
 	<!-- sql문 적는 공간 -->
 	
 	<!-- 가입 확인 -->
-	<select id="loginCheck" parameterType="kr.co.bit.sign.vo.LoginVO" resultType="java.lang.Integer">
+	<select id="loginCheck" parameterType="memberVO" resultType="java.lang.Integer">
 		select NVL(count(*), 0) from t_user
 		where user_id = #{id} and user_pw = #{pw}
 	</select>
 	
 	<!-- 로그인 -->
-	<select id="login" parameterType="kr.co.bit.sign.vo.LoginVO" resultMap="mapLoginVO">
+	<select id="login" parameterType="memberVO" resultMap="mapLoginVO">
 		select user_id, user_pw, user_name, user_grade, user_type from t_user
 		where user_id = #{id} and user_pw = #{pw}
 	</select>

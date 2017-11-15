@@ -13,7 +13,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.bit.member.vo.MemberVO;
 import kr.co.bit.sign.service.SignService;
-import kr.co.bit.sign.vo.LoginVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
 
 /**
@@ -37,14 +36,14 @@ public class SignController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String signInForm(Model model) {
 
-		model.addAttribute("login", new LoginVO());
+		model.addAttribute("login", new MemberVO());
 		return "sign/login";
 	}
 
 	// 로그인
 	// => 로그인 실패시 다시 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String signIn(LoginVO login, Model model) {
+	public String signIn(MemberVO login, Model model) {
 
 		MemberVO signIn = signServiceImp.login(login);
 
@@ -91,7 +90,7 @@ public class SignController {
 
 	// kakao api 로그인
 	@RequestMapping(value = "/kakoLogin.do", method = RequestMethod.POST)
-	public String kakaoLogin(LoginVO login, Model model) {
+	public String kakaoLogin(MemberVO login, Model model) {
 
 		MemberVO userVO = new MemberVO();
 
@@ -142,7 +141,7 @@ public class SignController {
 		signServiceImp.signUp(kakao);
 
 		// 회원가입 후 자동 로그인
-		LoginVO login = new LoginVO();
+		MemberVO login = new MemberVO();
 		login.setId(kakaoVO.getId());
 		login.setPw(kakaoVO.getPw());
 
@@ -200,7 +199,7 @@ public class SignController {
 		signServiceImp.signUp(userVO);
 
 		// 회원가입 후 자동 로그인
-		LoginVO login = new LoginVO();
+		MemberVO login = new MemberVO();
 		login.setId(userVO.getId());
 		login.setPw(userVO.getPw());
 
@@ -222,7 +221,12 @@ public class SignController {
 	@RequestMapping("/lostId")
 	public String lostId(PhoneCertVO lost, Model model) {
 		
-		LoginVO lostId = signServiceImp.lostId(lost);
+		MemberVO lostId = new MemberVO();
+		
+		lostId.setName(lost.getName());
+		lostId.setEmail(lost.getEmail()+lost.getEmailD());
+		
+		lostId = signServiceImp.lostId(lostId);
 		
 		if(lostId == null) {
 			model.addAttribute("msg", "입력하신 정보에 해당하는 가입 이력이 없습니다.<br/>회원가입 후 이용해 주세요.");
@@ -233,10 +237,16 @@ public class SignController {
 	}
 	
 	// pw 찾기 - 이메일로 전송
+	@RequestMapping("/lostPw")
 	public String lostPw(PhoneCertVO lost, Model model) {
 		
 		MemberVO lostPw = new MemberVO();
-		LoginVO login = signServiceImp.lostPw(lost);
+		
+		lostPw.setName(lost.getName());
+		lostPw.setId(lost.getId());
+		
+		
+		MemberVO login = signServiceImp.lostPw(lostPw);
 		
 		if(login == null) {
 			model.addAttribute("msg", "고객님이 입력하신 ID에 관한 정보가 없습니다. 확인 후 다시 이용해 주세요.");

@@ -78,25 +78,20 @@
 							<h4>아이디 찾기</h4>
 							<div class="row mt-xlg">
 								<div class="col-md-12">
-									<form name="form_lost" method="post" target="main" action="${ pageContext.request.contextPath }/sign/lost.do">
+									<form name="form_lost" method="post" target="main" action="${ pageContext.request.contextPath }/sign/lostId.do">
 										<div class="form-group">
 											<div class="col-xs-12 col-md-12">
 												<label>이름 </label>
-												<c:choose>
-													<c:when test="${ empty lostId }"> <input type="text" name="name" placeholder="류대현" class="form-control" /></c:when>
-													<c:otherwise> <input type="text" name="name"class="form-control" value="${ lostId }" /></c:otherwise>
-												</c:choose>
+													<input type="text" name="name" placeholder="류대현" class="form-control" required/>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-xs-6 col-md-6">
-												<label>E-mail </label> <input name="email" type="text"
-													class="form-control" required>
+												<label>E-mail </label> <input name="email" type="text" class="form-control" required>
 											</div>
 											<div class="form-group">
 												<div class="col-xs-6 col-md-6">
-													<label>이메일 선택</label> <select name="emailD"
-														class="form-control" required>
+													<label>이메일 선택</label> <select name="emailD" class="form-control" required>
 														<option value="@naver.com">@ naver.com</option>
 														<option value="@daum.net">@ daum.net</option>
 													</select>
@@ -133,7 +128,7 @@
 							<h4>비밀번호 찾기</h4>
 							<div class="row mt-xlg">
 								<div class="col-md-12">
-									<form name="form_lost" method="post" target="main" action="${ pageContext.request.contextPath }/sign/lostpw.do">
+									<form name="form_lost" method="post" target="main" action="${ pageContext.request.contextPath }/sign/lostPw.do">
 										<div class="form-group">
 											<div class="col-xs-6 col-md-6">
 												<label>이름 </label> <input type="text" name="name" placeholder="류대현" class="form-control" required/>
