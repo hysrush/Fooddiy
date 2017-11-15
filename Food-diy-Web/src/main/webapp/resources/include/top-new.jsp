@@ -200,7 +200,7 @@
 											<div class="col-md-8">
 												<div class="row">
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="${ pageContext.request.contextPath}/menu/menu2.jsp" class="dropdown-mega-sub-title"
+														<a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="${ pageContext.request.contextPath}/menu/menu2.jsp" class="dropdown-mega-sub-title"
 															style="font-size: 10pt; font-weight: bold;">전체메뉴<br>ALL MENU
 														</a>
 													</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,16 +93,23 @@ $(document).ready(function(){
 	$('#lnb').stick_in_parent({offset_top:73});
 });
 
-
-
 $(function(){
+    $(".portfolio-item").click(function(){
+    	var url = 'detail_menu/menu-detail-modal.jsp';
+    	$('div.modal').modal().removeData();
+        $('div.modal').modal({remote : url});
+    })
+})
+
+/* $(function(){
     $(".portfolio-item").click(function(){
     	var menu = $(this).attr("id");
     	var url = 'detail_menu/'+menu+'.jsp';
     	$('div.modal').modal().removeData();
         $('div.modal').modal({remote : url});
     })
-})
+}) */
+
 /* $(function(){
     $("#steakcheese").click(function(){
         $('div.modal').modal({remote : 'detail_menu/steakcheese.jsp'});
@@ -207,42 +215,285 @@ $(function(){
 					
 					
 					
-					<div class="col-md-9">	
-						
-						
-						
+					<div class="col-md-9">						
 						<div id="slidemenu">
-						
-
-						<ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>		
-						
+						<ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>
 						<div class="row">
 							<div class="sort-destination-loader sort-destination-loader-showing">
 								<ul class="portfolio-list sort-destination"	data-sort-id="portfolio">
 								
-									<!-- 추천메뉴 -->							
-									<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
-										<div class="portfolio-item" id="meatball">
-											<span class="thumb-info thumb-info-lighten">
-												<span class="thumb-info-wrapper">
-													<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg" class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-														<span class="thumb-info-title">
-															<span class="thumb-info-inner">미트볼</span>
-															<span class="thumb-info-type">4,900</span>
-														</span>
-													<span class="thumb-info-action">
-														<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-															<span class="thumb-info-action-icon">															
-																<i class="fa fa-plus"></i>															
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'E' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
 															</span>
-														</a>
+														</span>
 													</span>
-												</span>
-											</span>
-										</div>
-									</li>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'R' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'P' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'B' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'C' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'M' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'S' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'N' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach items="${ menuList }" var="menu">
+										<c:if test="${ menu.type eq 'D' }">
+										
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${ menu.type }">
+												<div class="portfolio-item"  data-toggle="modal"
+													data-target="#largeModal">
+													<span class="thumb-info thumb-info-lighten">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																<span class="thumb-info-title">
+																	<span class="thumb-info-inner">${ menu.name }</span>
+																	<span class="thumb-info-type">${ menu.price }</span>
+																</span>
+															<!-- 플러스 그림 -->
+															<span class="thumb-info-action">
+																<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+																	<span class="thumb-info-action-icon">															
+																		<i class="fa fa-plus"></i>															
+																	</span>
+																</a>
+															</span>
+														</span>
+													</span>
+												</div>
+											</li>
+										
+										</c:if>
+									</c:forEach>
+									
 																		
-									<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
+									<%-- <li class="col-md-4 col-sm-6 col-xs-6 isotope-item ${type}">
 										<div class="portfolio-item" id="italianbmt">
 											<span class="thumb-info thumb-info-lighten"> <span
 												class="thumb-info-wrapper"> <img
@@ -1215,7 +1466,7 @@ $(function(){
 											</span>
 											</span>
 										</div>
-									</li>
+									</li> --%>
 									
 									
 									
@@ -1245,7 +1496,9 @@ $(function(){
 	<!-- 모달들 -->
 	<div class="modal fade" tabindex="-1" role="dialog"	aria-labelledby="largeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content"><!-- .jsp로 모달내용 -->	</div>
+			<div class="modal-content">
+			<!-- .jsp로 모달내용 -->
+			</div>
 		</div>
 	</div>
 	
