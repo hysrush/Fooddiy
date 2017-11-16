@@ -8,17 +8,11 @@
 			data-target="#largeModal">
 			<span class="thumb-info thumb-info-lighten"> <span
 				class="thumb-info-wrapper"> <img
-					src="${ pageContext.request.contextPath }/resources/img/vegetable/Lettuce.jpg"
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_lettuce.jpg"
 					class="img-responsive" alt=""
 					style="margin-top: 50px; margin-bottom: 50px"> <span
-					class="thumb-info-title"> <span class="thumb-info-inner">플랫브래드</span>
-						<span class="thumb-info-type">Flat Bread</span>
-				</span> <span class="thumb-info-action"> <a
-						href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-							<span class="thumb-info-action-icon"> <i
-								class="fa fa-plus"></i>
-						</span>
-					</a>
+					class="thumb-info-title"> <span class="thumb-info-inner">양상추</span>
+						<span class="thumb-info-type">Lettuce</span>
 				</span>
 			</span>
 			</span>
@@ -29,18 +23,12 @@
 			data-target="#largeModal">
 			<span class="thumb-info thumb-info-lighten"> <span
 				class="thumb-info-wrapper"> <img
-					src="${ pageContext.request.contextPath }/resources/img/vegetable/Tomatoes.jpg"
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_tomato.jpg"
 					class="img-responsive" alt=""
 					style="margin-top: 50px; margin-bottom: 50px"> <span
-					class="thumb-info-title"> <span class="thumb-info-inner">허니오트</span>
-						<span class="thumb-info-type">Honey Oat</span>
-				</span> <span class="thumb-info-action"> <a
-						href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-							<span class="thumb-info-action-icon"> <i
-								class="fa fa-plus"></i>
-						</span>
-					</a>
-				</span>
+					class="thumb-info-title"> <span class="thumb-info-inner">토마토</span>
+						<span class="thumb-info-type">Tomato</span>
+				</span> 
 			</span>
 			</span>
 		</div>
@@ -50,18 +38,12 @@
 			data-target="#largeModal">
 			<span class="thumb-info thumb-info-lighten"> <span
 				class="thumb-info-wrapper"> <img
-					src="${ pageContext.request.contextPath }/resources/img/vegetable/Cucumbers.jpg"
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_cucumber.jpg"
 					class="img-responsive" alt=""
 					style="margin-top: 50px; margin-bottom: 50px"> <span
-					class="thumb-info-title"> <span class="thumb-info-inner">하티이탈리안</span>
-						<span class="thumb-info-type">Hearty Italian</span>
-				</span> <span class="thumb-info-action"> <a
-						href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-							<span class="thumb-info-action-icon"> <i
-								class="fa fa-plus"></i>
-						</span>
-					</a>
-				</span>
+					class="thumb-info-title"> <span class="thumb-info-inner">오이</span>
+						<span class="thumb-info-type">Cucumber</span>
+				</span> 
 			</span>
 			</span>
 		</div>
@@ -71,21 +53,74 @@
 			data-target="#largeModal">
 			<span class="thumb-info thumb-info-lighten"> <span
 				class="thumb-info-wrapper"> <img
-					src="${ pageContext.request.contextPath }/resources/img/vegetable/Peppers.jpg"
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_capsicum.jpg"
 					class="img-responsive" alt=""
 					style="margin-top: 50px; margin-bottom: 50px"> <span
-					class="thumb-info-title"> <span class="thumb-info-inner">위트</span>
-						<span class="thumb-info-type">Wheat</span>
-				</span> <span class="thumb-info-action"> <a
-						href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-							<span class="thumb-info-action-icon"> <i
-								class="fa fa-plus"></i>
-						</span>
-					</a>
-				</span>
+					class="thumb-info-title"> <span class="thumb-info-inner">피망</span>
+						<span class="thumb-info-type">Capsicum</span>
+				</span> 
 			</span>
 			</span>
 		</div>
 	</li>
-
+	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
+		<div class="portfolio-item" data-toggle="modal"
+			data-target="#largeModal">
+			<span class="thumb-info thumb-info-lighten"> <span
+				class="thumb-info-wrapper"> <img
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_onion.jpg"
+					class="img-responsive" alt=""
+					style="margin-top: 50px; margin-bottom: 50px"> <span
+					class="thumb-info-title"> <span class="thumb-info-inner">양파</span>
+						<span class="thumb-info-type">Red Onion</span>
+				</span> 
+			</span>
+			</span>
+		</div>
+	</li>
+	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
+		<div class="portfolio-item" data-toggle="modal"
+			data-target="#largeModal">
+			<span class="thumb-info thumb-info-lighten"> <span
+				class="thumb-info-wrapper"> <img
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_pickles.jpg"
+					class="img-responsive" alt=""
+					style="margin-top: 50px; margin-bottom: 50px"> <span
+					class="thumb-info-title"> <span class="thumb-info-inner">피클</span>
+						<span class="thumb-info-type">Pickles</span>
+				</span> 
+			</span>
+			</span>
+		</div>
+	</li>
+	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
+		<div class="portfolio-item" data-toggle="modal"
+			data-target="#largeModal">
+			<span class="thumb-info thumb-info-lighten"> <span
+				class="thumb-info-wrapper"> <img
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_olives.jpg"
+					class="img-responsive" alt=""
+					style="margin-top: 50px; margin-bottom: 50px"> <span
+					class="thumb-info-title"> <span class="thumb-info-inner">올리브</span>
+						<span class="thumb-info-type">Olives</span>
+				</span> 
+			</span>
+			</span>
+		</div>
+	</li>
+	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
+		<div class="portfolio-item" data-toggle="modal"
+			data-target="#largeModal">
+			<span class="thumb-info thumb-info-lighten"> <span
+				class="thumb-info-wrapper"> <img
+					src="${ pageContext.request.contextPath }/resources/img/vegetable/web/vegetable_jalapenos.jpg"
+					class="img-responsive" alt=""
+					style="margin-top: 50px; margin-bottom: 50px"> <span
+					class="thumb-info-title"> <span class="thumb-info-inner">할라피뇨</span>
+						<span class="thumb-info-type">Jalapenos</span>
+				</span> 
+			</span>
+			</span>
+		</div>
+	</li>
 </ul>

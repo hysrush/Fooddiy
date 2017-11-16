@@ -36,7 +36,7 @@
 					<tbody class = "ddd">
 						<tr>
 							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_eggmayo.jpg" /></td>
-							<td width="50%"><strong class = "name">&nbsp;에그마요 </strong><strong class = "id">Aggmayo</strong></td>
+							<td width="50%"><strong class = "name">&nbsp;에그마요 </strong><strong class = "id">Eggmayo</strong></td>
 							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1200원</strong></td>
 						</tr>
 					</tbody>

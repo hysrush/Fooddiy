@@ -340,10 +340,14 @@ li {
 		background-color: #7aa93c;
 		color: white;
 	}
+	
+	
 }
 
 
-
+.thumb-info .topping-price {
+		color: yellow;
+}
 
 .shop .cart-totals th, .shop .cart-totals td {
 	border-top: 1px solid #DCDCDC;

@@ -6,7 +6,7 @@
 
  	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
 		<div class="portfolio-item" data-toggle="modal" data-target="#largeModal">
-			<span class="thumb-info thumb-info-lighten"> 
+			<span class="thumb-info thumb-info-lighten product-area-bread"> 
 				<span class="thumb-info-wrapper"> 
 					<img src="${ pageContext.request.contextPath }/resources/img/bread/bread_honeyoats.jpg" class="img-responsive" alt="" style="margin-top: 30px; margin-bottom: 50px"> 
 					<span class="thumb-info-title"> 
@@ -19,7 +19,7 @@
 	</li>
  	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
 		<div class="portfolio-item" data-toggle="modal" data-target="#largeModal">
-			<span class="thumb-info thumb-info-lighten"> 
+			<span class="thumb-info thumb-info-lighten product-area-bread"> 
 				<span class="thumb-info-wrapper"> 
 					<img src="${ pageContext.request.contextPath }/resources/img/bread/bread_sesame.jpg" class="img-responsive" alt="" style="margin-top: 30px; margin-bottom: 50px"> 
 					<span class="thumb-info-title"> 
@@ -32,7 +32,7 @@
 	</li>
  	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
 		<div class="portfolio-item" data-toggle="modal" data-target="#largeModal">
-			<span class="thumb-info thumb-info-lighten"> 
+			<span class="thumb-info thumb-info-lighten product-area-bread"> 
 				<span class="thumb-info-wrapper"> 
 					<img src="${ pageContext.request.contextPath }/resources/img/bread/bread_wheat.jpg" class="img-responsive" alt="" style="margin-top: 30px; margin-bottom: 50px"> 
 					<span class="thumb-info-title"> 
@@ -45,7 +45,7 @@
 	</li>
  	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
 		<div class="portfolio-item" data-toggle="modal" data-target="#largeModal">
-			<span class="thumb-info thumb-info-lighten"> 
+			<span class="thumb-info thumb-info-lighten product-area-bread"> 
 				<span class="thumb-info-wrapper"> 
 					<img src="${ pageContext.request.contextPath }/resources/img/bread/bread_white.jpg" class="img-responsive" alt="" style="margin-top: 30px; margin-bottom: 50px"> 
 					<span class="thumb-info-title"> 
@@ -58,7 +58,7 @@
 	</li>
  	<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
 		<div class="portfolio-item" data-toggle="modal" data-target="#largeModal">
-			<span class="thumb-info thumb-info-lighten"> 
+			<span class="thumb-info thumb-info-lighten product-area-bread"> 
 				<span class="thumb-info-wrapper"> 
 					<img src="${ pageContext.request.contextPath }/resources/img/bread/bread_flat.jpg" class="img-responsive" alt="" style="margin-top: 30px; margin-bottom: 50px"> 
 					<span class="thumb-info-title"> 
@@ -73,67 +73,20 @@
 
 <script>
 	$(document).ready(function() {
-		 $('.thumb-info >').each(function () {
-			 
-			 $(this).find('.thumb-info-title').click(function() {
-					var inner = $(this).children('.thumb-info-inner').text();
-					if(inner == "선택하기") {
-						 $(this).children('.thumb-info-inner').text("취소");
-						 $(this).children('.thumb-info-type').text("cancel");
-						 $(this).parents('.thumb-info').css({
-							 
-							 'border' : '2px solid #7aa93c'
-						 });
-					}else {
-						 $(this).children('.thumb-info-inner').text("선택하기");
-						 $(this).children('.thumb-info-type').text("select");
-						 $(this).parents('.thumb-info').css({
-							 
-							 'border' : '2px solid #DDD'
-						 });
-					}
-
-			 });
-/* 			 //////////////////////////////////
-             $(this).click(function () {
-                $(this).addClass("selected");   2
-                $(this).siblings().children().css({
-                   'border-width' : '0px'
-                });
-                $(this).siblings().removeClass("selected");
-                
-                $(this).children().css({
-                   
-                   'border-style' : 'solid',
-                   'border-width' : '1px',
-                   'border-color': 'green'
-                   
-                });
-                
-             });
-          });  
-		 
-		$('.thumb-info-title').click(function() {
-			var inner = $(this).children('.thumb-info-inner').text();
-			if(inner == "선택하기") {
-				 $(this).children('.thumb-info-inner').text("취소");
-				 $(this).children('.thumb-info-type').text("cancel");
-				 $(this).parents('.thumb-info').css({
-					 
-					 'border' : '2px solid #7aa93c'
-				 });
-			}else {
-				 $(this).children('.thumb-info-inner').text("선택하기");
-				 $(this).children('.thumb-info-type').text("select");
-				 $(this).parents('.thumb-info').css({
-					 
-					 'border' : '2px solid #DDD'
-				 });
-			}
-				
-		}); */
 		
-		});
+			$('li .product-area-bread').each(function() {
+				$(this).click(function() {
+					
+					$('.product-area-bread').css( {
+						'border-color' : '#DDD',
+						'border-width' : '1px'
+ 					});
+					$(this).css({
+						'border-color' : '#7aa93c',
+						'border-width' : '3px'
+					});
+				});
+			});
 	
 	});
 </script>

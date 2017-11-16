@@ -121,11 +121,23 @@
 													</span>
 												</span>
 											</span>									
+											<p class="mb-none pb-none">치즈</p>
+										</a>
+									</li>
+									<li >
+										<a href="#tabsNavigationSimpleIcons3" data-toggle="tab">
+											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
+												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
+													<span class="box-content p-none m-none">
+														<i class="icon-featured fa fa-file topping"></i>
+													</span>
+												</span>
+											</span>									
 											<p class="mb-none pb-none">토핑</p>
 										</a>
 									</li>
 									<li>
-										<a href="#tabsNavigationSimpleIcons3" data-toggle="tab">
+										<a href="#tabsNavigationSimpleIcons4" data-toggle="tab">
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
@@ -137,7 +149,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#tabsNavigationSimpleIcons4" data-toggle="tab">
+										<a href="#tabsNavigationSimpleIcons5" data-toggle="tab">
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
@@ -154,12 +166,15 @@
 										<jsp:include page="/menu/select-bread.jsp"/>
 									</div>
 									<div class="tab-pane" id="tabsNavigationSimpleIcons2">
-										<jsp:include page="/menu/select-topping.jsp"/>
+										<jsp:include page="/menu/select-cheese.jsp"/>
 									</div>
 									<div class="tab-pane" id="tabsNavigationSimpleIcons3">
-										<jsp:include page="/menu/select-vegetable.jsp"/>
+										<jsp:include page="/menu/select-topping.jsp"/>
 									</div>
 									<div class="tab-pane" id="tabsNavigationSimpleIcons4">
+										<jsp:include page="/menu/select-vegetable.jsp"/>
+									</div>
+									<div class="tab-pane" id="tabsNavigationSimpleIcons5">
 										<jsp:include page="/menu/select-sauce.jsp"/>
 									</div>
 								</div> 
