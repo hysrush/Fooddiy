@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.bit.member.vo.MemberVO;
+import kr.co.bit.sign.mail.MailKey;
+import kr.co.bit.sign.service.MailService;
 import kr.co.bit.sign.service.SignService;
+import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
 
 /**
@@ -27,8 +30,8 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
-/*	@Autowired(required=true)
-	private MailService mailService;*/
+	@Autowired(required=true)
+	private MailService mailService;
 	/**
 	 * 
 	 *  1. 회원
@@ -280,14 +283,13 @@ public class SignController {
 	 * 	 - 가입
 	 * */
 	
-/*	// 이메일 인증 코드 발송
+	// 이메일 인증 코드 발송
 	@RequestMapping("/nonemail")
-	public String nonMemberSign(MemberVO nonMember) {
+	public String nonMemberSign(MemberVO nonMember, Model model) {
 		
 		MailVO mail = new MailVO();
 		String key = new MailKey().getkey();
 		
-		mail.setSender("");
 		mail.setReceiver(nonMember.getEmail());
 		mail.setSubject("[SubWay] 비회원 인증코드");
 		mail.setContent(nonMember.getName()+" 님이 요청하신 인증 코드는 ["+key+"]입니다.<br/>"
@@ -295,17 +297,12 @@ public class SignController {
 		
 		
 		mailService.sendMail(mail);
-
 		
-		return "sign/";
+		model.addAttribute("non", nonMember);
+
+		return "sign/nonmemberLogin";
 	}
-	
-	*/
-	
-	
-	
-	
-	
+
 	
 	
 	

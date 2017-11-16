@@ -98,4 +98,27 @@
 		<mvc:jsp prefix="/WEB-INF/" suffix=".jsp" /><!-- 주소는 prefix를 시작으로 하고, 확장자는 꼭 .jsp여야 함 -->
 	</mvc:view-resolvers>
 	
+	<!-- gmail -->
+    <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="username" value="skdml132@gmail.com" />
+        <property name="password" value="tkfkdgo931008" />
+       
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+               
+               
+            </props>
+        </property>
+       
+    </bean>
+	<bean id="email" class="spring.board.email.Email">
+	</bean>
+		<bean id="emailSender" class="spring.board.email.EmailSender">
+    </bean>
+
 </beans>
