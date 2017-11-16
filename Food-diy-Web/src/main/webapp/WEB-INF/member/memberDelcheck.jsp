@@ -104,7 +104,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="breadcrumb">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">My Page</a></li>
 									<li class="active">회원탈퇴</li>
 								</ul>
 							</div>

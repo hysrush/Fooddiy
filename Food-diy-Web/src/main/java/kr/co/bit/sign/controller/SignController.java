@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+<<<<<<< HEAD
 import kr.co.bit.member.vo.MemberVO;
 import kr.co.bit.sign.mail.MailKey;
 import kr.co.bit.sign.service.MailService;
+=======
+>>>>>>> refs/remotes/origin/master
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
+import kr.co.bit.user.vo.UserVO;
 
 /**
  * 
@@ -43,14 +47,14 @@ public class SignController {
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
 	public String phoneCert(HttpSession session) {
 		
-		session.setAttribute("phoneCert", new MemberVO());
+		session.setAttribute("phoneCert", new UserVO());
 		return "sign/phoneCert";
 		
 	}
 	
 	// - 인증 확인 - 이메일로 할까 생각 중
 	@RequestMapping(value = "/phoneCertForm.do", method = RequestMethod.POST)
-	public String phoneCertForm(MemberVO phoneCert, Model model) {
+	public String phoneCertForm(UserVO phoneCert, Model model) {
 		
 		// 휴대전화 인증할 때 받은 회원 정보 저장
 		PhoneCertVO cert = new PhoneCertVO();
@@ -81,7 +85,7 @@ public class SignController {
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public String signUp(PhoneCertVO phoneCert, Model model) {
 		
-		MemberVO userVO = new MemberVO();
+		UserVO userVO = new UserVO();
 		
 		userVO.setId(phoneCert.getId());
 		userVO.setPw(phoneCert.getPw());
@@ -95,7 +99,7 @@ public class SignController {
 		signServiceImp.signUp(userVO);
 		
 		// 회원가입 후 자동 로그인
-		MemberVO login = new MemberVO();
+		UserVO login = new UserVO();
 		login.setId(userVO.getId());
 		login.setPw(userVO.getPw());
 		
@@ -123,15 +127,15 @@ public class SignController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String signInForm(Model model) {
 
-		model.addAttribute("login", new MemberVO());
+		model.addAttribute("login", new UserVO());
 		return "sign/login";
 	}
 
 	// => 로그인 실패시 다시 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String signIn(MemberVO login, Model model) {
+	public String signIn(UserVO login, Model model) {
 
-		MemberVO signIn = signServiceImp.login(login);
+		UserVO signIn = signServiceImp.login(login);
 
 		if (signIn == null) {
 
@@ -159,7 +163,7 @@ public class SignController {
 	@RequestMapping("/lostId")
 	public String lostId(PhoneCertVO lost, Model model) {
 		
-		MemberVO lostId = new MemberVO();
+		UserVO lostId = new UserVO();
 		
 		lostId.setName(lost.getName());
 		lostId.setEmail(lost.getEmail()+lost.getEmailD());
@@ -183,8 +187,8 @@ public class SignController {
 	@RequestMapping("/lostPw")
 	public String lostPw(PhoneCertVO lost, Model model) {
 		
-		MemberVO lostPw = new MemberVO();
-		MemberVO lostVO = new MemberVO();
+		UserVO lostPw = new UserVO();
+		UserVO lostVO = new UserVO();
 		
 		lostPw.setName(lost.getName());
 		lostPw.setId(lost.getId());
@@ -215,9 +219,9 @@ public class SignController {
 
 	// kakao api 로그인
 	@RequestMapping(value = "/kakoLogin.do", method = RequestMethod.POST)
-	public String kakaoLogin(MemberVO login, Model model) {
+	public String kakaoLogin(UserVO login, Model model) {
 
-		MemberVO userVO = new MemberVO();
+		UserVO userVO = new UserVO();
 
 		userVO = signServiceImp.login(login);
 
@@ -242,7 +246,7 @@ public class SignController {
 	@RequestMapping(value = "/kakaoSignUp.do", method = RequestMethod.POST)
 	public String kakaoSignUp(PhoneCertVO kakaoVO, Model model, HttpSession session) {
 		
-		MemberVO kakao = new MemberVO();
+		UserVO kakao = new UserVO();
 		
 		kakao.setId(kakaoVO.getId());
 		kakao.setPw(kakaoVO.getPw());
@@ -256,7 +260,7 @@ public class SignController {
 		signServiceImp.signUp(kakao);
 		
 		// 회원가입 후 자동 로그인
-		MemberVO login = new MemberVO();
+		UserVO login = new UserVO();
 		login.setId(kakaoVO.getId());
 		login.setPw(kakaoVO.getPw());
 		

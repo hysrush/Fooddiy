@@ -2,17 +2,17 @@ package kr.co.bit.member.service;
 
 import java.util.List;
 
-import kr.co.bit.member.vo.MemberVO;
+import kr.co.bit.user.vo.UserVO;
 
 
 public interface MemberService {
 
-	List<MemberVO> selectAllmember();
-	MemberVO selectOneMember(int no);
-	void insertMember(MemberVO member);
-	void modifyMember(MemberVO member);
+	List<UserVO> selectAllmember();
+	UserVO selectOneMember(int no);
+	void insertMember(UserVO member);
+	void modifyMember(UserVO member);
 	void removeMember(int no);
-	static void memberUpdate(MemberVO vo) {
+	static void memberUpdate(UserVO vo) {
 		// TODO Auto-generated method stub
 		
 	}

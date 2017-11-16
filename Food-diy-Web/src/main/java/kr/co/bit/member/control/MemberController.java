@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.bit.member.service.MemberService;
-import kr.co.bit.member.vo.MemberVO;
 import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.user.vo.UserVO;
 
 @Controller
 @SessionAttributes("/member")
@@ -33,7 +33,7 @@ public class MemberController {
 		}
 	 //회원정보수정
 	  @RequestMapping("/memberUpdate.do")
-	    public String memberUpdate(@ModelAttribute MemberVO vo){
+	    public String memberUpdate(@ModelAttribute UserVO vo){
 		  MemberService.memberUpdate(vo);
 	        return "redirect:member/memberUpdate";
 	    }
