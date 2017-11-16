@@ -249,7 +249,7 @@
 												<table class = "sauce-table">
 														<tr>
 															<td width = "30%">
-																소스 선택>>
+																소스 선택 >>
 															</td>
 														</tr>
 												</table>
@@ -263,6 +263,12 @@
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					
+					<div class = "row">
+						<div style="text-align: center;s">
+							<button type="submit"  class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 						</div>
 					</div>
 				</div>

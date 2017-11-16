@@ -212,7 +212,7 @@
 </ul>
 
 
-<div class="modal source-modal" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
+<div class="modal sauce-modal" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog" style="top: 30%">
 				<div class="modal-content">
 						<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
@@ -239,23 +239,109 @@
 	 		$(this).click(function() {
 	 			
 	 			var name = $(this).find('.name').text();
-	 			var id = $(this).find('.id').text();
+	 			var id = $(this).find('.id').text().split(' ');
+	 			if(id.length == 1) {
+	 				id = id[0];
+	 			}
+				else{
+					id = id[0] + id[1];	
+				}
 
-	 		  	
-	 			if(!$(this).data("clickStatus")){	
+	 		
+				if(!$(this).data("clickStatus")){
+					
+					var flag = 0;
+					var tr_cnt = $('.sauce-table tr').length;
+					
+					if(tr_cnt < 3) {
+						$(this).siblings('.fa-check-sauce').show();
+						$('.sauce-table tr').each(function() {
+							
+							
+							if($(this).hasClass(id)){
+								flag = 1;
+							}
+							
+						});
+						
+						if(flag == 0){
+							if($('.sauce-table tr td').length == 1) {
+								
+								$('.sauce-table tr').addClass(id);
+								
+								var td = '<td class="' + 'sauce-name ' + '">';
+									td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+									td += '</td>';
+									$('.sauce-table tr').append(td);
+							}
+							else {
+								
+					 			var row =  '<tr class = "'+ id + '">';
+					 				row += '<td width ="' + '30%"></td>'
+					 				row += '<td class="' + 'sauce-name">';
+									row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+									row += '</td>';
+									row += '</tr>';
+										
+									$('.sauce-table').append(row);
+							}
+						}
+						$(this).data("clickStatus", 1);
+					}else {
+						$(".sauce-modal").modal();
+						$(this).data("clickStatus", 0);
+						
+					}
+					
+					
+					
+					
+					
+				}else {
+					$(this).siblings('.fa-check-sauce').hide();
+					
+					var tr  = $('.sauce-table tbody tr');
+					
+					
+					if(tr.length == 1) {
+						var td = $(tr[0]).children();
+												
+						for(var i = 1; i <= td.length; ++i){
+							$(td[i]).remove();
+						}
+						
+						$(tr[0]).removeClass(id);
+					}
+					else {
+						if($(tr[0]).attr('class').split(' ')[0] == id) {
+							var tr_child = $(tr[1]).children();
+							$(tr_child[0]).text('소스 선택 >>');
+							$(tr[0]).remove();
+							
+						}else {
+							$('table.sauce-table .'+id).remove();
+						}
+					}
+					
+					$(this).data("clickStatus", 0);
+				}
+/* 	 			if(!$(this).data("clickStatus")){	
 					
 	 							
 	 				if($('.sauce-table tr').length < 3) {
 		 				$(this).siblings('.fa-check-sauce').show();
 						if($('.sauce-table tr td').length == 1) {
-							var td = '<td class="' + 'sauce-name" id = "'+ name + '">';
+							alert(id);
+							$('.sauce-table tr').addClass(id);
+							
+							var td = '<td class="' + 'sauce-name"'+ '">';
 								td += '<strong class = "'+ 'name">'+ name + id + '</strong>';
 								td += '</td>';
 								td += '<td width = "' + '20%"> </td>';
 							$('.sauce-table tr').append(td);
 			 			}else { 
 			 				
-			 				var row =  '<tr id = "'+ name + '">';
+			 				var row =  '<tr class = "'+ id + '">';
 			 					row += '<td width ="' + '30%"> </td>'
 			 					row += '<td class="' + 'sauce-name">';
 								row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
@@ -265,22 +351,41 @@
 								
 								$('.sauce-table').append(row);
 			 			}
+
+						$(this).data("clickStatus", 1);
 	 				}else {
+						$(this).data("clickStatus", 0);
 	 					$(".source-modal").modal();
 	 				}
 					
-	 				$(this).data("clickStatus", 1);
 				}else {
 					
 	 				$(this).siblings('.fa-check-sauce').hide();
 	 				
-	 				$('td[id = "' + name + '"]').next().remove();
-	 				$('td[id = "' + name + '"]').remove();
+					var tr  = $('.sauce-table tbody tr');
 	 				
-	 				$('tr[id = "' + name + '"]').remove();
+					if(tr.length == 1) {
+						var td = $(tr[0]).children();
+												
+						for(var i = 1; i <= td.length; ++i){
+							$(td[i]).remove();
+						}
+						
+						$(tr[0]).removeClass(id);
+					}
+					else {
+						if($(tr[0]).attr('class') == id) {
+							var tr_child = $(tr[1]).children();
+							$(tr_child[0]).text('소스 선택>>');
+							$(tr[0]).remove();
+							
+						}else {
+							$('table.topping-table .'+id).remove();
+						}
+					}
 	 				
 					$(this).data("clickStatus", 0);
-				}
+				} */
 	 		});
  			
  		});

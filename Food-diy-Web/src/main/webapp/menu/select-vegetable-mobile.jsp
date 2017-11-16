@@ -12,12 +12,14 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_lettuce.jpg" />
 								<strong class = "name">&nbsp;양상추 </strong><strong class = "id">Lettuce</strong>
 							</td>
-							<td width="10%">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>
@@ -29,12 +31,14 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_tomato.jpg" /> 
 								<strong class = "name">&nbsp;토마토 </strong><strong class = "id">Tommatoes</strong>
 							</td>
-							<td width="10%" style="text-align: right;">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>	
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>
@@ -46,10 +50,7 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_cucumber.jpg" />
 								<strong class = "name">&nbsp;오이 </strong><strong class = "id">Cucumbers</strong>
 							</td>
-							<td width="10%">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
@@ -63,10 +64,7 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_capsicum.jpg" />
 								<strong class = "name">&nbsp;피망 </strong><strong class = "id">Capsicum</strong>
 							</td>
-							<td width="10%">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
@@ -80,10 +78,7 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_onion.jpg" />
 								<strong class = "name">&nbsp;양파 </strong><strong class = "id">Red Onion</strong>
 							</td>
-							<td width="10%">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
@@ -97,11 +92,7 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_pickles.jpg" />
 								<strong class = "name">&nbsp;피클 </strong><strong class = "id">Pickles</strong>
 							</td>
-							
-							<td width="10%">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
@@ -115,10 +106,7 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_olives.jpg" />
 								<strong class = "name">&nbsp;올리브 </strong><strong class = "id">Olives</strong>
 							</td>
-							<td width="10%">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
@@ -132,10 +120,7 @@
 								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_jalapenos.jpg" />
 								<strong class = "name">&nbsp;할라피뇨 </strong><strong class = "id">Jalapenos</strong>
 							</td>
-							<td width="10%">
-								<div class ="circle-button">+</div>
-							</td>
-						<tr>
+						</tr>
 					</tbody>
 				</table>
 		</figure>
@@ -163,68 +148,113 @@
 <script>
 	$(document).ready(function() {
 		
-		$('li .product-vegetable-area table tbody tr td:first-child').each(function () {
+		$('li .product-vegetable-area').each(function() {
 			
-	 		$(this).click(function() {
-	 			$(this).parents('.product-vegetable-area').siblings('.fa-check-vegetable').toggle(); 
-	 		});
- 		});
-		 
-		$('.circle-button').click(function() {
+			var name = $(this).find('.name').text(); 
+			var id  =  $(this).find('.id').text().split(' ');
 			
-			var name = $(this).parent().prev().find('.name').text();
-			var id = $(this).parent().prev().find('.id').text();
-			
-			if(!$(this).data("clickStatus")){
-			
-				if(!$('.vegetable-table tr').hasClass(id)) {
-					if($('.vegetable-table tr td').length == 1) {
-						
-						$('.vegetable-table tr').addClass(id);
-						$('.vegetable-table tr').addClass('plus');
-	
-						
-						var td = '<td class="' + 'vegetable-name ' + '">';
-							td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
-							td += '</td>';
-							td += '<td class = "'+ 'vegetable-plus-minus">' + '(+)' + '</td>';
-							$('.vegetable-table tr').append(td);
-		 			}else { 
-		 				
-		 				if($('.vegetable-table .plus').length < 2) {
-			 				var row =  '<tr class = "'+ id + ' plus">';
-			 					row += '<td width ="' + '30%"> </td>'
-			 					row += '<td class="' + 'vegetable-name">';
-								row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
-								row += '</td>';
-								row += '<td class = "'+ 'vegetable-plus-minus">' + '(+)' + '</td>';
-								row += '</tr>';
-								
-								$('.vegetable-table').append(row);
-		 				}else {
-		 					$(".vegetable-modal").modal();
-		 				}
-		 			}
-					
-					$(this).text('-');
-				}
-				
-				
-				
-				$(this).data("clickStatus", 1);
+			if(id.length == 1) {
+				id = id[0];
 			}else {
-				
-				
-				var a = $('table.vegetable tr');
-				
-				alert($(a[0]).find('.name').text());
-				
-				$('table.vegetable-table .'+id).remove();
-				
-				
-				$(this).text('+');
-				$(this).data("clickStatus", 0);
-			}	
+				id = id[0] + id[1];
+			}
+			
+			var tr = $(this).find('tr');
+			var more = $(this).find('.more');
+			var less = $(this).find('.less');
+			var nomal = $(this).find('.nomal');
+			
+			
+			
+			$(tr).click(function() {
+				if(!$(this).data('clickStatus')) {
+					$(this).parents('.product-vegetable-area').prev().hide();
+					
+					
+					var td = '<td class="' + 'vegetable-name"' + '">';
+					td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+					td += '</td>';
+					td += '<td class = "'+ 'vegetable-plus-minus">' + '(빼기)';
+					td += '</td>';
+					
+					var row =  '<tr class = "'+ id + '">';
+ 					row += '<td width ="' + '30%"> </td>'
+ 					row += '<td class="' + 'vegetable-name">';
+					row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+					row += '</td>';
+					row += '<td class = "'+ 'vegetable-plus-minus">' + '(빼기)' + '</td>';
+					row += '</tr>';
+					
+					
+					//첫줄에 아무것도 없을 때 추가 
+					if($('.vegetable-table tr').children().length == 1) {
+						$('.vegetable-table tr').addClass(id);
+						$('.vegetable-table tr').append(td);
+					}else { 
+												
+						var flag = 1;
+						$('.vegetable-table tr').each(function(index) {
+							
+							if($(this).hasClass(id)) {
+								
+								if(index == 0 ) { // 첫번째에 존재하는것을 제거하고 추가
+									
+									var remove_td = $(this).children();
+									for(var i = 1; i < remove_td.length; ++i) {
+										$(remove_td[i].remove());
+									}
+									
+									$('.vegetable-table tr').append(td);
+								}
+								else {  //첫번째 줄 이외에 존재하는 것을 제거하고 추가
+									$(this).remove();
+									$('.vegetable-table').append(row);
+								}
+								
+								flag = 0;
+							}
+						});
+						
+						
+						//제거할것이 없으면 마지막에 추가
+						if(flag) {
+							$('.vegetable-table').append(row);
+						}
+					}
+					
+					$(this).data('clickStatus', 1);
+				}
+				else {
+					$(this).parents('.product-vegetable-area').prev().show();
+					
+					var tr  = $('.vegetable-table tbody tr');
+	 				
+					if(tr.length == 1) {
+						var td = $(tr[0]).children();
+												
+						for(var i = 1; i <= td.length; ++i){
+							$(td[i]).remove();
+						}
+						
+						$(tr[0]).removeClass(id);
+					}
+					else {
+						if($(tr[0]).attr('class') == id) {
+							var tr_child = $(tr[1]).children();
+							$(tr_child[0]).text('야채 선택>>');
+							$(tr[0]).remove();
+							
+						}else {
+							$('table.vegetable-table .'+id).remove();
+						}
+					}
+					
+					$(this).data('clickStatus', 0);
+				}
+			});
 		});
+		
+
+
 	});
 </script>
