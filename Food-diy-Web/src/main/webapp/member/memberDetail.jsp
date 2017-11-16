@@ -126,6 +126,7 @@
 								</ul>
 		</aside></div></div>
 		
+		
 		<div class=" container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -180,7 +181,11 @@
                         <td>${member.point}</td>
                            
                       </tr>
-                      
+                      <!-- <select id="point" parameterClass="map" resultClass="hashmap" remapResults="true">
+									SELECT 마일리지 FROM 회원TB WHERE 회원아이디 = '~'
+						System.out.print(map.get("마일리지"))
+					</select> -->
+
                      
                     </tbody>
                   </table>

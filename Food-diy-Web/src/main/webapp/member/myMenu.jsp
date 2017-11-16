@@ -66,11 +66,37 @@
 	border-style: solid;
 }
 </style>
+<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
 
+		
+		var q = parseInt($("#qty").val());
+		
+		$("#minus").click(function(){
+			
+			if(q<1){
+				alert("더이상 줄일 수 없습니다.");
+			}else{
+				$("#qty").val(--q);
+			}
+		});
+		
+		$("#plus").click(function(){
+			
+			$("#qty").val(++q);
+			
+		});
+	});
+	
+
+
+</script>
 </head>
 
-
 <body>
+
+
 	<div class="body">
 		<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
@@ -79,6 +105,7 @@
 		<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 		<!-- ---------------------------------------------------------------------------------------------- -->
+
 	<section class="page-header">
 					<div class="container">
 						<div class="row">
@@ -154,9 +181,9 @@
 																<td class="product-quantity">
 																	<form enctype="multipart/form-data" method="post" class="cart">
 																		<div class="quantity">
-																			<input type="button" class="minus" value="-">
-																			<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1" >
-																			<input type="button" class="plus" value="+">
+																			<input type="button" id="minus" class="minus" value="-">
+																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1" >
+																			<input type="button" id="plus" class="plus" value="+">
 																		</div>
 																	</form>
 																</td>
@@ -186,9 +213,9 @@
 																<td class="product-quantity">
 																	<form enctype="multipart/form-data" method="post" class="cart">
 																		<div class="quantity">
-																			<input type="button" class="minus" value="-">
-																			<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																			<input type="button" class="plus" value="+">
+																			<input type="button" id="minus" class="minus" value="-">
+																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+																			<input type="button"  id="plus" class="plus" value="+">
 																	</form>
 																</td>
 																<td>
@@ -217,9 +244,9 @@
 																<td class="product-quantity">
 																	<form enctype="multipart/form-data" method="post" class="cart">
 																		<div class="quantity">
-																			<input type="button" class="minus" value="-">
-																			<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																			<input type="button" class="plus" value="+">
+																			<input type="button" id="minus" class="minus" value="-">
+																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+																			<input type="button"  id="plus" class="plus" value="+">
 																		</div>
 																	</form>
 																</td>
@@ -234,7 +261,7 @@
 												</form>
 											</div>
 										</div>
-									</div>
+									</div>  
 								</div>
 							</div>
 	
@@ -242,13 +269,15 @@
 			<div align="right" style="margin-bottom:5% ; margin-left: 29%" class="col-md-9 col-sm-6 col-xs-9 ">
 				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  장바구니 담기 </button>
 				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  sns게시글 등록 </button>
-				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  메뉴삭제 </button><br/>
+				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  메뉴삭제 </button>
 				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  주문하기 </button>
 			</div>
 		</div>
 	</div>
 </div>
 </div></div></div></div>
+
+
 	<!-- ---------------------------------------------------------------------------------------------- -->
 	<div>
 		<footer id="footer">

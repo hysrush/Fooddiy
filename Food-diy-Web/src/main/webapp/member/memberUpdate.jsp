@@ -132,7 +132,7 @@
 					
 				<div class="col-md-4 ">
 					<img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="margin-left: 7%; margin-top: 20%; width: 300px;">
-					<button style="float:right; margin-top: 4%; margin-right: 10%" type="button" class="btn btn-default" >프로필변경</button>
+					<button style="float:right; margin-top: 4%; margin-right: 10%" type="button" class="btn btn-default" >프로필변경 </button>
 				</div><br/><br/>
 						<div class="col-md-5" style="margin-top: 3%; margin-left: 2%">
 							<div class="panel-group" id="accordion">
@@ -186,10 +186,12 @@
 														</div>
 														<div class="row">
 													<div class="form-group">
-														<div class="col-md-6">
+														<div style="margin-left:5%; margin-top: 1% " class="col-md-5  col-xs-11">
 															<label></label><br/>
 															<select class="form-control">
 																<option value="">-이메일 선택 -</option>
+																<option value="">naver.com</option>
+																<option value="">google.co.kr</option>
 															</select>
 														</div>
 													</div>
@@ -233,6 +235,7 @@
 					</div>
 					</div>					
 </div>
+
 		<!-- ---------------------------------------------------------------------------------------------- -->
 		<div>
 		<footer id="footer">
