@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import kr.co.bit.sign.mail.MailKey;
-import kr.co.bit.sign.service.MailService;
 import kr.co.bit.sign.service.SignService;
-import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
 import kr.co.bit.user.vo.UserVO;
 
@@ -30,8 +27,8 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
-	@Autowired(required=true)
-	private MailService mailService;
+/*	@Autowired(required=true)
+	private MailService mailService;*/
 	/**
 	 * 
 	 *  1. 회원
@@ -283,7 +280,7 @@ public class SignController {
 	 * 	 - 가입
 	 * */
 	
-	// 이메일 인증 코드 발송
+/*	// 이메일 인증 코드 발송
 	@RequestMapping("/nonemail")
 	public String nonMemberSign(UserVO nonMember, Model model) {
 		
@@ -303,7 +300,7 @@ public class SignController {
 		return "sign/nonmemberLogin";
 	}
 
-	
+	*/
 	
 	
 	
