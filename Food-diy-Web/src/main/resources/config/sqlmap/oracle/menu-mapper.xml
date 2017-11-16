@@ -9,8 +9,7 @@
 	
 	<!-- sql 저장 : 전체 조회 -->
 	<sql id="selectAll_menu">
-		SELECT menu_no, menu_name, main_menu, menu_type, menu_price, menu_detail, to_char(reg_at, 'yy-mm-dd') as reg_at
-		<!-- menu_pic, -->
+		SELECT menu_no, menu_name, main_menu, menu_type, menu_price, menu_detail, menu_pic, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_menu
 	</sql>
 	
@@ -21,7 +20,8 @@
 		<result column="main_menu" property="mainmenu"/>
 		<result column="menu_type" property="type"/>	
 		<result column="menu_price" property="price"/>	
-		<result column="menu_detail" property="detail"/>	
+		<result column="menu_detail" property="detail"/>
+		<result column="menu_pic" property="imgFileName"/>
 		<result column="reg_at" property="regDate"/>	
 	</resultMap>
 	
@@ -30,23 +30,27 @@
 		<include refid="selectAll_menu"/>
 		ORDER BY menu_no DESC
 	</select>
+	
 	<!-- 번호별 Menu 조회 -->
 	<select id="selectOneMenu" parameterType="int" resultMap="Map_menuVO">
 		<include refid="selectAll_menu"/>
 		WHERE menu_no = #{no}
 	</select>
-	<!-- Menu 등록 -->
+	
+	<!-- Menu 등록 -->	
 	<insert id="insertMenu" parameterType="menuVO">
-		INSERT INTO t_menu(menu_no, menu_name, main_menu, menu_type, menu_price, menu_detail)
-		VALUES(seq_t_menu_no.nextval, #{no}, #{name}, #{mainmenu}, #{type}, #{price}, #{detail})
+		INSERT INTO t_menu(menu_no, menu_name, main_menu, menu_type, menu_price, menu_detail, menu_pic)
+		VALUES(seq_t_menu_no.nextval, #{name}, #{mainmenu}, #{type}, #{price}, #{detail}, #{imgFileName})
 	</insert>
-	<!-- Menu 수정 -->
+	
+	<!-- Menu 수정 -->	
 	<update id="modifyMenu" parameterType="menuVO">
 		UPDATE t_menu
-		SET menu_name = #{name}, main_menu = #{mainmenu}, menu_type = #{type}, menu_price = #{price}, menu_detail = #{detail}, 
+		SET menu_name = #{name}, main_menu = #{mainmenu}, menu_type = #{type}, menu_price = #{price}, menu_detail = #{detail}, menu_pic = #{imgFileName}
 		WHERE menu_no = #{no}
 	</update>
-	<!-- Menu 삭제 -->
+	
+	<!-- Menu 삭제 -->	
 	<delete id="removeMenu" parameterType="int">
 		DELETE FROM t_menu
 		WHERE menu_no = #{no}

@@ -8,7 +8,7 @@ public class MenuVO {
 	private String type;
 	private int price;
 	private String detail;
-	//private 메뉴사진첨부 보류 
+	private String imgFileName;
 	private String regDate;
 	// 추천 'R' / 프리미엄 'P' / 베스트 'B' / 클래식 'C' / 아침식사 'M' / 샐러드 'S' / 추가메뉴 'N' / 음료 'D'
 	public int getNo() {
@@ -41,6 +41,12 @@ public class MenuVO {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
+	public String getImgFileName() {
+		return imgFileName;
+	}
+	public void setImgFileName(String imgFileName) {
+		this.imgFileName = imgFileName;
+	}
 	public String getRegDate() {
 		return regDate;
 	}
@@ -55,7 +61,7 @@ public class MenuVO {
 	}
 	@Override
 	public String toString() {
-		return "MenuVO [no=" + no + ", name=" + name + ", mainmenu" + mainmenu + ", price=" + price + ", detail=" + detail + ", regDate=" + regDate
+		return "MenuVO [no=" + no + ", name=" + name + ", mainmenu" + mainmenu + ", price=" + price + ", detail=" + detail + ", imgFileName=" + imgFileName + ", regDate=" + regDate
 				+ ", type=" + type + "]";
 	}
 	

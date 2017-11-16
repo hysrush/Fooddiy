@@ -10,6 +10,7 @@
 	  	<typeAlias type="kr.co.bit.event.vo.StoreVO"  alias="storeVO"/>
 	  	<typeAlias type="kr.co.bit.event.vo.EventBoardVO" alias="eventVO"/>
 	  	<typeAlias type="kr.co.bit.community.vo.QnaBoardVO" alias="qnaVO"/>
-	  	<typeAlias type="kr.co.bit.community.vo.NoticeBoardVO" alias="noticeVO"/>	  	
+	  	<typeAlias type="kr.co.bit.community.vo.NoticeBoardVO" alias="noticeVO"/>
+	  	<typeAlias type="kr.co.bit.menu.vo.MenuVO" alias="menuVO"/>
 	</typeAliases>
 </configuration>

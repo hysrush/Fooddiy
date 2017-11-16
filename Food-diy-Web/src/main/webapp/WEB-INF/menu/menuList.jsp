@@ -69,6 +69,9 @@
 <!-- Skin CSS -->
 <link rel="stylesheet"
 	href="${ pageContext.request.contextPath}/resources/css/skins/skin-shop-9.css">
+	
+<!-- Theme Custom CSS -->
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
 <!-- Theme Custom CSS -->
 <link rel="stylesheet"
@@ -93,7 +96,6 @@ $(document).ready(function(){
 	$('#lnb').stick_in_parent({offset_top:73});	
 });
 
-
 function modal(menuNo) {
 	$(".portfolio-item").click(function(){
     	var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo;
@@ -101,6 +103,9 @@ function modal(menuNo) {
         $('div.modal').modal({remote : url});
     })
 }
+
+
+
 
 /* $(function(){
     $(".portfolio-item").click(function(){
@@ -121,9 +126,6 @@ function modal(menuNo) {
 
 </script>
 
-<!-- Theme Custom CSS -->
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath}/resources/css/custom.css">
 </head>
 <body>
 	<div class="body">
@@ -205,14 +207,14 @@ function modal(menuNo) {
 								<ul class="portfolio-list sort-destination"	data-sort-id="portfolio">								
 									
 									<c:forEach items="${ menuList }" var="menu">
-										<c:if test="${ menu.type eq 'R' }">
+										<c:if test='${ menu.type eq "R" }'>
 										
 											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
 												<a onclick="modal('${ menu.no }')">
 													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
 															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
 																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
 																	<span class="thumb-info-title">
 																		<span class="thumb-info-inner">${ menu.name }</span>
@@ -225,157 +227,143 @@ function modal(menuNo) {
 											</li>
 										
 										</c:if>
-									</c:forEach>
-									
-									<c:forEach items="${ menuList }" var="menu">
-										<c:if test="${ menu.type eq 'P' }">
+										<c:if test='${ menu.type eq "P" }'>
 										
 											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<div class="portfolio-item"  data-toggle="modal"
-													data-target="#largeModal">
-													<span class="thumb-info thumb-info-lighten">
-														<span class="thumb-info-wrapper">
-															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
-																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																<span class="thumb-info-title">
-																	<span class="thumb-info-inner">${ menu.name }</span>
-																	<span class="thumb-info-type">${ menu.price }</span>
-																</span>															
+												<a onclick="modal('${ menu.no }')">
+													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														<span class="thumb-info thumb-info-lighten">
+															<span class="thumb-info-wrapper">
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																	<span class="thumb-info-title">
+																		<span class="thumb-info-inner">${ menu.name }</span>
+																		<span class="thumb-info-type">${ menu.price }</span>
+																	</span>															
+															</span>
 														</span>
-													</span>
-												</div>
+													</div>												
+												</a>
 											</li>
 										
 										</c:if>
-									</c:forEach>
-									
-									<c:forEach items="${ menuList }" var="menu">
-										<c:if test="${ menu.type eq 'B' }">
+										<c:if test='${ menu.type eq "B" }'>
 										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item best">
-												<div class="portfolio-item"  data-toggle="modal"
-													data-target="#largeModal">
-													<span class="thumb-info thumb-info-lighten">
-														<span class="thumb-info-wrapper">
-															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
-																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																<span class="thumb-info-title">
-																	<span class="thumb-info-inner">${ menu.name }</span>
-																	<span class="thumb-info-type">${ menu.price }</span>
-																</span>															
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+												<a onclick="modal('${ menu.no }')">
+													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														<span class="thumb-info thumb-info-lighten">
+															<span class="thumb-info-wrapper">
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																	<span class="thumb-info-title">
+																		<span class="thumb-info-inner">${ menu.name }</span>
+																		<span class="thumb-info-type">${ menu.price }</span>
+																	</span>															
+															</span>
 														</span>
-													</span>
-												</div>
+													</div>												
+												</a>
 											</li>
 										
 										</c:if>
-									</c:forEach>
-									
-									<c:forEach items="${ menuList }" var="menu">
 										<c:if test="${ menu.type eq 'C' }">
 										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item classic">
-												<div class="portfolio-item"  data-toggle="modal"
-													data-target="#largeModal">
-													<span class="thumb-info thumb-info-lighten">
-														<span class="thumb-info-wrapper">
-															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
-																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																<span class="thumb-info-title">
-																	<span class="thumb-info-inner">${ menu.name }</span>
-																	<span class="thumb-info-type">${ menu.price }</span>
-																</span>															
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+												<a onclick="modal('${ menu.no }')">
+													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														<span class="thumb-info thumb-info-lighten">
+															<span class="thumb-info-wrapper">
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																	<span class="thumb-info-title">
+																		<span class="thumb-info-inner">${ menu.name }</span>
+																		<span class="thumb-info-type">${ menu.price }</span>
+																	</span>															
+															</span>
 														</span>
-													</span>
-												</div>
+													</div>												
+												</a>
 											</li>
 										
 										</c:if>
-									</c:forEach>
-									
-									<c:forEach items="${ menuList }" var="menu">
 										<c:if test="${ menu.type eq 'M' }">
 										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item breakfast">
-												<div class="portfolio-item"  data-toggle="modal"
-													data-target="#largeModal">
-													<span class="thumb-info thumb-info-lighten">
-														<span class="thumb-info-wrapper">
-															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
-																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																<span class="thumb-info-title">
-																	<span class="thumb-info-inner">${ menu.name }</span>
-																	<span class="thumb-info-type">${ menu.price }</span>
-																</span>															
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+												<a onclick="modal('${ menu.no }')">
+													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														<span class="thumb-info thumb-info-lighten">
+															<span class="thumb-info-wrapper">
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																	<span class="thumb-info-title">
+																		<span class="thumb-info-inner">${ menu.name }</span>
+																		<span class="thumb-info-type">${ menu.price }</span>
+																	</span>															
+															</span>
 														</span>
-													</span>
-												</div>
+													</div>												
+												</a>
 											</li>
 										
 										</c:if>
-									</c:forEach>
-									
-									<c:forEach items="${ menuList }" var="menu">
 										<c:if test="${ menu.type eq 'S' }">
 										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item salad">
-												<div class="portfolio-item"  data-toggle="modal"
-													data-target="#largeModal">
-													<span class="thumb-info thumb-info-lighten">
-														<span class="thumb-info-wrapper">
-															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
-																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																<span class="thumb-info-title">
-																	<span class="thumb-info-inner">${ menu.name }</span>
-																	<span class="thumb-info-type">${ menu.price }</span>
-																</span>															
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+												<a onclick="modal('${ menu.no }')">
+													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														<span class="thumb-info thumb-info-lighten">
+															<span class="thumb-info-wrapper">
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																	<span class="thumb-info-title">
+																		<span class="thumb-info-inner">${ menu.name }</span>
+																		<span class="thumb-info-type">${ menu.price }</span>
+																	</span>															
+															</span>
 														</span>
-													</span>
-												</div>
+													</div>												
+												</a>
 											</li>
 										
 										</c:if>
-									</c:forEach>
-									
-									<c:forEach items="${ menuList }" var="menu">
 										<c:if test="${ menu.type eq 'N' }">
 										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item addition">
-												<div class="portfolio-item"  data-toggle="modal"
-													data-target="#largeModal">
-													<span class="thumb-info thumb-info-lighten">
-														<span class="thumb-info-wrapper">
-															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
-																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																<span class="thumb-info-title">
-																	<span class="thumb-info-inner">${ menu.name }</span>
-																	<span class="thumb-info-type">${ menu.price }</span>
-																</span>															
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+												<a onclick="modal('${ menu.no }')">
+													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														<span class="thumb-info thumb-info-lighten">
+															<span class="thumb-info-wrapper">
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																	<span class="thumb-info-title">
+																		<span class="thumb-info-inner">${ menu.name }</span>
+																		<span class="thumb-info-type">${ menu.price }</span>
+																	</span>															
+															</span>
 														</span>
-													</span>
-												</div>
+													</div>												
+												</a>
 											</li>
 										
 										</c:if>
-									</c:forEach>
-									
-									<c:forEach items="${ menuList }" var="menu">
 										<c:if test="${ menu.type eq 'D' }">
 										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item beverage">
-												<div class="portfolio-item"  data-toggle="modal"
-													data-target="#largeModal">
-													<span class="thumb-info thumb-info-lighten">
-														<span class="thumb-info-wrapper">
-															<img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Meatball-Marinara.jpg"
-																class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																<span class="thumb-info-title">
-																	<span class="thumb-info-inner">${ menu.name }</span>
-																	<span class="thumb-info-type">${ menu.price }</span>
-																</span>															
+											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+												<a onclick="modal('${ menu.no }')">
+													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														<span class="thumb-info thumb-info-lighten">
+															<span class="thumb-info-wrapper">
+																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+																	<span class="thumb-info-title">
+																		<span class="thumb-info-inner">${ menu.name }</span>
+																		<span class="thumb-info-type">${ menu.price }</span>
+																	</span>															
+															</span>
 														</span>
-													</span>
-												</div>
+													</div>												
+												</a>
 											</li>
 										
 										</c:if>
