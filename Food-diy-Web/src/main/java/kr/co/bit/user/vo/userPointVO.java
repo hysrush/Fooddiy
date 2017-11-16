@@ -1,6 +1,6 @@
-package kr.co.bit.member.vo;
+package kr.co.bit.user.vo;
 
-public class MemberPointVO {
+public class userPointVO {
 
 	private int userPoint;
 

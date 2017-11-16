@@ -1,6 +1,6 @@
-package kr.co.bit.member.vo;
+package kr.co.bit.user.vo;
 
-public class MemberVO {
+public class userVO {
 	
 	private int no;
 	private String id;
