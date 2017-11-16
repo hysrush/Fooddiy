@@ -7,6 +7,8 @@
 <configuration>
 	<typeAliases>
 	  	<typeAlias type="kr.co.bit.member.vo.MemberVO" alias="memberVO"/>
+	  	<typeAlias type="kr.co.bit.event.vo.CityVO"  alias="cityVO"/>
+	  	<typeAlias type="kr.co.bit.event.vo.locationVO"  alias="locationVO"/>
 	  	<typeAlias type="kr.co.bit.event.vo.StoreVO"  alias="storeVO"/>
 	  	<typeAlias type="kr.co.bit.event.vo.EventBoardVO" alias="eventVO"/>
 	  	<typeAlias type="kr.co.bit.community.vo.QnaBoardVO" alias="qnaVO"/>

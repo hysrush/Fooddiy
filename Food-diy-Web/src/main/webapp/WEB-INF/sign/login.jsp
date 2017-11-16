@@ -8,7 +8,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title> | 로그인 | </title>	
+		<title> | 로그인 | </title>
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -61,7 +62,7 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
 		<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-		
+<script>window.name="main"</script>
 <script>
 	
 	$(document).ready(function(){
@@ -76,9 +77,24 @@
 			location.href="${pageContext.request.contextPath}/sign/phoneCert.jsp"; 
 		});
 		
+		
+		$("#lost").click(function(){
+			window.opener.name = "main"; // 부모창의 이름 설정
+	    	document.form_lost.target = opener.window.name; // 타켓을 부모창으로 설정
+	   		self.close();
+		});
+
 		if("${msg}"){
 			alert("${ msg }");
 		}
+		
+		if("${ lostId}"){
+			var f = document.memberForm;
+			
+			f.id.value = "${ lostId }";
+		}
+		
+		
 	});
 
 </script>

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.bit.member.vo.MemberVO;
 import kr.co.bit.sign.dao.SignDAO;
-import kr.co.bit.sign.vo.LoginVO;
 
 @Service
 public class SignServiceImp implements SignService {
@@ -14,7 +13,7 @@ public class SignServiceImp implements SignService {
 	private SignDAO signDAOImp;
 	
 	// 로그인
-	public MemberVO login(LoginVO login) {
+	public MemberVO login(MemberVO login) {
 		
 		return signDAOImp.login(login);
 	}
@@ -30,6 +29,16 @@ public class SignServiceImp implements SignService {
 	public int checkId(String id) {
 		
 		return signDAOImp.checkId(id);
+	}
+	
+	//id 찾기
+	public MemberVO lostId(MemberVO lost) {
+		return signDAOImp.lostId(lost);
+	}
+	
+	//pw 찾기
+	public MemberVO lostPw(MemberVO lost) {
+		return signDAOImp.lostPw(lost);
 	}
 
 }

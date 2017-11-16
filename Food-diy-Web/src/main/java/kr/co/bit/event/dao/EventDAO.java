@@ -2,14 +2,18 @@ package kr.co.bit.event.dao;
 
 import java.util.List;
 
+import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.event.vo.locationVO;
 
 public interface EventDAO {
 	
 	List<EventBoardVO> selectAll();
 	List<EventBoardVO> selectEndEvent();
 	List<StoreVO> selectStoreList();
+	List<CityVO> selectCity();
+	List<locationVO> selectLocation();
 	EventBoardVO selectOne(int no);
 	void insert(EventBoardVO eventVO);
 	void update(EventBoardVO eventVO);

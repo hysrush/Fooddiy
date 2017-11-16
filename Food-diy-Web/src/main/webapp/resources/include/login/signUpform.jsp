@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 <script>
-	
-</script>
-<script>
 	// 유효성 검사
 	function isNull(obj){
 		if(obj.value == ""){
@@ -114,10 +111,8 @@
 		<div id="collapseOne" class="accordion-body collapse in">
 			<div class="panel-body">
 				<!-- id="frmBillingAddress" -->
-				<form name="signForm"
-					action="${ pageContext.request.contextPath }/sign/signUp.do"
-					method="post">
-
+				<form name="signForm" action="${ pageContext.request.contextPath }/sign/signUp.do" method="post">
+					<input type="hidden" name="root" value="${ phoneCert.root }"/>
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-6">
@@ -166,14 +161,13 @@
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-6">
-								<label>E-mail </label> <input name="email" type="text"
-									class="form-control" required>
+								<label>E-mail </label> <input name="email" type="text" class="form-control" required>
 							</div>
 							<div class="row">
 								<div class="form-group">
 									<div class="col-md-6">
-										<label>이메일 선택</label> <select name="emailD"
-											class="form-control" required>
+										<label>도메인</label>
+										<select name="emailD" class="form-control" required>
 											<option value="@naver.com">@ naver.com</option>
 											<option value="@daum.net">@ daum.net</option>
 										</select>
@@ -227,12 +221,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<!-- btn btn-info mb-md -->
-							<input type="submit" id="signUp"
-								class="btn btn-info mb-md form-control" value="가입">
+							<input type="submit" id="signUp" class="btn btn-info mb-md form-control" value="가입">
 						</div>
 						<div class="col-md-6">
-							<input type="button" id="reset"
-								class="btn btn-info mb-md form-control" value="취소">
+							<input type="button" id="reset" class="btn btn-info mb-md form-control" value="취소">
 						</div>
 					</div>
 				</form>

@@ -20,8 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.service.EventService;
+import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.event.vo.locationVO;
 
 @RequestMapping("/event")
 @Controller
@@ -55,12 +57,17 @@ public class EventController {
 	public ModelAndView StoreList() {
 		
 		List<StoreVO> storeList = eventService.selectStoreList();
+		List<CityVO> cityList = eventService.selectCity();
+		List<locationVO> locationList = eventService.selectLocation();
+		
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("event/StoreEventPage");
 		
 		mav.addObject("storeEventList", storeList );
+		mav.addObject("cityList", cityList );
+		mav.addObject("locationList", locationList );
 		
 		
 		

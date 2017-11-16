@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.event.dao.EventDAO;
+import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.event.vo.locationVO;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -61,6 +63,22 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public void removeEvent(int no) {
 		eventDAO.delete(no);
+	}
+
+
+
+	@Override
+	public List<CityVO> selectCity() {
+		List<CityVO> list = eventDAO.selectCity();
+		return list;
+	}
+
+
+
+	@Override
+	public List<locationVO> selectLocation() {
+		List<locationVO> list = eventDAO.selectLocation();
+		return list;
 	}
 
 
