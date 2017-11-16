@@ -74,8 +74,10 @@
 											<div class="col-md-4">
 												<label>이메일</label>&nbsp;
 												<c:choose>
-													<c:if test="${ not empty nonMember }"></c:if>
-												
+													<c:if test="${ not empty non }">
+													
+													</c:if>
+													<
 												</c:choose>
 												<input name="email" type="text" class="form-control" required>
 											</div><br/>

@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-<<<<<<< HEAD
-import kr.co.bit.member.vo.MemberVO;
 import kr.co.bit.sign.mail.MailKey;
 import kr.co.bit.sign.service.MailService;
-=======
->>>>>>> refs/remotes/origin/master
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
@@ -289,7 +285,7 @@ public class SignController {
 	
 	// 이메일 인증 코드 발송
 	@RequestMapping("/nonemail")
-	public String nonMemberSign(MemberVO nonMember, Model model) {
+	public String nonMemberSign(UserVO nonMember, Model model) {
 		
 		MailVO mail = new MailVO();
 		String key = new MailKey().getkey();
