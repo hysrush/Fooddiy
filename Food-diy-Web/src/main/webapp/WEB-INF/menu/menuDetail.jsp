@@ -29,7 +29,7 @@
 					<div class="thumbnail"
 						style="margin-top: 50px; margin-bottom: 50px">
 						<img alt="" class="img-responsive img-rounded"
-							src="${ pageContext.request.contextPath }/resources/img/menu_detail/italian_bmt.jpg">
+							src="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
 					</div>
 				</div>
 			</div>
@@ -54,9 +54,7 @@
 					</p>
 
 					<p class="taller">
-						${menuDetailVO.detail}
-						<!-- 모든 샌드위치를 평정한 샌드위치. 갓 구운 빵에 얇게 슬라이스 된 제노바 살라미, 페퍼로니 햄을 가득 채운 샌드위치로, 야채와 소스를 선택하여 즐기실 수 있습니다.
-						입안에서 살살 녹는 샌드위치를 경험해 보세요. -->
+						${menuDetailVO.detail}						
 					</p>
 					<p class="inch">
 						<input type="radio" name="chk_info" value="HTML" checked="checked"><span
@@ -65,12 +63,12 @@
 							style="font-size: 18px; margin-left: 5px">30cm</span>
 					</p>
 
-					<form enctype="multipart/form-data" method="post" class="cart">						
+					<form enctype="multipart/form-data" method="post" class="cart" style="margin-bottom: 10px">						
 						<button href="#" class="btn btn-primary btn-icon">주문하기</button>
 					</form>
 
 					<div class="product_meta">
-						<span class="posted_in">Categories: <a rel="tag" href="#">Steak</a>,
+						<span class="posted_in">알르레기 유발성분 : <a rel="tag" href="#">Steak</a>,
 							<a rel="tag" href="#">Cheese</a>.
 						</span>
 					</div>
@@ -89,29 +87,29 @@
 							<table class="table table-striped mt-xl">
 								<tbody>
 									<tr>
-										<th>칼로리</th>
+										<th>Serving Size(g)</th>
 										<td>410.0</td>
 									</tr>
 									<tr>
-										<th>총지방(g)</th>
-										<td>16.0</td>
-									</tr>
-									<tr>
-										<th>콜레스테롤(mg)</th>
-										<td>45.0</td>
-									</tr>
-									<tr>
-										<th>나트륨(mg)</th>
-										<td>1260.0</td>
+										<th>칼로리</th>
+										<td>410.0</td>
 									</tr>
 									<tr>
 										<th>단백질(g)</th>
 										<td>20.0</td>
 									</tr>
 									<tr>
-										<th>탄수화물(g)</th>
-										<td>46.0</td>
+										<th>나트륨(mg)</th>
+										<td>1260.0</td>
 									</tr>
+									<tr>
+										<th>당류(g)</th>
+										<td>16.0</td>
+									</tr>
+									<tr>
+										<th>포화지방(g)</th>
+										<td>45.0</td>
+									</tr>									
 								</tbody>
 							</table>
 						</div>
@@ -216,10 +214,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	</div>
-
 
 
 </body>

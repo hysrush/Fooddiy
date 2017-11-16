@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,74 +69,82 @@
 <!-- Skin CSS -->
 <link rel="stylesheet"
 	href="${ pageContext.request.contextPath}/resources/css/skins/skin-shop-9.css">
-	
+
 <!-- Theme Custom CSS -->
-<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
 <!-- Theme Custom CSS -->
 <link rel="stylesheet"
 	href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <!-- Head Libs -->
 <script
 	src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js">
-</script>
 	
+</script>
+
 <script>
-$(document).ready(function(){
-	$('#lnb').stick_in_parent({offset_top:73});	
-});
+	$(document).ready(function() {
+		$('#lnb').stick_in_parent({
+			offset_top : 73
+		});
+	});
 
-function modal(menuNo) {
-	$(".portfolio-item").click(function(){
-    	var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo;
-    	$('div.modal').modal().removeData();
-        $('div.modal').modal({remote : url});
-    })
-}
+	function modal(menuNo) {
+		$(".thumb-info").click(function() {
+			$('div.modal').modal().removeData();
+			var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo;
+			$('div.modal').modal({ remote : url	});
+		})
+	}
+	/* function modal(menuNo) {
+	 $(".portfolio-item").click(function(){
+	 var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo;
+	 $('div.modal').modal().removeData();
+	 $('div.modal').modal({remote : url});
+	 })
+	 } */
 
-
-
-
-/* $(function(){
-    $(".portfolio-item").click(function(){
-    	var menu = $(this).attr("id");
-    	var url = 'detail_menu/'+menu+'.jsp';
-    	$('div.modal').modal().removeData();
-        $('div.modal').modal({remote : url});
-    })
-}) */
-/* $(function(){
-    $("#steakcheese").click(function(){
-        $('div.modal').modal({remote : 'detail_menu/steakcheese.jsp'});
-    })
-}) */
-
-
-
-
+	/* $(function(){
+	 $(".portfolio-item").click(function(){
+	 var menu = $(this).attr("id");
+	 var url = 'detail_menu/'+menu+'.jsp';
+	 $('div.modal').modal().removeData();
+	 $('div.modal').modal({remote : url});
+	 })
+	 }) */
+	/* $(function(){
+	 $("#steakcheese").click(function(){
+	 $('div.modal').modal({remote : 'detail_menu/steakcheese.jsp'});
+	 })
+	 }) */
 </script>
 
 </head>
 <body>
 	<div class="body">
 		<header id="header"
-				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
-				<jsp:include page="/resources/include/top-new.jsp"/>
+			data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
+			<jsp:include page="/resources/include/top-new.jsp" />
 		</header>
-		
+
 		<!-- Mobile menu 부분 -->
-		<jsp:include page="/resources/include/mobile-menu.jsp"/>
-		
+		<jsp:include page="/resources/include/mobile-menu.jsp" />
+
 		<div role="main" class="main">
 			<section class="page-header">
 				<div class="container">
@@ -155,7 +163,7 @@ function modal(menuNo) {
 					</div>
 				</div>
 			</section>
-			
+
 			<div class="container">
 
 				<div class="row">
@@ -177,201 +185,216 @@ function modal(menuNo) {
 								<li data-option-value=".addition"><a href="#">추가메뉴</a></li>
 								<li data-option-value=".beverage"><a href="#">음료</a></li>
 							</ul>
-						</aside>						
-					</div>					
-
-						<!-- 모바일 크기에서 보이는 슬라이드 메뉴 -->
-						<aside class="sidebar hidden-md hidden-lg" id="lnb">
-							<nav>
-								<ul>
-									<li class="active"><a href="${ pageContext.request.contextPath }/menu/menu2.jsp">전체메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/recommend.jsp">추천메뉴</a>	</li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/premium.jsp">프리미엄</a></li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/best.jsp">베스트</a></li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/classic.jsp">클래식</a></li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/breakfast.jsp">아침식사</a>	</li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/salad.jsp">샐러드</a></li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/addition.jsp">추가메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath }/menu/mobile_menu/beverage.jsp">음료</a>	</li>
-								</ul>
-							</nav>						
 						</aside>
-					
-					
-					
-					<div class="col-md-9">						
+					</div>
+
+					<!-- 모바일 크기에서 보이는 슬라이드 메뉴 -->
+					<aside class="sidebar hidden-md hidden-lg" id="lnb">
+						<nav>
+							<ul>
+								<li class="active"><a
+									href="${ pageContext.request.contextPath }/menu/menu2.jsp">전체메뉴</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/recommend.jsp">추천메뉴</a>
+								</li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/premium.jsp">프리미엄</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/best.jsp">베스트</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/classic.jsp">클래식</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/breakfast.jsp">아침식사</a>
+								</li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/salad.jsp">샐러드</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/addition.jsp">추가메뉴</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath }/menu/mobile_menu/beverage.jsp">음료</a>
+								</li>
+							</ul>
+						</nav>
+					</aside>
+
+
+
+					<div class="col-md-9">
 						<div id="slidemenu">
-						<ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>
-						<div class="row">
-							<div class="sort-destination-loader sort-destination-loader-showing">
-								<ul class="portfolio-list sort-destination"	data-sort-id="portfolio">								
+							<ul class="nav nav-pills sort-source" data-sort-id="portfolio"
+								data-option-key="filter"
+								data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>
+							<div class="row">
+								<div
+									class="sort-destination-loader sort-destination-loader-showing">
+									<ul class="portfolio-list sort-destination"	data-sort-id="portfolio">
 									
-									<c:forEach items="${ menuList }" var="menu">
-										<c:if test='${ menu.type eq "R" }'>
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
-												<a onclick="modal('${ menu.no }')">
+										<c:forEach items="${ menuList }" var="menu">
+											<c:if test='${ menu.type eq "R" }'>
+
+												<li	class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
 													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }원</span>
-																	</span>																
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }" 
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
+														</span>
+														</a>
 														</span>
 													</div>
-												</a>
-											</li>
-										
-										</c:if>
-										<c:if test='${ menu.type eq "P" }'>
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<a onclick="modal('${ menu.no }')">
-													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+												</li>
+
+											</c:if>
+											<c:if test='${ menu.type eq "P" }'>
+
+												<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }</span>
-																	</span>															
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
 														</span>
-													</div>												
-												</a>
-											</li>
-										
-										</c:if>
-										<c:if test='${ menu.type eq "B" }'>
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<a onclick="modal('${ menu.no }')">
-													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														</a>
+														</span>
+													</div>
+												</li>
+
+											</c:if>
+											<c:if test='${ menu.type eq "B" }'>
+
+												<li class="col-md-4 col-sm-6 col-xs-6 isotope-item best">
+													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }</span>
-																	</span>															
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
 														</span>
-													</div>												
-												</a>
-											</li>
-										
-										</c:if>
-										<c:if test="${ menu.type eq 'C' }">
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<a onclick="modal('${ menu.no }')">
-													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														</a>
+														</span>
+													</div>
+												</li>
+
+											</c:if>
+											<c:if test="${ menu.type eq 'C' }">
+
+												<li class="col-md-4 col-sm-6 col-xs-6 isotope-item classic">
+													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }</span>
-																	</span>															
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
 														</span>
-													</div>												
-												</a>
-											</li>
-										
-										</c:if>
-										<c:if test="${ menu.type eq 'M' }">
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<a onclick="modal('${ menu.no }')">
-													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														</a>
+														</span>
+													</div>
+												</li>
+
+											</c:if>
+											<c:if test="${ menu.type eq 'M' }">
+
+												<li class="col-md-4 col-sm-6 col-xs-6 isotope-item breakfast">
+													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }</span>
-																	</span>															
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
 														</span>
-													</div>												
-												</a>
-											</li>
-										
-										</c:if>
-										<c:if test="${ menu.type eq 'S' }">
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<a onclick="modal('${ menu.no }')">
-													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														</a>
+														</span>
+													</div>
+												</li>
+
+											</c:if>
+											<c:if test="${ menu.type eq 'S' }">
+
+												<li class="col-md-4 col-sm-6 col-xs-6 isotope-item salad">
+													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }</span>
-																	</span>															
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
 														</span>
-													</div>												
-												</a>
-											</li>
-										
-										</c:if>
-										<c:if test="${ menu.type eq 'N' }">
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<a onclick="modal('${ menu.no }')">
-													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														</a>
+														</span>
+													</div>
+												</li>
+
+											</c:if>
+											<c:if test="${ menu.type eq 'N' }">
+
+												<li class="col-md-4 col-sm-6 col-xs-6 isotope-item addition">
+													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }</span>
-																	</span>															
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
 														</span>
-													</div>												
-												</a>
-											</li>
-										
-										</c:if>
-										<c:if test="${ menu.type eq 'D' }">
-										
-											<li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-												<a onclick="modal('${ menu.no }')">
-													<div class="portfolio-item"  data-toggle="modal" data-target="#largeModal">
+														</a>
+														</span>
+													</div>
+												</li>
+
+											</c:if>
+											<c:if test="${ menu.type eq 'D' }">
+
+												<li class="col-md-4 col-sm-6 col-xs-6 isotope-item beverage">
+													<div class="portfolio-item" data-toggle="modal"	data-target="#largeModal">
 														<span class="thumb-info thumb-info-lighten">
-															<span class="thumb-info-wrapper">
-																<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-																	class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-																	<span class="thumb-info-title">
-																		<span class="thumb-info-inner">${ menu.name }</span>
-																		<span class="thumb-info-type">${ menu.price }</span>
-																	</span>															
+														<a onclick="modal('${ menu.no }')">
+														<span class="thumb-info-wrapper">
+															<img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+															class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+															<span class="thumb-info-title">
+																<span class="thumb-info-inner">${ menu.name }</span>
+																<span class="thumb-info-type">${ menu.price }원</span>
 															</span>
 														</span>
-													</div>												
-												</a>
-											</li>
-										
-										</c:if>
-									</c:forEach>
-									
-								</ul>
+														</a>
+														</span>
+													</div>
+												</li>
+
+											</c:if>
+										</c:forEach>
+
+									</ul>
+								</div>
 							</div>
-						</div>						
 						</div>
 					</div>
 				</div>
@@ -389,14 +412,15 @@ function modal(menuNo) {
 
 
 	<!-- 모달들 -->
-	<div class="modal fade" tabindex="-1" role="dialog"	aria-labelledby="largeModalLabel" aria-hidden="true">
+	<div class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="largeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-			<!-- .jsp로 모달내용 -->
+				<!-- .jsp로 모달내용 -->
 			</div>
 		</div>
 	</div>
-	
+
 
 
 	<!-- Vendor -->
@@ -449,8 +473,7 @@ function modal(menuNo) {
 		src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
 
 	<!-- Theme Custom -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 
 	<!-- Theme Initialization Files -->
 	<script
