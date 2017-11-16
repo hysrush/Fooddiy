@@ -275,7 +275,7 @@
 						</a>
 							<ul class="dropdown-menu">
 								<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
-								<li><a href="${ pageContext.request.contextPath}/event/StoreEventPage.jsp">매장별 EVENT</a></li>
+								<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/notice/qna.jsp"> Community <span class="tip tip-hot">Hot!</span></a>
 							<ul class="dropdown-menu">

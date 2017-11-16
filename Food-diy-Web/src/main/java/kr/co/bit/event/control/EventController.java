@@ -69,7 +69,7 @@ public class EventController {
 		mav.addObject("cityList", cityList );
 		mav.addObject("locationList", locationList );
 		
-		
+		System.out.println("얘가져옴?");
 		
 		return mav;
 	}
