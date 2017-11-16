@@ -285,12 +285,12 @@
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp" data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>
 							</ul></li>
 						<!-- 회원 로그인하면 My page -->
-						<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.jsp" class="dropdown-toggle"> My Page </a>
+						<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.do" class="dropdown-toggle"> My Page </a>
 							<ul class="dropdown-menu">
-								<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">회원 정보</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">최근 주문 내역</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
+								<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
+								<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+								<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+								<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
 							</ul></li>
 						<!-- 비회원 로그인하면 주문내역 조회 -->
 						<c:if test="${ not empty nonMember }">

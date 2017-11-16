@@ -120,9 +120,9 @@
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">최근 주문 내역</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
+									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
 		
@@ -138,7 +138,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">${member.id}님의 프로필 정보</h3>
+              <h3 class="panel-title">${userVO.id}님의 프로필 정보</h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -148,11 +148,11 @@
                     <tbody>
                       <tr>
                        <td><strong>  ID :</strong></td>
-                        <td>${member.id}</td>
+                        <td>${userVO.id}</td>
                       </tr>                 
                       <tr>
                       <td><strong> 이 름:</strong></td>
-                        <td>${member.name}</td>
+                        <td>${userVO.name}</td>
                       </tr>
                    
                          <tr>
@@ -160,11 +160,11 @@
                       </tr>
                         <tr>
                        	<td><strong>생 일:</strong></td>
-                        <td>${member.birth}</td>
+                        <td></td>
                       </tr>
                       <tr>
                         <td><strong>전화번호:</strong></td>
-                        <td>${member.phone}</td>
+                        <td></td>
                            
                       </tr>
                       <tr>
@@ -173,12 +173,12 @@
                       </tr>
                        <tr>
                         <td><strong>등 급 : </strong></td>
-                        <td>${member.star}</td>
+                        <td></td>
                            
                       </tr>
                        <tr>
                         <td><strong>포인트 : </strong></td>
-                        <td>${member.point}</td>
+                        <td></td>
                            
                       </tr>
                       <!-- <select id="point" parameterClass="map" resultClass="hashmap" remapResults="true">

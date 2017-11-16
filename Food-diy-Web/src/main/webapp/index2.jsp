@@ -9,7 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
 		<title>Fooddiy-Order</title>	
-
+ 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -32,8 +32,8 @@
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.carousel.min.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.theme.default.min.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.min.css">
-
-		<!-- Theme CSS -->
+  
+		<!-- Theme CSS --> 
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme-elements.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme-blog.css">

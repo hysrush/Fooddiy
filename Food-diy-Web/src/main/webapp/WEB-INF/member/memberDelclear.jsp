@@ -68,9 +68,10 @@
 		
 		$("#start").click(function(){
 	
-			location.href="${pageContext.request.contextPath}/index.jsp"; 
+			location.href="${pageContext.request.contextPath}/index2.jsp"; 
 		});
 	});
+		
 </script>
 <style type="text/css">
 #div01 {
