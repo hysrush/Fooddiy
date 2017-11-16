@@ -47,9 +47,9 @@
 									<div class="col-xs-12 col-md-6">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
-									<div class="col-xs-12 col-md-6">
+									<%-- <div class="col-xs-12 col-md-6">
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
-									</div>
+									</div> --%>
 									<%-- <div class="col-md-4">	
 										<jsp:include page="/resources/include/login/facebookLogin.jsp"/>
 									</div> --%>

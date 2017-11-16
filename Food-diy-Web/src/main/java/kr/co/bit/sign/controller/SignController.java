@@ -3,6 +3,7 @@ package kr.co.bit.sign.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.co.bit.sign.mail.MailKey;
+import kr.co.bit.sign.service.MailService;
 import kr.co.bit.sign.service.SignService;
+import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
 import kr.co.bit.user.vo.UserVO;
 
@@ -27,8 +31,10 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
-/*	@Autowired(required=true)
-	private MailService mailService;*/
+	@Autowired(required=true)
+	private MailService mailService;
+
+	
 	/**
 	 * 
 	 *  1. 회원
@@ -38,9 +44,8 @@ public class SignController {
 	
 	// - 휴대전화 인증할 것인지 확인
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
-	public String phoneCert(HttpSession session) {
+	public String phoneCert() {
 		
-		session.setAttribute("phoneCert", new UserVO());
 		return "sign/phoneCert";
 		
 	}
@@ -239,6 +244,7 @@ public class SignController {
 	@RequestMapping(value = "/kakaoSignUp.do", method = RequestMethod.POST)
 	public String kakaoSignUp(PhoneCertVO kakaoVO, Model model, HttpSession session) {
 		
+		// 회원 가입
 		UserVO kakao = new UserVO();
 		
 		kakao.setId(kakaoVO.getId());
@@ -252,7 +258,7 @@ public class SignController {
 		
 		signServiceImp.signUp(kakao);
 		
-		// 회원가입 후 자동 로그인
+		// 회원가입 후 로그인
 		UserVO login = new UserVO();
 		login.setId(kakaoVO.getId());
 		login.setPw(kakaoVO.getPw());
@@ -280,29 +286,38 @@ public class SignController {
 	 * 	 - 가입
 	 * */
 	
-/*	// 이메일 인증 코드 발송
+	// 이메일 인증 코드 발송
 	@RequestMapping("/nonemail")
 	public String nonMemberSign(UserVO nonMember, Model model) {
 		
 		MailVO mail = new MailVO();
 		String key = new MailKey().getkey();
 		
+		mail.setSender("skdml132@gamil.com");
 		mail.setReceiver(nonMember.getEmail());
 		mail.setSubject("[SubWay] 비회원 인증코드");
-		mail.setContent(nonMember.getName()+" 님이 요청하신 인증 코드는 ["+key+"]입니다.<br/>"
-						+"<a href='#'>인증페이지창으로 이동</a>");
+		mail.setContent(nonMember.getName()+" 님이 요청하신 인증 코드는 ["+key+"]입니다.");
 		
 		
 		mailService.sendMail(mail);
 		
 		model.addAttribute("non", nonMember);
-
-		return "sign/nonmemberLogin";
+		model.addAttribute("key", key);
+		System.out.println(key);
+		System.out.println(nonMember.getEmail());
+		return "sign/nonLogin";
 	}
 
-	*/
-	
-	
+	// 이메일 인증 후 가입
+	@RequestMapping("/nonemailCheck")
+	public String nonMemberCert(UserVO mail) {
+		
+		signServiceImp.signUp(mail);
+		
+		
+		
+		return "/sign";
+	}
 	
 	
 	

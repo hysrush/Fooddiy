@@ -61,44 +61,9 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
-	
-<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-<script>window.name="main"</script>
-<script>
-	
-	$(document).ready(function(){
-		
-		$("#check").click(function(){
 
-			location.href="${pageContext.request.contextPath}/menu/menu.jsp"; 
-		});
-		
-		$("#signUp").click(function(){
-
-			location.href="${pageContext.request.contextPath}/sign/phoneCert.jsp"; 
-		});
-		
-		
-		$("#lost").click(function(){
-			window.opener.name = "main"; // 부모창의 이름 설정
-	    	document.form_lost.target = opener.window.name; // 타켓을 부모창으로 설정
-	   		self.close();
-		});
-
-		if("${msg}"){
-			alert("${ msg }");
-		}
-		
-		if("${ lostId}"){
-			var f = document.memberForm;
-			
-			f.id.value = "${ lostId }";
-		}
-		
-		
-	});
-
-</script>
+	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="${ pageContext.request.contextPath }/resources/js/sign/check.js"></script>
 </head>
 <body>
 	<div class="body">
@@ -142,20 +107,20 @@
 							<div class="col-md-12">
 								<div class="tabs tabs-bottom tabs-center tabs-simple">
 									<ul class="nav nav-tabs">
-										<li class="active">
-											<a href="#memberLogin" data-toggle="tab" aria-expanded="true"> 회원</a>
-										</li>
 										<li class="">
-											<a href="#nonLogin" data-toggle="tab" aria-expanded="false"> 비회원</a>
+											<a href="#memberLogin" data-toggle="tab" aria-expanded="false"> 회원</a>
+										</li>
+										<li class="active">
+											<a href="#nonLogin" data-toggle="tab" aria-expanded="true"> 비회원</a>
 										</li>
 									</ul>
 									<!-- 회원 로그인 -->
 										<div class="tab-content">
-											<div class="tab-pane active" id="memberLogin">
+											<div class="tab-pane" id="memberLogin">
 												<jsp:include page="/resources/include/login/memberLogin.jsp"/>
 										</div>
 										<!--  비회원 로그인    -->
-										<div class="tab-pane" id="nonLogin">
+										<div class="tab-pane active" id="nonLogin">
 											<jsp:include page="/resources/include/login/nonmemberLogin.jsp"/>
 										</div>
 									</div>
