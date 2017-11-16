@@ -57,6 +57,23 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		
+			$("#sido").change(function(){
+				console.log( "선택된 값1 : " + $("#sido").val() );
+	       		
+		
+		});
+			
+			
+			
+			
+
+	});
+	</script>
+
 
 	</head>
 	<body>
@@ -132,7 +149,7 @@
 														<div class="form-group">
 															<div class="col-md-6">
 																<label>시,도</label>
-																<select class="form-control">
+																<select class="form-control" id ="sido">
 																	<option value="" selected="selected" disabled= "disabled">시,도 를 선택해주세요 </option>
 																	  <c:forEach var="city" items="${ cityList }" varStatus="i">
 																	  		<option value="${city.cityNo}">${ city.cityName }</option>																		    
@@ -142,17 +159,18 @@
 															
 															<div class="col-md-6">
 																<label>군,구</label>
-																<select class="form-control">
+																<select class="form-control" id= "gugun">
 																	<option value="" selected="selected">구,군 을 선택해주세요 </option>
 																	 	<c:forEach var="location" items="${ locationList }" varStatus="i">
-																	<option value="${ location.locationNo }">${ location.locationName }</option>
+																	 			
+																			<option value="${ location.locationNo }" >${ location.locationName }</option>
 																	     
 																	  </c:forEach>
 																</select>
 															</div>	
 														</div>
 													</div>
-													<!-- <div class="row">
+												<!-- <div class="row">
 														<div class="form-group">
 															<div class="col-md-12">
 																<label>매장별 검색</label>
@@ -273,7 +291,7 @@
 		</div>
 	</div>	
 			<!-- Vendor -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+		
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
@@ -310,5 +328,14 @@
 		
 		<!-- Examples -->
 		<script src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</body>
 </html>
