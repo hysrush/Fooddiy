@@ -169,7 +169,7 @@
 				</div>
 			</div>
 			
-			<div class="container mobile">
+			<div class="container mobile-select-menu">
 
 					<div class="row">
 						<div class="col-xs-12">

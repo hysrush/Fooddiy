@@ -53,6 +53,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>
@@ -67,6 +72,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>
@@ -95,6 +105,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>
@@ -109,6 +124,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>
@@ -123,6 +143,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>
 	</li>
 </ul>
@@ -162,13 +187,29 @@
 			var tr = $(this).find('tr');
 			var more = $(this).find('.more');
 			var less = $(this).find('.less');
-			var nomal = $(this).find('.nomal');
+			var nomal= $(this).find('.nomal');
 			
 			
 			
 			$(tr).click(function() {
 				if(!$(this).data('clickStatus')) {
 					$(this).parents('.product-vegetable-area').prev().hide();
+					$(this).parents('table').next().hide();
+					
+					$(nomal).css({
+						'color' : 'white',
+						'background-color' : '#7aa93c'
+					});
+					$(less).css({
+						'color' : '#7aa93c',
+						'background-color' : 'white',
+						'border-color' : '#7aa93c'
+					});
+					$(more).css({
+						'color' : '#7aa93c',
+						'background-color' : 'white',
+						'border-color' : '#7aa93c'
+					});
 					
 					
 					var td = '<td class="' + 'vegetable-name"' + '">';
@@ -198,13 +239,13 @@
 							if($(this).hasClass(id)) {
 								
 								if(index == 0 ) { // 첫번째에 존재하는것을 제거하고 추가
-									
+									var tr = $('.vegetable-table tr');
 									var remove_td = $(this).children();
 									for(var i = 1; i < remove_td.length; ++i) {
 										$(remove_td[i].remove());
 									}
 									
-									$('.vegetable-table tr').append(td);
+									$(tr[0]).append(td);
 								}
 								else {  //첫번째 줄 이외에 존재하는 것을 제거하고 추가
 									$(this).remove();
@@ -226,6 +267,7 @@
 				}
 				else {
 					$(this).parents('.product-vegetable-area').prev().show();
+					$(this).parents('table').next().show();
 					
 					var tr  = $('.vegetable-table tbody tr');
 	 				
@@ -252,7 +294,196 @@
 					$(this).data('clickStatus', 0);
 				}
 			});
+			
+			
+			/////////////////////////////////////////////////////////////////////////////
+			
+			
+			$(less).click(function() {
+				$(this).css({
+					'color' : 'white',
+					'background-color' : '#7aa93c'
+				});
+				$(this).next().css({
+					'color' : '#7aa93c',
+					'background-color' : 'white',
+					'border-color' : '#7aa93c'
+				});
+				$(this).next().next().css({
+					'color' : '#7aa93c',
+					'background-color' : 'white',
+					'border-color' : '#7aa93c'
+				});
+				
+				var td = '<td class="' + 'vegetable-name"' + '">';
+				td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+				td += '</td>';
+				td += '<td class = "'+ 'vegetable-plus-minus">' + '(적게)';
+				td += '</td>';
+				
+				var row =  '<tr class = "'+ id + '">';
+				row += '<td width ="' + '30%"> </td>'
+				row += '<td class="' + 'vegetable-name">';
+				row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+				row += '</td>';
+				row += '<td class = "'+ 'vegetable-plus-minus">' + '(적게)' + '</td>';
+				row += '</tr>';
+				
+				var flag = 1; 
+				//아무것도 없으면				
+				if($('.vegetable-table tr').children().length == 1) {
+						$('.vegetable-table tr').addClass(id);
+						$('.vegetable-table tr').append(td);
+				}
+				else {
+					$('.vegetable-table tr').each(function(index) {
+						
+					
+						if($(this).hasClass(id)) {
+							
+							if(index == 0 ) { // 첫번째에 존재하는것을 제거하고 추가
+								
+								var remove_td = $(this).children();
+								for(var i = 1; i < remove_td.length; ++i) {
+									$(remove_td[i].remove());
+								}
+								
+								var tr = $('.vegetable-table tr');
+								$(tr[0]).append(td);
+							}
+							else {  //첫번째 줄 이외에 존재하는 것을 제거하고 추가
+								$(this).remove();
+								$('.vegetable-table').append(row);
+							}
+							
+							flag = 0;
+						}
+					});
+					
+					//존재하지 않으면
+					if(flag) {
+						$('.vegetable-table').append(row);
+					}
+				}
+			});
+			
+			/////////////////////////////////////////////////////////////////
+			
+			$(more).click(function() {
+				$(this).css({
+					'color' : 'white',
+					'background-color' : '#7aa93c'
+				});
+				$(this).prev().css({
+					'color' : '#7aa93c',
+					'background-color' : 'white',
+					'border-color' : '#7aa93c'
+				});
+				$(this).prev().prev().css({
+					'color' : '#7aa93c',
+					'background-color' : 'white',
+					'border-color' : '#7aa93c'
+				});
+				
+				var td = '<td class="' + 'vegetable-name"' + '">';
+				td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+				td += '</td>';
+				td += '<td class = "'+ 'vegetable-plus-minus">' + '(많이)';
+				td += '</td>';
+				
+				var row =  '<tr class = "'+ id + '">';
+				row += '<td width ="' + '30%"> </td>'
+				row += '<td class="' + 'vegetable-name">';
+				row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+				row += '</td>';
+				row += '<td class = "'+ 'vegetable-plus-minus">' + '(많이)' + '</td>';
+				row += '</tr>';
+				
+				var flag = 1; 
+				//아무것도 없으면				
+				if($('.vegetable-table tr').children().length == 1) {
+						$('.vegetable-table tr').addClass(id);
+						$('.vegetable-table tr').append(td);
+				}
+				else {
+					$('.vegetable-table tr').each(function(index) {
+						
+					
+						if($(this).hasClass(id)) {
+							
+							if(index == 0 ) { // 첫번째에 존재하는것을 제거하고 추가
+								
+								var remove_td = $(this).children();
+								for(var i = 1; i < remove_td.length; ++i) {
+									$(remove_td[i].remove());
+								}
+								
+								var tr = $('.vegetable-table tr');
+								$(tr[0]).append(td);
+							}
+							else {  //첫번째 줄 이외에 존재하는 것을 제거하고 추가
+								$(this).remove();
+								$('.vegetable-table').append(row);
+							}
+							
+							flag = 0;
+						}
+					});
+					
+					//존재하지 않으면
+					if(flag) {
+						$('.vegetable-table').append(row);
+					}
+				}
+			});
+			
+			
+			/////////////////////////////////////////////////////////////////
+			$(nomal).click(function() {
+				$(this).css({
+					'color' : 'white',
+					'background-color' : '#7aa93c'
+				});
+				$(this).prev().css({
+					'color' : '#7aa93c',
+					'background-color' : 'white',
+					'border-color' : '#7aa93c'
+				});
+				$(this).next().css({
+					'color' : '#7aa93c',
+					'background-color' : 'white',
+					'border-color' : '#7aa93c'
+				});
+				
+				var tr  = $('.vegetable-table tbody tr');
+ 				
+				if(tr.length == 1) {
+					var td = $(tr[0]).children();
+											
+					for(var i = 1; i <= td.length; ++i){
+						$(td[i]).remove();
+					}
+					
+					$(tr[0]).removeClass(id);
+				}
+				else {
+					if($(tr[0]).attr('class') == id) {
+						var tr_child = $(tr[1]).children();
+						$(tr_child[0]).text('야채 선택>>');
+						$(tr[0]).remove();
+						
+					}else {
+						$('table.vegetable-table .'+id).remove();
+					}
+				}
+				
+				$(this).data('clickStatus', 0);
+				
+			});
 		});
+		
+		
+		
 		
 
 

@@ -144,6 +144,12 @@ li {
  text-align:center;
 }
 
+@media (min-width : 992px) {
+	
+	.mobile-select-menu {
+		display: none;
+	}
+}
 
 /* Responsive */
 /* 991  */
