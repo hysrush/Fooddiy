@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title>Fooddiy-Order</title>	
+		<title> | 회원 탈퇴 | </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -51,13 +51,33 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
+		<!-- 이미지 캐러셀 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
+
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
 		
+		$("#clear").click(function(){
+	
+			location.href="${pageContext.request.contextPath}/member/memberDelclear.jsp"; 
+		});
 		
+		$("#cancel").click(function(){
+			
+			location.href="${pageContext.request.contextPath}/member/memberDetail.jsp"; 
+		});
+		
+	});
+</script>
 <style type="text/css">
 #div01 {
 	width: 70px;
@@ -76,128 +96,56 @@
 		<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 		<!-- ---------------------------------------------------------------------------------------------- -->
-		<section class="page-header">
+		
+		
+		
+				<section class="page-header">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="breadcrumb">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
-									<li class="active">나의 문의사항</li>
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">My Page</a></li>
+									<li class="active">회원탈퇴</li>
 								</ul>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>Left Sidebar</h1>
+								<h1>회원 탈퇴</h1>
 							</div>
 						</div>
 					</div>
 				</section>
-				
-			<div class="container">
-				
-
-					<div class="row">
-					<div style="width: 600px">
-						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
-							<aside  class="sidebar">
-
-								<h3 class="heading-primary">Categories</h3>
-								<ul class="nav nav-list mb-xlg">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">최근 주문 내역</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
-								</ul>
-		</aside></div></div>
 		
-			
-			<div role="main" class="main shop">
+		<div align="left" class="container">
+		<div style="margin-left: 7%; margin-top: 5%; margin-bottom: 5%" class="container">
 
-				<div class="container">
+			<h2>
+				<strong>회원탈퇴</strong>
+			</h2>
 
-
-						<div class="col-md-12r">
-
-
-							<div class="featured-boxes">
-									<div class="col-sm-8  ">
-										<div class="featured-box featured-box-primary align-left mt-xlg">
-											<div style="text-align: center;" class="box-content">
-												<h4  style="width: 32px; margin-right:10%; float: left;" class="heading-primary text-uppercase mb-md hidden-xs"></h4>
-												<h4 align="center" style="margin-right:8%; width: 100px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4>
-												<h4 style="margin-left:3%; width: 125px; float: left;" class="heading-primary text-uppercase mb-md hidden-xs">등록일</h4>
-												<h4 style="margin-left:12%; width: 117px; float: left;" class="heading-primary text-uppercase mb-md">답변여부</h4>
-												
-												<table class="cart-totals"> 
-													<tbody>
-														<tr class="cart-subtotal">
-															<th style="text-align: center;">
-																<strong >1</strong>
-															</th>
-															<td class="col-md-4" align="center">
-																<span class="amount">문의 합니다.</span>
-															</td>
-															<td class="col-md-2" align="right">
-																<span class="amount ">2017-10-29</span>
-															</td>
-															<td align="center">
-																<button style="margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
-
-															</td>
-														</tr>
-														<tr class="shipping">
-															<th style="text-align: center;">
-																2															
-															</th>
-															<td align="center" style="width: 300px">
-																칭찬합니다<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
-															</td>
-															<td align="right">
-																<span > 2017-09-28<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method"></span>
-															</td>
-															<td align="center">
-																<button style="background-color:orange; margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 답변완료 </button>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>	
-										<div align="right" style="float: right;" class="col-md-8">
-											<button style=" width: 100px; height: 30px; font-size: 14px" type="button" class="btn  btn-info">  글쓰기 </button>
-										</div><br/><br/>
-									<div class="header-search hidden-xs">
-										<form id="searchForm" action="page-search-results.html" method="get">
-											<div  class="input-group">
-												<input style="width: 400px; float: right;" type="text" class="form-control" name="q" id="q" placeholder="Search..." required>
-												<span style="" class="input-group-btn">
-													<button  class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-												</span>
-											</div>
-										</form>
-										
-									</div>
-									</div>
-								</div>
-							</div>
-							</div>
+			<div class="row">
+				<div class="col-md-8 col-sm-12 col-xs-12">
+					<p class="lead">회원탈퇴 회원탈퇴 전 안내사항을 꼭 확인해주세요. 탈퇴 후 회원님의 이용정보가
+						삭제되어 복구 불가능하오니 신중히 선택하시기 바랍니다. <br/><br/><h4><strong>탈퇴 안내</strong></h4> 회원탈퇴를 신청하기 전에 안내 사항을 꼭
+						확인해주세요. 사용하고 계신 아이디(hysrush)는 탈퇴 할 경우 <strong class="heading-secondary">재사용 및 복구</strong>가 불가능합니다. 탈퇴한 아이디는 본인과
+						타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다. 탈퇴 후에도 게시판형 서비스에 등록한 게시물은
+						그대로 남아 있습니다. 게시글 및 댓글은 탈퇴 시 자동 삭제되지 않고 그대로 남아 있습니다. 삭제를 원하는 게시글이
+						있다면 반드시 탈퇴 전 비공개 처리하거나 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수
+						있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.</p>
+					<div class="col-md-8">
+								<span class="checkbox">
+									<label for="memberDel">
+									<h5><input type="checkbox" id="memberDel"><strong>안내사항을 모두 확인 했으며 이에 동의합니다.</strong></h5>
+									</label>
+								</span>
 						</div>
-						
-	
-
-			
-				<div class="row">
-								<div align="center" class="col-md-12">
-									<ul  class="pagination pull-center">
-										<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-									</ul>
-								</div>
-							</div>
+					</div>
+				</div>
+			<div style="margin-top: 4%; margin-left: 50%" class="col-md-8">
+				<button id="clear" type="button" class="btn  btn-info">탈퇴</button>
+				<button id="cancel" type="button" class="btn  btn-info">취소</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -244,13 +192,5 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-
-</body>
-
-
-
-
-
-
 </body>
 </html>

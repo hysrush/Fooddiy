@@ -112,12 +112,12 @@
 													<div class="row">
 														<div class="col-md-12">
 															<div class="tabs tabs-bottom tabs-center tabs-simple">
-																
 																<div class="tab-content">
 																	<!-- 주문조회 -->
 																	<div class="tab-pane  active" id="nonmemberMenu">
-																		<jsp:include
-																			page="/resources/include/login/nonmemberMenu.jsp" />
+																		<div class="container">
+																			<jsp:include page="/resources/include/login/nonmemberMenu.jsp"></jsp:include>
+																		</div>
 																	</div>
 																</div>
 															</div>
@@ -134,7 +134,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	
 	<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>

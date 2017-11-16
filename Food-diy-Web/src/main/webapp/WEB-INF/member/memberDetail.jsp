@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title>Fooddiy-Order</title>	
+		<title> | 내 정보 | </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -51,11 +51,6 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
-		<!-- 이미지 캐러셀 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
@@ -66,10 +61,16 @@
 <script>
 	$(document).ready(function(){
 		
-		$("#okay").click(function(){
+		$("#memberDel").click(function(){
 	
-			location.href="${pageContext.request.contextPath}/member/memberDetail.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberDel.do"; 
 		});
+		
+		$("#okay").click(function(){
+			
+			location.href="${pageContext.request.contextPath}/member/memberUpdate.do"; 
+		});
+		
 	});
 </script>
 <style type="text/css">
@@ -80,10 +81,7 @@
 	border-style: solid;
 }
 </style>
-
 </head>
-
-
 <body>
 	<div class="body">
 		<header id="header"
@@ -92,125 +90,124 @@
 		</header>
 		<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
-		
 		<!-- ---------------------------------------------------------------------------------------------- -->
-			 
-			
 				<section class="page-header">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="breadcrumb">
-									<li><a href="#">Home</a></li>
-									<li class="active">Pages</li>
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
+									<li class="active">내 정보</li>
 								</ul>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>Left Sidebar</h1>
+								<h1>내 정보</h1>
 							</div>
 						</div>
 					</div>
 				</section>
-			
-			<div class="container" style="">
-				<div class="row">
-					<div style="width: 600px">
-						<div style="margin-top: 10%" class="col-md-3">
+				
+				<div class="container">
+				
+
+					<div class="row">
+					<div style="width: 550px">
+						<div style="margin-top: 2%" class="col-md-3">
 							<aside  class="sidebar">
+
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">최근 주문 내역</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
+									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
 								</ul>
-							</aside>
-						</div>
-					</div>
-					
-				<div class="col-md-4 ">
-					<img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="margin-left: 7%; margin-top: 20%; width: 300px;">
-					<button style="float:right; margin-top: 4%; margin-right: 10%" type="button" class="btn btn-default" >프로필변경 </button>
-				</div><br/><br/>
-						<div class="col-md-5" style="margin-top: 3%; margin-left: 2%">
-							<div class="panel-group" id="accordion">
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h4 class="panel-title">
-											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">내정보</a>
-										</h4>
-									</div>
-									<div id="collapseOne" class="accordion-body collapse in">
-										<div class="panel-body">
-											<form action="/" id="frmBillingAddress" method="post">
-												<div class="row">
-													<div class="form-group">
-														<div class="col-md-12">
-															<label>이름</label>
-															<input type="text" value="" class="form-control">
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="form-group">
-														<div class="col-md-12">
-															<label>비밀번호</label>
-															<input type="text" value="" class="form-control">
-														</div>
-												</div>
+		</aside></div></div>
+		
+		
+		<div class=" container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+       <br>
+      </div>
+                <div class="col-md-3 col-lg-3 " align="left"> <img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;"></div>
+        <div  style="margin-top: 2%" class="col-xs-12 col-sm-12 col-md-6 col-lg-6  toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">${userVO.id}님의 프로필 정보</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+ 
+                <div class=" col-md-12 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                       <td><strong>  ID :</strong></td>
+                        <td>${userVO.id}</td>
+                      </tr>                 
+                      <tr>
+                      <td><strong> 이 름:</strong></td>
+                        <td>${userVO.name}</td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                      </tr>
+                        <tr>
+                       	<td><strong>생 일:</strong></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td><strong>전화번호:</strong></td>
+                        <td></td>
+                           
+                      </tr>
+                      <tr>
+                        <td><strong>E-mail :</strong></td>
+                        <td><a href="mailto:info@support.com">${userinfo.bEmail}</a></td>
+                      </tr>
+                       <tr>
+                        <td><strong>등 급 : </strong></td>
+                        <td></td>
+                           
+                      </tr>
+                       <tr>
+                        <td><strong>포인트 : </strong></td>
+                        <td></td>
+                           
+                      </tr>
+                      <!-- <select id="point" parameterClass="map" resultClass="hashmap" remapResults="true">
+									SELECT 마일리지 FROM 회원TB WHERE 회원아이디 = '~'
+						System.out.print(map.get("마일리지"))
+					</select> -->
 
-													</div>
-												<div class="row">
-													<div class="form-group">
-														<div class="col-md-12">
-															<label>비밀번호 확인</label>
-															<input type="text" value="" class="form-control">
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="form-group">
-														<div class="col-md-12">
-															<label>전화번호 </label>
-															<input type="text" value="" class="form-control">
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="form-group">
-														<div class="col-md-6">
-															<label>E-mail </label>
-															<input type="text" value="" class="form-control">
-														</div>
-														<div class="row">
-													<div class="form-group">
-														<div style="margin-left:5%; margin-top: 1% " class="col-md-5  col-xs-11">
-															<label></label><br/>
-															<select class="form-control">
-																<option value="">-이메일 선택 -</option>
-																<option value="">naver.com</option>
-																<option value="">google.co.kr</option>
-															</select>
-														</div>
-													</div>
-												</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-12">
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-						</div>	
-							<div style="margin-top: 12%; ">
+                     
+                    </tbody>
+                  </table>
+                  
+                 <!--   <a href="#" class="btn btn-primary">My Sales Performance</a>
+                  <a href="#" class="btn btn-primary">Team Sales Performance</a>-->
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+							<div style="margin-top: 1%;  ">
 							<div class="row">
-									<input style="margin-left: 63%" type="submit" value="저장" class="btn btn-info" data-toggle="modal" data-target="#formModal"/>
-													<button type="button" class="btn btn-info" data-dismiss="modal">취소</button>
+							<div  style="margin-left:68%">
+									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
+									<button id="memberDel" type="button" class="btn  btn-info">회원탈퇴</button>
+							</div>
 									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -219,29 +216,35 @@
 													<h3 class="modal-title" id="formModalLabel"><strong>회원정보 수정</strong></h3>
 												</div>
 												<div class="modal-body">
-												<h4>정말로 수정 하시겠습니까?</h4>
+												<h4>비밀번호를 입력하세요.</h4>
+													<form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+														<div class="form-group mt-lg">
+															<div class="col-sm-9">
+																<input type="password" name="name" class="form-control" placeholder="password" required/>
+															</div>
+														</div>
 													
+													</form>
 												</div>
-												<div class="modal-footer" >
+												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-													<button id="okay" type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+													<button id="okay" type="button" class="btn btn-primary"> 확인</button>
 												</div>
 											</div>
 										</div>
 									</div>
 							</div>
-					</div>
-					</div>
-					</div>
-					</div>					
-</div>
-
+			</div>
+	</div>
+	</div>
+	
 		<!-- ---------------------------------------------------------------------------------------------- -->
 		<div>
 		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
 	</div>
+
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
@@ -279,6 +282,7 @@
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 
 </body>
+
 
 
 

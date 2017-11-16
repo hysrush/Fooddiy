@@ -68,9 +68,10 @@
 		
 		$("#start").click(function(){
 	
-			location.href="${pageContext.request.contextPath}/index.jsp"; 
+			location.href="${pageContext.request.contextPath}/index2.jsp"; 
 		});
 	});
+		
 </script>
 <style type="text/css">
 #div01 {
@@ -97,7 +98,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="breadcrumb">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">My Page</a></li>
 									<li class="active">회원 탈퇴</li>
 								</ul>
 							</div>

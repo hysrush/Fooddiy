@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 내 정보 | </title>	
+		<title>Fooddiy-Order</title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -57,22 +57,7 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
-<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
-<script>
-	$(document).ready(function(){
-		
-		$("#memberDel").click(function(){
-	
-			location.href="${pageContext.request.contextPath}/member/memberDel.jsp"; 
-		});
-		
-		$("#okay").click(function(){
-			
-			location.href="${pageContext.request.contextPath}/member/memberUpdate.jsp"; 
-		});
-		
-	});
-</script>
+
 <style type="text/css">
 #div01 {
 	width: 70px;
@@ -81,8 +66,37 @@
 	border-style: solid;
 }
 </style>
+<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+
+		
+		var q = parseInt($("#qty").val());
+		
+		$("#minus").click(function(){
+			
+			if(q<1){
+				alert("더이상 줄일 수 없습니다.");
+			}else{
+				$("#qty").val(--q);
+			}
+		});
+		
+		$("#plus").click(function(){
+			
+			$("#qty").val(++q);
+			
+		});
+	});
+	
+
+
+</script>
 </head>
+
 <body>
+
+
 	<div class="body">
 		<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
@@ -91,13 +105,14 @@
 		<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 		<!-- ---------------------------------------------------------------------------------------------- -->
-				<section class="page-header">
+
+	<section class="page-header">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="breadcrumb">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
-									<li class="active">내 정보</li>
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">My Page</a></li>
+									<li class="active">나만의 메뉴</li>
 								</ul>
 							</div>
 						</div>
@@ -109,137 +124,162 @@
 					</div>
 				</section>
 				
-				<div class="container">
+			<div class="container">
 				
 
 					<div class="row">
 					<div style="width: 550px">
-						<div style="margin-top: 2%" class="col-md-3">
+						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
 							<aside  class="sidebar">
 
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">최근 주문 내역</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
+									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
-		
-		
-		<div class=" container">
-      <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-       <br>
-      </div>
-                <div class="col-md-3 col-lg-3 " align="left"> <img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;"></div>
-        <div  style="margin-top: 2%" class="col-xs-12 col-sm-12 col-md-6 col-lg-6  toppad" >
-   
-   
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">${member.id}님의 프로필 정보</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
- 
-                <div class=" col-md-12 col-lg-12 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                       <td><strong>  ID :</strong></td>
-                        <td>${member.id}</td>
-                      </tr>                 
-                      <tr>
-                      <td><strong> 이 름:</strong></td>
-                        <td>${member.name}</td>
-                      </tr>
-                   
-                         <tr>
-                             <tr>
-                      </tr>
-                        <tr>
-                       	<td><strong>생 일:</strong></td>
-                        <td>${member.birth}</td>
-                      </tr>
-                      <tr>
-                        <td><strong>전화번호:</strong></td>
-                        <td>${member.phone}</td>
-                           
-                      </tr>
-                      <tr>
-                        <td><strong>E-mail :</strong></td>
-                        <td><a href="mailto:info@support.com">${userinfo.bEmail}</a></td>
-                      </tr>
-                       <tr>
-                        <td><strong>등 급 : </strong></td>
-                        <td>${member.star}</td>
-                           
-                      </tr>
-                       <tr>
-                        <td><strong>포인트 : </strong></td>
-                        <td>${member.point}</td>
-                           
-                      </tr>
-                      <!-- <select id="point" parameterClass="map" resultClass="hashmap" remapResults="true">
-									SELECT 마일리지 FROM 회원TB WHERE 회원아이디 = '~'
-						System.out.print(map.get("마일리지"))
-					</select> -->
+	
+		<div role="main" class="main shop">
 
-                     
-                    </tbody>
-                  </table>
-                  
-                 <!--   <a href="#" class="btn btn-primary">My Sales Performance</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>-->
-                  
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
+				
 
-							<div style="margin-top: 1%;  ">
-							<div class="row">
-							<div  style="margin-left:68%">
-									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
-									<button id="memberDel" type="button" class="btn  btn-info">회원탈퇴</button>
-							</div>
-									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h3 class="modal-title" id="formModalLabel"><strong>회원정보 수정</strong></h3>
-												</div>
-												<div class="modal-body">
-												<h4>비밀번호를 입력하세요.</h4>
-													<form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
-														<div class="form-group mt-lg">
-															<div class="col-sm-9">
-																<input type="password" name="name" class="form-control" placeholder="password" required/>
-															</div>
-														</div>
-													
-													</form>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-													<button id="okay" type="button" class="btn btn-primary"> 확인</button>
-												</div>
+			<div class="container">
+					<div class="row">
+						<div style="margin-top: 2%; margin-left: 2%" class="col-md-8">
+
+							<div class="featured-boxes">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="featured-box featured-box-primary align-left mt-sm">
+											<div class="box-content">
+												<form method="post" action="">
+													<table class="shop_table cart">
+														<tbody>
+															<tr class="cart_table_item">
+															<td style=" width: 10px" class="col-md-1">
+															<span style=" width: 10px" class="member-box checkbox">
+																<label for="memberme">
+																	<h5><input  type="checkbox" id="member3" name="member3"></h5>
+																</label>
+															</span>
+															</td>
+																
+																<td style="width: 30px" class="product-thumbnail col-sm-12 col-xs-1">
+																	<a href="shop-product-sidebar.html">
+																		<img style="width:65%; height:15%"  class="img-responsive " src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
+																	</a> 
+																</td >
+																<td class="product-name">
+																	<a  href="shop-product-sidebar.html">선택한 재료 내용</a>
+																	
+																</td>
+																<td style="padding-right: 5px" class="product-price">
+																	<span class="amount">5,000</span>
+																</td>
+																<td class="product-quantity">
+																	<form enctype="multipart/form-data" method="post" class="cart">
+																		<div class="quantity">
+																			<input type="button" id="minus" class="minus" value="-">
+																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1" >
+																			<input type="button" id="plus" class="plus" value="+">
+																		</div>
+																	</form>
+																</td>
+																<td style="padding-right:5px;">
+																	<button style=" width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제하기 </button>
+																</td>
+															</tr>
+															<tr class="cart_table_item">
+																	<td style="width: 50px" class="col-md-8">
+																<span style="width: 50px" class="member-box checkbox">
+																	<label for="memberme">
+																		<h5><input  type="checkbox" id="member3" name="member3"></h5>
+																	</label>
+																</span>
+																</td>
+																<td style="width: 50%" class="product-thumbnail">
+																	<a href="shop-product-sidebar.html">
+																		<img style="width:65%; height:15%" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-2.jpg">
+																	</a>
+																</td>
+																<td style="width: 10px" class="product-name">
+																	<a href="shop-product-sidebar.html">선택한 재료 내용</a>
+																</td>
+																<td class="product-price">
+																	<span class="amount">4500</span>
+																</td>
+																<td class="product-quantity">
+																	<form enctype="multipart/form-data" method="post" class="cart">
+																		<div class="quantity">
+																			<input type="button" id="minus" class="minus" value="-">
+																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+																			<input type="button"  id="plus" class="plus" value="+">
+																	</form>
+																</td>
+																<td>
+																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제하기 </button>
+																</td>
+															</tr>
+															<tr class="cart_table_item">
+																	<td style="width: 50px" class="col-md-8">
+																<span style="width: 50px" class="member-box checkbox">
+																	<label for="memberme">
+																		<h5><input  type="checkbox" id="member3" name="member3"></h5>
+																	</label>
+																</span>
+																</td>
+																<td class="product-thumbnail">
+																	<a href="shop-product-sidebar.html">
+																		<img style="width:65%; height:15%" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-3.jpg">
+																	</a>
+																</td>
+																<td class="product-name">
+																	<a href="shop-product-sidebar.html">선택한 재료 내용</a>
+																</td>
+																<td class="product-price">
+																	<span class="amount">5500</span>
+																</td>
+																<td class="product-quantity">
+																	<form enctype="multipart/form-data" method="post" class="cart">
+																		<div class="quantity">
+																			<input type="button" id="minus" class="minus" value="-">
+																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+																			<input type="button"  id="plus" class="plus" value="+">
+																		</div>
+																	</form>
+																</td>
+																<td>
+																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제하기 </button>
+																</td>
+															</tr>
+															<tr>
+															</tr>
+														</tbody>
+													</table>
+												</form>
 											</div>
 										</div>
-									</div>
+									</div>  
+								</div>
 							</div>
-			</div>
-	</div>
-	</div>
 	
-		<!-- ---------------------------------------------------------------------------------------------- -->
-		<div>
+
+			<div align="right" style="margin-bottom:5% ; margin-left: 29%" class="col-md-9 col-sm-6 col-xs-9 ">
+				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  장바구니 담기 </button>
+				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  sns게시글 등록 </button>
+				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  메뉴삭제 </button>
+				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  주문하기 </button>
+			</div>
+		</div>
+	</div>
+</div>
+</div></div></div></div>
+
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+	<div>
 		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>

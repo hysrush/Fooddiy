@@ -137,7 +137,7 @@
 					<div class="col-md-12">
 						<ul class="breadcrumb">
 							<li><a
-								href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My
+								href="${ pageContext.request.contextPath}/member/memberDetail.do">My
 									Page</a></li>
 							<li class="active">회원 탈퇴</li>
 						</ul>
@@ -163,7 +163,7 @@
 									<h4 class="heading-primary text-uppercase mb-md">안전한 회원탈퇴를
 										위해 아이디와 비밀번호를 입력하세요.</h4>
 									<form
-										action="${ pageContext.request.contextPath }/member/memberDelcheck.jsp"
+										action="${ pageContext.request.contextPath }/member/memberDelcheck.do"
 										id="frmSignIn" method="post">
 										<div class="row">
 											<div class="form-group">
