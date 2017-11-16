@@ -301,7 +301,7 @@ public class SignController {
 		mailService.sendMail(mail);
 
 		
-		return "sign";
+		return "sign/";
 	}
 	
 	
