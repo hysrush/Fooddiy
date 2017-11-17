@@ -31,7 +31,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" parameterType="userVO" resultMap="mapLoginVO">
-		select user_id, user_pw, user_name, user_email, user_phone ,user_grade, user_type from t_user
+		select user_id, user_pw, user_name, ,user_birth, user_email, user_phone ,user_grade, user_type from t_user
 		where user_id = #{id} and user_pw = #{pw}
 	</select>
 	
@@ -69,10 +69,9 @@
 	 Update tbl_member
 	 SET
 	 	user_pw = #{PW},
-	 	user_name = #{NAME},
 	 	user_phone = #{PHONE},
 	 	user_email = #{EMAIL},
-	 	user_updatedate = SYSDATE
+	 	
 	 WHRE
 	 	user_id + #ID}
 	</update>
