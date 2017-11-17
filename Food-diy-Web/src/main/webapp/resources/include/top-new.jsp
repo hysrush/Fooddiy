@@ -281,7 +281,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
 								<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp" data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>
 							</ul></li>
 						<!-- 회원 로그인하면 My page -->

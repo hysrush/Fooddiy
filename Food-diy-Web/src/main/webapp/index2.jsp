@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,6 +78,10 @@
 			<!-- notice 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/community/noticeWrite.do">notice새글등록</a><br/>
 			<a href="${ pageContext.request.contextPath}/community/notice.do">notice게시판</a><br/>
+			
+			<!-- claim 컨트롤러 테스트 -->
+			<a href="${ pageContext.request.contextPath}/community/claimWrite.do">claim새글등록 = 1:1문의</a><br/>
+			<a href="${ pageContext.request.contextPath}/community/claim.do">claim게시판</a><br/>
 
 			<!--  event 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/event/eventWrite.do">이벤트등록</a><br/>

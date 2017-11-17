@@ -12,6 +12,7 @@
 		SELECT qna_no, qna_q, qna_a, qna_type, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_qna
 	</sql>
+	
   	<!-- DB t_qna와 QnaBoardVO의 변수와 맞지 않으므로 mapping  -->
   	<resultMap type="qnaVO" id="Map_qnaVO">
   		<result column="qna_no" property="no"/>
@@ -26,22 +27,26 @@
 		<include refid="selectAll_qna"/>
 		ORDER BY qna_no DESC
 	</select>
+	
 	<!-- 글번호별 QnA 게시글 조회 -->
 	<select id="selectOneQnA" parameterType="int" resultMap="Map_qnaVO" >
 		<include refid="selectAll_qna"/>
 		WHERE qna_no = #{no}
 	</select>
+	
 	<!-- QnA 글 등록 -->
 	<insert id="insertQnA" parameterType="qnaVO">
 		INSERT INTO t_qna(qna_no, qna_q, qna_a, qna_type)
 		VALUES(seq_t_qna_no.nextval, #{question}, #{answer}, #{type})
 	</insert>
+	
 	<!-- QnA 글 수정 -->
 	<update id="modifyQnA" parameterType="qnaVO">
 		UPDATE t_qna
 		SET qna_q = #{question}, qna_a = #{answer}, qna_type = #{type}
 		WHERE qna_no = #{no}
 	</update>
+	
 	<!-- QnA 글 삭제 -->
 	<delete id="removeQnA" parameterType="int" >
 		DELETE FROM t_qna
