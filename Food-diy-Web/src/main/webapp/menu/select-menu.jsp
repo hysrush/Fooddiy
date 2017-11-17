@@ -125,7 +125,7 @@
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
 														<!-- <i class="icon-featured fa fa-user bread"></i> -->
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/bread.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/bread_wheat.jpg" />
 
 													</span>
 												</span>
@@ -138,7 +138,8 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/cheeses.jpg" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/cheese_old_english.jpg" />
+														
 													</span>
 												</span>
 											</span>									
@@ -150,7 +151,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/topping.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/topping_double_meat.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -162,7 +163,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/vegetables.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/vegetable_lettuce.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -174,7 +175,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/sauce.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/sauce_sweet_chilli.jpg" />
 													</span>
 												</span>
 											</span>									
