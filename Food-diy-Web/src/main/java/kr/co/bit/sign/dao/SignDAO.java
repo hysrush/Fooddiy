@@ -18,4 +18,8 @@ public interface SignDAO {
 	
 	//pw 찾기
 	UserVO lostPw(UserVO lost);
+	
+	//임시 비밀번호 설정
+	void setPw(UserVO setpw);
+
 }
