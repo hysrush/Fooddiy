@@ -72,15 +72,14 @@
 	</update>
 	
 	<!-- 회원 정보 수정 -->
-	<update id="memberUpdate">
+	<update id="memberUpdate" parameterType="userVO">
 	 Update t_user
 	 SET
-	 	user_pw = #{PW},
-	 	user_phone = #{PHONE},
-	 	user_email = #{EMAIL},
-	 	
-	 WHRE
-	 	user_id = #{ID}
+	 	user_pw = #{pw},
+	 	user_phone = #{phone},
+	 	user_email = #{email}
+	 where
+	 	user_id = #{id}
 	</update>
 	
 	<!-- 중복 아이디 체크 -->
