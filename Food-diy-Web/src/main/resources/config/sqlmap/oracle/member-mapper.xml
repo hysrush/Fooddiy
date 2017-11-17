@@ -60,20 +60,27 @@
 	</select>
 	
 	<select id="lostPw" parameterType="userVO" resultMap="lostVO">
-		select user_id, user_pw from t_user
+		select user_id, user_name, user_email from t_user
 		where user_name = #{name} and user_id = #{id}
 	</select>
+
+	<!-- pw 찾은 수 임시 비밀번호로 수정 -->
+	<update id="pwUpdate" parameterType="userVO">
+		update t_user
+		set user_pw = #{pw}
+		where user_id = #{id} and user_name = #{name}
+	</update>
 	
 	<!-- 회원 정보 수정 -->
 	<update id="memberUpdate">
-	 Update tbl_member
+	 Update t_user
 	 SET
 	 	user_pw = #{PW},
 	 	user_phone = #{PHONE},
 	 	user_email = #{EMAIL},
 	 	
 	 WHRE
-	 	user_id + #ID}
+	 	user_id = #{ID}
 	</update>
 	
 	<!-- 중복 아이디 체크 -->
