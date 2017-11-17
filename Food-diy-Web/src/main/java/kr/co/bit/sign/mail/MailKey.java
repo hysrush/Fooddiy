@@ -3,9 +3,6 @@ package kr.co.bit.sign.mail;
 import java.util.Random;
 
 public class MailKey {
-	
-	private boolean lowerCheck;
-	private int size;
 
 	// key 생성 코드
 	public String getkey() {
@@ -20,10 +17,8 @@ public class MailKey {
 			} else {
 				continue;
 			}
-		} while (sb.length() < size);
-		if (lowerCheck) {
-			return sb.toString().toLowerCase();
-		}
+		} while (sb.length() < 10);
+		
 		return sb.toString();
 	}
 

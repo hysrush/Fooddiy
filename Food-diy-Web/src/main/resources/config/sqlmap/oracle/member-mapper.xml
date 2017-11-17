@@ -5,16 +5,18 @@
 <!-- DAO에서 sql문 불러 올 때 사용해야 하는 이름 -->
 <mapper namespace="kr.co.bit.member.dao">
 
-	<resultMap type="memberVO" id="mapLoginVO">
+	<resultMap type="userVO" id="mapLoginVO">
 		<result column="user_id" property="id"/>
 		<result column="user_pw" property="pw"/>
 		<result column="user_name" property="name"/>
 		<result column="user_email" property="email"/>
+		<result column="user_phone" property="phone"/>
+		<result column="user_birth" property="birth"/>
 		<result column="user_grade" property="grade"/>
 		<result column="user_type" property="type"/>
 	</resultMap>
 	
-	<resultMap type="memberVO" id="lostVO">
+	<resultMap type="userVO" id="lostVO">
 		<result column="user_id" property="id"/>
 		<result column="user_pw" property="pw"/>
 	</resultMap>
@@ -22,57 +24,62 @@
 	<!-- sql문 적는 공간 -->
 	
 	<!-- 가입 확인 -->
-	<select id="loginCheck" parameterType="memberVO" resultType="java.lang.Integer">
+	<select id="loginCheck" parameterType="userVO" resultType="java.lang.Integer">
 		select NVL(count(*), 0) from t_user
 		where user_id = #{id} and user_pw = #{pw}
 	</select>
 	
 	<!-- 로그인 -->
-	<select id="login" parameterType="memberVO" resultMap="mapLoginVO">
-		select user_id, user_pw, user_name, user_grade, user_type from t_user
+	<select id="login" parameterType="userVO" resultMap="mapLoginVO">
+		select user_id, user_pw, user_name, user_birth, user_email, user_phone ,user_grade, user_type from t_user
 		where user_id = #{id} and user_pw = #{pw}
 	</select>
 	
 	<!-- 회원 가입 -->
-	<insert id="signUp" parameterType="memberVO" >
+	<insert id="signUp" parameterType="userVO" >
 		insert into t_user(user_no, user_id, user_name, user_pw, user_birth, user_sex, user_email, user_phone, user_root)
 		values(seq_t_user_no.nextval, #{id}, #{name}, #{pw}, #{birth}, #{sex}, #{email}, #{phone}, #{root})
 	</insert>
 	
 	<!-- ID 찾기 -->
-	<select id="lostIdCheck" parameterType="memberVO" resultType="java.lang.Integer">
+	<select id="lostIdCheck" parameterType="userVO" resultType="java.lang.Integer">
 		select NVL(count(*), 0) from t_user
 		where user_name = #{name} and user_email = #{email}
 	</select>
 
-	<select id="lostId" parameterType="memberVO" resultMap="lostVO">
+	<select id="lostId" parameterType="userVO" resultMap="lostVO">
 		select user_id, user_pw from t_user
 		where user_name = #{ name } and user_email = #{ email }
 	</select>
 	
 	
 	<!-- PW 찾기 -->
-	<select id="lostPwCheck" parameterType="memberVO" resultType="java.lang.Integer">
+	<select id="lostPwCheck" parameterType="userVO" resultType="java.lang.Integer">
 		select NVL(count(*), 0) from t_user
 		where user_name = #{name} and user_id = #{id}
 	</select>
 	
-	<select id="lostPw" parameterType="memberVO" resultMap="lostVO">
-		select user_id, user_pw from t_user
+	<select id="lostPw" parameterType="userVO" resultMap="lostVO">
+		select user_id, user_name, user_email from t_user
 		where user_name = #{name} and user_id = #{id}
 	</select>
+
+	<!-- pw 찾은 수 임시 비밀번호로 수정 -->
+	<update id="pwUpdate" parameterType="userVO">
+		update t_user
+		set user_pw = #{pw}
+		where user_id = #{id} and user_name = #{name}
+	</update>
 	
 	<!-- 회원 정보 수정 -->
-	<update id="memberUpdate">
-	 Update tbl_member
+	<update id="memberUpdate" parameterType="userVO">
+	 Update t_user
 	 SET
-	 	user_pw = #{PW},
-	 	user_name = #{NAME},
-	 	user_phone = #{PHONE},
-	 	user_email = #{EMAIL},
-	 	user_updatedate = SYSDATE
-	 WHRE
-	 	user_id + #ID}
+	 	user_pw = #{pw},
+	 	user_phone = #{phone},
+	 	user_email = #{email}
+	 where
+	 	user_id = #{id}
 	</update>
 	
 	<!-- 중복 아이디 체크 -->

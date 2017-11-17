@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.member.vo.MemberVO;
+import kr.co.bit.user.vo.UserVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -15,25 +15,26 @@ public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<MemberVO> selectAll() {
-		List<MemberVO> list = sqlSession.selectList("kr.co.bit.member.dao.MemberDAO.selectAllMember");
+	public List<UserVO> selectAll() {
+		List<UserVO> list = sqlSession.selectList("kr.co.bit.member.dao.selectAllMember");
 		return list;
 	}
 
-	public MemberVO selectOne(int no) {
-		return sqlSession.selectOne("kr.co.bit.member.dao.MemberDAO.selectByNo", no);
+	public UserVO selectOne(int no) {
+		return sqlSession.selectOne("kr.co.bit.member.dao.selectByNo", no);
 
 	}
 
-	public void insert(MemberVO member) {
-		sqlSession.insert("kr.co.bit.member.dao.MemberDAO.insertBoard", member);
+	public void insert(UserVO member) {
+		sqlSession.insert("kr.co.bit.member.dao.insertBoard", member);
 		
 	}
 
-	    public void update(MemberVO vo) {
-	        sqlSession.update("member.memberUpdate", vo);
+	public void update(UserVO vo) {
+		
+		sqlSession.update("kr.co.bit.member.dao.memberUpdate", vo);
 	 
-	    }
+	}
 
 	public void delete(int no) {
 		// TODO Auto-generated method stub

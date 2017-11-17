@@ -6,7 +6,7 @@
 
 <configuration>
 	<typeAliases>
-	  	<typeAlias type="kr.co.bit.member.vo.MemberVO" alias="memberVO"/>
+	  	<typeAlias type="kr.co.bit.user.vo.UserVO" alias="userVO"/>
 	  	<typeAlias type="kr.co.bit.event.vo.CityVO"  alias="cityVO"/>
 	  	<typeAlias type="kr.co.bit.event.vo.locationVO"  alias="locationVO"/>
 	  	<typeAlias type="kr.co.bit.event.vo.StoreVO"  alias="storeVO"/>

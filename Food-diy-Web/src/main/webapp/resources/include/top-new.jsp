@@ -200,58 +200,49 @@
 											<div class="col-md-8">
 												<div class="row">
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="${ pageContext.request.contextPath}/menu/menu2.jsp" class="dropdown-mega-sub-title"
-															style="font-size: 10pt; font-weight: bold;">전체메뉴<br>ALL MENU
-														</a>
+														<a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">&nbsp; 전체메뉴<br>ALL MENU</a>
 													</div>
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#classic" class="cat-img">
+														<a href="#" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#classic" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">클래식<br>CLASSICS</a>
-														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">클래식<br>CLASSICS
-														</a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추천메뉴<br>RECOMMEND</a>														
 													</div>
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#best" class="cat-img">
+														<a href="#" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#best" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">베스트<br>SIGNATURE</a>
-														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">베스트<br>SIGNATURE
-														</a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">프리미엄<br>PREMIUM</a>														
 													</div>
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#recommend" class="cat-img">
+														<a href="#" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#recommend" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추천메뉴<br>FAVORITES</a>
-														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추천메뉴<br>FAVORITES
-														</a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">베스트<br>BEST</a>														
 													</div>
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#premium" class="cat-img">
+														<a href="#" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#premium" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">프리미엄<br>PREMIUM</a>
-														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">프리미엄<br>PREMIUM
-														</a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">클래식<br>CLASSICS</a>														
 													</div>
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#additiom" class="cat-img">
+														<a href="#" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#addition" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">음료&추가<br>Drink&Extras</a>
-														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">음료&추가<br>Drink&Extras
-														</a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">아침식사<br>BREAKFAST</a>														
 													</div>
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#salad" class="cat-img">
+														<a href="#" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#salad" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">찹샐러드<br>Chopped Salads</a>
-														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">찹샐러드<br>Chopped Salads
-														</a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">샐러드<br>SALADS</a>														
 													</div>
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#breakfast" class="cat-img">
+														<a href="#" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menu2.jsp#breakfast" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">아침식사<br>Breakfast</a>
-														<a href="#" class="cat-img"> <img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a> <a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">아침식사<br>Breakfast
-														</a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">추가메뉴<br>EXTRAS</a>														
+													</div>
+													<div class="col-md-3">
+														<a href="#" class="cat-img">
+														<img src="${ pageContext.request.contextPath}/resources/img/demos/shop/cat-tv.png" alt="Category Name"></a>
+														<a href="#" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold;">음료<br>DRINK</a>														
 													</div>
 												</div>
 											</div>
@@ -275,7 +266,7 @@
 						</a>
 							<ul class="dropdown-menu">
 								<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
-								<li><a href="${ pageContext.request.contextPath}/event/StoreEventPage.jsp">매장별 EVENT</a></li>
+								<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/notice/qna.jsp"> Community <span class="tip tip-hot">Hot!</span></a>
 							<ul class="dropdown-menu">
@@ -328,7 +319,7 @@
 													</div>
 													<div class="col-md-4">
 														<ul class="list-account-options">
-															<li><a href="${ pageContext.request.contextPath }/member/memberDetail.jsp">My Page</a></li>
+															<li><a href="${ pageContext.request.contextPath }/member/memberDetail.do">My Page</a></li>
 															<li><a href="${ pageContext.request.contextPath }/sign/logout.do">Log Out</a></li>
 														</ul>
 													</div>

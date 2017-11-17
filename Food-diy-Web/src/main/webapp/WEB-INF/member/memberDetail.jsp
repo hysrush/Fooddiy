@@ -63,12 +63,12 @@
 		
 		$("#memberDel").click(function(){
 	
-			location.href="${pageContext.request.contextPath}/member/memberDel.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberDel.do"; 
 		});
 		
 		$("#okay").click(function(){
 			
-			location.href="${pageContext.request.contextPath}/member/memberUpdate.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberUpdate.do"; 
 		});
 		
 	});
@@ -119,7 +119,7 @@
 
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">내 정보</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
 									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
@@ -160,27 +160,27 @@
                       </tr>
                         <tr>
                        	<td><strong>생 일:</strong></td>
-                        <td></td>
+                        <td>${userVO.birth}</td>
                       </tr>
                       <tr>
                         <td><strong>전화번호:</strong></td>
-                        <td></td>
+                        <td>${userVO.phone}</td>
                            
                       </tr>
                       <tr>
                         <td><strong>E-mail :</strong></td>
-                        <td><a href="mailto:info@support.com">${userinfo.bEmail}</a></td>
+                        <td><a href="mailto:${userVO.email}">${userVO.email}</a></td>
                       </tr>
                        <tr>
                         <td><strong>등 급 : </strong></td>
-                        <td></td>
+                        <td>${userVO.grade}</td>
                            
                       </tr>
-                       <tr>
+                     <%--   <tr>
                         <td><strong>포인트 : </strong></td>
-                        <td></td>
+                        <td>${userVO.point}</td>
                            
-                      </tr>
+                      </tr>    --%>
                       <!-- <select id="point" parameterClass="map" resultClass="hashmap" remapResults="true">
 									SELECT 마일리지 FROM 회원TB WHERE 회원아이디 = '~'
 						System.out.print(map.get("마일리지"))

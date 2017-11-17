@@ -93,7 +93,26 @@
 						</div>
 					</div>
 				</section>
+				
+				<div class="modal sauce-modal" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
+						<div class="modal-dialog" style="top: 30%">
+								<div class="modal-content">
+										<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
+												<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>							
+										</div>
+										<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
+												<p>소스는 3개까지 선택할 수 있습니다.</p>
+										</div>
+										<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
+												<button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; background-color: #7aa93c;">확인</button>
+										</div>
+								</div>
+						</div>
+				</div>
 
+				
+				
 				<div class="container web">
 					<div class="row">
 						<div class="col-md-12">
@@ -105,7 +124,9 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-user bread"></i>
+														<!-- <i class="icon-featured fa fa-user bread"></i> -->
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/bread_wheat.jpg" />
+
 													</span>
 												</span>
 											</span>									
@@ -117,7 +138,20 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-file topping"></i>
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/cheese_old_english.jpg" />
+														
+													</span>
+												</span>
+											</span>									
+											<p class="mb-none pb-none">치즈</p>
+										</a>
+									</li>
+									<li >
+										<a href="#tabsNavigationSimpleIcons3" data-toggle="tab">
+											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
+												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
+													<span class="box-content p-none m-none">
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/topping_double_meat.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -125,11 +159,11 @@
 										</a>
 									</li>
 									<li>
-										<a href="#tabsNavigationSimpleIcons3" data-toggle="tab">
+										<a href="#tabsNavigationSimpleIcons4" data-toggle="tab">
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-google-plus vegetable"></i>
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/vegetable_lettuce.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -137,11 +171,11 @@
 										</a>
 									</li>
 									<li>
-										<a href="#tabsNavigationSimpleIcons4" data-toggle="tab">
+										<a href="#tabsNavigationSimpleIcons5" data-toggle="tab">
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-adjust sause"></i>
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/sauce_sweet_chilli.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -154,12 +188,15 @@
 										<jsp:include page="/menu/select-bread.jsp"/>
 									</div>
 									<div class="tab-pane" id="tabsNavigationSimpleIcons2">
-										<jsp:include page="/menu/select-topping.jsp"/>
+										<jsp:include page="/menu/select-cheese.jsp"/>
 									</div>
 									<div class="tab-pane" id="tabsNavigationSimpleIcons3">
-										<jsp:include page="/menu/select-vegetable.jsp"/>
+										<jsp:include page="/menu/select-topping.jsp"/>
 									</div>
 									<div class="tab-pane" id="tabsNavigationSimpleIcons4">
+										<jsp:include page="/menu/select-vegetable.jsp"/>
+									</div>
+									<div class="tab-pane" id="tabsNavigationSimpleIcons5">
 										<jsp:include page="/menu/select-sauce.jsp"/>
 									</div>
 								</div> 
@@ -169,7 +206,7 @@
 				</div>
 			</div>
 			
-			<div class="container mobile">
+			<div class="container mobile-select-menu">
 
 					<div class="row">
 						<div class="col-xs-12">
@@ -249,7 +286,7 @@
 												<table class = "sauce-table">
 														<tr>
 															<td width = "30%">
-																소스 선택>>
+																소스 선택 >>
 															</td>
 														</tr>
 												</table>
@@ -263,6 +300,12 @@
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					
+					<div class = "row">
+						<div style="text-align: center;s">
+							<button type="submit"  class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 						</div>
 					</div>
 				</div>

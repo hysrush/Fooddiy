@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.member.dao.MemberDAO;
-import kr.co.bit.member.vo.MemberVO;
+import kr.co.bit.user.vo.UserVO;
 
 
 @Service
@@ -16,21 +16,21 @@ public class MemberServiceImp  implements MemberService  {
 	private MemberDAO memberDAO;
 
 	
-	public List<MemberVO> selectAllmember() {
-		List<MemberVO> list = memberDAO.selectAll();
+	public List<UserVO> selectAllmember() {
+		List<UserVO> list = memberDAO.selectAll();
 		return list;
 	}
 
-	public MemberVO selectOneMember(int no) {
+	public UserVO selectOneMember(int no) {
 		return memberDAO.selectOne(no);
 	}
 
-	public void insertMember(MemberVO member) {
+	public void insertMember(UserVO member) {
 		memberDAO.insert(member);
 		
 	}
 
-	public void modifyMember(MemberVO member) {
+	public void modifyMember(UserVO member) {
 		memberDAO.update(member);
 		
 	}
@@ -39,12 +39,11 @@ public class MemberServiceImp  implements MemberService  {
 		memberDAO.delete(no);
 		
 	}
-	  public void memberUpdate(MemberVO vo) {
-	        memberDAO.update(vo);
-	    }
-
 	
-	
+	@Override
+	public void getMemberUpdate(UserVO member) {
 
+		memberDAO.update(member);
+	}
 
 }

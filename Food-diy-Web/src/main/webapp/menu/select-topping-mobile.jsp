@@ -36,7 +36,7 @@
 					<tbody class = "ddd">
 						<tr>
 							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_eggmayo.jpg" /></td>
-							<td width="50%"><strong class = "name">&nbsp;에그마요 </strong><strong class = "id">Aggmayo</strong></td>
+							<td width="50%"><strong class = "name">&nbsp;에그마요 </strong><strong class = "id">Eggmayo</strong></td>
 							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1200원</strong></td>
 						</tr>
 					</tbody>
@@ -68,16 +68,26 @@
 	 		$(this).click(function() {
 	 			
 	 			var name = $(this).find('.name').text();
-	 			var id = $(this).find('.id').text();
+	 			var id = $(this).find('.id').text().split(' ');
 	 		 	var price = $(this).find('.price').text();
 
-	 		  	
+	 		 	
+	 		 	if(id.length = 1) {
+	 				id = id[0];
+	 			}
+				else{
+					id = id[0] + id[1];	
+				}
+	 		 	
 	 			if(!$(this).data("clickStatus")){	
 	 				$(this).siblings('.fa-check-topping').show();
 					
 	 									
 					if($('.topping-table tr td').length == 1) {
-						var td = '<td class="' + 'topping-name" id = "'+ name + '">';
+						
+						$('.topping-table tr').addClass(id);
+						
+						var td = '<td class="' + 'topping-name"' + '">';
 							td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
 							td += '</td>';
 							td += '<td class = "'+ 'topping-price">' + price + '</td>';
@@ -85,8 +95,8 @@
 						$('.topping-table tr').append(td);
 		 			}else { 
 		 				
-		 				var row =  '<tr id = "'+ name + '">';
-		 					row += '<td width ="' + '20%"> </td>'
+		 				var row =  '<tr class = "'+ id + '">';
+		 					row += '<td width ="' + '30%"> </td>'
 		 					row += '<td class="' + 'topping-name">';
 							row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
 							row += '</td>';
@@ -100,11 +110,29 @@
 				}else {
 					
 	 				$(this).siblings('.fa-check-topping').hide();
+
 	 				
-	 				$('td[id = "' + name + '"]').next().remove();
-	 				$('td[id = "' + name + '"]').remove();
+	 				var tr  = $('.topping-table tbody tr');
 	 				
-	 				$('tr[id = "' + name + '"]').remove();
+					if(tr.length == 1) {
+						var td = $(tr[0]).children();
+												
+						for(var i = 1; i <= td.length; ++i){
+							$(td[i]).remove();
+						}
+						
+						$(tr[0]).removeClass(id);
+					}
+					else {
+						if($(tr[0]).attr('class') == id) {
+							var tr_child = $(tr[1]).children();
+							$(tr_child[0]).text('토핑 선택>>');
+							$(tr[0]).remove();
+							
+						}else {
+							$('table.topping-table .'+id).remove();
+						}
+					}
 	 				
 					$(this).data("clickStatus", 0);
 				}

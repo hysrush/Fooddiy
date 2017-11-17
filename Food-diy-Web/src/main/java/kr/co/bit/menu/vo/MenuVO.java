@@ -29,6 +29,12 @@ public class MenuVO {
 	public void setMainmenu(String mainmenu) {
 		this.mainmenu = mainmenu;
 	}	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public int getPrice() {
 		return price;
 	}
@@ -53,16 +59,10 @@ public class MenuVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
 	@Override
 	public String toString() {
-		return "MenuVO [no=" + no + ", name=" + name + ", mainmenu" + mainmenu + ", price=" + price + ", detail=" + detail + ", imgFileName=" + imgFileName + ", regDate=" + regDate
-				+ ", type=" + type + "]";
+		return "MenuVO [no=" + no + ", name=" + name + ", mainmenu" + mainmenu + ", type=" + type + ", price=" + price 
+				+ ", detail=" + detail + ", imgFileName=" + imgFileName + ", regDate=" + regDate + "]";
 	}
 	
 	

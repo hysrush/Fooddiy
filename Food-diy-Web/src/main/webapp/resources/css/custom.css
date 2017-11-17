@@ -144,6 +144,12 @@ li {
  text-align:center;
 }
 
+@media (min-width : 992px) {
+	
+	.mobile-select-menu {
+		display: none;
+	}
+}
 
 /* Responsive */
 /* 991  */
@@ -290,11 +296,16 @@ li {
 	}
 	
 	/* seleect-topping-mobile */
-	table.topping-table td.topping-name, table.vegetable-table td.vegetable-name , table.sauce-table td.sauce-name {
+	table.topping-table td.topping-name, table.vegetable-table td.vegetable-name {
 		width: 50%;
 		font-size: 15px;
 	}
 	
+	table.sauce-table td.sauce-name {
+		width: 70%;
+		font-size: 15px;
+	
+	}
 	
 	strong.name {
 		color: gray;
@@ -309,10 +320,34 @@ li {
 		font-weight: bold;
 		font-size: 15px;
 	}
+	
+	.select-menu-button {
+		background-color: #0cc485; 
+		border: 0px; 
+		font-size: 12pt; 
+		font-weight: bold;
+		width: 200px;
+		height: 50px;
+	}
+	
+	.less , .more {
+		background-color: white;
+		color: #7aa93c;
+		border-color: #7aa93c;
+	}
+	
+	.nomal {
+		background-color: #7aa93c;
+		color: white;
+	}
+	
+	
 }
 
 
-
+.thumb-info .topping-price {
+		color: yellow;
+}
 
 .shop .cart-totals th, .shop .cart-totals td {
 	border-top: 1px solid #DCDCDC;

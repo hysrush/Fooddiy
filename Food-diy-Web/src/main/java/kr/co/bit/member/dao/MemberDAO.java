@@ -2,14 +2,14 @@ package kr.co.bit.member.dao;
 
 import java.util.List;
 
-import kr.co.bit.member.vo.MemberVO;
+import kr.co.bit.user.vo.UserVO;
 
 
 public interface MemberDAO {
 	
-	List<MemberVO> selectAll();
-	MemberVO selectOne(int no);
-	void insert(MemberVO member);
-	void update(MemberVO member);
+	List<UserVO> selectAll();
+	UserVO selectOne(int no);
+	void insert(UserVO member);
+	void update(UserVO member);
 	void delete(int no);
 }

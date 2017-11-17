@@ -28,7 +28,7 @@
 				
 				<div class="form-group" align="left">
 					<label for="type">타입</label>
-					<select id="type">
+					<select name="type">
 						<option value="" selected>--선택--</option>
 						<option value="R">추천</option>
 						<option value="P">프리미엄</option>
