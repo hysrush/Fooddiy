@@ -288,7 +288,7 @@
 							<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/nonmemberMenu.jsp">주문내역조회</a></li>
 						</c:if>
 						<c:choose>
-							<c:when test="${ empty loginVO }">
+							<c:when test="${ empty userVO }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
 									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/login.do">
 										<i class="fa fa-user"></i> Sign IN
@@ -302,7 +302,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ loginVO.id }</a>
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ userVO.id }</a>
 									<ul class="dropdown-menu">
 										<li>
 											<div class="dropdown-mega-content">
@@ -313,7 +313,7 @@
 																<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.jpg" alt="">
 															</div>
 															<p>
-																<strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span>
+																<strong>${ userVO.type }</strong> <span>${ userVO.grade }</span>
 															</p>
 														</div>
 													</div>
