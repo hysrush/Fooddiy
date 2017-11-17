@@ -93,7 +93,26 @@
 						</div>
 					</div>
 				</section>
+				
+				<div class="modal sauce-modal" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
+						<div class="modal-dialog" style="top: 30%">
+								<div class="modal-content">
+										<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
+												<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>							
+										</div>
+										<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
+												<p>소스는 3개까지 선택할 수 있습니다.</p>
+										</div>
+										<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
+												<button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; background-color: #7aa93c;">확인</button>
+										</div>
+								</div>
+						</div>
+				</div>
 
+				
+				
 				<div class="container web">
 					<div class="row">
 						<div class="col-md-12">
@@ -105,7 +124,9 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-user bread"></i>
+														<!-- <i class="icon-featured fa fa-user bread"></i> -->
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/bread.png" />
+
 													</span>
 												</span>
 											</span>									
@@ -117,7 +138,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-file topping"></i>
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/cheeses.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -129,7 +150,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-file topping"></i>
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/topping.png" />
 													</span>
 												</span>
 											</span>									
@@ -141,7 +162,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-google-plus vegetable"></i>
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/vegetables.png" />
 													</span>
 												</span>
 											</span>									
@@ -153,7 +174,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<i class="icon-featured fa fa-adjust sause"></i>
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/sauce.png" />
 													</span>
 												</span>
 											</span>									

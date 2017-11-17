@@ -73,8 +73,8 @@
 				
 				if(!$(this).data('clickStatus')) {
 					
-					
-					$(this).addClass('selected');
+					$(this).children().addClass('selected');
+				
 					$(this).css({
 						'border-color' : '#7aa93c',
 						'border-width' : '3px'
@@ -83,7 +83,7 @@
 					$(this).data('clickStatus', 1);
 				}
 				else {
-					
+					$(this).children().removeClass('selected');
 					$(this).css({
 						'border-color' : '#DDD',
 						'border-width' : '1px'

@@ -76,7 +76,8 @@
 		
 			$('li .product-area-bread').each(function() {
 				$(this).click(function() {
-					
+					$('li .product-area-bread').children().removeClass('selected');
+					$(this).children().addClass('selected');
 					$('.product-area-bread').css( {
 						'border-color' : '#DDD',
 						'border-width' : '1px'

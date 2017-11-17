@@ -242,6 +242,8 @@
 		</div>
 	</li>
 </ul>
+
+
 <script>
 	$(document).ready(function() {
 		
@@ -250,15 +252,25 @@
 				
 				if(!$(this).data('clickStatus')) {
 					
-					$(this).css({
-						'border-color' : '#7aa93c',
-						'border-width' : '3px'
-					});
 					
-					$(this).data('clickStatus', 1);
+					if($('li .product-area-sauce .selected').length < 3){
+						$(this).children().addClass('selected');
+						
+						$(this).css({
+							'border-color' : '#7aa93c',
+							'border-width' : '3px'
+						});
+						
+						$(this).data('clickStatus', 1);
+					}else {
+						$(".sauce-modal").css('display', 'block');
+						$(".sauce-modal").modal();
+						$(this).data('clickStatus', 0);
+					}
 				}
 				else {
 					
+					$(this).children().removeClass("selected");
 					$(this).css({
 						'border-color' : '#DDD',
 						'border-width' : '1px'

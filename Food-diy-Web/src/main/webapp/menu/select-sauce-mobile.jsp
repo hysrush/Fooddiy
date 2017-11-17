@@ -212,22 +212,6 @@
 </ul>
 
 
-<div class="modal sauce-modal" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog" style="top: 30%">
-				<div class="modal-content">
-						<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
-								<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>							
-						</div>
-						<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
-								<p>소스는 3개까지 선택할 수 있습니다.</p>
-						</div>
-						<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
-								<button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; background-color: #7aa93c;">확인</button>
-						</div>
-				</div>
-		</div>
-</div>
 
 <script>
 	$(document).ready(function() {
@@ -325,67 +309,6 @@
 					
 					$(this).data("clickStatus", 0);
 				}
-/* 	 			if(!$(this).data("clickStatus")){	
-					
-	 							
-	 				if($('.sauce-table tr').length < 3) {
-		 				$(this).siblings('.fa-check-sauce').show();
-						if($('.sauce-table tr td').length == 1) {
-							alert(id);
-							$('.sauce-table tr').addClass(id);
-							
-							var td = '<td class="' + 'sauce-name"'+ '">';
-								td += '<strong class = "'+ 'name">'+ name + id + '</strong>';
-								td += '</td>';
-								td += '<td width = "' + '20%"> </td>';
-							$('.sauce-table tr').append(td);
-			 			}else { 
-			 				
-			 				var row =  '<tr class = "'+ id + '">';
-			 					row += '<td width ="' + '30%"> </td>'
-			 					row += '<td class="' + 'sauce-name">';
-								row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
-								row += '</td>';
-								row += '<td width ="' + '20%"> </td>'
-								row += '</tr>';
-								
-								$('.sauce-table').append(row);
-			 			}
-
-						$(this).data("clickStatus", 1);
-	 				}else {
-						$(this).data("clickStatus", 0);
-	 					$(".source-modal").modal();
-	 				}
-					
-				}else {
-					
-	 				$(this).siblings('.fa-check-sauce').hide();
-	 				
-					var tr  = $('.sauce-table tbody tr');
-	 				
-					if(tr.length == 1) {
-						var td = $(tr[0]).children();
-												
-						for(var i = 1; i <= td.length; ++i){
-							$(td[i]).remove();
-						}
-						
-						$(tr[0]).removeClass(id);
-					}
-					else {
-						if($(tr[0]).attr('class') == id) {
-							var tr_child = $(tr[1]).children();
-							$(tr_child[0]).text('소스 선택>>');
-							$(tr[0]).remove();
-							
-						}else {
-							$('table.topping-table .'+id).remove();
-						}
-					}
-	 				
-					$(this).data("clickStatus", 0);
-				} */
 	 		});
  			
  		});
