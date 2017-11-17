@@ -10,6 +10,8 @@
 		<result column="user_pw" property="pw"/>
 		<result column="user_name" property="name"/>
 		<result column="user_email" property="email"/>
+		<result column="user_phone" property="phone"/>
+		<result column="user_birth" property="birth"/>
 		<result column="user_grade" property="grade"/>
 		<result column="user_type" property="type"/>
 	</resultMap>
@@ -29,7 +31,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" parameterType="userVO" resultMap="mapLoginVO">
-		select user_id, user_pw, user_name, user_grade, user_type from t_user
+		select user_id, user_pw, user_name, user_email, user_phone ,user_grade, user_type from t_user
 		where user_id = #{id} and user_pw = #{pw}
 	</select>
 	
