@@ -58,7 +58,7 @@ public class EventController {
 	@RequestMapping("/storeEventPage.do")
 	public ModelAndView StoreList() {
 		
-		List<StoreVO> storeList = eventService.selectStoreList();
+		
 		List<CityVO> cityList = eventService.selectCity();
 		
 		
@@ -66,14 +66,14 @@ public class EventController {
 		
 		mav.setViewName("event/StoreEventPage");
 		
-		mav.addObject("storeEventList", storeList );
+		
 		mav.addObject("cityList", cityList );
 		
 		System.out.println("얘가져옴?");
 		
 		return mav;
 	}
-	
+	// 시정보 ajax
 	@RequestMapping(value="/test")
     public void chargeReqAjaxByToss(HttpServletRequest request
                                   , HttpServletResponse response
@@ -86,12 +86,6 @@ public class EventController {
 		// 1. Select 구 군 정보
 		List locationList = eventService.selectLocation(sido);
 		
-		List list = new ArrayList();
-		list.add("노원구");
-		list.add("도봉구");
-		list.add("강남구");
-		
-		
 		// 2. return value parse
 		jsonObj.put("result", true);
 		jsonObj.put("guList", locationList);
@@ -99,6 +93,30 @@ public class EventController {
 		response.getWriter().print(jsonObj.toString());
        
     }
+	//시,도 군,구 정보 ajax
+	@RequestMapping(value="/test2")
+	public void gugunajax(HttpServletRequest request
+                                  , HttpServletResponse response
+                                  , @RequestParam(value="gugun", defaultValue = "") String gugun
+                                  , Model model) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+		
+		
+		List<StoreVO> storeList = eventService.selectStoreList(gugun);
+		
+		for(int i = 0 ; i < storeList.size(); i++ ) {
+			System.out.println(storeList.get(i).toString());
+		}
+		
+		jsonObj.put("result", true);
+		jsonObj.put("storeList", storeList);
+		
+		response.getWriter().print(jsonObj.toString());
+	
+	}
+	
 	
 	
 	

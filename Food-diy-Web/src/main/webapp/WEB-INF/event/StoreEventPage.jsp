@@ -333,11 +333,12 @@
 		                  			// 3. result setting
 		  				          	alert('다녀옴 , result = ' + data.result);
 		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NAME);
+		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NO);
 		                  			
 		  				          	$('#gugun').empty();
 			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
 		  				          	for(var i = 0 ; i < data.guList.length ; i++){
-		  				          		$('#gugun').append('<option value="" selected="selected">' + data.guList[i].LOC_NAME + '</option>');	
+		  				          		$('#gugun').append('<option value="'+ data.guList[i].LOC_NO + '">' + data.guList[i].LOC_NAME + '</option>');	
 		  				          	} 	
 		              }
 		          });
@@ -346,27 +347,33 @@
 			$("#gugun").change(function(){
 				
 				// 1. Parameter setting
-				var sido = $("#sido").val();
+				
 				var gugun = $("#gugun").val();
+				
+				console.log( "선택된 값1 : " + $("#gugun").val() );
 				
 				// 2. ajax call
 				$.ajax({
 		              url : "./test2",
 		              type: "post",
-		              data : { "sido" : sido , "gugun" : gugun},
+		              data : {"gugun" : gugun},
 		              success : function(responseData){
 		                  			var data = JSON.parse(responseData);
 		                  			
 		                  			// 3. result setting
 		  				          	alert('다녀옴 , result = ' + data.result);
-		  				          	alert('다녀옴 , guList = ' + data.guList);
+		  				          	alert('다녀옴 , guList = ' + data.guList.LOC_NO);
+		  				          	alert('다녀옴 , storeList = ' + data.storeList.STO_NAME);
 		                  			
-		  				          	$('#gugun').empty();
-			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
-		  				          	for(var i = 0 ; i < data.guList.length ; i++){
-		  				          		$('#gugun').append('<option value="" selected="selected">' + data.guList[i] + '</option>');	
-		  				          	} 	
-		              }
+		  				          //   $('#gugun').empty();
+			  				      //   $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
+		  				          //	for(var i = 0 ; i < data.guList.length ; i++){
+		  				          //		$('#gugun').append('<option value="" selected="selected">' + data.guList[i] + '</option>');	
+		  				          	}
+		  				          	
+		  				          	
+		  				          	
+		              
 		          });
 			});
 			

@@ -35,8 +35,8 @@ public class EventServiceImpl implements EventService{
 	
 	
 	@Override
-	public List<StoreVO> selectStoreList(){
-		List<StoreVO> list = eventDAO.selectStoreList();
+	public List<StoreVO> selectStoreList(String gugun){
+		List<StoreVO> list = eventDAO.selectStoreList(gugun);
 		return list;
 	}
 	

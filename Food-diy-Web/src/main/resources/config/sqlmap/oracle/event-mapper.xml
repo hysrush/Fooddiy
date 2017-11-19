@@ -23,6 +23,7 @@
   	
   	<resultMap type ="storeVO" id="Map_StoreVO">
   		<result column = "sto_no" property ="storeNo"/>
+  		<result column = "loc_no" property = "locationNo"/>
   		<result column = "sto_name" property ="storeName"/>
   		<result column = "sto_phone" property ="storePhone"/>
   		<result column = "sto_addr" property ="storeAddr"/>
@@ -59,12 +60,6 @@
 		ORDER BY EVE_NO DESC
 	</select>
 	
-	<!--  시,도 구,군 조회  -->
-		<select id ="selectStoreList" resultMap="Map_StoreVO">
-			SELECT STO_NAME , STO_PHONE , STO_ADDR 
-			FROM T_STORE
-			
-		</select>
 	<!--  시 데이터 불러오기  -->
 		<select id ="selectCity" resultMap="Map_CityVO">
 			SELECT CITY_NO , CITY_NAME
@@ -74,12 +69,20 @@
 		
 	<!--  구 데이터 불러오기  -->	
 		<select id ="selectLocation" resultType="hashmap" parameterType="String">
-			SELECT LOC_NAME
+			SELECT LOC_NO ,LOC_NAME
 			  FROM T_LOCATION
 			 WHERE CITY_NO = #{sido}
 			 ORDER BY LOC_NO ASC
 		</select>
 		
+	<!--  매장 데이터 불러오기  -->	
+		<select id = "selectStore" resultMap="Map_StoreVO" parameterType="String">
+			SELECT STO_NAME , STO_PHONE , STO_ADDR 
+			FROM T_STORE
+			WHERE LOC_NO = #{gugun}
+			ORDER BY STO_NO ASC
+		
+		</select>
 	
 	
 	<!-- 새글 등록  -->
