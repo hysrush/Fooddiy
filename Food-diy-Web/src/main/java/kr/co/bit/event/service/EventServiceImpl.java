@@ -76,8 +76,8 @@ public class EventServiceImpl implements EventService{
 
 
 	@Override
-	public List<locationVO> selectLocation() {
-		List<locationVO> list = eventDAO.selectLocation();
+	public List selectLocation(String sido) {
+		List list = eventDAO.selectLocation(sido);
 		return list;
 	}
 

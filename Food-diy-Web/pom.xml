@@ -17,8 +17,13 @@
 	                <target>1.8</target> 
 	            </configuration>
 	        </plugin>
-	
-	    </plugins>
+
+	        <plugin>
+	        	<groupId>com.github.noraui</groupId>
+	        	<artifactId>ojdbc7</artifactId>
+	        	<version>12.1.0.2</version>
+	        </plugin>
+	     </plugins>
 	</build>
    <dependencies>
   <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
@@ -73,11 +78,11 @@
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/com.github.noraui/ojdbc7 -->
-	<dependency>
+	<!--  <dependency>
 		<groupId>com.github.noraui</groupId>
     	<artifactId>ojdbc7</artifactId>
     	<version>12.1.0.2</version>
-	</dependency>
+	</dependency>-->
 				
 	<dependency>
 	    <groupId>junit</groupId>
@@ -150,10 +155,17 @@
 	</dependency>
 	
 	<!-- 메일 인증 -->
-	<dependency>
+	 <dependency>
 	    <groupId>javax.mail</groupId>
 	    <artifactId>mail</artifactId>
 	    <version>1.4.7</version>
+	</dependency>  
+	
+	<!-- Json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20171018</version>
 	</dependency>
 
 	<dependency>

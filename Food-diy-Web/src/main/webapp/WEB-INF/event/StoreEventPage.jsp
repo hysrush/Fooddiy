@@ -58,21 +58,6 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		
-			$("#sido").change(function(){
-				console.log( "선택된 값1 : " + $("#sido").val() );
-	       		
-		
-		});
-			
-			
-			
-			
-
-	});
-	</script>
 
 
 	</head>
@@ -329,6 +314,68 @@
 		<!-- Examples -->
 		<script src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script>
 		
+		<script type="text/javascript">
+			
+			$("#sido").change(function(){
+				
+				// 1. Parameter setting
+				var sido = $("#sido").val();
+				console.log( "선택된 값1 : " + $("#sido").val() );
+	       		
+				// 2. ajax call
+				$.ajax({
+		              url : "./test",
+		              type: "post",
+		              data : { "sido" : sido },
+		              success : function(responseData){
+		                  			var data = JSON.parse(responseData);
+		                  			
+		                  			// 3. result setting
+		  				          	alert('다녀옴 , result = ' + data.result);
+		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NAME);
+		                  			
+		  				          	$('#gugun').empty();
+			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
+		  				          	for(var i = 0 ; i < data.guList.length ; i++){
+		  				          		$('#gugun').append('<option value="" selected="selected">' + data.guList[i].LOC_NAME + '</option>');	
+		  				          	} 	
+		              }
+		          });
+			});
+			
+			$("#gugun").change(function(){
+				
+				// 1. Parameter setting
+				var sido = $("#sido").val();
+				var gugun = $("#gugun").val();
+				
+				// 2. ajax call
+				$.ajax({
+		              url : "./test2",
+		              type: "post",
+		              data : { "sido" : sido , "gugun" : gugun},
+		              success : function(responseData){
+		                  			var data = JSON.parse(responseData);
+		                  			
+		                  			// 3. result setting
+		  				          	alert('다녀옴 , result = ' + data.result);
+		  				          	alert('다녀옴 , guList = ' + data.guList);
+		                  			
+		  				          	$('#gugun').empty();
+			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
+		  				          	for(var i = 0 ; i < data.guList.length ; i++){
+		  				          		$('#gugun').append('<option value="" selected="selected">' + data.guList[i] + '</option>');	
+		  				          	} 	
+		              }
+		          });
+			});
+			
+			
+			
+			
+			
+		
+		</script>
 		
 		
 		

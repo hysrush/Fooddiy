@@ -74,9 +74,9 @@ public class EvnetDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public List<locationVO> selectLocation() {
-		
-		List<locationVO> list = sqlSession.selectList(url + "selectLocation");
+	public List selectLocation(String sido) {
+		System.out.println(sido);
+		List list = sqlSession.selectList(url + "selectLocation",sido);
 		
 		return list;
 	}
