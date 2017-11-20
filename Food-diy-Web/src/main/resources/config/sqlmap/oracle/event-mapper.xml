@@ -84,6 +84,11 @@
 		
 		</select>
 	
+	<select id="selectByName" parameterType="String" resultMap="Map_EventVO" >
+		<include refid="selectAll"/>
+		where  = #{no}
+	</select>
+	
 	
 	<!-- 새글 등록  -->
 	<insert id="insertEvent" parameterType="eventVO">
@@ -94,9 +99,4 @@
 	
 	
 
-	
-	<select id="selectByNo" parameterType="int" resultMap="Map_EventVO" >
-		<include refid="selectAll"/>
-		where no = #{no}
-	</select>
 </mapper>
