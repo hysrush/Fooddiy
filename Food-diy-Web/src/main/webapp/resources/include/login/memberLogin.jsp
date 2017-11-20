@@ -23,7 +23,7 @@
 										<div class="form-group">
 											<div class="col-xs-12 col-md-12">
 												<a class="pull-right" data-toggle="modal" href="#pwModal">(Lost Password?)</a>
-												<label>Password</label> <input type="text" name="pw" class="form-control input-lg">
+												<label>Password</label> <input type="password" name="pw" class="form-control input-lg">
 											</div>
 										</div>
 									</div>
