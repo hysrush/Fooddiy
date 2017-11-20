@@ -11,7 +11,7 @@ public interface MemberService {
 	UserVO selectOneMember(int no);
 	void insertMember(UserVO member);
 	void modifyMember(UserVO member);
-	void removeMember(int no);
 	void getMemberUpdate(UserVO member);
+	void memberDelte(String id);
 		
 }

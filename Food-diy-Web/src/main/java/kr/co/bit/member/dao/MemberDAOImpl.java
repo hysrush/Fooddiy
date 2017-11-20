@@ -35,10 +35,10 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.update("kr.co.bit.member.dao.memberUpdate", vo);
 	 
 	}
-
-	public void delete(int no) {
-		// TODO Auto-generated method stub
+	@Override
+	public void delete(String id) {
 		
+		sqlSession.delete("kr.co.bit.member.dao.memberDelete", id);
 	}
 
 		

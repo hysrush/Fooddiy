@@ -66,14 +66,14 @@
 <script>
 	$(document).ready(function(){
 		
-		$("#clear").click(function(){
+		/* $("#clear").click(function(){
 	
-			location.href="${pageContext.request.contextPath}/member/memberDelclear.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberDel.do?id='${userVO.id}'"; 
 		});
-		
+		 */
 		$("#cancel").click(function(){
 			
-			location.href="${pageContext.request.contextPath}/member/memberDetail.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberDetail.do"; 
 		});
 		
 	});
@@ -120,12 +120,13 @@
 		<div align="left" class="container">
 		<div style="margin-left: 7%; margin-top: 5%; margin-bottom: 5%" class="container">
 
-			<h2>
-				<strong>회원탈퇴</strong>
-			</h2>
-
 			<div class="row">
+				<div class="col-md-1"></div>
 				<div class="col-md-8 col-sm-12 col-xs-12">
+
+					<h2> 
+						<strong>회원탈퇴</strong>
+					</h2>
 					<p class="lead">회원탈퇴 회원탈퇴 전 안내사항을 꼭 확인해주세요. 탈퇴 후 회원님의 이용정보가
 						삭제되어 복구 불가능하오니 신중히 선택하시기 바랍니다. <br/><br/><h4><strong>탈퇴 안내</strong></h4> 회원탈퇴를 신청하기 전에 안내 사항을 꼭
 						확인해주세요. 사용하고 계신 아이디(hysrush)는 탈퇴 할 경우 <strong class="heading-secondary">재사용 및 복구</strong>가 불가능합니다. 탈퇴한 아이디는 본인과
@@ -142,9 +143,12 @@
 						</div>
 					</div>
 				</div>
-			<div style="margin-top: 4%; margin-left: 50%" class="col-md-8">
-				<button id="clear" type="button" class="btn  btn-info">탈퇴</button>
-				<button id="cancel" type="button" class="btn  btn-info">취소</button>
+			<div style="margin-top: 4%; margin-left: 57%" class="col-md-8">
+				<form action="${pageContext.request.contextPath}/member/memberDelCheck.do">
+					<input type="hidden" name="id" value="${ userVO.id }" />
+					<input type="submit" id="clear" value="탈 퇴" class="btn  btn-info" style="width: 80px">
+				</form>
+				<button id="cancel" type="button" class="btn  btn-info" style="width: 80px">취 소</button>
 			</div>
 		</div>
 	</div>
