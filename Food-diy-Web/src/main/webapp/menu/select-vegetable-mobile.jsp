@@ -91,6 +91,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class = "row button-family" style="text-align: center;">
+						<button type="button" class="btn mr-xs mb-sm less">적게</button>
+						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+						<button type="button" class="btn mr-xs mb-sm more">많이</button>
+				</div>
 		</figure>
 	</li>
 	<li><i class="fa fa-check fa-check-vegetable"></i>

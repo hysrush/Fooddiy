@@ -3,12 +3,14 @@ package kr.co.bit.event.control;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,23 +58,65 @@ public class EventController {
 	@RequestMapping("/storeEventPage.do")
 	public ModelAndView StoreList() {
 		
-		List<StoreVO> storeList = eventService.selectStoreList();
+		
 		List<CityVO> cityList = eventService.selectCity();
-		List<locationVO> locationList = eventService.selectLocation();
 		
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("event/StoreEventPage");
 		
-		mav.addObject("storeEventList", storeList );
+		
 		mav.addObject("cityList", cityList );
-		mav.addObject("locationList", locationList );
 		
 		System.out.println("얘가져옴?");
 		
 		return mav;
 	}
+	// 시정보 ajax
+	@RequestMapping(value="/test")
+    public void chargeReqAjaxByToss(HttpServletRequest request
+                                  , HttpServletResponse response
+                                  , @RequestParam(value="sido" , defaultValue = "") String sido
+                                  , Model model) throws Exception {
+      
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+		
+		// 1. Select 구 군 정보
+		List locationList = eventService.selectLocation(sido);
+		
+		// 2. return value parse
+		jsonObj.put("result", true);
+		jsonObj.put("guList", locationList);
+		
+		response.getWriter().print(jsonObj.toString());
+       
+    }
+	//시,도 군,구 정보 ajax
+	@RequestMapping(value="/test3")
+	public void gugunajax(HttpServletRequest request
+                                  , HttpServletResponse response
+                                  , @RequestParam(value="gugun", defaultValue = "") String gugun
+                                  , Model model) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+		
+		
+		List<StoreVO> storeList = eventService.selectStoreList(gugun);
+		
+		for(int i = 0 ; i < storeList.size(); i++ ) {
+			System.out.println(storeList.get(i).toString());
+		}
+		
+		jsonObj.put("result", true);
+		jsonObj.put("storeList", storeList);
+		
+		response.getWriter().print(jsonObj.toString());
+	
+	}
+	
 	
 	
 	
@@ -127,11 +171,7 @@ public class EventController {
 				
 				return "redirect:/event/eventPage.do";
 				
-		
-			    
-			    
-	            
-					
+
 				
 	
 		}

@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <ul class="list list-icons list-primary list-borders">
-
 	<li><i class="fa fa-check fa-check-sauce"></i>
 		<figure class="product-image-area product-sauce-area">
 				 <table>
@@ -207,10 +206,7 @@
 				</table>
 		</figure>
 	</li>
-	
-	
 </ul>
-
 
 
 <script>

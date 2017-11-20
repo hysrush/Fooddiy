@@ -55,7 +55,12 @@
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
 		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
+		
+		<!-- js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
+		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 		
 <script type="text/javascript">
 	function doAction(type) {
@@ -102,15 +107,16 @@
 			<div class="container">
 
 				<div class="row">
+					<!-- 스티키 사이드바 -->
 					<div class="col-md-2 hidden-xs hidden-sm">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
-									<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
-									<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+								<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
 						</aside>
 					</div>
@@ -129,38 +135,59 @@
 						</section>
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tabsNavigationSimple1"
-									data-toggle="tab">공지사항</a></li>
-								<li><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a>
-								</li>
+								<c:choose>
+									<c:when test="${ BackUrlType eq 'A' }">
+										<li class="active"><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
+										<li><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
+									</c:when>
+									<c:when test="${ BackUrlType eq 'B' }">
+										<li><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
+										<li class="active"><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="active"><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
+										<li><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 							<div class="tab-content">
 								<!-- 공지사항 -->
-								<div class="tab-pane active" id="tabsNavigationSimple1">
-									<div class="heading heading-border heading-middle-border">
-										<h3><strong>공지사항</strong></h3>
-									</div>
+								<c:choose>
+									<c:when test="${ BackUrlType eq 'A' }">
+										<div class="tab-pane active" id="tabsNavigationSimple1">
+									</c:when>
+									<c:when test="${ BackUrlType eq 'B' }">
+										<div class="tab-pane" id="tabsNavigationSimple1">
+									</c:when>
+									<c:otherwise>
+										<div class="tab-pane active" id="tabsNavigationSimple1">
+									</c:otherwise>
+								</c:choose>
 									<div class="center">
 										<div class="col-md-12">
-											<div class="col-md-3" style="float: left;">
-												<select class="form-control">
-													<option value="title">제목</option>
-													<option value="content">내용</option>
-													<option value="title+content">제목+내용</option>
-												</select>
+											<!-- 필터 및 검색 -->
+											<div class="col-md-12">
+												<div class="col-md-3" style="float: right;">
+													<form action="">
+														<div class="input-group input-group-md">
+															<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
+															<span class="input-group-btn">
+																<button type="submit" class="btn btn-primary btn-md">
+																	<i class="fa fa-search"></i>
+																</button>
+															</span>
+														</div>
+													</form>
+												</div>
+												<div class="col-md-2" style="float: right;">
+													<select class="form-control">
+														<option value="title">제목</option>
+														<option value="content">내용</option>
+														<option value="title+content">제목+내용</option>
+													</select>
+												</div>
 											</div>
-											<div class="col-md-3">
-												<form action="">
-													<div class="input-group input-group-lg">
-														<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
-														<span class="input-group-btn">
-															<button type="submit" class="btn btn-primary btn-lg">
-																<i class="fa fa-search"></i>
-															</button>
-														</span>
-													</div>
-												</form>
-											</div>
+											<!-- 테이블 -->
 											<table class="table table-hover" width="80%">
 												<thead>
 													<tr>
@@ -187,50 +214,60 @@
 													</c:forEach>
 												</tbody>
 											</table>
-											<div class="center">
-												<div class="col-md-12">
-													<ul class="pagination pull-center">
-														<li><a href="#"><i class="fa fa-chevron-left"></i></a>
-														</li>
-														<li class="active"><a href="#">1</a></li>
-														<li><a href="#">2</a></li>
-														<li><a href="#">3</a></li>
-														<li><a href="#"><i class="fa fa-chevron-right"></i></a>
-														</li>
-													</ul>
-												</div>
-												<button type="button" class="btn btn-primary"
-													onclick="doAction('W')">글쓰기</button>
+											<!-- 페이지네이션 -->
+											<div class="col-md-12 center">
+												<ul class="pagination pull-center">
+													<li><a href="#"><i class="fa fa-chevron-left"></i></a>
+													</li>
+													<li class="active"><a href="#">1</a></li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#"><i class="fa fa-chevron-right"></i></a>
+													</li>
+												</ul>
+												<br>
+												<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
 											</div>
 										</div>
 									</div>
 								</div>
 								<!-- 보도자료 -->
-								<div class="tab-pane" id="tabsNavigationSimple2">
-									<div class="heading heading-border heading-middle-border">
-										<h3><strong>보도자료</strong></h3>
-									</div>
+								<c:choose>
+									<c:when test="${ BackUrlType eq 'A' }">
+										<div class="tab-pane" id="tabsNavigationSimple2">
+									</c:when>
+									<c:when test="${ BackUrlType eq 'B' }">
+										<div class="tab-pane active" id="tabsNavigationSimple2">
+									</c:when>
+									<c:otherwise>
+										<div class="tab-pane" id="tabsNavigationSimple2">
+									</c:otherwise>
+								</c:choose>
 									<div class="center">
 										<div class="col-md-12">
-											<div class="col-md-3" style="float: left;">
-												<select class="form-control">
-													<option value="title">제목</option>
-													<option value="content">내용</option>
-													<option value="title+content">제목+내용</option>
-												</select>
+											<!-- 필터 및 검색 -->
+											<div class="col-md-12">
+												<div class="col-md-3" style="float: right;">
+													<form action="">
+														<div class="input-group input-group-md">
+															<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
+															<span class="input-group-btn">
+																<button type="submit" class="btn btn-primary btn-md">
+																	<i class="fa fa-search"></i>
+																</button>
+															</span>
+														</div>
+													</form>
+												</div>
+												<div class="col-md-2" style="float: right;">
+													<select class="form-control">
+														<option value="title">제목</option>
+														<option value="content">내용</option>
+														<option value="title+content">제목+내용</option>
+													</select>
+												</div>
 											</div>
-											<div class="col-md-3">
-												<form action="">
-													<div class="input-group input-group-lg">
-														<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
-														<span class="input-group-btn">
-															<button type="submit" class="btn btn-primary btn-lg">
-																<i class="fa fa-search"></i>
-															</button>
-														</span>
-													</div>
-												</form>
-											</div>
+											<!-- 테이블 -->
 											<table class="table table-hover" width="80%">
 												<thead>
 													<tr>
@@ -257,18 +294,18 @@
 													</c:forEach>
 												</tbody>
 											</table>
-											<div class="center">
-												<div class="col-md-12">
-													<ul class="pagination pull-center">
-														<li><a href="#"><i class="fa fa-chevron-left"></i></a>
-														</li>
-														<li class="active"><a href="#">1</a></li>
-														<li><a href="#">2</a></li>
-														<li><a href="#">3</a></li>
-														<li><a href="#"><i class="fa fa-chevron-right"></i></a>
-														</li>
-													</ul>
-												</div>
+											<!-- 페이지네이션 -->
+											<div class="col-md-12 center">
+												<ul class="pagination pull-center">
+													<li><a href="#"><i class="fa fa-chevron-left"></i></a>
+													</li>
+													<li class="active"><a href="#">1</a></li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#"><i class="fa fa-chevron-right"></i></a>
+													</li>
+												</ul>
+												<br>
 												<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
 											</div>
 										</div>

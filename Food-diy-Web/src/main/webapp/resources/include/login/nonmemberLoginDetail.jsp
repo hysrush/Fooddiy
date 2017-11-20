@@ -9,7 +9,6 @@
 		
 		var e = document.nonCheck;
 		var m = document.nonemailCheck;
-		var k;
 		
 		// 가입 버튼 비활성화
 		$('#nonCheck').attr('disabled', true);
@@ -47,7 +46,6 @@
 				url : "${ pageContext.request.contextPath }/sign/nonemail",
 				success : function(result){
 					$("#pno").focus();
-					k = result;
 					alert("전송!");
 				}
 			});
@@ -55,12 +53,13 @@
 		
 	});
 	
-	function check(){
+/* 	function check(){
 		
-		var e = document.nonCheck;
-		var m = document.nonemailCheck;	
+		var pno = document.nonemailCheck.pno.value;
 		
-		if(k === m.pno){
+		var k = "${ key }";
+		
+		if( pno === k){
 			alert("완료!")
 			return true;
 		}else{
@@ -69,7 +68,8 @@
 			return false;
 		}
 		
-	}
+		return false;
+	} */
 	
 </script>
 <!-- 비회원 로그인/주문조회 코드 -->
@@ -116,14 +116,14 @@
 									</div>
 								</form>
 								<!-- 인증 번호 확인 & 비회원 가입 -->
-								<form action="${ pageContext.request.contextPath }/sign/nonemailCheck" name="nonemailCheck" method="post"  onsubmit="return check()">
+								<form action="${ pageContext.request.contextPath }/sign/nonemailCheck" name="nonemailCheck" method="post" >
 									<input type="hidden" name="name" value="${ non.name }"/>
 									<input type="hidden" name="email" value="${ non.email }"/>
 									<div class="row">
 										<div class="form-group">
 											<div class="col-md-6">
 												<label>인증코드</label>&nbsp;
-												<input type="text" name="pno" id="pno" class="form-control"/>
+												<input type="text" name="pno" id="pno" class="form-control" required="required"/>
 											</div><br/>
 											<div class="col-md-6">
 												<input type="submit" value="인증확인" id="nonemailCheck" class="btn btn-info pull-right form-control" data-loading-text="Loading..."/>

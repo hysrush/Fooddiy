@@ -3,6 +3,7 @@ package kr.co.bit.event.vo;
 public class StoreVO {
 
 	public int storeNo;
+	public int locationNo;
 	public String storeName;
 	public String storePhone;
 	public String storeAddr;
@@ -14,6 +15,12 @@ public class StoreVO {
 	}
 	public void setStoreNo(int storeNo) {
 		this.storeNo = storeNo;
+	}
+	public int getLocationNo() {
+		return locationNo;
+	}
+	public void setLocationNo(int locationNo) {
+		this.locationNo = locationNo;
 	}
 
 	public String getStoreName() {
@@ -42,10 +49,10 @@ public class StoreVO {
 	}
 	@Override
 	public String toString() {
-		return "StoreVO [storeNo=" + storeNo + ", storeName=" + storeName + ", storePhone=" + storePhone
-				+ ", storeAddr=" + storeAddr + ", regDate=" + regDate + "]";
+		return "StoreVO [storeNo=" + storeNo + ", locationNo=" + locationNo + ", storeName=" + storeName
+				+ ", storePhone=" + storePhone + ", storeAddr=" + storeAddr + ", regDate=" + regDate + "]";
 	}
-	
+
 	
 	
 	

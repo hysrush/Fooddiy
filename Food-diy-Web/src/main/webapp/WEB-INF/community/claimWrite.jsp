@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>    
 <!DOCTYPE html>
 <html>
@@ -34,6 +34,7 @@
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.carousel.min.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.theme.default.min.css">
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.min.css">
+		
 		<!-- 데이트피커 css -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/bootstrap-datepicker/bootstrap-datepicker3.css">
 
@@ -60,7 +61,7 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
-		
+
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		
@@ -71,34 +72,43 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
 <script type="text/javascript">
 	function doAction(type) {
 		switch (type) {
 		case 'L':
-			location.href = "<%= request.getContextPath() %>/notice/list.do";
+			location.href = "${ pageContext.request.contextPath}/community/claim.do";
 			break;
 		default:		
 			break;
 		}
 	}
 	
-	function submit() {
-		document.getElementById("dForm").submit();
-	}
 </script>
 <style type="text/css">
 	.mail_input, .mail_sel, .phone_input, .phone_sel {
 		width: 30%;
 		float: left;
 	}
+	#csForm > tbody > tr > td:FIRST-CHILD {
+		width: 15%;
+		text-align: center;
+		font-weight: bold;
+		color: black;
+	}
 </style>
 <script type="text/javascript">
-
+	
+	// 카운트 초기화
 	var cnt = 0;
 	
 	$(document).ready(function(){
+		
+		$('form').submit(function() {
+		    var emailID = $("input[name='emailID']").val();
+		    alert(emailID);
+			
+		});
 		
 		// DatePicker
 		$('#visitDate').datepicker({
@@ -129,7 +139,7 @@
 		
      	// 첨부파일 +(추가) 버튼 클릭시 이벤트
         $('#btnAddFile').click (function () {
-        	
+        	// 카운트 증가
         	cnt ++;
         	//alert(cnt);
         	
@@ -139,8 +149,10 @@
 	
 			if(cnt >= 5){
 			    // 그리고 해당 첨부파일은 5개 이상 생성할수 없도록 제한
-			        alert("ERROR : 첨부파일을 5개 이상 추가 하실 수 없습니다!");
-			        cnt = 4;
+		        alert("ERROR : 첨부파일을 5개 이상 추가 하실 수 없습니다!");
+			    
+			    // 카운트 초기화
+		        cnt = 4;
 		    } else {
 		    	// 첨부파일 div 추가
 				document.getElementById('file_AddSection').appendChild(div);
@@ -151,6 +163,8 @@
 				// 버튼 요소 변경
 		    	$("#file_AddSection div > button:last").attr("name", "btnMinusFile");
 		    	$("#file_AddSection div > button:last").attr("onclick", "removeFile(this)");
+		    	$("#file_AddSection div > button:last").css("background","gray");
+		    	$("#file_AddSection div > button:last").css("border-color","gray");
 				// 아이콘 요소 변경
 		    	$("#file_AddSection div > button > i:last").attr("class", "fa fa-minus");
 		    }
@@ -158,17 +172,35 @@
      	
 	});
 	
+	// 첨부파일 -(제거) 버튼 클릭시 이벤트
 	function removeFile(obj){
-		
+		// 카운트 감소
 		cnt --;
 		//alert(cnt);
 		
         var index = $("#file_AddSection div > button[name='btnMinusFile']").index(obj);
         $("#file_AddSection div").eq(index).remove();
-        
+    }
+
+	// 이메일 이벤트
+	function checkEmail(){
+
+		var f = document.csForm;
+		
+		if (f.selectEmail.value == 'etc') {
+        	f.emailDomain.readOnly = false;
+        	f.emailDomain.value = '';
+        	f.emailDomain.focus();
+        }
+        else {
+        	f.emailDomain.readOnly = true;
+        	f.emailDomain.value = f.selectEmail.value;
+        }
     }
 	
+	
 </script>
+
 </head>
 <body>
 	<div class="body">
@@ -206,10 +238,10 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-								<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
-								<li class="active"><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+									<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
 						</aside>
 					</div>
@@ -230,34 +262,35 @@
 							</div>
 						</section>
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
-							<ul class="nav nav-tabs">
+							<!-- <ul class="nav nav-tabs">
 								<li class="active">
 									<a href="#tabsNavigationSimple1" data-toggle="tab">1:1 문의하기</a>
 								</li>
 								<li>
 									<a href="#tabsNavigationSimple2" data-toggle="tab">나의 문의내역</a>
 								</li>
-							</ul>
+							</ul> -->
 							<div class="tab-content">
 								<div class="tab-pane active" id="tabsNavigationSimple1">
 									<div class="center">
-										<h4>1:1 문의하기</h4>
+										<br>
 										<div class="form-group" align="left">
-											<form method="POST">
-												<table class="table table-bordered" width="80%">
+											<!-- 1:1문의 작성폼 시작  -->
+											<form:form commandName="claimVO" method="POST" name="csForm" id="csForm">
+												<table class="table table-bordered">
 													<tr>
 														<td>
-															<label for="kind">분야</label>
+															<label for="type">분야</label>
 														</td>
 														<td>
-															<select class="form-control" id="kind" name="kind">
-																<option value="" selected="selected">문의유형</option>
-																<option value="I">문의</option>
-																<option value="P">칭찬</option>
-																<option value="C">불만</option>
-																<option value="S">제안</option>
-																<option value="X">기타</option>
-															</select>
+															<form:select path="type" class="form-control" id="type" name="type">
+																<form:option value="" selected="selected">문의유형</form:option>
+																<form:option value="I">문의</form:option>
+																<form:option value="P">칭찬</form:option>
+																<form:option value="C">불만</form:option>
+																<form:option value="S">제안</form:option>
+																<form:option value="X">기타</form:option>
+															</form:select>
 														</td>
 													</tr>
 													<tr>
@@ -265,19 +298,23 @@
 															<label for="email">답변 메일</label>
 														</td>
 														<td>
-															<input type="text" class="mail_input form-control" id="emailID" placeholder="로그인회원emailID" value=""/>
+															<input type="text" class="mail_input form-control" 
+																	id="emailID" name="emailID" value="로그인회원emailID"/>
 															<span style="float: left;">&nbsp;&nbsp;<i class="fa fa-at"></i>&nbsp;&nbsp;</span>
-															<input type="text" class="mail_input form-control" id="emailAdd" placeholder="로그인회원emailAdd" value=""/>
+															<input type="text" class="mail_input form-control" 
+																	id="emailDomain" name="emailDomain" value="로그인회원emailDomain" readonly="readonly"/>
 															<span style="float: left;">&nbsp;&nbsp;</span>
-															<select class="mail_sel form-control" >
-																<option value="">직접입력</option>
-																<option value="">gmail.com</option>
-																<option value="">hanmail.net</option>
-																<option value="">hotmail.com</option>
-																<option value="">nate.com</option>
-																<option value="">naver.com</option>
-																<option value="">yahoo.co.kr</option>
+															<select class="mail_sel form-control" id="selectEmail" onchange="checkEmail()">
+																<option value="로그인회원emailDomain">선택하세요</option>
+																<option value="gmail.com">gmail.com</option>
+																<option value="hanmail.net">hanmail.net</option>
+																<option value="hotmail.com">hotmail.com</option>
+																<option value="nate.com">nate.com</option>
+																<option value="naver.com">naver.com</option>
+																<option value="yahoo.co.kr">yahoo.co.kr</option>
+																<option value="etc">직접입력</option>
 															</select>
+															<form:hidden path="email" />
 														</td>
 													</tr>
 													<tr>
@@ -297,11 +334,12 @@
 															<input type="text" class="phone_input form-control" id="phone2" name="phone2" placeholder="중간번호" maxlength="4" ref="num"/>
 															<span style="float: left;">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
 															<input type="text" class="phone_input form-control" id="phone3" name="phone3" placeholder="마지막번호" maxlength="4" ref="num"/>
+															<form:hidden path="phone"/>
 														</td>
 													</tr>
 													<tr>
 														<td>
-															<label for="email">장소</label>
+															<label>장소</label>
 														</td>
 														<td>
 															<div style="float: left;">
@@ -310,14 +348,16 @@
 															</div>
 															<br>
 															<div class="visit col-md-12" style="float: left;">
-																<label for="email" >방문매장&nbsp;&nbsp;</label>
-																<button type="button" class="btn btn-success mr-xs mb-sm">매장찾기</button>
+																<label for="visitStore" >방문매장&nbsp;&nbsp;</label>
+																<button type="button" class="btn btn-success mr-xs mb-sm" data-toggle="modal" data-target="#formModal">매장찾기</button>
+																<!-- 매장찾기 모달창 -->
+																<jsp:include page="/resources/include/claim/visitStore-Modal.jsp"></jsp:include>
+																<form:hidden path="visitStore"/>
 															</div>
 															<div class="visit col-md-12" style="float: left;">
-																<label for="email" >방문일&nbsp;&nbsp;</label>
+																<label for="visitDate" >방문일&nbsp;&nbsp;</label>
 																<div class="input-group date col-md-4" >
-																	<input type="text" class="form-control" data-msg-required="This field is required." readonly="readonly"
-																			placeholder="방문일" name="visitDate" id="visitDate" required>
+																	<form:input path="visitDate" type="text" class="form-control" readonly="readonly" placeholder="방문일" name="visitDate" id="visitDate"/>
 																	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 																</div>
 															</div>
@@ -328,8 +368,8 @@
 															<label for="title">제목</label>
 														</td>
 														<td>
-															<input path="title" type="text" class="title_input form-control" id="title" name="title" placeholder="제목"/>
-															<%-- <form:errors path="title" class="form-control"></form:errors> --%>
+															<form:input path="title" type="text" class="form-control" id="title" name="title" placeholder="제목"/>
+															<form:errors path="title" class="form-control"></form:errors>
 														</td>
 													</tr>
 													<tr>
@@ -337,14 +377,13 @@
 															<label for="content">내용</label>
 														</td>
 														<td>
-															<textarea path="content" class="form-control" rows="5" id="content" name="content" placeholder="내용"></textarea>
-															<%-- <form type="textarea" path="content" class="form-control" rows="5" id="comment" placeholder="contents"/> --%>
-															<%-- <form:errors path="content" class="form-control"></form:errors> --%>
+															<form:textarea path="content" class="form-control" rows="5" id="content" name="content" placeholder="내용"/>
+															<form:errors path="content" class="form-control"></form:errors>
 														</td>
 													</tr>
 													<tr>
 														<td>
-															<label for="content">파일첨부</label>
+															<label for="file">파일첨부</label>
 														</td>
 														<td>
 															<div class="file_BasicSection">
@@ -355,41 +394,41 @@
 															</div>
 															<div id="file_AddSection"></div>
 															<p class="mb-none" style="padding: 10px;">
-																파일첨부는 아래의 파일만 등록이 가능하며 최대 5개(1개당 최대2MB), 총 10MB까지 등록이 가능합니다.<br>
+																파일첨부는 아래의 파일만 등록이 가능하며 <strong>최대 5개</strong>(1개당 최대2MB), 총 10MB까지 등록이 가능합니다.<br>
 																(등록 가능 확장자 : jpg, jpeg, png, gif, zip, doc, docx, ppt, pptx, xls, xlsx, hwp)
 															</p>
 														</td>
 													</tr>
 												</table>
-											</form>
+												<!-- 정보활용 동의 -->
+												<section class="agree section section-default" style="height: 100px; padding-top: 20px;">
+													<div class="row ">
+														<div class="col-md-12">
+															<p class="mb-none" style="padding: 10px;">
+																고객이 동의한 개인정보취급방침에 따라 홈페이지 가입 시에 등록한 전화번호 또는 
+																고객의 소리 본문에 고객이 직접 불만처리를 위해 기재한 개인정보를 활용하여 처리할 수 있습니다.
+															</p>
+														</div>
+													</div>
+												</section>
+												<div class="agree col-md-12">
+													<div style="float: right;">
+														<input type="radio" name="radioAgree" id="agree" value="Y" >
+														<label for="agree">동의&nbsp;&nbsp;</label>
+														<input type="radio" name="radioAgree" id="disagree" value="N"  checked="checked">
+														<label for="disagree">동의안함&nbsp;&nbsp;</label>
+													</div>
+												</div>
+												<div class="center">
+													<button type="submit" class="btn btn-default" id="claimSubmit">등록</button>
+												</div>
+											</form:form>
 										</div>
-									</div>
-									<!-- 정보활용 동의 -->
-									<section class="agree section section-default" style="height: 100px; padding-top: 20px;">
-										<div class="row ">
-											<div class="col-md-12">
-												<p class="mb-none" style="padding: 10px;">
-													고객이 동의한 개인정보취급방침에 따라 홈페이지 가입 시에 등록한 전화번호 또는 
-													고객의 소리 본문에 고객이 직접 불만처리를 위해 기재한 개인정보를 활용하여 처리할 수 있습니다.
-												</p>
-											</div>
-										</div>
-									</section>
-									<div class="agree col-md-12">
-										<div style="float: right;">
-											<input type="radio" name="radioAgree" id="agree" value="Y" >
-											<label for="agree">동의&nbsp;&nbsp;</label>
-											<input type="radio" name="radioAgree" id="disagree" value="N"  checked="checked">
-											<label for="disagree">동의안함&nbsp;&nbsp;</label>
-										</div>
-									</div>
-									<div class="center">
-										<button type="submit" class="btn btn-default">등록</button>
 									</div>
 								</div>
-								<div class="tab-pane" id="tabsNavigationSimple2">
+								<!-- <div class="tab-pane" id="tabsNavigationSimple2">
 									<div class="center">
-										<h4>나의 문의내역</h4>
+										<br>
 										<table class="table table-hover" width="80%">
 											<thead>
 												<tr>
@@ -428,7 +467,7 @@
 											<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -456,6 +495,7 @@
 		<script src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
+		
 		<!-- 데이트피커 js -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 		

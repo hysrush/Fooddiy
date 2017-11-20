@@ -38,9 +38,10 @@ public class EvnetDAOImpl implements EventDAO {
 		return sqlSession.selectOne(url + "selectByNo" , no);
 	}
 	@Override
-	public List<StoreVO> selectStoreList(){
+	public List<StoreVO> selectStoreList(String gugun){
 		
-		List<StoreVO> list = sqlSession.selectList(url + "selectStoreList");
+		System.out.println("dao - gugun : " + gugun);
+		List<StoreVO> list = sqlSession.selectList(url + "selectStore", gugun);
 		
 		return list;
 	}
@@ -74,9 +75,9 @@ public class EvnetDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public List<locationVO> selectLocation() {
-		
-		List<locationVO> list = sqlSession.selectList(url + "selectLocation");
+	public List selectLocation(String sido) {
+		System.out.println(sido);
+		List list = sqlSession.selectList(url + "selectLocation",sido);
 		
 		return list;
 	}
