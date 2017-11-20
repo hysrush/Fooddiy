@@ -23,10 +23,14 @@ public class Select_Ing_Controller {
 		
 		List<IngredientsVO> ingList = service.selectAllIng();
 		
+		
+		
+		
 		ModelAndView  mav = new ModelAndView();
 		mav.setViewName("menu/select_ingredients");
 		mav.addObject("ingList", ingList);
 		
+		System.out.println("됐당");
 		
 		for(int i = 0; i < ingList.size(); ++i) {
 			System.out.println(i + "번 "  + ingList.get(i));
