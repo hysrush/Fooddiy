@@ -117,9 +117,6 @@
 											<li class="active">
 												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">매장별 이벤트</a>
 											</li>
-											<li class="">
-												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 매장별  이벤트 </a>
-											</li>
 										</ul>
 										<div class="tab-content">
 											<div class="tab-pane active" id="tabsNavigationSimple1">
@@ -129,7 +126,6 @@
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
-												<form action="${ pageContext.request.contextPath }/event/storeEventPage.do" id="frmCalculateShipping" method="post">
 													<div class="row">
 														<div class="form-group">
 															<div class="col-md-6">
@@ -166,72 +162,69 @@
 													<div class="row">
 														<div class="col-md-12">
 																		<!--  ajax로 보내버리는 a태그  -->
-																	<a data-href= "${ pageContext.request.contextPath}/resources/ajax/test-ajax.jsp"  data-ajax-on-page>
-																		<input type="submit" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
-																	</a>
+																	
+																		<input type="button" id="search" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+																	
 														</div>
 													</div>
-												</form>
+												
 													<!--  AJAX 테이블이 생성될 공간  -->
-														<div class="container">
-															<div class="col-md-8">
-															<div id="porfolioAjaxBox" class="ajax-box ajax-box-init mb-lg">
-																	<!-- <div class="bounce-loader">
-																	<div class="bounce1"></div>
-																	<div class="bounce2"></div>
-																	<div class="bounce3"></div>
-																</div> -->
-																<div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+														<div class="row">
+															<div class="col-md-12">
+																<form action="storeEventPage.do" method ="post">
+																	<table class="table table-hover" width="80%">
+																		<thead>
+																			<tr>
+																				<th>매장번호</th>
+																				<th>매장명</th>
+																				<th>매장 주소 </th>
+																				<th>매장 전화번호</th>
+																				<th> 선택 </th>
+																			</tr>
+																		</thead>
+																		<tbody id = "storeList">
+																			
+																			
+																		</tbody>
+																	</table>
+																</form>
 															</div>
 														</div>
-
-											</div>
 										</div>
 									</div>	
-												<%-- 	<!-- 1 -->
+												<!--  선택한 매점 이름과 매칭되는 이벤트 불러오기  -->
+													<div class="center">	
+													<!-- 1 -->
+												<c:forEach items="${ eventList }" var="eventVO">	
 													<div class="col-md-12">
 														<div class="recent-posts">
 															<article class="post">
 																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
 																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
+																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
 																	</div>
 																	
 																</div>
-																<div class="date">
-																	<span class="day">15</span>
-																	<span class="month">Jan</span>
+																<div class="heading heading-tertiary heading-border heading-bottom-border">
+																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
 																</div>
-																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
+																
+																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
+																
+																
+																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
+																								
+																<span></span>
+																<span></span>
+															
 															</article>
 														</div>
 													</div>
-													<!-- 2 -->
-													<div class="col-md-12">
-													<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
-																	</div>
-																	
-																</div>
-																<div class="date">
-																	<span class="day">15</span>
-																	<span class="month">Jan</span>
-																</div>
-																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
-															</article>
-														</div>
-													</div>	
-													 --%>
+													
+												</c:forEach>	
 													
 													
-													
-													
-													
+												</div>
 													
 													<!--  -->
 										<div class="col-md-12">
@@ -254,15 +247,7 @@
 											
 											</div>
 										</div>
-											<div class="tab-pane" id="tabsNavigationSimple2">
-											
-											
-											
-												<div class="center">
-													<!-- 이벤트 사진과 일정과 내용을 넣는 곳  -->
-												
-												</div>
-									</div>
+										
 								</div>
 							</div>
 							<!-- END -->
@@ -344,7 +329,7 @@
 		          });
 			});
 			
-			$("#gugun").change(function(){
+			/* $("#gugun").change(function(){
 				
 				// 1. Parameter setting
 				
@@ -362,22 +347,78 @@
 		                  			
 		                  			// 3. result setting
 		  				          	alert('다녀옴 , result = ' + data.result);
-		  				          	alert('다녀옴 , guList = ' + data.guList.LOC_NO);
-		  				          	alert('다녀옴 , storeList = ' + data.storeList.STO_NAME);
+		  				          	alert('다녀옴 , storeList = ' + data.storeList[0].STO_NO);
+		  				          	alert('다녀옴 , storeList = ' + data.storeList[0].STO_NAME);
 		                  			
-		  				          //   $('#gugun').empty();
-			  				      //   $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
-		  				          //	for(var i = 0 ; i < data.guList.length ; i++){
-		  				          //		$('#gugun').append('<option value="" selected="selected">' + data.guList[i] + '</option>');	
 		  				          	}
-		  				          	
-		  				          	
-		  				          	
-		              
+		  				        
+			  				          $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
+		  				          	for(var i = 0 ; i < data.guList.length ; i++){
+		  				          		$('#gugun').append('<option value="" selected="selected">' + data.guList[i] + '</option>');	 
+		  				              
 		          });
-			});
+				});  */
 			
 			
+				$("#search").click(function(){
+					
+					var gugun = $("#gugun").val();
+					console.log( " 구군 값 : " + $("#gugun").val());
+					
+					$.ajax({
+						url : "./test3",
+						type : "post",
+						data : {"gugun" : gugun},
+						success : function(responseData){
+									var data = JSON.parse(responseData);
+									
+									alert("result = " + data.result);
+									alert("매장이름 = " + data.storeList[0].storeName);
+									$('#storeList').empty();
+								 	for(var i = 0 ; i < data.storeList.length; i++){
+									var contents = '';
+									contents += '<tr>';
+									contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
+									contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
+									contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
+									contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
+									contents +=		'<td><input type="button" id = "storeChoice" value="선택" /></td>';
+									contents += '</tr>';
+
+										
+									$('#storeList').append(contents);
+
+								 	}		
+						}
+					});
+		
+				});
+				
+				//ajax3 
+				$("#storeChoice").click(function(){
+					var storeName = $("#storeName").val();
+					console.log("매장이름 : " +$("#storeName").val());
+					
+					/* $.ajax({
+						url : "./test4",
+						type : "post",
+						data : {"storeName" : storeName},
+						success : function(responseData){
+								var data = JSON.parse(responseData);	
+						
+								
+								
+								
+								
+						}
+						
+						
+						
+					
+					
+					}); */
+				});
+				
 			
 			
 			
