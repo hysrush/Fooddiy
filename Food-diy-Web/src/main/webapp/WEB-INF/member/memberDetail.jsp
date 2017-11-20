@@ -61,10 +61,7 @@
 <script>
 	$(document).ready(function(){
 		
-		$("#memberDel").click(function(){
-	
-			location.href="${pageContext.request.contextPath}/member/memberDel.do"; 
-		});
+		
 		
 		$("#okay").click(function(){
 			

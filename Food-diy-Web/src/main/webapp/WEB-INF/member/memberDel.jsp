@@ -103,6 +103,21 @@
 <script
 	src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
+<script>
+	$(document).ready(function(){
+		
+		$("#okay").click(function(){
+			
+			location.href="${pageContext.request.contextPath}/member/memberDetail.do"; 
+		});
+		
+		$("#cancel").click(function(){
+			
+			location.href="${pageContext.request.contextPath}/member/memberDetail.do"; 
+		});
+		
+	});
+</script>
 
 <!-- Theme Custom CSS -->
 <link rel="stylesheet"
@@ -153,15 +168,14 @@
 
 
 		<div class="row">
-			<div class="c col-sm-11 col-xs-11">
+		<div class="col-md-4"></div>
+			<div  class="col-xs-11  col-md-4  col-sm-11 ">
 				<div class="featured-boxes">
 					<div class="row">
-						<div style="margin-left: 10%; margin-top: 5%; margin-bottom: 5%"
-							class="col-md-4">
+						<div style=" margin-left: 10%; margin-top: 5%; margin-bottom: 5%" class="">
 							<div class="featured-box featured-box-primary align-left mt-xlg">
 								<div class="box-content">
-									<h4 class="heading-primary text-uppercase mb-md">안전한 회원탈퇴를
-										위해 아이디와 비밀번호를 입력하세요.</h4>
+									<h4 class="heading-primary text-uppercase mb-md">안전한 회원탈퇴를 위해 아이디와 비밀번호를 입력하세요.</h4>
 									<form
 										action="${ pageContext.request.contextPath }/member/memberDelcheck.do"
 										id="frmSignIn" method="post">
@@ -185,18 +199,12 @@
 										<div class="row">
 											<div class="col-md-6">
 												<span class="remember-box checkbox"> <label
-													for="rememberme"> <input type="checkbox"
-														id="rememberme" name="rememberme">Remember Me
-												</label>
+													for="rememberme"> <input type="checkbox" id="rememberme" name="rememberme">Remember Me</label>
 												</span>
 											</div>
 											<div style="margin-top: 2%" class="col-md-6">
-												<input type="submit" value="확인"
-													class="btn btn-primary pull-right mb-xl"
-													data-loading-text="Loading..."> <input
-													style="margin-right: 1%" type="reset" value="취소"
-													class="btn btn-primary pull-right mb-xl"
-													data-loading-text="Loading...">
+												<input id="okay" type="submit" value="확인" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..."> 
+												<input id="cancel" style="margin-right: 1%" type="reset" value="취소" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
 											</div>
 										</div>
 									</form>
@@ -208,8 +216,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
 	<div>

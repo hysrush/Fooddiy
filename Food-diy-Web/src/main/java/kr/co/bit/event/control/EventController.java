@@ -94,7 +94,7 @@ public class EventController {
        
     }
 	//시,도 군,구 정보 ajax
-	@RequestMapping(value="/test2")
+	@RequestMapping(value="/test3")
 	public void gugunajax(HttpServletRequest request
                                   , HttpServletResponse response
                                   , @RequestParam(value="gugun", defaultValue = "") String gugun
@@ -171,11 +171,7 @@ public class EventController {
 				
 				return "redirect:/event/eventPage.do";
 				
-		
-			    
-			    
-	            
-					
+
 				
 	
 		}

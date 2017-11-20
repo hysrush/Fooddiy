@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.bit.member.service.MemberService;
 import kr.co.bit.menu.vo.MenuVO;
@@ -37,6 +38,19 @@ public class MemberController {
 	public String myQnA(){
 		
 		return "member/myQnA";
+		
+	}
+	@RequestMapping("/memberDelcheck.do")
+	public String memberDelcheck(){
+		
+		return "member/memberDelcheck";
+		
+	}
+	
+	@RequestMapping("/memberDelclear.do")
+	public String memberDelclear(){
+		
+		return "member/memberDelclear";
 		
 	}
 	
@@ -69,6 +83,26 @@ public class MemberController {
 		  return "member/memberDetail";
 
 	  }
+	  
+	  //회원탈퇴
+	  @RequestMapping(value="/memberDel")
+	  public String memberDel(){
+		  
+		  return "member/memberDelcheck";
+	  }
+	  
+	  @RequestMapping(value="/memberDelCheck.do")
+		public String memberDelCheck(String id, SessionStatus session) throws Exception{
+			
+		   session.setComplete();
+			System.out.println(id);
+			memberService.memberDelte(id);
+			
+			return "member/memberDelclear";
+			
+		}
+	  
+	  
 	  //최근 주문 내역
 		@RequestMapping(value="/Latest-Order.do")
 		public String cart(Model model) {
