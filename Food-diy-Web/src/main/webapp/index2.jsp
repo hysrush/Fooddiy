@@ -90,6 +90,9 @@
 			<!--  menu 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/menu/menuWrite.do">메뉴등록</a><br/>
 			<a href="${ pageContext.request.contextPath}/menu/menuAll.do">메뉴</a><br/>
+			
+			<!--  select_ingredients 컨트롤러 테스트 -->
+			<a href="${ pageContext.request.contextPath}/menu/select_ingredients.do">재료선택</a><br/>
 
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>

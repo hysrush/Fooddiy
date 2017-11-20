@@ -4,10 +4,12 @@ public class IngredientsVO {
 
 	private int no;
 	private String name;
+	private String eng_name;
 	private int price;
-	private int cnt;
 	private int type;
 	private String regDate;
+	
+	
 	public int getNo() {
 		return no;
 	}
@@ -20,17 +22,17 @@ public class IngredientsVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getEng_name() {
+		return eng_name;
+	}
+	public void setEng_name(String eng_name) {
+		this.eng_name = eng_name;
+	}
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public int getCnt() {
-		return cnt;
-	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
 	}
 	public int getType() {
 		return type;
@@ -44,12 +46,10 @@ public class IngredientsVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	
 	@Override
 	public String toString() {
-		return "IngredientsVO [no=" + no + ", name=" + name + ", price=" + price + ", cnt=" + cnt + ", type=" + type
-				+ ", regDate=" + regDate + "]";
+		return "IngredientsVO [no=" + no + ", name=" + name + ", eng_name=" + eng_name + ", price=" + price + ", type="
+				+ type + ", regDate=" + regDate + "]";
 	}
-	
-	
-	
 }
