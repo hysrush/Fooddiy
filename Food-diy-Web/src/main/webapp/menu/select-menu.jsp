@@ -65,6 +65,10 @@
 <script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
 <body>
+
+
+
+		
 		<div class="body">
 			<header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
@@ -72,6 +76,9 @@
 			
 			<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
+
+
+			
 
 			<div role="main" class="main">
 
@@ -111,12 +118,9 @@
 						</div>
 				</div>
 
-				
-				
 				<div class="container web">
 					<div class="row">
 						<div class="col-md-12">
-
 							<div class="tabs tabs-bottom tabs-center tabs-simple">
 								<ul class="nav nav-tabs">
 									<li class="active">
@@ -204,6 +208,8 @@
 						</div>
 					</div>
 				</div>
+				
+				
 			</div>
 			
 			<div class="container mobile-select-menu">

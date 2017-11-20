@@ -193,6 +193,23 @@
 					});
 					
 					$(this).next().hide();
+					$(less).css({
+						'color' : '#7aa93c',
+						'background-color' : 'white',
+						'border-color' : '#7aa93c'
+						
+					});
+					$(nomal).css({
+						'color' : 'white',
+						'background-color' : '#7aa93c'
+					});
+					$(more).css({
+						'color' : '#7aa93c',
+						'background-color' : 'white',
+						'border-color' : '#7aa93c'
+					});
+					
+					
 					
 					$(this).data('clickStatus', 1);
 				}
@@ -212,7 +229,7 @@
 			$(less).click(function() {
 				$(this).css({
 					'color' : 'white',
-					'background-color' : 'yellow'
+					'background-color' : '#3871a6'
 				});
 				$(this).next().css({
 					'color' : '#7aa93c',
