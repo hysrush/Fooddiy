@@ -294,7 +294,7 @@
 						<button type="submit" class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 						
 					</form>
-						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">aa</button>
+					<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">aa</button>
 				</div>
 			</div>
 		</div>
