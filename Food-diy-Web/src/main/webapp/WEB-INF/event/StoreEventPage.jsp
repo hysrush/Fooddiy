@@ -255,6 +255,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="button" name="storeChoice" value="선택">
 			<footer id="footer">
 				<jsp:include page="/resources/include/bottom.jsp"/>
 			</footer>
@@ -376,17 +377,16 @@
 									alert("매장이름 = " + data.storeList[0].storeName);
 									$('#storeList').empty();
 								 	for(var i = 0 ; i < data.storeList.length; i++){
-									var contents = '';
-									contents += '<tr>';
-									contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
-									contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
-									contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
-									contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
-									contents +=		'<td><input type="button" id = "storeChoice" value="선택" /></td>';
-									contents += '</tr>';
-
-										
-									$('#storeList').append(contents);
+										var contents = '';
+										contents += '<tr>';
+										contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
+										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
+										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+										contents += '</tr>';
+										//'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+										$('#storeList').append(contents);
 
 								 	}		
 						}
@@ -394,30 +394,54 @@
 		
 				});
 				
+ 				function test(storeName){
+ 					alert('storeName = ' + storeName);
+ 					
+ 					var btn = this;
+ 					
+ 					$.ajax({
+ 						url : "./test4",
+ 						type : "post"
+ 						data : {"storeName" : storeName},
+ 						success : function(responseData){
+ 							var data = JSON.parse(responseData);
+ 							
+ 							
+ 							
+ 							
+ 							
+ 						}
+ 						
+ 					});
+ 					
+ 					
+ 					
+ 				}
+				
+				
+				
 				//ajax3 
-				$("#storeChoice").click(function(){
-					var storeName = $("#storeName").val();
+				/* $("input[name=storeChoice]").click(function(){
+					alert('들어옴');
+					var btn = this;
+					
+					var storeName = $(btn).val();
 					console.log("매장이름 : " +$("#storeName").val());
 					
-					/* $.ajax({
+					$.ajax({
 						url : "./test4",
 						type : "post",
 						data : {"storeName" : storeName},
 						success : function(responseData){
 								var data = JSON.parse(responseData);	
-						
 								
 								
+								$(btn).removeAttr('disabled');
 								
 								
 						}
-						
-						
-						
-					
-					
-					}); */
-				});
+					});
+				});*/
 				
 			
 			
