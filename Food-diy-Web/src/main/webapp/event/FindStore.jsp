@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 매장 찾기 | </title>	
+		<title> | 매장별 EVENT |  </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -51,17 +51,13 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
-		<!-- 이미지 캐러셀 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 
 
 	</head>
@@ -71,9 +67,11 @@
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
 			</header>
+
 			<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
-
+			
+			
 			<div role="main" class="main">
 
 				<section class="page-header">
@@ -82,13 +80,13 @@
 							<div class="col-md-12">
 								<ul class="breadcrumb">
 									<li><a href="#">Home</a></li>
-									<li class="active">Store</li>
+									<li class="active">Events</li>
 								</ul>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>매장 찾기</h1>
+								<h1>매장별 EVENT</h1>
 							</div>
 						</div>
 					</div>
@@ -100,11 +98,11 @@
 						<div class="col-md-3">
 							<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 
-									<h4 class="heading-primary">매장찾기</h4>
+									<h4 class="heading-primary">이벤트</h4>
 								<ul class="nav nav-list mb-xlg">
-									<li><a href="${ pageContext.request.contextPath }/event/MyStore.jsp">My매장 </a></li>
+									<li><a href="${ pageContext.request.contextPath }/event/eventPage.do">매장 찾기</a></li>
 									<li class="active">
-										<a href="${ pageContext.request.contextPath }/event/FindStore.jsp">매장찾기</a>
+										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">My 매장</a>
 									</li>
 								</ul>
 							</aside>
@@ -117,244 +115,133 @@
 									<div class="tabs tabs-bottom tabs-center tabs-simple">
 										<ul class="nav nav-tabs">
 											<li class="active">
-												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">근처 매장 찾기</a>
+												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">근처 매장</a>
 											</li>
-											<li class="">
-												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">지역/매장명 찾기</a>
+											<li class="active">
+												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="true">매장 찾기</a>
 											</li>
 										</ul>
-
 										<div class="tab-content">
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 												<div class="center">
-											<!--  근처매장 탭  내용  -->	
-											
-												<div class="row">			
-															<div class="col-md-10">
-																<label>매장별 검색</label>
-																<input type="text" value="" class="form-control">
-																<input type="submit" value="검색" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
-															</div>
-															
-															<div class="row">
-																	<div class="col-md-10">
-									
-									
-																		<table class="table">
-																			<thead>
-																				<tr>
-																					<th>
-																						No.
-																					</th>
-																					<th>
-																						매장명
-																					</th>
-																					<th>
-																						주소
-																					</th>
-																					<th>
-																						매장선택
-																					</th>
-																				</tr>
-																			</thead>
-																			<tbody>
-																				<tr>
-																					<td>
-																						1
-																					</td>
-																					<td>
-																						역삼점
-																					</td>
-																					<td>
-																						서울 강남구 역삼동 2331-2
-																					</td>
-																					<td>
-																						<button>매장선택</button>
-																					</td>
-																				</tr>
-																				<tr>
-																					<td>
-																						2
-																					</td>
-																					<td>
-																						서초대교역점
-																					</td>
-																					<td>
-																						서울 강남구 역상동 2332-12
-																					</td>
-																					<td>
-																						<button>매장선택</button>
-																					</td>
-																				</tr>
-																				<tr>
-																					<td>
-																						3
-																					</td>
-																					<td>
-																						개포3호점
-																					</td>
-																					<td>
-																						서울 강남구 서초동 2524-1
-																					</td>
-																					<td>
-																						<button>매장선택</button>
-																					</td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</div>
-																</div>
-															<div class="row">
-																<div class="col-md-10">
-																	<h4>매장 위치</h4>
-																	<div id="googlemapsMarkers" class="google-map mt-none mb-lg" style="height: 280px;"></div>
-																</div>
-																
-															</div>
-						
-															
-															</div>
+												<!--  cart -->
+											 			<div class="col-md-12">
+										<div class="featured-box featured-box-primary align-left mt-xlg">
+											<div class="box-content">
+												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
+													<div class="row">			
+														<div class="col-md-12">
+															<label>매장명 검색</label>
+															<input type="text" value="" class="form-control">
 														</div>
 													</div>
+														<div class="row">
+														<div class="col-md-12">
+															<input type="submit" value="검색" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+														</div>	
+													</div>	
 												
-											
-											
-											<!--  지역별 매장 탭    -->
-											<div class="tab-pane" id="tabsNavigationSimple2">
-												<div class="center">
-																<div class="row">			
-															<div class="col-md-10">
-																<label>매장별 검색</label>
-																<input type="text" value="" class="form-control">
-																<input type="submit" value="검색" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
-															</div>
-																<div class="row">
+													<div class="row">
 														<div class="form-group">
-															<div class="col-md-3">
+															<div class="col-md-6">
 																<label>시,도</label>
-																<select class="form-control">
-																	<option value="">시를 선택해주세요 </option>
-																</select>
-															</div>
-															<div class="col-md-3">
-																<label>군/구</label>
-																<select class="form-control">
-																	<option value="">구를 선택해주세요 </option>
-																</select>
-															</div>
-															<div class="col-md-3">
-																<label>동/면/읍</label>
-																<select class="form-control">
-																	<option value="">동을 선택해주세요 </option>
+																<select class="form-control" id ="sido">
+																	
 																</select>
 															</div>
 															
+															<div class="col-md-6">
+																<label>군,구</label>
+																<select class="form-control" id= "gugun">
+																	
+																</select>
+															</div>	
 														</div>
 													</div>
-	
-															<div class="row">
-																	<div class="col-md-10">
-									
-									
-																		<table class="table">
-																			<thead>
-																				<tr>
-																					<th>
-																						No.
-																					</th>
-																					<th>
-																						매장명
-																					</th>
-																					<th>
-																						주소
-																					</th>
-																					<th>
-																						매장선택
-																					</th>
-																				</tr>
-																			</thead>
-																			<tbody>
-																				<tr>
-																					<td>
-																						1
-																					</td>
-																					<td>
-																						역삼점
-																					</td>
-																					<td>
-																						서울 강남구 역삼동 2331-2
-																					</td>
-																					<td>
-																						<button>매장선택</button>
-																					</td>
-																				</tr>
-																				<tr>
-																					<td>
-																						2
-																					</td>
-																					<td>
-																						서초대교역점
-																					</td>
-																					<td>
-																						서울 강남구 역상동 2332-12
-																					</td>
-																					<td>
-																						<button>매장선택</button>
-																					</td>
-																				</tr>
-																				<tr>
-																					<td>
-																						3
-																					</td>
-																					<td>
-																						개포3호점
-																					</td>
-																					<td>
-																						서울 강남구 서초동 2524-1
-																					</td>
-																					<td>
-																						<button>매장선택</button>
-																					</td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</div>
-																</div>
-															<div class="row">
-																<div class="col-md-10">
-																	<h4>매장 위치</h4>
-																	<div id="googlemapsMarkers" class="google-map mt-none mb-lg" style="height: 280px;"></div>
-																</div>
-																
-															</div>
-						
-															
-															</div>
+											
+													<div class="row">
+														<div class="col-md-12">
+															<input type="button" id="search" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">	
 														</div>
 													</div>
 												
+													<!--  AJAX 테이블이 생성될 공간  -->
+														<div class="row">
+															<div class="col-md-12">
+																<form action="storeEventPage.do" method ="post">
+																	<table class="table table-hover" width="80%">
+																		<thead>
+																			<tr>
+																				<th>매장번호</th>
+																				<th>매장명</th>
+																				<th>매장 주소 </th>
+																				<th>매장 전화번호</th>
+																				<th> 선택 </th>
+																			</tr>
+																		</thead>
+																		<tbody id = "storeList">
+																			
+																			
+																		</tbody>
+																	</table>
+																</form>
+															</div>
+														</div>
+										</div>
+									</div>	
+												<!--  선택한 매점 이름과 매칭되는 이벤트 불러오기  -->
+													<div class="center" id ="eventByStore">	
+												
+													
+													
+													
+													
+													</div>
+													
+													<!--  -->
+										<div class="col-md-12">
+											<ul class="pagination">
+												<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+												<li class="active"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+											</ul>
+										</div>
+													
+													
+													
+													
+													
 												</div>
+											</div>
 											
 											</div>
 										</div>
 										
-										
-										
-										
-									</div>
 								</div>
 							</div>
-							
-							
 							<!-- END -->
 						</div>
 					</div>
 				</div>
-				
+			</div>
+			
 			<footer id="footer">
 				<jsp:include page="/resources/include/bottom.jsp"/>
 			</footer>
-
+		</div>
+	</div>	
+	
+	
+	
+	
+	
+	
+	
+	
+			
 			<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
@@ -434,6 +321,70 @@
 			});
 
 
+		</script>
+		
+		<script type="text/javascript">
+			
+			$("#sido").change(function(){
+				
+				// 1. Parameter setting
+				var sido = $("#sido").val();
+				console.log( "선택된 값1 : " + $("#sido").val() );
+	       		
+				// 2. ajax call
+				$.ajax({
+		              url : "./test",
+		              type: "post",
+		              data : { "sido" : sido },
+		              success : function(responseData){
+		                  			var data = JSON.parse(responseData);
+		                  			
+		                  			// 3. result setting
+		  				          	alert('다녀옴 , result = ' + data.result);
+		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NAME);
+		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NO);
+		                  			
+		  				          	$('#gugun').empty();
+			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
+		  				          	for(var i = 0 ; i < data.guList.length ; i++){
+		  				          		$('#gugun').append('<option value="'+ data.guList[i].LOC_NO + '">' + data.guList[i].LOC_NAME + '</option>');	
+		  				          	} 	
+		              }
+		          });
+			});
+
+				$("#search").click(function(){
+					
+					var gugun = $("#gugun").val();
+					console.log( " 구군 값 : " + $("#gugun").val());
+					
+					$.ajax({
+						url : "./test3",
+						type : "post",
+						data : {"gugun" : gugun},
+						success : function(responseData){
+									var data = JSON.parse(responseData);
+									
+									alert("result = " + data.result);
+									alert("매장이름 = " + data.storeList[0].storeName);
+									$('#storeList').empty();
+								 	for(var i = 0 ; i < data.storeList.length; i++){
+										var contents = '';
+										contents += '<tr>';
+										contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
+										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
+										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+										contents += '</tr>';
+									
+										$('#storeList').append(contents);
+
+								 	}		
+						}
+					});
+		
+				});
 		</script>
 
 	</body>

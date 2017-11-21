@@ -15,8 +15,19 @@ public class cartVO {
 	
 	// key : 재료먕 , value: 빼기, 적음, 보통, 많음
 	private List<Map<String, String>> vegeable;
-	private List<Map<String, String>> sauce;
-
+	private List<String> sauce;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
 	public String getBread() {
 		return bread;
 	}
@@ -41,15 +52,13 @@ public class cartVO {
 	public void setVegeable(List<Map<String, String>> vegeable) {
 		this.vegeable = vegeable;
 	}
-	public List<Map<String, String>> getSauce() {
+	public List<String> getSauce() {
 		return sauce;
 	}
-	public void setSauce(List<Map<String, String>> sauce) {
+	public void setSauce(List<String> sauce) {
 		this.sauce = sauce;
 	}
-	@Override
-	public String toString() {
-		return "cartVO [bread=" + bread + ", cheese=" + cheese + ", topping=" + topping + ", vegeable=" + vegeable
-				+ ", sauce=" + sauce + "]";
-	}
+	
+	
+	
 }

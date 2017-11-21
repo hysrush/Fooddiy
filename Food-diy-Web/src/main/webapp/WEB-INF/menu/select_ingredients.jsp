@@ -205,7 +205,7 @@
 
 			<div class="row">
 				<div class="col-xs-12">
-					<div class="panel-group panel-group-lg" id="accordion5">
+					<div class="panel-group panel-group-lg table" id="accordion5">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
@@ -290,13 +290,34 @@
 
 			<div class="row">
 				<div style="text-align: center;">
-					<button type="submit" class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
+					<form action = "${ pageContext.request.contextPath }/menu/select_ingredients.do" method = "post">
+						<button type="submit" class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
+						
+					</form>
+						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">aa</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var bread  = $('.table').find('.bread-name').find('.name').text();
+			var cheese  = $('.table').find('.cheese-name').find('.name').text();
+			
+			var data = {};
+			
+			$('.select-menu-button').click(function() {
+				data['bread'] = bread;
+				data['cheese'] = cheese;
+				
+				alert(JSON.stringify(data));
+			});
+			
+		});
+	
+	
+	</script>
 
 
 	<footer id="footer">
