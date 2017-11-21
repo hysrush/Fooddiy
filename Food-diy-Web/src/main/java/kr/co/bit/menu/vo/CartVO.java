@@ -3,7 +3,7 @@ package kr.co.bit.menu.vo;
 import java.util.List;
 import java.util.Map;
 
-public class cartVO {
+public class CartVO {
 	
 	private String name;
 	private String size;
@@ -28,6 +28,12 @@ public class cartVO {
 	}
 	public void setSize(String size) {
 		this.size = size;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
 	}
 	public String getBread() {
 		return bread;
@@ -59,7 +65,7 @@ public class cartVO {
 	public void setSauce(List<String> sauce) {
 		this.sauce = sauce;
 	}
-	
+
 	
 	
 }
