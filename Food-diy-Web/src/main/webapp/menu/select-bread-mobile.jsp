@@ -7,7 +7,7 @@
 			<li><i class="fa fa-check fa-check-bread"></i>
 				<figure class="product-image-area product-bread-area">
 						<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/bread/${ ingList.pic}" />
-						 <strong class = "name">${ ingList.name} ${ ingList.eng_name}</strong>
+						<strong class = "name">${ ingList.name} ${ ingList.eng_name}</strong>
 				</figure>
 			</li>
 		</c:if>
