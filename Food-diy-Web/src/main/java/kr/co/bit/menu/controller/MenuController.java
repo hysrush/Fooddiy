@@ -52,41 +52,55 @@ public class MenuController {
 		// 공유영역에 등록
 		model.addAttribute("menuVO", menuVO);
 		return "menu/menuWriteForm";
-	}
+	}	
 	
 	// menu 새 글쓰기
 	@RequestMapping(value="/menuWrite.do", method=RequestMethod.POST)
 	public String write(@Valid MenuVO menuVO
 						, BindingResult result
-						, @RequestParam(value="imgFileName") MultipartFile file
+						, @RequestParam(value="imgFileName") MultipartFile[] files
 	)throws Exception {		
 		System.out.println("시작");
+		String fileName=null;
+		String saveFileName="";
 		
-		//1. fileName 설정 + eventVO에 fileName 저장
-		String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\menu\\" + file.getOriginalFilename();
-		String saveFileName = file.getOriginalFilename();
-		
-		menuVO.setImgFileName(saveFileName);
-		
-		System.out.println(fileName);
-		System.out.println(saveFileName);
-		System.out.println("들어갔나염?");
-		
-		//2. 경로에 이미지파일 저장
-		byte[] bytes;
-		bytes = file.getBytes();
-		BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
-		buffStream.write(bytes);
-		buffStream.close();
-		
-		System.out.println("들어가나염2?");
-		
-		
+		if(files != null && files.length > 0) {
+			for(int i=0; i<files.length; i++) {
+				try {
+					if(true==files[i].isEmpty()) {
+						continue;
+					}
+					//1. fileName 설정 + eventVO에 fileName 저장
+					fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\menu\\" + files[i].getOriginalFilename();
+					saveFileName = files[i].getOriginalFilename();
+					
+					menuVO.setImgFileName(saveFileName);
+					
+					System.out.println(fileName);
+					System.out.println(saveFileName);
+					System.out.println("들어갔나염?");
+					
+					//2. 경로에 이미지파일 저장
+					byte[] bytes;
+					bytes = files[i].getBytes();
+					BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+					buffStream.write(bytes);
+					buffStream.close();
+					
+					System.out.println("들어가나염2?");					
+					
+					menuService.insertMenu(menuVO);
+					
+				} catch (Exception e) {
+					return "You failed to upload " + "<br/>";
+				}
+			}
+		} else {
+			return "file is empty";
+		}		
 		// menuVO에 저장 
-		menuService.insertMenu(menuVO);
-		
 		return "redirect:/menu/menuAll.do";
-	}
+	}	
 	
 	// menu 상세내용 조회
 	// ex) menu/menuDetail.do?no=1

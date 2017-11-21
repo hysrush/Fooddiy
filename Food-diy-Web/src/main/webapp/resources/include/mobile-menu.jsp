@@ -7,14 +7,15 @@
 			<li><a href="${ pageContext.request.contextPath}/index2.jsp">Home</a></li>
 			<li><span class="mmenu-toggle"></span> <a href="#">Menu</a>
 				<ul>
-					<li><a href="${ pageContext.request.contextPath}/menu/menu2.jsp">전체메뉴 ALL MENU</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">클래식 CLASSICS</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">베스트 SIGNATURE</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">추천메뉴 FAVORITES</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">프리미엄 PREMIUM</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">음료&추가 Drink&Extras</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">찹샐러드 Chopped Salads</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">아침식사 Breakfast</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do">전체메뉴 ALL MENU</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#recommend">추천메뉴 FAVORITES</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#premium">프리미엄 PREMIUM</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#best">베스트 SIGNATURE</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#classic">클래식 CLASSICS</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#breakfast">아침식사 Breakfast</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#salad">찹샐러드 Chopped Salads</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#addition">추가메뉴 Extras</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#beverage">음료 Drink</a></li>
 				</ul>
 			</li>
 			<li><span class="mmenu-toggle"></span> <a href="#">EVENT
