@@ -1,9 +1,10 @@
 package kr.co.bit.sign.controller;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import kr.co.bit.sign.mail.MailKey;
-import kr.co.bit.sign.service.MailService;
 import kr.co.bit.sign.service.SignService;
-import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
 import kr.co.bit.user.vo.UserVO;
 
@@ -31,9 +29,6 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
-	@Autowired(required=true)
-	private MailService mailService;
-
 	
 	/**
 	 * 
@@ -161,22 +156,17 @@ public class SignController {
 	@RequestMapping("/lostId")
 	public String lostId(PhoneCertVO lost, Model model) {
 		
-		UserVO lostId = new UserVO();
+		UserVO lostVO = signServiceImp.lostId(lost);
 		
-		lostId.setName(lost.getName());
-		lostId.setEmail(lost.getEmail()+lost.getEmailD());
-		
-		lostId = signServiceImp.lostId(lostId);
-		
-		if(lostId == null) {
+		if(lostVO == null) {
 			model.addAttribute("msg", "입력하신 정보에 해당하는 가입 이력이 없습니다. "
 					+ "회원가입 후 이용해 주세요.");
 			return "sign/login";
 		
 		}
 		// 아이디 일부 **처리
-		model.addAttribute("msg", "고객님의 아이디는 <"+lostId.getId()+"> 입니다.");
-		model.addAttribute("lostId", lostId.getId());
+		model.addAttribute("msg", "고객님의 아이디는 <"+lostVO.getId()+"> 입니다.");
+		/*model.addAttribute("lostId", lostVO.getId());*/
 		
 		return "sign/login";
 	}
@@ -185,23 +175,12 @@ public class SignController {
 	@RequestMapping("/lostPw")
 	public String lostPw(PhoneCertVO lost, Model model) {
 		
-		UserVO lostPw = new UserVO();
-		UserVO lostVO = new UserVO();
-		
-		lostPw.setName(lost.getName());
-		lostPw.setId(lost.getId());
-		lostPw.setEmail(lost.getEmail()+lost.getEmailD());
-		
-		lostVO = signServiceImp.lostPw(lostPw);
+		UserVO lostVO = signServiceImp.lostPw(lost);
 		
 		if( lostVO == null) {
 			model.addAttribute("msg", "고객님이 입력하신 ID에 관한 정보가 없습니다. 확인 후 다시 이용해 주세요.");
 			return "sign/login";
 		}
-		
-		// 이메일로 비밀번호 전송
-		lostVO.setName(lostPw.getName());
-		lostVO.setEmail(lostPw.getEmail());
 		
 		model.addAttribute("msg", "고객님의 이메일로 비밀번호가 전송되었습니다.");
 		
@@ -283,63 +262,36 @@ public class SignController {
 	/**
 	 * 
 	 *  2. 비회원
+	 * 	 - 인증
 	 * 	 - 가입
 	 * */
 	
 	// 이메일 인증 코드 발송
 	@RequestMapping("/nonemail")
-	public String nonMemberSign(UserVO nonMember, Model model) {
+	public @ResponseBody List<Object> nonMemberCheck(UserVO nonMember, Model model) {
 		
-		MailVO mail = new MailVO();
-		String key = new MailKey().getkey();
+		List<Object> list = new ArrayList<>();
+		String key = signServiceImp.sender(nonMember);
 		
-		mail.setSender("skdml132@gamil.com");
-		mail.setReceiver(nonMember.getEmail());
-		mail.setSubject("[SubWay] 비회원 인증코드");
-		mail.setContent(nonMember.getName()+" 님이 요청하신 인증 코드는 ["+key+"]입니다.");
+		list.add(key);
+		list.add(nonMember);
 		
-		
-		mailService.sendMail(mail);
-		
-		model.addAttribute("non", nonMember);
-		model.addAttribute("key", key);
-		System.out.println(key);
-		System.out.println(nonMember.getEmail());
-		return "sign/nonLogin";
+		return list;
 	}
 
 	// 이메일 인증 후 가입
-	@RequestMapping("/nonemailCheck")
-	public String nonMemberCert(UserVO mail) {
+	@RequestMapping(value="/nonemailCheck")
+	public String nonMemberSign(UserVO nonMember, Model model) {
 		
-		signServiceImp.signUp(mail);
+		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
+		model.addAttribute("userVO", user);
+		model.addAttribute("msg", "완료~");
 		
-		
-		return "/sign";
+		return "/sign/sign";
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	
 }

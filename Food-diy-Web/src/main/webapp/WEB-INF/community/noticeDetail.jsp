@@ -52,17 +52,16 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
-		<!-- 이미지 캐러셀 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
-
 		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
+		
+		<!-- js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
+		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
 <script type="text/javascript">
 	function doAction(type) {
@@ -78,6 +77,7 @@
 	function submit() {
 		document.getElementById("dForm").submit();
 	}
+	
 </script>
 </head>
 <body>
@@ -111,14 +111,14 @@
 			<div class="container">
 
 				<div class="row">
+					<!-- 스티키 사이드바 -->
 					<div class="col-md-2 hidden-xs hidden-sm">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
-
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
 								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
 								<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/suggestion.jsp">1:1 문의</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
 						</aside>
@@ -136,78 +136,85 @@
 								</div>
 							</div>
 						</section>
-						<div class="blog-posts single-post">
-							<article class="post post-large blog-single-post">
-									<c:if test="${ noticeVO.type eq 'A' }">
-										<div class="heading heading-border heading-middle-border">
-											<h3><strong>공지사항</strong></h3>
-										</div>
-									</c:if>
-									<c:if test="${ noticeVO.type eq 'B' }">
-										<div class="heading heading-border heading-middle-border">
-											<h3><strong>보도자료</strong></h3>
-										</div>
-									</c:if>
-									<div class="center">
-										<hr>
-										<div class="post-content col-md-12">
-											<div class="post-meta" style="float: right;">
-												<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
-												<span><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a> > </span>
-												<span><a href="#">공지사항</a></span>
-											</div>
-											<form action="/Mission-Web/fileDownload" method="post"
-												id="dForm">
-												<table class="table table-bordered">
-														<tr>
-															<td>
-																<!-- 제목 -->
-																<h2>
-																	<c:out value="${ noticeVO.title }"></c:out>
-																</h2>
-															</td>
-															<div class="post-meta">
-																<!-- 조회수 -->
-																<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ noticeVO.viewCnt }</td>
-																<!-- 등록일 -->
-																<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ noticeVO.regDate }</td>
-															</div>
-														</tr>
-													<tr>
-														<!-- 내용 -->
-														<td colspan="3"><p><c:out value="${ noticeVO.content }"></c:out></p></td>
-													</tr>
-													<!-- 첨부파일 -->
-													<c:if test="${ not empty fileList }">
-														<tr>
-															<th width="15%">첨부파일</th>
-															<td colspan="5"><c:forEach items="${ fileList }"
-																	var="file">
-																	<a href="#" onclick="submit(); return false;"> <input
-																		type="hidden" value="${ file.fileSaveName }">
-																		${ file.fileOriName }
-																	</a>
-																&nbsp;(${ file.fileSize })bytes<br>
-																</c:forEach></td>
-														</tr>
-														<tr>
-															<th width="15%">미리보기</th>
-															<td colspan="5"><c:forEach items="${ fileList }"
-																	var="file">
-																	<img src="/Mission-Web/upload/${ file.fileSaveName }"
-																		style="max-width: 200px">
-																&nbsp;&nbsp;
-															</c:forEach></td>
-														</tr>
+						<div class="tabs tabs-bottom tabs-center tabs-simple">
+							<ul class="nav nav-tabs">
+								<c:if test="${ noticeVO.type eq 'A' }">
+									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/notice.do">보도자료</a></li>
+								</c:if>
+								<c:if test="${ noticeVO.type eq 'B' }">
+									<li><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">보도자료</a></li>
+								</c:if>
+							</ul>
+							<div class="tab-content">
+								<!-- 공지사항 / 보도자료 디테일 -->
+								<div class="blog-posts single-post">
+										<div class="center">
+											<div class="post-content">
+												<div class="post-meta" style="float: right;">
+													<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+													<span><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a> > </span>
+													<c:if test="${ noticeVO.type eq 'A' }">
+														<span><a href="#">공지사항</a></span>
 													</c:if>
-												</table>
-											</form>
-											<div class="center">
-												<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
+													<c:if test="${ noticeVO.type eq 'B' }">
+														<span><a href="#">보도자료</a></span>
+													</c:if>
+												</div>
+												<br>
+												<form action="/Mission-Web/fileDownload" method="post" id="dForm">
+													<table class="table table-bordered">
+															<tr>
+																<td>
+																	<!-- 제목 -->
+																	<h4 class="mb-none">
+																		<strong><c:out value="${ noticeVO.title }"></c:out></strong>
+																	</h4>
+																</td>
+																<div class="post-meta">
+																	<!-- 조회수 -->
+																	<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ noticeVO.viewCnt }</td>
+																	<!-- 등록일 -->
+																	<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ noticeVO.regDate }</td>
+																</div>
+															</tr>
+														<tr>
+															<!-- 내용 -->
+															<td colspan="3"><p><c:out value="${ noticeVO.content }"></c:out></p></td>
+														</tr>
+														<!-- 첨부파일 -->
+														<c:if test="${ not empty fileList }">
+															<tr>
+																<th width="15%">첨부파일</th>
+																<td colspan="5"><c:forEach items="${ fileList }"
+																		var="file">
+																		<a href="#" onclick="submit(); return false;"> <input
+																			type="hidden" value="${ file.fileSaveName }">
+																			${ file.fileOriName }
+																		</a>
+																	&nbsp;(${ file.fileSize })bytes<br>
+																	</c:forEach></td>
+															</tr>
+															<tr>
+																<th width="15%">미리보기</th>
+																<td colspan="5"><c:forEach items="${ fileList }"
+																		var="file">
+																		<img src="/Mission-Web/upload/${ file.fileSaveName }"
+																			style="max-width: 200px">
+																	&nbsp;&nbsp;
+																</c:forEach></td>
+															</tr>
+														</c:if>
+													</table>
+												</form>
+												<div class="center">
+													<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
+												</div>
 											</div>
 										</div>
 									</div>
-								</article>
+								</div>
 							</div>
 						</div>
 					</div>

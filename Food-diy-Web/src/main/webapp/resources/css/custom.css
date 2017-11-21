@@ -143,6 +143,17 @@ li {
  color:#fff;
  text-align:center;
 }
+.button-family .less , .button-family .more {
+	background-color: white;
+	color: #7aa93c;
+	border-color: #7aa93c;
+}
+	
+.button-family .nomal {
+	background-color: #7aa93c;
+	color: white;
+}
+
 
 @media (min-width : 992px) {
 	
@@ -330,16 +341,8 @@ li {
 		height: 50px;
 	}
 	
-	.less , .more {
-		background-color: white;
-		color: #7aa93c;
-		border-color: #7aa93c;
-	}
-	
-	.nomal {
-		background-color: #7aa93c;
-		color: white;
-	}
+
+
 	
 	
 }

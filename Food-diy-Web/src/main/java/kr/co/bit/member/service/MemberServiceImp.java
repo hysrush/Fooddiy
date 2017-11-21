@@ -34,17 +34,17 @@ public class MemberServiceImp  implements MemberService  {
 		memberDAO.update(member);
 		
 	}
+	
+	@Override
+	public void getMemberUpdate(UserVO member) {
 
-	public void removeMember(int no) {
-		memberDAO.delete(no);
-		
+		memberDAO.update(member);
 	}
-	  public void memberUpdate(UserVO vo) {
-	        memberDAO.update(vo);
-	    }
-
 	
-	
-
+	@Override
+	public void memberDelte(String id) {
+		
+		memberDAO.delete(id);
+	}
 
 }

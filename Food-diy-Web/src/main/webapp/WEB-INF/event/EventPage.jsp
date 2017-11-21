@@ -163,12 +163,12 @@
 													<div class="col-md-12">
 														<div class="recent-posts">
 															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
+																<!-- <div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}"> -->
 																	<div>
 																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
 																	</div>
 																	
-																</div>
+																<!-- </div> -->
 																<div class="heading heading-tertiary heading-border heading-bottom-border">
 																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
 																</div>

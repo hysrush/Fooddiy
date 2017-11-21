@@ -12,9 +12,10 @@ public interface EventService {
 	
 	List<EventBoardVO> selectAllEvent();
 	List<EventBoardVO> selectEndEvent();
-	List<StoreVO> selectStoreList();
+	List<EventBoardVO> selectEventBystoreName(String store);
+	List<StoreVO> selectStoreList(String gugun);
 	List<CityVO> selectCity();
-	List<locationVO> selectLocation();
+	List selectLocation(String sido);
 	EventBoardVO selectOneEvent(int no);
 	void insertEvent(EventBoardVO eventVO);
 	void modifyEvent(EventBoardVO eventVO);

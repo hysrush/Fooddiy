@@ -64,12 +64,40 @@
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 <script>
+
+function checkIt(){
+    if(document.memberUpdate.pw.value != document.updateform.pw2.value || document.updateform.pw.value=="" || document.updateform.pw2.value=="" ){
+      alert("joinform : 비밀번호를 동일하게 입력하세요.");
+      return false;
+    }
+}
+function isNull(obj){
+	if(obj.value == ""){
+		alert(obj +"입력해주세요.");
+		return false;
+	}
+	return true;
+}
+
 	$(document).ready(function(){
 		
 		$("#okay").click(function(){
+		
+			if(!document.memberUodate.password.value){
+	        alert("비밀번호를 입력하지 않았습니다.");
+	        return false;
+	    }
 	
-			location.href="${pageContext.request.contextPath}/member/memberDetail.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberUpdate.do"; 
 		});
+		
+	 	$("#cancel").click(function(){
+		
+	
+			location.href="${pageContext.request.contextPath}/member/memberDetail.do"; 
+		}); 
+		
+		
 	});
 </script>
 <style type="text/css">
@@ -144,12 +172,13 @@
 									</div>
 									<div id="collapseOne" class="accordion-body collapse in">
 										<div class="panel-body">
-											<form action="/" id="frmBillingAddress" method="post">
+											<form action="${pageContext.request.contextPath}/member/memberUpdate.do" id="frmBillingAddress" method="post" onsubmit="retrun ">
+												<input type="hidden" name="id" value="${ userVO.id }"/>
 												<div class="row">
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>이름</label>
-															<input type="text" value="" class="form-control">
+															<input type="text" name="name" value="${ userVO.name }" readonly="readonly" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -157,7 +186,7 @@
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>비밀번호</label>
-															<input type="text" value="" class="form-control">
+															<input type="password" name="pw" size="15" maxlength="12" value="" class="form-control">
 														</div>
 												</div>
 
@@ -166,7 +195,7 @@
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>비밀번호 확인</label>
-															<input type="text" value="" class="form-control">
+															<input type="password" size="15" maxlength="12" value="" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -174,7 +203,7 @@
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>전화번호 </label>
-															<input type="text" value="" class="form-control">
+															<input type="text" name="phone" value="${userVO.phone }" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -182,16 +211,16 @@
 													<div class="form-group">
 														<div class="col-md-6">
 															<label>E-mail </label>
-															<input type="text" value="" class="form-control">
+															<input type="text" name="email" value="${ userVO.email }" class="form-control">
 														</div>
 														<div class="row">
 													<div class="form-group">
 														<div style="margin-left:5%; margin-top: 1% " class="col-md-5  col-xs-11">
 															<label></label><br/>
-															<select class="form-control">
+															<select class="form-control" name="emailD">
 																<option value="">-이메일 선택 -</option>
-																<option value="">naver.com</option>
-																<option value="">google.co.kr</option>
+																<option value="@naver.com">@naver.com</option>
+																<option value="@google.co.kr">@google.co.kr</option>
 															</select>
 														</div>
 													</div>
@@ -202,6 +231,8 @@
 													<div class="col-md-12">
 													</div>
 												</div>
+													<input id="save" style="margin-left: 63%" type="submit" value="저장" class="btn btn-info" data-toggle="modal" data-target="#formModal"/>
+													<button id="cancel" type="button" class="btn btn-info" data-dismiss="modal">취소</button>
 											</form>
 										</div>
 									</div>
@@ -209,8 +240,6 @@
 						</div>	
 							<div style="margin-top: 12%; ">
 							<div class="row">
-									<input style="margin-left: 63%" type="submit" value="저장" class="btn btn-info" data-toggle="modal" data-target="#formModal"/>
-													<button type="button" class="btn btn-info" data-dismiss="modal">취소</button>
 									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">

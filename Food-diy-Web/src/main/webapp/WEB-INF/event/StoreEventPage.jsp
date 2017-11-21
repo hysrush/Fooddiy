@@ -58,21 +58,6 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		
-			$("#sido").change(function(){
-				console.log( "선택된 값1 : " + $("#sido").val() );
-	       		
-		
-		});
-			
-			
-			
-			
-
-	});
-	</script>
 
 
 	</head>
@@ -132,9 +117,6 @@
 											<li class="active">
 												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">매장별 이벤트</a>
 											</li>
-											<li class="">
-												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 매장별  이벤트 </a>
-											</li>
 										</ul>
 										<div class="tab-content">
 											<div class="tab-pane active" id="tabsNavigationSimple1">
@@ -144,7 +126,6 @@
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
-												<form action="${ pageContext.request.contextPath }/event/storeEventPage.do" id="frmCalculateShipping" method="post">
 													<div class="row">
 														<div class="form-group">
 															<div class="col-md-6">
@@ -181,72 +162,44 @@
 													<div class="row">
 														<div class="col-md-12">
 																		<!--  ajax로 보내버리는 a태그  -->
-																	<a data-href= "${ pageContext.request.contextPath}/resources/ajax/test-ajax.jsp"  data-ajax-on-page>
-																		<input type="submit" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
-																	</a>
+																	
+																		<input type="button" id="search" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+																	
 														</div>
 													</div>
-												</form>
+												
 													<!--  AJAX 테이블이 생성될 공간  -->
-														<div class="container">
-															<div class="col-md-8">
-															<div id="porfolioAjaxBox" class="ajax-box ajax-box-init mb-lg">
-																	<!-- <div class="bounce-loader">
-																	<div class="bounce1"></div>
-																	<div class="bounce2"></div>
-																	<div class="bounce3"></div>
-																</div> -->
-																<div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+														<div class="row">
+															<div class="col-md-12">
+																<form action="storeEventPage.do" method ="post">
+																	<table class="table table-hover" width="80%">
+																		<thead>
+																			<tr>
+																				<th>매장번호</th>
+																				<th>매장명</th>
+																				<th>매장 주소 </th>
+																				<th>매장 전화번호</th>
+																				<th> 선택 </th>
+																			</tr>
+																		</thead>
+																		<tbody id = "storeList">
+																			
+																			
+																		</tbody>
+																	</table>
+																</form>
 															</div>
 														</div>
-
-											</div>
 										</div>
 									</div>	
-												<%-- 	<!-- 1 -->
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
-																	</div>
-																	
-																</div>
-																<div class="date">
-																	<span class="day">15</span>
-																	<span class="month">Jan</span>
-																</div>
-																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
-															</article>
-														</div>
+												<!--  선택한 매점 이름과 매칭되는 이벤트 불러오기  -->
+													<div class="center" id ="eventByStore">	
+												
+													
+													
+													
+													
 													</div>
-													<!-- 2 -->
-													<div class="col-md-12">
-													<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="${ pageContext.request.contextPath}/resources/img/blog/blog-image-2.jpg">
-																	</div>
-																	
-																</div>
-																<div class="date">
-																	<span class="day">15</span>
-																	<span class="month">Jan</span>
-																</div>
-																<h4><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></p>
-															</article>
-														</div>
-													</div>	
-													 --%>
-													
-													
-													
-													
-													
 													
 													<!--  -->
 										<div class="col-md-12">
@@ -269,15 +222,7 @@
 											
 											</div>
 										</div>
-											<div class="tab-pane" id="tabsNavigationSimple2">
-											
-											
-											
-												<div class="center">
-													<!-- 이벤트 사진과 일정과 내용을 넣는 곳  -->
-												
-												</div>
-									</div>
+										
 								</div>
 							</div>
 							<!-- END -->
@@ -285,6 +230,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<footer id="footer">
 				<jsp:include page="/resources/include/bottom.jsp"/>
 			</footer>
@@ -329,13 +275,182 @@
 		<!-- Examples -->
 		<script src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script>
 		
+		<script type="text/javascript">
+			
+			$("#sido").change(function(){
+				
+				// 1. Parameter setting
+				var sido = $("#sido").val();
+				console.log( "선택된 값1 : " + $("#sido").val() );
+	       		
+				// 2. ajax call
+				$.ajax({
+		              url : "./test",
+		              type: "post",
+		              data : { "sido" : sido },
+		              success : function(responseData){
+		                  			var data = JSON.parse(responseData);
+		                  			
+		                  			// 3. result setting
+		  				          	alert('다녀옴 , result = ' + data.result);
+		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NAME);
+		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NO);
+		                  			
+		  				          	$('#gugun').empty();
+			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
+		  				          	for(var i = 0 ; i < data.guList.length ; i++){
+		  				          		$('#gugun').append('<option value="'+ data.guList[i].LOC_NO + '">' + data.guList[i].LOC_NAME + '</option>');	
+		  				          	} 	
+		              }
+		          });
+			});
+			
+			/* $("#gugun").change(function(){
+				
+				// 1. Parameter setting
+				
+				var gugun = $("#gugun").val();
+				
+				console.log( "선택된 값1 : " + $("#gugun").val() );
+				
+				// 2. ajax call
+				$.ajax({
+		              url : "./test2",
+		              type: "post",
+		              data : {"gugun" : gugun},
+		              success : function(responseData){
+		                  			var data = JSON.parse(responseData);
+		                  			
+		                  			// 3. result setting
+		  				          	alert('다녀옴 , result = ' + data.result);
+		  				          	alert('다녀옴 , storeList = ' + data.storeList[0].STO_NO);
+		  				          	alert('다녀옴 , storeList = ' + data.storeList[0].STO_NAME);
+		                  			
+		  				          	}
+		  				        
+			  				          $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
+		  				          	for(var i = 0 ; i < data.guList.length ; i++){
+		  				          		$('#gugun').append('<option value="" selected="selected">' + data.guList[i] + '</option>');	 
+		  				              
+		          });
+				});  */
+			
+			
+				$("#search").click(function(){
+					
+					var gugun = $("#gugun").val();
+					console.log( " 구군 값 : " + $("#gugun").val());
+					
+					$.ajax({
+						url : "./test3",
+						type : "post",
+						data : {"gugun" : gugun},
+						success : function(responseData){
+									var data = JSON.parse(responseData);
+									
+									alert("result = " + data.result);
+									alert("매장이름 = " + data.storeList[0].storeName);
+									$('#storeList').empty();
+								 	for(var i = 0 ; i < data.storeList.length; i++){
+										var contents = '';
+										contents += '<tr>';
+										contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
+										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
+										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+										contents += '</tr>';
+									
+										$('#storeList').append(contents);
+
+								 	}		
+						}
+					});
 		
+				});
+				
+ 				function test(storeName){
+ 					alert('storeName = ' + storeName);
+ 					
+ 					var btn = this;
+ 					var store = storeName;
+ 					
+ 					$.ajax({
+ 						url : "./test4",
+ 						type : "post",
+ 						data : {"store" : store},
+ 						success : function(responseData){
+ 							var data = JSON.parse(responseData);
+ 							
+ 							alert("result = " +data.result);
+ 							alert("이벤트 제목 = " + data.eventList[0].imgFileName);
+ 							
+ 							$('#eventList').empty();
+ 						for(var i=0; i< data.eventList.length; i++){	
+ 							
+ 						 	var contents ='';
+ 							
+								
+							contents +='<div class="col-md-12">';
+							contents += 	'<div class="recent-posts">';
+							contents += 	'<article class="post">';
+							contents += 			'<div>';
+							contents += 					'<img alt="" class="img-responsive img-rounded" src="../upload/'+data.eventList[i].imgFileName+'"style="height:400px">';
+							contents += 			'</div>';					
+							contents += 			'<div class="heading heading-tertiary heading-border heading-bottom-border">';
+							contents += 				'<h2 class="heading-tertiary"><strong>'+ data.eventList[i].title+'</strong></h2>';
+							contents += 			'</div>';			
+							contents += 				'<h5><strong>$'+ data.eventList[i].content + '</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>';		
+							contents += 			'<span class="label label-tertiary">시작일 : '+data.eventList[i].startDate + '</span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 :' + data.eventList[i].endDate +'</span>';											
+							contents += 			'<span></span>';
+							contents += 			'<span></span>';			
+							contents += 		'</article>';
+							contents += 	'</div>';
+							contents += '</div>';
+							//'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+							//contents += 		'<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{\'items\': 1, \'margin\': 10, \'animateOut\': \'fadeOut\', \'autoplay\': true, \'autoplayTimeout\': 3000}">';
+							//contents += 			'</div>';
+							$('#eventByStore').append(contents);
+ 						}
+ 							
+ 							
+ 						}
+ 						
+ 					});
+ 					
+ 					
+ 					
+ 				}
+				
+				
+				
+				//ajax3 
+				/* $("input[name=storeChoice]").click(function(){
+					alert('들어옴');
+					var btn = this;
+					
+					var storeName = $(btn).val();
+					console.log("매장이름 : " +$("#storeName").val());
+					
+					$.ajax({
+						url : "./test4",
+						type : "post",
+						data : {"storeName" : storeName},
+						success : function(responseData){
+								var data = JSON.parse(responseData);	
+								
+								
+								$(btn).removeAttr('disabled');
+								
+								
+						}
+					});
+				});*/
+				
+			
+			
+			
 		
-		
-		
-		
-		
-		
-		
+		</script>
 	</body>
 </html>

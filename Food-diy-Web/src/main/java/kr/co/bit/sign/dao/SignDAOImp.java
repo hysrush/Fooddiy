@@ -12,6 +12,7 @@ public class SignDAOImp implements SignDAO {
 	@Autowired
 	private SqlSessionTemplate sql;
 	
+	// 로그인
 	public UserVO login(UserVO	 login) {
 		
 		// API 가입 확인 또는 아이디 비밀번호 확인
@@ -25,9 +26,17 @@ public class SignDAOImp implements SignDAO {
 		
 	}
 
+	// 회원가입
 	public void signUp(UserVO memberVO) {
 		
-		sql.insert("kr.co.bit.member.dao.signUp", memberVO);
+		// 비회원
+		if(memberVO.getType().equals("N")) {
+		
+			sql.insert("kr.co.bit.member.dao.nonSignUp", memberVO);
+		}else {
+			sql.insert("kr.co.bit.member.dao.signUp", memberVO);
+		}
+		
 	}
 	
 	public int checkId(String id) {
@@ -59,5 +68,10 @@ public class SignDAOImp implements SignDAO {
 		return sql.selectOne("kr.co.bit.member.dao.lostPw", lost);
 	}
 
+	// 임시 비밀번호 설정
+	public void setPw(UserVO setpw) {
+	
+		sql.insert("kr.co.bit.member.dao.pwUpdate", setpw);
+	}
 	
 }

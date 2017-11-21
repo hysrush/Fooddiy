@@ -16,28 +16,29 @@ public class MemberDAOImpl implements MemberDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public List<UserVO> selectAll() {
-		List<UserVO> list = sqlSession.selectList("kr.co.bit.member.dao.MemberDAO.selectAllMember");
+		List<UserVO> list = sqlSession.selectList("kr.co.bit.member.dao.selectAllMember");
 		return list;
 	}
 
 	public UserVO selectOne(int no) {
-		return sqlSession.selectOne("kr.co.bit.member.dao.MemberDAO.selectByNo", no);
+		return sqlSession.selectOne("kr.co.bit.member.dao.selectByNo", no);
 
 	}
 
 	public void insert(UserVO member) {
-		sqlSession.insert("kr.co.bit.member.dao.MemberDAO.insertBoard", member);
+		sqlSession.insert("kr.co.bit.member.dao.insertBoard", member);
 		
 	}
 
-	    public void update(UserVO vo) {
-	        sqlSession.update("member.memberUpdate", vo);
-	 
-	    }
-
-	public void delete(int no) {
-		// TODO Auto-generated method stub
+	public void update(UserVO vo) {
 		
+		sqlSession.update("kr.co.bit.member.dao.memberUpdate", vo);
+	 
+	}
+	@Override
+	public void delete(String id) {
+		
+		sqlSession.delete("kr.co.bit.member.dao.memberDelete", id);
 	}
 
 		

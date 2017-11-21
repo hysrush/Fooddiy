@@ -44,27 +44,30 @@
 
 <!-- Current Page CSS -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/settings.css">
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/navigation.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/css/component.css">
 
 <!-- Skin CSS -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/skins/skin-shop-9.css">
 
-<!-- Theme Custom CSS -->
-<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
-<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
+<!-- Demo CSS -->
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
+<!-- Theme Custom CSS -->
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-
 <!-- Head Libs -->
 <script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
 <body>
+
+
+
+		
 		<div class="body">
 			<header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
@@ -72,6 +75,9 @@
 			
 			<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
+
+
+			
 
 			<div role="main" class="main">
 
@@ -111,12 +117,12 @@
 						</div>
 				</div>
 
-				
-				
-				<div class="container web">
-					<div class="row">
-						<div class="col-md-12">
 
+
+			<div class="container web">
+					
+				<div class="row">
+						<div class="col-md-12">
 							<div class="tabs tabs-bottom tabs-center tabs-simple">
 								<ul class="nav nav-tabs">
 									<li class="active">
@@ -125,7 +131,7 @@
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
 														<!-- <i class="icon-featured fa fa-user bread"></i> -->
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/bread.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/bread_wheat.jpg" />
 
 													</span>
 												</span>
@@ -138,7 +144,8 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/cheeses.jpg" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/cheese_old_english.jpg" />
+														
 													</span>
 												</span>
 											</span>									
@@ -150,7 +157,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/topping.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/topping_double_meat.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -162,7 +169,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/vegetables.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/vegetable_lettuce.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -174,7 +181,7 @@
 											<span class="featured-boxes featured-boxes-style-6 p-none m-none">
 												<span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none">
 													<span class="box-content p-none m-none">
-														<img style="width: 100px" src="${pageContext.request.contextPath }/resources//img/select_menu_icon/sauce.png" />
+														<img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/sauce_sweet_chilli.jpg" />
 													</span>
 												</span>
 											</span>									
@@ -203,6 +210,8 @@
 						</div>
 					</div>
 				</div>
+				
+				
 			</div>
 			
 			<div class="container mobile-select-menu">

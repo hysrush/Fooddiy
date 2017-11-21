@@ -11,5 +11,5 @@ public interface MemberDAO {
 	UserVO selectOne(int no);
 	void insert(UserVO member);
 	void update(UserVO member);
-	void delete(int no);
+	void delete(String id);
 }

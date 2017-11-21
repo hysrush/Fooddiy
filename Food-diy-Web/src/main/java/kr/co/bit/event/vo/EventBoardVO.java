@@ -3,6 +3,7 @@ package kr.co.bit.event.vo;
 public class EventBoardVO {
 
 	private int no;
+	private String storeName;
 	private String title;
 	private String imgFileName; // 泥⑤��뙆�씪
 	private String content;
@@ -17,6 +18,9 @@ public class EventBoardVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
+	
+	
+
 	public String getTitle() {
 		return title;
 	}
@@ -26,6 +30,12 @@ public class EventBoardVO {
 	
 	
 	
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
 	public String getImgFileName() {
 		return imgFileName;
 	}
@@ -58,8 +68,9 @@ public class EventBoardVO {
 	}
 	@Override
 	public String toString() {
-		return "EventBoardVO [no=" + no + ", title=" + title + ", imgFileName=" + imgFileName + ", content=" + content
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", regDate=" + regDate + "]";
+		return "EventBoardVO [no=" + no + ", storeName=" + storeName + ", title=" + title + ", imgFileName="
+				+ imgFileName + ", content=" + content + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", regDate=" + regDate + "]";
 	}
 	
 	

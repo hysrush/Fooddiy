@@ -61,10 +61,7 @@
 <script>
 	$(document).ready(function(){
 		
-		$("#memberDel").click(function(){
-	
-			location.href="${pageContext.request.contextPath}/member/memberDel.do"; 
-		});
+		
 		
 		$("#okay").click(function(){
 			
@@ -160,27 +157,27 @@
                       </tr>
                         <tr>
                        	<td><strong>생 일:</strong></td>
-                        <td></td>
+                        <td>${userVO.birth}</td>
                       </tr>
                       <tr>
                         <td><strong>전화번호:</strong></td>
-                        <td></td>
+                        <td>${userVO.phone}</td>
                            
                       </tr>
                       <tr>
                         <td><strong>E-mail :</strong></td>
-                        <td><a href="mailto:info@support.com">${userinfo.bEmail}</a></td>
+                        <td><a href="mailto:${userVO.email}">${userVO.email}</a></td>
                       </tr>
                        <tr>
                         <td><strong>등 급 : </strong></td>
-                        <td></td>
+                        <td>${userVO.grade}</td>
                            
                       </tr>
-                       <tr>
+                     <%--   <tr>
                         <td><strong>포인트 : </strong></td>
-                        <td></td>
+                        <td>${userVO.point}</td>
                            
-                      </tr>
+                      </tr>    --%>
                       <!-- <select id="point" parameterClass="map" resultClass="hashmap" remapResults="true">
 									SELECT 마일리지 FROM 회원TB WHERE 회원아이디 = '~'
 						System.out.print(map.get("마일리지"))

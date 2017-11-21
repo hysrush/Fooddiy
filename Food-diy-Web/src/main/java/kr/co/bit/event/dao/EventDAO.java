@@ -11,9 +11,11 @@ public interface EventDAO {
 	
 	List<EventBoardVO> selectAll();
 	List<EventBoardVO> selectEndEvent();
-	List<StoreVO> selectStoreList();
+	List<EventBoardVO> selectEventBystoreName(String store);
+	
+	List<StoreVO> selectStoreList(String gugun);
 	List<CityVO> selectCity();
-	List<locationVO> selectLocation();
+	List selectLocation(String sido);
 	EventBoardVO selectOne(int no);
 	void insert(EventBoardVO eventVO);
 	void update(EventBoardVO eventVO);

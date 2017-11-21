@@ -33,10 +33,16 @@ public class EventServiceImpl implements EventService{
 		return list;
 	}
 	
+	@Override
+	public List<EventBoardVO> selectEventBystoreName(String store){
+		List<EventBoardVO> list = eventDAO.selectEventBystoreName(store);
+		return list;
+	}
+	
 	
 	@Override
-	public List<StoreVO> selectStoreList(){
-		List<StoreVO> list = eventDAO.selectStoreList();
+	public List<StoreVO> selectStoreList(String gugun){
+		List<StoreVO> list = eventDAO.selectStoreList(gugun);
 		return list;
 	}
 	
@@ -76,8 +82,8 @@ public class EventServiceImpl implements EventService{
 
 
 	@Override
-	public List<locationVO> selectLocation() {
-		List<locationVO> list = eventDAO.selectLocation();
+	public List selectLocation(String sido) {
+		List list = eventDAO.selectLocation(sido);
 		return list;
 	}
 
