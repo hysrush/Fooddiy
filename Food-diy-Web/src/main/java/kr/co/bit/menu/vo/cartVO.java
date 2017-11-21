@@ -7,6 +7,7 @@ public class cartVO {
 	
 	private String name;
 	private String size;
+	private String price;
 	private String bread;
 	private String cheese;
 	

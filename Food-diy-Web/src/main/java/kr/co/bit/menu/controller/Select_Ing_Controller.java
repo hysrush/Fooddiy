@@ -1,11 +1,16 @@
 package kr.co.bit.menu.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.menu.service.Select_Ing_Service;
@@ -42,8 +47,23 @@ public class Select_Ing_Controller {
 	}
 	
 	@RequestMapping(value ="/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Ing_cart() {
+	@ResponseBody 
+	public String updateUserInfo(@RequestBody Map<String, Object> params) {
 		
-		return null;
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		try {
+			Set<String> keys = params.keySet();
+			
+			for(String key : keys){
+				System.out.println(params.get(key));
+			}
+				
+			
+		}catch(Exception e) {
+			
+		}
+		
+		return "menu/select-ingredients";
 	}
 }
