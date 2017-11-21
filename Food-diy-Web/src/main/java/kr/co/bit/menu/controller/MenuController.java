@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +23,7 @@ import kr.co.bit.menu.service.MenuService;
 import kr.co.bit.menu.vo.MenuVO;
 
 @Controller
+@SessionAttributes({"name", "price", "size"})
 @RequestMapping("/menu")
 public class MenuController {
 	
@@ -58,21 +60,14 @@ public class MenuController {
 	@RequestMapping(value="/menuWrite.do", method=RequestMethod.POST)
 	public String write(@Valid MenuVO menuVO
 						, BindingResult result
-						, @RequestParam(value="imgFileName") MultipartFile[] files
-	)throws Exception {		
-		System.out.println("시작");
-		String fileName=null;
-		String saveFileName="";
+						, @RequestParam(value="imgFileName") MultipartFile file
+	)throws Exception {	
 		
-		if(files != null && files.length > 0) {
-			for(int i=0; i<files.length; i++) {
-				try {
-					if(true==files[i].isEmpty()) {
-						continue;
-					}
+		System.out.println("시작");
+		
 					//1. fileName 설정 + eventVO에 fileName 저장
-					fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\menu\\" + files[i].getOriginalFilename();
-					saveFileName = files[i].getOriginalFilename();
+					String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\menu\\" + file.getOriginalFilename();
+					String saveFileName = file.getOriginalFilename();
 					
 					menuVO.setImgFileName(saveFileName);
 					
@@ -82,7 +77,7 @@ public class MenuController {
 					
 					//2. 경로에 이미지파일 저장
 					byte[] bytes;
-					bytes = files[i].getBytes();
+					bytes = file.getBytes();
 					BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
 					buffStream.write(bytes);
 					buffStream.close();
@@ -90,14 +85,7 @@ public class MenuController {
 					System.out.println("들어가나염2?");					
 					
 					menuService.insertMenu(menuVO);
-					
-				} catch (Exception e) {
-					return "You failed to upload " + "<br/>";
-				}
-			}
-		} else {
-			return "file is empty";
-		}		
+	
 		// menuVO에 저장 
 		return "redirect:/menu/menuAll.do";
 	}	
@@ -118,4 +106,26 @@ public class MenuController {
 		return mav;
 	}
 	
-}
+	// '주문하기'선택 후 매장화면으로
+	/*@RequestMapping(value="/testStore.do", method=RequestMethod.POST)
+	public String Session(Model model) {
+		// Form에서 가져온 Data를 MenuVO 객체형태로 저장
+		CartVO cartVO = new CartVO();
+		
+		
+				// 공유영역에 등록
+		model.addAttribute("name", "admin"); //id의 키에 admin저장
+        model.addAttribute("price", "nami"); //name의 키에 nami저장
+        model.addAttribute("size", 22); //age의 키에 22저장
+        
+        model.addAttribute("className", this.getClass());
+        //className의 키에 현재 클래스 이름 저장
+        
+        model.addAttribute("menuVO", menuVO);
+        return "/view.jsp"; //포워딩
+*/				
+	}
+	
+	
+	
+
