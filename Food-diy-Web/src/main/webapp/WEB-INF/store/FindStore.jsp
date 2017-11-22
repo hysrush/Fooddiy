@@ -58,7 +58,21 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-
+	<style>
+		/* Always set the map height explicitly to define the size of the div
+		* element that contains the map. */
+		#map {
+		height: 100%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		}
+	</style>
+			
+	
 
 	</head>
 	<body>
@@ -188,14 +202,16 @@
 														</div>
 										</div>
 									</div>	
-												<!--  선택한 매점 이름과 매칭되는 이벤트 불러오기  -->
-													<div class="center" id ="eventByStore">	
-												
-													
-													
-													
-													
+												<!--  선택한 매점 이름과 매칭되는 지도api 불러오기  -->
+													<div class="row">
+														<div class="col-md-12">
+															<h4>Markers</h4>
+															<div id="map" style="height: 500px;"></div>
+														</div>
 													</div>
+												
+												
+												
 													
 													<!--  -->
 										<div class="col-md-12">
@@ -221,7 +237,8 @@
 										
 								</div>
 							</div>
-							<!-- END -->
+							
+
 						</div>
 					</div>
 				</div>
@@ -276,51 +293,101 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-		<script>
-			// Markers
-			$("#googlemapsMarkers").gMap({
-				controls: {
-					draggable: (($.browser.mobile) ? false : true),
-					panControl: true,
-					zoomControl: true,
-					mapTypeControl: true,
-					scaleControl: true,
-					streetViewControl: true,
-					overviewMapControl: true
-				},
-				scrollwheel: false,
-				markers: [{
-					address: "217 Summit Boulevard, Birmingham, AL 35243",
-					html: "<strong>Alabama Office</strong><br>217 Summit Boulevard, Birmingham, AL 35243",
-					icon: {
-						image: "img/pin.png",
-						iconsize: [26, 46],
-						iconanchor: [12, 46]
-					}
-				},{
-					address: "645 E. Shaw Avenue, Fresno, CA 93710",
-					html: "<strong>California Office</strong><br>645 E. Shaw Avenue, Fresno, CA 93710",
-					icon: {
-						image: "img/pin.png",
-						iconsize: [26, 46],
-						iconanchor: [12, 46]
-					}
-				},{
-					address: "New York, NY 10017",
-					html: "<strong>New York Office</strong><br>New York, NY 10017",
-					icon: {
-						image: "img/pin.png",
-						iconsize: [26, 46],
-						iconanchor: [12, 46]
-					}
-				}],
-				latitude: 37.09024,
-				longitude: -95.71289,
-				zoom: 3
-			});
+		
+		<!-- <script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script> -->
+	<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+	<script async defer src = "https://maps.googleapis.com/maps/api/geocode/json?address=서울+동작구+노량진로+166&key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script>
 
+		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script> -->
+	<script>
+	
+	window.onload = function() {
+	var options = {
+			enableHighAccuracy: true,
+			timeout: 5000,
+			maximumAge: 0
+			};
 
+			function success(pos) {
+			var crd = pos.coords;
+
+			console.log('Latitude : ' + crd.latitude);
+			console.log('Longitude: ' + crd.longitude);
+			};
+
+			function error(err) {
+			console.warn('ERROR(' + err.code + '): ' + err.message);
+			};
+
+			navigator.geolocation.getCurrentPosition(success, error, options);
+	
+	};
+	
+	
+	</script>	
+		
+														
+		
+	<script>
+
+		function initMap() {
+		
+		var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 14,
+		center: {lat: 35.024, lng: 129.887}
+		});
+		
+		var infoWindow = new google.maps.InfoWindow({map: map});
+		
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+		var pos = {
+		lat: position.coords.latitude,
+		lng: position.coords.longitude
+		};
+		
+		infoWindow.setPosition(pos);
+		infoWindow.setContent('현재위치 !!!');
+		map.setCenter(pos);
+		}, function() {
+		//alert("Location not found.");
+		});
+		} else {
+		//alert("Browser doesn't support Geolocation");
+		}
+		
+		// Create an array of alphabetical characters used to label the markers.
+		var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		
+		// Add some markers to the map.
+		// Note: The code uses the JavaScript Array.prototype.map() method to
+		// create an array of markers based on a given "locations" array.
+		// The map() method here has nothing to do with the Google Maps API.
+		var markers = locations.map(function(location, i) {
+		return new google.maps.Marker({
+		position: location,
+		label: labels[i % labels.length]
+		});
+		});
+		
+		// Add a marker clusterer to manage the markers.
+		var markerCluster = new MarkerClusterer(map, markers,
+		{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+		}
+		var locations = [
+		{lat: 37.4923678, lng: 127.0313011}, //현재위치 위도 경도 
+		{lat: 35.541166, lng: 129.265137},
+		{lat: 35.505400, lng: 128.814697},
+		{lat: 36.191092, lng: 128.633423},
+		{lat: 36.035774, lng: 128.441162},
+		{lat: 35.277016, lng: 129.133301},
+		{lat: 35.188400, lng: 129.134674},
+		{lat: 35.449484, lng: 128.817444}
+		]
 		</script>
+		
 		
 		<script type="text/javascript">
 			
@@ -385,6 +452,42 @@
 		
 				});
 		</script>
+		
+		<!-- <script>
+				window.onload = function() {
+					  var startPos;
+					  var geoOptions = {
+					    enableHighAccuracy: true
+					  }
+		
+					  var geoSuccess = function(position) {
+					    startPos = position;
+					    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+					    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+					  };
+					  var geoError = function(error) {
+					    console.log('Error occurred. Error code: ' + error.code);
+					    // error.code can be:
+					    //   0: unknown error
+					    //   1: permission denied
+					    //   2: position unavailable (error response from location provider)
+					    //   3: timed out
+					  };
+		
+					  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+					  
+					  function showPosition(position) {
+						    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+						    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=
+						    "+latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg";
+
+						    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+						}
+					};
+		</script>
+		 -->
+		
 
 	</body>
 </html>
