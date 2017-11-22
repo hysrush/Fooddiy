@@ -104,12 +104,6 @@
 	
 	$(document).ready(function(){
 		
-		$('form').submit(function() {
-		    var emailID = $("input[name='emailID']").val();
-		    alert(emailID);
-			
-		});
-		
 		// DatePicker
 		$('#visitDate').datepicker({
 			format : 'yyyy-mm-dd',	// 날짜 포맷
@@ -123,7 +117,7 @@
 			rtl: (($('html[dir="rtl"]').get(0)) ? true : false)
 		});
 		
-		// 라디오 버튼 변경시 이벤트
+		// 방문 - 라디오 버튼 변경시 이벤트
         $("input[name='radioVisit']:radio").change(function() {
 	        // 라디오 버튼 값을 가져온다.
 	        var visit = this.value;
@@ -160,6 +154,8 @@
 				$("#file_AddSection > div").attr("class", "fileDiv col-md-12");
 				// id 요소 변경
 		       	$("#file_AddSection > div:last").attr("id", "fileDiv" + parseInt(cnt + 1));
+				// input 요소 변경
+		    	//$("#file_AddSection div > button:last").attr("name", "file" + parseInt(cnt + 1));
 				// 버튼 요소 변경
 		    	$("#file_AddSection div > button:last").attr("name", "btnMinusFile");
 		    	$("#file_AddSection div > button:last").attr("onclick", "removeFile(this)");
@@ -169,6 +165,59 @@
 		    	$("#file_AddSection div > button > i:last").attr("class", "fa fa-minus");
 		    }
       	});
+     	
+     	// 이메일 이벤트
+     	$("#emailDomain").change(function() {
+			
+			var emailDomain = this.value;
+			var inputDomain;
+			
+			// 직접입력 선택 시,
+			if (emailDomain == "etc") {
+				$("#inputDomain").attr("readonly", false);	// 해제
+				$("#inputDomain").val("");
+				$("#inputDomain").focus();
+				
+				// 직접입력 입력 시,
+				$("#inputDomain").change(function() {
+					inputDomain = this.value;
+					if (inputDomain !== "") {
+						$("#emailDomain option:selected").val(inputDomain);
+						//alert(inputDomain);
+						
+						// 맘바뀌어서 다시 다른 도메인 선택 시,
+						$("#emailDomain").change(function() {
+							//alert(inputDomain);
+							var replay = $(this).find('option:selected').val();
+							
+							if (replay == inputDomain){
+								$(this).find('option:selected').val("etc");	
+								$("#inputDomain").attr("readonly", false);	// 해제
+								$("#inputDomain").val("");
+								$("#inputDomain").focus();
+							}
+						});
+					}
+				});
+			} else {
+				$("#inputDomain").attr("readonly", true);	// 설정
+				$("#inputDomain").val(emailDomain);
+			}
+		});
+     	
+     	// 서밋버튼 이벤트
+     	$("#claimSubmit").click(function() {
+     		// 동의 - 라디오 버튼 변경시 이벤트
+     		var agree = $(':radio[name="radioAgree"]:checked').val();
+  			
+  	        if(agree == "Y"){							// '동의함'일 경우,
+  	        	return true;
+  			} else if (agree == "N") {					// '동의 안함'일 경우,
+  				alert("Error : 개인정보 이용 동의 하셔야 신청 가능합니다.");
+  				return false;
+  			}
+  	        
+		});
      	
 	});
 	
@@ -182,22 +231,6 @@
         $("#file_AddSection div").eq(index).remove();
     }
 
-	// 이메일 이벤트
-	function checkEmail(){
-
-		var f = document.csForm;
-		
-		if (f.selectEmail.value == 'etc') {
-        	f.emailDomain.readOnly = false;
-        	f.emailDomain.value = '';
-        	f.emailDomain.focus();
-        }
-        else {
-        	f.emailDomain.readOnly = true;
-        	f.emailDomain.value = f.selectEmail.value;
-        }
-    }
-	
 	
 </script>
 
@@ -276,21 +309,25 @@
 										<br>
 										<div class="form-group" align="left">
 											<!-- 1:1문의 작성폼 시작  -->
-											<form:form commandName="claimVO" method="POST" name="csForm" id="csForm">
+											<form:form commandName="claimVO" method="POST" name="csForm" id="csForm" enctype="multipart/form-data" >
 												<table class="table table-bordered">
 													<tr>
 														<td>
-															<label for="type">분야</label>
+															<form:label for="type" path="type" cssErrorClass="error">분야</form:label>
 														</td>
 														<td>
-															<form:select path="type" class="form-control" id="type" name="type">
+															<%-- <form:select path="type" class="form-control" id="type" name="type">
 																<form:option value="" selected="selected">문의유형</form:option>
 																<form:option value="I">문의</form:option>
 																<form:option value="P">칭찬</form:option>
 																<form:option value="C">불만</form:option>
 																<form:option value="S">제안</form:option>
 																<form:option value="X">기타</form:option>
-															</form:select>
+															</form:select> --%>
+															 <form:select path="type" class="form-control" id="type" name="type">
+															 	<option value="" >문의유형</option>
+															 	<form:options items="${typeCode}"/>
+															 </form:select>
 														</td>
 													</tr>
 													<tr>
@@ -298,13 +335,13 @@
 															<label for="email">답변 메일</label>
 														</td>
 														<td>
-															<input type="text" class="mail_input form-control" 
+															<form:input path="emailID" type="text" class="mail_input form-control" 
 																	id="emailID" name="emailID" value="로그인회원emailID"/>
 															<span style="float: left;">&nbsp;&nbsp;<i class="fa fa-at"></i>&nbsp;&nbsp;</span>
 															<input type="text" class="mail_input form-control" 
-																	id="emailDomain" name="emailDomain" value="로그인회원emailDomain" readonly="readonly"/>
+																	id="inputDomain" name="inputDomain" value="로그인회원emailDomain" readonly="readonly"/>
 															<span style="float: left;">&nbsp;&nbsp;</span>
-															<select class="mail_sel form-control" id="selectEmail" onchange="checkEmail()">
+															<%--<select class="mail_sel form-control" id="selectEmail" onchange="checkEmail()">
 																<option value="로그인회원emailDomain">선택하세요</option>
 																<option value="gmail.com">gmail.com</option>
 																<option value="hanmail.net">hanmail.net</option>
@@ -313,8 +350,12 @@
 																<option value="naver.com">naver.com</option>
 																<option value="yahoo.co.kr">yahoo.co.kr</option>
 																<option value="etc">직접입력</option>
-															</select>
-															<form:hidden path="email" />
+															</select> --%>
+															<form:select path="emailDomain" class="mail_sel form-control" id="emailDomain" name="emailDomain">
+																<option value="로그인회원emailDomain">선택하세요</option>
+																<form:options items="${domainCode}"/>
+																<option value="etc">직접입력</option>
+															</form:select>
 														</td>
 													</tr>
 													<tr>
@@ -322,19 +363,20 @@
 															<label for="phone">연락처</label>
 														</td>
 														<td>
-															<select class="phone_sel form-control" id="phone1">
-																<option value="010">010</option>
-																<option value="011">011</option>
-																<option value="016">016</option>
-																<option value="017">017</option>
-																<option value="018">018</option>
-																<option value="019">019</option>
-															</select>
+															<form:select path="phone1" class="phone_sel form-control" id="phone1" name="phone1">
+																<form:option value="010">010</form:option>
+																<form:option value="011">011</form:option>
+																<form:option value="016">016</form:option>
+																<form:option value="017">017</form:option>
+																<form:option value="018">018</form:option>
+																<form:option value="019">019</form:option>
+															</form:select>
 															<span style="float: left;">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-															<input type="text" class="phone_input form-control" id="phone2" name="phone2" placeholder="중간번호" maxlength="4" ref="num"/>
+															<form:input path="phone2" type="text" class="phone_input form-control" 
+																		id="phone2" name="phone2" placeholder="중간번호" maxlength="4" ref="num"/>
 															<span style="float: left;">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-															<input type="text" class="phone_input form-control" id="phone3" name="phone3" placeholder="마지막번호" maxlength="4" ref="num"/>
-															<form:hidden path="phone"/>
+															<form:input path="phone3" type="text" class="phone_input form-control" 
+																		id="phone3" name="phone3" placeholder="마지막번호" maxlength="4" ref="num"/>
 														</td>
 													</tr>
 													<tr>
@@ -352,7 +394,6 @@
 																<button type="button" class="btn btn-success mr-xs mb-sm" data-toggle="modal" data-target="#formModal">매장찾기</button>
 																<!-- 매장찾기 모달창 -->
 																<jsp:include page="/resources/include/claim/visitStore-Modal.jsp"></jsp:include>
-																<form:hidden path="visitStore"/>
 															</div>
 															<div class="visit col-md-12" style="float: left;">
 																<label for="visitDate" >방문일&nbsp;&nbsp;</label>
@@ -388,8 +429,9 @@
 														<td>
 															<div class="file_BasicSection">
 																<div class="fileDiv col-md-12" id="fileDiv1" >
-																	<input path="#" type="file" class="file_input form-control" id="fileName1" placeholder="파일첨부" style="float: left; width: 70%;"/>
-																	&nbsp;&nbsp;<button type="button" class="btn btn-success mr-xs mb-sm" id="btnAddFile" ><i class="fa fa-plus"></i></button>
+																	<form:input path="file" type="file" class="file_input form-control" id="file" 
+																				name="file" placeholder="파일첨부" style="float: left; width: 70%;"/>&nbsp;&nbsp;
+																	<button type="button" class="btn btn-success mr-xs mb-sm" id="btnAddFile" ><i class="fa fa-plus"></i></button>
 																</div>
 															</div>
 															<div id="file_AddSection"></div>
@@ -400,6 +442,7 @@
 														</td>
 													</tr>
 												</table>
+												<form:hidden path="writer" value="로그인ID"/>
 												<!-- 정보활용 동의 -->
 												<section class="agree section section-default" style="height: 100px; padding-top: 20px;">
 													<div class="row ">
