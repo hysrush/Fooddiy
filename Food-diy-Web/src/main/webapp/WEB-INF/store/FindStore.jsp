@@ -297,7 +297,7 @@
 		<!-- <script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script> -->
 	<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-	<script async defer src = "https://maps.googleapis.com/maps/api/geocode/json?address=서울+동작구+노량진로+166&key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script>
+	<script async defer src = "https://maps.googleapis.com/maps/api/geocode/json?address=서울+동작구+노량진로+166&key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg"></script>
 
 		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script> -->
 	<script>
