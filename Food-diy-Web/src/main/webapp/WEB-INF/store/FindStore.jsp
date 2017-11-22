@@ -135,11 +135,7 @@
 															<input type="text" value="" class="form-control">
 														</div>
 													</div> -->
-														<div class="row">
-														<div class="col-md-12">
-															<input type="submit" value="검색" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
-														</div>	
-													</div>	
+													
 												
 													<div class="row">
 														<div class="form-group">
@@ -156,7 +152,7 @@
 															<div class="col-md-6">
 																<label>군,구</label>
 																<select class="form-control" id= "gugun">
-																	
+																	<option value="" selected="selected" >구,군 을 선택해주세요 </option>
 																</select>
 															</div>	
 														</div>

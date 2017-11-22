@@ -59,6 +59,43 @@
 					<form:errors path="imgFileName" class="form-control"></form:errors>
 				</div>
 				
+				<%-- <div class="form-group" align="left">
+					<label for="serviceSize">섭취량</label>
+					<form:input path="serviceSize" class="form-control" id="serviceSize" placeholder="섭취량"/>
+					<form:errors path="serviceSize" class="form-control"></form:errors>
+				</div>
+				
+				<div class="form-group" align="left">
+					<label for="calorie">칼로리</label>
+					<form:input path="calorie" class="form-control" id="calorie" placeholder="칼로리"/>
+					<form:errors path="calorie" class="form-control"></form:errors>					
+				</div>
+				
+				<div class="form-group" align="left">
+					<label for="protein">단백질</label>
+					<form:input path="protein" class="form-control" id="protein" placeholder="단백질"/>
+					<form:errors path="protein" class="form-control"></form:errors>					
+				</div>
+				
+				<div class="form-group" align="left">
+					<label for="natrium">나트륨</label>
+					<form:input path="natrium" class="form-control" id="natrium" placeholder="나트륨"/>
+					<form:errors path="natrium" class="form-control"></form:errors>					
+				</div>				
+				
+				<div class="form-group" align="left">
+					<label for="sugar">당류</label>
+					<form:input path="sugar" class="form-control" id="sugar" placeholder="당류"/>
+					<form:errors path="sugar" class="form-control"></form:errors>					
+				</div>
+				
+				<div class="form-group" align="left">
+					<label for="fat">포화지방</label>
+					<form:input path="fat" class="form-control" id="fat" placeholder="포화지방"/>
+					<form:errors path="fat" class="form-control"></form:errors>					
+				</div>
+				 --%>
+				
 				
 				
 				<button type="submit" class="btn btn-default">등록</button>
