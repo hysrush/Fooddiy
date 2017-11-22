@@ -32,6 +32,12 @@ public class EvnetDAOImpl implements EventDAO {
 		return list;
 	}
 	
+	public List<EventBoardVO> selectEventBystoreName(String store){
+		
+		List<EventBoardVO> list = sqlSession.selectList(url + "selectEventBystoreName", store);
+		return list;
+	}
+	
 	// �씠踰ㅽ듃 �겢由��떆 �뵒�뀒�씪
 	@Override
 	public EventBoardVO selectOne(int no) { 

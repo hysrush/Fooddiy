@@ -44,23 +44,22 @@
 
 <!-- Current Page CSS -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/settings.css">
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/navigation.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/css/component.css">
 
 <!-- Skin CSS -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/skins/skin-shop-9.css">
 
-<!-- Theme Custom CSS -->
-<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
-<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
+<!-- Demo CSS -->
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
+<!-- Theme Custom CSS -->
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-
 <!-- Head Libs -->
 <script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
@@ -118,8 +117,11 @@
 						</div>
 				</div>
 
-				<div class="container web">
-					<div class="row">
+
+
+			<div class="container web">
+					
+				<div class="row">
 						<div class="col-md-12">
 							<div class="tabs tabs-bottom tabs-center tabs-simple">
 								<ul class="nav nav-tabs">
