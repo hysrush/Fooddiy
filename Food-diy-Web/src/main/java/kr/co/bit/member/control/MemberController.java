@@ -21,6 +21,7 @@ import kr.co.bit.user.vo.UserVO;
 /*@SessionAttributes("/member")*/
 @SessionAttributes("userVO")
 @RequestMapping("/member")
+
 public class MemberController {
 		
 	@Autowired
@@ -40,7 +41,7 @@ public class MemberController {
 		return "member/myQnA";
 		
 	}
-	@RequestMapping("/memberDelcheck.do")
+/*	@RequestMapping("/memberDelcheck.do")
 	public String memberDelcheck(){
 		
 		return "member/memberDelcheck";
@@ -54,12 +55,49 @@ public class MemberController {
 		
 	}
 	
+*/
 //	---------------------------------------------------------------------------------------------------
 	    //회원정보 페이지 보여 주는 거
 	 @RequestMapping("/memberDetail.do")
 		public String memberDetail() {
 		 
 			return "member/memberDetail";
+		}
+	 //회원수정 비밀번호 확인
+		@RequestMapping(value = "/pwcheck.do", method = RequestMethod.POST)
+		public String pwcheck(UserVO login, Model model) {
+
+			System.out.println(login.toString());
+			UserVO signIn = signService.login(login);
+
+			if (signIn == null) {
+
+				String msg = "비밀번호를 확인해 주세요.";
+				model.addAttribute("msg", msg);
+
+				return "member/memberDetail";
+			}
+
+
+			return "member/memberUpdate";
+		}
+		//회원수정 비밀번호 확인
+		@RequestMapping(value = "/delCheck.do", method = RequestMethod.POST)
+		public String delCheck(UserVO login, Model model) {
+			
+			System.out.println(login.toString());
+			UserVO signIn = signService.login(login);
+			
+			if (signIn == null) {
+				
+				String msg = "비밀번호를 확인해 주세요.";
+				model.addAttribute("msg", msg);
+				
+				return "member/memberDel";
+			}
+			
+			
+			return "member/memberDelcheck";
 		}
 	 
 	 //회원정보수정 페이지 보여 주는 거
@@ -84,15 +122,16 @@ public class MemberController {
 
 	  }
 	  
-	  //회원탈퇴
+	  //회원탈퇴 비밀번호 확인창
 	  @RequestMapping(value="/memberDel")
 	  public String memberDel(){
 		  
-		  return "member/memberDelcheck";
+		  return "member/memberDel";
 	  }
 	  
+	  //회원탈퇴
 	  @RequestMapping(value="/memberDelCheck.do")
-		public String memberDelCheck(String id, SessionStatus session) throws Exception{
+		public String memberPwCheck(String id, SessionStatus session) throws Exception{
 			
 		   session.setComplete();
 			System.out.println(id);

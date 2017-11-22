@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+$(document).ready(function(){
+   var sand_size = $("input[type=radio][name=size]:checked").val();
+});
+</script>
 </head>
 <body>
 
@@ -36,8 +41,8 @@
 
 			<div class="col-md-6">
 				<div class="summary entry-summary">
-					<h1 class="mb-none">
-						<strong>${ menuDetailVO.name }</strong>
+					<h1 class="mb-none">						
+						<strong>${ menuDetailVO.name }</strong>						
 					</h1>
 					<div>${ menuDetailVO.mainmenu }</div>
 					<div class="review_num">
@@ -50,26 +55,29 @@
 					</div>
 
 					<p class="price">
-						<span class="amount">${menuDetailVO.price}원</span>
+						<span class="amount">${ menuDetailVO.price }원</span>
 					</p>
 
 					<p class="taller">
-						${menuDetailVO.detail}						
+						${ menuDetailVO.detail }						
 					</p>
 					<p class="inch">
-						<input type="radio" name="chk_info" value="HTML" checked="checked"><span
+						<input type="radio" name="size" value="15cm" checked="checked"><span
 							style="font-size: 18px; margin-left: 5px; margin-right: 20px">15cm</span>
-						<input type="radio" name="chk_info" value="CSS"><span
+						<input type="radio" name="size" value="30cm"><span
 							style="font-size: 18px; margin-left: 5px">30cm</span>
 					</p>
 
-					<form enctype="multipart/form-data" method="post" class="cart" style="margin-bottom: 10px">						
-						<button href="#" class="btn btn-primary btn-icon">주문하기</button>
+					<form enctype="multipart/form-data" method="post" class="cart" style="margin-bottom: 10px">
+						<!-- submit하면 hidden으로 값 넘겨준다 -->
+						<input type="hidden" name="name" value=${ menuDetailVO.name }>
+						<input type="hidden" name="price" value=${ menuDetailVO.price }>											
+						<input type="hidden" name="size" value=sand_size>											
+						<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
 					</form>
 
 					<div class="product_meta">
-						<span class="posted_in">알르레기 유발성분 : <a rel="tag" href="#">Steak</a>,
-							<a rel="tag" href="#">Cheese</a>.
+						<span class="posted_in">알르레기 유발성분 : ${ menuDetailVO.allergy }
 						</span>
 					</div>
 				</div>
@@ -88,27 +96,27 @@
 								<tbody>
 									<tr>
 										<th>Serving Size(g)</th>
-										<td>410.0</td>
+										<td>${ menuDetailVO.serviceSize }</td>
 									</tr>
 									<tr>
 										<th>칼로리</th>
-										<td>410.0</td>
+										<td>${ menuDetailVO.calorie }</td>
 									</tr>
 									<tr>
 										<th>단백질(g)</th>
-										<td>20.0</td>
+										<td>${ menuDetailVO.protein }</td>
 									</tr>
 									<tr>
 										<th>나트륨(mg)</th>
-										<td>1260.0</td>
+										<td>${ menuDetailVO.natrium }</td>
 									</tr>
 									<tr>
 										<th>당류(g)</th>
-										<td>16.0</td>
+										<td>${ menuDetailVO.sugar }</td>
 									</tr>
 									<tr>
 										<th>포화지방(g)</th>
-										<td>45.0</td>
+										<td>${ menuDetailVO.fat }</td>
 									</tr>									
 								</tbody>
 							</table>

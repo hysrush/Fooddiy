@@ -9,9 +9,10 @@
 	
 	<!-- sql 저장 : 전체 조회 -->
   	<sql id="selectAll_claim">
-		SELECT claim_no, claim_title, claim_content, claim_type,
-				user_id, user_email, user_phone,
-				claim_date, claim_store,
+		SELECT claim_no, claim_title, claim_content, claim_type, claim_file,
+				user_id, user_emailID, user_emailDomain,
+				user_phone1, user_phone2, user_phone3,
+				to_char(claim_date, 'yy-mm-dd') as claim_date, claim_store,
 				view_cnt, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_claim
 	</sql>
@@ -22,9 +23,13 @@
   		<result column="claim_title" property="title"/>
   		<result column="claim_content" property="content"/>
   		<result column="claim_type" property="type"/>
+  		<result column="claim_file" property="file"/>
   		<result column="user_id" property="writer"/>
-  		<result column="user_email" property="email"/>
-  		<result column="user_phone" property="phone"/>
+  		<result column="user_emailID" property="emailID"/>
+  		<result column="user_emailDomain" property="emailDomain"/>
+  		<result column="user_phone1" property="phone1"/>
+  		<result column="user_phone2" property="phone2"/>
+  		<result column="user_phone3" property="phone3"/>
   		<result column="claim_date" property="visitDate"/>
   		<result column="claim_store" property="visitStore"/>
   		<result column="view_cnt" property="viewCnt"/>
@@ -45,17 +50,21 @@
 	
 	<!-- Claim 글 등록 -->
 	<insert id="insertClaim" parameterType="claimVO">
-		INSERT INTO t_claim(claim_no, claim_title, claim_content, claim_type,
-							user_id, user_email, user_phone, claim_date, claim_store)
-		VALUES(seq_t_claim_no.nextval, #{title}, #{content}, #{type},
-				#{writer}, #{email}, #{phone}, #{visitDate}, #{visitStore})
+		INSERT INTO t_claim(claim_no, claim_title, claim_content, claim_type, claim_file,
+							user_id, user_emailID, user_emailDomain,
+							user_phone1, user_phone2, user_phone3, claim_date, claim_store)
+		VALUES(seq_t_claim_no.nextval, #{title}, #{content}, #{type}, #{file},
+				#{writer}, #{emailID}, #{emailDomain},
+				#{phone1}, #{phone2}, #{phone3},#{visitDate}, #{visitStore})
 	</insert>
 	
 	<!-- Claim 글 수정 -->
 	<update id="modifyClaim" parameterType="claimVO">
 		UPDATE t_claim
-		SET claim_title = #{title}, claim_content = #{content}, claim_type = #{type},
-			user_email = #{email}, user_phone = #{phone}, claim_date = #{visitDate}, claim_store = #{visitStore}
+		SET claim_title = #{title}, claim_content = #{content}, claim_type = #{type}, claim_file = #{file},
+			user_emailID = #{emailID}, user_emailDomain = #{emailDomain},
+			user_phone1 = #{phone1}, user_phone2 = #{phone2}, user_phone3 = #{phone3},
+			claim_date = #{visitDate}, claim_store = #{visitStore}
 		WHERE claim_no = #{no}
 	</update>
 	

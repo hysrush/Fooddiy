@@ -193,26 +193,23 @@
 						<nav>
 							<ul>
 								<li class="active"><a
-									href="${ pageContext.request.contextPath }/menu/menu2.jsp">전체메뉴</a></li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do">전체메뉴</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/recommend.jsp">추천메뉴</a>
-								</li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#recommend">추천메뉴</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/premium.jsp">프리미엄</a></li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#premium">프리미엄</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/best.jsp">베스트</a></li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#best">베스트</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/classic.jsp">클래식</a></li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#classic">클래식</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/breakfast.jsp">아침식사</a>
-								</li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#breakfast">아침식사</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/salad.jsp">샐러드</a></li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#salad">샐러드</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/addition.jsp">추가메뉴</a></li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#addition">추가메뉴</a></li>
 								<li><a
-									href="${ pageContext.request.contextPath }/menu/mobile_menu/beverage.jsp">음료</a>
-								</li>
+									href="${ pageContext.request.contextPath }/menu/menuAll.do#beverage">음료</a></li>
 							</ul>
 						</nav>
 					</aside>
@@ -416,7 +413,7 @@
 		aria-labelledby="largeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-				<!-- .jsp로 모달내용 -->
+				<!-- 모달내용 -->
 			</div>
 		</div>
 	</div>

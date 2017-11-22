@@ -3,24 +3,28 @@ package kr.co.bit.menu.vo;
 import java.util.List;
 import java.util.Map;
 
-public class cartVO {
+public class CartVO {
 	
 	private String name;
+	private String price;
 	private String size;
+	
 	private String bread;
 	private String cheese;
+	private List<Map<String, String>> topping;
+	private List<Map<String, String>> vegetable;
 	
-	// key : 재료명 , value : 가격
-	private List<Map<String, String>> topping;   
-	
-	// key : 재료먕 , value: 빼기, 적음, 보통, 많음
-	private List<Map<String, String>> vegeable;
-	private List<String> sauce;
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
 	}
 	public String getSize() {
 		return size;
@@ -46,11 +50,11 @@ public class cartVO {
 	public void setTopping(List<Map<String, String>> topping) {
 		this.topping = topping;
 	}
-	public List<Map<String, String>> getVegeable() {
-		return vegeable;
+	public List<Map<String, String>> getVegetable() {
+		return vegetable;
 	}
-	public void setVegeable(List<Map<String, String>> vegeable) {
-		this.vegeable = vegeable;
+	public void setVegetable(List<Map<String, String>> vegetable) {
+		this.vegetable = vegetable;
 	}
 	public List<String> getSauce() {
 		return sauce;
@@ -58,7 +62,13 @@ public class cartVO {
 	public void setSauce(List<String> sauce) {
 		this.sauce = sauce;
 	}
-	
+	private List<String> sauce;
+
+	@Override
+	public String toString() {
+		return "CartVO [name=" + name + ", price=" + price + ", size=" + size + ", bread=" + bread + ", cheese="
+				+ cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + "]";
+	}
 	
 	
 }

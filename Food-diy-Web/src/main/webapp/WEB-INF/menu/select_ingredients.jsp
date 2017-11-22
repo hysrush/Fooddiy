@@ -294,7 +294,7 @@
 						<button type="submit" class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 						
 					</form>
-						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">aa</button>
+					<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">aa</button>
 				</div>
 			</div>
 		</div>
@@ -302,16 +302,28 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var bread  = $('.table').find('.bread-name').find('.name').text();
-			var cheese  = $('.table').find('.cheese-name').find('.name').text();
-			
-			var data = {};
 			
 			$('.select-menu-button').click(function() {
+				var bread  = $('.table').find('.bread-name').find('.name').text();
+				var cheese  = $('.table').find('.cheese-name').find('.name').text();
+				
+				var data = {};
 				data['bread'] = bread;
 				data['cheese'] = cheese;
 				
-				alert(JSON.stringify(data));
+				$.ajax({
+					contentType : 'application/json',
+					dataType : 'json',
+					data : JSON.stringify(data),
+					url : '/Food-diy-Web/menu/select_ingredients.do',
+					type: 'POST',
+					success : function(response) {
+						alert(response.message);
+					},
+					error : function() {
+						alert('실패');
+					}
+				});
 			});
 			
 		});

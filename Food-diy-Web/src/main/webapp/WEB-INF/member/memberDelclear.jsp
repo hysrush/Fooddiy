@@ -115,7 +115,7 @@
 				</div><br/> 
 		
 		
-		<div align="center" class="container col-md-8 col-sm-7 col-xs-8" style="margin-left: 14%; margin-top: 5%;" >
+		<div align="center" class="container col-md-8 col-sm-7 col-xs-8" style="margin-left: 14%; margin-top: 3%;" >
 			<div class="row">
 			
 			<h2 >
@@ -131,7 +131,7 @@
 					</div>
 		<div align="center" class="container">
 				<div class="row">
-						<div  class="col-md-11  col-xs-12 " style="margin-right: 0%;float: left;">
+						<div  class="col-md-11  col-xs-12 " style="float: left;">
 							<h1 class="mb-sm small">그동안 저희 홈페이지를 용해 주셔서 감사합니다.</h1>
 							<p class="lead">보다 나은 서비스로 다시 찾아 뵙겠습니다.</p>
 						</div>

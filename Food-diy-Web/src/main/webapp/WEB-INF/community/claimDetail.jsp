@@ -65,8 +65,8 @@
 <script type="text/javascript">
 	function doAction(type) {
 		switch (type) {
-		case 'W':
-			location.href = "${ pageContext.request.contextPath}/community/claimWrite.do";
+		case 'L':
+			location.href = "${ pageContext.request.contextPath}/community/claim.do";
 			break;
 		default:
 			break;
@@ -79,73 +79,72 @@
 		<div role="main" class="main">
 			<div class="col-md-9 center">
 				<h2>1:1 문의 리스트</h2>
-					<!-- 필터 및 검색 -->
-					<div class="col-md-12">
-						<div class="col-md-3" style="float: right;">
-							<form action="">
-								<div class="input-group input-group-md">
-									<input class="form-control" type="text" name="search" id="search"
-										placeholder="Search..."> <span class="input-group-btn">
-										<button type="submit" class="btn btn-primary btn-md">
-											<i class="fa fa-search"></i>
-										</button>
-									</span>
+				<div class="tab-content">
+				<!-- 공지사항 / 보도자료 디테일 -->
+					<div class="blog-posts single-post">
+						<div class="center">
+							<div class="post-content">
+								<div class="post-meta" style="float: right;">
+									<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+									<span><a href="#">커뮤니티</a> > </span>
+									<span><a href="${ pageContext.request.contextPath }/community/claim.do">1:1문의</a></span>
 								</div>
-							</form>
-						</div>
-						<div class="col-md-2" style="float: right;">
-							<select class="form-control">
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-								<option value="title+content">제목+내용</option>
-							</select>
+								<br>
+								<form action="/Mission-Web/fileDownload" method="post" id="dForm">
+									<table class="table table-bordered">
+										<tr>
+											<!-- 타입 -->
+											<c:if test="${ claimVO.type eq 'I'}"><td>문의</td></c:if>
+											<c:if test="${ claimVO.type eq 'P'}"><td>칭찬</td></c:if>
+											<c:if test="${ claimVO.type eq 'S'}"><td>제안</td></c:if>
+											<c:if test="${ claimVO.type eq 'C'}"><td>불만</td></c:if>
+											<c:if test="${ claimVO.type eq 'X'}"><td>기타</td></c:if>
+											<!-- 제목 -->
+											<td>
+												<h4 class="mb-none">
+													<strong><c:out value="${ claimVO.title }"></c:out></strong>
+												</h4>
+											</td>
+											<div class="post-meta">
+												<!-- 조회수 -->
+												<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ claimVO.viewCnt }</td>
+												<!-- 등록일 -->
+												<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ claimVO.regDate }</td>
+											</div>
+										</tr>
+										<!-- 방문일 / 방문매장명 -->
+										<c:if test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
+											<tr>
+												<th width="15%">방문일</th>
+												<td>${ claimVO.visitDate }</td>
+												<th width="15%">방문매장</th>
+												<td>${ claimVO.visitStore }</td>
+											</tr>
+										</c:if>
+										<tr>
+											<!-- 내용 -->
+											<td colspan="4"><p><c:out value="${ claimVO.content }"></c:out></p></td>
+										</tr>
+										<!-- 첨부파일 -->
+										<c:if test="${ not empty claimVO.file }">
+											<tr>
+												<th width="15%">첨부파일</th>
+												<td colspan="3">
+													<div align="center">
+														<img alt="" class="img-responsive img-rounded" src="../upload/${ claimVO.file }" style="height:400px">
+													</div>
+												</td>
+											</tr>
+										</c:if>
+									</table>
+								</form>
+								<div class="center">
+									<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
+								</div>
+							</div>
 						</div>
 					</div>
-					<!-- 테이블 -->
-					<table class="table table-hover" width="80%">
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>타입</th>
-								<th>제목</th>
-								<th>작성일</th>
-								<th>조회수</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${ claimList }" var="claim">
-								<tr>
-									<td>${ claim.no }</td>
-									<td>
-										<c:if test="${ claim.type  eq 'I' }">문의</c:if>
-										<c:if test="${ claim.type  eq 'P' }">칭찬</c:if>
-										<c:if test="${ claim.type  eq 'C' }">불만</c:if>
-										<c:if test="${ claim.type  eq 'S' }">제안</c:if>
-										<c:if test="${ claim.type  eq 'X' }">기타</c:if>
-									</td>
-									<td><a
-										href="${ pageContext.request.contextPath }/community/claimDetail.do?no=${ claim.no }">
-											<c:out value="${ claim.title }" />
-									</a></td>
-									<td>${ claim.regDate }</td>
-									<td>${ claim.viewCnt }</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					<!-- 페이지네이션 -->
-					<div class="col-md-12 center">
-						<ul class="pagination pull-center">
-							<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-						</ul>
-						<br>
-						<button type="button" class="btn btn-primary"
-							onclick="doAction('W')">글쓰기</button>
-					</div>
+				</div>
 			</div>
 		</div>
 	</div>
