@@ -120,7 +120,7 @@ public class SignController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String signInForm(Model model) {
 
-		model.addAttribute("userVO", new UserVO());
+		model.addAttribute("login", new UserVO());
 		return "sign/login";
 	}
 
