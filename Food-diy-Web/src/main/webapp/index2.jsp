@@ -100,7 +100,7 @@
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>
 		
-		<footer class="short" id="footer">
+		<footer class="light narrow" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
 	</div>
