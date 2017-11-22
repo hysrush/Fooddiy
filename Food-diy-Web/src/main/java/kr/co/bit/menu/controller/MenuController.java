@@ -118,6 +118,13 @@ public class MenuController {
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
 		
+		/*if(session.getAttribute(userVO)) {
+			return 
+		}else {
+			return
+		}*/
+			
+		
 		session.setAttribute("cartVO", cartVO);		
 		
 		return cartVO;				
