@@ -76,12 +76,17 @@
 							      </div>
 							    </div>
 							    <div class="item">
-							      <img src="${ pageContext.request.contextPath }/resources/img/slides/2.jpg" alt="">
+							      <img src="${ pageContext.request.contextPath }/resources/img/slides/4.jpg" alt="">
 							      <div class="carousel-caption">
 							       
 							      </div>
 							    </div>
-							    
+							     <div class="item">
+							      <img src="${ pageContext.request.contextPath }/resources/img/slides/3.jpg" alt="">
+							      <div class="carousel-caption">
+							       
+							      </div>
+							    </div>
 							  </div>
 							
 							  <!-- Controls -->
@@ -110,13 +115,13 @@
 							  <!-- Wrapper for slides -->
 							  <div class="carousel-inner" role="listbox">
 							    <div class="item active">
-							      <img src="${ pageContext.request.contextPath }/resources/img/slides/xs-1.jpg" alt="">
+							      <img class="col-xs-12" src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
 							      <div class="carousel-caption">
 							       
 							      </div>
 							    </div>
 							    <div class="item">
-							      <img src="${ pageContext.request.contextPath }/resources/img/slides/xs-2.jpg" alt="">
+							      <img src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
 							      <div class="carousel-caption">
 							       
 							      </div>

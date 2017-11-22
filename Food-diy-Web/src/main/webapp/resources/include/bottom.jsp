@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="container">
+<%-- <div class="container">
 	<div class="row">
 		<!-- 매장찾기 -->
 		<div class="col-md-4">
 			<ul class="nav nav-pills">
-				<li><a href="${ pageContext.request.contextPath}/event/FindStore.jsp"><i class="fa fa-angle-right"></i> 매장찾기</a></li>
 				<li><a href="${ pageContext.request.contextPath}/event/FindStore.jsp"><i class="fa fa-angle-right"></i> 점주페이지</a></li>
 			</ul>
 
 		</div>
 	</div>
-</div>
+</div> --%>
 <div class="footer-copyright">
 	<div class="container">
 		<div class="row">
@@ -36,9 +35,10 @@
 			<div class="col-md-4">
 				<nav id="sub-menu">
 					<ul>
+						<li><a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a></li>
 						<li><a href="">이용약관</a></li>
 						<li><a href="">개인정보취급방침</a></li>
-						<li><a href="">Subway Partner</a></li>
+						<!-- <li><a href="">Subway Partner</a></li> -->
 					</ul>
 				</nav>
 			</div>
