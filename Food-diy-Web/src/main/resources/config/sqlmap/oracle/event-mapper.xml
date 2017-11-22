@@ -13,6 +13,7 @@
   	<!-- t_board의 view_cnt와 reg_date와 BoardVO의 변수와 맞지 않으므로 mapping  -->
    	<resultMap type="eventVO" id="Map_EventVO"> 	
    		<result column="eve_no" property="no"/>
+   		<result column="sto_name" property="storeName"/>
   	 	<result column="eve_title" property="title"/>
   		<result column="eve_content" property="content"/>
   		<result column="eve_filename" property="imgFileName"/>
@@ -59,6 +60,14 @@
 		where to_char( SYSDATE, 'YY-MM-DD') > to_char( EVE_FIN, 'YY-MM-DD' )  
 		ORDER BY EVE_NO DESC
 	</select>
+	<!--  매장명으로 이벤트 조회  -->
+	<select id ="selectEventBystoreName" resultMap="Map_EventVO" parameterType = "String">
+		SELECT EVE_NO, EVE_TITLE , EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD')as EVE_START, TO_CHAR(EVE_FIN, 'YY-MM-DD') as EVE_FIN , TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT
+		FROM hr.T_EVENT
+		WHERE STO_NAME = #{store}
+		ORDER BY EVE_NO DESC
+	</select>
+	
 	
 	<!--  시 데이터 불러오기  -->
 		<select id ="selectCity" resultMap="Map_CityVO">
@@ -84,19 +93,19 @@
 		
 		</select>
 	
+	<select id="selectByName" parameterType="String" resultMap="Map_EventVO" >
+		<include refid="selectAll"/>
+		where  = #{no}
+	</select>
+	
 	
 	<!-- 새글 등록  -->
 	<insert id="insertEvent" parameterType="eventVO">
 		
-		INSERT INTO T_EVENT( EVE_NO, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, EVE_START, EVE_FIN )
-					VALUES(SEQ_T_EVENT_NO.NEXTVAL, #{title}, #{content},#{imgFileName}, #{startDate}, #{endDate})
+		INSERT INTO T_EVENT( EVE_NO, STO_NAME, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, EVE_START, EVE_FIN )
+					VALUES(SEQ_T_EVENT_NO.NEXTVAL, #{storeName} , #{title}, #{content},#{imgFileName}, #{startDate}, #{endDate})
 	</insert>
 	
 	
 
-	
-	<select id="selectByNo" parameterType="int" resultMap="Map_EventVO" >
-		<include refid="selectAll"/>
-		where no = #{no}
-	</select>
 </mapper>

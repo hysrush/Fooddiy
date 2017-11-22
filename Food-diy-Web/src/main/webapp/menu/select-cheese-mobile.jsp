@@ -3,30 +3,16 @@
 
 <ul class="list list-icons list-primary list-borders">
 
-	<li><i class="fa fa-check fa-check-cheese"></i>
-		<figure class="product-image-area product-cheese-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_cheddar.jpg" />
-				 <strong class = "name">체다 치즈 Cheddar</strong>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-cheese"></i>
-		<figure class="product-image-area product-cheese-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_mozzarella.jpg" /> 
-				<strong class = "name">모짜렐라 치즈 Mozzarella</strong>
-		</figure>	
-	</li>
-	<li><i class="fa fa-check fa-check-cheese"></i>
-		<figure class="product-image-area product-cheese-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_natural_swiss.jpg" /> 
-				<strong class = "name">스위스 치즈 Natural Swiss</strong>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-cheese"></i>
-		<figure class="product-image-area product-cheese-area">
-				<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/cheese_old_english.jpg"/>
-				<strong class = "name">아메리칸 치즈 America</strong>
-		</figure>
-	</li>
+	<c:forEach items="${ ingList }" var="ingList">
+		<c:if test='${ ingList.type eq "C" }'>	
+			<li><i class="fa fa-check fa-check-cheese"></i>
+				<figure class="product-image-area product-cheese-area">
+						<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/${ ingList.pic}" />
+						<strong class = "name">${ ingList.name} ${ ingList.eng_name}</strong>
+				</figure>
+			</li>
+		</c:if>
+	</c:forEach>
 </ul>
 
 
