@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- <div class="footer-copyright"> -->
-	<div class="container">
+<div class="container">
 		<div class="row">
 			<div class="col-md-1">
 				<a href="${ pageContext.request.contextPath}/index.jsp" class="logo"> 
@@ -22,16 +21,15 @@
 				</p>
 			</div>
 			<div class="col-md-4">
-				<a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a> | 
+				<%-- <a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a> | 
 				<a href="">이용약관</a> | 
-				<a href="">개인정보취급방침</a>
-				<%-- <ul>
+				<a href="">개인정보취급방침</a> --%>
+				<ul>
 					<li><a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a></li>
 					<li><a href="">이용약관</a></li>
 					<li><a href="">개인정보취급방침</a></li>
 					<!-- <li><a href="">Subway Partner</a></li> -->
-				</ul> --%>
+				</ul>
 			</div>
 		</div>
 	</div>
-<!-- </div> -->

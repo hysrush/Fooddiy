@@ -101,9 +101,11 @@
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>
 		
-		<footer id="footer">
+		<footer class="light hidden-xs" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
+		
+
 	</div>
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

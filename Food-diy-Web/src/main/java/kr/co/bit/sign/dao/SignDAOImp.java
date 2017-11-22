@@ -13,7 +13,7 @@ public class SignDAOImp implements SignDAO {
 	private SqlSessionTemplate sql;
 	
 	// 로그인
-	public UserVO login(UserVO	 login) {
+	public UserVO login(UserVO login) {
 		
 		// API 가입 확인 또는 아이디 비밀번호 확인
 		int check = sql.selectOne("kr.co.bit.member.dao.loginCheck", login);

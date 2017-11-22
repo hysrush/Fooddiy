@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.menu.service.MenuService;
+import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
 
 @Controller
@@ -106,26 +107,31 @@ public class MenuController {
 		return mav;
 	}
 	
-	// '주문하기'선택 후 매장화면으로
-	/*@RequestMapping(value="/testStore.do", method=RequestMethod.POST)
-	public String Session(Model model) {
-		// Form에서 가져온 Data를 MenuVO 객체형태로 저장
+	
+	// '주문하기'선택 후 매장화면으로	
+	@RequestMapping(value="/testStore.do", method=RequestMethod.POST)
+	public CartVO Session(HttpSession session, String name, String price, String size) {
+		// Form에서 가져온 Data를 CartVO 객체형태로 저장
 		CartVO cartVO = new CartVO();
 		
+		cartVO.setName(name);
+		cartVO.setPrice(price);
+		cartVO.setSize(size);
 		
-				// 공유영역에 등록
-		model.addAttribute("name", "admin"); //id의 키에 admin저장
-        model.addAttribute("price", "nami"); //name의 키에 nami저장
-        model.addAttribute("size", 22); //age의 키에 22저장
-        
-        model.addAttribute("className", this.getClass());
-        //className의 키에 현재 클래스 이름 저장
-        
-        model.addAttribute("menuVO", menuVO);
-        return "/view.jsp"; //포워딩
-*/				
+		/*if(session.getAttribute(userVO)) {
+			return 
+		}else {
+			return
+		}*/
+			
+		
+		session.setAttribute("cartVO", cartVO);		
+		
+		return cartVO;				
 	}
 	
+
 	
 	
+}	
 
