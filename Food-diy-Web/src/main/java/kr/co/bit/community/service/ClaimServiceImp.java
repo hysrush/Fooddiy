@@ -66,4 +66,12 @@ public class ClaimServiceImp implements ClaimService {
         }
 	}
 	
+	// id에 맞는 문의사항 목록 가져오기
+	@Override
+	public List<ClaimBoardVO> selectClaim(String id) {
+
+		List<ClaimBoardVO> list = claimDAO.selectClaim(id);
+		
+		return list;
+	}
 }

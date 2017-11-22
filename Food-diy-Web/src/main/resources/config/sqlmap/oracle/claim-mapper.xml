@@ -71,4 +71,10 @@
         SET view_cnt = view_cnt + 1
         WHERE claim_no = #{no}
     </update>
+    
+    <!-- id에 맞는 claim 목록 가져오기 -->
+    <select id="selectClaim" resultMap="Map_claimVO" parameterType="java.lang.String">
+		<include refid="selectAll_claim"/>
+		where user_id = #{id}
+	</select>
 </mapper>
