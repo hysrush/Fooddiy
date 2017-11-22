@@ -104,10 +104,7 @@
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
 		
-		<!-- mobile bottom -->
-		<footer class="light hidden-lg" id="footer">
-			<jsp:include page="/resources/include/mobile-bottom.jsp"></jsp:include>
-		</footer>
+
 	</div>
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

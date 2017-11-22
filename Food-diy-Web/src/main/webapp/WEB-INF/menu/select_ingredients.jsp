@@ -290,11 +290,10 @@
 
 			<div class="row">
 				<div style="text-align: center;">
-					<form action = "${ pageContext.request.contextPath }/menu/select_ingredients.do" method = "post">
-						<button type="submit" class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
+					<form class = "aa" action = "${ pageContext.request.contextPath }/index2.jsp" method = "post">
+						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 						
 					</form>
-					<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">aa</button>
 				</div>
 			</div>
 		</div>
@@ -308,8 +307,13 @@
 				var cheese  = $('.table').find('.cheese-name').find('.name').text();
 				
 				var data = {};
+			    var vegetable =  {};
+			    vegetable['양상추'] = '많이';
+			    vegetable['토마토'] = '빼기';
+			    
 				data['bread'] = bread;
 				data['cheese'] = cheese;
+				data['vegetable'] = vegetable;
 				
 				$.ajax({
 					contentType : 'application/json',
@@ -318,7 +322,7 @@
 					url : '/Food-diy-Web/menu/select_ingredients.do',
 					type: 'POST',
 					success : function(response) {
-						alert(response.message);
+						$('.aa').submit();
 					},
 					error : function() {
 						alert('실패');
@@ -327,6 +331,7 @@
 			});
 			
 		});
+		
 	
 	
 	</script>
