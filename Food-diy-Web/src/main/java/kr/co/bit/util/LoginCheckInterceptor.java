@@ -1,0 +1,32 @@
+package kr.co.bit.util;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import kr.co.bit.user.vo.UserVO;
+
+public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {  
+		
+		// 세션이 비어있는지 확인
+        HttpSession session  = request.getSession(false);  
+  
+        if(session == null) {  
+            response.sendRedirect(request.getContextPath()+"/sign/login.do");  
+            return false;  
+        }
+        
+        // 세션에 올려진 로그인 객체를 확인
+        UserVO user = (UserVO)session.getAttribute("login");  
+  
+        if (user == null) {  
+            response.sendRedirect(request.getContextPath()+"/sign/login.do");  
+            return false;             
+        }  
+          
+        return true;  
+    }
+}

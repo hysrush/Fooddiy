@@ -82,7 +82,10 @@
 			<!-- claim 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/community/claimWrite.do">claim새글등록 = 1:1문의</a><br/>
 			<a href="${ pageContext.request.contextPath}/community/claim.do">claim게시판</a><br/>
-
+			
+			<!--  store 컨트롤러 테스트 -->
+			<a href= "${ pageContext.request.contextPath}/store/findStore.do">매장찾기 페이지 </a><br/>
+			
 			<!--  event 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/event/eventWrite.do">이벤트등록</a><br/>
 			<a href="${ pageContext.request.contextPath}/event/eventPage.do">이벤트</a><br/>
@@ -97,9 +100,11 @@
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>
 		
-		<footer id="footer">
+		<footer class="light hidden-xs" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
+		
+
 	</div>
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

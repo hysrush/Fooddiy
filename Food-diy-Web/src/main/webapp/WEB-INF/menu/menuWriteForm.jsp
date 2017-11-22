@@ -8,22 +8,12 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<script type="text/javascript">
-	/* $(document).ready(function(){
-		
-		$('.form-control').each(function(){
-			
-			$(this).click(function() {
-				$(this).text("aaaa");
-				
-				var text = 	$(this).text();
-				
-				alert(text);
-
-			});
-		});
-	}); */
-
+<script>
+$(document).ready(function(){
+	$('.form-control').focus(function(){
+		$(this).value("aaaa");
+	});
+});
 </script>
 </head>
 <body>
@@ -34,21 +24,20 @@
 			<div style="max-width: 800px;">
 
 				<div class="form-group" align="left">
-					메뉴 이름
-					<form:input path="name" type="text" class="form-control" id="name"
-						placeholder="이름" />
+					<label for="name">메뉴 이름</label>
+					<form:input path="name" type="text" class="form-control" id="name" placeholder="이름" />
 					<form:errors path="name" class="form-control"></form:errors>
 				</div>
 
 				<div class="form-group" align="left">
-					메인 재료
-					<form:input path="mainmenu" type="text" class="form-control"
-						id="mainmenu" placeholder="메인재료" />
+					<label for="mainmenu">메인 재료</label>
+					<form:input path="mainmenu" type="text" class="form-control" id="mainmenu" placeholder="메인재료" />
 					<form:errors path="mainmenu" class="form-control"></form:errors>
 				</div>
 
 				<div class="form-group" align="left">
-					타입 <select name="type">
+					<label for="">타입</label>
+					<select name="type">
 						<option value="" selected>--선택--</option>
 						<option value="R">추천메뉴</option>
 						<option value="P">프리미엄</option>
@@ -62,74 +51,57 @@
 				</div>
 
 				<div class="form-group" align="left">
-					가격
-					<form:input path="price" type="text" class="form-control" id="price"
-						placeholder="가격" />
+					<label for="price">가격</label>
+					<form:input path="price" type="text" class="form-control" id="price" placeholder="가격" />
 					<form:errors path="price" class="form-control"></form:errors>
 				</div>
 
 				<div class="form-group" align="left">
-					메뉴 상세내용
-					<form:textarea path="detail" class="form-control" rows="5"
-						id="detail" placeholder="내용" />
+					<label for="detail">메뉴 상세내용</label>
+					<form:textarea path="detail" class="form-control" rows="5" id="detail" placeholder="내용" />
 					<form:errors path="detail" class="form-control"></form:errors>
 				</div>
 
 				<div class="form-group" align="left">
-					메뉴 이미지
-					<form:input path="imgFileName" type="file" class="form-control"
-						id="imgFileName" placeholder="메뉴 이미지" />
+					<label for="imgFileName">메뉴 이미지</label>
+					<form:input path="imgFileName" type="file" class="form-control" id="imgFileName" placeholder="메뉴 이미지" />
 					<form:errors path="imgFileName" class="form-control"></form:errors>
-				</div>
-				
-				<%-- <div class="form-group" align="left">
-					상세 이미지
-					<form:input path="imgFileName" type="file" class="form-control"
-						id="imgFileName" placeholder="상세 이미지" />
-					<form:errors path="imgFileName" class="form-control"></form:errors>
-				</div> --%>
+				</div>				
 
 				<div class="form-group" align="left">
-					서비스 사이즈
-					<form:input path="serviceSize" type="text" class="form-control"
-						id="serviceSize" placeholder="서비스 사이즈" />
+					<label for="serviceSize">서비스 사이즈</label>
+					<form:input path="serviceSize" type="text" class="form-control" id="serviceSize" placeholder="서비스 사이즈" />
 					<form:errors path="serviceSize" class="form-control"></form:errors>
 				</div>
 
 				<div class="form-group" align="left">
-					칼로리
-					<form:input path="calorie" type="text" class="form-control"
-						id="calorie" placeholder="칼로리" />
+					<label for="calorie">칼로리</label>
+					<form:input path="calorie" type="text" class="form-control"	id="calorie" placeholder="칼로리" />
 					<form:errors path="calorie" class="form-control"></form:errors>
 				</div>
 				<div class="form-group" align="left">
-					단백질
-					<form:input path="protein" type="text" class="form-control"
-						id="protein" placeholder="단백질" />
+					<label for="protein">단백질</label>
+					<form:input path="protein" type="text" class="form-control"	id="protein" placeholder="단백질" />
 					<form:errors path="protein" class="form-control"></form:errors>
 				</div>
 				<div class="form-group" align="left">
-					나트륨
-					<form:input path="natrium" type="text" class="form-control"
-						id="natrium" placeholder="나트륨" />
+					<label for="natrium">나트륨</label>
+					<form:input path="natrium" type="text" class="form-control"	id="natrium" placeholder="나트륨" />
 					<form:errors path="natrium" class="form-control"></form:errors>
 				</div>
 				<div class="form-group" align="left">
-					당
-					<form:input path="sugar" type="text" class="form-control"
-						id="sugar" placeholder="당" />
+					<label for="sugar">당</label>
+					<form:input path="sugar" type="text" class="form-control" id="sugar" placeholder="당" />
 					<form:errors path="sugar" class="form-control"></form:errors>
 				</div>
 				<div class="form-group" align="left">
-					지방
-					<form:input path="fat" type="text" class="form-control" id="fat"
-						placeholder="지방" />
+					<label for="fat">지방</label>
+					<form:input path="fat" type="text" class="form-control" id="fat" placeholder="지방" />
 					<form:errors path="fat" class="form-control"></form:errors>
 				</div>
 				<div class="form-group" align="left">
-					알레르기
-					<form:input path="allergy" type="text" class="form-control"
-						id="allergy" placeholder="알레르기" />
+					<label for="allergy">알레르기</label>
+					<form:input path="allergy" type="text" class="form-control"	id="allergy" placeholder="알레르기" />
 					<form:errors path="allergy" class="form-control"></form:errors>
 				</div>
 

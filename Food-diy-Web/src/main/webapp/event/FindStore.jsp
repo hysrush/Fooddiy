@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -100,9 +100,9 @@
 
 									<h4 class="heading-primary">이벤트</h4>
 								<ul class="nav nav-list mb-xlg">
-									<li><a href="${ pageContext.request.contextPath }/event/eventPage.do">매장 찾기</a></li>
-									<li class="active">
-										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">My 매장</a>
+									<li class="active"><a href="${ pageContext.request.contextPath }/store/findStore.do">매장 찾기</a></li>
+									<li>
+										<a href="${ pageContext.request.contextPath }/store/myStore.do">My 매장</a>
 									</li>
 								</ul>
 							</aside>
@@ -114,7 +114,7 @@
 		
 									<div class="tabs tabs-bottom tabs-center tabs-simple">
 										<ul class="nav nav-tabs">
-											<li class="active">
+											<li class="">
 												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">근처 매장</a>
 											</li>
 											<li class="active">
@@ -129,12 +129,12 @@
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
-													<div class="row">			
+												<!-- 	<div class="row">			
 														<div class="col-md-12">
 															<label>매장명 검색</label>
 															<input type="text" value="" class="form-control">
 														</div>
-													</div>
+													</div> -->
 														<div class="row">
 														<div class="col-md-12">
 															<input type="submit" value="검색" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
@@ -146,7 +146,10 @@
 															<div class="col-md-6">
 																<label>시,도</label>
 																<select class="form-control" id ="sido">
-																	
+																	<option value="" selected="selected" disabled= "disabled">시,도 를 선택해주세요 </option>
+																	  <c:forEach var="city" items="${ cityList }" varStatus="i">
+																	  		<option value="${city.cityNo}">${ city.cityName }</option>																		    
+																	  </c:forEach>
 																</select>
 															</div>
 															

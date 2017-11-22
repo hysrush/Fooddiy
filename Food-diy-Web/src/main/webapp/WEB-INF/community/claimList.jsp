@@ -124,7 +124,7 @@
 										<c:if test="${ claim.type  eq 'X' }">기타</c:if>
 									</td>
 									<td><a
-										href="#">
+										href="${ pageContext.request.contextPath }/community/claimDetail.do?no=${ claim.no }">
 											<c:out value="${ claim.title }" />
 									</a></td>
 									<td>${ claim.regDate }</td>

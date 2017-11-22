@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +8,7 @@
 <script>
 $(document).ready(function(){
    var sand_size = $("input[type=radio][name=size]:checked").val();
+   document.getElementById("sand_size").value = sand_size;
 });
 </script>
 </head>
@@ -68,13 +69,15 @@ $(document).ready(function(){
 							style="font-size: 18px; margin-left: 5px">30cm</span>
 					</p>
 
-					<form enctype="multipart/form-data" method="post" class="cart" style="margin-bottom: 10px">
+					<form action="${ pageContext.request.contextPath }/menu/testStore.do" enctype="multipart/form-data" method="post" class="cart" style="margin-bottom: 10px">
 						<!-- submit하면 hidden으로 값 넘겨준다 -->
 						<input type="hidden" name="name" value=${ menuDetailVO.name }>
 						<input type="hidden" name="price" value=${ menuDetailVO.price }>											
-						<input type="hidden" name="size" value=sand_size>											
+						<input type="hidden" name="size" id="sand_size" value= "" >
 						<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
+						
 					</form>
+					
 
 					<div class="product_meta">
 						<span class="posted_in">알르레기 유발성분 : ${ menuDetailVO.allergy }

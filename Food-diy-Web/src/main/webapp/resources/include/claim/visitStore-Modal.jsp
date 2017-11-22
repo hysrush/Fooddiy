@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>  
 <style>
 	.modal-header {
 		background-color: #7aa93c;
@@ -79,42 +80,41 @@
 										</div>
 									</div>
 								</section>
-							</form>
-							<br>
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Comment</label>
-								<div class="col-sm-9">
-									<textarea rows="5" class="form-control"
-										placeholder="Type your comment..." required></textarea>
+								<br>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Comment</label>
+									<div class="col-sm-9">
+										<form:input path="visitStore" type="text" class="form-control" id="visitStore" name="visitStore" placeholder="방문매장"/>
+									</div>
 								</div>
-							</div>
+							</form>
 						</div>
 						<!-- 매장명으로 찾기 -->
 						<div id="StoreSearch" class="tab-pane">
-							<section class="modalSection section section-default">
-								<div class="form-group mt-md">
-									<label for="selectAddress1" class="col-sm-3 control-label">매장명</label>
+							<form id="demo-form" class="form-horizontal mb-md" novalidate="novalidate">
+								<section class="modalSection section section-default">
+									<div class="form-group mt-md">
+										<label for="selectAddress1" class="col-sm-3 control-label">매장명</label>
+										<div class="col-sm-9">
+												<div class="input-group input-group-md">
+													<input class="form-control" type="text" name="visitStore" id="visitStore" placeholder="Search..."> 
+													<span class="input-group-btn">
+														<button type="submit" class="btn btn-success btn-md">
+															<i class="fa fa-search"></i>
+														</button>
+													</span>
+												</div>
+										</div>
+									</div>
+								</section>
+								<br>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Comment</label>
 									<div class="col-sm-9">
-										<form id="demo-form" class="form-horizontal mb-md" novalidate="novalidate">
-											<div class="input-group input-group-md">
-												<input class="form-control" type="text" name="visitStore" id="visitStore" placeholder="Search..."> 
-												<span class="input-group-btn">
-													<button type="submit" class="btn btn-success btn-md">
-														<i class="fa fa-search"></i>
-													</button>
-												</span>
-											</div>
-										</form>
+										<form:input path="visitStore" type="text" class="form-control" id="visitStore" name="visitStore" placeholder="방문매장"/>
 									</div>
 								</div>
-							</section>
-							<br>
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Comment</label>
-								<div class="col-sm-9">
-									<textarea rows="5" class="form-control" placeholder="Type your comment..." required></textarea>
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>

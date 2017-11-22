@@ -1,16 +1,21 @@
 package kr.co.bit.community.vo;
 
+
 public class ClaimBoardVO {
 	
 	private int no;
 	private String title;
 	private String content;
 	private String type;		// 문의 'I' / 칭찬 'P' / 불만 'C' / 제안 'S' / 기타 'X'
-//	private String file;  첨부파일임.
+	private String file;		// 파일
 
 	private String writer;		// User ID
-	private String email;		// User Email
-	private String phone;		// User Phone
+	
+	private String emailID;		// User Email
+	private String emailDomain;
+	private String phone1;		// User Phone
+	private String phone2;
+	private String phone3;
 	
 	private String visitDate;	// 방문일
 	private String visitStore;	// 방문 매장명
@@ -48,6 +53,36 @@ public class ClaimBoardVO {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public String getEmailID() {
+		return emailID;
+	}
+	public void setEmailID(String emailID) {
+		this.emailID = emailID;
+	}
+	public String getEmailDomain() {
+		return emailDomain;
+	}
+	public void setEmailDomain(String emailDomain) {
+		this.emailDomain = emailDomain;
+	}
+	public String getPhone1() {
+		return phone1;
+	}
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
+	}
+	public String getPhone2() {
+		return phone2;
+	}
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+	public String getPhone3() {
+		return phone3;
+	}
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
 	public String getVisitDate() {
 		return visitDate;
 	}
@@ -59,18 +94,6 @@ public class ClaimBoardVO {
 	}
 	public void setVisitStore(String visitStore) {
 		this.visitStore = visitStore;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -84,11 +107,18 @@ public class ClaimBoardVO {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
 	@Override
 	public String toString() {
-		return "ClaimBoardVO [no=" + no + ", writer=" + writer + ", title=" + title + ", content=" + content + ", type="
-				+ type + ", visitDate=" + visitDate + ", visitStore=" + visitStore + ", email=" + email + ", phone="
-				+ phone + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
+		return "ClaimBoardVO [no=" + no + ", title=" + title + ", content=" + content + ", type=" + type + ", file="
+				+ file + ", writer=" + writer + ", emailID=" + emailID + ", emailDomain=" + emailDomain + ", phone1="
+				+ phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", visitDate=" + visitDate + ", visitStore="
+				+ visitStore + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
 	}
 	
 }
