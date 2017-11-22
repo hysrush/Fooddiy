@@ -100,8 +100,13 @@
 			<!-- Slider부분 -->
 			<jsp:include page="/resources/include/slider.jsp"/>
 		
-		<footer class="light" id="footer">
+		<footer class="light hidden-xs" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
+		</footer>
+		
+		<!-- mobile bottom -->
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp"></jsp:include>
 		</footer>
 	</div>
 		<!-- Vendor -->
