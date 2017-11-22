@@ -3,158 +3,29 @@
 
 <ul class="list list-icons list-primary list-borders">
 
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_lettuce.jpg" />
-								<strong class = "name">&nbsp;양상추 </strong><strong class = "id">Lettuce</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_tomato.jpg" /> 
-								<strong class = "name">&nbsp;토마토 </strong><strong class = "id">Tommatoes</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>	
-	</li>
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_cucumber.jpg" />
-								<strong class = "name">&nbsp;오이 </strong><strong class = "id">Cucumbers</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_capsicum.jpg" />
-								<strong class = "name">&nbsp;피망 </strong><strong class = "id">Capsicum</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_onion.jpg" />
-								<strong class = "name">&nbsp;양파 </strong><strong class = "id">Red Onion</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_pickles.jpg" />
-								<strong class = "name">&nbsp;피클 </strong><strong class = "id">Pickles</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_olives.jpg" />
-								<strong class = "name">&nbsp;올리브 </strong><strong class = "id">Olives</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-vegetable"></i>
-		<figure class="product-image-area product-vegetable-area">
-				<table>	
-					<tbody>
-						<tr>
-							<td width="90%">
-								<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/vegetable_jalapenos.jpg" />
-								<strong class = "name">&nbsp;할라피뇨 </strong><strong class = "id">Jalapenos</strong>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class = "row button-family" style="text-align: center;">
-						<button type="button" class="btn mr-xs mb-sm less">적게</button>
-						<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
-						<button type="button" class="btn mr-xs mb-sm more">많이</button>
-				</div>
-		</figure>
-	</li>
+	<c:forEach items="${ ingList }" var="ingList">
+			<c:if test='${ ingList.type eq "V" }'>
+				<li><i class="fa fa-check fa-check-vegetable"></i>
+					<figure class="product-image-area product-vegetable-area">
+							<table>	
+								<tbody>
+									<tr>
+										<td width="90%">
+											<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/${ ingList.pic}" />
+											<strong class = "name">&nbsp;${ ingList.name} </strong><strong class = "id">${ ingList.eng_name}</strong>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class = "row button-family" style="text-align: center;">
+									<button type="button" class="btn mr-xs mb-sm less">적게</button>
+									<button type="button" class="btn mr-xs mb-sm nomal">보통</button>
+									<button type="button" class="btn mr-xs mb-sm more">많이</button>
+							</div>
+					</figure>
+				</li>
+		</c:if>
+	</c:forEach>
 </ul>
 
 

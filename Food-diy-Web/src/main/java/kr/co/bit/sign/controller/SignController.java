@@ -1,4 +1,6 @@
 package kr.co.bit.sign.controller;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +29,6 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
-
 	
 	/**
 	 * 
@@ -165,7 +166,7 @@ public class SignController {
 		}
 		// 아이디 일부 **처리
 		model.addAttribute("msg", "고객님의 아이디는 <"+lostVO.getId()+"> 입니다.");
-		model.addAttribute("lostId", lostVO.getId());
+		/*model.addAttribute("lostId", lostVO.getId());*/
 		
 		return "sign/login";
 	}
@@ -267,24 +268,22 @@ public class SignController {
 	
 	// 이메일 인증 코드 발송
 	@RequestMapping("/nonemail")
-	public String nonMemberSign(UserVO nonMember, Model model) {
+	public @ResponseBody List<Object> nonMemberCheck(UserVO nonMember, Model model) {
 		
-		
+		List<Object> list = new ArrayList<>();
 		String key = signServiceImp.sender(nonMember);
-	
-		model.addAttribute("non", nonMember);
-		model.addAttribute("key", key);
-
-		return "sign/nonLogin";
+		
+		list.add(key);
+		list.add(nonMember);
+		
+		return list;
 	}
 
 	// 이메일 인증 후 가입
-	@RequestMapping(value="/nonemailCheck", method=RequestMethod.POST)
-	public String nonMemberCert(UserVO mail, Model model) {
+	@RequestMapping(value="/nonemailCheck")
+	public String nonMemberSign(UserVO nonMember, Model model) {
 		
-		System.out.println(mail.toString());
-		
-		UserVO user = signServiceImp.nonSignUp(mail);
+		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
 		model.addAttribute("userVO", user);
 		model.addAttribute("msg", "완료~");
@@ -294,25 +293,5 @@ public class SignController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	
 }

@@ -33,9 +33,10 @@ public class SignDAOImp implements SignDAO {
 		if(memberVO.getType().equals("N")) {
 		
 			sql.insert("kr.co.bit.member.dao.nonSignUp", memberVO);
+		}else {
+			sql.insert("kr.co.bit.member.dao.signUp", memberVO);
 		}
 		
-		sql.insert("kr.co.bit.member.dao.signUp", memberVO);
 	}
 	
 	public int checkId(String id) {

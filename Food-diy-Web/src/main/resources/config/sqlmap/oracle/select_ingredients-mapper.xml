@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DAO에서 sql문 불러 올 때 사용해야 하는 이름 -->
+<mapper namespace="kr.co.bit.menu.dao.Select_Ing_DAO">
+
+
+	<!-- sql 저장 : 전체 조회 -->
+	<sql id="selectAll">
+		SELECT ing_no, ing_name, ing_eng_name, ing_pic, ing_price, ing_type, to_char(reg_at, 'yy-mm-dd') as reg_at
+		FROM t_ingredients
+	</sql>
+	
+	<!-- DB t_menu와 MenuVO의 변수가 맞지 않으므로 mapping -->
+	<resultMap type="ingVO" id="Map_ingVO">
+		<result column="ing_no" property="no"/>	
+		<result column="ing_name" property="name"/>
+		<result column="ing_eng_name" property="eng_name"/>
+		<result column="ing_pic" property="pic"/>
+		<result column="ing_price" property="price"/>	
+		<result column="ing_type" property="type"/>	
+		<result column="reg_at" property="regDate"/>	
+	</resultMap>
+	
+	<select id = "selectAllIng" resultMap="Map_ingVO">
+		<include refid="selectAll"/>
+		ORDER BY ing_no
+	</select>
+</mapper>
+	

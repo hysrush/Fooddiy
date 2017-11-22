@@ -14,18 +14,15 @@
 <meta name="description" content="Porto - Responsive HTML5 Template">
 <meta name="author" content="okler.net">
 
-<<<<<<< HEAD
 <!-- Favicon -->
 <link rel="shortcut icon"
 	href="${ pageContext.request.contextPath}/resources/img/favicon.ico"
 	type="image/x-icon" />
 <link rel="apple-touch-icon"
 	href="${ pageContext.request.contextPath}/resources/img/apple-touch-icon.png">
-=======
 		<!-- Favicon --> 
 		<link rel="shortcut icon" href="${ pageContext.request.contextPath}/resources/img/favicon.ico" type="image/x-icon" />
 		<link rel="apple-touch-icon" href="${ pageContext.request.contextPath}/resources/img/apple-touch-icon.png">
->>>>>>> branch 'master' of https://github.com/hysrush/Foodiy-Project.git
 
 <!-- Mobile Metas -->
 <meta name="viewport"
@@ -103,6 +100,25 @@
 <script
 	src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
+<script>
+	$(document).ready(function(){
+		
+		/* $("#okay").click(function(){
+			
+			location.href="${pageContext.request.contextPath}/member/memberDelcheck.do"; 
+		}); */
+		
+		$("#cancel").click(function(){
+			
+			location.href="${pageContext.request.contextPath}/member/memberDetail.do"; 
+		});
+		
+		if("${msg}"){
+			alert("${msg}");
+		}
+		
+	});
+</script>
 
 <!-- Theme Custom CSS -->
 <link rel="stylesheet"
@@ -153,50 +169,30 @@
 
 
 		<div class="row">
-			<div class="c col-sm-11 col-xs-11">
+		<div class="col-md-4"></div>
+			<div  class="col-xs-11  col-md-4  col-sm-11 ">
 				<div class="featured-boxes">
 					<div class="row">
-						<div style="margin-left: 10%; margin-top: 5%; margin-bottom: 5%"
-							class="col-md-4">
+						<div style=" margin-left: 10%; margin-top: 5%; margin-bottom: 5%" class="">
 							<div class="featured-box featured-box-primary align-left mt-xlg">
 								<div class="box-content">
-									<h4 class="heading-primary text-uppercase mb-md">안전한 회원탈퇴를
-										위해 아이디와 비밀번호를 입력하세요.</h4>
+									<h4 class="heading-primary text-uppercase mb-md">안전한 회원탈퇴를 위해 비밀번호를 입력하세요.</h4>
 									<form
-										action="${ pageContext.request.contextPath }/member/memberDelcheck.do"
-										id="frmSignIn" method="post">
+										action="${ pageContext.request.contextPath }/member/delCheck.do" id="frmSignIn" method="post">
+										<input type="hidden" name="id" value="${userVO.id }">
 										<div class="row">
 											<div class="form-group">
 												<div class="col-md-12">
-													<label><strong>ID</strong></label> <input type="text"
-														value="" class="form-control input-lg">
+													<label><strong>Password</strong></label>
+													<input type="password" name="pw" placeholder="password" class="form-control input-lg">
 												</div>
 											</div>
 										</div>
 										<div class="row">
-											<div class="form-group">
-												<div class="col-md-12">
-													<a class="pull-right" href="#">(Lost Password?)</a> <label><strong>Password</strong></label>
-													<input type="password" value=""
-														class="form-control input-lg">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<span class="remember-box checkbox"> <label
-													for="rememberme"> <input type="checkbox"
-														id="rememberme" name="rememberme">Remember Me
-												</label>
-												</span>
-											</div>
+											<div class="col-md-6"></div>
 											<div style="margin-top: 2%" class="col-md-6">
-												<input type="submit" value="확인"
-													class="btn btn-primary pull-right mb-xl"
-													data-loading-text="Loading..."> <input
-													style="margin-right: 1%" type="reset" value="취소"
-													class="btn btn-primary pull-right mb-xl"
-													data-loading-text="Loading...">
+												<input id="okay" type="submit" value="확인" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..."> 
+												<input id="cancel" style="margin-right: 1%" type="reset" value="취소" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
 											</div>
 										</div>
 									</form>
@@ -208,8 +204,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
 	<div>

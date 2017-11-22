@@ -58,12 +58,18 @@ public class EventController {
 
 		List<CityVO> cityList = eventService.selectCity();
 
+		List<EventBoardVO> eventList = eventService.selectAllEvent();
+		
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("event/StoreEventPage");
 
 		mav.addObject("cityList", cityList);
 
+		
+		mav.addObject("eventList",eventList);
+		mav.addObject("cityList", cityList );
+		
 		System.out.println("얘가져옴?");
 
 		return mav;
@@ -108,6 +114,33 @@ public class EventController {
 		response.getWriter().print(jsonObj.toString());
 
 	}
+	
+	@RequestMapping(value="/test4")
+	public void eventAjax(HttpServletRequest request
+								, HttpServletResponse response
+								, @RequestParam(value ="store", defaultValue ="") String store
+								, Model model) throws Exception {
+		
+		System.out.println(store);
+		
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+		
+		List<EventBoardVO> eventList = eventService.selectEventBystoreName(store);
+		
+		for(int i = 0 ; i < eventList.size(); i++ ) {
+			System.out.println(eventList.get(i).toString());
+		}
+		
+		
+		
+		jsonObj.put("result", true);
+		jsonObj.put("eventList", eventList);
+		
+		response.getWriter().print(jsonObj.toString());
+		
+	}
+	
 
 	// 새글등록 폼으로 보내기
 	@RequestMapping(value = "/eventWrite.do", method = RequestMethod.GET)

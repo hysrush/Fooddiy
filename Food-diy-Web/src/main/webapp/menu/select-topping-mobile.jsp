@@ -3,59 +3,23 @@
 
 <ul class="list list-icons list-primary list-borders">
 
-	<li><i class="fa fa-check fa-check-topping"></i>
-		<figure class="product-image-area product-topping-area">
-				<table>
-					<tbody>
-						<tr>
-							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_bacon.jpg" /></td>
-							<td width="50%"><strong class = "name">&nbsp;베이컨 </strong> <strong class = "id">Bacon</strong></td>
-							<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price">+900원</strong></td>
-						</tr>
-					</tbody>
-				</table>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-topping"></i>
-		<figure class="product-image-area product-topping-area">
-				<table>
-					<tbody>
-						<tr>
-							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_double_meat.jpg" /> </td>
-							<td width="50%"><strong class = "name">더블미트 </strong> <strong class = "id">Double meat</strong></td>
-							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1500원</strong></td>
-						</tr>
-					</tbody>
-				</table>			
-		</figure>	
-	</li>
-	<li>
-		<i class="fa fa-check fa-check-topping"></i>
-		<figure class="product-image-area product-topping-area">
-				<table>
-					<tbody class = "ddd">
-						<tr>
-							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_eggmayo.jpg" /></td>
-							<td width="50%"><strong class = "name">&nbsp;에그마요 </strong><strong class = "id">Eggmayo</strong></td>
-							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1200원</strong></td>
-						</tr>
-					</tbody>
-				</table>
-		</figure>
-	</li>
-	<li><i class="fa fa-check fa-check-topping"></i>
-		<figure class="product-image-area product-topping-area">
-				<table>
-					<tbody>
-						<tr>
-							<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/topping_avocado.jpg" /></td>
-							<td width="50%"><strong class = "name">&nbsp;아보카도 </strong><strong class = "id">Avocado</strong></td>
-							<td width="20%" style="text-align: right; color: red; font-size: 15px;"><strong class = "price">+1100원</strong></td>
-						<tr>
-					</tbody>
-				</table>
-		</figure>
-	</li>
+	<c:forEach items="${ ingList }" var="ingList">
+		<c:if test='${ ingList.type eq "T" }'>
+			<li><i class="fa fa-check fa-check-topping"></i>
+				<figure class="product-image-area product-topping-area">
+						<table>
+							<tbody>
+								<tr>
+									<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/${ ingList.pic}" /></td>
+									<td width="50%"><strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "id">${ ingList.eng_name}</strong></td>
+									<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price">+${ ingList.price}</strong></td>
+								</tr>
+							</tbody>
+						</table>
+				</figure>
+			</li>
+		</c:if>
+	</c:forEach>
 </ul>
 
 <script>

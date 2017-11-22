@@ -66,18 +66,57 @@
 <script>
 	$(document).ready(function(){
 		
-		$("#clear").click(function(){
+		/* $("#clear").click(function(){
 	
-			location.href="${pageContext.request.contextPath}/member/memberDelclear.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberDel.do?id='${userVO.id}'"; 
 		});
-		
+		 */
 		$("#cancel").click(function(){
 			
-			location.href="${pageContext.request.contextPath}/member/memberDetail.jsp"; 
+			location.href="${pageContext.request.contextPath}/member/memberDetail.do"; 
 		});
+		 
+		 
 		
 	});
+	
+	
 </script>
+
+<script type="text/javascript">
+/* function Check(form) {
+	var total = 0;	
+	var max = document.joinform.ckbox.length;
+	
+	for (var idx = 0; idx < max; idx++) {
+		if (eval("document.joinform.ckbox[" + idx + "].checked") == true) {
+			total += 1;
+	   }
+	}
+	if(total==2){
+		document.joinform.submit();
+	}else{
+		alert("회원약관과 개인정보약관에 동의해주세요");
+		return false;
+	}
+} */
+
+
+function fwrite_submit() {
+	
+	
+
+	if($('input:checkbox[name="ckbox"]').is(":checked") ==  true){
+		return true;
+	}
+	else {
+		alert('약관에 동의해주세요.');
+		return false;
+	}
+}
+</script>
+
+
 <style type="text/css">
 #div01 {
 	width: 70px;
@@ -97,8 +136,6 @@
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 		<!-- ---------------------------------------------------------------------------------------------- -->
 		
-		
-		
 				<section class="page-header">
 					<div class="container">
 						<div class="row">
@@ -117,35 +154,37 @@
 					</div>
 				</section>
 		
-		<div align="left" class="container">
-		<div style="margin-left: 7%; margin-top: 5%; margin-bottom: 5%" class="container">
-
-			<h2>
-				<strong>회원탈퇴</strong>
-			</h2>
+			<div align="left" class="container">
+			<div style="margin-left: 7%; margin-top: 5%; margin-bottom: 5%" class="container">
 
 			<div class="row">
+				<div class="col-md-1"></div>
 				<div class="col-md-8 col-sm-12 col-xs-12">
-					<p class="lead">회원탈퇴 회원탈퇴 전 안내사항을 꼭 확인해주세요. 탈퇴 후 회원님의 이용정보가
+					<h2> 
+						<strong>회원탈퇴</strong>
+					</h2>
+						<p class="lead">회원탈퇴 회원탈퇴 전 안내사항을 꼭 확인해주세요. 탈퇴 후 회원님의 이용정보가
 						삭제되어 복구 불가능하오니 신중히 선택하시기 바랍니다. <br/><br/><h4><strong>탈퇴 안내</strong></h4> 회원탈퇴를 신청하기 전에 안내 사항을 꼭
-						확인해주세요. 사용하고 계신 아이디(hysrush)는 탈퇴 할 경우 <strong class="heading-secondary">재사용 및 복구</strong>가 불가능합니다. 탈퇴한 아이디는 본인과
-						타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다. 탈퇴 후에도 게시판형 서비스에 등록한 게시물은
-						그대로 남아 있습니다. 게시글 및 댓글은 탈퇴 시 자동 삭제되지 않고 그대로 남아 있습니다. 삭제를 원하는 게시글이
-						있다면 반드시 탈퇴 전 비공개 처리하거나 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수
-						있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.</p>
-					<div class="col-md-8">
-								<span class="checkbox">
-									<label for="memberDel">
-									<h5><input type="checkbox" id="memberDel"><strong>안내사항을 모두 확인 했으며 이에 동의합니다.</strong></h5>
-									</label>
-								</span>
-						</div>
+						확인해주세요. 사용하고 계신 아이디는 탈퇴 할 경우 <strong class="heading-secondary">재사용 및 복구</strong>가 불가능합니다. 탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다. 
+						탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다. 게시글 및 댓글은 탈퇴 시 자동 삭제되지 않고 그대로 남아 있습니다. 삭제를 원하는 게시글이
+						있다면 반드시 탈퇴 전 비공개 처리하거나 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.
+						</p>
+					
 					</div>
 				</div>
-			<div style="margin-top: 4%; margin-left: 50%" class="col-md-8">
-				<button id="clear" type="button" class="btn  btn-info">탈퇴</button>
-				<button id="cancel" type="button" class="btn  btn-info">취소</button>
-			</div>
+				<form action="${pageContext.request.contextPath}/member/memberDelCheck.do" name="joinform" method="post" onsubmit="return fwrite_submit()" >
+					<div class="col-md-8" style="margin-left: 7%; margin-top: 2% " >
+						<h4><input  class ="ccc" name="ckbox" type="checkbox"/>  위의 약관에 동의 합니다.</h4>
+					</div>
+					
+					<div style="margin-top: 4%; margin-left: 53%" class="col-md-8 col-xs-7">
+					<input type="hidden" name="id" value="${ userVO.id }" />
+					<div>	
+					</div>
+					<input type="submit" id="clear" value="탈 퇴" class="btn  btn-info" style="cursor:hand; width: 80px;">
+					<button id="cancel" type="button" class="btn  btn-info" style="width: 80px">취 소</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

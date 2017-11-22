@@ -29,7 +29,14 @@
 					<form:errors path="type" class="form-control"></form:errors>
 				</div> --%>
 				<div class="form-group" align="left">
-					<label for="question">이벤트 제목</label>
+					<label for="storeName">매장이름</label>
+					<form:input path="storeName" type="text" class="form-control" id="storeName" placeholder="매장이름"/>
+					<form:errors path="storeName" class="form-control"></form:errors>
+				</div>
+								
+				
+				<div class="form-group" align="left">
+					<label for="title">이벤트 제목</label>
 					<form:input path="title" type="text" class="form-control" id="title" placeholder="제목"/>
 					<form:errors path="title" class="form-control"></form:errors>
 				</div>

@@ -193,38 +193,13 @@
 										</div>
 									</div>	
 												<!--  선택한 매점 이름과 매칭되는 이벤트 불러오기  -->
-													<div class="center">	
-													<!-- 1 -->
-												<c:forEach items="${ eventList }" var="eventVO">	
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-																<span></span>
-																<span></span>
-															
-															</article>
-														</div>
+													<div class="center" id ="eventByStore">	
+												
+													
+													
+													
+													
 													</div>
-													
-												</c:forEach>	
-													
-													
-												</div>
 													
 													<!--  -->
 										<div class="col-md-12">
@@ -255,6 +230,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<footer id="footer">
 				<jsp:include page="/resources/include/bottom.jsp"/>
 			</footer>
@@ -376,17 +352,16 @@
 									alert("매장이름 = " + data.storeList[0].storeName);
 									$('#storeList').empty();
 								 	for(var i = 0 ; i < data.storeList.length; i++){
-									var contents = '';
-									contents += '<tr>';
-									contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
-									contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
-									contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
-									contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
-									contents +=		'<td><input type="button" id = "storeChoice" value="선택" /></td>';
-									contents += '</tr>';
-
-										
-									$('#storeList').append(contents);
+										var contents = '';
+										contents += '<tr>';
+										contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
+										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
+										contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
+										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+										contents += '</tr>';
+									
+										$('#storeList').append(contents);
 
 								 	}		
 						}
@@ -394,43 +369,88 @@
 		
 				});
 				
+ 				function test(storeName){
+ 					alert('storeName = ' + storeName);
+ 					
+ 					var btn = this;
+ 					var store = storeName;
+ 					
+ 					$.ajax({
+ 						url : "./test4",
+ 						type : "post",
+ 						data : {"store" : store},
+ 						success : function(responseData){
+ 							var data = JSON.parse(responseData);
+ 							
+ 							alert("result = " +data.result);
+ 							alert("이벤트 제목 = " + data.eventList[0].imgFileName);
+ 							
+ 							$('#eventList').empty();
+ 						for(var i=0; i< data.eventList.length; i++){	
+ 							
+ 						 	var contents ='';
+ 							
+								
+							contents +='<div class="col-md-12">';
+							contents += 	'<div class="recent-posts">';
+							contents += 	'<article class="post">';
+							contents += 			'<div>';
+							contents += 					'<img alt="" class="img-responsive img-rounded" src="../upload/'+data.eventList[i].imgFileName+'"style="height:400px">';
+							contents += 			'</div>';					
+							contents += 			'<div class="heading heading-tertiary heading-border heading-bottom-border">';
+							contents += 				'<h2 class="heading-tertiary"><strong>'+ data.eventList[i].title+'</strong></h2>';
+							contents += 			'</div>';			
+							contents += 				'<h5><strong>$'+ data.eventList[i].content + '</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>';		
+							contents += 			'<span class="label label-tertiary">시작일 : '+data.eventList[i].startDate + '</span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 :' + data.eventList[i].endDate +'</span>';											
+							contents += 			'<span></span>';
+							contents += 			'<span></span>';			
+							contents += 		'</article>';
+							contents += 	'</div>';
+							contents += '</div>';
+							//'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+							//contents += 		'<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{\'items\': 1, \'margin\': 10, \'animateOut\': \'fadeOut\', \'autoplay\': true, \'autoplayTimeout\': 3000}">';
+							//contents += 			'</div>';
+							$('#eventByStore').append(contents);
+ 						}
+ 							
+ 							
+ 						}
+ 						
+ 					});
+ 					
+ 					
+ 					
+ 				}
+				
+				
+				
 				//ajax3 
-				$("#storeChoice").click(function(){
-					var storeName = $("#storeName").val();
+				/* $("input[name=storeChoice]").click(function(){
+					alert('들어옴');
+					var btn = this;
+					
+					var storeName = $(btn).val();
 					console.log("매장이름 : " +$("#storeName").val());
 					
-					/* $.ajax({
+					$.ajax({
 						url : "./test4",
 						type : "post",
 						data : {"storeName" : storeName},
 						success : function(responseData){
 								var data = JSON.parse(responseData);	
-						
 								
 								
+								$(btn).removeAttr('disabled');
 								
 								
 						}
-						
-						
-						
-					
-					
-					}); */
-				});
+					});
+				});*/
 				
 			
 			
 			
 		
 		</script>
-		
-		
-		
-		
-		
-		
-		
-		
 	</body>
 </html>

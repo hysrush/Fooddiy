@@ -31,7 +31,7 @@ public class MenuServiceImp implements MenuService {
 	@Override
 	public void insertMenu(MenuVO menuVO) {
 		menuDAO.insert(menuVO);
-	}
+	}	
 	// Menu 글 수정
 	@Override
 	public void modifyMenu(MenuVO menuVO) {
@@ -42,6 +42,8 @@ public class MenuServiceImp implements MenuService {
 	public void removeMenu(int no) {
 		menuDAO.delete(no);
 	}
+	
+	
        
     
 }

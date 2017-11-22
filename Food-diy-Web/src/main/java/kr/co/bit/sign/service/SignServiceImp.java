@@ -57,6 +57,10 @@ public class SignServiceImp implements SignService {
 			return lostVO;
 		}
 		
+		String id = lostVO.getId().substring(0, lostVO.getId().length()-2);
+		id+="**";
+		
+		lostVO.setId(id);
 		lostVO.setName(lostId.getName());
 		lostVO.setEmail(lostId.getEmail());
 		
@@ -118,7 +122,7 @@ public class SignServiceImp implements SignService {
 		
 		// 메일 정보
 		MailVO mail = new MailVO();
-		String key = new MailKey().getkey();
+		String key = new MailKey().getkey().trim();
 		
 		mail.setSender("skdml132@gamil.com");
 		mail.setReceiver(nonMember.getEmail());
@@ -160,7 +164,6 @@ public class SignServiceImp implements SignService {
 		nonMember.setType("N");
 		
 		signDAOImp.signUp(nonMember);
-		
 		//자동 로그인 
 		return signDAOImp.login(nonMember);
 	}
