@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,7 +47,8 @@ public class Select_Ing_Controller {
 	}
 	
 	@RequestMapping(value ="/cart.do", method = RequestMethod.POST)
-	public ModelAndView Add_cart(String bread, String cheese, String topping, String vegetable, String sauce) {
+	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese, @RequestParam("topping") String topping, 
+			@RequestParam("vegetable") String vegetable, @RequestParam("sauce") String sauce) {
 		
 		System.out.println(bread);
 		System.out.println(cheese);

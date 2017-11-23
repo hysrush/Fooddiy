@@ -303,11 +303,11 @@
 			<div class="row">
 				<div style="text-align: center;">
 					<form class = "order-form" action = "${ pageContext.request.contextPath }/menu/cart.do" method = "post" onsubmit="return submitFunc();">
-						<input type="hidden" name = "bread"/>
-						<input type="hidden" name = "cheese"/>
-						<input type="hidden" name = "topping"/>
-						<input type="hidden" name = "vegetable"/>
-						<input type="hidden" name = "sauce"/>
+						<input type="hidden" class = "bread" name = "bread" value="bread"/>
+						<input type="hidden" class = "cheese" name = "cheese" value="" />
+						<input type="hidden" class = "topping" name = "topping" value=""/>
+						<input type="hidden" class = "vegetable" name = "vegetable" value=""/>
+						<input type="hidden" class = "sauce" name = "sauce" value=""/>
 						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 					</form>
 				</div>
@@ -401,19 +401,15 @@
 				sauce += $('.sauce-table').find('.name').eq(i).text().split(' ')[0].trim() + " ";
 			}
 		
-			alert(bread);
-			alert(cheese);
-			alert(topping);
-			alert(vegetable);
-			alert(sauce);
+			$('.order-form .bread').attr('value', bread);
+			$('.order-form .cheese').attr('value', cheese);
+			$('.order-form .topping').attr('value', topping);
+			$('.order-form .vegetable').attr('value', vegetable);
+			$('.order-form .sauce').attr('value', sauce);;
 			
-			$('.order-form .bread').val(bread);
-			$('.order-form .cheese').val(cheese);
-			$('.order-form .topping').val(topping);
-			$('.order-form .vegetable').val(vegetable);
-			$('.order-form .sauce').val(sauce);
-			
-			
+			alert($('.order-form .bread').val());
+			alert($('.order-form .cheese').val());
+			alert($('.order-form .topping').val());
 			
 			
 			return true;			
