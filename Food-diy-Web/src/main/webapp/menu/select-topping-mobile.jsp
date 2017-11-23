@@ -52,7 +52,8 @@
 						$('.topping-table tr').addClass(id);
 						
 						var td = '<td class="' + 'topping-name"' + '">';
-							td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+							td += '<strong class = "'+ 'name">' + name + '</strong>';
+							td += '<strong class = "'+ 'eng_name">' + id + '</strong>';
 							td += '</td>';
 							td += '<td class = "'+ 'topping-price">' + price + '</td>';
 							
@@ -62,7 +63,8 @@
 		 				var row =  '<tr class = "'+ id + '">';
 		 					row += '<td width ="' + '30%"> </td>'
 		 					row += '<td class="' + 'topping-name">';
-							row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+							row += '<strong class = "'+ 'name">'+ name + '</strong>';
+							row += '<strong class = "'+ 'eng_name">'+ id + '</strong>';
 							row += '</td>';
 							row += '<td class = "'+ 'topping-price">' + price + '</td>';
 							row += '</tr>';

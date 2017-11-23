@@ -318,7 +318,7 @@ li {
 	
 	}
 	
-	strong.name {
+	strong.name , strong.eng_name{
 		color: gray;
 		font-size: 15px;
 		
