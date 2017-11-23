@@ -16,6 +16,15 @@ public class StoreDAOImpl implements StoreDAO {
 	private SqlSessionTemplate sqlSession;
 	private String url = "kr.co.bit.dao.StoreDAO.";
 	
+	
+	@Override
+	public List<StoreVO> selectStoreAll(){
+		
+		List<StoreVO> list = sqlSession.selectList(url + "selectStoreAll");
+		
+		return list;
+	}
+	
 	@Override
 	public List<StoreVO> selectStoreList(String gugun) {
 		

@@ -267,7 +267,6 @@
 		<script src="${ pageContext.request.contextPath}/resources/vendor/common/common.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/isotope/jquery.isotope.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
@@ -294,100 +293,9 @@
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 		
-		<!-- <script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script> -->
-	<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-	<script async defer src = "https://maps.googleapis.com/maps/api/geocode/json?address=서울+동작구+노량진로+166&key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg"></script>
-
-		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg&callback=initMap"></script> -->
-	<script>
 	
-	window.onload = function() {
-	var options = {
-			enableHighAccuracy: true,
-			timeout: 5000,
-			maximumAge: 0
-			};
-
-			function success(pos) {
-			var crd = pos.coords;
-
-			console.log('Latitude : ' + crd.latitude);
-			console.log('Longitude: ' + crd.longitude);
-			};
-
-			function error(err) {
-			console.warn('ERROR(' + err.code + '): ' + err.message);
-			};
-
-			navigator.geolocation.getCurrentPosition(success, error, options);
-	
-	};
-	
-	
-	</script>	
 		
-														
-		
-	<script>
-
-		function initMap() {
-		
-		var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 14,
-		center: {lat: 35.024, lng: 129.887}
-		});
-		
-		var infoWindow = new google.maps.InfoWindow({map: map});
-		
-		// Try HTML5 geolocation.
-		if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-		var pos = {
-		lat: position.coords.latitude,
-		lng: position.coords.longitude
-		};
-		
-		infoWindow.setPosition(pos);
-		infoWindow.setContent('현재위치 !!!');
-		map.setCenter(pos);
-		}, function() {
-		//alert("Location not found.");
-		});
-		} else {
-		//alert("Browser doesn't support Geolocation");
-		}
-		
-		// Create an array of alphabetical characters used to label the markers.
-		var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		
-		// Add some markers to the map.
-		// Note: The code uses the JavaScript Array.prototype.map() method to
-		// create an array of markers based on a given "locations" array.
-		// The map() method here has nothing to do with the Google Maps API.
-		var markers = locations.map(function(location, i) {
-		return new google.maps.Marker({
-		position: location,
-		label: labels[i % labels.length]
-		});
-		});
-		
-		// Add a marker clusterer to manage the markers.
-		var markerCluster = new MarkerClusterer(map, markers,
-		{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-		}
-		var locations = [
-		{lat: 37.4923678, lng: 127.0313011}, //현재위치 위도 경도 
-		{lat: 35.541166, lng: 129.265137},
-		{lat: 35.505400, lng: 128.814697},
-		{lat: 36.191092, lng: 128.633423},
-		{lat: 36.035774, lng: 128.441162},
-		{lat: 35.277016, lng: 129.133301},
-		{lat: 35.188400, lng: 129.134674},
-		{lat: 35.449484, lng: 128.817444}
-		]
-		</script>
-		
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6e4954cc0e63bd91f632decfb6b47fd4&libraries=services"></script>
 		
 		<script type="text/javascript">
 			
@@ -453,40 +361,19 @@
 				});
 		</script>
 		
-		<!-- <script>
-				window.onload = function() {
-					  var startPos;
-					  var geoOptions = {
-					    enableHighAccuracy: true
-					  }
+		<script>
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = { 
+		        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };
 		
-					  var geoSuccess = function(position) {
-					    startPos = position;
-					    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-					    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-					  };
-					  var geoError = function(error) {
-					    console.log('Error occurred. Error code: ' + error.code);
-					    // error.code can be:
-					    //   0: unknown error
-					    //   1: permission denied
-					    //   2: position unavailable (error response from location provider)
-					    //   3: timed out
-					  };
-		
-					  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-					  
-					  function showPosition(position) {
-						    var latlon = position.coords.latitude + "," + position.coords.longitude;
-
-						    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=
-						    "+latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyBM_WNQTtUjJ6uQgyind9ulW2wph4-K8sg";
-
-						    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-						}
-					};
+		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+			var map = new daum.maps.Map(mapContainer, mapOption); 
 		</script>
-		 -->
+		
+		
+		
 		
 
 	</body>
