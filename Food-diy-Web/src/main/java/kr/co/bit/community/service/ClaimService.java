@@ -15,4 +15,5 @@ public interface ClaimService {
 	void modifyClaim(ClaimBoardVO claimVO);
 	void removeClaim(int no);
 	void updateViewcntClaim(int no, HttpSession session);
+	List<ClaimBoardVO> selectClaim(String id);
 }

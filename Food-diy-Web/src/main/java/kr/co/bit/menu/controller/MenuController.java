@@ -24,7 +24,6 @@ import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
 
 @Controller
-@SessionAttributes({"name", "price", "size"})
 @RequestMapping("/menu")
 public class MenuController {
 	
@@ -117,14 +116,7 @@ public class MenuController {
 		cartVO.setName(name);
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
-		
-		/*if(session.getAttribute(userVO)) {
-			return 
-		}else {
-			return
-		}*/
-			
-		
+				
 		session.setAttribute("cartVO", cartVO);		
 		
 		return cartVO;				

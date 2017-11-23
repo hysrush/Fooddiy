@@ -49,4 +49,9 @@ public class ClaimDAOImp implements ClaimDAO {
 		sqlSession.update(url + "updateViewcntClaim", no);
 	}
 	
+	@Override
+	public List<ClaimBoardVO> selectClaim(String id) {
+		
+		return sqlSession.selectList(url + "selectClaim", id);
+	}
 }

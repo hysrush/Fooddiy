@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,24 +46,19 @@ public class Select_Ing_Controller {
 		return mav;
 	}
 	
-	@RequestMapping(value ="/select_ingredients.do", method = RequestMethod.POST)
-	@ResponseBody 
-	public String updateUserInfo(@RequestBody Map<String, Object> params) {
+	@RequestMapping(value ="/cart.do", method = RequestMethod.POST)
+	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese, @RequestParam("topping") String topping, 
+			@RequestParam("vegetable") String vegetable, @RequestParam("sauce") String sauce) {
 		
-		Map<String, Object> resultMap = new HashMap<String, Object>();
+		System.out.println(bread);
+		System.out.println(cheese);
+		System.out.println(topping);
+		System.out.println(vegetable);
+		System.out.println(sauce);
 		
-		try {
-			Set<String> keys = params.keySet();
-			
-			for(String key : keys){
-				System.out.println(params.get(key));
-			}
-				
-			
-		}catch(Exception e) {
-			
-		}
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("menu/cart");
 		
-		return "menu/select-ingredients";
+		return mav;
 	}
 }

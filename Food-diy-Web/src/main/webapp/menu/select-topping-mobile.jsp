@@ -10,9 +10,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/${ ingList.pic}" /></td>
+									<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/${ ingList.pic}" /></td>
 									<td width="50%"><strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "id">${ ingList.eng_name}</strong></td>
-									<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price">+${ ingList.price}</strong></td>
+									<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price commaN" style="float: right">+${ ingList.price}</strong></td>
 								</tr>
 							</tbody>
 						</table>
@@ -52,7 +52,8 @@
 						$('.topping-table tr').addClass(id);
 						
 						var td = '<td class="' + 'topping-name"' + '">';
-							td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+							td += '<strong class = "'+ 'name">' + name + '</strong>';
+							td += '<strong class = "'+ 'eng_name">' + id + '</strong>';
 							td += '</td>';
 							td += '<td class = "'+ 'topping-price">' + price + '</td>';
 							
@@ -62,7 +63,8 @@
 		 				var row =  '<tr class = "'+ id + '">';
 		 					row += '<td width ="' + '30%"> </td>'
 		 					row += '<td class="' + 'topping-name">';
-							row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+							row += '<strong class = "'+ 'name">'+ name + '</strong>';
+							row += '<strong class = "'+ 'eng_name">'+ id + '</strong>';
 							row += '</td>';
 							row += '<td class = "'+ 'topping-price">' + price + '</td>';
 							row += '</tr>';

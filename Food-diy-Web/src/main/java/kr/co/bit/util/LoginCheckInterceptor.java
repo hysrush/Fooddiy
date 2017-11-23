@@ -20,7 +20,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
         }
         
         // 세션에 올려진 로그인 객체를 확인
-        UserVO user = (UserVO)session.getAttribute("login");  
+        UserVO user = (UserVO)session.getAttribute("loginVO");  
   
         if (user == null) {  
             response.sendRedirect(request.getContextPath()+"/sign/login.do");  

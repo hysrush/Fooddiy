@@ -7,7 +7,7 @@
 			<li><i class="fa fa-check fa-check-bread"></i>
 				<figure class="product-image-area product-bread-area">
 						<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/bread/${ ingList.pic}" />
-						<strong class = "name">${ ingList.name} ${ ingList.eng_name}</strong>
+						<strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "eng_name">${ ingList.eng_name}</strong>
 				</figure>
 			</li>
 		</c:if>
@@ -23,11 +23,13 @@
 			 $(this).click(function(){
 				 $('.fa-check-bread').hide();
 				 $(this).siblings('.fa-check').show();
-				 
-				 var name = "&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >> ";
-				 	name += '<strong class = "'+ 'name">'+  $(this).find('.name').text() + '</strong>';
+				 var td = '<td width = "' + '"30%'+ '">&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >></td>';
+				 	td += '<td class="' + 'bread-name"' + '">';
+				 	td += '<strong class = "'+ 'name">'+  $(this).find('.name').text() + '</strong>';
+				 	td += '<strong class = "'+ 'eng_name">'+  $(this).find('.eng_name').text() + '</strong>';
+				 	td += '</td>';
 
-				 $('.bread-name').html(name);
+				 $('.bread-table tr').html(td);
 				 
 			 });
 		});

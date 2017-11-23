@@ -8,7 +8,7 @@
 			<li><i class="fa fa-check fa-check-cheese"></i>
 				<figure class="product-image-area product-cheese-area">
 						<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/cheese/${ ingList.pic}" />
-						<strong class = "name">${ ingList.name} ${ ingList.eng_name}</strong>
+						<strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "eng_name">${ ingList.eng_name}</strong>
 				</figure>
 			</li>
 		</c:if>
@@ -27,10 +27,13 @@
 				 
 				 $('.fa-check-cheese').hide();
 				 $(this).siblings('.fa-check').show();
-				 
-				 var name = "치즈 선택 >> ";
-				 	name += '<strong class = "'+ 'name">'+  $(this).find('.name').text() + '</strong>';	
-				 	$('.cheese-name').html(name);
+				 var td = '<td width = "' + '"30%'+ '">치즈 선택 >> </td>';
+					 td += '<td class="' + 'cheese-name"' + '">';
+				 	td += '<strong class = "'+ 'name">'+  $(this).find('.name').text() + '</strong>';
+				 	td += '<strong class = "'+ 'eng_name">'+  $(this).find('.eng_name').text() + '</strong>';
+				 	td += '</td>';
+
+				 $('.cheese-table tr').html(td);
 			 });
 		});
 	});

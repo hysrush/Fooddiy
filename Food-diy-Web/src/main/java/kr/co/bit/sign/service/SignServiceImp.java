@@ -51,20 +51,19 @@ public class SignServiceImp implements SignService {
 		lostId.setName(lost.getName());
 		lostId.setEmail(lost.getEmail()+lost.getEmailD());
 		
-		UserVO lostVO = signDAOImp.lostId(lostId);
+		// id 목록
+		lostId = signDAOImp.lostId(lostId);
 		
-		if(lostVO == null) {
-			return lostVO;
+		if(lostId == null) {
+			return lostId;
 		}
 		
-		String id = lostVO.getId().substring(0, lostVO.getId().length()-2);
+		String id = lostId.getId().substring(0, lostId.getId().length()-2);
 		id+="**";
 		
-		lostVO.setId(id);
-		lostVO.setName(lostId.getName());
-		lostVO.setEmail(lostId.getEmail());
+		lostId.setId(id);
 		
-		return lostVO;
+		return lostId;
 	}
 	
 	//pw 찾기

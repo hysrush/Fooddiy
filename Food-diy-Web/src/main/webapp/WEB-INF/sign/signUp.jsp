@@ -115,8 +115,12 @@
 		</div>
 	</div>
 	
-	<footer id="footer">
-			<jsp:include page="/resources/include/bottom.jsp"/>
+	<footer class="light hidden-xs" id="footer">
+		<jsp:include page="/resources/include/bottom.jsp"/>
+	</footer>
+		
+	<footer class="light hidden-lg" id="footer">
+		<jsp:include page="/resources/include/mobile-bottom.jsp"/>
 	</footer>
 	
 	<!-- Vendor -->

@@ -17,11 +17,11 @@ public class SignDAOImp implements SignDAO {
 		
 		// API 가입 확인 또는 아이디 비밀번호 확인
 		int check = sql.selectOne("kr.co.bit.member.dao.loginCheck", login);
-		
-		if(check == 0) {
+
+		if(check == 0 ) {
 			return null;
 		}
-		
+			
 		return sql.selectOne("kr.co.bit.member.dao.login", login);
 		
 	}
@@ -53,10 +53,11 @@ public class SignDAOImp implements SignDAO {
 		if(check == 0) {
 			return null;
 		}
-		
-		return sql.selectOne("kr.co.bit.member.dao.lostId", lost);
-	}
 
+		return sql.selectOne("kr.co.bit.member.dao.lostId", lost);
+
+	}
+	
 	// pw 찾기
 	public UserVO lostPw(UserVO lost) {
 		
