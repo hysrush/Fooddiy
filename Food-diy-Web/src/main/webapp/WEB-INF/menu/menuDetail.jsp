@@ -6,10 +6,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-$(document).ready(function(){
-   var sand_size = $("input[type=radio][name=size]:checked").val();
-   document.getElementById("sand_size").value = sand_size;
+$(document).ready(function() {
+	
+	if( ${ menuDetailVO.type == 'M' } || ${ menuDetailVO.type == 'S' } || ${ menuDetailVO.type == 'N' } || ${ menuDetailVO.type == 'D' } ) {
+		$('.inch').css("display","none");
+		$('#sand_price').val( ${ menuDetailVO.price } );
+		$('#sand_size').val(null);
+	}
+	else 
+		$('.inch').css("display","");		
+	
+	
+	$('.inch').click(function(){
+	   var sand_size = $("input[type=radio][name=size]:checked").val();
+	   $('#sand_size').val(sand_size);
+	   
+	   if(sand_size == '30') {
+		   if( ${ menuDetailVO.type == 'R' } ) {
+			   $("#price").html("8700원");
+			   $('#sand_price').val(8700);
+		   }
+		   if( ${ menuDetailVO.type == 'P' } ) {
+			   $("#price").html("9800원");
+			   $('#sand_price').val(9800);
+		   }
+		   if( ${ menuDetailVO.type == 'B' } ) {
+			   $("#price").html("9200원");
+			   $('#sand_price').val(9200);
+		   }
+		   if( ${ menuDetailVO.type == 'C' } ) {
+			   $("#price").html("8200원");
+			   $('#sand_price').val(8200);
+		   }
+	   }
+	   else {
+		   $("#price").html( ${ menuDetailVO.price } + '원');
+		   $('#sand_price').val( ${ menuDetailVO.price } );
+	   }
+	});
+	
 });
+
 </script>
 </head>
 <body>
@@ -56,24 +93,24 @@ $(document).ready(function(){
 					</div>
 
 					<p class="price">
-						<span class="amount">${ menuDetailVO.price }원</span>
+						<span class="amount" id="price">${ menuDetailVO.price }원</span>
 					</p>
 
 					<p class="taller">
 						${ menuDetailVO.detail }						
 					</p>
 					<p class="inch">
-						<input type="radio" name="size" value="15cm" checked="checked"><span
+						<input type="radio" name="size" value="15" checked="checked"><span
 							style="font-size: 18px; margin-left: 5px; margin-right: 20px">15cm</span>
-						<input type="radio" name="size" value="30cm"><span
+						<input type="radio" name="size" value="30"><span
 							style="font-size: 18px; margin-left: 5px">30cm</span>
 					</p>
 
 					<form action="${ pageContext.request.contextPath }/menu/testStore.do" enctype="multipart/form-data" method="post" class="cart" style="margin-bottom: 10px">
 						<!-- submit하면 hidden으로 값 넘겨준다 -->
 						<input type="hidden" name="name" value=${ menuDetailVO.name }>
-						<input type="hidden" name="price" value=${ menuDetailVO.price }>											
-						<input type="hidden" name="size" id="sand_size" value= "" >
+						<input type="hidden" name="price" id="sand_price" value=${ menuDetailVO.price }>											
+						<input type="hidden" name="size" id="sand_size" value="15" >
 						<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
 						
 					</form>
