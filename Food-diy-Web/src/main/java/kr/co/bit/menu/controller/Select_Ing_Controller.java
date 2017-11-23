@@ -32,11 +32,15 @@ public class Select_Ing_Controller {
 	
 	
 	@RequestMapping(value="/select_ingredients.do", method=RequestMethod.POST)
-	public CartVO Session(HttpSession session, String name, String price, String size) {
+	public ModelAndView Session(HttpSession session, String name, String price, String size) {
 		
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
-		String id = user.getId();
-		
+		String id = null;
+		if(user == null) {
+			System.out.println("session은 널이다");
+		}else {
+			id = user.getId();
+		}
 		System.out.println(id);
 		
 		List<IngredientsVO> ingList = service.selectAllIng();
@@ -59,28 +63,28 @@ public class Select_Ing_Controller {
 	         System.out.println(i + "번 "  + ingList.get(i));
 		}
 		
-		return cartVO;				
+		return mav;				
 	}
 	
 	
 	
 	
 	
-	/*@RequestMapping(value ="/select_ingredients.do", method = RequestMethod.GET)
+	@RequestMapping(value ="/select_ingredients.do", method = RequestMethod.GET)
 	public ModelAndView Ing_listAll() {
 		
+		List<IngredientsVO> ingList = service.selectAllIng();
 		
-		
-		
-		
-		
+		ModelAndView  mav = new ModelAndView();
+		mav.setViewName("menu/select_ingredients");
+		mav.addObject("ingList", ingList);
 		
 		for(int i = 0; i < ingList.size(); ++i) {
 			System.out.println(i + "번 "  + ingList.get(i));
-			
 		}
+		
 		return mav;
-	}*/
+	}
 	
 	@RequestMapping(value ="/cart.do", method = RequestMethod.POST)
 	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese, @RequestParam("topping") String topping, 
