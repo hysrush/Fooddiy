@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -73,8 +73,9 @@ $(document).ready(function(){
 						<!-- submit하면 hidden으로 값 넘겨준다 -->
 						<input type="hidden" name="name" value=${ menuDetailVO.name }>
 						<input type="hidden" name="price" value=${ menuDetailVO.price }>											
-						<input type="hidden" name="size" id="sand_size" value= "" >											
+						<input type="hidden" name="size" id="sand_size" value= "" >
 						<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
+						
 					</form>
 					
 

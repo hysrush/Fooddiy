@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,7 +108,7 @@
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
 									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${userVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
 		
@@ -131,22 +132,24 @@
 												
 												<table class="cart-totals"> 
 													<tbody>
-														<tr class="cart-subtotal">
+														<c:forEach items="${ claimList }" var="claim">
+														
+														  <tr class="cart-subtotal">
 															<th style="text-align: center;">
-																<strong >1</strong>
+																<strong>${ claim.no }</strong>
 															</th>
 															<td class="col-md-4" align="center">
-																<span class="amount">문의 합니다.</span>
+																<span class="amount">${ claim.title }</span>
 															</td>
 															<td class="col-md-2" align="right">
-																<span class="amount ">2017-10-29</span>
+																<span class="amount ">${ claim.regDate }</span>
 															</td>
 															<td align="center">
 																<button style="margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
 
 															</td>
 														</tr>
-														<tr class="shipping">
+														<!-- <tr class="shipping">
 															<th style="text-align: center;">
 																2															
 															</th>
@@ -159,7 +162,8 @@
 															<td align="center">
 																<button style="background-color:orange; margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 답변완료 </button>
 															</td>
-														</tr>
+														</tr> -->
+													  </c:forEach>
 													</tbody>
 												</table>
 											</div>

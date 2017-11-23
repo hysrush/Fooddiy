@@ -121,7 +121,7 @@
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
 									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${userVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
 		
@@ -233,10 +233,10 @@
 										</div>
 									</div>
 							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-	</div>
-	</div>
-	
 		<!-- ---------------------------------------------------------------------------------------------- -->
 		<div>
 		<footer id="footer">
