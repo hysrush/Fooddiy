@@ -14,7 +14,7 @@
 								<span class="thumb-info-title"> 
 								 	<span class="thumb-info-inner">${ ingList.name }</span>
 									<span class="thumb-info-type">${ ingList.eng_name }</span>
-									<span class="thumb-info-type topping-price">${ ingList.price }원</span>
+									<span class="thumb-info-type topping-price commaN">${ ingList.price }</span><span>원</span>
 								</span>
 						</span>
 					</span>

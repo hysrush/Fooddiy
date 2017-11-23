@@ -10,9 +10,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td width="30%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/${ ingList.pic}" /></td>
+									<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/${ ingList.pic}" /></td>
 									<td width="50%"><strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "id">${ ingList.eng_name}</strong></td>
-									<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price">+${ ingList.price}</strong></td>
+									<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price commaN" style="float: right">+${ ingList.price}</strong></td>
 								</tr>
 							</tbody>
 						</table>

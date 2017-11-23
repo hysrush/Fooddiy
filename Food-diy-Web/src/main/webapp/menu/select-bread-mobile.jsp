@@ -23,11 +23,12 @@
 			 $(this).click(function(){
 				 $('.fa-check-bread').hide();
 				 $(this).siblings('.fa-check').show();
-				 
-				 var name = "&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >> ";
-				 	name += '<strong class = "'+ 'name">'+  $(this).find('.name').text() + '</strong>';
+				 var td = '<td width = "' + '"30%'+ '">&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >></td>';
+				 	td += '<td class="' + 'bread-name"' + '">';
+				 	td += '<strong class = "'+ 'name"> '+  $(this).find('.name').text() + '</strong>';
+				 	td += '</td>';
 
-				 $('.bread-name').html(name);
+				 $('.bread-table tr').html(td);
 				 
 			 });
 		});
