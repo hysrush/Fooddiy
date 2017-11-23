@@ -72,11 +72,11 @@ public class CartVO {
 	public void setSauce(String sauce) {
 		this.sauce = sauce;
 	}
-	
 	@Override
 	public String toString() {
-		return "CartVO [name=" + name + ", price=" + price + ", size=" + size + ", bread=" + bread + ", cheese="
-				+ cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + "]";
+		return "CartVO [id=" + id + ", name=" + name + ", price=" + price + ", size=" + size + ", bread=" + bread
+				+ ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + "]";
 	}
+	
 	
 }

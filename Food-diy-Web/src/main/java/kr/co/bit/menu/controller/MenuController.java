@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.menu.service.MenuService;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.user.vo.UserVO;
 
 @Controller
 @RequestMapping("/menu")
@@ -108,19 +109,25 @@ public class MenuController {
 	
 	
 	// '주문하기'선택 후 매장화면으로	
-	@RequestMapping(value="/testStore.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="/select_ingredients.do", method=RequestMethod.POST)
 	public CartVO Session(HttpSession session, String name, String price, String size) {
+		
+		UserVO user = (UserVO)session.getAttribute("loginVO");		
+		String id = user.getId();
+		
 		// Form에서 가져온 Data를 CartVO 객체형태로 저장
 		CartVO cartVO = new CartVO();
 		
 		cartVO.setName(name);
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
+		cartVO.setId(id);
 				
 		session.setAttribute("cartVO", cartVO);		
 		
+		
 		return cartVO;				
-	}
+	}*/
 	
 
 	
