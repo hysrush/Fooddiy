@@ -47,7 +47,7 @@
 		select NVL(count(*), 0) from t_user
 		where user_name = #{name} and user_email = #{email}
 	</select>
-
+	
 	<select id="lostId" parameterType="userVO" resultMap="mapLoginVO">
 		select user_id, user_pw from t_user
 		where user_name = #{ name } and user_email = #{ email }

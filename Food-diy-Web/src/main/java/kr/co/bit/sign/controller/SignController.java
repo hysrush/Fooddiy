@@ -29,7 +29,6 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
-	
 	/**
 	 * 
 	 *  1. 회원
@@ -129,7 +128,6 @@ public class SignController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String signIn(UserVO login, Model model) {
 
-		System.out.println(login.toString());
 		UserVO signIn = signServiceImp.login(login);
 
 		if (signIn == null) {
