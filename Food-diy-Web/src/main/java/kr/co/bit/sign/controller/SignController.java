@@ -22,7 +22,7 @@ import kr.co.bit.user.vo.UserVO;
  * 로그인, 로그아웃 회원가입 API로그인 처리
  * 
  */
-@SessionAttributes("userVO")
+@SessionAttributes("loginVO")
 @RequestMapping("/sign")
 @Controller
 public class SignController {
@@ -88,6 +88,7 @@ public class SignController {
 		userVO.setEmail(phoneCert.getEmail() + phoneCert.getEmailD());
 		userVO.setSex(phoneCert.getSex());
 		userVO.setRoot(phoneCert.getRoot());
+		userVO.setType("U");
 		
 		signServiceImp.signUp(userVO);
 		
@@ -98,7 +99,7 @@ public class SignController {
 		
 		userVO = signServiceImp.login(login);
 		
-		model.addAttribute("userVO", userVO);
+		model.addAttribute("loginVO", userVO);
 		
 		return "sign/sign";
 	}
@@ -118,9 +119,9 @@ public class SignController {
 	
 	// 로그인 화면
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String signInForm(Model model) {
+	public String signInForm() {
 
-		model.addAttribute("login", new UserVO());
+		
 		return "sign/login";
 	}
 
@@ -128,18 +129,18 @@ public class SignController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String signIn(UserVO login, Model model) {
 
+		System.out.println(login.toString());
 		UserVO signIn = signServiceImp.login(login);
 
 		if (signIn == null) {
-
 			String msg = "아이디 또는 비밀번호를 확인해 주세요.";
 			model.addAttribute("msg", msg);
-
+			
 			return "sign/login";
 		}
 
-		model.addAttribute("userVO", signIn);
-
+		model.addAttribute("loginVO", signIn);
+		
 		return "sign/sign";
 	}
 
@@ -244,7 +245,7 @@ public class SignController {
 		
 		kakao = signServiceImp.login(login);
 		
-		model.addAttribute("userVO", kakao);
+		model.addAttribute("loginVO", kakao);
 		
 		return "sign/sign";
 	}
@@ -285,7 +286,7 @@ public class SignController {
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
-		model.addAttribute("userVO", user);
+		model.addAttribute("nonMember", user);
 		model.addAttribute("msg", "완료~");
 		
 		return "/sign/sign";

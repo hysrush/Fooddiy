@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
-<script>
+<!-- <script>
 	$(document).ready(function(){
 	    // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
 	    var userInputId = getCookie("userInputId");
@@ -55,7 +55,7 @@
 	    }
 	    return unescape(cookieValue);
 	}
-</script>
+</script> -->
 <!-- 회원 로그인 -->
 <div class="container">
 	<div class="row">
@@ -71,7 +71,7 @@
 										<div class="form-group">
 											<div class="col-xs-12 col-md-12">
 												<a class="pull-right" data-toggle="modal" href="#idModal">(Lost ID?)</a>
-												<label>ID</label> <input type="text" name="id" class="form-control input-lg">
+												<label>ID</label> <input type="text" name="id" class="form-control input-lg" required="required">
 											</div>
 										</div>
 									</div>
@@ -79,7 +79,7 @@
 										<div class="form-group">
 											<div class="col-xs-12 col-md-12">
 												<a class="pull-right" data-toggle="modal" href="#pwModal">(Lost Password?)</a>
-												<label>Password</label> <input type="password" name="pw" class="form-control input-lg">
+												<label>Password</label> <input type="password" name="pw" class="form-control input-lg" required="required">
 											</div>
 										</div>
 									</div>
