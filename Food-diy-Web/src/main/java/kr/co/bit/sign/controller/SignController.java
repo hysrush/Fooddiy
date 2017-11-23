@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.co.bit.member.service.MemberService;
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.PhoneCertVO;
 import kr.co.bit.user.vo.UserVO;
@@ -29,6 +30,8 @@ public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
+	@Autowired
+	private MemberService memberServiceImp;
 	/**
 	 * 
 	 *  1. 회원
@@ -280,16 +283,25 @@ public class SignController {
 
 	// 이메일 인증 후 가입
 	@RequestMapping(value="/nonemailCheck")
-	public String nonMemberSign(UserVO nonMember, Model model) {
+	public String nonMemberSign(UserVO nonMember, Model model, HttpSession session) {
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
-		model.addAttribute("nonMember", user);
+		session.setAttribute("nonMember", user);
 		model.addAttribute("msg", "완료~");
 		
 		return "/sign/sign";
 	}
-	
+	@RequestMapping("/nonlogout")
+	public String nonLogout(String id, HttpSession session) {
+		
+		
+		memberServiceImp.memberDelte(id);
+		session.invalidate();
+		
+		return "sign/logout";
+		
+	}
 	
 	
 	

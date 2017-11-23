@@ -318,33 +318,36 @@
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp" data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>
 							</ul></li>
 						<!-- 회원 로그인하면 My page -->
-						<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.do" class="dropdown-toggle"> My Page </a>
-							<ul class="dropdown-menu">
-								<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
-							</ul></li>
+						<c:if test="${ not empty loginVO }">
+							<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.do" class="dropdown-toggle"> My Page </a>
+								<ul class="dropdown-menu">
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
+								</ul>
+							</li>
+						</c:if>
 						<!-- 비회원 로그인하면 주문내역 조회 -->
 						<c:if test="${ not empty nonMember }">
-							<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/nonmemberMenu.jsp">주문내역조회</a></li>
+							<li class="dropdown"><a href="${ pageContext.request.contextPath }/sign/nonmemberMenu.jsp">주문내역조회</a></li>
 						</c:if>
 						<c:choose>
-							<c:when test="${ empty loginVO }">
+							<c:when test="${ empty loginVO and empty nonMember }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/login.do">
+									<a href="${ pageContext.request.contextPath }/sign/login.do">
 										<i class="fa fa-user"></i> Sign IN
 									</a>
 								</li>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/signUp.do">
+									<a href="${ pageContext.request.contextPath }/sign/signUp.do">
 										<i class="fa fa-user"></i> Sign UP
 									</a>
 								</li>
 							</c:when>
-							<c:otherwise>
+							<c:when test="${ not empty loginVO }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ loginVO.id }</a>
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.do"> <i class="fa fa-user"></i>${ loginVO.id }</a>
 									<ul class="dropdown-menu">
 										<li>
 											<div class="dropdown-mega-content">
@@ -369,6 +372,11 @@
 											</div>
 										</li>
 									</ul></li>
+							</c:when>
+							<c:otherwise>
+								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
+									<a href="${ pageContext.request.contextPath }/sign/nonlogout?id=${nonMember.id}"><i class="fa fa-user"></i> ${ nonMember.name }</a>
+								</li>
 							</c:otherwise>
 						</c:choose>
 					</ul>
