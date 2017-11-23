@@ -209,7 +209,13 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a class="accordion-toggle bread-name" data-toggle="collapse" data-parent="#accordion5" href="#bread-select"> &nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >> </a>
+									<a class="accordion-toggle bread-name" data-toggle="collapse" data-parent="#accordion5" href="#bread-select"> 
+										<table class="bread-table">
+											<tr>
+												<td width="30%">&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >></td>
+											</tr>
+										</table>
+									</a>
 								</h4>
 							</div>
 							<div id="bread-select" class="accordion-body collapse in">
@@ -221,7 +227,13 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a class="accordion-toggle cheese-name" data-toggle="collapse" data-parent="#accordion5" href="#cheese-select"> 치즈 선택 >> </a>
+									<a class="accordion-toggle cheese-name" data-toggle="collapse" data-parent="#accordion5" href="#cheese-select"> 
+										<table class="cheese-table">
+											<tr>
+												<td width="30%">치즈 선택 >></td>
+											</tr>
+										</table>
+									</a>
 								</h4>
 							</div>
 							<div id="cheese-select" class="accordion-body collapse">
@@ -290,9 +302,8 @@
 
 			<div class="row">
 				<div style="text-align: center;">
-					<form class = "aa" action = "${ pageContext.request.contextPath }/index2.jsp" method = "post">
+					<form class = "aa" action = "${ pageContext.request.contextPath }/index2.jsp" method = "post" onsubmit="return submitFunc();">
 						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
-						
 					</form>
 				</div>
 			</div>
@@ -300,9 +311,22 @@
 	</div>
 
 	<script type="text/javascript">
+		function submitFunc() {
+			
+			for(var i = 0; i < $('.accordion-toggle').length; ++i) {
+				if($('.accordion-toggle').eq(i).find('tr').children('td').length < 2 ) {
+					alert('재료를 선택해 주세요');
+					return false;
+				}
+			}
+			
+			return true;
+			
+		}
+	
 		$(document).ready(function() {
 			
-			$('.select-menu-button').click(function() {
+/* 			$('.select-menu-button').click(function() {
 				var bread  = $('.table').find('.bread-name').find('.name').text();
 				var cheese  = $('.table').find('.cheese-name').find('.name').text();
 				
@@ -328,7 +352,7 @@
 						alert('실패');
 					}
 				});
-			});
+			}); */
 			
 		});
 		
