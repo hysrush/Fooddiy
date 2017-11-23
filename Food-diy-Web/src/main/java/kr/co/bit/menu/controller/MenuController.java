@@ -24,7 +24,6 @@ import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
 
 @Controller
-@SessionAttributes({"name", "price", "size"})
 @RequestMapping("/menu")
 public class MenuController {
 	
