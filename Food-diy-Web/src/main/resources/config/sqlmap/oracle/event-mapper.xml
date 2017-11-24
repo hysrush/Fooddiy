@@ -98,7 +98,6 @@
 		where  = #{no}
 	</select>
 	
-	
 	<!-- 새글 등록  -->
 	<insert id="insertEvent" parameterType="eventVO">
 		

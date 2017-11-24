@@ -21,5 +21,4 @@ public interface EventDAO {
 	void update(EventBoardVO eventVO);
 	void delete(int no);
 	
-
 }

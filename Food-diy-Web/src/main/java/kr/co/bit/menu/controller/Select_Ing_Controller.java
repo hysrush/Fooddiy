@@ -27,7 +27,7 @@ public class Select_Ing_Controller {
 	
 	
 	@RequestMapping(value="/select_ingredients.do", method=RequestMethod.POST)
-	public ModelAndView Session(HttpSession session, String name, String price, String size) {
+	public ModelAndView Session(HttpSession session, String name, String price, String size, String pic) {
 		
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = null;
@@ -47,6 +47,7 @@ public class Select_Ing_Controller {
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
 		cartVO.setId(id);
+		cartVO.setPic(pic);
 				
 		session.setAttribute("cartVO", cartVO);		
 		

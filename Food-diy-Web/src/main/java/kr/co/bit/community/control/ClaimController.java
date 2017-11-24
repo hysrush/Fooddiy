@@ -9,9 +9,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.community.service.ClaimService;
 import kr.co.bit.community.vo.ClaimBoardVO;
+import kr.co.bit.event.service.EventService;
+import kr.co.bit.event.vo.CityVO;
+import kr.co.bit.event.vo.StoreVO;
 
 @RequestMapping("/community")
 @Controller
@@ -32,6 +38,8 @@ public class ClaimController {
 	
 	@Autowired
 	private ClaimService claimService;
+	@Autowired
+	private EventService eventService;
 	
 	// <Claim 컨트롤러>
 	// Claim 전체보기
@@ -53,11 +61,14 @@ public class ClaimController {
 	@RequestMapping(value="/claimWrite.do", method=RequestMethod.GET)
 	public String writeForm(Model model) {
 		
+		List<CityVO> cityList = eventService.selectCity();
+		
 		// Form에서 가져온 Data를 ClaimBoardVO 객체 형태로 저장
 		ClaimBoardVO claimVO = new ClaimBoardVO();
 		
 		// 공유영역에 등록
 		model.addAttribute("claimVO", claimVO);
+		model.addAttribute("cityList", cityList);
 		
 		return "community/claimWrite";
 	}
@@ -67,30 +78,36 @@ public class ClaimController {
 	public String write(@Valid ClaimBoardVO claimVO, BindingResult result,
 						@RequestParam(value="file") MultipartFile file) throws Exception {
 		
-		System.out.println(file.getOriginalFilename());
 		/*if (result.hasErrors()) {
 			// 에러일때 true => writeForm으로
 			return "community/claimWrite";
 		}*/
-		// 1. fileName 설정 + eventVO에 fileName 저장
-		String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\"
-				+ file.getOriginalFilename();
-		String saveFileName = file.getOriginalFilename();
 		
-		claimVO.setFile(saveFileName);
-		
-		System.out.println(fileName);
-		System.out.println(saveFileName);
-		System.out.println("들어가나");
-
-		// 2. 경로에 이미지파일 저장
-		byte[] bytes;
-		bytes = file.getBytes();
-		BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
-		buffStream.write(bytes);
-		buffStream.close();
-
-		System.out.println("들어가나 2");
+		if (file != null) {
+			// 파일 업로드
+			System.out.println(file.getOriginalFilename());
+			
+			// 1. fileName 설정 + eventVO에 fileName 저장
+			String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\"
+					+ file.getOriginalFilename();
+			String saveFileName = file.getOriginalFilename();
+			
+			claimVO.setFile(saveFileName);
+			
+			System.out.println(fileName);
+			System.out.println(saveFileName);
+			System.out.println("들어가나");
+			
+			// 2. 경로에 이미지파일 저장
+			byte[] bytes;
+			bytes = file.getBytes();
+			BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+			buffStream.write(bytes);
+			buffStream.close();
+			
+			System.out.println("들어가나 2");
+			
+		}
 		
 		// Claim 새 글 등록
 		claimService.insertClaim(claimVO);
@@ -116,6 +133,47 @@ public class ClaimController {
 		
 		return mav;
 	}
+	
+	// 시정보 ajax
+	@RequestMapping(value = "/test")
+	public void chargeReqAjaxByToss(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "sido", defaultValue = "") String sido, Model model) throws Exception {
+
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+
+		// 1. Select 구 군 정보
+		List locationList = eventService.selectLocation(sido);
+
+		// 2. return value parse
+		jsonObj.put("result", true);
+		jsonObj.put("guList", locationList);
+
+		response.getWriter().print(jsonObj.toString());
+
+	}
+
+	// 시,도 군,구 정보 ajax
+	@RequestMapping(value = "/test3")
+	public void gugunajax(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "gugun", defaultValue = "") String gugun, Model model) throws Exception {
+
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+
+		List<StoreVO> storeList = eventService.selectStoreList(gugun);
+
+		for (int i = 0; i < storeList.size(); i++) {
+			System.out.println(storeList.get(i).toString());
+		}
+
+		jsonObj.put("result", true);
+		jsonObj.put("storeList", storeList);
+
+		response.getWriter().print(jsonObj.toString());
+
+	}
+	
 	// 클레임 타입
 	@ModelAttribute("typeCode")
 	public Map<String, String> getTypeCode() {

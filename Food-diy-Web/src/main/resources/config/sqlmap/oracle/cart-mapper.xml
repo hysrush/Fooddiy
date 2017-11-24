@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.bit.cart.dao.CartDAO">
+
+	<!-- Menu 쿼리문 -->
+	
+	<!-- sql 저장 : 전체 조회 -->
+	<sql id="selectAll">
+		SELECT cart_no, cart_id, cart_name, cart_price, cart_size, cart_bread, cart_cheese, cart_topping, cart_vegetable,
+		cart_sauce, to_char(reg_at, 'yy-mm-dd') as reg_at
+		FROM t_cart
+	</sql>
+	
+	<!-- DB t_menu와 MenuVO의 변수가 맞지 않으므로 mapping -->
+	<resultMap type="menuVO" id="Map_menuVO">
+		<result column="cart_no" property="no"/>
+		<result column="cart_id" property="id"/>
+		<result column="cart_name" property="name"/>
+		<result column="cart_price" property="price"/>
+		<result column="cart_size" property="size"/>
+		<result column="cart_bread" property="bread"/>
+		<result column="cart_cheese" property="cheese"/>
+		<result column="cart_topping" property="topping"/>
+		<result column="cart_vegetable" property="vegetable"/>
+		<result column="cart_sauce" property="sauce"/>
+		<result column="reg_at" property="regDate"/>
+	</resultMap>
+	
+	
+	
+	<!-- 전체  장바구니  조회 -->
+	<select id="selectAllCart" resultMap="Map_menuVO">
+		<include refid="selectAll"/>
+		ORDER BY cart_no ASC
+	</select>
+	
+	<!-- 번호별  장바구니 조회 -->
+	<select id="selectOneCart" parameterType="int" resultMap="Map_menuVO">
+		<include refid="selectAll"/>
+		WHERE cart_no = #{no}
+	</select>
+<!-- 	
+	Menu 등록	
+	<insert id="insertMenu" parameterType="menuVO">
+		INSERT INTO t_menu(menu_no, menu_name, main_menu, menu_type, menu_price, menu_detail, menu_pic
+					, menu_size, menu_cal, menu_pro, menu_na, menu_sug, menu_fat , menu_alg)
+		VALUES(seq_t_menu_no.nextval, #{name}, #{mainmenu}, #{type}, #{price}, #{detail}, #{imgFileName}
+				, #{serviceSize}, #{calorie}, #{protein}, #{natrium}, #{sugar}, #{fat}, #{allergy})
+	</insert>
+	
+	Menu 수정	
+	<update id="modifyMenu" parameterType="menuVO">
+		UPDATE t_menu
+		SET menu_name = #{name}, main_menu = #{mainmenu}, menu_type = #{type}, menu_price = #{price}
+			, menu_detail = #{detail}, menu_pic = #{imgFileName}, menu_size = #{serviceSize}, menu_cal = #{calorie}
+			, menu_pro = #{protein}, menu_na = #{natrium}, menu_sug = #{sugar}, menu_fat = #{fat}, menu_alg = #{allergy})
+		WHERE menu_no = #{no}
+	</update>
+	
+	Menu 삭제	
+	<delete id="removeMenu" parameterType="int">
+		DELETE FROM t_menu
+		WHERE menu_no = #{no}
+	</delete>
+		 -->
+	
+</mapper>

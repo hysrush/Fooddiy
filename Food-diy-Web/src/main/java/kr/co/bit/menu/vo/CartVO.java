@@ -1,7 +1,9 @@
 package kr.co.bit.menu.vo;
 
+
 public class CartVO {
 	
+	private int no;
 	private String id;
 	private String name;
 	private String price;
@@ -13,9 +15,15 @@ public class CartVO {
 	private String topping;
 	private String vegetable;
 	private String sauce;
+	private String regDate;
 	
 	
-	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getId() {
 		return id;
 	}
@@ -76,13 +84,17 @@ public class CartVO {
 	public void setSauce(String sauce) {
 		this.sauce = sauce;
 	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
 	@Override
 	public String toString() {
-		return "CartVO [id=" + id + ", name=" + name + ", price=" + price + ", size=" + size + ", pic=" + pic
-				+ ", bread=" + bread + ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable
-				+ ", sauce=" + sauce + "]";
+		return "CartVO [no=" + no + ", id=" + id + ", name=" + name + ", price=" + price + ", size=" + size + ", pic="
+				+ pic + ", bread=" + bread + ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable
+				+ ", sauce=" + sauce + ", regDate=" + regDate + "]";
 	}
-	
-	
 	
 }
