@@ -139,7 +139,7 @@
       		
 		// 2. ajax call
 		$.ajax({
-              url : "./test",
+              url : "./sido",
               type: "post",
               data : { "sido" : sido },
               success : function(responseData){
@@ -161,7 +161,7 @@
 		console.log( " 구군 값 : " + $("#gugun").val());
 		
 		$.ajax({
-			url : "./test3",
+			url : "./gugun",
 			type : "post",
 			data : {"gugun" : gugun},
 			success : function(responseData){
@@ -169,40 +169,25 @@
 						var data = JSON.parse(responseData);
 						
 						$('#storeList').empty();
+						
 						// div요소 변경
 						$('#storeDiv').css("max-height","250px");
 						$('#storeDiv').css("overflow","auto");
-						// strong요소 변경 => 나중에 고민,..
-						switch (gugun) {
-						case "1":
-							gugun = "서초구";
-							break;
-						case "2":
-							gugun = "강남구";
-							break;
-						case "3":
-							gugun = "노원구";
-							break;
-						case "4":
-							gugun = "도봉구";
-							break;
-						default:
-							break;
-						}
-						// 검색완료 시, 구군 정보 표시
-						$("strong#searchInfo").text('"' + gugun + '"(으)로 검색');
+						
+						// 검색완료 시, 구군 이름 표시
+						$("strong#searchInfo").text('"' + data.locationName + '"(으)로 검색');
 						
 					 	for(var i = 0 ; i < data.storeList.length; i++){
 							var contents = '';
 							contents += '<tr>';
 							contents +=		'<td width="25%">';
 							contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
-							contents +=			'<strong class="storeName" value="'+data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '점</strong>';
-							contents +=			'<div class="storePhone post-meta">'+ data.storeList[i].storePhone +'</div>';
+							contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '점</strong>';
+							contents +=			'<div class="storePhone post-meta">' + data.storeList[i].storePhone +'</div>';
 							contents +=		'</td>';
 							contents +=		'<td class="storeAddr">'+ data.storeList[i].storeAddr +'</td>';
 							contents +=		'<td><input class="btn btn-success btn-sm" type="button" name="storeChoice"';
-							contents += 				'onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" data-dismiss="modal" /></td>';
+							contents += 				'onclick="goStoreName(\''+data.storeList[i].storeName+'\')" value="선택" data-dismiss="modal" /></td>';
 							contents += '</tr>';
 						
 							$('#storeList').append(contents);
@@ -212,12 +197,12 @@
 		
 	});
 	
-	function test(data){
+	function goStoreName(data){
 			
 		//alert('선택한 매장명 : ' + data);
 		
-		var a = $("#visitStore").val();
-		//alert('매장 초기값 : ' + a);
+		var basic = $("#visitStore").val();
+		//alert('매장 초기값 : ' + basic);
 		
 		// 값넣기		
 		$("#visitStore").val(data);

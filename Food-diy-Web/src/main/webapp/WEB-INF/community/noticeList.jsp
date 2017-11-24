@@ -114,7 +114,14 @@
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
 								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-								<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
+								<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a>
+									<ul>
+										<li><a href="#">Animals</a></li>
+										<li class="active"><a href="#">Business</a></li>
+										<li><a href="#">Sports</a></li>
+										<li><a href="#">People</a></li>
+									</ul>
+								</li>
 								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>

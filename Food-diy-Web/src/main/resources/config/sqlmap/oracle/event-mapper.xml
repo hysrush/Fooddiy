@@ -98,6 +98,12 @@
 		where  = #{no}
 	</select>
 	
+	<select id="locationName" parameterType="String" resultType="String">
+		SELECT LOC_NAME
+		FROM hr.T_LOCATION
+		WHERE LOC_NO = #{gugun}
+	</select>
+	
 	<!-- 새글 등록  -->
 	<insert id="insertEvent" parameterType="eventVO">
 		
