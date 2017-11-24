@@ -1,21 +1,17 @@
 package kr.co.bit.menu.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.Select_Ing_Service;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.IngredientsVO;
@@ -27,8 +23,10 @@ import kr.co.bit.user.vo.UserVO;
 public class Select_Ing_Controller {
 	
 	@Autowired
-	private Select_Ing_Service service;
+	private Select_Ing_Service ingService;
 	
+	@Autowired
+	private CartService cartService;
 	
 	
 	@RequestMapping(value="/select_ingredients.do", method=RequestMethod.POST)
@@ -43,7 +41,7 @@ public class Select_Ing_Controller {
 		}
 		System.out.println(id);
 		
-		List<IngredientsVO> ingList = service.selectAllIng();
+		List<IngredientsVO> ingList = ingService.selectAllIng();
 		// Form에서 가져온 Data를 CartVO 객체형태로 저장
 		CartVO cartVO = new CartVO();
 		
@@ -73,7 +71,7 @@ public class Select_Ing_Controller {
 	@RequestMapping(value ="/select_ingredients.do", method = RequestMethod.GET)
 	public ModelAndView Ing_listAll() {
 		
-		List<IngredientsVO> ingList = service.selectAllIng();
+		List<IngredientsVO> ingList = ingService.selectAllIng();
 		
 		ModelAndView  mav = new ModelAndView();
 		mav.setViewName("menu/select_ingredients");
@@ -87,9 +85,14 @@ public class Select_Ing_Controller {
 	}
 	
 	@RequestMapping(value ="/cart.do", method = RequestMethod.POST)
-	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese, @RequestParam("topping") String topping, 
+	public ModelAndView Add_cart(HttpSession session,@RequestParam("bread") String bread, @RequestParam("cheese") String cheese, @RequestParam("topping") String topping, 
 			@RequestParam("vegetable") String vegetable, @RequestParam("sauce") String sauce) {
 		
+		CartVO cart = (CartVO)session.getAttribute("cartVO");
+		System.out.println(cart.getId());
+		System.out.println(cart.getName());
+		System.out.println(cart.getSize());
+		System.out.println(cart.getPrice());
 		System.out.println(bread);
 		System.out.println(cheese);
 		System.out.println(topping);

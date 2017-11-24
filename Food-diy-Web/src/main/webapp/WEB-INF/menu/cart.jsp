@@ -166,13 +166,13 @@
 																	</a>
 																</td>
 																<td class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
+																	<a href="#">
 																		<img width="200" height="200" alt="" class="img-responsive" 
-																			src="${ pageContext.request.contextPath }/resources/img/menu/mn-Steak-Cheese.jpg">
+																			src="${ pageContext.request.contextPath }/upload/menu/bacon_egg_cheese.jpg">
 																	</a>
 																</td>
-																<td class="product-name">
-																	<a href="shop-product-sidebar.html">스테이크 & 치즈 - 15cm</a>
+																<td>
+																	<a href="#">스테이크 & 치즈 - 15cm</a>
 																</td>
 																<td class="product-bread">
 																	허니오트<br>
@@ -208,13 +208,13 @@
 																	</a>
 																</td>
 																<td class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
+																	<a href="#">
 																		<img width="100" height="100" alt="" class="img-responsive" 
 																			src="${ pageContext.request.contextPath }/resources/img/menu/mn-Turkey-Breast.jpg">
 																	</a>
 																</td>
-																<td class="product-name">
-																	<a href="shop-product-sidebar.html">터키 베이컨 - 15cm</a>
+																<td>
+																	<a href="#">터키 베이컨 - 15cm</a>
 																</td>
 																<td class="product-bread">
 																	위트<br>
