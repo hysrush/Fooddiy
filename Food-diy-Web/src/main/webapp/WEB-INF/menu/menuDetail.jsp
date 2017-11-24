@@ -112,6 +112,7 @@ $(document).ready(function(){
 						<input type="hidden" name="name" value="${ menuDetailVO.name }">
 						<input type="hidden" name="price" id="sand_price" value="${ menuDetailVO.price }">
 						<input type="hidden" name="size" id="sand_size" value="15cm">
+						<input type="hidden" name="pic" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
 						<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
 					</form>
 

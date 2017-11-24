@@ -1,19 +1,14 @@
 package kr.co.bit.menu.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.menu.service.Select_Ing_Service;
@@ -44,6 +39,7 @@ public class Select_Ing_Controller {
 		System.out.println(id);
 		
 		List<IngredientsVO> ingList = service.selectAllIng();
+		
 		// Form에서 가져온 Data를 CartVO 객체형태로 저장
 		CartVO cartVO = new CartVO();
 		

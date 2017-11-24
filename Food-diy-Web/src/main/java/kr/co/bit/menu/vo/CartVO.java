@@ -1,14 +1,12 @@
 package kr.co.bit.menu.vo;
 
-import java.util.List;
-import java.util.Map;
-
 public class CartVO {
 	
 	private String id;
 	private String name;
 	private String price;
 	private String size;
+	private String pic;
 	
 	private String bread;
 	private String cheese;
@@ -42,6 +40,12 @@ public class CartVO {
 	public void setSize(String size) {
 		this.size = size;
 	}
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 	public String getBread() {
 		return bread;
 	}
@@ -74,9 +78,11 @@ public class CartVO {
 	}
 	@Override
 	public String toString() {
-		return "CartVO [id=" + id + ", name=" + name + ", price=" + price + ", size=" + size + ", bread=" + bread
-				+ ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + "]";
+		return "CartVO [id=" + id + ", name=" + name + ", price=" + price + ", size=" + size + ", pic=" + pic
+				+ ", bread=" + bread + ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable
+				+ ", sauce=" + sauce + "]";
 	}
+	
 	
 	
 }

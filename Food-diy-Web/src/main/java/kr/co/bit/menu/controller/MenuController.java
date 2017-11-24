@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -109,8 +108,8 @@ public class MenuController {
 	
 	
 	// '주문하기'선택 후 매장화면으로	
-	/*@RequestMapping(value="/select_ingredients.do", method=RequestMethod.POST)
-	public CartVO Session(HttpSession session, String name, String price, String size) {
+	@RequestMapping(value="/select_ingredients.do", method=RequestMethod.POST)
+	public CartVO Session(HttpSession session, String name, String price, String size, String pic) {
 		
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = user.getId();
@@ -121,13 +120,18 @@ public class MenuController {
 		cartVO.setName(name);
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
+		cartVO.setPic(pic);
 		cartVO.setId(id);
 				
-		session.setAttribute("cartVO", cartVO);		
+		session.setAttribute("cartVO", cartVO);
+		
+		//ModelAndView  mav = new ModelAndView();
+		//mav.setViewName("menu/select_ingredients");
+		//mav.addObject("cartVO", cartVO);
 		
 		
 		return cartVO;				
-	}*/
+	}
 	
 
 	
