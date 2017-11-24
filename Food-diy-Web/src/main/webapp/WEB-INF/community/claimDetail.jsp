@@ -131,7 +131,7 @@
 												<th width="15%">첨부파일</th>
 												<td colspan="3">
 													<div align="center">
-														<img alt="" class="img-responsive img-rounded" src="../upload/${ claimVO.file }" style="height:400px">
+														<img alt="" class="img-responsive img-rounded" src="../upload/${ claimVO.file }" style="max-height:400px">
 													</div>
 												</td>
 											</tr>

@@ -96,6 +96,15 @@
 		font-weight: bold;
 		color: black;
 	}
+	#csForm th {
+		min-width: 78px;
+		background-color: #7aa93c;
+		color: white;
+		font-weight: bold;
+	}
+	#storeName {
+		background-color: white;
+	}
 </style>
 <script type="text/javascript">
 	
@@ -236,7 +245,7 @@
 
 </head>
 <body>
-	<div class="body">
+	<div class="body" style="min-width: 320px;">
 		<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
@@ -312,18 +321,10 @@
 											<form:form commandName="claimVO" method="POST" name="csForm" id="csForm" enctype="multipart/form-data" >
 												<table class="table table-bordered">
 													<tr>
-														<td>
+														<th>
 															<form:label for="type" path="type" cssErrorClass="error">분야</form:label>
-														</td>
+														</th>
 														<td>
-															<%-- <form:select path="type" class="form-control" id="type" name="type">
-																<form:option value="" selected="selected">문의유형</form:option>
-																<form:option value="I">문의</form:option>
-																<form:option value="P">칭찬</form:option>
-																<form:option value="C">불만</form:option>
-																<form:option value="S">제안</form:option>
-																<form:option value="X">기타</form:option>
-															</form:select> --%>
 															 <form:select path="type" class="form-control" id="type" name="type">
 															 	<option value="" >문의유형</option>
 															 	<form:options items="${typeCode}"/>
@@ -331,37 +332,27 @@
 														</td>
 													</tr>
 													<tr>
-														<td>
+														<th>
 															<label for="email">답변 메일</label>
-														</td>
+														</th>
 														<td>
 															<form:input path="emailID" type="text" class="mail_input form-control" 
-																	id="emailID" name="emailID" value="로그인회원emailID"/>
+																	id="emailID" name="emailID" value="loginUserEmailId"/>
 															<span style="float: left;">&nbsp;&nbsp;<i class="fa fa-at"></i>&nbsp;&nbsp;</span>
 															<input type="text" class="mail_input form-control" 
-																	id="inputDomain" name="inputDomain" value="로그인회원emailDomain" readonly="readonly"/>
+																	id="inputDomain" name="inputDomain" value="loginUserEmailDomain" readonly="readonly"/>
 															<span style="float: left;">&nbsp;&nbsp;</span>
-															<%--<select class="mail_sel form-control" id="selectEmail" onchange="checkEmail()">
-																<option value="로그인회원emailDomain">선택하세요</option>
-																<option value="gmail.com">gmail.com</option>
-																<option value="hanmail.net">hanmail.net</option>
-																<option value="hotmail.com">hotmail.com</option>
-																<option value="nate.com">nate.com</option>
-																<option value="naver.com">naver.com</option>
-																<option value="yahoo.co.kr">yahoo.co.kr</option>
-																<option value="etc">직접입력</option>
-															</select> --%>
 															<form:select path="emailDomain" class="mail_sel form-control" id="emailDomain" name="emailDomain">
-																<option value="로그인회원emailDomain">선택하세요</option>
+																<option value="loginUserEmailDomain">선택하세요</option>
 																<form:options items="${domainCode}"/>
 																<option value="etc">직접입력</option>
 															</form:select>
 														</td>
 													</tr>
 													<tr>
-														<td>
+														<th>
 															<label for="phone">연락처</label>
-														</td>
+														</th>
 														<td>
 															<form:select path="phone1" class="phone_sel form-control" id="phone1" name="phone1">
 																<form:option value="010">010</form:option>
@@ -380,52 +371,57 @@
 														</td>
 													</tr>
 													<tr>
-														<td>
+														<th>
 															<label>장소</label>
-														</td>
+														</th>
 														<td>
 															<div style="float: left;">
 																<input type="radio" name="radioVisit" class="radioVisit" value="Y" checked="checked">매장 방문
 																<input type="radio" name="radioVisit" class="radioVisit" value="N" >매장 방문 외
 															</div>
-															<br>
-															<div class="visit col-md-12" style="float: left;">
-																<label for="visitStore" >방문매장&nbsp;&nbsp;</label>
-																<button type="button" class="btn btn-success mr-xs mb-sm" data-toggle="modal" data-target="#formModal">매장찾기</button>
-																<!-- 매장찾기 모달창 -->
-																<jsp:include page="/resources/include/claim/visitStore-Modal.jsp"></jsp:include>
-															</div>
-															<div class="visit col-md-12" style="float: left;">
-																<label for="visitDate" >방문일&nbsp;&nbsp;</label>
-																<div class="input-group date col-md-4" >
-																	<form:input path="visitDate" type="text" class="form-control" readonly="readonly" placeholder="방문일" name="visitDate" id="visitDate"/>
-																	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+															<br><br>
+															<div class="col-md-12" style="float: left;">
+																<div class="visit col-md-6" style="float: left;">
+																	<label for="visitStore" >방문매장&nbsp;&nbsp;</label>
+																	<div class="input-group date col-md-12" data-toggle="modal" data-target="#formModal">
+																		<input type="text" class="form-control" readonly="readonly" placeholder="방문매장" name="storeName" id="storeName"/>
+																		<span class="input-group-addon"><i class="fa fa-home"></i></span>
+																	</div>
+																	<!-- 매장찾기 모달창 -->
+																	<jsp:include page="/resources/include/claim/visitStore-Modal.jsp"></jsp:include>
+																</div>
+																<div class="visit col-md-6" style="float: left;">
+																	<label for="visitDate" >방문일&nbsp;&nbsp;</label>
+																	<div class="input-group date col-md-12" >
+																		<form:input path="visitDate" type="text" class="form-control" readonly="readonly" placeholder="방문일" name="visitDate" id="visitDate"/>
+																		<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+																	</div>
 																</div>
 															</div>
        													</td>
 													</tr>
 													<tr>
-														<td>
+														<th>
 															<label for="title">제목</label>
-														</td>
+														</th>
 														<td>
 															<form:input path="title" type="text" class="form-control" id="title" name="title" placeholder="제목"/>
 															<form:errors path="title" class="form-control"></form:errors>
 														</td>
 													</tr>
 													<tr>
-														<td>
+														<th>
 															<label for="content">내용</label>
-														</td>
+														</th>
 														<td>
 															<form:textarea path="content" class="form-control" rows="5" id="content" name="content" placeholder="내용"/>
 															<form:errors path="content" class="form-control"></form:errors>
 														</td>
 													</tr>
 													<tr>
-														<td>
+														<th>
 															<label for="file">파일첨부</label>
-														</td>
+														</th>
 														<td>
 															<div class="file_BasicSection">
 																<div class="fileDiv col-md-12" id="fileDiv1" >

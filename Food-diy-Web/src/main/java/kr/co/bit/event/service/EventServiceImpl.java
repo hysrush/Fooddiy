@@ -46,8 +46,6 @@ public class EventServiceImpl implements EventService{
 		return list;
 	}
 	
-	
-	
 	//Event 湲� 蹂닿린
 	@Override
 	public EventBoardVO selectOneEvent(int no) {
@@ -80,15 +78,10 @@ public class EventServiceImpl implements EventService{
 	}
 
 
-
 	@Override
 	public List selectLocation(String sido) {
 		List list = eventDAO.selectLocation(sido);
 		return list;
 	}
 
-
-	
-	
-	
 }

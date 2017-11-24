@@ -53,9 +53,10 @@
 		INSERT INTO t_claim(claim_no, claim_title, claim_content, claim_type, claim_file,
 							user_id, user_emailID, user_emailDomain,
 							user_phone1, user_phone2, user_phone3, claim_date, claim_store)
-		VALUES(seq_t_claim_no.nextval, #{title}, #{content}, #{type}, #{file},
+		VALUES(seq_t_claim_no.nextval, #{title}, #{content}, #{type}, #{file, jdbcType=VARCHAR},
 				#{writer}, #{emailID}, #{emailDomain},
-				#{phone1}, #{phone2}, #{phone3},#{visitDate}, #{visitStore})
+				#{phone1}, #{phone2}, #{phone3},
+				#{visitDate, jdbcType=DATE}, #{visitStore, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- Claim 글 수정 -->

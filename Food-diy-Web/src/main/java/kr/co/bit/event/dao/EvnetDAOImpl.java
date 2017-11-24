@@ -52,10 +52,6 @@ public class EvnetDAOImpl implements EventDAO {
 		return list;
 	}
 	
-	
-	
-	
-	
 	@Override
 	public void insert(EventBoardVO eventVO) { 
 		sqlSession.insert(url + "insertEvent" , eventVO);
@@ -87,8 +83,5 @@ public class EvnetDAOImpl implements EventDAO {
 		
 		return list;
 	}
-	
-	
-	
 
 }
