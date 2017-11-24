@@ -12,7 +12,7 @@
 									<tr>
 										<td width="90%">
 											<img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/vegetable/mobile/${ ingList.pic}" />
-											<strong class = "name">&nbsp;${ ingList.name} </strong><strong class = "id">${ ingList.eng_name}</strong>
+											<strong class = "name">&nbsp;${ ingList.name} </strong><strong class = "eng_name">${ ingList.eng_name}</strong>
 										</td>
 									</tr>
 								</tbody>
@@ -52,7 +52,7 @@
 		$('li .product-vegetable-area').each(function() {
 			
 			var name = $(this).find('.name').text(); 
-			var id  =  $(this).find('.id').text().split(' ');
+			var id  =  $(this).find('.eng_name').text().split(' ');
 			
 			if(id.length == 1) {
 				id = id[0];
@@ -89,7 +89,8 @@
 					
 					
 					var td = '<td class="' + 'vegetable-name"' + '">';
-					td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+					td += '<strong class = "'+ 'name">' + name + '</strong>';
+					td += '<strong class = "'+ 'eng_name">'+ id + '</strong>';
 					td += '</td>';
 					td += '<td class = "'+ 'vegetable-plus-minus">' + '(빼기)';
 					td += '</td>';
@@ -97,7 +98,8 @@
 					var row =  '<tr class = "'+ id + '">';
  					row += '<td width ="' + '30%"> </td>'
  					row += '<td class="' + 'vegetable-name">';
-					row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+					row += '<strong class = "'+ 'name">'+ name + '</strong>';
+					row += '<strong class = "'+ 'eng_name">'+ id + '</strong>';
 					row += '</td>';
 					row += '<td class = "'+ 'vegetable-plus-minus">' + '(빼기)' + '</td>';
 					row += '</tr>';
@@ -192,7 +194,7 @@
 				});
 				
 				var td = '<td class="' + 'vegetable-name"' + '">';
-				td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+				td += '<strong class = "'+ 'name">' + name + id + '</strong>';
 				td += '</td>';
 				td += '<td class = "'+ 'vegetable-plus-minus">' + '(적게)';
 				td += '</td>';
@@ -262,7 +264,7 @@
 				});
 				
 				var td = '<td class="' + 'vegetable-name"' + '">';
-				td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+				td += '<strong class = "'+ 'name">' + name + id + '</strong>';
 				td += '</td>';
 				td += '<td class = "'+ 'vegetable-plus-minus">' + '(많이)';
 				td += '</td>';

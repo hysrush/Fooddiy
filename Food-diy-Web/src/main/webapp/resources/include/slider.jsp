@@ -8,13 +8,11 @@
 										<!-- 공지사항 -->
 			<div class="col-xs-12 col-md-2" style="margin:10px 0px">
 					<div style="text-align:center; padding:5px;">공지사항&nbsp;
-					<a href="${ pageContext.request.contextPath }/notice/noticeList.jsp">more+</a><hr/>
-						<div><a href="${ pageContext.request.contextPath }/notice/noticeDetail.">공지사항 제목</a></div>
-						<div><a href="${ pageContext.request.contextPath }/notice/detail.do">공지사항 제목</a></div>
-						<div><a href="${ pageContext.request.contextPath }/notice/detail.do">공지사항 제목</a></div>
+					<a href="${ pageContext.request.contextPath }/community/noticeList.do">more+</a><hr/>
+						<div><a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a></div>
 						<%-- <c:forEach items="${ notice }" begin="0" end="4">
 							<div>
-								<a href="${ pageContext.request.contextPath }/notice/detail.do">${ notice.title }</a>
+								<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">${ notice.title }</a>
 							</div>
 						</c:forEach> --%>
 					</div>
@@ -76,12 +74,17 @@
 							      </div>
 							    </div>
 							    <div class="item">
-							      <img src="${ pageContext.request.contextPath }/resources/img/slides/2.jpg" alt="">
+							      <img src="${ pageContext.request.contextPath }/resources/img/slides/4.jpg" alt="">
 							      <div class="carousel-caption">
 							       
 							      </div>
 							    </div>
-							    
+							     <div class="item">
+							      <img src="${ pageContext.request.contextPath }/resources/img/slides/3.jpg" alt="">
+							      <div class="carousel-caption">
+							       
+							      </div>
+							    </div>
 							  </div>
 							
 							  <!-- Controls -->
@@ -110,13 +113,13 @@
 							  <!-- Wrapper for slides -->
 							  <div class="carousel-inner" role="listbox">
 							    <div class="item active">
-							      <img src="${ pageContext.request.contextPath }/resources/img/slides/xs-1.jpg" alt="">
+							      <img class="col-xs-12" src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
 							      <div class="carousel-caption">
 							       
 							      </div>
 							    </div>
 							    <div class="item">
-							      <img src="${ pageContext.request.contextPath }/resources/img/slides/xs-2.jpg" alt="">
+							      <img src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
 							      <div class="carousel-caption">
 							       
 							      </div>

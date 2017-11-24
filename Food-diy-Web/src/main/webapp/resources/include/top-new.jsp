@@ -123,16 +123,16 @@
 											<a href="#" class="btn-remove" title="Remove Product"> <i class="fa fa-times"></i>
 											</a>
 											<figure class="product-image-area">
-												<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> <img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Steak-Cheese.jpg" alt="Product Name">
+												<a href="#" title="Product Name" class="product-image"> <img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Steak-Cheese.jpg" alt="Product Name">
 												</a>
 											</figure>
 											<div class="product-details-area">
-												<h2 class="product-name">
-													<a href="demo-shop-9-product-details.html" title="Product Name">스테이크 & 치즈</a>
-												</h2>
-
+												<h1 class="product-name">
+													<a href="#" title="Product Name">스테이크 & 치즈</a>
+												</h1>
+												
 												<div class="cart-qty-price">
-													1 X <span class="product-price">6,100원</span>
+													<span>1</span> X <span class="product-price">6,100</span>
 												</div>
 											</div>
 										</div>
@@ -140,27 +140,30 @@
 											<a href="#" class="btn-remove" title="Remove Product"> <i class="fa fa-times"></i>
 											</a>
 											<figure class="product-image-area">
-												<a href="demo-shop-9-product-details.html" title="Product Name" class="product-image"> <img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Turkey-Breast.jpg" alt="Product Name">
+												<a href="#" title="Product Name" class="product-image"> <img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Turkey-Breast.jpg" alt="Product Name">
 												</a>
 											</figure>
 											<div class="product-details-area">
 												<h2 class="product-name">
-													<a href="demo-shop-9-product-details.html" title="Product Name">터키 베이컨</a>
+													<a href="#" title="Product Name">터키 베이컨</a>
 												</h2>
 
 												<div class="cart-qty-price">
-													1 X <span class="product-price">5,300원</span>
+													<span>1</span> X <span class="product-price">5,300</span>
 												</div>
 											</div>
 										</div>
 									</div>
 
 									<div class="cart-totals">
-										Total: <span>11,400원</span>
+										Total: <span></span>
 									</div>
 
 									<div class="cart-actions">
 										<a href="#" class="btn btn-primary" style="background-color: #0cc485;">바로주문</a> <a href="${ pageContext.request.contextPath}/menu/cart.jsp" class="btn btn-primary" style="background-color: #eb2771;">장바구니</a>
+									</div>
+									<div class = "cart-none"style="text-align: center; display: none; padding: 10px 10px 10px 10px; margin-top: 10px;">
+										<h4>상품 주문내역이 없습니다.</h4>
 									</div>
 								</div>
 							</div>
@@ -173,10 +176,49 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
+			for(var i = 0; i < $('.commaN').length; ++i) {
+				$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));
+			}
+			
+			
 			$('.cart-dropdown-icon').click(function() {
 				$('.cart-dropdownmenu').toggle(500);
 			});
+			
+			$('.cart-products .product').each(function() {
+				$(this).find('.btn-remove').click(function() {
+					$(this).closest('.product').remove();
+					var qty = $('.cart-qty').text();
+					$('.cart-qty').text(qty-1);
+					
+					if($('.cart-products .product').length == 0) {
+						$('.cart-totals').hide();
+						$('.cart-actions').hide();
+						$('.cart-none').show();
+					}
+				});
+			});
 		})
+		
+		
+		//콤마찍기
+		function comma(str) {
+		    str = String(str);
+		    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+		}
+		 
+		//콤마풀기
+		function uncomma(str) {
+		    str = String(str);
+		    return str.replace(/[^\d]+/g, '');
+		}
+		 
+		//값 입력시 콤마찍기
+		function inputNumberFormat(obj) {
+		    obj.value = comma(uncomma(obj.value));
+		}
+
 	</script>
 
 	<div class="header-container header-nav header-nav-center">
@@ -276,33 +318,36 @@
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp" data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>
 							</ul></li>
 						<!-- 회원 로그인하면 My page -->
-						<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.do" class="dropdown-toggle"> My Page </a>
-							<ul class="dropdown-menu">
-								<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
-								<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
-							</ul></li>
+						<c:if test="${ not empty loginVO }">
+							<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.do" class="dropdown-toggle"> My Page </a>
+								<ul class="dropdown-menu">
+									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do">나의 문의사항</a></li>
+								</ul>
+							</li>
+						</c:if>
 						<!-- 비회원 로그인하면 주문내역 조회 -->
 						<c:if test="${ not empty nonMember }">
-							<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/nonmemberMenu.jsp">주문내역조회</a></li>
+							<li class="dropdown"><a href="${ pageContext.request.contextPath }/sign/nonmemberMenu.jsp">주문내역조회</a></li>
 						</c:if>
 						<c:choose>
-							<c:when test="${ empty userVO }">
+							<c:when test="${ empty loginVO and empty nonMember }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/login.do">
+									<a href="${ pageContext.request.contextPath }/sign/login.do">
 										<i class="fa fa-user"></i> Sign IN
 									</a>
 								</li>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/sign/signUp.do">
+									<a href="${ pageContext.request.contextPath }/sign/signUp.do">
 										<i class="fa fa-user"></i> Sign UP
 									</a>
 								</li>
 							</c:when>
-							<c:otherwise>
+							<c:when test="${ not empty loginVO }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.jsp"> <i class="fa fa-user"></i>${ userVO.id }</a>
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.do"> <i class="fa fa-user"></i>${ loginVO.id }</a>
 									<ul class="dropdown-menu">
 										<li>
 											<div class="dropdown-mega-content">
@@ -313,7 +358,7 @@
 																<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.jpg" alt="">
 															</div>
 															<p>
-																<strong>${ userVO.type }</strong> <span>${ userVO.grade }</span>
+																<strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span>
 															</p>
 														</div>
 													</div>
@@ -327,6 +372,11 @@
 											</div>
 										</li>
 									</ul></li>
+							</c:when>
+							<c:otherwise>
+								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
+									<a href="${ pageContext.request.contextPath }/sign/nonlogout?id=${nonMember.id}"><i class="fa fa-user"></i> ${ nonMember.name }</a>
+								</li>
 							</c:otherwise>
 						</c:choose>
 					</ul>

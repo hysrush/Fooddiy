@@ -14,4 +14,5 @@ public interface ClaimDAO {
 	void update(ClaimBoardVO claimVO);
 	void delete(int no);
 	void addViewcnt(int no);
+	List<ClaimBoardVO> selectClaim(String id);
 }
