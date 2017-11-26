@@ -116,39 +116,29 @@
 								<ul class="nav nav-list mb-xlg">
 									<li class="active"><a href="${ pageContext.request.contextPath }/store/findStore.do">매장 찾기</a></li>
 									<li>
-										<a href="${ pageContext.request.contextPath }/store/myStore.do">My 매장</a>
+										<a href="${ pageContext.request.contextPath }/store/myStore.do">근처 매장</a>
 									</li>
 								</ul>
 							</aside>
 						</div>
-						<div class="col-md-9">
-							<!-- START -->
-							<div class="row">
-								<div class="col-md-12">
+							<div class="col-md-9">
 		
 									<div class="tabs tabs-bottom tabs-center tabs-simple">
 										<ul class="nav nav-tabs">
-											<li class="">
-												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">근처 매장</a>
-											</li>
 											<li class="active">
-												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="true">매장 찾기</a>
+												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">매장찾기</a>
 											</li>
-										</ul>
-										<div class="tab-content">
+										</ul>		
+				
+							<div class="tab-content">
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 												<div class="center">
-												<!--  cart -->
-											 			<div class="col-md-12">
+												
+									<div class="col-md-12">
 										<div class="featured-box featured-box-primary align-left mt-xlg">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">지역검색</h4>
-												<!-- 	<div class="row">			
-														<div class="col-md-12">
-															<label>매장명 검색</label>
-															<input type="text" value="" class="form-control">
-														</div>
-													</div> -->
+											
 													
 												
 													<div class="row">
@@ -178,7 +168,7 @@
 														</div>
 													</div>
 												
-													<!--  AJAX 테이블이 생성될 공간  -->
+													<!--   AJAX 테이블이 생성될 공간 --> 
 														<div class="row">
 															<div class="col-md-12">
 																<form action="storeEventPage.do" method ="post">
@@ -202,58 +192,32 @@
 														</div>
 										</div>
 									</div>	
-												<!--  선택한 매점 이름과 매칭되는 지도api 불러오기  -->
+												 <!--   선택한 매점 이름과 매칭되는 지도api 불러오기 -->
 													<div class="row">
 														<div class="col-md-12">
-															<h4>Markers</h4>
 															<div id="map" style="height: 500px;"></div>
 														</div>
 													</div>
-												
-												
-												
-													
-													<!--  -->
-										<div class="col-md-12">
-											<ul class="pagination">
-												<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-												<li class="active"><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-											</ul>
-										</div>
-													
-													
-													
-													
-													
 												</div>
 											</div>
-											
-											</div>
 										</div>
-										
-								</div>
+									</div>
 							</div>
-							
-
 						</div>
-					</div>
-				</div>
-			</div>
-			
-			<footer id="footer">
-				<jsp:include page="/resources/include/bottom.jsp"/>
-			</footer>
-		</div>
-	</div>	
-	
-	
-	
-	
-	
+					</div>			
+				</div><!-- container -->
+			</div>	<!-- main -->				
+				<footer id="footer">
+					<jsp:include page="/resources/include/bottom.jsp"/>
+				</footer>
+		</div> <!-- body -->						
+							
+					<!--  hidden 값으로 db에서 매장 주소정보를 가져온다 -->				
+		  <c:forEach var="row" items="${ storeList }" varStatus="i">
+		  	<input type="hidden" name="storeAddrInfo" value="${row.storeAddr}">	
+		  	<input type="hidden" name="storeNameInfo" value="${row.storeName}">    
+		  	<input type="hidden" name="storePhoneInfo" value="${row.storePhone}">    
+		  </c:forEach>		
 	
 	
 	
@@ -347,9 +311,9 @@
 										contents += '<tr>';
 										contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
 										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
-										contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
-										contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
-										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+										contents +=		'<td id="storeAddr" value="'+data.storeList[i].storeAddr +'">'+ data.storeList[i].storeAddr+'</td>';
+										contents +=		'<td id="storePhone" value="'+data.storeList[i].storePhone +'">'+ data.storeList[i].storePhone+'</td>';
+										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeAddr+'\')" value="선택" /></td>';
 										contents += '</tr>';
 									
 										$('#storeList').append(contents);
@@ -359,7 +323,66 @@
 					});
 		
 				});
+				 // 매장명으로 주소 가져오기 
+				function test(storeAddr){
+ 					alert('storeAddr = ' + storeAddr);
+ 					
+ 					var btn = this;
+ 					var store = storeAddr;
+ 					
+ 					$.ajax({
+ 						url : "./test4",
+ 						type : "post",
+ 						data : {"store" : store},
+ 						success : function(responseData){
+ 							var data = JSON.parse(responseData);
+ 							
+ 							alert("result = " +data.result);
+ 							
+ 							
+ 							var geocoder = new daum.maps.services.Geocoder();
+ 							
+
+	 						// 주소로 좌표를 검색합니다
+	 						geocoder.addressSearch( store, function(result, status) {
+	
+	 						    // 정상적으로 검색이 완료됐으면 
+	 						     if (status === daum.maps.services.Status.OK) {
+	
+	 						        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	
+	 						        // 결과값으로 받은 위치를 마커로 표시합니다
+	 						        var marker = new daum.maps.Marker({
+	 						            map: map,
+	 						            position: coords
+	 						        });
+	
+	 						        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	 						        var infowindow = new daum.maps.InfoWindow({
+	 						            content: '<div style="width:150px;text-align:center;padding:6px 0;">서브웨이 노원점</div>'
+	 						        });
+	 						        infowindow.open(map, marker);
+	
+	 						        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	 						        map.setCenter(coords);
+	 						    } 
+	 						});    
+ 							
+ 						}
+ 						
+ 					});
+ 					
+ 					
+ 					
+ 				}
+				
+				
+				
+				
 		</script>
+		
+		
+		
 		
 		<script>
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -371,10 +394,6 @@
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 			var map = new daum.maps.Map(mapContainer, mapOption); 
 		</script>
-		
-		
-		
-		
 
 	</body>
 </html>

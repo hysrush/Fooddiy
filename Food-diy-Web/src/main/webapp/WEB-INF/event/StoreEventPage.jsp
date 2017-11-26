@@ -356,7 +356,7 @@
 										contents += '<tr>';
 										contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
 										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
-										contents +=		'<td>'+ data.storeList[i].storeAddr+'</td>';
+										contents +=		'<td >'+ data.storeList[i].storeAddr+'</td>';
 										contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
 										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
 										contents += '</tr>';
@@ -390,25 +390,23 @@
  							
  						 	var contents ='';
  							
-								
 							contents +='<div class="col-md-12">';
 							contents += 	'<div class="recent-posts">';
-							contents += 	'<article class="post">';
-							contents += 			'<div>';
+							contents += 		'<article class="post">';
+							contents += 			'<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{\'items\': 1, \'margin\': 10, \'animateOut\': \'fadeOut\', \'autoplay\': true, \'autoplayTimeout\': 3000}">';
+							contents += 				'<div>';
 							contents += 					'<img alt="" class="img-responsive img-rounded" src="../upload/'+data.eventList[i].imgFileName+'"style="height:400px">';
-							contents += 			'</div>';					
+							contents += 				'</div>';
+							contents += 			'</div>';
 							contents += 			'<div class="heading heading-tertiary heading-border heading-bottom-border">';
 							contents += 				'<h2 class="heading-tertiary"><strong>'+ data.eventList[i].title+'</strong></h2>';
 							contents += 			'</div>';			
-							contents += 				'<h5><strong>$'+ data.eventList[i].content + '</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>';		
+							contents += 			'<h5><strong>$'+ data.eventList[i].content + '</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>';		
 							contents += 			'<span class="label label-tertiary">시작일 : '+data.eventList[i].startDate + '</span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 :' + data.eventList[i].endDate +'</span>';											
-							contents += 			'<span></span>';
-							contents += 			'<span></span>';			
 							contents += 		'</article>';
 							contents += 	'</div>';
 							contents += '</div>';
 							//'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
-							//contents += 		'<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{\'items\': 1, \'margin\': 10, \'animateOut\': \'fadeOut\', \'autoplay\': true, \'autoplayTimeout\': 3000}">';
 							//contents += 			'</div>';
 							$('#eventByStore').append(contents);
  						}

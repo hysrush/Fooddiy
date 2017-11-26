@@ -114,7 +114,7 @@ public class EventController {
 		response.getWriter().print(jsonObj.toString());
 
 	}
-	
+	 // 마커에 위치표시 
 	@RequestMapping(value="/test4")
 	public void eventAjax(HttpServletRequest request
 								, HttpServletResponse response

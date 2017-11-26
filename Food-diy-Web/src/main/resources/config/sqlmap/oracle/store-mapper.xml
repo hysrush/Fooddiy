@@ -35,14 +35,14 @@
   	<!--  시 데이터 불러오기  -->
 		<select id ="selectCity" resultMap="Map_CityVO">
 			SELECT CITY_NO , CITY_NAME
-				FROM hr.T_CITY
+				FROM T_CITY
 				ORDER BY CITY_NO ASC			
 		</select>	
 		
 	<!--  구 데이터 불러오기  -->	
 		<select id ="selectLocation" resultType="hashmap" parameterType="String">
 			SELECT LOC_NO ,LOC_NAME
-			  FROM hr.T_LOCATION
+			  FROM T_LOCATION
 			 WHERE CITY_NO = #{sido}
 			 ORDER BY LOC_NO ASC
 		</select>
@@ -50,7 +50,7 @@
 	<!--  매장 데이터 구군 정보로  불러오기  -->	
 		<select id = "selectStore" resultMap="Map_StoreVO" parameterType="String">
 			SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR 
-			FROM hr.T_STORE
+			FROM T_STORE
 			WHERE LOC_NO = #{gugun}
 			ORDER BY STO_NO ASC
 		
@@ -59,7 +59,7 @@
 	<!--  매장데이터 전체 불러오기  -->		
 		<select id = "selectStoreAll" resultMap="Map_StoreVO">
 			SELECT STO_NO, STO_NAME, STO_PHONE, STO_ADDR 
-			FROM hr.T_STORE
+			FROM T_STORE
 			
 		
 		</select>
