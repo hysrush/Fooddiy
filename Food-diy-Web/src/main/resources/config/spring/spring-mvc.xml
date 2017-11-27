@@ -122,7 +122,7 @@
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
         <mvc:interceptor>  
-            <mvc:mapping path="/menu/testStore.do" />
+            <mvc:mapping path="/store/findStore.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>  
     </mvc:interceptors>
