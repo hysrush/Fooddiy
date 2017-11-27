@@ -173,12 +173,12 @@ function isNull(obj){
 									<div id="collapseOne" class="accordion-body collapse in">
 										<div class="panel-body">
 											<form action="${pageContext.request.contextPath}/member/memberUpdate.do" id="frmBillingAddress" method="post" onsubmit="retrun ">
-												<input type="hidden" name="id" value="${ userVO.id }"/>
+												<input type="hidden" name="id" value="${ loginVO.id }"/>
 												<div class="row">
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>이름</label>
-															<input type="text" name="name" value="${ userVO.name }" readonly="readonly" class="form-control">
+															<input type="text" name="name" value="${ loginVO.name }" readonly="readonly" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -203,15 +203,15 @@ function isNull(obj){
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>전화번호 </label>
-															<input type="text" name="phone" value="${userVO.phone }" class="form-control">
+															<input type="text" name="phone" value="${loginVO.phone }" class="form-control">
 														</div>
 													</div>
 												</div>
 												<div class="row">
 													<div class="form-group">
 														<div class="col-md-6">
-															<label>E-mail </label>
-															<input type="text" name="email" value="${ userVO.email }" class="form-control">
+															<label>E-mail</label>
+															<input type="text" name="email" value="${ loginVO.email }" class="form-control">
 														</div>
 														<div class="row">
 													<div class="form-group">

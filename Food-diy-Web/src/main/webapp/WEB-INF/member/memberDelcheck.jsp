@@ -178,7 +178,7 @@ function fwrite_submit() {
 					</div>
 					
 					<div style="margin-top: 4%; margin-left: 53%" class="col-md-8 col-xs-7">
-					<input type="hidden" name="id" value="${ userVO.id }" />
+					<input type="hidden" name="id" value="${ loginVO.id }" />
 					<div>	
 					</div>
 					<input type="submit" id="clear" value="탈 퇴" class="btn  btn-info" style="cursor:hand; width: 80px;">

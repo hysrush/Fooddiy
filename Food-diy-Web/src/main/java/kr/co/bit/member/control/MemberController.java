@@ -22,7 +22,7 @@ import kr.co.bit.user.vo.UserVO;
 
 @Controller
 /* @SessionAttributes("/member") */
-@SessionAttributes("userVO")
+@SessionAttributes("loginVO")
 @RequestMapping("/member")
 
 public class MemberController {
@@ -96,7 +96,7 @@ public class MemberController {
 			String msg = "비밀번호를 확인해 주세요.";
 			model.addAttribute("msg", msg);
 
-			return "member/memberDel";
+			return "member/memberDetail";
 		}
 
 		return "member/memberDelcheck";
@@ -117,7 +117,7 @@ public class MemberController {
 		memberService.getMemberUpdate(member);
 		UserVO userVO = signService.login(member);
 
-		model.addAttribute("userVO", userVO);
+		model.addAttribute("loginVO", userVO);
 
 		return "member/memberDetail";
 

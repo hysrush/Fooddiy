@@ -121,7 +121,7 @@
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
 									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${userVO.id}">나의 문의사항</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
 		
@@ -137,7 +137,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">${userVO.id}님의 프로필 정보</h3>
+              <h3 class="panel-title">${loginVO.id}님의 프로필 정보</h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -147,11 +147,11 @@
                     <tbody>
                       <tr>
                        <td><strong>  ID :</strong></td>
-                        <td>${userVO.id}</td>
+                        <td>${loginVO.id}</td>
                       </tr>                 
                       <tr>
                       <td><strong> 이 름:</strong></td>
-                        <td>${userVO.name}</td>
+                        <td>${loginVO.name}</td>
                       </tr>
                    
                          <tr>
@@ -159,20 +159,20 @@
                       </tr>
                         <tr>
                        	<td><strong>생 일:</strong></td>
-                        <td>${userVO.birth}</td>
+                        <td>${loginVO.birth}</td>
                       </tr>
                       <tr>
                         <td><strong>전화번호:</strong></td>
-                        <td>${userVO.phone}</td>
+                        <td>${loginVO.phone}</td>
                            
                       </tr>
                       <tr>
                         <td><strong>E-mail :</strong></td>
-                        <td><a href="mailto:${userVO.email}">${userVO.email}</a></td>
+                        <td><a href="mailto:${loginVO.email}">${loginVO.email}</a></td>
                       </tr>
                        <tr>
                         <td><strong>등 급 : </strong></td>
-                        <td>${userVO.grade}</td>
+                        <td>${loginVO.grade}</td>
                            
                       </tr>
                      <%--   <tr>
@@ -205,7 +205,8 @@
 							<div class="row">
 							<div  style="margin-left:68%">
 									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
-									<button id="delete" type="button" class="btn  btn-info">회원탈퇴</button>
+									<button class="btn btn-info" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
+									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
 							</div>
 									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
@@ -217,7 +218,32 @@
 												<div class="modal-body">
 												<h4>비밀번호를 입력하세요.</h4>
 													<form action="${ pageContext.request.contextPath}/member/pwcheck.do" id="demo-form" method="post" class="form-horizontal mb-lg" novalidate="novalidate">
-														<input type="hidden" name="id" value="${userVO.id }">
+														<input type="hidden" name="id" value="${loginVO.id }">
+														<div class="form-group mt-lg">
+															<div class="col-sm-9">
+																<input type="password" name="pw" class="form-control" placeholder="password" required/>
+															</div>
+														</div>
+												<div class="modal-footer">
+														<input id="okay" type="submit" class="btn btn-primary" value="확인">
+														<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+											</div>
+													</form>
+												</div>
+												</div>
+										</div>
+									</div>
+									<div class="modal fade" id="frmSignIn" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h3 class="modal-title" id="formModalLabel"><strong>회원탈퇴</strong></h3>
+												</div>
+												<div class="modal-body">
+												<h4>안전한 회원탈퇴를 위해 비밀번호를 입력하세요.</h4>
+													<form action="${ pageContext.request.contextPath}/member/delCheck.do" id="demo-form" method="post" class="form-horizontal mb-lg" novalidate="novalidate">
+														<input type="hidden" name="id" value="${loginVO.id }">
 														<div class="form-group mt-lg">
 															<div class="col-sm-9">
 																<input type="password" name="pw" class="form-control" placeholder="password" required/>
