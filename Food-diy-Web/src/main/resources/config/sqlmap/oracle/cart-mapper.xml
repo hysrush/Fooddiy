@@ -3,24 +3,26 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.bit.cart.dao.CartDAO">
+<mapper namespace="kr.co.bit.menu.dao.CartDAO">
 
 	<!-- Menu 쿼리문 -->
 	
 	<!-- sql 저장 : 전체 조회 -->
 	<sql id="selectAll">
-		SELECT cart_no, cart_id, cart_name, cart_price, cart_size, cart_bread, cart_cheese, cart_topping, cart_vegetable,
+		SELECT cart_no, cart_id, cart_name, cart_price, cart_size, cart_pic, cart_bread, cart_cheese, cart_topping, cart_vegetable,
 		cart_sauce, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_cart
 	</sql>
 	
 	<!-- DB t_menu와 MenuVO의 변수가 맞지 않으므로 mapping -->
-	<resultMap type="menuVO" id="Map_menuVO">
+	<resultMap type="cartVO" id="Map_cartVO">
 		<result column="cart_no" property="no"/>
 		<result column="cart_id" property="id"/>
 		<result column="cart_name" property="name"/>
 		<result column="cart_price" property="price"/>
 		<result column="cart_size" property="size"/>
+		<result column="cart_pic" property="pic"/>
+		
 		<result column="cart_bread" property="bread"/>
 		<result column="cart_cheese" property="cheese"/>
 		<result column="cart_topping" property="topping"/>
@@ -32,16 +34,20 @@
 	
 	
 	<!-- 전체  장바구니  조회 -->
-	<select id="selectAllCart" resultMap="Map_menuVO">
+	<select id="selectAllCart" resultMap="Map_cartVO">
 		<include refid="selectAll"/>
 		ORDER BY cart_no ASC
 	</select>
 	
-	<!-- 번호별  장바구니 조회 -->
-	<select id="selectOneCart" parameterType="int" resultMap="Map_menuVO">
-		<include refid="selectAll"/>
-		WHERE cart_no = #{no}
-	</select>
+	<insert id="insertCart" parameterType="cartVO">
+		insert into t_cart(cart_no, cart_id, cart_name, cart_price, cart_size,
+		cart_pic, cart_bread, cart_cheese, cart_topping, cart_vegetable, cart_sauce)
+		 
+		values(SEQ_T_CART_NO.nexval, #{id}, #{name}, #{price}, #{size}, #{pic}
+		, #{bread}, #{cheese}, #{topping}, #{vegetable}, #{sauce})
+	</insert>
+	
+
 <!-- 	
 	Menu 등록	
 	<insert id="insertMenu" parameterType="menuVO">
