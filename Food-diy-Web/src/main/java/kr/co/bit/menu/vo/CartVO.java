@@ -16,8 +16,6 @@ public class CartVO {
 	private String vegetable;
 	private String sauce;
 	private String regDate;
-	
-	
 	public int getNo() {
 		return no;
 	}

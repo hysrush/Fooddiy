@@ -98,7 +98,6 @@
 				<div class="col-md-12 shop">
 					<div class="featured-boxes">
 						<div class="row">
-							ss
 							<section class="section section-default">
 								<div class="container">
 									<div class="row">
@@ -126,40 +125,25 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td class="product-action-td"><a href="#" title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
-													<td class="product-image-td"><a href="#" title="Product Name"> <img src="${ cartVO.pic }" alt="Product Name">
-													</a></td>
-													<td class="product-name-td">
-														<h2 class="product-name">
-															<a href="#" title="Product Name">${ cartVO.name } ${ cartVO.size }</a>
-														</h2>
-													</td>
-													<td>${ cartVO.bread } <br>${ cartVO.cheese }<br>${ cartVO.topping } <br>${ cartVO.vegetable }<br>${ cartVO.sauce }</td>
-													<td>
-														<div class="qty-holder">
-															<a href="#" class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="1"> <a href="#" class="qty-inc-btn" title="Inc">+</a> <a href="#" class="edit-qty"><i class="fa fa-pencil"></i></a>
-														</div>
-													</td>
-													<td><span class="text-primary">${ cartVO.price }원</span></td>
-												</tr>
-												<tr>
-													<td class="product-action-td"><a href="#" title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
-													<td class="product-image-td"><a href="#" title="Product Name"> <img src="../img/demos/shop/products/cart-product2.jpg" alt="Product Name">
-													</a></td>
-													<td class="product-name-td">
-														<h2 class="product-name">
-															<a href="#" title="Product Name">Black Utility Top</a>
-														</h2>
-													</td>
-													<td>$49.00</td>
-													<td>
-														<div class="qty-holder">
-															<a href="#" class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="1"> <a href="#" class="qty-inc-btn" title="Inc">+</a> <a href="#" class="edit-qty"><i class="fa fa-pencil"></i></a>
-														</div>
-													</td>
-													<td><span class="text-primary">$49.00</span></td>
-												</tr>
+												<c:forEach items="${ cartList }" var="cartVO">
+													<tr>
+														<td class="product-action-td"><a href="#" title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
+														<td class="product-image-td"><a href="#" title="Product Name"> <img src="${ cartVO.pic }" alt="Product Name">
+														</a></td>
+														<td class="product-name-td">
+															<h2 class="product-name">
+																<a href="#" title="Product Name">${ cartVO.name } ${ cartVO.size }</a>
+															</h2>
+														</td>
+														<td>${ cartVO.bread } <br>${ cartVO.cheese }<br>${ cartVO.topping } <br>${ cartVO.vegetable }<br>${ cartVO.sauce }</td>
+														<td>
+															<div class="qty-holder">
+																<a href="#" class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="1"> <a href="#" class="qty-inc-btn" title="Inc">+</a> <a href="#" class="edit-qty"><i class="fa fa-pencil"></i></a>
+															</div>
+														</td>
+														<td><span class="text-primary">${ cartVO.price }원</span></td>
+													</tr>
+												</c:forEach>
 											</tbody>
 											<tfoot>
 												<tr>
