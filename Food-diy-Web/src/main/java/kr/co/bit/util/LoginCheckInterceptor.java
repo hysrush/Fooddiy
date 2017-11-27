@@ -11,6 +11,8 @@ import kr.co.bit.user.vo.UserVO;
 public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {  
 		
+		//spring-mvc.xml 에서 path를 확인하자~
+		
 		// 세션이 비어있는지 확인
         HttpSession session  = request.getSession(false);  
   
