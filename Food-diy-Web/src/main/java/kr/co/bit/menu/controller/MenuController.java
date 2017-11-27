@@ -107,7 +107,7 @@ public class MenuController {
 	}
 	
 	
-	// '주문하기'선택 후 매장화면으로	
+	/*// '주문하기'선택 후 매장화면으로	
 	@RequestMapping(value="/select_ingredients.do", method=RequestMethod.POST)
 	public CartVO Session(HttpSession session, String name, String price, String size, String pic) {
 		
@@ -132,7 +132,7 @@ public class MenuController {
 		
 		return cartVO;				
 	}
-	
+	*/
 
 	
 	

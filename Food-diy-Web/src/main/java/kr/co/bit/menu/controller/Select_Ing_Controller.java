@@ -85,13 +85,15 @@ public class Select_Ing_Controller {
 	
 	@RequestMapping(value ="/cart.do", method = RequestMethod.POST)
 	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese, @RequestParam("topping") String topping, 
-			@RequestParam("vegetable") String vegetable, @RequestParam("sauce") String sauce) {
+			@RequestParam("vegetable") String vegetable, @RequestParam("sauce") String sauce, HttpSession session){
 		
-		System.out.println(bread);
-		System.out.println(cheese);
-		System.out.println(topping);
-		System.out.println(vegetable);
-		System.out.println(sauce);
+		CartVO cartVO =  (CartVO)session.getAttribute("cartVO");
+		
+		cartVO.setBread(bread);
+		cartVO.setCheese(cheese);
+		cartVO.setTopping(topping);
+		cartVO.setVegetable(vegetable);
+		cartVO.setSauce(sauce);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("menu/cart");
