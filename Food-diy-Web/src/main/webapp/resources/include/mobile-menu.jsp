@@ -50,7 +50,7 @@
 			</c:if>
 			<c:choose>
 				<c:when test="${ empty userVO }">
-					<li><a href="${ pageContext.request.contextPath }/sign/login.jsp">
+					<li><a href="${ pageContext.request.contextPath }/sign/login.do">
 						<i class="fa fa-user"></i> Sign In</a>
 					</li>
 					<li><a href="${ pageContext.request.contextPath }/sign/phoneCert.jsp">
