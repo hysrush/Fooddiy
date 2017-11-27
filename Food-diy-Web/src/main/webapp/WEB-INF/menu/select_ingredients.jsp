@@ -407,11 +407,6 @@
 			$('.order-form .vegetable').attr('value', vegetable);
 			$('.order-form .sauce').attr('value', sauce);;
 			
-			alert($('.order-form .bread').val());
-			alert($('.order-form .cheese').val());
-			alert($('.order-form .topping').val());
-			
-			
 			return true;			
 		}
 	

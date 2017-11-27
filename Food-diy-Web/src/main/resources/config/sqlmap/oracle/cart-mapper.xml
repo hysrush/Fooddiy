@@ -34,8 +34,9 @@
 	
 	
 	<!-- 전체  장바구니  조회 -->
-	<select id="selectAllCart" resultMap="Map_cartVO">
+	<select id="selectAllCart" parameterType="cartVO" resultMap="Map_cartVO">
 		<include refid="selectAll"/>
+		where cart_id = #{id}
 		ORDER BY cart_no ASC
 	</select>
 	
@@ -43,11 +44,14 @@
 		insert into t_cart(cart_no, cart_id, cart_name, cart_price, cart_size,
 		cart_pic, cart_bread, cart_cheese, cart_topping, cart_vegetable, cart_sauce)
 		 
-		values(SEQ_T_CART_NO.nexval, #{id}, #{name}, #{price}, #{size}, #{pic}
+		values(seq_t_cart_no.nextval, #{id}, #{name}, #{price}, #{size}, #{pic}
 		, #{bread}, #{cheese}, #{topping}, #{vegetable}, #{sauce})
 	</insert>
 	
-
+	<delete id="deleteCart" parameterType="cartVO">
+		delete from t_cart 
+		where cart_no = #{no} and cart_id = #{id}
+	</delete>
 <!-- 	
 	Menu 등록	
 	<insert id="insertMenu" parameterType="menuVO">

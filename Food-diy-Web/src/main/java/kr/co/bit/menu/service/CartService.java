@@ -6,7 +6,7 @@ import kr.co.bit.menu.vo.CartVO;
 
 public interface CartService {
 	
-	List<CartVO> selectAllCart();
+	List<CartVO> selectAllCart(CartVO cartVO);
 	CartVO selectOneCart();
 	void insertCart(CartVO cartVO);
 	void updateCart(CartVO cartVO);

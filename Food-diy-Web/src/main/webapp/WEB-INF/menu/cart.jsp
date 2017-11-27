@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,9 +71,10 @@
 
 	<!-- Mobile menu 부분 -->
 	<jsp:include page="/resources/include/mobile-menu.jsp" />
-
+		
 	<div role="main" class="main">
-
+		
+		
 		<section class="page-header">
 			<div class="container">
 				<div class="row">
@@ -90,7 +92,7 @@
 				</div>
 			</div>
 		</section>
-
+		
 		<div class="container">
 			<div class="row">
 
@@ -127,7 +129,9 @@
 											<tbody>
 												<c:forEach items="${ cartList }" var="cartVO">
 													<tr>
-														<td class="product-action-td"><a href="#" title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
+														<td class = "cartNo" style="display: none;">${ cartVO.no }</td>
+														
+														<td class="product-action-td remove_product"><a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
 														<td class="product-image-td"><a href="#" title="Product Name"> <img src="${ cartVO.pic }" alt="Product Name">
 														</a></td>
 														<td class="product-name-td">
@@ -199,14 +203,35 @@
 						</div>
 					</div>
 					<br>
-
-
 				</div>
 			</div>
-
 		</div>
-
 	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+				$('table .remove_product').each(function() {
+					
+					$(this).click(function() {
+						$(this).parent().remove();
+						
+						alert($(this).siblings('.cartNo').text());
+						
+						var no = $(this).siblings('.cartNo').text();
+						
+						alert(no);
+						$.ajax({
+							url : "./deleteCart.do",
+							type : "post",
+							data : {"no" : no},
+							success : function(){
+										alert('삭제되었습니다.');
+							}
+						})
+					});
+				});
+		});
+	</script>
 
 	<footer id="footer">
 		<jsp:include page="/resources/include/bottom.jsp" />

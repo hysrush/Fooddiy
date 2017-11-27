@@ -58,10 +58,6 @@ public class Select_Ing_Controller {
 		mav.setViewName("menu/select_ingredients");
 		mav.addObject("ingList", ingList);
 
-		for (int i = 0; i < ingList.size(); ++i) {
-			System.out.println(i + "번 " + ingList.get(i));
-		}
-
 		return mav;
 	}
 
@@ -86,7 +82,7 @@ public class Select_Ing_Controller {
 			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
 			@RequestParam("sauce") String sauce, HttpSession session) {
 
-		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
+		CartVO cartVO = (CartVO)session.getAttribute("cartVO");
 
 		cartVO.setBread(bread);
 		cartVO.setCheese(cheese);
@@ -94,11 +90,15 @@ public class Select_Ing_Controller {
 		cartVO.setVegetable(vegetable);
 		cartVO.setSauce(sauce);
 
+		System.out.println(cartVO);
+
 		// 장바구니에 추가
 		cart_Service.insertCart(cartVO);
 
+		
+		
 		// 모든 잘바구니 불러오기
-		List<CartVO> cartList = cart_Service.selectAllCart();
+		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
 
 		session.setAttribute("cartList", cartList);
 
@@ -106,5 +106,19 @@ public class Select_Ing_Controller {
 		mav.setViewName("menu/cart");
 
 		return mav;
+	}
+	
+	@RequestMapping(value="/deleteCart.do", method = RequestMethod.POST)
+	public void Delete_cart(@RequestParam(value = "no") Integer no, HttpSession session) {
+		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		CartVO cartVO = new CartVO();
+		int number = no;
+		System.out.println(userVO);
+		
+		System.out.println(no);
+		cartVO.setNo(number);
+		cartVO.setId(userVO.getId());
+		cart_Service.deleteCart(cartVO);
+		System.out.println("삭제됨");
 	}
 }

@@ -16,10 +16,9 @@ public class CartServiceImp implements CartService{
 	private CartDAO dao;
 	
 	@Override
-	public List<CartVO> selectAllCart() {
+	public List<CartVO> selectAllCart(CartVO cartVO) {
 		
-		List<CartVO> cartList = dao.selectAll();
-		
+		List<CartVO> cartList = dao.selectAll(cartVO);
 		return cartList;
 	}
 	
