@@ -32,6 +32,14 @@ public class StoreDAOImpl implements StoreDAO {
 		
 		return list;
 	}
+	
+	@Override
+	public List<StoreVO> selectStoreAddr(String store){
+		List<StoreVO> list = sqlSession.selectList(url + "selectStoreAddr",store);
+		
+		return list;
+	}
+	
 
 	@Override
 	public List<CityVO> selectCity() {

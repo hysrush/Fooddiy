@@ -46,8 +46,6 @@ public class StoreController {
 	
 	
 	
-	
-	
 	@RequestMapping("myStore.do")
 	public ModelAndView myStorepage() {
 		
@@ -112,6 +110,9 @@ public class StoreController {
 									, Model model) throws Exception {
 			
 			System.out.println(store);
+			List<StoreVO> storeList = storeService.selectStoreAddr(store); //store = 주소 
+			
+			System.out.println(storeList.toString());
 			
 			response.setContentType("text/html;charset=UTF-8");
 			JSONObject jsonObj = new JSONObject();
@@ -119,6 +120,7 @@ public class StoreController {
 		
 			
 			jsonObj.put("result", true);
+			jsonObj.put("storeList", storeList);
 			
 			response.getWriter().print(jsonObj.toString());
 			

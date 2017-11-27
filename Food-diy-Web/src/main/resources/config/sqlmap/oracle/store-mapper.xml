@@ -55,6 +55,16 @@
 			ORDER BY STO_NO ASC
 		
 		</select>
+		<!--  매장데이터 주소정보로 불러오기  -->
+		<select id = "selectStoreAddr" resultMap="Map_StoreVO" parameterType="String">
+			SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR 
+			FROM T_STORE
+			WHERE STO_ADDR = #{store}
+			ORDER BY STO_NO ASC
+		
+		</select>
+		
+		
 		
 	<!--  매장데이터 전체 불러오기  -->		
 		<select id = "selectStoreAll" resultMap="Map_StoreVO">

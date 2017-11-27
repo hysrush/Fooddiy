@@ -290,11 +290,23 @@
 			});
 
 			
+		
+					
+		var storeAddr = new Array();
+		var storeName = new Array();
+		var storePhone = new Array();
+			<c:forEach items="${storeList}" var="store">
+			storeAddr.push("${store.storeAddr}");
+			storeName.push("${store.storeName}");
+			storePhone.push("${store.storePhone}");
+			</c:forEach>		 
+			
+			console.log( "storeName: " +storeName[0]);
 			
 				
 		// 배열에 넣은 주소를 for문을 돌면서 마커로 찍는다 	
-		for(var i = 0; i< addrArray.length; i++ ){	
-			geocoder.addressSearch(addrArray[i] , function(result, status) {
+		for(var i = 0; i< storeAddr.length; i++ ){	
+			geocoder.addressSearch(storeAddr[i] , function(result, status) {
 			
 			    // 정상적으로 검색이 완료됐으면 
 			     if (status === daum.maps.services.Status.OK) {
@@ -317,14 +329,14 @@
 			            image : markerImage, // 마커 이미지 
 			            clickable: true
 			        });
-			
+			    	console.log( "storeName: " +storeName[0]);
 			        // 인포윈도우로 장소에 대한 설명을 표시합니다
-			        var iwContent = '<div style="padding:5px;">서브웨이 강남'+ i +'호점</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			        var iwContent = '<div style="padding:5px;">서브웨이 '+ storeName[i] +'</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			         // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 				    // 인포윈도우를 생성합니다
 				    var infowindow = new daum.maps.InfoWindow({
-				        content : iwContent,
+				        content : iwContent
 				        
 				    });
 	

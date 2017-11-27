@@ -313,7 +313,7 @@
 										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
 										contents +=		'<td id="storeAddr" value="'+data.storeList[i].storeAddr +'">'+ data.storeList[i].storeAddr+'</td>';
 										contents +=		'<td id="storePhone" value="'+data.storeList[i].storePhone +'">'+ data.storeList[i].storePhone+'</td>';
-										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeAddr+'\')" value="선택" /></td>';
+										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeAddr+'\')" value="위치" /></td>';
 										contents += '</tr>';
 									
 										$('#storeList').append(contents);
@@ -338,7 +338,7 @@
  							var data = JSON.parse(responseData);
  							
  							alert("result = " +data.result);
- 							
+ 							alert("storeName = " + data.storeList[0].storeName);
  							
  							var geocoder = new daum.maps.services.Geocoder();
  							
@@ -356,10 +356,18 @@
 	 						            map: map,
 	 						            position: coords
 	 						        });
-	
-	 						        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	 						        	var contents = '';
+	 						      
+	 						            contents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
+	 						            contents += '서브웨이'+data.storeList[0].storeName+ '<br/>' + data.storeList[0].storePhone+ '<br/>'; 
+	 						            contents += '<input type="button" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
+										contents += '</div>';
+										
+		 						        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	 						        var infowindow = new daum.maps.InfoWindow({
-	 						            content: '<div style="width:150px;text-align:center;padding:6px 0;">서브웨이 노원점</div>'
+	 						       		content : contents
+	 						       		
+	 						       		
 	 						        });
 	 						        infowindow.open(map, marker);
 	
@@ -367,23 +375,10 @@
 	 						        map.setCenter(coords);
 	 						    } 
 	 						});    
- 							
  						}
- 						
  					});
- 					
- 					
- 					
- 				}
-				
-				
-				
-				
+ 				}	
 		</script>
-		
-		
-		
-		
 		<script>
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = { 
