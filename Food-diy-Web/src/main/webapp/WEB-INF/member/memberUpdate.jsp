@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,41 +66,72 @@
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 <script>
 
-function checkIt(){
-    if(document.memberUpdate.pw.value != document.updateform.pw2.value || document.updateform.pw.value=="" || document.updateform.pw2.value=="" ){
-      alert("joinform : 비밀번호를 동일하게 입력하세요.");
-      return false;
-    }
-}
-function isNull(obj){
-	if(obj.value == ""){
-		alert(obj +"입력해주세요.");
-		return false;
+	//재입력 비밀번호 체크하여 맞지 않음을 알림.
+	function checkPw() {
+	    var inputed = $("#pw").val();
+	    var original = /^[a-zA-Z0-9]{3,15}$/;
+	    var reinputed = $("#pwc").val();
+	    
+	   if(original.test(inputed)){
+	    	
+	    	$("#pw").css("background-color", "#B0F6AC");
+	    	
+	        if(reinputed=="" && (inputed != reinputed || inputed == reinputed)){
+		            $("#pwc").css("background-color", "#FFCECE");
+		        }
+		        else if (inputed == reinputed) {
+		            $("#pwc").css("background-color", "#B0F6AC");
+		            
+		        } else if (inputed != reinputed) {
+		            $("#pwc").css("background-color", "#FFCECE");
+		            
+		        }
+			}else{
+	    	$("#pw").css("background-color", "#FFCECE");
+	    }
 	}
-	return true;
-}
+	
+	
 
 	$(document).ready(function(){
-		
-		$("#okay").click(function(){
-		
-			if(!document.memberUodate.password.value){
-	        alert("비밀번호를 입력하지 않았습니다.");
-	        return false;
-	    }
 	
-			location.href="${pageContext.request.contextPath}/member/memberUpdate.do"; 
-		});
 		
 	 	$("#cancel").click(function(){
 		
-	
 			location.href="${pageContext.request.contextPath}/member/memberDetail.do"; 
 		}); 
 		
-		
 	});
+	
+	
+		//사진 미리보기
+	 	function readyURL(input){
+			
+			var reader = new FileReader();	 		
+
+			reader.onload = function(e) {
+				
+				$("#prof").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+
+		}
+		
+	function userPw(){
+	
+		 var inputed = $("#pw").val();
+		 var reinputed = $("#pwc").val();
+		 
+		if(inputed != reinputed){
+	        alert("비밀번호가 맞지 않습니다.");
+	        return false;
+		}
+		return true;
+	}
+		
 </script>
+
+
 <style type="text/css">
 #div01 {
 	width: 70px;
@@ -158,9 +190,17 @@ function isNull(obj){
 						</div>
 					</div>
 					
+			<form action="${pageContext.request.contextPath}/member/memberUpdate.do" name="up" id="frmBillingAddress" method="post" onsubmit="return userPw()" enctype="multipart/form-data">
 				<div class="col-md-4 ">
-					<img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="margin-left: 7%; margin-top: 20%; width: 300px;">
-					<button style="float:right; margin-top: 4%; margin-right: 10%" type="button" class="btn btn-default" >프로필변경 </button>
+				<c:choose>
+                <c:when test="${ loginVO.file ne null }">
+		                <img src="../upload/${ loginVO.file }" id="prof" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+                </c:when>
+    	            <c:otherwise>
+		                <img src="${ pageContext.request.contextPath }/resources/img/loading.gif" id="prof" class="img-responsive" name="null" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+	                </c:otherwise>
+                </c:choose>
+					<input id="file" style="float:right; margin-top: 4%; margin-right: 10%" type="file" class="btn btn-default" name="file" value="${ loginVO.file }" onchange="readyURL(this);"/> 
 				</div><br/><br/>
 						<div class="col-md-5" style="margin-top: 3%; margin-left: 2%">
 							<div class="panel-group" id="accordion">
@@ -172,13 +212,12 @@ function isNull(obj){
 									</div>
 									<div id="collapseOne" class="accordion-body collapse in">
 										<div class="panel-body">
-											<form action="${pageContext.request.contextPath}/member/memberUpdate.do" id="frmBillingAddress" method="post" onsubmit="retrun ">
 												<input type="hidden" name="id" value="${ loginVO.id }"/>
 												<div class="row">
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>이름</label>
-															<input type="text" name="name" value="${ loginVO.name }" readonly="readonly" class="form-control">
+															<input type="text" name="name" value="${ loginVO.name }" readonly="readonly" class="form-control"/>
 														</div>
 													</div>
 												</div>
@@ -186,7 +225,7 @@ function isNull(obj){
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>비밀번호</label>
-															<input type="password" name="pw" size="15" maxlength="12" value="" class="form-control">
+															<input type="password" name="pw" id="pw" size="15" maxlength="12" value="" class="form-control" required="required"/>
 														</div>
 												</div>
 
@@ -195,7 +234,7 @@ function isNull(obj){
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>비밀번호 확인</label>
-															<input type="password" size="15" maxlength="12" value="" class="form-control">
+															<input type="password" id="pwc" size="15" maxlength="12" value="" oninput="checkPw()" class="form-control"  required="required">
 														</div>
 													</div>
 												</div>
@@ -203,18 +242,18 @@ function isNull(obj){
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>전화번호 </label>
-															<input type="text" name="phone" value="${loginVO.phone }" class="form-control">
+															<input type="text" name="phone" value="${loginVO.phone }" class="form-control"/>
 														</div>
 													</div>
 												</div>
 												<div class="row">
 													<div class="form-group">
-														<div class="col-md-6">
+														<div class="col-md-12">
 															<label>E-mail</label>
-															<input type="text" name="email" value="${ loginVO.email }" class="form-control">
+															<input type="text" name="email" value="${ loginVO.email }" class="form-control" readonly="readonly"/>
 														</div>
 														<div class="row">
-													<div class="form-group">
+												<!-- 	<div class="form-group">
 														<div style="margin-left:5%; margin-top: 1% " class="col-md-5  col-xs-11">
 															<label></label><br/>
 															<select class="form-control" name="emailD">
@@ -223,7 +262,7 @@ function isNull(obj){
 																<option value="@google.co.kr">@google.co.kr</option>
 															</select>
 														</div>
-													</div>
+													</div> -->
 												</div>
 													</div>
 												</div>
@@ -231,14 +270,16 @@ function isNull(obj){
 													<div class="col-md-12">
 													</div>
 												</div>
-													<input id="save" style="margin-left: 63%" type="submit" value="저장" class="btn btn-info" data-toggle="modal" data-target="#formModal"/>
+												<!-- data-toggle="modal" data-target="#formModal" -->
+													<input id="save" style="margin-left: 63%" type="submit" value="저장" class="btn btn-info" />
 													<button id="cancel" type="button" class="btn btn-info" data-dismiss="modal">취소</button>
-											</form>
 										</div>
 									</div>
 								</div>
-						</div>	
-							<div style="margin-top: 12%; ">
+							</div>
+						</div>
+						</form>
+						<!-- 	<div style="margin-top: 12%; ">
 							<div class="row">
 									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
@@ -259,11 +300,10 @@ function isNull(obj){
 										</div>
 									</div>
 							</div>
-					</div>
+					</div> -->
 					</div>
 					</div>
 					</div>					
-</div>
 
 		<!-- ---------------------------------------------------------------------------------------------- -->
 		<div>

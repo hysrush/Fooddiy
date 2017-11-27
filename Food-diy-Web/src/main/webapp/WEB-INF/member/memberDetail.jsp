@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,10 +131,20 @@
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
        <br>
       </div>
-                <div class="col-md-3 col-lg-3 " align="left"> <img src="${ pageContext.request.contextPath }/resources/img/projects/project-4.jpg" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;"></div>
+                <c:choose>
+                <c:when test="${ loginVO.file ne null }">
+	                <div class="col-md-3 col-lg-3 " align="left">
+		                <img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+	                </div>
+                </c:when>
+    	            <c:otherwise>
+                		<div class="col-md-3 col-lg-3 " align="left">
+		                	<img src="${ pageContext.request.contextPath }/resources/img/loading.gif" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+						</div>
+	                </c:otherwise>
+                </c:choose>
+                
         <div  style="margin-top: 2%" class="col-xs-12 col-sm-12 col-md-6 col-lg-6  toppad" >
-   
-   
           <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">${loginVO.id}님의 프로필 정보</h3>
