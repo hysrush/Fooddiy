@@ -35,21 +35,12 @@
 						data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>
 				</ul>
 			</li>
-			<!-- 회원 로그인하면 My page -->
-			<li><span class="mmenu-toggle"></span> <a href="#">My Page</a>
-				<ul>
-					<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">회원 정보</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">최근 주문 내역</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
-					<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
-				</ul>
-			</li>
 			<!-- 비회원 로그인하면 주문내역 조회 -->
 			<c:if test="${ not empty nonMember }">
 				<li><a href="#">주문내역조회</a></li>
 			</c:if>
 			<c:choose>
-				<c:when test="${ empty userVO }">
+				<c:when test="${ empty loginVO and empty nonMember }">
 					<li><a href="${ pageContext.request.contextPath }/sign/login.do">
 						<i class="fa fa-user"></i> Sign In</a>
 					</li>
@@ -57,7 +48,22 @@
 						<i class="fa fa-user"></i> Sign Up</a>
 					</li>
 				</c:when>
+				<c:when test="${ not empty loginVO }">
+					<!-- 회원 로그인하면 My page -->
+					<li><span class="mmenu-toggle"></span> <a href="#">My Page</a>
+						<ul>
+							<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">회원 정보</a></li>
+							<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.jsp">최근 주문 내역</a></li>
+							<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
+							<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
+						</ul>
+					</li>
+				</c:when>
 				<c:otherwise>
+					<li class="dropdown dropdown-mega dropdown-mega-signin signin"
+						id="headerAccount"><a
+						href="${ pageContext.request.contextPath }/sign/nonlogout?id=${nonMember.id}"><i
+							class="fa fa-user"></i> ${ nonMember.name }</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

@@ -301,6 +301,17 @@ public class SignController {
 		
 	}
 	
+	/**
+	 * 
+	 *  3. 비회원
+	 * 	 - 주문조회
+	 * */
+	
+	@RequestMapping("/orderCheck")
+	public String orderCheck() {
+		
+		return null;
+	}
 	
 	
 }
