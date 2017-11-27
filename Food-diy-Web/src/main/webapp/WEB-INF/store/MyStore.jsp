@@ -295,69 +295,75 @@
 		var storeAddr = new Array();
 		var storeName = new Array();
 		var storePhone = new Array();
-			<c:forEach items="${storeList}" var="store">
+		<c:forEach items="${storeList}" var="store">
 			storeAddr.push("${store.storeAddr}");
 			storeName.push("${store.storeName}");
 			storePhone.push("${store.storePhone}");
-			</c:forEach>		 
+		</c:forEach>		 
 			
-			console.log( "storeName: " +storeName[0]);
-			
-				
+		console.log( "storeName: " +storeName[0]);
+		
+		var j = 0;
+		
 		// 배열에 넣은 주소를 for문을 돌면서 마커로 찍는다 	
-		for(var i = 0; i< storeAddr.length; i++ ){	
+		for(var i = 0; i< storeAddr.length; i++ ){
+			
+			
 			geocoder.addressSearch(storeAddr[i] , function(result, status) {
-			
-			    // 정상적으로 검색이 완료됐으면 
-			     if (status === daum.maps.services.Status.OK) {
-			    	 
-			
-			        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-			
-			    	 // 마커 이미지의 이미지 크기 입니다
-			        var imageSize = new daum.maps.Size(24, 35); 
-			        
-			        // 마커 이미지를 생성합니다    
-			        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-			        
-			        
-			        
-			        // 결과값으로 받은 위치를 마커로 표시합니다
-			        var marker = new daum.maps.Marker({
-			            map: map,
-			            position: coords,
-			            image : markerImage, // 마커 이미지 
-			            clickable: true
-			        });
-			    	console.log( "storeName: " +storeName[0]);
-			        // 인포윈도우로 장소에 대한 설명을 표시합니다
-			        var iwContent = '<div style="padding:5px;">서브웨이 '+ storeName[i] +'</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			         // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-				    // 인포윈도우를 생성합니다
-				    var infowindow = new daum.maps.InfoWindow({
-				        content : iwContent
-				        
-				    });
-	
-			     // 마커에 마우스오버 이벤트를 등록합니다
-			        daum.maps.event.addListener(marker, 'mouseover', function() {
-			          // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-			            infowindow.open(map, marker);
-			        });
-
-			        // 마커에 마우스아웃 이벤트를 등록합니다
-			        daum.maps.event.addListener(marker, 'mouseout', function() {
-			            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-			            infowindow.close();
-			        });
-
-				        
-	
-			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			       	// map.setCenter(coords);
-			    } 
+														
+														console.log( "j = " + j + " , storeName: " +storeName[j]);
+														j++; 
+														// 정상적으로 검색이 완료됐으면 
+													     if (status === daum.maps.services.Status.OK) {
+													        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+													
+													    	 // 마커 이미지의 이미지 크기 입니다
+													        var imageSize = new daum.maps.Size(24, 35); 
+													        
+													        // 마커 이미지를 생성합니다    
+													        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+													        
+													        // 결과값으로 받은 위치를 마커로 표시합니다
+													        var marker = new daum.maps.Marker({
+													            map: map,
+													            position: coords,
+													            image : markerImage, // 마커 이미지 
+													            clickable: true
+													        });
+													    	
+													        // 인포윈도우로 장소에 대한 설명을 표시합니다
+													        var iwContents = '';
+														     iwRemoveable = true;
+								        	
+													        	 // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+							 						            iwContents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
+							 						            iwContents += '서브웨이'+storeName[j]+ '<br/>' + storePhone[j] + '<br/>'; 
+							 						            iwContents += '<input type="button" name = "storeChoice" onclick="choice(\''+storeName[j]+'\')" value="선택" />';
+																iwContents += '</div>';
+													        	
+													        	
+													         // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+										
+														    // 인포윈도우를 생성합니다
+														    var infowindow = new daum.maps.InfoWindow({
+														        content : iwContents,
+														        removable : iwRemoveable
+														        
+														    });										
+														
+														    // 마커에 클릭이벤트를 등록합니다
+														    daum.maps.event.addListener(marker, 'click', function() {
+														          // 마커 위에 인포윈도우를 표시합니다
+														          infowindow.open(map, marker);  
+														    });
+														        
+											
+													        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+													       	// map.setCenter(coords);
+													    } 
 			});
+			
+			
 		}
 	
 	
