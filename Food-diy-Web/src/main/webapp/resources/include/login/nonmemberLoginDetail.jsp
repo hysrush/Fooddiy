@@ -59,7 +59,6 @@
 		var k = $("#pc").val();
 		
 		if(n == k ){
-			alert("완료");
 			return true;
 		}else{
 			alert("인증 코드를 확인해 주세요.");

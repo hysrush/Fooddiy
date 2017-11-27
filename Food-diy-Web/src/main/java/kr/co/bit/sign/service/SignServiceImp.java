@@ -162,8 +162,8 @@ public class SignServiceImp implements SignService {
 		nonMember.setPw(uuid);
 		nonMember.setType("N");
 		
-		signDAOImp.signUp(nonMember);
+		/*signDAOImp.signUp(nonMember);*/
 		//자동 로그인 
-		return signDAOImp.login(nonMember);
+		return nonMember;
 	}
 }

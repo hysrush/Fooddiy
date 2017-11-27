@@ -143,16 +143,15 @@
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-4">
-								<label>전화번호 </label> <input name="phone1" type="tel"
-									value="${ phoneCert.phone1 }" class="form-control" readonly>
+							<div class="col-xs-4 col-md-4">
+								<label>전화번호 </label> <input name="phone1" type="tel" value="${ phoneCert.phone1 }" class="form-control" readonly>
 							</div>
 							<br />
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4">
 								<input type="tel" name="phone2" value="${ phoneCert.phone2 }"
 									class="form-control" readonly>
 							</div>
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4">
 								<input type="tel" name="phone3" value="${ phoneCert.phone3 }"
 									class="form-control" readonly>
 							</div>
@@ -160,12 +159,12 @@
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-6">
+							<div class="col-xs-6 col-md-6">
 								<label>E-mail </label> <input name="email" type="text" class="form-control" required>
 							</div>
 							<div class="row">
 								<div class="form-group">
-									<div class="col-md-6">
+									<div class="col-xs-6 col-md-5">
 										<label>도메인</label>
 										<select name="emailD" class="form-control" required>
 											<option value="@naver.com">@ naver.com</option>

@@ -53,7 +53,7 @@
 					<li><a href="${ pageContext.request.contextPath }/sign/login.do">
 						<i class="fa fa-user"></i> Sign In</a>
 					</li>
-					<li><a href="${ pageContext.request.contextPath }/sign/phoneCert.jsp">
+					<li><a href="${ pageContext.request.contextPath }/sign/signUp.do">
 						<i class="fa fa-user"></i> Sign Up</a>
 					</li>
 				</c:when>
