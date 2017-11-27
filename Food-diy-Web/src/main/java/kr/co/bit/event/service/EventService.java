@@ -21,4 +21,6 @@ public interface EventService {
 	void modifyEvent(EventBoardVO eventVO);
 	void removeEvent(int no); 
 	
+	String locationName(String gugun);
+	
 }

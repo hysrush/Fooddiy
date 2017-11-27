@@ -56,14 +56,14 @@
 	<!--  종료된 이벤트 조회  -->
 		<select id="selectEndEvent" resultMap="Map_EventVO">
 		SELECT EVE_NO, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD') as EVE_START, TO_CHAR(EVE_FIN, 'YY-MM-DD') as EVE_FIN , TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT
-		FROM hr.T_EVENT
+		FROM T_EVENT
 		where to_char( SYSDATE, 'YY-MM-DD') > to_char( EVE_FIN, 'YY-MM-DD' )  
 		ORDER BY EVE_NO DESC
 	</select>
 	<!--  매장명으로 이벤트 조회  -->
 	<select id ="selectEventBystoreName" resultMap="Map_EventVO" parameterType = "String">
 		SELECT EVE_NO, EVE_TITLE , EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD')as EVE_START, TO_CHAR(EVE_FIN, 'YY-MM-DD') as EVE_FIN , TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT
-		FROM hr.T_EVENT
+		FROM T_EVENT
 		WHERE STO_NAME = #{store}
 		ORDER BY EVE_NO DESC
 	</select>
@@ -72,14 +72,14 @@
 	<!--  시 데이터 불러오기  -->
 		<select id ="selectCity" resultMap="Map_CityVO">
 			SELECT CITY_NO , CITY_NAME
-				FROM hr.T_CITY
+				FROM T_CITY
 				ORDER BY CITY_NO ASC			
 		</select>	
 		
 	<!--  구 데이터 불러오기  -->	
 		<select id ="selectLocation" resultType="hashmap" parameterType="String">
 			SELECT LOC_NO ,LOC_NAME
-			  FROM hr.T_LOCATION
+			  FROM T_LOCATION
 			 WHERE CITY_NO = #{sido}
 			 ORDER BY LOC_NO ASC
 		</select>
@@ -87,7 +87,7 @@
 	<!--  매장 데이터 불러오기  -->	
 		<select id = "selectStore" resultMap="Map_StoreVO" parameterType="String">
 			SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR 
-			FROM hr.T_STORE
+			FROM T_STORE
 			WHERE LOC_NO = #{gugun}
 			ORDER BY STO_NO ASC
 		
@@ -96,6 +96,12 @@
 	<select id="selectByName" parameterType="String" resultMap="Map_EventVO" >
 		<include refid="selectAll"/>
 		where  = #{no}
+	</select>
+	
+	<select id="locationName" parameterType="String" resultType="String">
+		SELECT LOC_NAME
+		FROM T_LOCATION
+		WHERE LOC_NO = #{gugun}
 	</select>
 	
 	<!-- 새글 등록  -->

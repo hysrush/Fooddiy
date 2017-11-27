@@ -84,4 +84,10 @@ public class EvnetDAOImpl implements EventDAO {
 		return list;
 	}
 
+	@Override
+	public String locationName(String gugun) {
+		String locationName = sqlSession.selectOne(url + "locationName", gugun);
+		return locationName;
+	}
+
 }

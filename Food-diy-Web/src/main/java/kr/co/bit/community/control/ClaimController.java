@@ -135,7 +135,7 @@ public class ClaimController {
 	}
 	
 	// 시정보 ajax
-	@RequestMapping(value = "/test")
+	@RequestMapping(value = "/sido")
 	public void chargeReqAjaxByToss(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "sido", defaultValue = "") String sido, Model model) throws Exception {
 
@@ -154,7 +154,7 @@ public class ClaimController {
 	}
 
 	// 시,도 군,구 정보 ajax
-	@RequestMapping(value = "/test3")
+	@RequestMapping(value = "/gugun")
 	public void gugunajax(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "gugun", defaultValue = "") String gugun, Model model) throws Exception {
 
@@ -166,9 +166,16 @@ public class ClaimController {
 		for (int i = 0; i < storeList.size(); i++) {
 			System.out.println(storeList.get(i).toString());
 		}
+		
+		System.out.println("선택한 구군 :" + gugun);
+
+		String locationName = eventService.locationName(gugun);
+		
+		System.out.println("선택한 구군 이름 :" + locationName);
 
 		jsonObj.put("result", true);
 		jsonObj.put("storeList", storeList);
+		jsonObj.put("locationName", locationName);
 
 		response.getWriter().print(jsonObj.toString());
 
