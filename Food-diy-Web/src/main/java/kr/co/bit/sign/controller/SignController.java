@@ -102,6 +102,7 @@ public class SignController {
 		userVO = signServiceImp.login(login);
 		
 		model.addAttribute("loginVO", userVO);
+		model.addAttribute("msg", "가입 성공~!");
 		
 		return "sign/sign";
 	}
