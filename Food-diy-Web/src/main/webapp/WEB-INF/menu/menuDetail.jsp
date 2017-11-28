@@ -105,8 +105,7 @@ $(document).ready(function(){
 					</p>
 
 					<form
-						<%-- action="${ pageContext.request.contextPath }/store/findStore.do" --%>
-						action="${ pageContext.request.contextPath }/menu/select_ingredients.do"
+						action="${ pageContext.request.contextPath }/store/findStore.do"
 						enctype="multipart/form-data" method="post" class="cart"
 						style="margin-bottom: 10px">
 						<!-- submit하면 hidden으로 값 넘겨준다 -->
