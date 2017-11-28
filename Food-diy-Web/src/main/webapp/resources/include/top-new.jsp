@@ -133,7 +133,7 @@
 													</h1>
 													
 													<div class="cart-qty-price">
-														<span>1</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
+														<span>${ cartVO.qty }</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
 													</div>
 												</div>
 											</div>

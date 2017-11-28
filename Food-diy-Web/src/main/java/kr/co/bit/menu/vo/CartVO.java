@@ -11,7 +11,7 @@ public class CartVO implements Serializable{
 	private String total_price;
 	private String size;
 	private String pic;
-	private String qty;
+	private int qty;
 	
 	private String bread;
 	private String cheese;
@@ -61,10 +61,10 @@ public class CartVO implements Serializable{
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	public String getQty() {
+	public int getQty() {
 		return qty;
 	}
-	public void setQty(String qty) {
+	public void setQty(int qty) {
 		this.qty = qty;
 	}
 	public String getBread() {

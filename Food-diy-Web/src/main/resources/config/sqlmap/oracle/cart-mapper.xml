@@ -50,6 +50,14 @@
 		, #{bread}, #{cheese}, #{topping}, #{vegetable}, #{sauce})
 	</insert>
 	
+	<update id ="updateCart">
+	
+	</update>
+	
+	<update id="updateProductQty" parameterType="cartVO">
+		update t_cart set cart_qty = #{qty} where cart_id = #{id} and cart_no = #{no}
+	</update>
+	
 	<delete id="deleteCart" parameterType="cartVO">
 		delete from t_cart 
 		where cart_no = #{no} and cart_id = #{id}

@@ -148,24 +148,15 @@
 															<div>${ cartVO.topping }</div>
 															<div>${ cartVO.vegetable }</div>
 															<div>${ cartVO.sauce }</div>
-														<td>
+														<td class="qty-total">
 															<div class="qty-holder">
-																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="1"> <a  class="qty-inc-btn" title="Inc">+</a> <a  class="edit-qty"><i class="fa fa-pencil"></i></a>
+																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cartVO.qty }"> <a  class="qty-inc-btn" title="Inc">+</a> <a  class="edit-qty"><i class="fa fa-pencil"></i></a>
 															</div>
 														</td>
-														<td class="price-total"><span class="text-primary commaN total-price" style="color: black">${ cartVO.total_price }원</span></td>
+														<td class="price-total"><span class="text-primary commaN total-price" style="color: black">${ cartVO.qty*cartVO.total_price }원</span></td>
 													</tr>
 												</c:forEach>
 											</tbody>
-											<tfoot>
-												<tr>
-													<td>
-														<div>${ storeVO.storeName }</div>
-														<div>${ storeVO.storeAddr }</div>
-														<div>${ storeVO.storePhone }</div>
-													</td>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -182,8 +173,20 @@
 													<table class="totals-table">
 														<tbody>
 															<tr>
-																<td>Subtotal</td>
-																<td>$159.00</td>
+																<td>매장</td>
+																<td><div> ${ storeVO.storeName } </div></td>
+															</tr>
+															<tr>
+																<td>주소</td>
+																<td><div> ${ storeVO.storeAddr } </div></td>
+															</tr>
+															<tr>
+																<td>전화번호</td>
+																<td><div> ${ storeVO.storePhone } </div></td>
+															</tr>
+															<tr>
+																<td>수량</td>
+																<td class="final-qty"></td>
 															</tr>
 															<tr>
 																<td>총 가격</td>
@@ -223,21 +226,38 @@
 				$('#payInfo').stick_in_parent({
 			         offset_top : 200
 			      });
+				
+				
 				var finalPrice = 0;
+				var finalQty = 0;
+				
+				
+				//총 가격
 				for(var i = 0; i < $('.total-price').length; ++i) {
 					finalPrice += uncomma($('.total-price').eq(i).text())*1;
 				}
 				
-				finalPrice = comma(finalPrice) + "원";
-				$('.final-price').text(finalPrice);
 				
+				//총 수량
+				for(var i = 0; i < $('.qty-input').length; ++i) {
+					finalQty += $('.qty-input').eq(i).val() * 1;
+				}
+				
+				finalPrice = comma(finalPrice) + "원";
+					
+				$('.final-price').text(finalPrice);
+				$('.final-qty').text(finalQty);
 		
-			
+				
+				//제품 삭제
 				$('table .remove_product').each(function() {
 					
 					$(this).click(function() {
 						var totalPrice = $(this).siblings('.price-total').find('.total-price').text();
+						var totalQty = $(this).siblings('.qty-total').find('.qty-input').val();
 						var finalPrice = $('.final-price').text();
+						var finalQty = $('.final-qty').text();
+						
 						$(this).parent().remove();
 						
 						
@@ -252,25 +272,103 @@
 										finalPrice -= totalPrice;
 										finalPrice = comma(finalPrice) + "원";
 
+										totalQty *= 1;
+										finalQty *= 1;
+										finalQty -= totalQty;		
+								
 										$('.final-price').text(finalPrice);
+										$('.final-qty').text(finalQty);
 							}
 						});
 					});
 				});
 				
+				
+				//수량 증감
 				$('.qty-holder').each(function() {
-					var qty = 0;
+					var totalQty = 0;
+					var totalPrice = 0;
+					var finalPrice = 0;
+					var oneProductPrice = 0;
+					var no = 0;
+					//감소
 					$(this).children('.qty-dec-btn').click(function() {
-						qty = $(this).siblings('.qty-input').val() * 1;
-						if(qty > 1) {
-							$(this).siblings('.qty-input').val(qty - 1);
+						totalQty = $(this).siblings('.qty-input').val() * 1;
+						if(totalQty > 1) {
+							no = $(this).parents('td').siblings('.cartNo').text();
+							totalPrice = $(this).parents('td').siblings('.price-total').children('.total-price').text();
+	
+							finalPrice = $('.final-price').text();
+							finalQty = $('.final-qty').text() * 1;
+							
+							totalPrice = uncomma(totalPrice) * 1;
+							finalPrice = uncomma(finalPrice) * 1;
+							
+							oneProductPrice = totalPrice / totalQty;
+							
+							totalPrice -= oneProductPrice;
+							finalPrice -= oneProductPrice;
+							
+							totalQty -= 1
+							finalQty -= 1;
+							
+							$(this).parents('td').siblings('.price-total').children('.total-price').text(comma(totalPrice) + "원");
+							$('.final-price').text(comma(finalPrice) + "원");
+							$('.final-qty').text(finalQty);
+							
+							$(this).siblings('.qty-input').val(totalQty);
+							
+							
+							//DB업데이트
+							$.ajax({
+								url : "./productQtyUpdate",
+								type : "post",
+								data : {"no" : no, "totalQty" : totalQty},
+								success : function(){
+									alert('성공');
+								}
+							});
 						}
 					});
 					
+					//증가
 					$(this).children('.qty-inc-btn').click(function() {
-							qty = $(this).siblings('.qty-input').val() * 1;
+							no = $(this).parents('td').siblings('.cartNo').text();
+						
+							totalQty = $(this).siblings('.qty-input').val() * 1;
+							totalPrice = $(this).parents('td').siblings('.price-total').children('.total-price').text();
+						
+							finalPrice = $('.final-price').text();
+							finalQty = $('.final-qty').text() * 1;
 							
-							$(this).siblings('.qty-input').val(qty + 1);
+							
+							totalPrice = uncomma(totalPrice) * 1;
+							finalPrice = uncomma(finalPrice) * 1;
+							
+							oneProductPrice = totalPrice / totalQty;
+							
+							totalPrice += oneProductPrice;
+							finalPrice += oneProductPrice;
+							
+							totalQty += 1
+							finalQty += 1;
+							
+							
+							$(this).parents('td').siblings('.price-total').children('.total-price').text(comma(totalPrice) + "원");
+							$('.final-price').text(comma(finalPrice) + "원");
+							$('.final-qty').text(finalQty);
+							
+							$(this).siblings('.qty-input').val(totalQty);
+							
+							//DB업데이트
+							$.ajax({
+								url : "./productQtyUpdate",
+								type : "post",
+								data : {"no" : no, "totalQty" : totalQty},
+								success : function(){
+									alert('성공');
+								}
+							});
 					});
 				});
 				
@@ -286,8 +384,6 @@
 	<footer id="footer">
 		<jsp:include page="/resources/include/bottom.jsp" />
 	</footer>
-
-
 
 	<!-- Vendor -->
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
@@ -325,8 +421,6 @@
 
 	<!-- Theme Initialization Files -->
 	<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-
-
 
 </body>
 </html>
