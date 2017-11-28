@@ -358,9 +358,10 @@
 	 						        });
 	 						        	var contents = '';
 	 						      
-	 						            contents += '<form action="${ pageContext.request.contextPath}/menu/.do" method="POST">';
+	 						            contents += '<form action="${ pageContext.request.contextPath}/menu/select_ingredients.do" method="POST">';
 	 						            contents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
 	 						            contents += '서브웨이'+data.storeList[0].storeName+ '<br/>' + data.storeList[0].storePhone+ '<br/>'; 
+	 						            contents += '<input type="hidden" name = "storeName" value='+data.storeList[0].storeName + ' />';
 	 						            contents += '<input type="submit" value="선택"/>';
 	 						            //contents += '<input type="submit" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
 										contents += '</div>';
@@ -398,7 +399,7 @@
 				 
 				 
 
- 				}	
+ 			
 				 
 	             function choice(storeName){
 	                 alert("storeName = " +storeName);
