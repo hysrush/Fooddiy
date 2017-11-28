@@ -378,6 +378,16 @@
  						}
  					});
  				}	
+				 
+	             function choice(storeName){
+	                 alert("storeName = " +storeName);
+	                 
+	                 //var btn= this;
+	                 var storeName = storeName;
+	                 alert('위치')
+	                 location.href= "${ pageContext.request.contextPath}/menu/select_ingredients.do"; // 메뉴페이지 
+	             
+	              } 
 		</script>
 		<script>
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
