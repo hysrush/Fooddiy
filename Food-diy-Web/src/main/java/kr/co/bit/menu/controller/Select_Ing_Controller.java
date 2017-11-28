@@ -31,34 +31,12 @@ public class Select_Ing_Controller {
 	private CartService cart_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(String storeName) {
+	public ModelAndView Session(HttpSession session, String storeName) {
 
-/*		UserVO user = (UserVO) session.getAttribute("loginVO");
-		String id = null;
-		if (user == null) {
-			System.out.println("session은 널이다");
-		} else {
-			id = user.getId();
-		}
-		System.out.println(id);*/
-
+		session.setAttribute("storeName", storeName);
 		
-		System.out.println(storeName);
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
-
-/*		// Form에서 가져온 Data를 CartVO 객체형태로 저장
-		CartVO cartVO = new CartVO();
-
-		cartVO.setName(name);
-		cartVO.setPrice(price);
-		cartVO.setSize(size);
-		cartVO.setId(id);
-		cartVO.setPic(pic);
-		
-		session.setAttribute("cartVO", cartVO);
-*/
-		
-
+			
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("menu/select_ingredients");
 		mav.addObject("ingList", ingList);

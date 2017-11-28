@@ -123,7 +123,7 @@
 													<th width=15%>메뉴</th>
 													<th width="25%">주문옵션</th>
 													<th>수량</th>
-													<th>합계금액</th>
+													<th width="10%">합계금액</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -160,7 +160,7 @@
 											<tfoot>
 												<tr>
 													<td>
-														메장정보 : <div></div>
+														메장정보 : <div>${ storeName }</div>
 													</td>
 												</tr>
 											</tfoot>
