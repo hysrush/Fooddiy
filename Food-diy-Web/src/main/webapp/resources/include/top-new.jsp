@@ -355,11 +355,16 @@
 													<div class="col-md-8">
 														<div class="user-avatar">
 															<div class="img-thumbnail">
-																<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.jpg" alt="">
+																<c:choose>
+													                <c:when test="${ loginVO.file ne 'null' and loginVO.file ne null }">
+															                <img src="../upload/${ loginVO.file }">
+													                </c:when>
+																	<c:otherwise>
+																		<img src="${ pageContext.request.contextPath }/resources/img/AA.jpg" style="width: 150px; height: 50px;">
+																	</c:otherwise>
+																</c:choose>
 															</div>
-															<p>
-																<strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span>
-															</p>
+															<p><strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span></p>
 														</div>
 													</div>
 													<div class="col-md-4">

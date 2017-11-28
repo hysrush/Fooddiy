@@ -85,7 +85,7 @@
 									</div>
 									<div class="row">
 										<!-- 로그인 정보 저장 -->
-										<div class="col-xs-6 col-md-3">
+										<div class="col-xs-6 col-md-4">
 											<span class="remember-box checkbox">
 												<label for="idSaveCheck"><input type="checkbox" id="idSaveCheck" name="rememberid"/>아이디 저장</label>
 											</span>
@@ -99,22 +99,22 @@
 									</div>
 								</form>
 								<!-- API 로그인 -->
-								<div class="row" align="center">
-									<div class="col-xs-12 col-md-6">
+								<div class="row mt-xs" align="center">
+									<div class="col-xs-9 col-md-6">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
 									<%-- <div class="col-xs-12 col-md-6">
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div> --%>
-									<%-- <div class="col-md-4">	
-										<jsp:include page="/resources/include/login/facebookLogin.jsp"/>
-									</div> --%>
-								</div>
-								<div class="row mt-xs">
-									<div class="col-md-12">
+									<div class="col-xs-3 col-md-6">
 										<a href="${ pageContext.request.contextPath }/sign/signUp.do" class="btn btn-info mb-md form-control">회원가입</a>
 									</div>
 								</div>
+								<%-- <div class="row mt-xs">
+									<div class="col-md-12">
+										<a href="${ pageContext.request.contextPath }/sign/signUp.do" class="btn btn-info mb-md form-control">회원가입</a>
+									</div>
+								</div> --%>
 							</div>
 						</div>
 					</div>
@@ -155,6 +155,7 @@
 													</select>
 												</div>
 											</div>
+											<p>*&nbsp;가입 시에 입력한 이메일을 입력해 주세요.</p>
 										</div>
 										<div class="form-group">
 											<div class="col-xs-6 col-md-6">

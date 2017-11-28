@@ -2,12 +2,6 @@
     pageEncoding="UTF-8"%>
 <div class="container">
 		<div class="row">
-			<%-- <div class="col-md-1">
-				<a href="${ pageContext.request.contextPath}/index.jsp" class="logo"> 
-					<img alt="Porto Website Template" class="img-responsive"
-					src="${ pageContext.request.contextPath }/resources/img/subwayLOGO.jpg">
-				</a>
-			</div> --%>
 			<div class="col-xs-12">
 				<p>
 					<i class="fa fa-map-marker"></i> 

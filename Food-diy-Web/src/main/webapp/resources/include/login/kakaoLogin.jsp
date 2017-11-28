@@ -35,31 +35,6 @@
 			alert(JSON.stringify(err));
 		}
 	});
-/* 	  
-	    //<![CDATA[
-	    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-	    Kakao.init('8b3eb6fd5d5edc6a771d504d0ecb4e22');
-	    function loginWithKakao() {
-	      // 로그인 창을 띄웁니다.
-	      Kakao.Auth.login({
-	        success: function(authObj) {
-	        	Kakao.API.request({
-	  	          url: '/v1/user/me',
-	  	          success: function(res) {
-	  					var id = res.id;
-	  	            	$("#id").val(id);
-	  	            	$("#pw").val(id);
-	  	            	$("#kaka").click();
-	  	            }
-	        	});
-	        },
-	        fail: function(err) {
-	          alert(JSON.stringify(err));
-	        }
-	      });
-	    };
-	  //]]>
-*/
 </script>
 <form id="kakaoForm" action="${ pageContext.request.contextPath }/sign/kakoLogin.do" method="post" style="display: none;">
 	<input type="hidden" id="id" name="id">
