@@ -105,7 +105,7 @@ public class Select_Ing_Controller {
 	}
 	
 	@RequestMapping(value="/deleteCart", method = RequestMethod.POST )
-	public void Delete_cart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no, HttpSession session) throws Exception{
+	public void DeleteCart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no, HttpSession session) throws Exception{
 		
 		response.setContentType("text/html;charset=UTF-8");
 		
@@ -117,6 +117,33 @@ public class Select_Ing_Controller {
 		cartVO.setNo(number);
 		cartVO.setId(userVO.getId());
 		cart_Service.deleteCart(cartVO);
+		
+		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
+		session.setAttribute("cartList", cartList);
 		System.out.println("삭제됨");
+	}
+	
+	
+	@RequestMapping(value="/productQtyUpdate", method = RequestMethod.POST )
+	public void ProductQtyUpdate(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no,
+			@RequestParam(value="totalQty") Integer totalQty, HttpSession session) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
+		System.out.println(no);
+		System.out.println(totalQty);
+		
+		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		CartVO cartVO = new CartVO();
+		int number = no;
+		
+		cartVO.setNo(number);
+		cartVO.setId(userVO.getId( ));
+		cartVO.setQty(totalQty);
+		
+		cart_Service.updateProductQty(cartVO);
+		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
+		session.setAttribute("cartList", cartList);
+		System.out.println("수량 변경");
 	}
 }

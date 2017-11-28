@@ -116,7 +116,7 @@
 								   
 										<table class="table table-bordered">
 								            <tr>
-													<th width="25%">번호</th>
+													<th width="10%">번호</th>
 													<td>${ eventVo.no }</td>
 												</tr>
 												<tr>

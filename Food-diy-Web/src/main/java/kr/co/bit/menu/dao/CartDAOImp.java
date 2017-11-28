@@ -41,11 +41,16 @@ public class CartDAOImp implements CartDAO {
 		// TODO Auto-generated method stub
 
 	}
-
+	@Override
+	public void updateProductQty(CartVO cartVO) {
+		sqlSession.update(url + "updateProductQty" ,  cartVO);
+	}
 	@Override
 	public void delete(CartVO cartVO) {
 		sqlSession.delete(url + "deleteCart", cartVO);
 
 	}
+	
+	
 
 }
