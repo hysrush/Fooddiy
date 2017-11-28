@@ -128,7 +128,7 @@
 											</thead>
 											<tbody>
 												<c:forEach items="${ cartList }" var="cartVO">
-													<tr>d
+													<tr>
 														<td class="cartNo" style="display: none;">${ cartVO.no }</td>
 
 														<td class="product-action-td remove_product"><a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
