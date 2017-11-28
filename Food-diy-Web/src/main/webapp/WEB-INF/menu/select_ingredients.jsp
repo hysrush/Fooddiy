@@ -302,26 +302,112 @@
 
 			<div class="row">
 				<div style="text-align: center;">
-					<form class = "aa" action = "${ pageContext.request.contextPath }/index2.jsp" method = "post" onsubmit="return submitFunc();">
+					<form class = "order-form" action = "${ pageContext.request.contextPath }/menu/cart.do" method = "post" onsubmit="return submitFunc();">
+						<input type="hidden" class = "bread" name = "bread" value="bread"/>
+						<input type="hidden" class = "cheese" name = "cheese" value="" />
+						<input type="hidden" class = "topping" name = "topping" value=""/>
+						<input type="hidden" class = "vegetable" name = "vegetable" value=""/>
+						<input type="hidden" class = "sauce" name = "sauce" value=""/>
 						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 					</form>
 				</div>
 			</div>
+			
+			<div class="modal order-modal-info" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog" style="top: 30%">
+					<div class="modal-content">
+						<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
+							<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>
+						</div>
+						<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
+							<p class = "info"></p>
+						</div>
+						<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
+							<button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; background-color: #7aa93c;">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal order-modal-final" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog" style="top: 30%">
+					<div class="modal-content">
+						<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
+							<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>
+						</div>
+						<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
+							<p class = "info">주문하시겠습니까?</p>
+						</div>
+						<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
+							<button type="button" class="btn btn-default confirm" style="color: white; background-color: #7aa93c;">확인</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal" style="color: #7aa93c; background-color: white; border-color: #7aa93c">취소</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 
 	<script type="text/javascript">
 		function submitFunc() {
 			
-			for(var i = 0; i < $('.accordion-toggle').length; ++i) {
+			/* for(var i = 0; i < $('.accordion-toggle').length; ++i) {
 				if($('.accordion-toggle').eq(i).find('tr').children('td').length < 2 ) {
 					alert('재료를 선택해 주세요');
 					return false;
 				}
+			} */
+			
+			if($('.bread-table').find('td').length < 2)  {
+					$('.order-modal-info').find('.info').text('빵을 선택해주세요.');
+					$(".order-modal-info").modal();
+					return  false;
+			}else if($('.cheese-table').find('td').length < 2){
+					$('.order-modal-info').find('.info').text('치즈를 선택해주세요.');
+					$(".order-modal-info").modal();
+					return  false;
+			}else if($('.sauce-table').find('td').length < 2){
+					$('.order-modal-info').find('.info').text('소스를 선택해주세요.');
+					$(".order-modal-info").modal();
+					return  false;
 			}
 			
-			return true;
+			var bread = $('.bread-table').find('.name').text().split()[0].trim();
+			var cheese = $('.cheese-table').find('.name').text().split(' ')[0].trim(); 
+
+			var topping = "";
+			for(var i = 0; i < $('.topping-table').find('tr').length; ++i) {
+				topping += $('.topping-table').find('.name').eq(i).text().split(' ')[0].trim() + " ";
+				topping += $('.topping-table').find('.topping-price').eq(i).text().split(' ')[0];
+				if(i + 1 < $('.topping-table').find('tr').length) {
+					topping += ","
+				}
+			}
 			
+			var vegetable = "";
+			for(var i = 0; i < $('.vegetable-table').find('tr').length; ++i) {
+				vegetable += $('.vegetable-table').find('.name').eq(i).text().split(' ')[0].trim() + " ";
+				vegetable += $('.vegetable-table').find('.vegetable-plus-minus').eq(i).text().split(' ')[0]
+				if(i + 1 < $('.vegetable-table').find('tr').length) {
+					vegetable += ","
+				}
+			}
+			
+			var sauce = "";
+			for(var i = 0; i < $('.sauce-table').find('tr').length; ++i) {
+				sauce += $('.sauce-table').find('.name').eq(i).text().split(' ')[0].trim() + " ";
+			}
+		
+			$('.order-form .bread').attr('value', bread);
+			$('.order-form .cheese').attr('value', cheese);
+			$('.order-form .topping').attr('value', topping);
+			$('.order-form .vegetable').attr('value', vegetable);
+			$('.order-form .sauce').attr('value', sauce);;
+			
+			return true;			
 		}
 	
 		$(document).ready(function() {

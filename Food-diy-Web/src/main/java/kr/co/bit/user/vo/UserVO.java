@@ -11,11 +11,21 @@ public class UserVO {
 	private String email;
 	private String phone;
 	//private 사진첨부 보류  알아오기
+	private String file;
 	private String grade;
 	private String root;
 	private String type;
 	private String regDate;
 	
+	
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
+
 	public int getNo() {
 		return no;
 	}
@@ -111,12 +121,12 @@ public class UserVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "MemberVO [no=" + no + ", id=" + id + ", name=" + name + ", pw=" + pw + ", birth=" + birth + ", sex="
-				+ sex + ", email=" + email + ", phone=" + phone + ", grade=" + grade + ", root=" + root + ", type="
-				+ type + ", regDate=" + regDate + "]";
+		return "UserVO [no=" + no + ", id=" + id + ", name=" + name + ", pw=" + pw + ", birth=" + birth + ", sex=" + sex
+				+ ", email=" + email + ", phone=" + phone + ", file=" + file + ", grade=" + grade + ", root=" + root
+				+ ", type=" + type + ", regDate=" + regDate + "]";
 	}
-
+	
 }

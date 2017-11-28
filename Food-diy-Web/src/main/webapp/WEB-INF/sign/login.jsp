@@ -61,11 +61,11 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
-	
-<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+		
+		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+		
 <script>window.name="main"</script>
 <script>
-	
 	$(document).ready(function(){
 		
 		$("#check").click(function(){
@@ -168,8 +168,12 @@
 		</div>
 	</div>
 	
-	<footer id="footer">
-			<jsp:include page="/resources/include/bottom.jsp"/>
+	<footer class="light hidden-xs" id="footer">
+		<jsp:include page="/resources/include/bottom.jsp"/>
+	</footer>
+	
+	<footer class="light hidden-lg" id="footer">
+		<jsp:include page="/resources/include/mobile-bottom.jsp"/>
 	</footer>
 	
 <!-- Vendor -->

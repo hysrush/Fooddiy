@@ -15,11 +15,28 @@ public class StoreServiceImpl implements StoreService{
 	@Autowired
 	private StoreDAO storeDAO;
 	
+	
+	@Override
+	public List<StoreVO> selectStoreAll(){
+		List<StoreVO> list = storeDAO.selectStoreAll();
+		
+		return list;
+		
+	}
+	
+	
 	@Override
 	public List<StoreVO> selectStoreList(String gugun) {
 		List<StoreVO> list = storeDAO.selectStoreList(gugun);
 		return list;
 	}
+	@Override
+	public List<StoreVO> selectStoreAddr(String store){
+		List<StoreVO> list = storeDAO.selectStoreAddr(store);
+		return list;
+		
+	}
+	
 
 	@Override
 	public List<CityVO> selectCity() {

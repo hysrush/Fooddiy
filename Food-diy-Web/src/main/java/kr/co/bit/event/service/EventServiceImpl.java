@@ -19,14 +19,10 @@ public class EventServiceImpl implements EventService{
 	
 	@Override
 	public List<EventBoardVO> selectAllEvent(){
-		
 		List<EventBoardVO> list = eventDAO.selectAll();
 		return list;
-		
 	}
-	
-	
-	
+
 	@Override
 	public List<EventBoardVO> selectEndEvent() {
 		List<EventBoardVO> list = eventDAO.selectEndEvent();
@@ -39,21 +35,17 @@ public class EventServiceImpl implements EventService{
 		return list;
 	}
 	
-	
 	@Override
 	public List<StoreVO> selectStoreList(String gugun){
 		List<StoreVO> list = eventDAO.selectStoreList(gugun);
 		return list;
 	}
 	
-	
-	
 	//Event 湲� 蹂닿린
 	@Override
 	public EventBoardVO selectOneEvent(int no) {
 		return eventDAO.selectOne(no);
 	}
-	
 	
 	//Event 湲��벐湲�
 	@Override
@@ -71,15 +63,11 @@ public class EventServiceImpl implements EventService{
 		eventDAO.delete(no);
 	}
 
-
-
 	@Override
 	public List<CityVO> selectCity() {
 		List<CityVO> list = eventDAO.selectCity();
 		return list;
 	}
-
-
 
 	@Override
 	public List selectLocation(String sido) {
@@ -87,8 +75,10 @@ public class EventServiceImpl implements EventService{
 		return list;
 	}
 
-
-	
-	
+	@Override
+	public String locationName(String gugun) {
+		String locationName = eventDAO.locationName(gugun);
+		return locationName;
+	}
 	
 }

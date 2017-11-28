@@ -7,7 +7,9 @@ import kr.co.bit.event.vo.StoreVO;
 
 public interface StoreService {
 
+	List<StoreVO> selectStoreAll();
 	List<StoreVO> selectStoreList(String gugun);
+	List<StoreVO> selectStoreAddr(String store);
 	List<CityVO> selectCity();
 	List selectLocation(String sido);
 	

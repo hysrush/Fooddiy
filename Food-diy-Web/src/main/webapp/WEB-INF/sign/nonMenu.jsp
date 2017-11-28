@@ -139,9 +139,13 @@
 			</div>
 		</div>
 	
-	<footer id="footer">
+		<footer class="light hidden-xs" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
-	</footer>
+		</footer>
+		
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp"/>
+		</footer>
 	
 <!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

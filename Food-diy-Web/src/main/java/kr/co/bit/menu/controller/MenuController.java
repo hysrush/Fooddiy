@@ -15,16 +15,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.menu.service.MenuService;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.user.vo.UserVO;
 
 @Controller
-@SessionAttributes({"name", "price", "size"})
 @RequestMapping("/menu")
 public class MenuController {
 	
@@ -108,17 +107,29 @@ public class MenuController {
 	}
 	
 	
+	
 	// '주문하기'선택 후 매장화면으로	
-	@RequestMapping(value="/testStore.do", method=RequestMethod.POST)
-	public CartVO Session(HttpSession session, String name, String price, String size) {
+	@RequestMapping(value="/findStore.do", method=RequestMethod.POST)
+	public CartVO Session(HttpSession session, String name, String price, String size, String pic) {
+		
+		UserVO user = (UserVO)session.getAttribute("loginVO");		
+		String id = user.getId();
+		
 		// Form에서 가져온 Data를 CartVO 객체형태로 저장
 		CartVO cartVO = new CartVO();
 		
 		cartVO.setName(name);
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
+		cartVO.setPic(pic);
+		cartVO.setId(id);
 				
-		session.setAttribute("cartVO", cartVO);		
+		session.setAttribute("cartVO", cartVO);
+		
+		//ModelAndView  mav = new ModelAndView();
+		//mav.setViewName("menu/select_ingredients");
+		//mav.addObject("cartVO", cartVO);
+		
 		
 		return cartVO;				
 	}

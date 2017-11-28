@@ -85,6 +85,7 @@
 			
 			<!--  store 컨트롤러 테스트 -->
 			<a href= "${ pageContext.request.contextPath}/store/findStore.do">매장찾기 페이지 </a><br/>
+			<a href= "${ pageContext.request.contextPath}/store/myStore.do">지오로케이션 예제 </a><br/>
 			
 			<!--  event 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/event/eventWrite.do">이벤트등록</a><br/>

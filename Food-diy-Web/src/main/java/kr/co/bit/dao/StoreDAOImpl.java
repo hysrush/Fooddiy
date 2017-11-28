@@ -16,6 +16,15 @@ public class StoreDAOImpl implements StoreDAO {
 	private SqlSessionTemplate sqlSession;
 	private String url = "kr.co.bit.dao.StoreDAO.";
 	
+	
+	@Override
+	public List<StoreVO> selectStoreAll(){
+		
+		List<StoreVO> list = sqlSession.selectList(url + "selectStoreAll");
+		
+		return list;
+	}
+	
 	@Override
 	public List<StoreVO> selectStoreList(String gugun) {
 		
@@ -23,6 +32,14 @@ public class StoreDAOImpl implements StoreDAO {
 		
 		return list;
 	}
+	
+	@Override
+	public List<StoreVO> selectStoreAddr(String store){
+		List<StoreVO> list = sqlSession.selectList(url + "selectStoreAddr",store);
+		
+		return list;
+	}
+	
 
 	@Override
 	public List<CityVO> selectCity() {

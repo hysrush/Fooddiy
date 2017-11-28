@@ -1,5 +1,9 @@
 package kr.co.bit.member.control;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +12,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.community.service.ClaimService;
@@ -86,6 +92,10 @@ public class MemberController {
 		}
 
 		return "member/memberUpdate";
+		
+		
+		
+		
 	}
 
 	// 회원 탈퇴 비밀번호 확인
@@ -108,15 +118,38 @@ public class MemberController {
 
 	// 회원정보수정 페이지 보여 주는 거
 	@RequestMapping(value = "/memberUpdate.do", method = RequestMethod.GET)
-	public String memberUpdate() {
+	public String memberUpdate(Model model) {
 
+		model.addAttribute("loginVO", new UserVO());
 		return "member/memberUpdate";
 	}
 
 	// 회원이 수정한 정보 db에 저장
 	@RequestMapping(value = "/memberUpdate.do", method = RequestMethod.POST)
-	public String memberUpdateForm(UserVO member, Model model) {
+	public String memberUpdateForm(UserVO member, BindingResult result,
+			@RequestParam(value = "file") MultipartFile file, Model model) throws Exception {
 
+		
+		// 1. fileName 설정 + eventVO에 fileName 저장
+		String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
+		String saveFileName = file.getOriginalFilename();
+
+		member.setFile(saveFileName);
+
+		System.out.println(fileName);
+		System.out.println(saveFileName);
+		System.out.println("들어가나");
+
+		// 2. 경로에 이미지파일 저장
+		byte[] bytes;
+		bytes = file.getBytes();
+		BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+		buffStream.write(bytes);
+		buffStream.close();
+
+		System.out.println("들어가나 2");
+
+		
 		System.out.println(member.toString());
 		memberService.getMemberUpdate(member);
 		UserVO userVO = signService.login(member);

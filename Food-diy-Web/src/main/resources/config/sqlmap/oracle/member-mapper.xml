@@ -14,6 +14,7 @@
 		<result column="user_birth" property="birth"/>
 		<result column="user_grade" property="grade"/>
 		<result column="user_type" property="type"/>
+		<result column="user_pic" property="file"/>
 	</resultMap>
 	
 	<!-- sql문 적는 공간 -->
@@ -26,14 +27,14 @@
 	
 	<!-- 로그인 -->
 	<select id="login" parameterType="userVO" resultMap="mapLoginVO">
-		select user_id, user_pw, user_name, user_birth, user_email, user_phone ,user_grade, user_type from t_user
+		select user_id, user_pw, user_name, user_birth, user_email, user_phone ,user_grade, user_type, user_pic from t_user
 		where user_id = #{id} and user_pw = #{pw}
 	</select>
 	
 	<!--  회원 가입 -->
 	<insert id="signUp" parameterType="userVO" >
-		insert into t_user(user_no, user_id, user_name, user_pw, user_birth, user_sex, user_email, user_phone, user_root)
-		values(seq_t_user_no.nextval, #{id}, #{name}, #{pw}, #{birth}, #{sex}, #{email}, #{phone}, #{root})
+		insert into t_user(user_no, user_id, user_name, user_pw, user_birth, user_sex, user_email, user_phone, user_root, user_pic)
+		values(seq_t_user_no.nextval, #{id}, #{name}, #{pw}, #{birth}, #{sex}, #{email}, #{phone}, #{root}, #{file})
 	</insert>
 	
 	<!-- 비회원 가입 -->
@@ -77,7 +78,8 @@
 	 SET
 	 	user_pw = #{pw},
 	 	user_phone = #{phone},
-	 	user_email = #{email}
+	 	user_email = #{email},
+	 	user_pic = #{file}
 	 where
 	 	user_id = #{id}
 	</update>

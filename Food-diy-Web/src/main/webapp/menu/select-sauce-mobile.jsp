@@ -10,7 +10,7 @@
 							<tbody>
 								<tr>
 									<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/sauce/mobile/${ ingList.pic}" /></td>
-									<td width=""><strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "id">${ ingList.eng_name}</strong></td>
+									<td width=""><strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "eng_name">${ ingList.eng_name}</strong></td>
 								</tr>
 							</tbody>
 						</table>
@@ -31,7 +31,7 @@
 	 		$(this).click(function() {
 	 			
 	 			var name = $(this).find('.name').text();
-	 			var id = $(this).find('.id').text().split(' ');
+	 			var id = $(this).find('.eng_name').text().split(' ');
 	 			if(id.length == 1) {
 	 				id = id[0];
 	 			}
@@ -62,7 +62,8 @@
 								$('.sauce-table tr').addClass(id);
 								
 								var td = '<td class="' + 'sauce-name ' + '">';
-									td += '<strong class = "'+ 'name">  ' + name + id + '</strong>';
+									td += '<strong class = "'+ 'name">' + name + '</strong>';
+									td += '<strong class = "'+ 'eng_name">' + id + '</strong>';
 									td += '</td>';
 									$('.sauce-table tr').append(td);
 							}
@@ -71,7 +72,8 @@
 					 			var row =  '<tr class = "'+ id + '">';
 					 				row += '<td width ="' + '30%"></td>'
 					 				row += '<td class="' + 'sauce-name">';
-									row += '<strong class = "'+ 'name">'+ name + id + '</strong>';
+									row += '<strong class = "'+ 'name">'+ name +'</strong>';
+									row += '<strong class = "'+ 'eng_name">'+ id + '</strong>';
 									row += '</td>';
 									row += '</tr>';
 										

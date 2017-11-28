@@ -1,19 +1,33 @@
 package kr.co.bit.menu.vo;
 
-import java.util.List;
-import java.util.Map;
 
 public class CartVO {
 	
+	private int no;
+	private String id;
 	private String name;
 	private String price;
 	private String size;
+	private String pic;
 	
 	private String bread;
 	private String cheese;
-	private List<Map<String, String>> topping;
-	private List<Map<String, String>> vegetable;
-	
+	private String topping;
+	private String vegetable;
+	private String sauce;
+	private String regDate;
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -32,6 +46,12 @@ public class CartVO {
 	public void setSize(String size) {
 		this.size = size;
 	}
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 	public String getBread() {
 		return bread;
 	}
@@ -44,31 +64,35 @@ public class CartVO {
 	public void setCheese(String cheese) {
 		this.cheese = cheese;
 	}
-	public List<Map<String, String>> getTopping() {
+	public String getTopping() {
 		return topping;
 	}
-	public void setTopping(List<Map<String, String>> topping) {
+	public void setTopping(String topping) {
 		this.topping = topping;
 	}
-	public List<Map<String, String>> getVegetable() {
+	public String getVegetable() {
 		return vegetable;
 	}
-	public void setVegetable(List<Map<String, String>> vegetable) {
+	public void setVegetable(String vegetable) {
 		this.vegetable = vegetable;
 	}
-	public List<String> getSauce() {
+	public String getSauce() {
 		return sauce;
 	}
-	public void setSauce(List<String> sauce) {
+	public void setSauce(String sauce) {
 		this.sauce = sauce;
 	}
-	private List<String> sauce;
-
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
 	@Override
 	public String toString() {
-		return "CartVO [name=" + name + ", price=" + price + ", size=" + size + ", bread=" + bread + ", cheese="
-				+ cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + "]";
+		return "CartVO [no=" + no + ", id=" + id + ", name=" + name + ", price=" + price + ", size=" + size + ", pic="
+				+ pic + ", bread=" + bread + ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable
+				+ ", sauce=" + sauce + ", regDate=" + regDate + "]";
 	}
-	
 	
 }

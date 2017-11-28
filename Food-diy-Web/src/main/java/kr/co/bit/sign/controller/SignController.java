@@ -87,6 +87,7 @@ public class SignController {
 		userVO.setEmail(phoneCert.getEmail() + phoneCert.getEmailD());
 		userVO.setSex(phoneCert.getSex());
 		userVO.setRoot(phoneCert.getRoot());
+		userVO.setFile("null");
 		userVO.setType("U");
 		
 		signServiceImp.signUp(userVO);
@@ -99,6 +100,7 @@ public class SignController {
 		userVO = signServiceImp.login(login);
 		
 		model.addAttribute("loginVO", userVO);
+		model.addAttribute("msg", "가입 성공~!");
 		
 		return "sign/sign";
 	}
@@ -278,19 +280,39 @@ public class SignController {
 		return list;
 	}
 
-	// 이메일 인증 후 가입
+	// 이메일 인증 후 session 객체에만 등록
 	@RequestMapping(value="/nonemailCheck")
-	public String nonMemberSign(UserVO nonMember, Model model) {
+	public String nonMemberSign(UserVO nonMember, Model model, HttpSession session) {
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
-		model.addAttribute("nonMember", user);
+		session.setAttribute("nonMember", user);
 		model.addAttribute("msg", "완료~");
 		
 		return "/sign/sign";
 	}
 	
 	
+	@RequestMapping("/nonlogout")
+	public String nonLogout(String id, HttpSession session) {
+		
+		session.invalidate();
+		
+		return "sign/logout";
+		
+	}
+	
+	/**
+	 * 
+	 *  3. 비회원
+	 * 	 - 주문조회
+	 * */
+	
+	@RequestMapping("/orderCheck")
+	public String orderCheck() {
+		
+		return null;
+	}
 	
 	
 }
