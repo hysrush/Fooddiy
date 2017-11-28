@@ -157,6 +157,13 @@
 													</tr>
 												</c:forEach>
 											</tbody>
+											<tfoot>
+												<tr>
+													<td>
+														메장정보 : <div></div>
+													</td>
+												</tr>
+											</tfoot>
 										</table>
 									</div>
 								</div>
