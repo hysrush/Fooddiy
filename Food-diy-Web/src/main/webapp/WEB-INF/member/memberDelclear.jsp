@@ -145,7 +145,7 @@
 					</div>
 
 			<div align="right" style="margin-bottom:5% ; " class="col-md-7 col-xs-10">
-				<button id="first" style="width: 130px; height: 40px; margin-right:10%; font-size: 20px;" type="button" class="btn  btn-info">  첫화면 </button>
+				<button id="first" style="width: 130px; height: 40px; margin-right:14%; font-size: 20px;" type="button" class="btn  btn-info">  첫화면 </button>
 			</div>
 		</div>
 

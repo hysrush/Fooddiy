@@ -174,11 +174,11 @@ function fwrite_submit() {
 				</div>
 				<form action="${pageContext.request.contextPath}/member/memberDelCheck.do" name="joinform" method="post" onsubmit="return fwrite_submit()" >
 					<div class="col-md-8" style="margin-left: 7%; margin-top: 2% " >
-						<h4><input  class ="ccc" name="ckbox" type="checkbox"/>  위의 약관에 동의 합니다.</h4>
+						<h4><label for="c"><input  class ="ccc" name="ckbox" id="c" type="checkbox"/>  위의 약관에 동의 합니다.</label></h4>
 					</div>
 					
 					<div style="margin-top: 4%; margin-left: 53%" class="col-md-8 col-xs-7">
-					<input type="hidden" name="id" value="${ userVO.id }" />
+					<input type="hidden" name="id" value="${ loginVO.id }" />
 					<div>	
 					</div>
 					<input type="submit" id="clear" value="탈 퇴" class="btn  btn-info" style="cursor:hand; width: 80px;">

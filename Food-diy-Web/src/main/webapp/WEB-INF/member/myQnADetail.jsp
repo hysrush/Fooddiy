@@ -67,6 +67,17 @@
 	border-style: solid;
 }
 </style>
+<script type="text/javascript">
+	function doAction(type) {
+		switch (type) {
+		case 'L':
+			history.back();   //이전페이지로 가기
+			break;
+		default:
+			break;
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="body">
@@ -113,84 +124,83 @@
 		</aside></div></div>
 		
 			
-			<div role="main" class="main shop">
-
-				<div class="container">
-
-
-						<div class="col-md-12r">
-
-
-							<div class="featured-boxes">
-									<div class="col-sm-8  ">
-										<div class="featured-box featured-box-primary align-left mt-xlg">
-											<div style="text-align: center;" class="box-content">
-												<h4  style="width: 32px; margin-right:10%; float: left;" class="heading-primary text-uppercase mb-md hidden-xs"></h4>
-												<h4 align="center" style="margin-right:8%; width: 100px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4>
-												<h4 style="margin-left:3%; width: 125px; float: left;" class="heading-primary text-uppercase mb-md hidden-xs">등록일</h4>
-												<h4 style="margin-left:12%; width: 117px; float: left;" class="heading-primary text-uppercase mb-md">답변여부</h4>
-												
-												<table class="cart-totals"> 
-													<tbody>
-														<c:forEach items="${ claimList }" var="claim">
-														
-														  <tr class="cart-subtotal">
-															<th style="text-align: center;">
-																<strong>${ claim.no }</strong>
-															</th>
-															<td class="col-md-4" align="center">
-																<a class="amount" href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }"><c:out value="${ claim.title }" /></a>
-																
-															</td>
-															<td class="col-md-2" align="right">
-																<span class="amount ">${ claim.regDate }</span>
-															</td>
-															<td align="center">
-																<button style="margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
-
-															</td>
-														</tr>
-														<!-- <tr class="shipping">
-															<th style="text-align: center;">
-																2															
-															</th>
-															<td align="center" style="width: 300px">
-																칭찬합니다<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
-															</td>
-															<td align="right">
-																<span > 2017-09-28<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method"></span>
-															</td>
-															<td align="center">
-																<button style="background-color:orange; margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 답변완료 </button>
-															</td>
-														</tr> -->
-													  </c:forEach>
-													</tbody>
-												</table>
+			<div class="body">
+		<div role="main" class="main">
+			<div class="col-md-9 center">
+				<h2>1:1 문의 리스트</h2>
+				<div class="tab-content">
+				<!-- 공지사항 / 보도자료 디테일 -->
+					<div class="blog-posts single-post">
+						<div class="center">
+							<div class="post-content">
+								<div class="post-meta" style="float: right;">
+									<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+									<span><a href="#">커뮤니티</a> > </span>
+									<span><a href="${ pageContext.request.contextPath }/community/claim.do">1:1문의</a></span>
+								</div>
+								<br>
+								<form action="/Mission-Web/fileDownload" method="post" id="dForm">
+									<table class="table table-bordered">
+										<tr>
+											<!-- 타입 -->
+											<c:if test="${ claimVO.type eq 'I'}"><td>문의</td></c:if>
+											<c:if test="${ claimVO.type eq 'P'}"><td>칭찬</td></c:if>
+											<c:if test="${ claimVO.type eq 'S'}"><td>제안</td></c:if>
+											<c:if test="${ claimVO.type eq 'C'}"><td>불만</td></c:if>
+											<c:if test="${ claimVO.type eq 'X'}"><td>기타</td></c:if>
+											<!-- 제목 -->
+											<td>
+												<h4 class="mb-none">
+													<strong><c:out value="${ claimVO.title }"></c:out></strong>
+												</h4>
+											</td>
+											<div class="post-meta">
+												<!-- 조회수 -->
+												<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ claimVO.viewCnt }</td>
+												<!-- 등록일 -->
+												<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ claimVO.regDate }</td>
 											</div>
-										</div>	
-										<div align="right" style="float: right;" class="col-md-8">
-											<button style=" width: 100px; height: 30px; font-size: 14px" type="button" class="btn  btn-info">  글쓰기 </button>
-										</div><br/><br/>
-									<div class="header-search hidden-xs">
-										<form id="searchForm" action="page-search-results.html" method="get">
-											<div  class="input-group">
-												<input style="width: 400px; float: right;" type="text" class="form-control" name="q" id="q" placeholder="Search..." required>
-												<span style="" class="input-group-btn">
-													<button  class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-												</span>
-											</div>
-										</form>
-										
-									</div>
-									</div>
+										</tr>
+										<!-- 방문일 / 방문매장명 -->
+										<c:if test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
+											<tr>
+												<th width="15%">방문일</th>
+												<td>${ claimVO.visitDate }</td>
+												<th width="15%">방문매장</th>
+												<td>${ claimVO.visitStore }</td>
+											</tr>
+										</c:if>
+										<tr>
+											<!-- 내용 -->
+											<td colspan="4"><p><c:out value="${ claimVO.content }"></c:out></p></td>
+										</tr>
+										<!-- 첨부파일 -->
+										<c:if test="${ not empty claimVO.file }">
+											<tr>
+												<th width="15%">첨부파일</th>
+												<td colspan="3">
+													<div align="center">
+														<img alt="" class="img-responsive img-rounded" src="../upload/${ claimVO.file }" style="height:400px">
+													</div>
+												</td>
+											</tr>
+										</c:if>
+									</table>
+								</form>
+								<div class="center">
+									<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
 								</div>
 							</div>
-							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 						
 	
 
+			
 			
 		</div>
 	</div>

@@ -3,12 +3,15 @@ package kr.co.bit.member.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +25,7 @@ import kr.co.bit.user.vo.UserVO;
 
 @Controller
 /* @SessionAttributes("/member") */
-@SessionAttributes("userVO")
+@SessionAttributes("loginVO")
 @RequestMapping("/member")
 
 public class MemberController {
@@ -174,6 +177,26 @@ public class MemberController {
 
 		return mav;
 	}
+	
+	// Claim 글 상세내용 조회 & 게시글 조회수 증가 처리
+	// ex) community/claimDetail.do?no=15
+	@RequestMapping(value="/myQnADetail.do", method=RequestMethod.GET)
+	public ModelAndView detail(@RequestParam("no") int no, HttpSession session) {
+		
+		// 조회수 증가
+		claimService.updateViewcntClaim(no, session);
+		
+		ClaimBoardVO claimVO = claimService.selectOneClaim(no);
+		
+		ModelAndView mav = new ModelAndView();
+		//setViewName : 어떤 페이지를 보여줄것인가
+		mav.setViewName("member/myQnADetail");
+		//addObject : key 와 value 를 담아 보내는 메서드 
+		mav.addObject("claimVO", claimVO);
+		
+		return mav;
+	}
+	
 	
 	
 	

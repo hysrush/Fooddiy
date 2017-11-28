@@ -179,7 +179,7 @@
 									<h4 class="heading-primary text-uppercase mb-md">안전한 회원탈퇴를 위해 비밀번호를 입력하세요.</h4>
 									<form
 										action="${ pageContext.request.contextPath }/member/delCheck.do" id="frmSignIn" method="post">
-										<input type="hidden" name="id" value="${userVO.id }">
+										<input type="hidden" name="id" value="${loginVO.id }">
 										<div class="row">
 											<div class="form-group">
 												<div class="col-md-12">

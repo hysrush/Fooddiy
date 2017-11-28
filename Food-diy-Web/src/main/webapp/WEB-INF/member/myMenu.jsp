@@ -73,7 +73,7 @@
 		
 		var q = parseInt($("#qty").val());
 		
-		$("#minus").click(function(){
+		$("").click(function(){
 			
 			if(q<1){
 				alert("더이상 줄일 수 없습니다.");
@@ -137,7 +137,7 @@
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
 									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${userVO.id}">나의 문의사항</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
 	
@@ -188,7 +188,7 @@
 																	</form>
 																</td>
 																<td style="padding-right:5px;">
-																	<button style=" width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제하기 </button>
+																	<button style=" width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
 																</td>
 															</tr>
 															<tr class="cart_table_item">
@@ -219,7 +219,7 @@
 																	</form>
 																</td>
 																<td>
-																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제하기 </button>
+																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
 																</td>
 															</tr>
 															<tr class="cart_table_item">
@@ -251,7 +251,7 @@
 																	</form>
 																</td>
 																<td>
-																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제하기 </button>
+																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
 																</td>
 															</tr>
 															<tr>
@@ -267,10 +267,10 @@
 	
 
 			<div align="right" style="margin-bottom:5% ; margin-left: 29%" class="col-md-9 col-sm-6 col-xs-9 ">
-				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  장바구니 담기 </button>
-				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  sns게시글 등록 </button>
-				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  메뉴삭제 </button>
-				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info">  주문하기 </button>
+				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> 장바구니 </button>
+				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> sns 등록 </button>
+				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> 메뉴삭제 </button>
+				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> 주문 </button>
 			</div>
 		</div>
 	</div>
