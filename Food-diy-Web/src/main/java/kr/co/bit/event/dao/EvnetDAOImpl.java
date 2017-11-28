@@ -41,7 +41,9 @@ public class EvnetDAOImpl implements EventDAO {
 	// �씠踰ㅽ듃 �겢由��떆 �뵒�뀒�씪
 	@Override
 	public EventBoardVO selectOne(int no) { 
-		return sqlSession.selectOne(url + "selectByNo" , no);
+		
+		EventBoardVO eventDetail = sqlSession.selectOne(url + "selectByNo" , no);
+		return eventDetail;
 	}
 	@Override
 	public List<StoreVO> selectStoreList(String gugun){

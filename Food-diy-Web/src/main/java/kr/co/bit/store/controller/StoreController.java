@@ -4,19 +4,24 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.event.vo.locationVO;
+import kr.co.bit.menu.vo.CartVO;
+import kr.co.bit.menu.vo.IngredientsVO;
 import kr.co.bit.service.StoreService;
+import kr.co.bit.user.vo.UserVO;
 
 @RequestMapping("/store")
 @Controller
@@ -73,7 +78,7 @@ public class StoreController {
 			JSONObject jsonObj = new JSONObject();
 
 			// 1. Select 구 군 정보
-			List locationList = storeService.selectLocation(sido);
+			List<locationVO> locationList = storeService.selectLocation(sido);
 
 			// 2. return value parse
 			jsonObj.put("result", true);
@@ -125,6 +130,38 @@ public class StoreController {
 			response.getWriter().print(jsonObj.toString());
 			
 		}
+		
+		@RequestMapping(value = "메뉴선택.do", method = RequestMethod.POST)
+		public ModelAndView Session(HttpSession session, String storeName ) {
+
+			UserVO user = (UserVO) session.getAttribute("loginVO");
+			String id = null;
+			if (user == null) {
+				System.out.println("session은 널이다");
+			} else {
+				id = user.getId();
+			}
+			System.out.println(id);
+
+			
+
+			// Form에서 가져온 Data를 CartVO 객체형태로 저장
+			StoreVO storeVO = new StoreVO();
+
+			storeVO.setStoreName(storeName);
+			
+			session.setAttribute("storeVO", storeVO);
+
+			
+
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("menu/select_ingredients");
+			
+
+			return mav;
+		}
+		
+		
 		
 	
 	

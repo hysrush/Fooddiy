@@ -377,7 +377,22 @@
 	 						});    
  						}
  					});
- 				}	
+ 				}
+				 
+				 function choice(storeName){
+					 alert("storeName = " +storeName);
+					 
+					 //var btn= this;
+					 var storeName = storeName;
+					 
+					 location.href="notice/List.jsp"; // 메뉴페이지 
+
+				
+				 }
+				 
+				 
+				 
+				 
 		</script>
 		<script>
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
