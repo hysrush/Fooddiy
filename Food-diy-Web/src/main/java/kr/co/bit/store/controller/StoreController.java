@@ -33,10 +33,21 @@ public class StoreController {
 	
 	
 	@RequestMapping("findStore.do")
-	public ModelAndView list() {
+	public ModelAndView list(HttpSession session, String name, String price, String size, String pic) {
 		List<CityVO> cityList = storeService.selectCity();
-		
+		UserVO user = (UserVO)session.getAttribute("loginVO");		
+		String id = user.getId();
 		ModelAndView mav = new ModelAndView();
+		// Form에서 가져온 Data를 CartVO 객체형태로 저장
+		CartVO cartVO = new CartVO();
+		
+		cartVO.setName(name);
+		cartVO.setPrice(price);
+		cartVO.setSize(size);
+		cartVO.setPic(pic);
+		cartVO.setId(id);
+				
+		session.setAttribute("cartVO", cartVO);
 		
 		mav.setViewName("store/FindStore");
 		mav.addObject("cityList", cityList);
