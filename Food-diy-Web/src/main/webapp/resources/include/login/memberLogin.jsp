@@ -100,13 +100,16 @@
 								</form>
 								<!-- API 로그인 -->
 								<div class="row mt-xs" align="center">
-									<div class="col-xs-9 col-md-6">
+									<div class="col-md-6 visible-lg">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
+									</div>
+									<div class="col-xs-6 hidden-lg">
+										<jsp:include page="/resources/include/login/mobile-kakaoLogin.jsp"/>
 									</div>
 									<%-- <div class="col-xs-12 col-md-6">
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div> --%>
-									<div class="col-xs-3 col-md-6">
+									<div class="col-xs-6 col-md-6">
 										<a href="${ pageContext.request.contextPath }/sign/signUp.do" class="btn btn-info mb-md form-control">회원가입</a>
 									</div>
 								</div>

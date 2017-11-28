@@ -1,11 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <a id="kakao-login-btn"></a>
 <a href="http://developers.kakao.com/logout"></a>
-<%-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
-		<img src="${ pageContext.request.contextPath }/resources/img/login/kakao_login_btn_medium.png"/>
-</a> --%>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <script type='text/javascript'>
@@ -36,9 +32,3 @@
 		}
 	});
 </script>
-<form id="kakaoForm" action="${ pageContext.request.contextPath }/sign/kakoLogin.do" method="post" style="display: none;">
-	<input type="hidden" id="id" name="id">
-	<input type="hidden" id="pw" name="pw">
-	<input type="submit" id="kaka">
-</form>
-
