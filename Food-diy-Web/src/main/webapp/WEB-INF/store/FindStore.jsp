@@ -358,10 +358,13 @@
 	 						        });
 	 						        	var contents = '';
 	 						      
+	 						            contents += '<form action="${ pageContext.request.contextPath}/menu/.do" method="POST">';
 	 						            contents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
 	 						            contents += '서브웨이'+data.storeList[0].storeName+ '<br/>' + data.storeList[0].storePhone+ '<br/>'; 
-	 						            contents += '<input type="button" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
+	 						            contents += '<input type="submit" value="선택"/>';
+	 						            //contents += '<input type="submit" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
 										contents += '</div>';
+										contents += '</form>';
 										
 		 						        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	 						        var infowindow = new daum.maps.InfoWindow({
@@ -377,6 +380,7 @@
 	 						});    
  						}
  					});
+
  				}
 				 
 				 function choice(storeName){
@@ -393,6 +397,18 @@
 				 
 				 
 				 
+
+ 				}	
+				 
+	             function choice(storeName){
+	                 alert("storeName = " +storeName);
+	                 
+	                 //var btn= this;
+	                 var storeName = storeName;
+	                 alert('위치')
+	                 location.href= "${ pageContext.request.contextPath}/menu/select_ingredients.do"; // 메뉴페이지 
+	             
+	              } 
 		</script>
 		<script>
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
