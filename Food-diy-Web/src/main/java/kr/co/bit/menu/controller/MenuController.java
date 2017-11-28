@@ -132,10 +132,10 @@ public class MenuController {
         StoreVO store = (StoreVO)session.getAttribute("storeVO");        
   
         if (store == null) {  
-        	return "redirect:/store/findStore.do";
+        	return "/store/findStore.do";
         }
         else {
-        	return "redirect:/menu/select_ingredients.do";
+        	return "/menu/select_ingredients.do";
         }		
 		
 		

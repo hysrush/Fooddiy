@@ -145,9 +145,9 @@ public class SignController {
 	}
 
 	// - 로그아웃
-	@RequestMapping("/logout.do")
+	@RequestMapping("/logout")
 	public String logout(SessionStatus sessionStatus) {
-
+		
 		sessionStatus.setComplete();
 
 		return "sign/logout";
@@ -214,7 +214,7 @@ public class SignController {
 			return "sign/kakaoSignUp";
 		}
 
-		model.addAttribute("userVO", userVO);
+		model.addAttribute("loginVO", userVO);
 
 		return "sign/sign";
 
@@ -234,6 +234,8 @@ public class SignController {
 		kakao.setEmail(kakaoVO.getEmail() + kakaoVO.getEmailD());
 		kakao.setBirth(kakaoVO.getBirthYear() + "/" + kakaoVO.getBirthMonth() + "/" + kakaoVO.getBirthDay());
 		kakao.setSex(kakaoVO.getSex());
+		kakao.setType("U");
+		kakao.setFile("null");
 		kakao.setRoot("카카오톡");
 		
 		signServiceImp.signUp(kakao);

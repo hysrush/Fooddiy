@@ -338,11 +338,10 @@
  							var data = JSON.parse(responseData);
  							
  							alert("result = " +data.result);
- 							alert("storeName = " + data.storeList[0].storeName);
  							
  							var geocoder = new daum.maps.services.Geocoder();
- 							
-
+ 							var addr = data.storeList[0].storeAddr;
+									alert("addr : "+addr);
 	 						// 주소로 좌표를 검색합니다
 	 						geocoder.addressSearch( store, function(result, status) {
 	
@@ -356,13 +355,14 @@
 	 						            map: map,
 	 						            position: coords
 	 						        });
+	 						        		
+	 						       		console.log("storeAddr = " + addr);
 	 						        	var contents = '';
-	 						      
 	 						            contents += '<form action="${ pageContext.request.contextPath}/menu/select_ingredients.do" method="POST">';
 	 						            contents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
 	 						            contents += '서브웨이'+data.storeList[0].storeName+ '<br/>' + data.storeList[0].storePhone+ '<br/>'; 
 	 						            contents += '<input type="hidden" name = "storeName" value='+data.storeList[0].storeName + ' />';
-	 						            contents += '<input type="hidden" name = "storeAddr" value='+data.storeList[0].storeAddr + ' />';
+	 						            contents += '<input type="hidden" name = "storeAddr" value='+ addr + ' />';
 	 						            contents += '<input type="hidden" name = "storePhone" value='+data.storeList[0].storePhone + ' />';
 	 						            contents += '<input type="submit" value="선택"/>';
 	 						            //contents += '<input type="submit" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
