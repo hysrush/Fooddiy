@@ -87,6 +87,7 @@ public class SignController {
 		userVO.setEmail(phoneCert.getEmail() + phoneCert.getEmailD());
 		userVO.setSex(phoneCert.getSex());
 		userVO.setRoot(phoneCert.getRoot());
+		userVO.setFile("null");
 		userVO.setType("U");
 		
 		signServiceImp.signUp(userVO);
