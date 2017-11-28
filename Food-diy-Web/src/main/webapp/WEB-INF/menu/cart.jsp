@@ -246,16 +246,16 @@
 				});
 				
 				$('.qty-holder').each(function() {
-					
-					var qty = $(this).children('.qty-input').val() * 1;
+					var qty = 0;
 					$(this).children('.qty-dec-btn').click(function() {
+						qty = $(this).siblings('.qty-input').val() * 1;
 						if(qty > 1) {
 							$(this).siblings('.qty-input').val(qty - 1);
 						}
 					});
 					
 					$(this).children('.qty-inc-btn').click(function() {
-							alert(qty);
+							qty = $(this).siblings('.qty-input').val() * 1;
 							$(this).siblings('.qty-input').val(qty + 1);
 					});
 				});

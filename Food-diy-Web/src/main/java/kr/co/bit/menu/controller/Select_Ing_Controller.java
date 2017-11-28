@@ -123,6 +123,11 @@ public class Select_Ing_Controller {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
+	public String Cart() {
+		return "menu/cart";
+	}
+	
 	@RequestMapping(value="/deleteCart", method = RequestMethod.POST )
 	public void Delete_cart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no, HttpSession session) throws Exception{
 		
