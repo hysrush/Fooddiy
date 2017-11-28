@@ -31,7 +31,7 @@ public class Select_Ing_Controller {
 	private CartService cart_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(String storeName) {
+	public ModelAndView Session(String storeName, String storeAddr, String storePhone) {
 
 /*		UserVO user = (UserVO) session.getAttribute("loginVO");
 		String id = null;
@@ -44,6 +44,8 @@ public class Select_Ing_Controller {
 
 		
 		System.out.println(storeName);
+		System.out.println(storeAddr);
+		System.out.println(storePhone);
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
 
 /*		// Form에서 가져온 Data를 CartVO 객체형태로 저장
