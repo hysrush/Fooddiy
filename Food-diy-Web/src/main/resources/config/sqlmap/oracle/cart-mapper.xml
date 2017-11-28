@@ -9,7 +9,7 @@
 	
 	<!-- sql 저장 : 전체 조회 -->
 	<sql id="selectAll">
-		SELECT cart_no, cart_id, cart_name, cart_price, cart_total_price, cart_size, cart_pic, cart_bread, cart_cheese, cart_topping, cart_vegetable,
+		SELECT cart_no, cart_id, cart_name, cart_price, cart_total_price, cart_size, cart_pic, cart_qty, cart_bread, cart_cheese, cart_topping, cart_vegetable,
 		cart_sauce, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_cart
 	</sql>
@@ -23,6 +23,7 @@
 		<result column="cart_total_price" property="total_price"/>
 		<result column="cart_size" property="size"/>
 		<result column="cart_pic" property="pic"/>
+		<result column="cart_qty" property="qty"/>
 		
 		<result column="cart_bread" property="bread"/>
 		<result column="cart_cheese" property="cheese"/>

@@ -112,49 +112,33 @@
 						</div>
 
 						<div class="cart-dropdown">
-							<a href="#" class="cart-dropdown-icon"> <i class="minicart-icon"></i> <span class="cart-info"> <span class="cart-qty">2</span> <span class="cart-text">item(s)</span>
+							<a href="#" class="cart-dropdown-icon"> <i class="minicart-icon"></i> <span class="cart-info"> <span class="cart-qty"></span> <span class="cart-text">item(s)</span>
 							</span>
 							</a>
 							<div class="center" style="font-size: 9pt; font-weight: bold;">장바구니</div>
 							<div class="cart-dropdownmenu right">
 								<div class="dropdownmenu-wrapper">
 									<div class="cart-products">
-										<div class="product product-sm">
-											<a href="#" class="btn-remove" title="Remove Product"> <i class="fa fa-times"></i>
-											</a>
-											<figure class="product-image-area">
-												<a href="#" title="Product Name" class="product-image"> <img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Steak-Cheese.jpg" alt="Product Name">
+										<c:forEach items="${ cartList }" var="cartVO">
+											<div class="product product-sm">
+												<a href="#" class="btn-remove" title="Remove Product"> <i class="fa fa-times"></i>
 												</a>
-											</figure>
-											<div class="product-details-area">
-												<h1 class="product-name">
-													<a href="#" title="Product Name">스테이크 & 치즈</a>
-												</h1>
-												
-												<div class="cart-qty-price">
-													<span>1</span> X <span class="product-price">6,100</span>
+												<figure class="product-image-area">
+													<a href="#" title="Product Name" class="product-image"> <img src="${ cartVO.pic}" alt="Product Name">
+													</a>
+												</figure>
+												<div class="product-details-area">
+													<h1 class="product-name">
+														<a href="#" title="Product Name">${ cartVO.name }</a>
+													</h1>
+													
+													<div class="cart-qty-price">
+														<span>1</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="product product-sm">
-											<a href="#" class="btn-remove" title="Remove Product"> <i class="fa fa-times"></i>
-											</a>
-											<figure class="product-image-area">
-												<a href="#" title="Product Name" class="product-image"> <img src="${ pageContext.request.contextPath }/resources/img/menu/mn-Turkey-Breast.jpg" alt="Product Name">
-												</a>
-											</figure>
-											<div class="product-details-area">
-												<h2 class="product-name">
-													<a href="#" title="Product Name">터키 베이컨</a>
-												</h2>
-
-												<div class="cart-qty-price">
-													<span>1</span> X <span class="product-price">5,300</span>
-												</div>
-											</div>
-										</div>
+										</c:forEach>
 									</div>
-
 									<div class="cart-totals">
 										Total: <span></span>
 									</div>
@@ -176,6 +160,9 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
+			
+			$('.cart-qty').text($('.cart-products').children().length);
 			
 			for(var i = 0; i < $('.commaN').length; ++i) {
 				$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));

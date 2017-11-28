@@ -128,7 +128,7 @@
 											</thead>
 											<tbody>
 												<c:forEach items="${ cartList }" var="cartVO">
-													<tr>
+													<tr>d
 														<td class="cartNo" style="display: none;">${ cartVO.no }</td>
 
 														<td class="product-action-td remove_product"><a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
@@ -160,14 +160,16 @@
 											<tfoot>
 												<tr>
 													<td>
-														메장정보 : <div>${ storeName }</div>
+														<div>${ storeVO.storeName }</div>
+														<div>${ storeVO.storeAddr }</div>
+														<div>${ storeVO.storePhone }</div>
 													</td>
 												</tr>
 											</tfoot>
 										</table>
 									</div>
 								</div>
-								<aside class="col-md-4 col-lg-3 sidebar shop-sidebar">
+								<aside class="col-md-4 col-lg-3 sidebar shop-sidebar" id = "payInfo">
 									<div class="panel-group">
 										<div class="panel panel-default">
 											<div class="panel-heading">
@@ -175,7 +177,7 @@
 													<a class="accordion-toggle" data-toggle="collapse" href="#panel-cart-total" aria-expanded="true"> 결제정보 </a>
 												</h4>
 											</div>
-											<div id="panel-cart-total" class="accordion-body collapse in" aria-expanded="true" style="">
+											<div id="panel-cart-total" class="accordion-body collapse in" aria-expanded="true">
 												<div class="panel-body">
 													<table class="totals-table">
 														<tbody>
@@ -216,7 +218,11 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+				$('.cart-dropdown').hide();			
 				
+				$('#payInfo').stick_in_parent({
+			         offset_top : 200
+			      });
 				var finalPrice = 0;
 				for(var i = 0; i < $('.total-price').length; ++i) {
 					finalPrice += uncomma($('.total-price').eq(i).text())*1;
@@ -263,6 +269,7 @@
 					
 					$(this).children('.qty-inc-btn').click(function() {
 							qty = $(this).siblings('.qty-input').val() * 1;
+							
 							$(this).siblings('.qty-input').val(qty + 1);
 					});
 				});

@@ -11,6 +11,8 @@ public class CartVO implements Serializable{
 	private String total_price;
 	private String size;
 	private String pic;
+	private String qty;
+	
 	private String bread;
 	private String cheese;
 	private String topping;
@@ -59,6 +61,12 @@ public class CartVO implements Serializable{
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
+	public String getQty() {
+		return qty;
+	}
+	public void setQty(String qty) {
+		this.qty = qty;
+	}
 	public String getBread() {
 		return bread;
 	}
@@ -95,11 +103,14 @@ public class CartVO implements Serializable{
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	
 	@Override
 	public String toString() {
-		return "CartVO [no=" + no + ", id=" + id + ", name=" + name + ", price=" + price + ", size=" + size + ", pic="
-				+ pic + ", bread=" + bread + ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable
-				+ ", sauce=" + sauce + ", regDate=" + regDate + "]";
+		return "CartVO [no=" + no + ", id=" + id + ", name=" + name + ", price=" + price + ", total_price="
+				+ total_price + ", size=" + size + ", pic=" + pic + ", qty=" + qty + ", bread=" + bread + ", cheese="
+				+ cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + ", regDate="
+				+ regDate + "]";
 	}
+
 	
 }

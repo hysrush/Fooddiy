@@ -1,7 +1,6 @@
 package kr.co.bit.menu.controller;
 
 import java.util.List;
-import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.Select_Ing_Service;
 import kr.co.bit.menu.vo.CartVO;
@@ -33,11 +33,17 @@ public class Select_Ing_Controller {
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
 	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone) {
 
-		session.setAttribute("storeName", storeName);
+		StoreVO storeVO = new StoreVO();
+		storeVO.setStoreName(storeName);
+		storeVO.setStoreAddr(storeAddr);
+		storeVO.setStorePhone(storePhone);
+		
+		session.setAttribute("storeVO", storeVO);
 		
 		System.out.println(storeName);
 		System.out.println(storeAddr);
 		System.out.println(storePhone);
+		
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
 			
 		ModelAndView mav = new ModelAndView();
@@ -47,22 +53,6 @@ public class Select_Ing_Controller {
 		return mav;
 	}
 	
-
-/*	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.GET)
-	public ModelAndView Ing_listAll() {
-
-		List<IngredientsVO> ingList = ing_Service.selectAllIng();
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("menu/select_ingredients");
-		mav.addObject("ingList", ingList);
-
-		for (int i = 0; i < ingList.size(); ++i) {
-			System.out.println(i + "번 " + ingList.get(i));
-		}
-		return mav;
-	}*/
-
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
 	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
 			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
@@ -84,6 +74,8 @@ public class Select_Ing_Controller {
 			
 			price += new Integer(subPrice);
 		}
+		topping = topping.replaceAll("\\|\\|", ", ");
+		
 		cartVO.setTotal_price(price.toString());;
 		cartVO.setTopping(topping);
 		cartVO.setVegetable(vegetable);
