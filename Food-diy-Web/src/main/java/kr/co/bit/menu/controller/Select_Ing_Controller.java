@@ -31,10 +31,13 @@ public class Select_Ing_Controller {
 	private CartService cart_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(HttpSession session, String storeName) {
+	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone) {
 
 		session.setAttribute("storeName", storeName);
 		
+		System.out.println(storeName);
+		System.out.println(storeAddr);
+		System.out.println(storePhone);
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
 			
 		ModelAndView mav = new ModelAndView();
