@@ -2,6 +2,7 @@ package kr.co.bit.member.service;
 
 import java.util.List;
 
+import kr.co.bit.sign.vo.LoginVO;
 import kr.co.bit.user.vo.UserVO;
 
 

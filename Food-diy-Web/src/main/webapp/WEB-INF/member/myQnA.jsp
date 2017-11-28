@@ -169,7 +169,7 @@
 												</table>
 											</div>
 										</div>	
-										<div align="right" style="float: right;" class="col-md-8">
+								<!-- 		<div align="right" style="float: right;" class="col-md-8">
 											<button style=" width: 100px; height: 30px; font-size: 14px" type="button" class="btn  btn-info">  글쓰기 </button>
 										</div><br/><br/>
 									<div class="header-search hidden-xs">
@@ -182,7 +182,7 @@
 											</div>
 										</form>
 										
-									</div>
+									</div> -->
 									</div>
 								</div>
 							</div>

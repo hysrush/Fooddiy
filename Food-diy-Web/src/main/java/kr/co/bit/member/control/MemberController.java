@@ -21,6 +21,7 @@ import kr.co.bit.community.vo.ClaimBoardVO;
 import kr.co.bit.member.service.MemberService;
 import kr.co.bit.menu.vo.MenuVO;
 import kr.co.bit.sign.service.SignService;
+import kr.co.bit.sign.vo.LoginVO;
 import kr.co.bit.user.vo.UserVO;
 
 @Controller
@@ -99,7 +100,7 @@ public class MemberController {
 			String msg = "비밀번호를 확인해 주세요.";
 			model.addAttribute("msg", msg);
 
-			return "member/memberDel";
+			return "member/memberDetail";
 		}
 
 		return "member/memberDelcheck";
@@ -120,7 +121,7 @@ public class MemberController {
 		memberService.getMemberUpdate(member);
 		UserVO userVO = signService.login(member);
 
-		model.addAttribute("userVO", userVO);
+		model.addAttribute("loginVO", userVO);
 
 		return "member/memberDetail";
 

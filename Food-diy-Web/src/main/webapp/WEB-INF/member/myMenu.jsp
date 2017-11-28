@@ -73,7 +73,7 @@
 		
 		var q = parseInt($("#qty").val());
 		
-		$("").click(function(){
+		$("#minus").click(function(){
 			
 			if(q<1){
 				alert("더이상 줄일 수 없습니다.");

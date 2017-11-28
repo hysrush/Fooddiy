@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -342,4 +342,4 @@
 	src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 
 </body>
-</html>
+</html> --%>
