@@ -125,19 +125,15 @@ public class MenuController {
 		cartVO.setPic(pic);
 		cartVO.setId(id);
 				
-		session.setAttribute("cartVO", cartVO);		
-		  
-        
-        
-        StoreVO store = (StoreVO)session.getAttribute("storeVO");        
-  
-        if (store == null) {  
-        	return "/store/findStore.do";
+		session.setAttribute("cartVO", cartVO);
+		
+        StoreVO storeVO = (StoreVO)session.getAttribute("storeVO");
+        if (storeVO == null) {  
+        	return "/store/findStore";
         }
         else {
-        	return "/menu/select_ingredients.do";
-        }		
-		
+        	return "/menu/select_ingredients";
+        }
 		
 		//ModelAndView  mav = new ModelAndView();
 		//mav.setViewName("menu/select_ingredients");
