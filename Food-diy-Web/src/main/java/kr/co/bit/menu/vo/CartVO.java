@@ -1,15 +1,16 @@
 package kr.co.bit.menu.vo;
 
+import java.io.Serializable;
 
-public class CartVO {
+public class CartVO implements Serializable{
 	
 	private int no;
 	private String id;
 	private String name;
 	private String price;
+	private String total_price;
 	private String size;
 	private String pic;
-	
 	private String bread;
 	private String cheese;
 	private String topping;
@@ -39,6 +40,12 @@ public class CartVO {
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public String getTotal_price() {
+		return total_price;
+	}
+	public void setTotal_price(String total_price) {
+		this.total_price = total_price;
 	}
 	public String getSize() {
 		return size;

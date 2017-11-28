@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,10 +71,10 @@
 
 	<!-- Mobile menu 부분 -->
 	<jsp:include page="/resources/include/mobile-menu.jsp" />
-		
+
 	<div role="main" class="main">
-		
-		
+
+
 		<section class="page-header">
 			<div class="container">
 				<div class="row">
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<div class="container">
 			<div class="row">
 
@@ -120,8 +120,8 @@
 												<tr>
 													<th></th>
 													<th></th>
-													<th>메뉴</th>
-													<th>주문옵션</th>
+													<th width=15%>메뉴</th>
+													<th width="25%">주문옵션</th>
 													<th>수량</th>
 													<th>합계금액</th>
 												</tr>
@@ -129,35 +129,34 @@
 											<tbody>
 												<c:forEach items="${ cartList }" var="cartVO">
 													<tr>
-														<td class = "cartNo" style="display: none;">${ cartVO.no }</td>
-														
+														<td class="cartNo" style="display: none;">${ cartVO.no }</td>
+
 														<td class="product-action-td remove_product"><a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
-														<td class="product-image-td"><a href="#" title="Product Name"> <img src="${ cartVO.pic }" alt="Product Name">
-														</a></td>
+														<td class="product-image-td"><a href="#" title="Product Name"> <img src="${ cartVO.pic }" alt="Product Name"></a></td>
 														<td class="product-name-td">
-															<h2 class="product-name">
-																<a href="#" title="Product Name">${ cartVO.name } ${ cartVO.size }</a>
+															<h2 class="product-name" >
+																<a title="Product Name">
+																	<div>${ cartVO.name }</div>
+																	<div>${ cartVO.size }</div>
+																	<div class="commaN">${ cartVO.price }원</div>
+																</a>
 															</h2>
 														</td>
-														<td>${ cartVO.bread } <br>${ cartVO.cheese }<br>${ cartVO.topping } <br>${ cartVO.vegetable }<br>${ cartVO.sauce }</td>
+														<td>
+															<div>${ cartVO.bread }</div>
+															<div>${ cartVO.cheese }</div>
+															<div>${ cartVO.topping }</div>
+															<div>${ cartVO.vegetable }</div>
+															<div>${ cartVO.sauce }</div>
 														<td>
 															<div class="qty-holder">
-																<a href="#" class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="1"> <a href="#" class="qty-inc-btn" title="Inc">+</a> <a href="#" class="edit-qty"><i class="fa fa-pencil"></i></a>
+																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="1"> <a  class="qty-inc-btn" title="Inc">+</a> <a  class="edit-qty"><i class="fa fa-pencil"></i></a>
 															</div>
 														</td>
-														<td><span class="text-primary">${ cartVO.price }원</span></td>
+														<td class="price-total"><span class="text-primary commaN total-price" style="color: black">${ cartVO.total_price }원</span></td>
 													</tr>
 												</c:forEach>
 											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="6" class="clearfix">
-														<button class="btn btn-default hover-primary btn-continue">Continue Shopping</button>
-														<button class="btn btn-default hover-primary btn-update">Update Shopping Cart</button>
-														<button class="btn btn-default hover-primary btn-clear">Clear Shopping Cart</button>
-													</td>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -166,7 +165,7 @@
 										<div class="panel panel-default">
 											<div class="panel-heading">
 												<h4 class="panel-title">
-													<a class="accordion-toggle" data-toggle="collapse" href="#panel-cart-total" aria-expanded="true"> Cart Totals </a>
+													<a class="accordion-toggle" data-toggle="collapse" href="#panel-cart-total" aria-expanded="true"> 결제정보 </a>
 												</h4>
 											</div>
 											<div id="panel-cart-total" class="accordion-body collapse in" aria-expanded="true" style="">
@@ -178,8 +177,8 @@
 																<td>$159.00</td>
 															</tr>
 															<tr>
-																<td>Grand Total</td>
-																<td>$159.00</td>
+																<td>총 가격</td>
+																<td class="final-price commaN"></td>
 															</tr>
 														</tbody>
 													</table>
@@ -187,9 +186,9 @@
 													<div class="row">
 														<div class="col-md-12">
 															<div class="col-md-12 actions-continue" style="">
-																<form method="post">
+																<form method="get">
 																	<button type="submit" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
-																	<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button">계속 쇼핑하기</button>
+																	<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick ="menuList()">계속 쇼핑하기</button>
 																</form>
 															</div>
 														</div>
@@ -210,27 +209,64 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+				
+				var finalPrice = 0;
+				for(var i = 0; i < $('.total-price').length; ++i) {
+					finalPrice += uncomma($('.total-price').eq(i).text())*1;
+				}
+				
+				finalPrice = comma(finalPrice) + "원";
+				$('.final-price').text(finalPrice);
+				
+		
+			
 				$('table .remove_product').each(function() {
 					
 					$(this).click(function() {
+						var totalPrice = $(this).siblings('.price-total').find('.total-price').text();
+						var finalPrice = $('.final-price').text();
 						$(this).parent().remove();
 						
-						alert($(this).siblings('.cartNo').text());
 						
 						var no = $(this).siblings('.cartNo').text();
-						
-						alert(no);
 						$.ajax({
-							url : "./deleteCart.do",
+							url : "./deleteCart",
 							type : "post",
 							data : {"no" : no},
 							success : function(){
-										alert('삭제되었습니다.');
+										totalPrice = uncomma(totalPrice) * 1;
+										finalPrice = uncomma(finalPrice) * 1;
+										finalPrice -= totalPrice;
+										finalPrice = comma(finalPrice) + "원";
+
+										$('.final-price').text(finalPrice);
 							}
-						})
+						});
 					});
 				});
+				
+				$('.qty-holder').each(function() {
+					
+					var qty = $(this).children('.qty-input').val() * 1;
+					$(this).children('.qty-dec-btn').click(function() {
+						if(qty > 1) {
+							$(this).siblings('.qty-input').val(qty - 1);
+						}
+					});
+					
+					$(this).children('.qty-inc-btn').click(function() {
+							alert(qty);
+							$(this).siblings('.qty-input').val(qty + 1);
+					});
+				});
+				
+				
 		});
+		
+		function menuList() {
+			
+			location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
+		}
 	</script>
 
 	<footer id="footer">

@@ -1,7 +1,10 @@
 package kr.co.bit.menu.controller;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +64,7 @@ public class Select_Ing_Controller {
 		return mav;
 	}
 
-	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.GET)
 	public ModelAndView Ing_listAll() {
 
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
@@ -73,9 +76,8 @@ public class Select_Ing_Controller {
 		for (int i = 0; i < ingList.size(); ++i) {
 			System.out.println(i + "번 " + ingList.get(i));
 		}
-
 		return mav;
-	}
+	}*/
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
 	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
@@ -86,6 +88,19 @@ public class Select_Ing_Controller {
 
 		cartVO.setBread(bread);
 		cartVO.setCheese(cheese);
+
+		String [] toppings = topping.split("\\|\\|");
+		
+		Integer price = new Integer(cartVO.getPrice());
+		for(int  i = 0; i < toppings.length; ++i) {
+			
+			String subPrice = toppings[i].split("\\s")[1];
+			subPrice = subPrice.replace(",", "");
+			subPrice = subPrice.replace("+", "");
+			
+			price += new Integer(subPrice);
+		}
+		cartVO.setTotal_price(price.toString());;
 		cartVO.setTopping(topping);
 		cartVO.setVegetable(vegetable);
 		cartVO.setSauce(sauce);
@@ -108,13 +123,15 @@ public class Select_Ing_Controller {
 		return mav;
 	}
 	
-	@RequestMapping(value="/deleteCart.do", method = RequestMethod.POST)
-	public void Delete_cart(@RequestParam(value = "no") Integer no, HttpSession session) {
+	@RequestMapping(value="/deleteCart", method = RequestMethod.POST )
+	public void Delete_cart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no, HttpSession session) throws Exception{
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
 		CartVO cartVO = new CartVO();
 		int number = no;
 		System.out.println(userVO);
-		
 		System.out.println(no);
 		cartVO.setNo(number);
 		cartVO.setId(userVO.getId());
