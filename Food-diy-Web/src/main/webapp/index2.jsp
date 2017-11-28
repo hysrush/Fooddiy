@@ -59,7 +59,6 @@
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 		
-
 </head>
 	<body>
 	<div class="body">
