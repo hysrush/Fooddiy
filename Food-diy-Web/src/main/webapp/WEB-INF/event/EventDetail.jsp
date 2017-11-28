@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 		<!-- Basic -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 진행중인 EVENT |  </title>	
+		<title>Fooddiy-Order</title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -54,12 +55,16 @@
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
-
 		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
+		
+		<!-- js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
+		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
-	</head>
-	<body>
+</head>
+<body>
 		<div class="body">
 			<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
@@ -105,120 +110,79 @@
 								</ul>
 							</aside>
 						</div>
-						<div class="col-md-9">
-							<!-- START -->
-							<div class="row">
-								<div class="col-md-12">
-		
-									<div class="tabs tabs-bottom tabs-center tabs-simple">
-										<ul class="nav nav-tabs">
-											<li class="active">
-												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">진행중인 이벤트</a>
-											</li>
-											<li class="">
-												<a href="#tabsNavigationSimple2" data-toggle="tab" aria-expanded="false">종료된 이벤트 </a>
+							<!-- 디테일 게시판 -->
+							
+									<div class="col-md-9">
+								   
+										<table class="table table-bordered">
+								            <tr>
+													<th width="10%">번호</th>
+													<td>${ eventVo.no }</td>
+												</tr>
+												<tr>
+													<th>제목</th>
+													<td>${ eventVO.title }</td>
+												</tr>
+												<tr>
+													<th></th>
+													<td>
+														<img src="../upload/${ eventVO.imgFileName }" width="250">
+													</td>
+												</tr>
 												
-											</li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="tabsNavigationSimple1">
-												<div class="center">	
-													<!-- 1 -->
-												<c:forEach items="${ eventList }" var="eventVO">	
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${ eventVO.no }">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</a>	
-																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-																<span></span>
-																<span></span>
-															
-															</article>
-														</div>
-													</div>
+												<tr>
+													<th>내용</th>
+													<td>${ eventVO.content }</td>
+												<%-- 	<td><c:out value="${ tvo.content }" /></td>  --%>
+												</tr>
+												<tr>
+													<th>시작일</th>
+													<td>${ eventVO.startDate }</td>
+												</tr>
+												<tr>
+													<th>종료일</th>
+													<td>${ eventVO.endDate }</td>
+												</tr>
+											
+												<tr>
+													<th>등록일</th>
+													<td>${ evenetVO.regDate }</td>
+												</tr>
+											</table>
+											
+											<br/><br/>
+											<div class="row" align="center">
+								    			<div class="col-md-12">
 													
-												</c:forEach>
-														<br/>
-													<div align="right">		
-														<input type = "button" value="수정 "/>
-														<input type = "button" value="글 등록 "/>
-													</div>
+														<button onclick="doAction('U')">수정</button>&nbsp;&nbsp;
+														<button onclick="doAction('D')">삭제</button>&nbsp;&nbsp;
 													
+													<button onclick="doAction('L')">목록</button>
+													<button id="com" class="btn btn-secondary">답글</button>
 												</div>
 											</div>
-											<div class="tab-pane" id="tabsNavigationSimple2">
-												<div class="center">
-													<!-- 종료된이벤트 탭   -->
-															
-												<c:forEach items="${ eventEndList }" var="eventVO">	
-													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<!-- <div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}"> -->
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
-																	</div>
-																	
-																<!-- </div> -->
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</div>
 																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-															
-															</article>
-														</div>
-													</div>
-												</c:forEach>	
-												
 
-													<div class="col-md-12">
-														<ul class="pagination">
-															<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-															<li class="active"><a href="#">1</a></li>
-															<li><a href="#">2</a></li>
-															<li><a href="#">3</a></li>
-															<li><a href="#">4</a></li>
-															<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-														</ul>
-													</div>
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- END -->
-						</div>
+
+
+
+
+
+
+
+
+
+
+
 					</div>
 				</div>
 			</div>
-			<footer id="footer">
-				<jsp:include page="/resources/include/bottom.jsp"/>
-			</footer>
-		</div>
-		
-			<!-- Vendor -->
+		<footer id="footer">
+			<jsp:include page="/resources/include/bottom.jsp" />
+		</footer>
+	
+	</div>
+		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -253,6 +217,5 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-	</body>
+</body>
 </html>
-							

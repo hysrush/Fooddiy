@@ -383,7 +383,7 @@
 				topping += $('.topping-table').find('.name').eq(i).text().split(' ')[0].trim() + " ";
 				topping += $('.topping-table').find('.topping-price').eq(i).text().split(' ')[0];
 				if(i + 1 < $('.topping-table').find('tr').length) {
-					topping += ","
+					topping += "||"
 				}
 			}
 			
@@ -409,41 +409,6 @@
 			
 			return true;			
 		}
-	
-		$(document).ready(function() {
-			
-/* 			$('.select-menu-button').click(function() {
-				var bread  = $('.table').find('.bread-name').find('.name').text();
-				var cheese  = $('.table').find('.cheese-name').find('.name').text();
-				
-				var data = {};
-			    var vegetable =  {};
-			    vegetable['양상추'] = '많이';
-			    vegetable['토마토'] = '빼기';
-			    
-				data['bread'] = bread;
-				data['cheese'] = cheese;
-				data['vegetable'] = vegetable;
-				
-				$.ajax({
-					contentType : 'application/json',
-					dataType : 'json',
-					data : JSON.stringify(data),
-					url : '/Food-diy-Web/menu/select_ingredients.do',
-					type: 'POST',
-					success : function(response) {
-						$('.aa').submit();
-					},
-					error : function() {
-						alert('실패');
-					}
-				});
-			}); */
-			
-		});
-		
-	
-	
 	</script>
 
 

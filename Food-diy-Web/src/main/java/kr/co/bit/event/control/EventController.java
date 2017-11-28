@@ -3,11 +3,11 @@ package kr.co.bit.event.control;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.json.JSONObject;
@@ -25,7 +25,6 @@ import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.StoreVO;
-import kr.co.bit.event.vo.locationVO;
 
 @RequestMapping("/event")
 @Controller
@@ -187,4 +186,30 @@ public class EventController {
 		return "redirect:/event/eventPage.do";
 
 	}
+	
+	// 글번호로 디테일 페이지 이동 
+	@RequestMapping(value="/eventDetail.do",method=RequestMethod.GET)
+	public ModelAndView detail(@RequestParam("no") int no, HttpSession session) {
+		
+		
+		EventBoardVO eventVO = eventService.selectOneEvent(no);
+				
+				
+		ModelAndView mav = new ModelAndView();		
+		mav.setViewName("event/EventDetail");
+		mav.addObject("eventVO",eventVO);
+		
+		
+		return mav;
+		
+	}
+	
+	
+	
+	
+	
 }
+
+
+
+

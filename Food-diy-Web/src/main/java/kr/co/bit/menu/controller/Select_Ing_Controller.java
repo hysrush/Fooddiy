@@ -2,6 +2,8 @@ package kr.co.bit.menu.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.Select_Ing_Service;
 import kr.co.bit.menu.vo.CartVO;
@@ -28,55 +31,28 @@ public class Select_Ing_Controller {
 	private CartService cart_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(HttpSession session, String name, String price, String size, String pic) {
+	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone) {
 
-		UserVO user = (UserVO) session.getAttribute("loginVO");
-		String id = null;
-		if (user == null) {
-			System.out.println("session은 널이다");
-		} else {
-			id = user.getId();
-		}
-		System.out.println(id);
-
+		StoreVO storeVO = new StoreVO();
+		storeVO.setStoreName(storeName);
+		storeVO.setStoreAddr(storeAddr);
+		storeVO.setStorePhone(storePhone);
+		
+		session.setAttribute("storeVO", storeVO);
+		
+		System.out.println(storeName);
+		System.out.println(storeAddr);
+		System.out.println(storePhone);
+		
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
-
-		// Form에서 가져온 Data를 CartVO 객체형태로 저장
-		CartVO cartVO = new CartVO();
-
-		cartVO.setName(name);
-		cartVO.setPrice(price);
-		cartVO.setSize(size);
-		cartVO.setId(id);
-		cartVO.setPic(pic);
-		
-		session.setAttribute("cartVO", cartVO);
-
-		
-
+			
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("menu/select_ingredients");
 		mav.addObject("ingList", ingList);
 
 		return mav;
 	}
-
-	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.GET)
-	public ModelAndView Ing_listAll() {
-
-		List<IngredientsVO> ingList = ing_Service.selectAllIng();
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("menu/select_ingredients");
-		mav.addObject("ingList", ingList);
-
-		for (int i = 0; i < ingList.size(); ++i) {
-			System.out.println(i + "번 " + ingList.get(i));
-		}
-
-		return mav;
-	}
-
+	
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
 	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
 			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
@@ -86,6 +62,21 @@ public class Select_Ing_Controller {
 
 		cartVO.setBread(bread);
 		cartVO.setCheese(cheese);
+
+		String [] toppings = topping.split("\\|\\|");
+		
+		Integer price = new Integer(cartVO.getPrice());
+		for(int  i = 0; i < toppings.length; ++i) {
+			
+			String subPrice = toppings[i].split("\\s")[1];
+			subPrice = subPrice.replace(",", "");
+			subPrice = subPrice.replace("+", "");
+			
+			price += new Integer(subPrice);
+		}
+		topping = topping.replaceAll("\\|\\|", ", ");
+		
+		cartVO.setTotal_price(price.toString());;
 		cartVO.setTopping(topping);
 		cartVO.setVegetable(vegetable);
 		cartVO.setSauce(sauce);
@@ -108,13 +99,20 @@ public class Select_Ing_Controller {
 		return mav;
 	}
 	
-	@RequestMapping(value="/deleteCart.do", method = RequestMethod.POST)
-	public void Delete_cart(@RequestParam(value = "no") Integer no, HttpSession session) {
+	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
+	public String Cart() {
+		return "menu/cart";
+	}
+	
+	@RequestMapping(value="/deleteCart", method = RequestMethod.POST )
+	public void Delete_cart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no, HttpSession session) throws Exception{
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
 		CartVO cartVO = new CartVO();
 		int number = no;
 		System.out.println(userVO);
-		
 		System.out.println(no);
 		cartVO.setNo(number);
 		cartVO.setId(userVO.getId());

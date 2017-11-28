@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.MenuService;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
@@ -110,7 +111,7 @@ public class MenuController {
 	
 	// '주문하기'선택 후 매장화면으로	
 	@RequestMapping(value="/findStore.do", method=RequestMethod.POST)
-	public CartVO Session(HttpSession session, String name, String price, String size, String pic) {
+	public String Session(HttpSession session, String name, String price, String size, String pic) {
 		
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = user.getId();
@@ -124,14 +125,26 @@ public class MenuController {
 		cartVO.setPic(pic);
 		cartVO.setId(id);
 				
-		session.setAttribute("cartVO", cartVO);
+		session.setAttribute("cartVO", cartVO);		
+		  
+        
+        
+        StoreVO store = (StoreVO)session.getAttribute("storeVO");        
+  
+        if (store == null) {  
+        	return "/store/findStore.do";
+        }
+        else {
+        	return "/menu/select_ingredients.do";
+        }		
+		
 		
 		//ModelAndView  mav = new ModelAndView();
 		//mav.setViewName("menu/select_ingredients");
 		//mav.addObject("cartVO", cartVO);
 		
 		
-		return cartVO;				
+		// return cartVO;				
 	}
 	
 
