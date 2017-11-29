@@ -270,7 +270,6 @@
 					}
 				});
 			});
-<<<<<<< HEAD
 			
 			
 			//마우스 호버 비디오 재생 
@@ -283,13 +282,10 @@
 			
 			
 		})		
-=======
 		});
 		
 
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 		
-<<<<<<< HEAD
 		//콤마찍기
 		function comma(str) {
 		    str = String(str);
@@ -306,8 +302,6 @@
 		function inputNumberFormat(obj) {
 		    obj.value = comma(uncomma(obj.value));
 		}	
-=======
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 
 	</script>
 
