@@ -11,6 +11,7 @@ public interface NoticeService {
 	
 	// Notice Service
 	List<NoticeBoardVO> selectAllNotice();
+	List<NoticeBoardVO> selectType(String type);
 	NoticeBoardVO selectOneNotice(int no);
 	void insertNotice(NoticeBoardVO noticeVO);
 	void modifyNotice(NoticeBoardVO noticeVO);

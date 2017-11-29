@@ -22,6 +22,12 @@ public class NoticeDAOImp implements NoticeDAO{
 		List<NoticeBoardVO> listAll = sqlSession.selectList(url + "selectAllNotice");
 		return listAll;
 	}
+	// 보도자료 전체보기
+	@Override
+	public List<NoticeBoardVO> selectType(String type) {
+		List<NoticeBoardVO> listType = sqlSession.selectList(url + "selectType", type);
+		return listType;
+	}
 	// 글번호별 Notice 글보기
 	@Override
 	public NoticeBoardVO selectOne(int no) {

@@ -64,10 +64,14 @@
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
 <script type="text/javascript">
-	function doAction(type) {
-		switch (type) {
+	function doAction(btn, type) {
+		switch (btn) {
 		case 'L':
-			location.href = "${ pageContext.request.contextPath}/community/notice.do";
+			if (type == 'A') {
+				location.href = "${ pageContext.request.contextPath}/community/notice.do";
+			} else if (type == 'B') {
+				location.href = "${ pageContext.request.contextPath}/community/news.do";
+			}
 			break;
 		default:
 			break;
@@ -117,7 +121,18 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
 								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-								<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a></li>
+								<li class="active"><a href="#">Subway 소식</a>
+									<ul>
+										<c:if test="${ noticeVO.type eq 'A' }">
+											<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+										</c:if>
+										<c:if test="${ noticeVO.type eq 'B' }">
+											<li><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+											<li class="active"><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+										</c:if>
+									</ul>
+								</li>
 								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
@@ -140,10 +155,8 @@
 							<ul class="nav nav-tabs">
 								<c:if test="${ noticeVO.type eq 'A' }">
 									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-									<li><a href="${ pageContext.request.contextPath }/community/notice.do">보도자료</a></li>
 								</c:if>
 								<c:if test="${ noticeVO.type eq 'B' }">
-									<li><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
 									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">보도자료</a></li>
 								</c:if>
 							</ul>
@@ -209,7 +222,7 @@
 													</table>
 												</form>
 												<div class="center">
-													<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
+													<button type="button" class="btn btn-primary" onclick="doAction('L','${ noticeVO.type }')">목록</button>
 												</div>
 											</div>
 										</div>
