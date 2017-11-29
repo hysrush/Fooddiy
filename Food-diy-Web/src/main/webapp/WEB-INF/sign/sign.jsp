@@ -2,8 +2,5 @@
     pageEncoding="UTF-8"%>
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <script>
-	if("${msg}"){
-		swal("${msg}");
-	}
 	location.href="${pageContext.request.contextPath}/index2.jsp?${msg}";
 </script>
