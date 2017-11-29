@@ -31,6 +31,13 @@
 		ORDER BY notice_no DESC
 	</select>
 	
+	<!-- 타입별 전체 게시글 조회 -->
+	<select id="selectType" parameterType="java.lang.String" resultMap="Map_noticeVO">
+		<include refid="selectAll_notice"/>
+		WHERE notice_type = #{type}
+		ORDER BY notice_no DESC
+	</select>
+	
 	<!-- 글번호별 Notice 게시글 조회 -->
 	<select id="selectOneNotice" parameterType="int" resultMap="Map_noticeVO" >
 		<include refid="selectAll_notice"/>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.vo.StoreVO;
-import kr.co.bit.member.service.MemberService;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.Select_Ing_Service;
 import kr.co.bit.menu.vo.CartVO;
@@ -38,6 +37,16 @@ public class Select_Ing_Controller {
 		
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
 		String id = userVO.getId();
+		userVO.setStore(storeName);
+		//2. 세션값과 현재 id 값을 비교해서 맞으면 user_store db에 storeName 값을 넣는다 
+		
+		
+		//3 . 넣은뒤 변경된 값을 다시 세션에 등록 
+		session.setAttribute("userVO" , userVO );
+		
+		System.out.println(userVO);
+		
+
 		
 		if(storeName != null && storeAddr != null &&  storePhone != null) {
 			StoreVO storeVO = new StoreVO();

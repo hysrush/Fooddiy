@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +8,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | Q & A | </title>	
+		<title>Fooddiy-Order</title>	
 
-				<meta name="keywords" content="HTML5 Template" />
+		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
 
@@ -62,6 +62,17 @@
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 		
+<script type="text/javascript">
+	function doAction(type) {
+		switch (type) {
+		case 'W':
+			location.href = "${ pageContext.request.contextPath}/community/noticeWrite.do";
+			break;
+		default:
+			break;
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="body">
@@ -72,7 +83,7 @@
 		
 		<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
-		
+
 		<div role="main" class="main">
 
 			<section class="page-header">
@@ -81,34 +92,36 @@
 						<div class="col-md-12">
 							<ul class="breadcrumb">
 								<li><a href="#">커뮤니티</a></li>
-								<li class="active">자주묻는 질문</li>
+								<li class="active">공지사항</li>
 							</ul>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<h1>자주묻는 질문</h1>
+							<h1>Subway 소식</h1>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<div class="container">
+
 				<div class="row">
+					<!-- 스티키 사이드바 -->
 					<div class="col-md-2 hidden-xs hidden-sm">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-									<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a>
-										<ul>
-											<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-											<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
-										</ul>
-									</li>
-									<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
-									<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+								<li class="active"><a href="#">Subway 소식</a>
+									<ul>
+										<li><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+										<li class="active"><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+									</ul>
+								</li>
+								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
 						</aside>
 					</div>
@@ -117,154 +130,103 @@
 						<section class="section section-default">
 							<div class="container">
 								<div class="row">
-									<div class="col-md-10">
-										<h4 class="mb-none">Subway 자주묻는 질문입니다.</h4>
+									<div class="col-md-12">
+										<h4 class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</h4>
 										<br>
-										<p class="mb-none">
-											인터넷 주문 상담전화<br> <strong>080 - 500 - 5588</strong><br>
-											상담시간 | AM 10:00 ~ PM 10:00<br> <br> 전화상담 전, 주문방법과
-											자주 묻는 질문을 먼저 확인해보세요!
-										</p>
+										<p class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</p>
 									</div>
 								</div>
 							</div>
 						</section>
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
 							<ul class="nav nav-tabs">
-								<li class="active">
-									<a href="#tabsNavigationSimple1" data-toggle="tab">푸디오더</a>
-								</li>
-								<li>
-									<a href="#tabsNavigationSimple2" data-toggle="tab">포인트</a>
-								</li>
-								<li>
-									<a href="#tabsNavigationSimple3" data-toggle="tab">단체주문</a>
-								</li>
-								<li>
-									<a href="#tabsNavigationSimple4" data-toggle="tab">회원정보</a>
-								</li>
-								<li>
-									<a href="#tabsNavigationSimple5" data-toggle="tab">기타</a>
-								</li>
+								<li class="active"><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
 							</ul>
-							<div class="tab-content">
-								<div class="tab-pane active" id="tabsNavigationSimple1">
-									<div class="center">
-										<h4>푸디오더</h4>
-										<div class="col-md-12">
-											<div class="toggle toggle-primary" data-plugin-toggle
-												data-plugin-options="{ 'isAccordion': true }">
-												<c:forEach items="${ qnaList }" var="qna">
-													<section class="toggle">
-														<c:if test="${ qna.type eq 'F'}">
-															<label>Q. ${ qna.question }</label>
-															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
-																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
-															</div>
-														</c:if>
-													</section>								
-												</c:forEach>
-											</div>
-										</div>
-									</div>
-								</div>
+							<div>
+								<!-- 보도자료 -->
 								<div class="tab-pane" id="tabsNavigationSimple2">
 									<div class="center">
-										<h4>포인트</h4>
 										<div class="col-md-12">
-											<div class="toggle toggle-primary" data-plugin-toggle
-												data-plugin-options="{ 'isAccordion': true }">
-												<c:forEach items="${ qnaList }" var="qna">
-													<section class="toggle">
-														<c:if test="${ qna.type eq 'P'}">
-															<label>Q. ${ qna.question }</label>
-															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
-																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
-															</div>
-														</c:if>
-													</section>								
-												</c:forEach>
+											<!-- 필터 및 검색 -->
+											<div class="col-md-12">
+												<div class="col-md-3" style="float: right;">
+													<form action="">
+														<div class="input-group input-group-md">
+															<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
+															<span class="input-group-btn">
+																<button type="submit" class="btn btn-primary btn-md">
+																	<i class="fa fa-search"></i>
+																</button>
+															</span>
+														</div>
+													</form>
+												</div>
+												<div class="col-md-2" style="float: right;">
+													<select class="form-control">
+														<option value="title">제목</option>
+														<option value="content">내용</option>
+														<option value="title+content">제목+내용</option>
+													</select>
+												</div>
 											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane" id="tabsNavigationSimple3">
-									<div class="center">
-										<h4>단체주문</h4>
-										<div class="col-md-12">
-											<div class="toggle toggle-primary" data-plugin-toggle
-												data-plugin-options="{ 'isAccordion': true }">
-												<c:forEach items="${ qnaList }" var="qna">
-													<section class="toggle">
-														<c:if test="${ qna.type eq 'O'}">
-															<label>Q. ${ qna.question }</label>
-															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
-																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
-															</div>
+											<!-- 테이블 -->
+											<table class="table table-hover" width="80%">
+												<thead>
+													<tr>
+													<th>번호</th>
+													<th>제목</th>
+													<th>작성일</th>
+													<th>조회수</th>
+													</tr>
+												</thead>
+												<tbody>
+														<c:forEach items="${ newsList }" var="news">
+														<c:if test="${ news.type eq 'B' }">
+															<tr>
+																<td>${ news.no }</td>
+																<td>
+																	<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ news.no }">
+																		<c:out value="${ news.title }" />
+																	</a>
+																</td>
+																<td>${ news.regDate }</td>
+																<td>${ news.viewCnt }</td>
+															</tr>
 														</c:if>
-													</section>								
-												</c:forEach>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane" id="tabsNavigationSimple4">
-									<div class="center">
-										<h4>회원정보</h4>
-										<div class="col-md-12">
-											<div class="toggle toggle-primary" data-plugin-toggle
-												data-plugin-options="{ 'isAccordion': true }">
-												<c:forEach items="${ qnaList }" var="qna">
-													<section class="toggle">
-														<c:if test="${ qna.type eq 'M'}">
-															<label>Q. ${ qna.question }</label>
-															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
-																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
-															</div>
-														</c:if>
-													</section>								
-												</c:forEach>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane" id="tabsNavigationSimple5">
-									<div class="center">
-										<h4>기타</h4>
-										<div class="col-md-12">
-											<div class="toggle toggle-primary" data-plugin-toggle
-												data-plugin-options="{ 'isAccordion': true }">
-												<c:forEach items="${ qnaList }" var="qna">
-													<section class="toggle">
-														<c:if test="${ qna.type eq 'X'}">
-															<label>Q. ${ qna.question }</label>
-															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
-																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
-															</div>
-														</c:if>
-													</section>								
-												</c:forEach>
+														</c:forEach>
+												</tbody>
+											</table>
+											<!-- 페이지네이션 -->
+											<div class="col-md-12 center">
+												<ul class="pagination pull-center">
+													<li><a href="#"><i class="fa fa-chevron-left"></i></a>
+													</li>
+													<li class="active"><a href="#">1</a></li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#"><i class="fa fa-chevron-right"></i></a>
+													</li>
+												</ul>
+												<br>
+												<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<br>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
 	</div>
 
-			<!-- Vendor -->
+		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
