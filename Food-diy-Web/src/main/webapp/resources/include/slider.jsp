@@ -4,12 +4,6 @@
 <div role="main" class="main">
 	<div class= "container">
 		<div class="row">
-			
-			<!-- 모바일 로그인 창 -->
-			<div class ="col-md-12 hidden-lg">	
-			
-			</div>
-			
 			<!-- 공지사항 -->
 			<div class="col-xs-12 col-md-2" style="margin:10px 0px">
 				<div class="col-xs-6 col-md-12" style="text-align:center; padding:5px;">공지사항&nbsp;
@@ -42,8 +36,8 @@
 						</a>
 					</div>
 				</div>
-				<!-- 광고  -->
-					<div class="visible-lg" style="text-align: center; padding:5px;">광고<br/><br/>
+				<!-- 이벤트  -->
+					<div class="visible-lg" style="text-align: center; padding:5px;"> 이벤트<br/><br/>
 						<%-- 
 						<c:forEach items="${ cf }" begin="0" end="2">
 							<a href="${ 광고페이지로 이동 }">
@@ -125,7 +119,6 @@
 							    <div class="item">
 							      <img width="100%" src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
 							      <div class="carousel-caption">
-							       
 							      </div>
 							    </div>
 							    

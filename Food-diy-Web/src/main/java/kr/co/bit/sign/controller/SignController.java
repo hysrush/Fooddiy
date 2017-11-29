@@ -44,9 +44,17 @@ public class SignController {
 		
 	}
 	
-	// - 인증 확인 - 이메일로 할까 생각 중
+	// - 인증 확인 
 	@RequestMapping(value = "/phoneCertForm.do", method = RequestMethod.POST)
 	public String phoneCertForm(UserVO phoneCert, Model model) {
+		
+		System.out.println(phoneCert.toString());
+		// 회원 가입했는지 확인(번호랑 이름)
+		int num = signServiceImp.checkMember(phoneCert);
+		if(num == 1) {
+			model.addAttribute("msg", "이미 가입한 기록이 있습니다.");
+			return "sign/login";
+		}
 		
 		// 휴대전화 인증할 때 받은 회원 정보 저장
 		PhoneCertVO cert = new PhoneCertVO();
@@ -66,6 +74,7 @@ public class SignController {
 		
 		cert.setSex(phoneCert.getSex());
 		cert.setRoot("일반");
+		
 		
 		// 전달
 		model.addAttribute("phoneCert", cert);

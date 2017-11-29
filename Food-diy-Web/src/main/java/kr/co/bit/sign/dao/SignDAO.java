@@ -21,5 +21,7 @@ public interface SignDAO {
 	
 	//임시 비밀번호 설정
 	void setPw(UserVO setpw);
-
+	
+	//가입 확인
+	int checkMember(UserVO phoneCert);
 }

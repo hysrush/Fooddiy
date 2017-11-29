@@ -12,4 +12,5 @@ public interface SignService {
 	UserVO lostPw(PhoneCertVO lost);
 	String sender(UserVO member);
 	UserVO nonSignUp(UserVO mail);
+	int checkMember(UserVO phoneCert);
 }
