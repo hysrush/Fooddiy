@@ -269,7 +269,7 @@
 					});
 				});
 				
-				//증감 ajax
+				/* //증감 ajax
 				function productQtyUpdate(no, totalQty) {
 					//DB업데이트
 					$.ajax({
@@ -278,7 +278,7 @@
 						data : {"no" : no, "totalQty" : totalQty}
 					});
 				}
-				
+				 */
 				//수량 증감
 				$('.qty-holder').each(function() {
 					var totalQty = 0;
@@ -314,8 +314,13 @@
 							$(this).siblings('.qty-input').val(totalQty);
 							
 							
-							//DB업데이트
-							productQtyUpdate(no, totalQty);
+							/* //DB업데이트
+							productQtyUpdate(no, totalQty); */
+							$.ajax({
+								url : "./productQtyUpdate",
+								type : "post",
+								data : {"no" : no, "totalQty" : totalQty}
+							});
 						}
 					});
 					
@@ -348,8 +353,14 @@
 							
 							$(this).siblings('.qty-input').val(totalQty);
 							
-							//DB업데이트
-							productQtyUpdate(no, totalQty);
+							/* //DB업데이트
+							productQtyUpdate(no, totalQty); */
+							
+							$.ajax({
+								url : "./productQtyUpdate",
+								type : "post",
+								data : {"no" : no, "totalQty" : totalQty}
+							});
 					});
 				});
 				
