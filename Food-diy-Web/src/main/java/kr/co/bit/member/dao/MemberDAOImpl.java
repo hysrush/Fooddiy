@@ -41,8 +41,8 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.delete("kr.co.bit.member.dao.memberDelete", id);
 	}
 
-	public void updateStore(String store) {
-		sqlSession.update("kr.co.bit.member.dao.updateStore" , store);
+	public void updateStore(String storeName) {
+		sqlSession.update("kr.co.bit.member.dao.updateStore" , storeName);
 		
 	}
 	

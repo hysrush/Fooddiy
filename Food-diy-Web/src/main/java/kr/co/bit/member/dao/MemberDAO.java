@@ -12,5 +12,5 @@ public interface MemberDAO {
 	void insert(UserVO member);
 	void update(UserVO member);
 	void delete(String id);
-	void updateStore(String store);
+	void updateStore(String storeName);
 }

@@ -14,5 +14,5 @@ public interface MemberService {
 	void modifyMember(UserVO member);
 	void getMemberUpdate(UserVO member);
 	void memberDelte(String id);
-		
+	void updateStore(String storeName);	
 }
