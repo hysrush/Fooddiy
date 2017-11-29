@@ -38,11 +38,17 @@ public class Select_Ing_Controller {
 		storeVO.setStoreAddr(storeAddr);
 		storeVO.setStorePhone(storePhone);
 		
+		
+		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		userVO.setStore(storeName);
+		
+		
 		session.setAttribute("storeVO", storeVO);
 		
 		System.out.println(storeName);
 		System.out.println(storeAddr);
 		System.out.println(storePhone);
+		
 		
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
 			
