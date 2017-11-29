@@ -133,7 +133,7 @@
 													</h1>
 													
 													<div class="cart-qty-price">
-														<span>1</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
+														<span>${ cartVO.qty }</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
 													</div>
 												</div>
 											</div>
@@ -160,20 +160,35 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			function 
 			
-			
+			//장바구니안에 물건 갯수
 			$('.cart-qty').text($('.cart-products').children().length);
 			
+			if($('.cart-products').children().length == 0) {
+				if($('.cart-products .product').length == 0) {
+					$('.cart-totals').hide();
+					$('.cart-actions').hide();
+					$('.cart-none').show();
+				}
+			}
+			
+			
+			//숫자표기
 			for(var i = 0; i < $('.commaN').length; ++i) {
 				$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));
 			}
 			
 			
+			//장바구니 클릭 이벤트
 			$('.cart-dropdown-icon').click(function() {
 				$('.cart-dropdownmenu').toggle(500);
 			});
 			
+			//장바구니 상품 삭제
 			$('.cart-products .product').each(function() {
+				
+				
 				$(this).find('.btn-remove').click(function() {
 					$(this).closest('.product').remove();
 					var qty = $('.cart-qty').text();
@@ -342,11 +357,16 @@
 													<div class="col-md-8">
 														<div class="user-avatar">
 															<div class="img-thumbnail">
-																<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.jpg" alt="">
+																<c:choose>
+													                <c:when test="${ loginVO.file ne 'null' and loginVO.file ne null }">
+															                <img src="../upload/${ loginVO.file }">
+													                </c:when>
+																	<c:otherwise>
+																		<img src="${ pageContext.request.contextPath }/resources/img/AA.jpg" style="width: 150px; height: 50px;">
+																	</c:otherwise>
+																</c:choose>
 															</div>
-															<p>
-																<strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span>
-															</p>
+															<p><strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span></p>
 														</div>
 													</div>
 													<div class="col-md-4">

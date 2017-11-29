@@ -2,24 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div role="main" class="main">
-	
 	<div class= "container">
 		<div class="row">
-										<!-- 공지사항 -->
+			<!-- 공지사항 -->
 			<div class="col-xs-12 col-md-2" style="margin:10px 0px">
-					<div style="text-align:center; padding:5px;">공지사항&nbsp;
-					<a href="${ pageContext.request.contextPath }/community/noticeList.do">more+</a><hr/>
+				<div class="col-xs-6 col-md-12" style="text-align:center; padding:5px;">공지사항&nbsp;
+					<a href="${ pageContext.request.contextPath }/community/noticeList.do">more+</a><br/><br/>
 						<div><a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a></div>
 						<%-- <c:forEach items="${ notice }" begin="0" end="4">
 							<div>
 								<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">${ notice.title }</a>
 							</div>
 						</c:forEach> --%>
-					</div>
-										<!-- 신메뉴  -->
-					<div style="text-align:center; margin: 5px 0px; padding:5px;">신 메뉴 출시!<hr/>
-						<div class="box-content">
-							<%-- 
+				</div>
+				<!-- 신메뉴  -->
+				<div class="col-xs-6 col-md-12" style="text-align: center; margin: 5px 0px; padding: 5px;"> 신 메뉴 출시!<br/><br/>
+					<div class="box-content">
+						<%-- 
 							<c:forEach items="${ new }">
 								<a href="${ pageContext.request.contextPath }/${ new.no }"><!-- 신메뉴 사진 상세보기 -->
 									<img width="50%" src="${ new.img }"/>
@@ -27,18 +26,18 @@
 								</a>
 							</c:forEach>
 							 --%>
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
-								<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-								<span>바나나킥</span><br/>
-							</a>
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-								<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-								<span>사또밥</span><br/>
-							</a>
-						</div>
+						<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+							<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+							<span> 바나나</span>
+						</a><br/><br/>
+						<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+							<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+							<span> 사또밥</span>
+						</a>
 					</div>
-											<!-- 광고  -->
-					<div class="hidden-xs" style="text-align: center; padding:5px;">광고<hr/>
+				</div>
+				<!-- 이벤트  -->
+					<div class="visible-lg" style="text-align: center; padding:5px;"> 이벤트<br/><br/>
 						<%-- 
 						<c:forEach items="${ cf }" begin="0" end="2">
 							<a href="${ 광고페이지로 이동 }">
@@ -48,7 +47,7 @@
 						 --%>
 						<div>
 							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-								<img width="100%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+								<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 							</a>
 						</div>
 					</div>
@@ -56,7 +55,7 @@
 			
 				<br/><br/><br/>
 								<!--  슬라이드 -->
-					<div class ="col-xs-12 col-md-6 visible-lg">	
+					<div class ="col-md-6 visible-lg">	
 						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height:600px">
 							  <!-- Indicators -->
 							  <ol class="carousel-indicators">
@@ -99,10 +98,9 @@
 							</div>
 						</div>
 					
-	
 							<!-- mobile 슬라이드 --> 
-						<div class ="col-xs-12 hidden-lg">	
-						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height:300px">
+						<div class ="col-xs-6 hidden-lg">	
+							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 							  <!-- Indicators -->
 							  <ol class="carousel-indicators">
 							    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -113,15 +111,14 @@
 							  <!-- Wrapper for slides -->
 							  <div class="carousel-inner" role="listbox">
 							    <div class="item active">
-							      <img class="col-xs-12" src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
+							      <img width="100%" src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
 							      <div class="carousel-caption">
 							       
 							      </div>
 							    </div>
 							    <div class="item">
-							      <img src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
+							      <img width="100%" src="${ pageContext.request.contextPath }/resources/img/slides/xs-3.jpg" alt="">
 							      <div class="carousel-caption">
-							       
 							      </div>
 							    </div>
 							    
@@ -138,8 +135,7 @@
 							  </a>
 							</div>
 						</div>
-	
-
+						<br/><br/>
 				<div class="col-xs-6 col-md-3" style="margin:10px 0px">
 					<%-- <div>
 						<c:forEach items="${ sns }" begin="0" end="2">
@@ -161,16 +157,15 @@
 							</table>
 						</c:forEach>
 					</div> --%>
-					<div class="hidden-xs">
 						<table>
 							<tr>
 								<td>홍길동</td>
 								<td>추천수 2</td>
 							</tr>
 							<tr>
-								<td colspan="2"><hr/>
+								<td colspan="2"><br/>
 									<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-										<img width="100%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+										<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 									</a>
 								</td>
 							</tr>
@@ -181,7 +176,6 @@
 							</tr>
 						</table>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>

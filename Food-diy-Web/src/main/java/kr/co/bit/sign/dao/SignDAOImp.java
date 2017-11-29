@@ -74,5 +74,12 @@ public class SignDAOImp implements SignDAO {
 	
 		sql.insert("kr.co.bit.member.dao.pwUpdate", setpw);
 	}
+
+	//가입했는지 확인
+	public int checkMember(UserVO phoneCert) {
+		
+		System.out.println(phoneCert);
+		return sql.selectOne("kr.co.bit.member.dao.checkMember", phoneCert);
+	}
 	
 }

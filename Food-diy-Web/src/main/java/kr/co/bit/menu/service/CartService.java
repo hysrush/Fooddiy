@@ -10,6 +10,7 @@ public interface CartService {
 	CartVO selectOneCart();
 	void insertCart(CartVO cartVO);
 	void updateCart(CartVO cartVO);
+	void updateProductQty(CartVO cartVO);
 	void deleteCart(CartVO cartVO);
 	
 }

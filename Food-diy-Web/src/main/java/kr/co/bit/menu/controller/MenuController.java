@@ -109,7 +109,7 @@ public class MenuController {
 	
 	
 	
-	// '주문하기'선택 후 매장화면으로	
+/*	// '주문하기'선택 후 매장화면으로	
 	@RequestMapping(value="/findStore.do", method=RequestMethod.POST)
 	public String Session(HttpSession session, String name, String price, String size, String pic) {
 		
@@ -124,20 +124,17 @@ public class MenuController {
 		cartVO.setSize(size);
 		cartVO.setPic(pic);
 		cartVO.setId(id);
-				
-		session.setAttribute("cartVO", cartVO);		
-		  
-        
-        
-        StoreVO store = (StoreVO)session.getAttribute("storeVO");        
-  
-        if (store == null) {  
-        	return "/store/findStore.do";
+	
+		System.out.println(cartVO);
+		
+		
+        StoreVO storeVO = (StoreVO)session.getAttribute("storeVO");
+        if (storeVO == null) {  
+        	return "/store/findStore";
         }
         else {
-        	return "/menu/select_ingredients.do";
-        }		
-		
+        	return "/menu/select_ingredients";
+        }
 		
 		//ModelAndView  mav = new ModelAndView();
 		//mav.setViewName("menu/select_ingredients");
@@ -147,7 +144,7 @@ public class MenuController {
 		// return cartVO;				
 	}
 	
-
+*/
 	
 	
 }	

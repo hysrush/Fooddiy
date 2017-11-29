@@ -10,5 +10,6 @@ public interface CartDAO {
 	CartVO selectOne();
 	void insert(CartVO cartVO);
 	void update(CartVO cartVO);
+	void updateProductQty(CartVO cartVO);
 	void delete(CartVO cartVO);
 }

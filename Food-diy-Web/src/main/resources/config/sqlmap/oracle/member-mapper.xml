@@ -20,7 +20,14 @@
 	
 	<!-- sql문 적는 공간 -->
 	
-	<!-- 가입 확인 -->
+	<!-- 회원가입 전 가입 이력 확인 -->
+	<select id="checkMember" parameterType="userVO" resultType="java.lang.Integer">
+		select NVL(count(*), 0)
+		from t_user
+		where user_name = #{ name } and user_phone = #{ phone }
+	</select>
+	
+	<!-- 로그인 전 가입 확인 -->
 	<select id="loginCheck" parameterType="userVO" resultType="java.lang.Integer">
 		select NVL(count(*), 0) from t_user
 		where user_id = #{id} and user_pw = #{pw}
@@ -98,6 +105,7 @@
 		where user_id = #{ id }
 	</select>
 	
+<<<<<<< HEAD
 	
 	<!--  장바구니에 메뉴 담았을떄 user_store 정보 업데이트  -->
 		<select id ="updateStore" parameterType = "userVO">
@@ -110,4 +118,6 @@
 	
 	
 
+=======
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 </mapper>

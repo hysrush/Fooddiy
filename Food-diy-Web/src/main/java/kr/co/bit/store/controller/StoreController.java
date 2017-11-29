@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
@@ -25,6 +27,7 @@ import kr.co.bit.service.StoreService;
 import kr.co.bit.user.vo.UserVO;
 
 @RequestMapping("/store")
+@SessionAttributes("cartVO")
 @Controller
 public class StoreController {
 	
@@ -34,7 +37,7 @@ public class StoreController {
 	@Autowired
 	private EventService eventService;
 	
-	@RequestMapping("findStore.do")
+	@RequestMapping("/findStore.do")
 	public ModelAndView list(HttpSession session, String name, String price, String size, String pic) {
 		List<CityVO> cityList = storeService.selectCity();
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
@@ -49,22 +52,22 @@ public class StoreController {
 		cartVO.setPic(pic);
 		cartVO.setId(id);
 				
-		session.setAttribute("cartVO", cartVO);
+		
+		System.out.println(cartVO);
+		mav.addObject("cartVO", cartVO);
 		
 		mav.setViewName("store/FindStore");
 		mav.addObject("cityList", cityList);
 		
 		System.out.println(cityList);
-		
+				
 		return mav;
-		
-			
 	}
 	
 	
 	
 	
-	@RequestMapping("myStore.do")
+	@RequestMapping("/myStore.do")
 	public ModelAndView myStorepage() {
 		
 		List<StoreVO> storeList = storeService.selectStoreAll();
@@ -173,10 +176,5 @@ public class StoreController {
 
 			return mav;
 		}
-		
-		
-		
-	
-	
 
 }

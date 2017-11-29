@@ -42,10 +42,10 @@
 			<c:choose>
 				<c:when test="${ empty loginVO and empty nonMember }">
 					<li><a href="${ pageContext.request.contextPath }/sign/login.do">
-						<i class="fa fa-user"></i> Sign In</a>
+						<i class="fa fa-user"></i> 로그인</a>
 					</li>
 					<li><a href="${ pageContext.request.contextPath }/sign/signUp.do">
-						<i class="fa fa-user"></i> Sign Up</a>
+						<i class="fa fa-user"></i> 회원가입</a>
 					</li>
 				</c:when>
 				<c:when test="${ not empty loginVO }">
@@ -57,6 +57,9 @@
 							<li><a href="${ pageContext.request.contextPath}/member/myMenu.jsp">나만의 메뉴</a></li>
 							<li><a href="${ pageContext.request.contextPath}/member/myQnA.jsp">나의 문의사항</a></li>
 						</ul>
+					</li>
+					<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
+						<a href="${ pageContext.request.contextPath }/sign/logout"> <i class="fa fa-user"></i> ${ loginVO.id } 님 &nbsp;&nbsp;logout</a>
 					</li>
 				</c:when>
 				<c:otherwise>

@@ -166,4 +166,10 @@ public class SignServiceImp implements SignService {
 		//자동 로그인 
 		return nonMember;
 	}
+
+	// 가입했는지 확인
+	public int checkMember(UserVO phoneCert) {
+		
+		return signDAOImp.checkMember(phoneCert);
+	}
 }

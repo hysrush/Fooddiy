@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.co.bit.menu.service.CartService;
+import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.PhoneCertVO;
 import kr.co.bit.user.vo.UserVO;
@@ -22,13 +24,17 @@ import kr.co.bit.user.vo.UserVO;
  * 로그인, 로그아웃 회원가입 API로그인 처리
  * 
  */
-@SessionAttributes("loginVO")
+@SessionAttributes({"loginVO", "cartVO", "storeVO", "cartList"})
 @RequestMapping("/sign")
 @Controller
 public class SignController {
 
 	@Autowired
 	private SignService signServiceImp;
+	
+	@Autowired
+	private CartService cartService;
+	
 	/**
 	 * 
 	 *  1. 회원
@@ -44,9 +50,17 @@ public class SignController {
 		
 	}
 	
-	// - 인증 확인 - 이메일로 할까 생각 중
+	// - 인증 확인 
 	@RequestMapping(value = "/phoneCertForm.do", method = RequestMethod.POST)
 	public String phoneCertForm(UserVO phoneCert, Model model) {
+		
+		System.out.println(phoneCert.toString());
+		// 회원 가입했는지 확인(번호랑 이름)
+		int num = signServiceImp.checkMember(phoneCert);
+		if(num == 1) {
+			model.addAttribute("msg", "이미 가입한 기록이 있습니다.");
+			return "sign/login";
+		}
 		
 		// 휴대전화 인증할 때 받은 회원 정보 저장
 		PhoneCertVO cert = new PhoneCertVO();
@@ -66,6 +80,7 @@ public class SignController {
 		
 		cert.setSex(phoneCert.getSex());
 		cert.setRoot("일반");
+		
 		
 		// 전달
 		model.addAttribute("phoneCert", cert);
@@ -138,16 +153,20 @@ public class SignController {
 			
 			return "sign/login";
 		}
-
+        CartVO cartVO = new CartVO();
+        cartVO.setId(login.getId());
+		List<CartVO> cartList = cartService.selectAllCart(cartVO);
+		
+		model.addAttribute("cartList", cartList);
 		model.addAttribute("loginVO", signIn);
 		
 		return "sign/sign";
 	}
 
 	// - 로그아웃
-	@RequestMapping("/logout.do")
+	@RequestMapping("/logout")
 	public String logout(SessionStatus sessionStatus) {
-
+		
 		sessionStatus.setComplete();
 
 		return "sign/logout";
@@ -214,7 +233,7 @@ public class SignController {
 			return "sign/kakaoSignUp";
 		}
 
-		model.addAttribute("userVO", userVO);
+		model.addAttribute("loginVO", userVO);
 
 		return "sign/sign";
 
@@ -234,6 +253,8 @@ public class SignController {
 		kakao.setEmail(kakaoVO.getEmail() + kakaoVO.getEmailD());
 		kakao.setBirth(kakaoVO.getBirthYear() + "/" + kakaoVO.getBirthMonth() + "/" + kakaoVO.getBirthDay());
 		kakao.setSex(kakaoVO.getSex());
+		kakao.setType("U");
+		kakao.setFile("null");
 		kakao.setRoot("카카오톡");
 		
 		signServiceImp.signUp(kakao);
