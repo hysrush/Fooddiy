@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -25,6 +26,7 @@ import kr.co.bit.service.StoreService;
 import kr.co.bit.user.vo.UserVO;
 
 @RequestMapping("/store")
+@SessionAttributes("cartVO")
 @Controller
 public class StoreController {
 	
@@ -50,7 +52,7 @@ public class StoreController {
 				
 		
 		System.out.println(cartVO);
-		session.setAttribute("cartVO", cartVO);
+		mav.addObject("cartVO", cartVO);
 		
 		mav.setViewName("store/FindStore");
 		mav.addObject("cityList", cityList);
