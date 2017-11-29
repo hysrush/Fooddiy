@@ -60,6 +60,17 @@
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
+<!-- modal -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+<script>
+$(document).ready(function(){
+	
+        if("${msg}"){
+        	swal("${msg}");
+		}
+	});
+
+</script>
 </head>
 	<body>
 	<div id="modal"></div>
