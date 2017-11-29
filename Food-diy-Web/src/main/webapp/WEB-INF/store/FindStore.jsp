@@ -373,6 +373,7 @@
 	 						            contents += '<input type="hidden" name = "storeName" value='+data.storeList[0].storeName + ' />';
 	 						            contents += '<input type="hidden" name = "storeAddr" value='+ addr + ' />';
 	 						            contents += '<input type="hidden" name = "storePhone" value='+data.storeList[0].storePhone + ' />';
+	 						            contents += '<input type="hidden" name = "storeAddr2" value='+data.storeList[0].storeAddr2 + ' />';     
 	 						            contents += '<input type="submit" value="선택"/>';
 	 						            //contents += '<input type="submit" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
 										contents += '</div>';
