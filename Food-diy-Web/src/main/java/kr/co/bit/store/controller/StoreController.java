@@ -58,8 +58,6 @@ public class StoreController {
 		System.out.println(cityList);
 				
 		return mav;
-		
-			
 	}
 	
 	

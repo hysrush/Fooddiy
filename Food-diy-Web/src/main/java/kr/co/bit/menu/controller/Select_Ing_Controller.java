@@ -31,18 +31,36 @@ public class Select_Ing_Controller {
 	private CartService cart_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone) {
-
-		StoreVO storeVO = new StoreVO();
-		storeVO.setStoreName(storeName);
-		storeVO.setStoreAddr(storeAddr);
-		storeVO.setStorePhone(storePhone);
+	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone,
+			String name, String price, String size, String pic ) {
 		
-		session.setAttribute("storeVO", storeVO);
 		
-		System.out.println(storeName);
-		System.out.println(storeAddr);
-		System.out.println(storePhone);
+		if(storeName != null && storeAddr != null &&  storePhone != null) {
+			StoreVO storeVO = new StoreVO();
+			storeVO.setStoreName(storeName);
+			storeVO.setStoreAddr(storeAddr);
+			storeVO.setStorePhone(storePhone);
+			
+			session.setAttribute("storeVO", storeVO);
+		}
+		
+		if(name != null  && price != null && size != null && pic != null) {
+			UserVO user = (UserVO)session.getAttribute("loginVO");		
+			String id = user.getId();
+			
+			CartVO cartVO = new CartVO();
+			cartVO.setName(name);
+			cartVO.setPrice(price);
+			cartVO.setSize(size);
+			cartVO.setPic(pic);
+			cartVO.setId(id);
+			
+			session.setAttribute("cartVO", cartVO);
+			
+			System.out.println(cartVO);
+		}
+		
+		
 		
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
 			
