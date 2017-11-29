@@ -137,12 +137,12 @@
                 <c:choose>
                 <c:when test="${ loginVO.file ne null }">
 	                <div class="col-md-3 col-lg-3 " align="left">
-		                <img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+		                <img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 10%; padding-right:10%; margin-top: 8%; height:300px; width: 300px;">
 	                </div>
                 </c:when>
     	            <c:otherwise>
                 		<div class="col-md-3 col-lg-3 " align="left">
-		                	<img src="${ pageContext.request.contextPath }/resources/img/loading.gif" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+		                	<img src="${ pageContext.request.contextPath }/resources/img/parallax-2.jpg" class="img-responsive" alt="" style="float:left; margin-left: 10%; margin-top: 8%; height:300px; width: 300px;">
 						</div>
 	                </c:otherwise>
                 </c:choose>
@@ -255,11 +255,11 @@
 												</div>
 												<div class="modal-body">
 												<h4>안전한 회원탈퇴를 위해 비밀번호를 입력하세요.</h4>
-<<<<<<< HEAD
+
 													<form action="${ pageContext.request.contextPath}/member/delCheck.do" id="frmSignIn" method="post" class="form-horizontal mb-lg" novalidate="novalidate">
-=======
+
 													<form action="${ pageContext.request.contextPath}/member/delCheck.do" id="demo-form" method="post" class="form-horizontal mb-lg" novalidate="novalidate">
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
+
 														<input type="hidden" name="id" value="${loginVO.id }">
 														<div class="form-group mt-lg">
 															<div class="col-sm-9">
