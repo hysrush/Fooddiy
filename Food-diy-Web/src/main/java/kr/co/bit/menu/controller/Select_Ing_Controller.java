@@ -30,8 +30,7 @@ public class Select_Ing_Controller {
 
 	@Autowired
 	private CartService cart_Service;
-	@Autowired
-	private MemberService memberService;
+	
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
 	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone,
@@ -43,7 +42,7 @@ public class Select_Ing_Controller {
 		String id = userVO.getId();
 		userVO.setStore(storeName);
 		//2. 세션값과 현재 id 값을 비교해서 맞으면 user_store db에 storeName 값을 넣는다 
-		memberService.updateStore(userVO);
+		
 		
 		//3 . 넣은뒤 변경된 값을 다시 세션에 등록 
 		session.setAttribute("userVO" , userVO );
