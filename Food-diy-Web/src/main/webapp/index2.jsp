@@ -58,6 +58,8 @@
 		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
+		<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+
 </head>
 	<body>
 	<div id="modal"></div>
