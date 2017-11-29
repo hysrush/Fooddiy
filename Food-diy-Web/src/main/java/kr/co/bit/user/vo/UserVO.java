@@ -10,6 +10,7 @@ public class UserVO {
 	private String sex;
 	private String email;
 	private String phone;
+	private String store;
 	//private 사진첨부 보류  알아오기
 	private String file;
 	private String grade;
@@ -90,6 +91,15 @@ public class UserVO {
 		this.phone = phone;
 	}
 	
+	
+	public String getStore() {
+		return store;
+	}
+
+	public void setStore(String store) {
+		this.store = store;
+	}
+
 	public String getGrade() {
 		return grade;
 	}
@@ -125,8 +135,8 @@ public class UserVO {
 	@Override
 	public String toString() {
 		return "UserVO [no=" + no + ", id=" + id + ", name=" + name + ", pw=" + pw + ", birth=" + birth + ", sex=" + sex
-				+ ", email=" + email + ", phone=" + phone + ", file=" + file + ", grade=" + grade + ", root=" + root
-				+ ", type=" + type + ", regDate=" + regDate + "]";
+				+ ", email=" + email + ", phone=" + phone + ", store=" + store + ", file=" + file + ", grade=" + grade
+				+ ", root=" + root + ", type=" + type + ", regDate=" + regDate + "]";
 	}
 	
 }
