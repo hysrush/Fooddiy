@@ -174,7 +174,7 @@ public class SignController {
 	
 	// - id 찾기 - alert창
 	@RequestMapping("/lostId")
-	public String lostId(PhoneCertVO lost, Model model) {
+	public String lostId(UserVO lost, Model model) {
 		
 		UserVO lostVO = signServiceImp.lostId(lost);
 		

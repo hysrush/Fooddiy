@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/js/sign/autoHypen.js"></script>
 <script>
 	$(document).ready(function(){
 	    // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
@@ -27,6 +28,15 @@
 	            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
 	        }
 	    });
+	    
+	    var phone = document.getElementById('phone');
+	    //전화번호 하이픈 추가
+		phone.onkeyup = function(event){
+			event = event || window.event;
+			var _val = this.value.trim();
+			this.value = autoHypenPhone(_val);
+			
+		}
 	});
 	 
 	function setCookie(cookieName, value, exdays){
@@ -136,33 +146,21 @@
 				<div class="featured-boxes">
 					<div class="featured-box featured-box-primary align-left mt-xlg">
 						<div align="center" class="box-content">
-							<h4>아이디 찾기</h4>
+							<h4> 아이디 찾기</h4><br/>
 							<div class="row mt-xlg">
 								<div class="col-md-12">
 									<form name="form_lost" method="post" target="main" action="${ pageContext.request.contextPath }/sign/lostId.do">
 										<div class="form-group">
-											<div class="col-xs-12 col-md-12">
+											<div class="col-xs-4 col-md-4">
 												<label>이름 </label>
 													<input type="text" name="name" placeholder="류대현" class="form-control" required/>
 											</div>
-										</div>
+											<div class="col-xs-8 col-md-8">
+													<label>휴대 전화 </label> <input name="phone" id="phone" type="text" class="form-control" placeholder="(- 빼고 입력)" maxlength="13" required>
+											</div>
+										</div><br/>
 										<div class="form-group">
 											<div class="col-xs-6 col-md-6">
-												<label>E-mail </label> <input name="email" type="text" class="form-control" required>
-											</div>
-											<div class="form-group">
-												<div class="col-xs-6 col-md-6">
-													<label>이메일 선택</label> <select name="emailD" class="form-control" required>
-														<option value="@naver.com">@ naver.com</option>
-														<option value="@daum.net">@ daum.net</option>
-													</select>
-												</div>
-											</div>
-											<p>*&nbsp;가입 시에 입력한 이메일을 입력해 주세요.</p>
-										</div>
-										<div class="form-group">
-											<div class="col-xs-6 col-md-6">
-												<!-- <a href="javascript:fnPopup();" class="btn btn-info mb-md form-control"> 인증하기 </a> -->
 												<input type="submit" id="lost" value="확인" class="btn btn-info mb-md form-control" />
 											</div>
 											<div class="col-xs-6 col-md-6">
@@ -189,7 +187,7 @@
 				<div class="featured-boxes">
 					<div class="featured-box featured-box-primary align-left mt-xlg">
 						<div align="center" class="box-content">
-							<h4>비밀번호 찾기</h4>
+							<h4> 비밀번호 찾기</h4>
 							<div class="row mt-xlg">
 								<div class="col-md-12">
 									<form name="form_lost" method="post" target="main" action="${ pageContext.request.contextPath }/sign/lostPw.do">
