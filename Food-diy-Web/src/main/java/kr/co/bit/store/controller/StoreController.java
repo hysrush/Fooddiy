@@ -33,7 +33,7 @@ public class StoreController {
 	
 	
 	
-	@RequestMapping("findStore.do")
+	@RequestMapping("/findStore.do")
 	public ModelAndView list(HttpSession session, String name, String price, String size, String pic) {
 		List<CityVO> cityList = storeService.selectCity();
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
@@ -48,6 +48,8 @@ public class StoreController {
 		cartVO.setPic(pic);
 		cartVO.setId(id);
 				
+		
+		System.out.println(cartVO);
 		session.setAttribute("cartVO", cartVO);
 		
 		mav.setViewName("store/FindStore");
@@ -63,7 +65,7 @@ public class StoreController {
 	
 	
 	
-	@RequestMapping("myStore.do")
+	@RequestMapping("/myStore.do")
 	public ModelAndView myStorepage() {
 		
 		List<StoreVO> storeList = storeService.selectStoreAll();
