@@ -266,7 +266,7 @@
 						
 						//상품삭제
 						$.ajax({
-							url : "./deleteCart",
+							url : "${pageContext.request.contextPath}/menu/deleteCart",
 							type : "post",
 							data : {
 								"no" : no
@@ -292,7 +292,7 @@
 				function productQtyUpdate(no, totalQty) {
 					//DB업데이트
 					$.ajax({
-						url : "./productQtyUpdate",
+						url : "${pageContext.request.contextPath}/menu/productQtyUpdate",
 						type : "post",
 						data : {"no" : no, "totalQty" : totalQty}
 					});
@@ -379,7 +379,6 @@
 		});
 		
 		function menuList() {
-			
 			location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 		}
 	</script>

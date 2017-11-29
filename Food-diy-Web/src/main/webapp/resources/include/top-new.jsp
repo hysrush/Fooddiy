@@ -244,7 +244,7 @@
 					
 					
 					$.ajax({
-						url : "./menu/deleteCart",
+						url : "${pageContext.request.contextPath}/menu/deleteCart",
 						type : "post",
 						data : {"no" : no},
 						success : function() {
