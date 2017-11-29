@@ -34,15 +34,14 @@ public class Select_Ing_Controller {
 	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone,
 			String name, String price, String size, String pic ) {
 		
-<<<<<<< HEAD
+
 		
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
 		userVO.setStore(storeName);
 		
 		
-		session.setAttribute("storeVO", storeVO);
-=======
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
+		
+
 		
 		if(storeName != null && storeAddr != null &&  storePhone != null) {
 			StoreVO storeVO = new StoreVO();
