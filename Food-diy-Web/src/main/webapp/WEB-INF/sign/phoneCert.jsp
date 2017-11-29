@@ -10,7 +10,7 @@
 
 		<title> | 휴대전화 인증 | </title>
 		
-			<meta name="keywords" content="HTML5 Template" />
+		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
 

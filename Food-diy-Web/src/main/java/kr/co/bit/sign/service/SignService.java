@@ -8,7 +8,7 @@ public interface SignService {
 	UserVO login(UserVO login);
 	void signUp(UserVO memberVO);
 	int checkId(String id);
-	UserVO lostId(PhoneCertVO lost);
+	UserVO lostId(UserVO lost);
 	UserVO lostPw(PhoneCertVO lost);
 	String sender(UserVO member);
 	UserVO nonSignUp(UserVO mail);

@@ -64,39 +64,35 @@
 		
 		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 		
+		<!-- modal -->
+   	 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+    		
 <script>window.name="main"</script>
 <script>
 	$(document).ready(function(){
 		
-		$("#check").click(function(){
-
-			location.href="${pageContext.request.contextPath}/menu/menu.jsp"; 
-		});
-		
-		$("#signUp").click(function(){
-
-			location.href="${pageContext.request.contextPath}/sign/phoneCert.jsp"; 
-		});
-		
-		
+		/* 	
 		$("#lost").click(function(){
 			window.opener.name = "main"; // 부모창의 이름 설정
 	    	document.form_lost.target = opener.window.name; // 타켓을 부모창으로 설정
 	   		self.close();
-		});
+		}); */
+	
 
-		if("${msg}"){
-			alert("${ msg }");
+        //창 열기 버튼을 클릭했을경우
+        if("${msg}"){
+        	swal("${msg}");
 		}
 		
-		if("${ lostId}"){
+        // id 표시
+		if("${ lostId }"){
 			var f = document.memberForm;
 			
 			f.id.value = "${ lostId }";
 		}
 		
-		
 	});
+
 
 </script>
 </head>
@@ -168,6 +164,9 @@
 		</div>
 	</div>
 	
+<div id="alertModal" title="안녕">
+</div>
+
 	<footer class="light visible-lg" id="footer">
 		<jsp:include page="/resources/include/bottom.jsp"/>
 	</footer>

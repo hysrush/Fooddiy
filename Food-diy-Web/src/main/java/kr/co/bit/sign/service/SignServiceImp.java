@@ -44,15 +44,10 @@ public class SignServiceImp implements SignService {
 	}
 	
 	//id 찾기
-	public UserVO lostId(PhoneCertVO lost) {
-		
-		UserVO lostId = new UserVO();
-		
-		lostId.setName(lost.getName());
-		lostId.setEmail(lost.getEmail()+lost.getEmailD());
+	public UserVO lostId(UserVO lost) {
 		
 		// id 목록
-		lostId = signDAOImp.lostId(lostId);
+		UserVO lostId = signDAOImp.lostId(lost);
 		
 		if(lostId == null) {
 			return lostId;
