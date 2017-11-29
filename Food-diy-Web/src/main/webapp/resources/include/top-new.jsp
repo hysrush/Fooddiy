@@ -121,6 +121,9 @@
 									<div class="cart-products">
 										<c:forEach items="${ cartList }" var="cartVO">
 											<div class="product product-sm">
+												<div class ="cartNo" style="display: none">
+													${ cartVO.no }
+												</div>
 												<a href="#" class="btn-remove" title="Remove Product"> <i class="fa fa-times"></i>
 												</a>
 												<figure class="product-image-area">
@@ -133,14 +136,29 @@
 													</h1>
 													
 													<div class="cart-qty-price">
-														<span>${ cartVO.qty }</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
+														<span class = "total-qty">${ cartVO.qty }</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
 													</div>
 												</div>
 											</div>
 										</c:forEach>
 									</div>
 									<div class="cart-totals">
-										Total: <span></span>
+										<table class="totals-table">
+											<tbody>
+												<tr>
+													<td>매장</td>
+													<td><div>${ storeVO.storeName }</div></td>
+												</tr>
+												<tr>
+													<td>수량</td>
+													<td class="final-qty"></td>
+												</tr>
+												<tr>
+													<td>총 가격</td>
+													<td class="final-price commaN"></td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 
 									<div class="cart-actions">
@@ -160,11 +178,53 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			function 
+			
+			//수량 계산
+			function calculateCount(qtyEntity) {
+				var finalQty = 0;
+				
+				for(var i = 0; i < qtyEntity.length; ++i) {
+					finalQty += qtyEntity.eq(i).val() * 1;
+				}
+				
+				return finalQty
+			}
+			
+			//콤마찍기
+			function comma(str) {
+				str = String(str);
+				return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+			}
+
+			// 콤마풀기
+			function uncomma(str) {
+				str = String(str);
+				return str.replace(/[^\d]+/g, '');
+			}
+
+			// 값 입력시 콤마찍기
+			function inputNumberFormat(obj) {
+				obj.value = comma(uncomma(obj.value));
+			}
+
+			
+			
+			var finalQty = calculateCount($('.product .product-details-area .cart-qty-price .total-qty'));
+			$('.totals-table .final-qty').text(finalQty);
+			
+			
+			
+			
+			//숫자표기
+			for(var i = 0; i < $('.commaN').length; ++i) {
+				$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));
+			}
 			
 			//장바구니안에 물건 갯수
 			$('.cart-qty').text($('.cart-products').children().length);
 			
+			
+			//상품이 없을 때 출력
 			if($('.cart-products').children().length == 0) {
 				if($('.cart-products .product').length == 0) {
 					$('.cart-totals').hide();
@@ -174,25 +234,50 @@
 			}
 			
 			
-			//숫자표기
-			for(var i = 0; i < $('.commaN').length; ++i) {
-				$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));
+			
+			
+			
+			//상품 삭제 - DB수정
+			function deleteCart(no, totalPrice, totalQty, finalPrice, finalQty) {
+				$.ajax({
+					url : "./deleteCart",
+					type : "post",
+					data : {"no" : no},
+					success : function(){
+								totalPrice = uncomma(totalPrice) * 1;
+								finalPrice = uncomma(finalPrice) * 1;
+								finalPrice -= totalPrice;
+								finalPrice = comma(finalPrice) + "원";
+
+								totalQty *= 1;
+								finalQty *= 1;
+								finalQty -= totalQty;		
+						
+								$('.final-price').text(finalPrice);
+								$('.final-qty').text(finalQty);
+					}
+				});
 			}
-			
-			
 			//장바구니 클릭 이벤트
 			$('.cart-dropdown-icon').click(function() {
 				$('.cart-dropdownmenu').toggle(500);
 			});
+			
+			
+			
 			
 			//장바구니 상품 삭제
 			$('.cart-products .product').each(function() {
 				
 				
 				$(this).find('.btn-remove').click(function() {
+					
+					var no = $('.cart-products .product .cartNo').text();
+					
 					$(this).closest('.product').remove();
 					var qty = $('.cart-qty').text();
 					$('.cart-qty').text(qty-1);
+					deleteCart(no);
 					
 					if($('.cart-products .product').length == 0) {
 						$('.cart-totals').hide();
@@ -201,26 +286,7 @@
 					}
 				});
 			});
-		})
-		
-		
-		//콤마찍기
-		function comma(str) {
-		    str = String(str);
-		    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-		}
-		 
-		//콤마풀기
-		function uncomma(str) {
-		    str = String(str);
-		    return str.replace(/[^\d]+/g, '');
-		}
-		 
-		//값 입력시 콤마찍기
-		function inputNumberFormat(obj) {
-		    obj.value = comma(uncomma(obj.value));
-		}
-
+		});
 	</script>
 
 	<div class="header-container header-nav header-nav-center">
