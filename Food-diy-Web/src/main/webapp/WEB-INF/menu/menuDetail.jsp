@@ -110,7 +110,15 @@ $(document).ready(function(){
 							<form
 								action="${ pageContext.request.contextPath }/store/findStore.do"
 								enctype="multipart/form-data" method="post" class="cart"
+								style="margin-bottom: 10px">								
+						</c:when>
+						<c:otherwise>
+							<form
+								action="${ pageContext.request.contextPath }/menu/select_ingredients.do"
+								enctype="multipart/form-data" method="post" class="cart"
 								style="margin-bottom: 10px">
+						</c:otherwise>
+					</c:choose>	
 								<!-- submit하면 hidden으로 값 넘겨준다 -->
 								<input type="hidden" name="name" value="${ menuDetailVO.name }">
 								<input type="hidden" name="price" id="sand_price" value="${ menuDetailVO.price }">
@@ -118,21 +126,6 @@ $(document).ready(function(){
 								<input type="hidden" name="pic" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
 								<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
 							</form>
-						</c:when>
-						<c:otherwise>
-							<form
-								action="${ pageContext.request.contextPath }/menu/select_ingredients.do"
-								enctype="multipart/form-data" method="post" class="cart"
-								style="margin-bottom: 10px">
-								<input type="hidden" name="name" value="${ menuDetailVO.name }">
-								<input type="hidden" name="price" id="sand_price" value="${ menuDetailVO.price }">
-								<input type="hidden" name="size" id="sand_size" value="15cm">
-								<input type="hidden" name="pic" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
-								<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
-							</form>
-						</c:otherwise>
-					</c:choose>	
-						<!-- submit하면 hidden으로 값 넘겨준다 -->
 
 					<div class="product_meta">
 						<span class="posted_in">알르레기 유발성분 : ${ menuDetailVO.allergy }
