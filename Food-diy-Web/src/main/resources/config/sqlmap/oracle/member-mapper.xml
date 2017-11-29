@@ -111,7 +111,7 @@
 		UPDATE T_UESR
 		SET USER_STORE = #{ STORE }
 		WHERE 
-		USER_ID = #{ ID } 
+		USER_ID = #{ ID }
 		</select>
 	
 
