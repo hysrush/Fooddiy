@@ -47,9 +47,9 @@ public class MemberServiceImp  implements MemberService  {
 		memberDAO.delete(id);
 	}
 	
-	public void updateStore(String storeName) {
+	public void updateStore(UserVO userVO) {
 		
-		memberDAO.updateStore(storeName);
+		memberDAO.updateStore(userVO);
 	}
 
 }

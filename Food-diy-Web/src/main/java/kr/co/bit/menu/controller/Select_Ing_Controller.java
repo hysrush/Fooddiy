@@ -40,9 +40,10 @@ public class Select_Ing_Controller {
 		
 		//1. 세션 id값을 받아온다
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		String id = userVO.getId();
 		userVO.setStore(storeName);
 		//2. 세션값과 현재 id 값을 비교해서 맞으면 user_store db에 storeName 값을 넣는다 
-		memberService.updateStore(storeName);
+		memberService.updateStore(userVO);
 		
 		//3 . 넣은뒤 변경된 값을 다시 세션에 등록 
 		session.setAttribute("userVO" , userVO );
@@ -62,7 +63,7 @@ public class Select_Ing_Controller {
 		
 		if(name != null  && price != null && size != null && pic != null) {
 			UserVO user = (UserVO)session.getAttribute("loginVO");		
-			String id = user.getId();
+			//String id = user.getId();
 			
 			CartVO cartVO = new CartVO();
 			cartVO.setName(name);

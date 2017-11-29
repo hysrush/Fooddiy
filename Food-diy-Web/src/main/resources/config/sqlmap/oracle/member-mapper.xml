@@ -113,6 +113,4 @@
 		WHERE 
 		USER_ID = #{ id }
 		</select>
-	
-
 </mapper>
