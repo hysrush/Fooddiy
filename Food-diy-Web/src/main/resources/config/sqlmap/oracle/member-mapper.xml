@@ -11,7 +11,6 @@
 		<result column="user_name" property="name"/>
 		<result column="user_email" property="email"/>
 		<result column="user_phone" property="phone"/>
-		<result column="user_store" property="store"/>
 		<result column="user_birth" property="birth"/>
 		<result column="user_grade" property="grade"/>
 		<result column="user_type" property="type"/>
@@ -105,14 +104,4 @@
 		where user_id = #{ id }
 	</select>
 	
-
-	<!--  장바구니에 메뉴 담았을떄 user_store 정보 업데이트  -->
-		<select id ="updateStore" parameterType = "userVO">
-		UPDATE T_UESR
-		SET USER_STORE = #{ STORE }
-		WHERE 
-		USER_ID = #{ ID }
-		</select>
-	
-
 </mapper>

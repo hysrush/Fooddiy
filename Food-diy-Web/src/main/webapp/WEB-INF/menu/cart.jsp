@@ -231,14 +231,18 @@
 				var finalQty = 0;
 				
 				
+				
 				//총 가격
 				for(var i = 0; i < $('.total-price').length; ++i) {
 					finalPrice += uncomma($('.total-price').eq(i).text())*1;
+
 				}
 				
 				
 				//총 수량
-				finalQty = calculateCount($('.qty-input'))
+				for(var i = 0; i < $('.qty-input').length; ++i) {
+					finalQty += $('.qty-input').eq(i).val() * 1;
+				}
 				
 				finalPrice = comma(finalPrice) + "원";
 					
@@ -261,23 +265,39 @@
 						var no = $(this).siblings('.cartNo').text();
 						
 						//상품삭제
-						deleteCart(no, totalPrice, totalQty, finalPrice, finalQty);
+						$.ajax({
+							url : "./deleteCart",
+							type : "post",
+							data : {
+								"no" : no
+							},
+							success : function() {
+								totalPrice = uncomma(totalPrice) * 1;
+								finalPrice = uncomma(finalPrice) * 1;
+								finalPrice -= totalPrice;
+								finalPrice = comma(finalPrice) + "원";
+
+								totalQty *= 1;
+								finalQty *= 1;
+								finalQty -= totalQty;
+
+								$('.final-price').text(finalPrice);
+								$('.final-qty').text(finalQty);
+							}
+						});
 					});
 				});
 				
-				//증감 ajax
+			 	//증감 ajax
 				function productQtyUpdate(no, totalQty) {
 					//DB업데이트
 					$.ajax({
 						url : "./productQtyUpdate",
 						type : "post",
-						data : {"no" : no, "totalQty" : totalQty},
-						success : function(){
-							alert('성공');
-						}
+						data : {"no" : no, "totalQty" : totalQty}
 					});
 				}
-				
+				 
 				//수량 증감
 				$('.qty-holder').each(function() {
 					var totalQty = 0;
@@ -307,14 +327,17 @@
 							finalQty -= 1;
 							
 							$(this).parents('td').siblings('.price-total').children('.total-price').text(comma(totalPrice) + "원");
+							
 							$('.final-price').text(comma(finalPrice) + "원");
 							$('.final-qty').text(finalQty);
-							
+							 
+							 
+							 
 							$(this).siblings('.qty-input').val(totalQty);
 							
 							
 							//DB업데이트
-							productQtyUpdate(no, totalQty);
+							productQtyUpdate(no, totalQty)
 						}
 					});
 					
@@ -328,7 +351,6 @@
 							finalPrice = $('.final-price').text();
 							finalQty = $('.final-qty').text() * 1;
 							
-							
 							totalPrice = uncomma(totalPrice) * 1;
 							finalPrice = uncomma(finalPrice) * 1;
 							
@@ -340,15 +362,16 @@
 							totalQty += 1
 							finalQty += 1;
 							
-							
+							//합계금액
 							$(this).parents('td').siblings('.price-total').children('.total-price').text(comma(totalPrice) + "원");
 							$('.final-price').text(comma(finalPrice) + "원");
 							$('.final-qty').text(finalQty);
-							
+							 
 							$(this).siblings('.qty-input').val(totalQty);
 							
 							//DB업데이트
-							productQtyUpdate(no, totalQty);
+							productQtyUpdate(no, totalQty); 
+							
 					});
 				});
 				

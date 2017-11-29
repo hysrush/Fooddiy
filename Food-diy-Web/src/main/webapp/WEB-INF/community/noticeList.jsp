@@ -114,12 +114,10 @@
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
 								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-								<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a>
+								<li class="active"><a href="#">Subway 소식</a>
 									<ul>
-										<li><a href="#">Animals</a></li>
-										<li class="active"><a href="#">Business</a></li>
-										<li><a href="#">Sports</a></li>
-										<li><a href="#">People</a></li>
+										<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+										<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
 									</ul>
 								</li>
 								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
@@ -142,34 +140,11 @@
 						</section>
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
 							<ul class="nav nav-tabs">
-								<c:choose>
-									<c:when test="${ BackUrlType eq 'A' }">
-										<li class="active"><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
-										<li><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
-									</c:when>
-									<c:when test="${ BackUrlType eq 'B' }">
-										<li><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
-										<li class="active"><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="active"><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
-										<li><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
-									</c:otherwise>
-								</c:choose>
+								<li class="active"><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
 							</ul>
-							<div class="tab-content">
+							<div>
 								<!-- 공지사항 -->
-								<c:choose>
-									<c:when test="${ BackUrlType eq 'A' }">
-										<div class="tab-pane active" id="tabsNavigationSimple1">
-									</c:when>
-									<c:when test="${ BackUrlType eq 'B' }">
-										<div class="tab-pane" id="tabsNavigationSimple1">
-									</c:when>
-									<c:otherwise>
-										<div class="tab-pane active" id="tabsNavigationSimple1">
-									</c:otherwise>
-								</c:choose>
+								<div class="tab-pane active" id="tabsNavigationSimple1">
 									<div class="center">
 										<div class="col-md-12">
 											<!-- 필터 및 검색 -->
@@ -206,98 +181,18 @@
 												</thead>
 												<tbody>
 													<c:forEach items="${ noticeList }" var="notice">
+													<c:if test="${ notice.type eq 'A' }">
 														<tr>
-															<c:if test="${ notice.type eq 'A' }">
-																<td>${ notice.no }</td>
-																<td>
-																	<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ notice.no }">
-																		<c:out value="${ notice.title }" />
-																	</a>
-																</td>
-																<td>${ notice.regDate }</td>
-																<td>${ notice.viewCnt }</td>
-															</c:if>
+															<td>${ notice.no }</td>
+															<td>
+																<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ notice.no }">
+																	<c:out value="${ notice.title }" />
+																</a>
+															</td>
+															<td>${ notice.regDate }</td>
+															<td>${ notice.viewCnt }</td>
 														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-											<!-- 페이지네이션 -->
-											<div class="col-md-12 center">
-												<ul class="pagination pull-center">
-													<li><a href="#"><i class="fa fa-chevron-left"></i></a>
-													</li>
-													<li class="active"><a href="#">1</a></li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#"><i class="fa fa-chevron-right"></i></a>
-													</li>
-												</ul>
-												<br>
-												<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- 보도자료 -->
-								<c:choose>
-									<c:when test="${ BackUrlType eq 'A' }">
-										<div class="tab-pane" id="tabsNavigationSimple2">
-									</c:when>
-									<c:when test="${ BackUrlType eq 'B' }">
-										<div class="tab-pane active" id="tabsNavigationSimple2">
-									</c:when>
-									<c:otherwise>
-										<div class="tab-pane" id="tabsNavigationSimple2">
-									</c:otherwise>
-								</c:choose>
-									<div class="center">
-										<div class="col-md-12">
-											<!-- 필터 및 검색 -->
-											<div class="col-md-12">
-												<div class="col-md-3" style="float: right;">
-													<form action="">
-														<div class="input-group input-group-md">
-															<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
-															<span class="input-group-btn">
-																<button type="submit" class="btn btn-primary btn-md">
-																	<i class="fa fa-search"></i>
-																</button>
-															</span>
-														</div>
-													</form>
-												</div>
-												<div class="col-md-2" style="float: right;">
-													<select class="form-control">
-														<option value="title">제목</option>
-														<option value="content">내용</option>
-														<option value="title+content">제목+내용</option>
-													</select>
-												</div>
-											</div>
-											<!-- 테이블 -->
-											<table class="table table-hover" width="80%">
-												<thead>
-													<tr>
-													<th>번호</th>
-													<th>제목</th>
-													<th>작성일</th>
-													<th>조회수</th>
-													</tr>
-												</thead>
-												<tbody>
-													<c:forEach items="${ noticeList }" var="notice">
-														<tr>
-															<c:if test="${ notice.type eq 'B' }">
-																<td>${ notice.no }</td>
-																<td>
-																	<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ notice.no }">
-																		<c:out value="${ notice.title }" />
-																	</a>
-																</td>
-																<td>${ notice.regDate }</td>
-																<td>${ notice.viewCnt }</td>
-															</c:if>
-														</tr>
+													</c:if>
 													</c:forEach>
 												</tbody>
 											</table>

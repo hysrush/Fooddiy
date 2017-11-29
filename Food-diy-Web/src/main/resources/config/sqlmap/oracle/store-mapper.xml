@@ -13,6 +13,7 @@
   		<result column = "sto_name" property ="storeName"/>
   		<result column = "sto_phone" property ="storePhone"/>
   		<result column = "sto_addr" property ="storeAddr"/>
+  		<result column = "sto_addr2" property = "storeAddr2"/>
   		<result column = "reg_at" property ="regDate"/>
   	</resultMap>
 
@@ -49,7 +50,7 @@
 		
 	<!--  매장 데이터 구군 정보로  불러오기  -->	
 		<select id = "selectStore" resultMap="Map_StoreVO" parameterType="String">
-			SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR 
+			SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR ,STO_ADDR2
 			FROM T_STORE
 			WHERE LOC_NO = #{gugun}
 			ORDER BY STO_NO ASC
@@ -57,7 +58,7 @@
 		</select>
 		<!--  매장데이터 주소정보로 불러오기  -->
 		<select id = "selectStoreAddr" resultMap="Map_StoreVO" parameterType="String">
-			SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR 
+			SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR ,STO_ADDR2
 			FROM T_STORE
 			WHERE STO_ADDR = #{store}
 			ORDER BY STO_NO ASC
@@ -68,7 +69,7 @@
 		
 	<!--  매장데이터 전체 불러오기  -->		
 		<select id = "selectStoreAll" resultMap="Map_StoreVO">
-			SELECT STO_NO, STO_NAME, STO_PHONE, STO_ADDR 
+			SELECT STO_NO, STO_NAME, STO_PHONE, STO_ADDR , STO_ADDR2 
 			FROM T_STORE
 			
 		

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.vo.StoreVO;
-import kr.co.bit.member.service.MemberService;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.Select_Ing_Service;
 import kr.co.bit.menu.vo.CartVO;
@@ -30,19 +29,17 @@ public class Select_Ing_Controller {
 
 	@Autowired
 	private CartService cart_Service;
-	@Autowired
-	private MemberService memberService;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
 	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone,
 			String name, String price, String size, String pic ) {
 		
 		
-		//1. 세션 id값을 받아온다
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		String id = userVO.getId();
 		userVO.setStore(storeName);
 		//2. 세션값과 현재 id 값을 비교해서 맞으면 user_store db에 storeName 값을 넣는다 
-		memberService.updateStore(storeName);
+		
 		
 		//3 . 넣은뒤 변경된 값을 다시 세션에 등록 
 		session.setAttribute("userVO" , userVO );
@@ -56,13 +53,14 @@ public class Select_Ing_Controller {
 			storeVO.setStoreName(storeName);
 			storeVO.setStoreAddr(storeAddr);
 			storeVO.setStorePhone(storePhone);
+			userVO.setStore(storeName);
 			
 			session.setAttribute("storeVO", storeVO);
 		}
 		
 		if(name != null  && price != null && size != null && pic != null) {
 			UserVO user = (UserVO)session.getAttribute("loginVO");		
-			String id = user.getId();
+			//String id = user.getId();
 			
 			CartVO cartVO = new CartVO();
 			cartVO.setName(name);
