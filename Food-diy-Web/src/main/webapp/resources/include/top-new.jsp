@@ -151,11 +151,11 @@
 												</tr>
 												<tr>
 													<td>수량</td>
-													<td class="final-qty"></td>
+													<td class="minicart-final-qty"></td>
 												</tr>
 												<tr>
 													<td>총 가격</td>
-													<td class="final-price commaN"></td>
+													<td class="minicart-final-price commaN"></td>
 												</tr>
 											</tbody>
 										</table>
@@ -216,7 +216,6 @@
 				
 				
 				$(this).find('.btn-remove').click(function() {
-					
 					var no = $('.cart-products .product .cartNo').text();
 					
 					$(this).closest('.product').remove();
