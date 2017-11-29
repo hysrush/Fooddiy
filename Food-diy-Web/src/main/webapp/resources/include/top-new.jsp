@@ -160,20 +160,35 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			function 
 			
-			
+			//장바구니안에 물건 갯수
 			$('.cart-qty').text($('.cart-products').children().length);
 			
+			if($('.cart-products').children().length == 0) {
+				if($('.cart-products .product').length == 0) {
+					$('.cart-totals').hide();
+					$('.cart-actions').hide();
+					$('.cart-none').show();
+				}
+			}
+			
+			
+			//숫자표기
 			for(var i = 0; i < $('.commaN').length; ++i) {
 				$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));
 			}
 			
 			
+			//장바구니 클릭 이벤트
 			$('.cart-dropdown-icon').click(function() {
 				$('.cart-dropdownmenu').toggle(500);
 			});
 			
+			//장바구니 상품 삭제
 			$('.cart-products .product').each(function() {
+				
+				
 				$(this).find('.btn-remove').click(function() {
 					$(this).closest('.product').remove();
 					var qty = $('.cart-qty').text();
