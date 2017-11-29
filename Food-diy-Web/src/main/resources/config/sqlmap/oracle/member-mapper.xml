@@ -107,11 +107,11 @@
 	
 
 	<!--  장바구니에 메뉴 담았을떄 user_store 정보 업데이트  -->
-		<select id ="updateStore" parameterType = "userVO">
-		UPDATE T_UESR
-		SET USER_STORE = #{ STORE }
+		<select id ="updateStore" parameterType="userVO">
+		UPDATE T_USER
+		SET USER_STORE = #{store}
 		WHERE 
-		USER_ID = #{ ID }
+		USER_ID = #{ id }
 		</select>
 	
 
