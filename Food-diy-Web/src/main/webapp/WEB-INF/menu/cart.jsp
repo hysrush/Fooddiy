@@ -231,14 +231,18 @@
 				var finalQty = 0;
 				
 				
+				
 				//총 가격
 				for(var i = 0; i < $('.total-price').length; ++i) {
 					finalPrice += uncomma($('.total-price').eq(i).text())*1;
+
 				}
 				
 				
 				//총 수량
-				finalQty = calculateCount($('.qty-input'))
+				for(var i = 0; i < $('.qty-input').length; ++i) {
+					finalQty += $('.qty-input').eq(i).val() * 1;
+				}
 				
 				finalPrice = comma(finalPrice) + "원";
 					
@@ -271,10 +275,7 @@
 					$.ajax({
 						url : "./productQtyUpdate",
 						type : "post",
-						data : {"no" : no, "totalQty" : totalQty},
-						success : function(){
-							alert('성공');
-						}
+						data : {"no" : no, "totalQty" : totalQty}
 					});
 				}
 				
