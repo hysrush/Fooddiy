@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 		<!-- Basic -->
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 로그인 | </title>
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<title>Fooddiy-Order</title>	
+
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -51,49 +51,27 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
-		<!-- 이미지 캐러셀 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
 		
-		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+		<!-- js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
+		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 		
-		<!-- modal -->
-   	 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
-    		
-<script>window.name="main"</script>
-<script>
-	$(document).ready(function(){
-		
-		/* 	
-		$("#lost").click(function(){
-			window.opener.name = "main"; // 부모창의 이름 설정
-	    	document.form_lost.target = opener.window.name; // 타켓을 부모창으로 설정
-	   		self.close();
-		}); */
-	
-
-        //창 열기 버튼을 클릭했을경우
-        if("${msg}"){
-        	swal("${msg}");
+<script type="text/javascript">
+	function doAction(type) {
+		switch (type) {
+		case 'W':
+			location.href = "${ pageContext.request.contextPath}/community/noticeWrite.do";
+			break;
+		default:
+			break;
 		}
-		
-        // id 표시
-		if("${ lostId }"){
-			var f = document.memberForm;
-			
-			f.id.value = "${ lostId }";
-		}
-		
-	});
-
-
+	}
 </script>
 </head>
 <body>
@@ -104,78 +82,151 @@
 		</header>
 		
 		<!-- Mobile menu 부분 -->
-		<jsp:include page="/resources/include/mobile-menu.jsp"/>
-		
+			<jsp:include page="/resources/include/mobile-menu.jsp"/>
+
 		<div role="main" class="main">
+
 			<section class="page-header">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="breadcrumb">
-									<li><a href="#">Sign In</a></li>
-									<li class="active">Login</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<h1>로그인</h1>
-							</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="breadcrumb">
+								<li><a href="#">커뮤니티</a></li>
+								<li class="active">공지사항</li>
+							</ul>
 						</div>
 					</div>
-				</section>
-			
+					<div class="row">
+						<div class="col-md-12">
+							<h1>Subway 소식</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<div class="container">
+
 				<div class="row">
-					<div class="col-md-3">
+					<!-- 스티키 사이드바 -->
+					<div class="col-md-2 hidden-xs hidden-sm">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
+
+							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+								<li class="active"><a href="#">Subway 소식</a>
+									<ul>
+										<li><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+										<li class="active"><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+									</ul>
+								</li>
+								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
+							</ul>
 						</aside>
 					</div>
-
-					<!-- START -->
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="tabs tabs-bottom tabs-center tabs-simple">
-									<ul class="nav nav-tabs">
-										<li class="active">
-											<a href="#memberLogin" data-toggle="tab" aria-expanded="true"> 회원</a>
-										</li>
-										<li class="">
-											<a href="#nonLogin" data-toggle="tab" aria-expanded="false"> 비회원</a>
-										</li>
-									</ul>
-									<!-- 회원 로그인 -->
-										<div class="tab-content">
-											<div class="tab-pane active" id="memberLogin">
-												<jsp:include page="/resources/include/login/memberLogin.jsp"/>
-										</div>
-										<!--  비회원 로그인    -->
-										<div class="tab-pane" id="nonLogin">
-											<jsp:include page="/resources/include/login/nonmemberLogin.jsp"/>
+					<!-- START! -->
+					<div class="col-md-10">
+						<section class="section section-default">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-12">
+										<h4 class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</h4>
+										<br>
+										<p class="mb-none">Subway 소식! 공지사항과 보도자료입니다.</p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="tabs tabs-bottom tabs-center tabs-simple">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
+							</ul>
+							<div>
+								<!-- 보도자료 -->
+								<div class="tab-pane" id="tabsNavigationSimple2">
+									<div class="center">
+										<div class="col-md-12">
+											<!-- 필터 및 검색 -->
+											<div class="col-md-12">
+												<div class="col-md-3" style="float: right;">
+													<form action="">
+														<div class="input-group input-group-md">
+															<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
+															<span class="input-group-btn">
+																<button type="submit" class="btn btn-primary btn-md">
+																	<i class="fa fa-search"></i>
+																</button>
+															</span>
+														</div>
+													</form>
+												</div>
+												<div class="col-md-2" style="float: right;">
+													<select class="form-control">
+														<option value="title">제목</option>
+														<option value="content">내용</option>
+														<option value="title+content">제목+내용</option>
+													</select>
+												</div>
+											</div>
+											<!-- 테이블 -->
+											<table class="table table-hover" width="80%">
+												<thead>
+													<tr>
+													<th>번호</th>
+													<th>제목</th>
+													<th>작성일</th>
+													<th>조회수</th>
+													</tr>
+												</thead>
+												<tbody>
+														<c:forEach items="${ newsList }" var="news">
+														<c:if test="${ news.type eq 'B' }">
+															<tr>
+																<td>${ news.no }</td>
+																<td>
+																	<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ news.no }">
+																		<c:out value="${ news.title }" />
+																	</a>
+																</td>
+																<td>${ news.regDate }</td>
+																<td>${ news.viewCnt }</td>
+															</tr>
+														</c:if>
+														</c:forEach>
+												</tbody>
+											</table>
+											<!-- 페이지네이션 -->
+											<div class="col-md-12 center">
+												<ul class="pagination pull-center">
+													<li><a href="#"><i class="fa fa-chevron-left"></i></a>
+													</li>
+													<li class="active"><a href="#">1</a></li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#"><i class="fa fa-chevron-right"></i></a>
+													</li>
+												</ul>
+												<br>
+												<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<br>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-<div id="alertModal" title="안녕">
-</div>
 
-	<footer class="light visible-lg" id="footer">
-		<jsp:include page="/resources/include/bottom.jsp"/>
-	</footer>
-	
-	<footer class="light hidden-lg" id="footer">
-		<jsp:include page="/resources/include/mobile-bottom.jsp"/>
-	</footer>
-	
-<!-- Vendor -->
+		<footer id="footer">
+			<jsp:include page="/resources/include/bottom.jsp" />
+		</footer>
+	</div>
+
+		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -205,20 +256,10 @@
 		<!-- Demo -->
 		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
 		
-		<!-- Current Page Vendor and Views -->
-		 <script src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script> 
-
-		<!-- Demo -->
-		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
-		
 		<!-- Theme Custom -->
 		<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-		
-		<!-- Examples -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqatUi4ICaA6KBVjyOxul0QKP4F_H7-mY"></script>
-		
 </body>
 </html>

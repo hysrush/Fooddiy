@@ -121,7 +121,9 @@
 									<div class="cart-products">
 										<c:forEach items="${ cartList }" var="cartVO">
 											<div class="product product-sm">
-												<a href="#" class="btn-remove" title="Remove Product"> <i class="fa fa-times"></i>
+												<div class ="cartNo" style="display: none">${ cartVO.no }</div>
+												<a href="#" class="btn-remove" title="Remove Product"> 
+													<i class="fa fa-times"></i>
 												</a>
 												<figure class="product-image-area">
 													<a href="#" title="Product Name" class="product-image"> <img src="${ cartVO.pic}" alt="Product Name">
@@ -129,18 +131,33 @@
 												</figure>
 												<div class="product-details-area">
 													<h1 class="product-name">
-														<a href="#" title="Product Name">${ cartVO.name }</a>
+														<a href="#" title="Product Name">${ cartVO.name }</a> ${cartVO.size }
 													</h1>
 													
 													<div class="cart-qty-price">
-														<span>${ cartVO.qty }</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
+														<span class = "total-qty">${ cartVO.qty }</span> X <span class="product-price commaN">${ cartVO.total_price }원</span>
 													</div>
 												</div>
 											</div>
 										</c:forEach>
 									</div>
 									<div class="cart-totals">
-										Total: <span></span>
+										<table class="totals-table">
+											<tbody>
+												<tr>
+													<td>매장</td>
+													<td><div>${ storeVO.storeName }</div></td>
+												</tr>
+												<tr>
+													<td>수량</td>
+													<td class="minicart-final-qty"></td>
+												</tr>
+												<tr>
+													<td>총 가격</td>
+													<td class="minicart-final-price commaN"></td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 
 									<div class="cart-actions">
@@ -161,23 +178,90 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
-			
-			$('.cart-qty').text($('.cart-products').children().length);
-			
+			//숫자표기
 			for(var i = 0; i < $('.commaN').length; ++i) {
 				$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));
 			}
 			
+			//장바구니안에 물건 갯수
+			$('.cart-qty').text($('.cart-products').children().length);
 			
+			//상품이 없을 때 표시
+			if($('.cart-products').children().length == 0) {
+				if($('.cart-products .product').length == 0) {
+					$('.cart-totals').hide();
+					$('.cart-actions').hide();
+					$('.cart-none').show();
+				}
+			}
+			
+			
+			var finalPrice = 0;
+			var finalQty = 0;
+			
+			//총 가격
+			$('.cart-qty-price').each(function() {
+				var qty = $(this).children('.total-qty').text() * 1;
+				var price = uncomma($(this).children('.product-price').text()) * 1;
+				
+				finalPrice += (qty * price);
+				
+			});
+			
+			$('.minicart-final-price').text(comma(finalPrice) + "원");
+			
+			//총 수량
+			for(var i = 0; i < $('.cart-qty-price .total-qty').length; ++i) {
+				finalQty += $('.cart-qty-price .total-qty').eq(i).text() * 1;
+			}
+			$('.minicart-final-qty').text(finalQty);
+			
+			
+			
+			//장바구니 클릭 이벤트
 			$('.cart-dropdown-icon').click(function() {
 				$('.cart-dropdownmenu').toggle(500);
 			});
 			
+			
+			
+			
+			//장바구니 상품 삭제
 			$('.cart-products .product').each(function() {
+				
+				
 				$(this).find('.btn-remove').click(function() {
+					var no = $(this).siblings('.cartNo').text();
+					var qty = $(this).siblings('.product-details-area').find('.total-qty').text() * 1;
+					var price =  uncomma($(this).siblings('.product-details-area').find('.product-price').text()) * 1;
+					var finalQty = $('.minicart-final-qty').text() * 1;
+					var finalPrice = uncomma($('.minicart-final-price').text()) * 1;
+					
 					$(this).closest('.product').remove();
-					var qty = $('.cart-qty').text();
-					$('.cart-qty').text(qty-1);
+					var cartQty = $('.cart-qty').text();
+					$('.cart-qty').text(cartQty-1);
+				
+					
+					
+					$.ajax({
+						url : "./menu/deleteCart",
+						type : "post",
+						data : {"no" : no},
+						success : function() {
+							
+							
+							finalQty -= qty;
+							finalPrice -= (qty * price);
+							
+							 $('.minicart-final-qty').text(finalQty);
+							 $('.minicart-final-price').text(finalPrice);
+							 
+							
+						}
+					});
+					
+					
+					
 					
 					if($('.cart-products .product').length == 0) {
 						$('.cart-totals').hide();
@@ -186,6 +270,7 @@
 					}
 				});
 			});
+<<<<<<< HEAD
 			
 			
 			//마우스 호버 비디오 재생 
@@ -198,7 +283,13 @@
 			
 			
 		})		
+=======
+		});
 		
+
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
+		
+<<<<<<< HEAD
 		//콤마찍기
 		function comma(str) {
 		    str = String(str);
@@ -215,6 +306,8 @@
 		function inputNumberFormat(obj) {
 		    obj.value = comma(uncomma(obj.value));
 		}	
+=======
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 
 	</script>
 

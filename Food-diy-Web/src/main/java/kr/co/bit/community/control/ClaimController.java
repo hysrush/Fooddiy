@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -173,10 +174,9 @@ public class ClaimController {
 		
 		System.out.println("선택한 구군 이름 :" + locationName);
 
-		jsonObj.put("result", true);
 		jsonObj.put("storeList", storeList);
-		jsonObj.put("locationName", locationName);
-
+		jsonObj.put("locationName", (Object)locationName);
+		
 		response.getWriter().print(jsonObj.toString());
 
 	}

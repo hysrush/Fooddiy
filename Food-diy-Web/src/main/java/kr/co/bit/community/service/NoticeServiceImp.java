@@ -23,6 +23,12 @@ public class NoticeServiceImp implements NoticeService {
 		List<NoticeBoardVO> listAll = noticeDAO.selectAll();
 		return listAll;
 	}
+	// 타입별 Notice 전체보기
+	@Override
+	public List<NoticeBoardVO> selectType(String type) {
+		List<NoticeBoardVO> listType = noticeDAO.selectAll();
+		return listType;
+	}
 	// 글번호별 Notice 글보기
 	@Override
 	public NoticeBoardVO selectOneNotice(int no) {

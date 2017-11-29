@@ -46,5 +46,6 @@ public class MemberServiceImp  implements MemberService  {
 		
 		memberDAO.delete(id);
 	}
-
+	
+	
 }

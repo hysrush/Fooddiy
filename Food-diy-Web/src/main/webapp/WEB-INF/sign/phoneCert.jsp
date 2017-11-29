@@ -10,7 +10,7 @@
 
 		<title> | 휴대전화 인증 | </title>
 		
-			<meta name="keywords" content="HTML5 Template" />
+		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
 
@@ -126,7 +126,7 @@
 		});
 		
 		
-		/*
+		/* 팝업창
 		$("#phoneCert").click(function(){
 			
 			var popUrl = "${ pageContext.request.contextPath }/sign/phoneCertForm.do";	//팝업창에 출력될 페이지 URL
@@ -139,21 +139,6 @@
 	});
 		
 	</script>
-	
-	<!-- NICE가 제공하는 본인인증 테스트
-	<script>
-	window.name ="iProc";
-	window.onload = function() {
-	    fnPopup();
-	}
-	function fnPopup(){
-		window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-		document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
-		document.form_chk.target = "popupChk";
-		document.form_chk.submit();	
-	}
-	</script>
- -->
 </head>
 <body>
 	<div class="body">
@@ -209,24 +194,7 @@
 									<p>본인명의의 휴대폰을 통해 인증합니다.</p>
 									<div class="row mt-xlg">
 										<div class="col-md-12">
-											<%-- <input type="hidden" value="업체정보 암호화 데이타 : [AgAFRzQ2MTmDwh6PPOLysfSzTiYkMQeFSoA0LZWcg8izIf/fBtdoP6yDckoE2x8ro7y9POSvE2VFWiR6MbJgUuKemI5vGYjkSGIzGscKWJUOSbq4ZhlzIbGynT6t9uQReoHAdy5CiYDZ9WmcCborA7QxWUNjI79labRQV1pCEd4Wzj6q1DhJopIlEy/BT9hzAyBEjLjlBzRKlBo2+VdTCUwszTRRUxJ/9sH24XN99Tqm7ik97ewlAaZOpTm7r1pW+X5bzzQbxBORemkVec91d8VdWcDgXyFv4XBpwMG0oUgHy44ULok/DwiyjU9wcKZ4SmkIHuAfsAHwXkCKISAVQXaiKW6+JJZvMadSDAVIM8/ZLcAlxBG71Ya78zMs/U5Ict2WjHglkHXqwLG/F8aSkvjvIkH0KzS4jTiPWK9exS6Y9ixgRAkNLSDv7EkihS/zqAUawDDYwb1aCdv5AqCT2fEJygCfnVM38siWb5NfwSBT0L9CTfHzCg==]"/>
-										
-											<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
-											<form name="form_chk" method="post" action="${ pageContext.request.contextPath }/sign/signup.jsp" onsubmit="return check()" target="popupChk">
-												<input type="hidden" name="m" value="checkplusSerivce">						<!-- 필수 데이타로, 누락하시면 안됩니다. -->
-												<input type="hidden" name="EncodeData" value="AgAFRzQ2MTmDwh6PPOLysfSzTiYkMQeFSoA0LZWcg8izIf/fBtdoP6yDckoE2x8ro7y9POSvE2VFWiR6MbJgUuKemI5vGYjkSGIzGscKWJUOSbq4ZhlzIbGynT6t9uQReoHAdy5CiYDZ9WmcCborA7QxWUNjI79labRQV1pCEd4Wzj6q1DhJopIlEy/BT9hzAyBEjLjlBzRKlBo2+VdTCUwszTRRUxJ/9sH24XN99Tqm7ik97ewlAaZOpTm7r1pW+X5bzzQbxBORemkVec91d8VdWcDgXyFv4XBpwMG0oUgHy44ULok/DwiyjU9wcKZ4SmkIHuAfsAHwXkCKISAVQXaiKW6+JJZvMadSDAVIM8/ZLcAlxBG71Ya78zMs/U5Ict2WjHglkHXqwLG/F8aSkvjvIkH0KzS4jTiPWK9exS6Y9ixgRAkNLSDv7EkihS/zqAUawDDYwb1aCdv5AqCT2fEJygCfnVM38siWb5NfwSBT0L9CTfHzCg==">		<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
-											    
-											    <!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
-											    	 해당 파라미터는 추가하실 수 없습니다. -->
-												<input type="hidden" name="param_r1" value="">
-												<input type="hidden" name="param_r2" value="">
-												<input type="hidden" name="param_r3" value="">
-											    
-												<!-- <a href="javascript:fnPopup();" class="btn btn-info mb-md form-control"> 인증하기 </a> -->
-												<input type="submit" id="phoneCert" value="인증하기" class="btn btn-info mb-md form-control"/>
-											</form> --%>
 											<button id="phoneCert" class="btn btn-info mb-md form-control" data-toggle="modal" data-target="#modal">인증하기</button>
-											<%-- <a href="${ pageContext.request.contextPath }/sign/phoneCertForm.do" id="phoneCert" class="btn btn-info mb-md form-control" data-ajax-on-modal>인증하기</a> --%>
 										</div>
 									</div>
 								</div>

@@ -167,34 +167,37 @@
 															<input type="button" id="search" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">	
 														</div>
 													</div>
+													
+											<h4 class="mt-xlg mb-none text-uppercase">&nbsp;&nbsp;<strong id="searchInfo" >지역을 선택해주세요</strong></h4>
+											<br>
+												<div  id="storeList">
+													<form action="storeEventPage.do" method ="post">
+														<table>
+														
+															<tbody id ="storeList">
+																<!-- 매장 리스트 -->
+															</tbody>
+														</table>
+													</form>
+												</div>
 												
-													<!--   AJAX 테이블이 생성될 공간 --> 
+												
+												
+													<!--   AJAX 테이블이 생성될 공간 
 														<div class="row">
 															<div class="col-md-12">
 																<form action="storeEventPage.do" method ="post">
-																	<table class="table table-hover" width="80%">
-																		<thead>
-																			<tr>
-																				<th>매장번호</th>
-																				<th>매장명</th>
-																				<th>매장 주소 </th>
-																				<th>매장 전화번호</th>
-																				<th> 선택 </th>
-																			</tr>
-																		</thead>
-																		<tbody id = "storeList">
-																			
-																			
-																		</tbody>
-																	</table>
+																	<div id="storeList">
+						
+																	</div>
 																</form>
 															</div>
-														</div>
+														</div> -->
 										</div>
 									</div>	
 												 <!--   선택한 매점 이름과 매칭되는 지도api 불러오기 -->
 													<div class="row">
-														<div class="col-md-12">
+														<div class="col-md-12 col-sm-12 col-xs-12">
 															<div id="map" style="height: 500px;"></div>
 														</div>
 													</div>
@@ -277,10 +280,6 @@
 		              success : function(responseData){
 		                  			var data = JSON.parse(responseData);
 		                  			
-		                  			// 3. result setting
-		  				          	alert('다녀옴 , result = ' + data.result);
-		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NAME);
-		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NO);
 		                  			
 		  				          	$('#gugun').empty();
 			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
@@ -303,22 +302,32 @@
 						success : function(responseData){
 									var data = JSON.parse(responseData);
 									
-									alert("result = " + data.result);
-									alert("매장이름 = " + data.storeList[0].storeName);
 									$('#storeList').empty();
-								 	for(var i = 0 ; i < data.storeList.length; i++){
-										var contents = '';
-										contents += '<tr>';
-										contents +=		'<td>'+ data.storeList[i].storeNo+'</td>';
-										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
-										contents +=		'<td id="storeAddr" value="'+data.storeList[i].storeAddr +'">'+ data.storeList[i].storeAddr+'</td>';
-										contents +=		'<td id="storePhone" value="'+data.storeList[i].storePhone +'">'+ data.storeList[i].storePhone+'</td>';
-										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeAddr+'\')" value="위치" /></td>';
-										contents += '</tr>';
-									
-										$('#storeList').append(contents);
+							
+									$('#storeList').css("max-height","150px");
+									$('#storeList').css("overflow","auto");
+										
+										// 검색완료 시, 구군 이름 표시
+										$("strong#searchInfo").text('"' + data.locationName + '"(으)로 검색');
+										
+									 	for(var i = 0 ; i < data.storeList.length; i++){
+											var contents = '';
+											contents += '<tr>';
+											contents +=		'<td style = "width: 30%">';
+											contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
+											contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '</strong>';
+											contents +=			'<div class="storePhone post-meta">' + data.storeList[i].storePhone +'</div>';
+											contents +=		'</td>';
+											contents +=		'<td class="storeAddr" style = "width: 50%">'+ data.storeList[i].storeAddr +'</td>';
+											contents +=		'<td style = "width: 20%" align ="right"><input class="btn btn-success btn-sm" type="button" name="storeChoice"';
+											contents += 				'onclick="test(\''+data.storeList[i].storeAddr+'\')" value="선택"  /></td>';
+											contents += '</tr>';
+										
+											$('#storeList').append(contents);
+									 	}
+										
 
-								 	}		
+								 			
 						}
 					});
 		
@@ -337,11 +346,11 @@
  						success : function(responseData){
  							var data = JSON.parse(responseData);
  							
- 							alert("result = " +data.result);
+ 						
  							
  							var geocoder = new daum.maps.services.Geocoder();
  							var addr = data.storeList[0].storeAddr;
-									alert("addr : "+addr);
+									
 	 						// 주소로 좌표를 검색합니다
 	 						geocoder.addressSearch( store, function(result, status) {
 	
@@ -364,6 +373,7 @@
 	 						            contents += '<input type="hidden" name = "storeName" value='+data.storeList[0].storeName + ' />';
 	 						            contents += '<input type="hidden" name = "storeAddr" value='+ addr + ' />';
 	 						            contents += '<input type="hidden" name = "storePhone" value='+data.storeList[0].storePhone + ' />';
+	 						            contents += '<input type="hidden" name = "storeAddr2" value='+data.storeList[0].storeAddr2 + ' />';     
 	 						            contents += '<input type="submit" value="선택"/>';
 	 						            //contents += '<input type="submit" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
 										contents += '</div>';
@@ -386,29 +396,14 @@
 
  				}
 				 
-				 function choice(storeName){
-					 alert("storeName = " +storeName);
-					 
-					 //var btn= this;
-					 var storeName = storeName;
-					 
-					 location.href="notice/List.jsp"; // 메뉴페이지 
-
-				
-				 }
-				 
-				 
-				 
-				 
-
- 			
+	
 				 
 	             function choice(storeName){
-	                 alert("storeName = " +storeName);
+	               
 	                 
 	                 //var btn= this;
 	                 var storeName = storeName;
-	                 alert('위치')
+	           
 	                 location.href= "${ pageContext.request.contextPath}/menu/select_ingredients.do"; // 메뉴페이지 
 	             
 	              } 
@@ -422,6 +417,31 @@
 		
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 			var map = new daum.maps.Map(mapContainer, mapOption); 
+		
+		
+
+			if (navigator.geolocation) {
+					    
+					    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+					    navigator.geolocation.getCurrentPosition(function(position) {
+					        
+					        var lat = position.coords.latitude, // 위도
+					            lon = position.coords.longitude; // 경도
+					        
+					        var locPosition = new daum.maps.LatLng(lat, lon)
+	
+					            map.setCenter(locPosition);  
+					            
+					      });
+					    
+					} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+					    
+					    var locPosition = new daum.maps.LatLng(33.450701, 126.570667),    
+					        message = 'geolocation을 사용할수 없어요..'
+					        
+					    displayMarker(locPosition, message);
+					}
+		
 		</script>
 
 	</body>

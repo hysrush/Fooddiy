@@ -13,9 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.event.vo.locationVO;
@@ -25,13 +27,15 @@ import kr.co.bit.service.StoreService;
 import kr.co.bit.user.vo.UserVO;
 
 @RequestMapping("/store")
+@SessionAttributes("cartVO")
 @Controller
 public class StoreController {
 	
 	@Autowired
 	private StoreService storeService;
 	
-	
+	@Autowired
+	private EventService eventService;
 	
 	@RequestMapping("/findStore.do")
 	public ModelAndView list(HttpSession session, String name, String price, String size, String pic) {
@@ -50,7 +54,7 @@ public class StoreController {
 				
 		
 		System.out.println(cartVO);
-		session.setAttribute("cartVO", cartVO);
+		mav.addObject("cartVO", cartVO);
 		
 		mav.setViewName("store/FindStore");
 		mav.addObject("cityList", cityList);
@@ -109,14 +113,14 @@ public class StoreController {
 			JSONObject jsonObj = new JSONObject();
 
 			List<StoreVO> storeList = storeService.selectStoreList(gugun);
-
+			String locationName = eventService.locationName(gugun);
 			for (int i = 0; i < storeList.size(); i++) {
 				System.out.println(storeList.get(i).toString());
 			}
-
+				
 			jsonObj.put("result", true);
 			jsonObj.put("storeList", storeList);
-
+			jsonObj.put("locationName", locationName);
 			response.getWriter().print(jsonObj.toString());
 		}
 		

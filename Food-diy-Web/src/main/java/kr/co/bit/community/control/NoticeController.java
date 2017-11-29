@@ -28,16 +28,17 @@ public class NoticeController {
 	// <Notice 컨트롤러>
 	// Notice 전체보기
 	@RequestMapping("/notice.do")
-	public ModelAndView	listAll(HttpServletRequest request) {
-		
-		List<NoticeBoardVO> noticeList = noticeService.selectAllNotice();
+	public ModelAndView	listNotice(HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView();
+		
+		List<NoticeBoardVO> noticeList = noticeService.selectType("A");
 		//setViewName : 어떤 페이지를 보여줄것인가
 		mav.setViewName("community/noticeList");
 		//addObject : key 와 value 를 담아 보내는 메서드 
 		mav.addObject("noticeList", noticeList);
 		
+		/*
 		// ex) http://localhost:8000/Food-diy-Web/community/noticeDetail.do?no=6
 		String[] referer = request.getHeader("referer").split("/");
 		// ex) noticeDetail.do?no=6
@@ -59,9 +60,25 @@ public class NoticeController {
 				}
 			}
 		}
+		*/
+		return mav;
+	}
+	
+	// 보도자료 전체보기
+	@RequestMapping("/news.do")
+	public ModelAndView listNews() {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		List<NoticeBoardVO> newsList = noticeService.selectType("B");
+		//setViewName : 어떤 페이지를 보여줄것인가
+		mav.setViewName("community/newsList");
+		//addObject : key 와 value 를 담아 보내는 메서드 
+		mav.addObject("newsList", newsList);
 		
 		return mav;
 	}
+	
 	// Notice 새 글쓰기폼
 	@RequestMapping(value="/noticeWrite.do", method=RequestMethod.GET)
 	public String writeForm(Model model) {

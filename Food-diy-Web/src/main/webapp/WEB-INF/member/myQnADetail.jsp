@@ -149,11 +149,13 @@
 											<c:if test="${ claimVO.type eq 'C'}"><td>불만</td></c:if>
 											<c:if test="${ claimVO.type eq 'X'}"><td>기타</td></c:if>
 											<!-- 제목 -->
-											<td>
+											<td class="col-xs-3" colspan="2">
 												<h4 class="mb-none">
 													<strong><c:out value="${ claimVO.title }"></c:out></strong>
 												</h4>
 											</td>
+										</tr>
+										<tr>
 											<div class="post-meta">
 												<!-- 조회수 -->
 												<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ claimVO.viewCnt }</td>
@@ -161,15 +163,6 @@
 												<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ claimVO.regDate }</td>
 											</div>
 										</tr>
-										<!-- 방문일 / 방문매장명 -->
-										<c:if test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
-											<tr>
-												<th width="15%">방문일</th>
-												<td>${ claimVO.visitDate }</td>
-												<th width="15%">방문매장</th>
-												<td>${ claimVO.visitStore }</td>
-											</tr>
-										</c:if>
 										<tr>
 											<!-- 내용 -->
 											<td colspan="4"><p><c:out value="${ claimVO.content }"></c:out></p></td>
@@ -188,7 +181,7 @@
 									</table>
 								</form>
 								<div class="center">
-									<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
+									<button style="width: 100px" type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
 								</div>
 							</div>
 						</div>

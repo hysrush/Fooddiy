@@ -191,18 +191,19 @@
 					</div>
 					
 			<form action="${pageContext.request.contextPath}/member/memberUpdate.do" name="up" id="frmBillingAddress" method="post" onsubmit="return userPw()" enctype="multipart/form-data">
-				<div class="col-md-4 ">
+				<input type="hidden" name="id" value="${ loginVO.id }"/>
+				<div class="col-xs-12 col-md-4 ">
 				<c:choose>
                 <c:when test="${ loginVO.file ne null }">
-		                <img src="../upload/${ loginVO.file }" id="prof" class="img-responsive" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+		                <img src="../upload/${ loginVO.file }" id="prof" class="img-responsive" alt="" style="float:left; margin-left: 15%; margin-top: 20%; height:300px; width: 260px">
                 </c:when>
     	            <c:otherwise>
-		                <img src="${ pageContext.request.contextPath }/resources/img/loading.gif" id="prof" class="img-responsive" name="null" alt="" style="float:left; margin-left: 20%; margin-top: 8%; width: 200px;">
+		                <img src="${ pageContext.request.contextPath }/resources/img/parallax-2.jpg" id="prof" class="img-responsive" name="null" alt="" style="float:left; margin-left: 20%; margin-top: 8%; height:300px; width: 260px">
 	                </c:otherwise>
                 </c:choose>
-					<input id="file" style="float:right; margin-top: 4%; margin-right: 10%" type="file" class="btn btn-default" name="file" value="${ loginVO.file }" onchange="readyURL(this);"/> 
+					<input id="file" style="float:right; margin-top: 4%; margin-right: 9%" type="file" class="btn btn-default" name="file" value="${ loginVO.file }" onchange="readyURL(this);"/> 
 				</div><br/><br/>
-						<div class="col-md-5" style="margin-top: 3%; margin-left: 2%">
+						<div class="col-xs-12 col-md-5" style="margin-top: 3%; margin-left: 0%">
 							<div class="panel-group" id="accordion">
 								<div class="panel panel-default">
 									<div class="panel-heading">
@@ -212,20 +213,11 @@
 									</div>
 									<div id="collapseOne" class="accordion-body collapse in">
 										<div class="panel-body">
-<<<<<<< HEAD
-											<form action="${pageContext.request.contextPath}/member/memberUpdate.do" id="frmBillingAddress" method="post" onsubmit="retrun ">
-=======
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
-												<input type="hidden" name="id" value="${ loginVO.id }"/>
 												<div class="row">
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>이름</label>
-<<<<<<< HEAD
 															<input type="text" name="name" value="${ loginVO.name }" readonly="readonly" class="form-control">
-=======
-															<input type="text" name="name" value="${ loginVO.name }" readonly="readonly" class="form-control"/>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 														</div>
 													</div>
 												</div>
@@ -250,25 +242,16 @@
 													<div class="form-group">
 														<div class="col-md-12">
 															<label>전화번호 </label>
-<<<<<<< HEAD
 															<input type="text" name="phone" value="${loginVO.phone }" class="form-control">
-=======
-															<input type="text" name="phone" value="${loginVO.phone }" class="form-control"/>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 														</div>
 													</div>
 												</div>
 												<div class="row">
 													<div class="form-group">
-<<<<<<< HEAD
-														<div class="col-md-6">
-															<label>E-mail </label>
-															<input type="text" name="email" value="${ loginVO.email }" class="form-control">
-=======
 														<div class="col-md-12">
 															<label>E-mail</label>
 															<input type="text" name="email" value="${ loginVO.email }" class="form-control" readonly="readonly"/>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
+
 														</div>
 														<div class="row">
 												<!-- 	<div class="form-group">
@@ -289,13 +272,15 @@
 													</div>
 												</div>
 												<!-- data-toggle="modal" data-target="#formModal" -->
-													<input id="save" style="margin-left: 63%" type="submit" value="저장" class="btn btn-info" />
+													<input id="save" style="margin-left: 65%" type="submit" value="저장" class="btn btn-info" />
 													<button id="cancel" type="button" class="btn btn-info" data-dismiss="modal">취소</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						
+	
 						</form>
 						<!-- 	<div style="margin-top: 12%; ">
 							<div class="row">
