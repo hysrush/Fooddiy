@@ -274,6 +274,7 @@
 			
 			//마우스 호버 비디오 재생 
 			var video = document.getElementById("video1");
+			
 			$("#dropmenu").hover(function() {
 				video.play();
 			}, function(){
@@ -281,7 +282,6 @@
 			});			
 			
 			
-		})		
 		});
 		
 
