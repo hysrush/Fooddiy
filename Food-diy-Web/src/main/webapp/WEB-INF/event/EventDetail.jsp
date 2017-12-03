@@ -111,10 +111,50 @@
 							</aside>
 						</div>
 							<!-- 디테일 게시판 -->
-							
-									<div class="col-md-9">
+								
+								<div class="col-md-9">
+									<table class="table" align="center">
+										<thead>
+											<tr>
+												
+												<th>
+													<strong>${eventVO.content}</strong>	
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<span>이벤트 기간 :  ${ eventVO.startDate } &nbsp; ~ &nbsp; ${ eventVO.endDate }</span>	
+												</td>
+												
+											</tr>
+											<tr>
+												<td>
+													<img src="../upload/${ eventVO.imgFileName }" >
+												</td>
+												
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+									<br/><br/>
+								<div class="row" align="center" >
+								
+								    <div class="col-md-12">
+													
+										<button onclick="doAction('U')">수정</button>&nbsp;&nbsp;
+										<button onclick="doAction('D')">삭제</button>&nbsp;&nbsp;
+													
+										<button onclick="doAction('L')">목록</button>
+										<button id="com" class="btn btn-secondary">답글</button>
+									</div>
+								</div>
+	
+									
 								   
-										<table class="table table-bordered">
+									<!--  	<table class="table table-bordered">
 								            <tr>
 													<th width="10%">번호</th>
 													<td>${ eventVo.no }</td>
@@ -161,26 +201,16 @@
 													<button id="com" class="btn btn-secondary">답글</button>
 												</div>
 											</div>
-																
+															-->	
 
-
-
-
-
-
-
-
-
-
-
-
+	
 					</div>
 				</div>
 			</div>
 		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
-	
+	</div>
 	</div>
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
