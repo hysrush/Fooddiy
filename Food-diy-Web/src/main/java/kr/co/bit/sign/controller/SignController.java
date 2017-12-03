@@ -173,7 +173,7 @@ public class SignController {
 		
 		sessionStatus.setComplete();
 		model.addAttribute("msg", "로그아웃 완료");
-		return "sign/logout";
+		return "sign/sign";
 	}
 	
 	// - id 찾기 - alert창
@@ -238,7 +238,7 @@ public class SignController {
 		}
 
 		model.addAttribute("loginVO", userVO);
-
+		model.addAttribute("msg", "로그인!");
 		return "sign/sign";
 
 	}
@@ -271,6 +271,7 @@ public class SignController {
 		kakao = signServiceImp.login(login);
 		
 		model.addAttribute("loginVO", kakao);
+		model.addAttribute("msg", "카카오 로그인!");
 		
 		return "sign/sign";
 	}
@@ -313,12 +314,12 @@ public class SignController {
 		
 		session.setMaxInactiveInterval(10800);
 		session.setAttribute("nonMember", user);
-		model.addAttribute("msg", "완료~");
+		model.addAttribute("msg", "인증 완료");
 			
-		return "/sign/sign";
+		return "sign/sign";
 	}
 	
-	
+	// session저장만 할 것임
 	@RequestMapping("/nonlogout")
 	public String nonLogout(String id, HttpSession session) {
 		
