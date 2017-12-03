@@ -4,6 +4,6 @@
 
 	if("${msg}"){
 		location.href="${pageContext.request.contextPath}/index2.jsp";
-	}
+	} 
 
 </script>
