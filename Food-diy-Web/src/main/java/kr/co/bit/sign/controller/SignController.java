@@ -153,28 +153,32 @@ public class SignController {
 			
 			return "sign/login";
 		}
+		
+		//장바구니
         CartVO cartVO = new CartVO();
         cartVO.setId(login.getId());
-		List<CartVO> cartList = cartService.selectAllCart(cartVO);
+		
+        List<CartVO> cartList = cartService.selectAllCart(cartVO);
 		
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("loginVO", signIn);
+		model.addAttribute("msg", "로그인");
 		
 		return "sign/sign";
 	}
 
 	// - 로그아웃
 	@RequestMapping("/logout")
-	public String logout(SessionStatus sessionStatus) {
+	public String logout(SessionStatus sessionStatus, Model model) {
 		
 		sessionStatus.setComplete();
-
-		return "sign/logout";
+		model.addAttribute("msg", "로그아웃 완료");
+		return "sign/sign";
 	}
 	
 	// - id 찾기 - alert창
 	@RequestMapping("/lostId")
-	public String lostId(PhoneCertVO lost, Model model) {
+	public String lostId(UserVO lost, Model model) {
 		
 		UserVO lostVO = signServiceImp.lostId(lost);
 		
@@ -234,7 +238,7 @@ public class SignController {
 		}
 
 		model.addAttribute("loginVO", userVO);
-
+		model.addAttribute("msg", "로그인!");
 		return "sign/sign";
 
 	}
@@ -267,6 +271,7 @@ public class SignController {
 		kakao = signServiceImp.login(login);
 		
 		model.addAttribute("loginVO", kakao);
+		model.addAttribute("msg", "카카오 로그인!");
 		
 		return "sign/sign";
 	}
@@ -307,13 +312,14 @@ public class SignController {
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
+		session.setMaxInactiveInterval(10800);
 		session.setAttribute("nonMember", user);
-		model.addAttribute("msg", "완료~");
-		
-		return "/sign/sign";
+		model.addAttribute("msg", "인증 완료");
+			
+		return "sign/sign";
 	}
 	
-	
+	// session저장만 할 것임
 	@RequestMapping("/nonlogout")
 	public String nonLogout(String id, HttpSession session) {
 		
