@@ -9,8 +9,6 @@ public class StoreVO {
 	public String storeAddr;
 	public String storeAddr2;
 	public String regDate;
-	
-	
 	public int getStoreNo() {
 		return storeNo;
 	}
@@ -23,7 +21,6 @@ public class StoreVO {
 	public void setLocationNo(int locationNo) {
 		this.locationNo = locationNo;
 	}
-
 	public String getStoreName() {
 		return storeName;
 	}
@@ -42,7 +39,6 @@ public class StoreVO {
 	public void setStoreAddr(String storeAddr) {
 		this.storeAddr = storeAddr;
 	}
-	
 	public String getStoreAddr2() {
 		return storeAddr2;
 	}
@@ -61,9 +57,6 @@ public class StoreVO {
 				+ ", storePhone=" + storePhone + ", storeAddr=" + storeAddr + ", storeAddr2=" + storeAddr2
 				+ ", regDate=" + regDate + "]";
 	}
-	
-	
-	
 	
 	
 	

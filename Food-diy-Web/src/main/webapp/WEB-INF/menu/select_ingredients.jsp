@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,8 +43,7 @@
 
 <!-- Current Page CSS -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/settings.css">
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/navigation.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/css/component.css">
 
@@ -59,12 +57,10 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Head Libs -->
 <script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
-
-
 <body>
 	<div class="body">
 		<header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
@@ -122,22 +118,20 @@
 					<div class="slider-container rev_slider_wrapper" style="height: 500px;">
 						<div id="revolutionSlider" class="slider rev_slider manual">
 							<ul>
-								<li data-transition="fade"><img src="${pageContext.request.contextPath }/resources/img/carousels/박재범1.jpg" alt="slide bg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
-								</li>
-								<li data-transition="fade"><img src="${pageContext.request.contextPath }/resources/img/carousels/하하서브2.png" alt="slide bg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
-								</li>
+								<li data-transition="fade"><img src="${pageContext.request.contextPath }/resources/img/carousels/박재범1.jpg" alt="slide bg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
+								<li data-transition="fade"><img src="${pageContext.request.contextPath }/resources/img/carousels/하하서브2.png" alt="slide bg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 
 			<div class="container web">
-				
-			
+
+
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-8 col-lg-9">
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#tabsNavigationSimpleIcons1" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none">
@@ -146,7 +140,9 @@
 											</span>
 										</span>
 									</span>
-										<p class="mb-none pb-none">빵</p>
+										<p class="mb-none pb-none">
+											<strong>Step 1</strong> 빵
+										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons2" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
 													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/cheese_old_english.jpg" />
@@ -154,30 +150,39 @@
 											</span>
 										</span>
 									</span>
-										<p class="mb-none pb-none">치즈</p>
+										<p class="mb-none pb-none">
+											<strong>Step 2</strong> 치즈
+										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons3" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
 													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/topping_double_meat.jpg" />
 											</span>
 										</span>
 									</span>
-										<p class="mb-none pb-none">토핑</p>
+										<p class="mb-none pb-none">
+											<strong>Step 3</strong> 토핑
+										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons4" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
 													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/vegetable_lettuce.jpg" />
 											</span>
 										</span>
 									</span>
-										<p class="mb-none pb-none">야채</p>
+										<p class="mb-none pb-none">
+											<strong>Step 4</strong> 야채
+										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons5" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
 													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/sauce_sweet_chilli.jpg" />
 											</span>
 										</span>
 									</span>
-										<p class="mb-none pb-none">소스</p>
+										<p class="mb-none pb-none">
+											<strong>Step 5</strong> 소스
+										</p>
 								</a></li>
 							</ul>
+
 							<div class="tab-content">
 								<div class="tab-pane active" id="tabsNavigationSimpleIcons1">
 									<jsp:include page="/menu/select-bread.jsp" />
@@ -197,6 +202,64 @@
 							</div>
 						</div>
 					</div>
+
+					<aside class="col-md-4 col-lg-3 sidebar shop-sidebar" id="payInfo" style="top: 150px">
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse" href="#panel-cart-total" aria-expanded="true"> 주문정보 </a>
+									</h4>
+								</div>
+								<div id="panel-cart-total" class="accordion-body collapse in" aria-expanded="true">
+									<div class="panel-body">
+										<table class="totals-table order-table">
+											<tbody>
+												<tr>
+													<td>빵</td>
+													<td class = "bread-info"></td>
+												</tr>
+												<tr>
+													<td>치즈</td>
+													<td class = "cheese-info"></td>
+												</tr>
+												<tr>
+													<td>토핑</td>
+													<td class = "topping-info"></td>
+												</tr>
+												<tr>
+													<td>야채</td>
+													<td class="vegetable-info"></td>
+												</tr>
+												<tr>
+													<td>소스</td>
+													<td class="sauce-info"></td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="col-md-12 actions-continue" style="">
+													<form class="order-form-web" method="post" action="${ pageContext.request.contextPath }/menu/cart.do" onsubmit="return webSubmint();">
+													
+														<input type="hidden" class="bread" name="bread" value="" /> 
+														<input type="hidden" class="cheese" name="cheese" value="" /> 
+														<input type="hidden" class="topping" name="topping" value="" /> 
+														<input type="hidden" class="vegetable" name="vegetable" value="" /> 
+														<input type="hidden" class="sauce" name="sauce" value="" />
+														<div style="text-align: center;">
+															<button type="submit" style="width : 200px; height : 50px; background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</aside>
+					
 				</div>
 			</div>
 		</div>
@@ -209,7 +272,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a class="accordion-toggle bread-name" data-toggle="collapse" data-parent="#accordion5" href="#bread-select"> 
+									<a class="accordion-toggle bread-name" data-toggle="collapse" data-parent="#accordion5" href="#bread-select">
 										<table class="bread-table">
 											<tr>
 												<td width="30%">&nbsp;&nbsp;&nbsp;&nbsp;빵 선택 >></td>
@@ -227,7 +290,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a class="accordion-toggle cheese-name" data-toggle="collapse" data-parent="#accordion5" href="#cheese-select"> 
+									<a class="accordion-toggle cheese-name" data-toggle="collapse" data-parent="#accordion5" href="#cheese-select">
 										<table class="cheese-table">
 											<tr>
 												<td width="30%">치즈 선택 >></td>
@@ -302,17 +365,17 @@
 
 			<div class="row">
 				<div style="text-align: center;">
-					<form class = "order-form" action = "${ pageContext.request.contextPath }/menu/cart.do" method = "post" onsubmit="return submitFunc();">
-						<input type="hidden" class = "bread" name = "bread" value="bread"/>
-						<input type="hidden" class = "cheese" name = "cheese" value="" />
-						<input type="hidden" class = "topping" name = "topping" value=""/>
-						<input type="hidden" class = "vegetable" name = "vegetable" value=""/>
-						<input type="hidden" class = "sauce" name = "sauce" value=""/>
+					<form class="order-form" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
+						<input type="hidden" class="bread" name="bread" value="" /> 
+						<input type="hidden" class="cheese" name="cheese" value="" /> 
+						<input type="hidden" class="topping" name="topping" value="" /> 
+						<input type="hidden" class="vegetable" name="vegetable" value="" /> 
+						<input type="hidden" class="sauce" name="sauce" value="" />
 						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 					</form>
 				</div>
 			</div>
-			
+
 			<div class="modal order-modal-info" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
 				<div class="modal-dialog" style="top: 30%">
 					<div class="modal-content">
@@ -321,7 +384,7 @@
 							<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>
 						</div>
 						<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
-							<p class = "info"></p>
+							<p class="info"></p>
 						</div>
 						<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
 							<button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; background-color: #7aa93c;">확인</button>
@@ -329,7 +392,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="modal order-modal-final" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
 				<div class="modal-dialog" style="top: 30%">
 					<div class="modal-content">
@@ -338,7 +401,7 @@
 							<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>
 						</div>
 						<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
-							<p class = "info">주문하시겠습니까?</p>
+							<p class="info">주문하시겠습니까?</p>
 						</div>
 						<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
 							<button type="button" class="btn btn-default confirm" style="color: white; background-color: #7aa93c;">확인</button>
@@ -347,20 +410,68 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 
 	<script type="text/javascript">
-		function submitFunc() {
+		function webSubmint() {
 			
-			/* for(var i = 0; i < $('.accordion-toggle').length; ++i) {
-				if($('.accordion-toggle').eq(i).find('tr').children('td').length < 2 ) {
-					alert('재료를 선택해 주세요');
-					return false;
+			if($('.order-table').find('.bread-info div').length < 1)  {
+				$('.order-modal-info').find('.info').text('빵을 선택해주세요.');
+				$(".order-modal-info").modal();
+				return  false;
+			}else if($('.order-table').find('.cheese-info div').length < 1){
+				$('.order-modal-info').find('.info').text('치즈를 선택해주세요.');
+				$(".order-modal-info").modal();
+				return  false;
+			}else if($('.order-table').find('.sauce-info div').length < 1){
+				$('.order-modal-info').find('.info').text('소스를 선택해주세요.');
+				$(".order-modal-info").modal();
+				return  false;
+			}
+			
+			
+			var bread = $('.order-table').find('.bread-name').text();
+			var cheese =  $('.order-table').find('.cheese-name').text();
+			var topping = "";
+			var toppingCnt =  $('.order-table').find('.topping-info').children().length;
+			
+			for(var i = 0; i < toppingCnt; ++i) {
+				topping += $('.order-table').find('.topping-info').children().eq(i).text();
+				if(i + 1 < toppingCnt) {
+					topping += "||"
 				}
-			} */
+			}
 			
+			var vegetable = "";
+			var vegetableCnt =  $('.order-table').find('.vegetable-info').children().length;
+			
+			for(var i = 0; i < vegetableCnt; ++i) {
+				vegetable += $('.order-table').find('.vegetable-info').children().eq(i).text();
+				if(i + 1 < vegetableCnt) {
+					topping += ",";
+				}
+			}
+			
+			var sauce = "";
+			var sauceCnt =  $('.order-table').find('.sauce-info').children().length;
+			
+			for(var i = 0; i < sauceCnt; ++i) {
+				sauce += $('.order-table').find('.sauce-info').children().eq(i).text() + " ";
+
+			}
+			
+			$('.order-form-web .bread').attr('value', bread);
+			$('.order-form-web .cheese').attr('value', cheese);
+			$('.order-form-web .topping').attr('value', topping);
+			$('.order-form-web .vegetable').attr('value', vegetable);
+			$('.order-form-web .sauce').attr('value', sauce);
+			
+			return true;
+		}
+		function mobileSubmit() {
+					
 			if($('.bread-table').find('td').length < 2)  {
 					$('.order-modal-info').find('.info').text('빵을 선택해주세요.');
 					$(".order-modal-info").modal();

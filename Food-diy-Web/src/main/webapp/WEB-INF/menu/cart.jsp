@@ -178,7 +178,7 @@
 															</tr>
 															<tr>
 																<td>주소</td>
-																<td><div> ${ storeVO.storeAddr } </div></td>
+																<td><div> ${ storeVO.storeAddr2 } </div></td>
 															</tr>
 															<tr>
 																<td>전화번호</td>

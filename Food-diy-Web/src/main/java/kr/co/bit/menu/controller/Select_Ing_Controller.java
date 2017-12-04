@@ -31,7 +31,7 @@ public class Select_Ing_Controller {
 	private CartService cart_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone,
+	public ModelAndView Session(HttpSession session,String storeName,String storeAddr ,String storeAddr2, String storePhone,
 			String name, String price, String size, String pic ) {
 		
 		
@@ -48,10 +48,11 @@ public class Select_Ing_Controller {
 		
 
 		
-		if(storeName != null && storeAddr != null &&  storePhone != null) {
+		if(storeName != null && storeAddr2 != null &&  storePhone != null) {
 			StoreVO storeVO = new StoreVO();
 			storeVO.setStoreName(storeName);
 			storeVO.setStoreAddr(storeAddr);
+			storeVO.setStoreAddr2(storeAddr2);
 			storeVO.setStorePhone(storePhone);
 			userVO.setStore(storeName);
 			
@@ -93,10 +94,15 @@ public class Select_Ing_Controller {
 			@RequestParam("sauce") String sauce, HttpSession session) {
 
 		CartVO cartVO = (CartVO)session.getAttribute("cartVO");
-
+		StoreVO storeVO = (StoreVO)session.getAttribute("storeVO");
+		
+		System.out.println(storeVO.getStoreAddr());
+		System.out.println(storeVO.getStoreAddr2());
+		
 		cartVO.setBread(bread);
 		cartVO.setCheese(cheese);
 
+		
 		String [] toppings = topping.split("\\|\\|");
 		
 		Integer price = new Integer(cartVO.getPrice());
