@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.bit.menu.service.CartService;
+import kr.co.bit.menu.service.CartStoreService;
+import kr.co.bit.menu.vo.CartStoreVO;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.PhoneCertVO;
@@ -24,7 +26,7 @@ import kr.co.bit.user.vo.UserVO;
  * 로그인, 로그아웃 회원가입 API로그인 처리
  * 
  */
-@SessionAttributes({"loginVO", "cartVO", "storeVO", "cartList"})
+@SessionAttributes({"loginVO", "cartVO", "storeVO", "cartList", "cartStoreVO"})
 @RequestMapping("/sign")
 @Controller
 public class SignController {
@@ -35,6 +37,8 @@ public class SignController {
 	@Autowired
 	private CartService cartService;
 	
+	@Autowired
+	private CartStoreService cartStoreService;
 	/**
 	 * 
 	 *  1. 회원
@@ -159,8 +163,10 @@ public class SignController {
         cartVO.setId(login.getId());
 		
         List<CartVO> cartList = cartService.selectAllCart(cartVO);
-		
+		CartStoreVO cartStoreVO = cartStoreService.selectOneCartStore(signIn.getId());
+        
 		model.addAttribute("cartList", cartList);
+		model.addAttribute("cartStoreVO", cartStoreVO);
 		model.addAttribute("loginVO", signIn);
 		
 		return "sign/sign";

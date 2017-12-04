@@ -18,6 +18,10 @@
 	  	<typeAlias type="kr.co.bit.menu.vo.MenuVO" alias="menuVO"/>
 	  	<typeAlias type="kr.co.bit.menu.vo.IngredientsVO" alias="ingVO"/>
 	  	<typeAlias type="kr.co.bit.menu.vo.CartVO" alias="cartVO"/>
+<<<<<<< HEAD
 	  	
+=======
+	  	<typeAlias type="kr.co.bit.menu.vo.CartStoreVO" alias="cartStoreVO"/>
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 	</typeAliases>
 </configuration>
