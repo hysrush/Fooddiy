@@ -201,12 +201,12 @@
 													<button id="com" class="btn btn-secondary">답글</button>
 												</div>
 											</div>
-<<<<<<< HEAD
-=======
+
+
 															-->	
 
 	
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
+
 					</div>
 				</div>
 			</div>

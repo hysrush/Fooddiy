@@ -146,7 +146,7 @@
 											<tbody>
 												<tr>
 													<td>매장</td>
-													<td><div>${ storeVO.storeName }</div></td>
+													<td><div>${ cartStoreVO.storeName }</div></td>
 												</tr>
 												<tr>
 													<td>수량</td>
@@ -244,7 +244,7 @@
 					
 					
 					$.ajax({
-						url : "./menu/deleteCart",
+						url : "${pageContext.request.contextPath}/menu/deleteCart",
 						type : "post",
 						data : {"no" : no},
 						success : function() {
@@ -310,8 +310,8 @@
 			<div class="header-nav-main">
 				<nav>
 					<ul class="nav nav-pills" id="mainNav">
-						<li class=""><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
-						<li class="dropdown dropdown-mega active" id="dropmenu"><a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="dropdown-toggle"> Menu </a>
+						<li class="active"><a href="${ pageContext.request.contextPath }/index2.jsp"> Home </a>
+						<li class="dropdown dropdown-mega " id="dropmenu"><a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="dropdown-toggle"> Menu </a>
 							<ul class="dropdown-menu">
 								<li>
 									<div class="dropdown-mega-content">

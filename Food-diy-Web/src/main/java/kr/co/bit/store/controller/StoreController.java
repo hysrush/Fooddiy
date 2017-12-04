@@ -111,7 +111,7 @@ public class StoreController {
 
 			response.setContentType("text/html;charset=UTF-8");
 			JSONObject jsonObj = new JSONObject();
-
+			System.out.println(gugun);
 			List<StoreVO> storeList = storeService.selectStoreList(gugun);
 			String locationName = eventService.locationName(gugun);
 			for (int i = 0; i < storeList.size(); i++) {

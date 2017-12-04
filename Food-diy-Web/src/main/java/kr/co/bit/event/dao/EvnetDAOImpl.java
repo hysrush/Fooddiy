@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.event.vo.StoreVO;
-import kr.co.bit.event.vo.locationVO;
 
 @Repository
 public class EvnetDAOImpl implements EventDAO {
@@ -27,8 +27,23 @@ public class EvnetDAOImpl implements EventDAO {
 	}
 	
 	@Override
-	public List<EventBoardVO> selectEndEvent() {
-		List<EventBoardVO> list = sqlSession.selectList(url +"selectEndEvent");
+	public List<EventBoardVO> selectPaging(PagingVO paging){
+		List<EventBoardVO> list = sqlSession.selectList(url + "selectPaging", paging);
+		return list;
+		
+	}
+	@Override 
+	public int selectTotalPaging() {
+		
+		int Total =  sqlSession.selectOne(url + "selectTotalPaging");
+		
+		return Total;
+	}
+	
+	
+	@Override
+	public List<EventBoardVO> selectEndEvent(PagingVO paging) {
+		List<EventBoardVO> list = sqlSession.selectList(url +"selectEndEvent", paging);
 		return list;
 	}
 	

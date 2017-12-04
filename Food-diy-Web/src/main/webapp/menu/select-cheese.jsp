@@ -12,8 +12,8 @@
 						<span class="thumb-info-wrapper"> 
 							<img src="${ pageContext.request.contextPath }/resources/img/cheese/web/${ ingList.pic }" class="img-responsive" alt="" style="margin-top: 30px; margin-bottom: 50px"> 
 							<span class="thumb-info-title"> 
-								 	<span class="thumb-info-inner">${ ingList.name }</span>
-									<span class="thumb-info-type">${ ingList.eng_name }</span>
+								 	<span class="thumb-info-inner name">${ ingList.name }</span>
+									<span class="thumb-info-type eng_name">${ ingList.eng_name }</span>
 							</span>
 						</span>
 					</span>
@@ -38,6 +38,17 @@
 						'border-color' : '#7aa93c',
 						'border-width' : '3px'
 					});
+					
+					
+					var name = $(this).find('.name').text();
+					
+					
+					var div = '<div class = "'  + 'cheese-name">';
+						div += name;
+						div += "</div>";
+					
+					
+					$('.order-table').find('.cheese-info').html(div);
 				});
 			})
 	

@@ -53,13 +53,33 @@
 		ORDER BY EVE_NO DESC
 	</select>
 	
-	<!--  종료된 이벤트 조회  -->
-		<select id="selectEndEvent" resultMap="Map_EventVO">
-		SELECT EVE_NO, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD') as EVE_START
-		, TO_CHAR(EVE_FIN, 'YY-MM-DD') as EVE_FIN , TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT
+	<!--  페이징 rownum 쿼리  -->
+		<select id= "selectPaging" parameterType ="pagingVO" resultMap="Map_EventVO">
+			SELECT *
+			FROM( SELECT ROWNUM RNUM, P.*
+			FROM( SELECT EVE_NO, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD') as EVE_START,
+						 TO_CHAR(EVE_FIN, 'YY-MM-DD') as EVE_FIN , TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT
+			FROM T_EVENT 
+			WHERE TO_CHAR(EVE_FIN, 'YY-MM-DD') > TO_CHAR(SYSDATE, 'YY-MM-DD')
+			ORDER BY EVE_NO DESC) P )
+			WHERE RNUM BETWEEN #{start} AND #{last}
+		</select>
+	<!--  페이징 total 쿼리 -->
+	<select id ="selectTotalPaging" resultType ="java.lang.Integer">
+		SELECT COUNT(*)
 		FROM T_EVENT
-		where to_char( SYSDATE, 'YY-MM-DD') > to_char( EVE_FIN, 'YY-MM-DD' )  
-		ORDER BY EVE_NO DESC
+	</select>
+	
+	<!--  종료된 이벤트 조회  -->
+		<select id="selectEndEvent" resultMap="Map_EventVO" parameterType ="pagingVO">
+		SELECT *
+			FROM( SELECT ROWNUM RNUM, P.*
+			FROM( SELECT EVE_NO, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD') as EVE_START,
+						 TO_CHAR(EVE_FIN, 'YY-MM-DD') as EVE_FIN , TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT
+			FROM T_EVENT 
+			where to_char( SYSDATE, 'YY-MM-DD') > to_char( EVE_FIN, 'YY-MM-DD' )
+			ORDER BY EVE_NO DESC) P )
+			WHERE RNUM BETWEEN #{start} AND #{last}
 	</select>
 	
 	<!--  매장명으로 이벤트 조회  -->

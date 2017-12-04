@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import kr.co.bit.event.dao.EventDAO;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.event.vo.StoreVO;
-import kr.co.bit.event.vo.locationVO;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -22,10 +22,23 @@ public class EventServiceImpl implements EventService{
 		List<EventBoardVO> list = eventDAO.selectAll();
 		return list;
 	}
+	
+	@Override
+	public List<EventBoardVO> selectPaging(PagingVO paging){
+		List<EventBoardVO> list = eventDAO.selectPaging(paging);
+		return list;
+	}
+	@Override
+	public int selectTotalPaging() {
+		int total = eventDAO.selectTotalPaging();
+		
+		return total;
+	}
+	
 
 	@Override
-	public List<EventBoardVO> selectEndEvent() {
-		List<EventBoardVO> list = eventDAO.selectEndEvent();
+	public List<EventBoardVO> selectEndEvent(PagingVO paging) {
+		List<EventBoardVO> list = eventDAO.selectEndEvent(paging);
 		return list;
 	}
 	

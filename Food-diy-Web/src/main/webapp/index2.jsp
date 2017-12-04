@@ -59,6 +59,7 @@
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+	
 </head>
 	<body>
 	<div class="body">
@@ -98,8 +99,14 @@
 			<a href="${ pageContext.request.contextPath}/menu/select_ingredients.do">재료선택</a><br/>
 
 			<!-- Slider부분 -->
-			<jsp:include page="/resources/include/slider.jsp"/>
-		
+			<section class="visible-lg">
+				<jsp:include page="/resources/include/slider.jsp"/>
+			</section>
+			
+			<section class="hidden-lg">
+				<jsp:include page="/resources/include/mobile-slider.jsp"/>
+			</section>
+			
 		<footer class="light visible-lg" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
