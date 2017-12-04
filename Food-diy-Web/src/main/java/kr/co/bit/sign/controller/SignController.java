@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.vo.CartVO;
@@ -163,7 +162,6 @@ public class SignController {
 		
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("loginVO", signIn);
-		model.addAttribute("msg", "로그인");
 		
 		return "sign/sign";
 	}
@@ -173,7 +171,6 @@ public class SignController {
 	public String logout(SessionStatus sessionStatus, Model model) {
 		
 		sessionStatus.setComplete();
-		model.addAttribute("msg", "로그아웃 완료");
 		return "sign/sign";
 	}
 	
@@ -273,7 +270,6 @@ public class SignController {
 		kakao = signServiceImp.login(login);
 		
 		model.addAttribute("loginVO", kakao);
-		model.addAttribute("msg", "카카오 로그인!");
 		
 		return "sign/sign";
 	}
@@ -316,7 +312,6 @@ public class SignController {
 		
 		session.setMaxInactiveInterval(10800);
 		session.setAttribute("nonMember", user);
-		model.addAttribute("msg", "인증 완료");
 			
 		return "sign/sign";
 	}
