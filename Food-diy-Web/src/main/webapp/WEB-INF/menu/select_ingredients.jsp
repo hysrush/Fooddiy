@@ -71,7 +71,22 @@
 		<jsp:include page="/resources/include/mobile-menu.jsp" />
 
 
-
+		<div class="modal order-modal-info" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog" style="top: 30%">
+				<div class="modal-content">
+					<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
+						<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>
+					</div>
+					<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
+						<p class="info"></p>
+					</div>
+					<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
+						<button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; background-color: #7aa93c;">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div role="main" class="main">
 
 			<section class="page-header">
@@ -247,7 +262,7 @@
 														<input type="hidden" class="topping" name="topping" value="" /> 
 														<input type="hidden" class="vegetable" name="vegetable" value="" /> 
 														<input type="hidden" class="sauce" name="sauce" value="" />
-														<div style="text-align: center;">
+														<div style="text-align: center">
 															<button type="submit" style="width : 200px; height : 50px; background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
 														</div>
 													</form>
@@ -376,22 +391,7 @@
 				</div>
 			</div>
 
-			<div class="modal order-modal-info" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
-				<div class="modal-dialog" style="top: 30%">
-					<div class="modal-content">
-						<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
-							<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">안내</h4>
-						</div>
-						<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
-							<p class="info"></p>
-						</div>
-						<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
-							<button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; background-color: #7aa93c;">확인</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 
 			<div class="modal order-modal-final" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
 				<div class="modal-dialog" style="top: 30%">

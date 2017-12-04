@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.bit.menu.dao.CartStoreDAO">
+
+	<!-- DB t_menu와 MenuVO의 변수가 맞지 않으므로 mapping -->
+	<resultMap type="cartStoreVO" id="Map_cartVO">
+		<result column="user_id" property="id" />
+		<result column="sto_name" property="storeName" />
+		<result column="sto_addr" property="storeAddr" />
+		<result column="sto_phone" property="storePhone" />
+	</resultMap>
+
+	<select id="selectOneCartStore" parameterType="String">
+		select user_id, sto_name, sto_addr, sto_phone from t_CartStore
+		where user_id = #{id}
+	</select>
+	
+	<insert id="insertCartStore" parameterType="CartStoreVO">
+		insert into t_CartStore(user_id, sto_name, sto_addr, sto_phone)
+		values(#{id}, #{storeName}, #{storeAddr}, #{storePhone})
+	</insert>
+	
+	<update id="updateCartStore" parameterType="CartStoreVO">
+		update t_CartStore set sto_name = #{storeName}, sto_addr = #{storeAddr}, sto_phone = #{storePhone}
+		where user_id = #{id}
+	</update>
+	
+	<delete id="deleteCartStore" parameterType="CartStoreVO">
+		delete from t_CartStore
+		where user_id = #{id}
+	</delete>
+</mapper>

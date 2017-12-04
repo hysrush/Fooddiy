@@ -198,6 +198,7 @@
 														<div class="col-md-12">
 															<div class="col-md-12 actions-continue" style="">
 																<form method="get">
+																														
 																	<button type="submit" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
 																	<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick ="menuList()">계속 쇼핑하기</button>
 																</form>
