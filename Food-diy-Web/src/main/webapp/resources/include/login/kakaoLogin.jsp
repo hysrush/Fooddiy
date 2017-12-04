@@ -14,7 +14,7 @@
 	      success: function(authObj) {
 	        // 로그인 성공시, API를 호출합니다.
 	        Kakao.API.request({
-	          url: '/v1/user/me',
+	          url: '/v1/user/signup',
 	          success: function(res) {
 					var id = res.id;
 	            	$("#id").val(id);
