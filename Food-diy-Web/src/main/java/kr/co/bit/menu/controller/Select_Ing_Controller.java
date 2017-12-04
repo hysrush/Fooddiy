@@ -96,7 +96,7 @@ public class Select_Ing_Controller {
 		StoreVO storeVO = (StoreVO)session.getAttribute("storeVO");
 		
 		System.out.println(storeVO.getStoreAddr());
-		System.out.println(storeVO.getStoreAddr2());
+		
 		
 		cartVO.setBread(bread);
 		cartVO.setCheese(cheese);
