@@ -58,22 +58,9 @@
 		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-
-<!-- modal -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
-<script>
-$(document).ready(function(){
-	
-        if("${msg}"){
-        	swal("${msg}");
-		}
-	});
-
-</script>
+		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 </head>
 	<body>
-	<div id="modal"></div>
 	<div class="body">
 		<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
@@ -158,6 +145,5 @@ $(document).ready(function(){
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-		
 	</body>
 </html>

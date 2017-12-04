@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.vo.CartVO;
@@ -175,6 +176,7 @@ public class SignController {
 		model.addAttribute("msg", "로그아웃 완료");
 		return "sign/sign";
 	}
+	
 	
 	// - id 찾기 - alert창
 	@RequestMapping("/lostId")
