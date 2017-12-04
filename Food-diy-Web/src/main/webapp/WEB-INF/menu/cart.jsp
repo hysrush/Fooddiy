@@ -174,15 +174,15 @@
 														<tbody>
 															<tr>
 																<td>매장</td>
-																<td><div> ${ storeVO.storeName } </div></td>
+																<td><div> ${ cartStoreVO.storeName } </div></td>
 															</tr>
 															<tr>
 																<td>주소</td>
-																<td><div> ${ storeVO.storeAddr2 } </div></td>
+																<td><div> ${ cartStoreVO.storeAddr } </div></td>
 															</tr>
 															<tr>
 																<td>전화번호</td>
-																<td><div> ${ storeVO.storePhone } </div></td>
+																<td><div> ${ cartStoreVO.storePhone } </div></td>
 															</tr>
 															<tr>
 																<td>수량</td>

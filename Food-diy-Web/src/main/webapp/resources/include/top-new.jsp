@@ -146,7 +146,7 @@
 											<tbody>
 												<tr>
 													<td>매장</td>
-													<td><div>${ storeVO.storeName }</div></td>
+													<td><div>${ cartStoreVO.storeName }</div></td>
 												</tr>
 												<tr>
 													<td>수량</td>

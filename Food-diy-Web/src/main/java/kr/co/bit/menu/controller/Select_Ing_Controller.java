@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.Select_Ing_Service;
+import kr.co.bit.menu.vo.CartStoreVO;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.IngredientsVO;
 import kr.co.bit.user.vo.UserVO;
@@ -49,14 +50,12 @@ public class Select_Ing_Controller {
 
 		
 		if(storeName != null && storeAddr2 != null &&  storePhone != null) {
-			StoreVO storeVO = new StoreVO();
-			storeVO.setStoreName(storeName);
-			storeVO.setStoreAddr(storeAddr);
-			storeVO.setStoreAddr2(storeAddr2);
-			storeVO.setStorePhone(storePhone);
-			userVO.setStore(storeName);
+			CartStoreVO cartStoreVO = (CartStoreVO)session.getAttribute("cartStoreVO");
+			cartStoreVO.setStoreName(storeName);
+			cartStoreVO.setStoreAddr(storeAddr);
+			cartStoreVO.setStorePhone(storePhone);
 			
-			session.setAttribute("storeVO", storeVO);
+			session.setAttribute("cartStoreVO", cartStoreVO);
 		}
 		
 		if(name != null  && price != null && size != null && pic != null) {
