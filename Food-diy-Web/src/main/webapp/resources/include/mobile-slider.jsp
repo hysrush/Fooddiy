@@ -1,21 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div role="main" class="main">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
-				<br />
-				<!-- 신메뉴  -->
-				<div class="col-xs-6" style="text-align: center; padding: 5px;">
-					<table border="1">
-						<tr>
-							<td><span
-								style="font-style: italic; font-weight: bold; font-size: 15px;">NEW
-									Menu</span></td>
-						</tr>
-						<!-- <div class="box-content"> -->
-						<%-- 
+			<!-- 신메뉴  -->
+			<div class="col-xs-6" style="text-align: center; padding: 5px;">
+				<table border="1">
+					<tr>
+						<td>
+							<span style="font-style: italic; font-weight: bold; font-size: 15px;">NEW Menu</span>
+						</td>
+					</tr>
+					<!-- <div class="box-content"> -->
+					<%-- 
 							<c:forEach items="${ new }">
 								<a href="${ pageContext.request.contextPath }/${ new.no }"><!-- 신메뉴 사진 상세보기 -->
 									<img width="50%" src="${ new.img }"/>
@@ -23,57 +21,61 @@
 								</a>
 							</c:forEach>
 							 --%>
-						<tr>
-							<td><a
-								href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
-									<img width="50%"
-									src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-									<span> 바나나</span>
-							</a></td>
-						</tr>
-						<tr>
-							<td><a
-								href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%"
-									src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-									<span> 사또밥</span>
-							</a></td>
-						</tr>
-					</table>
-					<!-- </div> -->
-				</div>
-				<!-- 공지사항 -->
-				<div class="col-xs-6" style="text-align: center; padding: 5px;">
-					<table border="1">
-						<tr>
-							<td><span
-								style="font-style: italic; font-weight: bold; font-size: 17px;">Notice</span>&nbsp;&nbsp;
-								<a
-								href="${ pageContext.request.contextPath }/community/noticeList.do">
-									<span
-									style="font-style: italic; font-weight: bold; font-size: 12px;">+more</span>
-							</a></td>
-						</tr>
-						<tr>
-							<td colspan="2"><a
-								href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항
-									제목</a></td>
-						</tr>
-						<tr>
-							<td colspan="2"><a
-								href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항
-									제목</a></td>
-						</tr>
-						<tr>
-							<td colspan="2"><a
-								href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%"
-									src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-									<span> 사또밥</span>
-							</a></td>
-						</tr>
-						<!-- <div class="box-content"> -->
-						<%-- 
+					<tr>
+						<td>
+							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+								<span> 바나나</span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+								<span> 사또밥</span>
+							</a>
+						</td>
+					</tr>
+				</table>
+				<!-- </div> -->
+			</div>
+			<!-- 공지사항 -->
+			<div class="col-xs-6" style="text-align: center; padding: 5px;">
+				<table border="1">
+					<tr>
+						<td>
+						<span style="font-style: italic; font-weight: bold; font-size: 17px;">Notice</span>&nbsp;&nbsp;
+							<a href="${ pageContext.request.contextPath }/community/noticeList.do">
+								<span style="font-style: italic; font-weight: bold; font-size: 12px;">+more</span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+								<span> 사또밥</span>
+							</a>
+						</td>
+					</tr>
+					<!-- <div class="box-content"> -->
+					<%-- 
 							<c:forEach items="${ new }">
 								<a href="${ pageContext.request.contextPath }/${ new.no }"><!-- 신메뉴 사진 상세보기 -->
 									<img width="50%" src="${ new.img }"/>
@@ -81,16 +83,56 @@
 								</a>
 							</c:forEach>
 							 --%>
-					</table>
-					<%-- <c:forEach items="${ notice }" begin="0" end="4">
+				</table>
+				<%-- <c:forEach items="${ notice }" begin="0" end="4">
 							<div>
 								<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">${ notice.title }</a>
 							</div>
 						</c:forEach> --%>
-				</div>
 			</div>
-			<br />
-			<div class="col-xs-12 hidden-xs">
+			</div>
+			<div class="row">
+			<!-- 이벤트  -->
+			<div class="col-xs-6" style="text-align: center; padding: 5px;">
+				<%-- 
+						<c:forEach items="${ cf }" begin="0" end="2">
+							<a href="${ 광고페이지로 이동 }">
+								<img width="100%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+							</a>
+						</c:forEach>
+						 --%>
+				<table border="1">
+					<tr>
+						<td>
+							<span style="font-style: italic; font-weight: bold; font-size: 15px;">EVENT</span>
+						</td>
+					</tr>
+					<!-- <div class="box-content"> -->
+					<%-- 
+							<c:forEach items="${ new }">
+								<a href="${ pageContext.request.contextPath }/${ new.no }"><!-- 신메뉴 사진 상세보기 -->
+									<img width="50%" src="${ new.img }"/>
+									<span>${ new.name }</span>
+								</a>
+							</c:forEach>
+							 --%>
+					<tr>
+						<td>
+							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+								<span> 사또밥</span>
+							</a>
+						</td>
+					</tr>
+				</table>
+			<%-- <div class="col-xs-6 hidden-xs">
 				<div id="carousel-example-generic" class="carousel slide"
 					data-ride="carousel" style="height: 600px">
 					<!-- Indicators -->
@@ -134,52 +176,11 @@
 						<span class="sr-only">Next</span>
 					</a>
 				</div>
+			</div> --%>
 			</div>
 			<!-- SNS정보 -->
-			<div class="col-xs-12">
-				<!-- 이벤트  -->
-				<div class="col-xs-6" style="text-align: center; padding: 5px;">
-					<%-- 
-						<c:forEach items="${ cf }" begin="0" end="2">
-							<a href="${ 광고페이지로 이동 }">
-								<img width="100%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-							</a>
-						</c:forEach>
-						 --%>
-					<table border="1">
-						<tr>
-							<td>
-								<span style="font-style: italic; font-weight: bold; font-size: 15px;">EVENT</span>
-							</td>
-						</tr>
-						<!-- <div class="box-content"> -->
-						<%-- 
-							<c:forEach items="${ new }">
-								<a href="${ pageContext.request.contextPath }/${ new.no }"><!-- 신메뉴 사진 상세보기 -->
-									<img width="50%" src="${ new.img }"/>
-									<span>${ new.name }</span>
-								</a>
-							</c:forEach>
-							 --%>
-						<tr>
-							<td>
-								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-									<span> 사또밥</span>
-								</a>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="col-xs-6" style="text-align: center;">
-					<%-- <div>
+			<div class="col-xs-6" style="text-align: center; padding: 5px;">
+				<%-- <div>
 							<c:forEach items="${ sns }" begin="0" end="2">
 								<table style="margin:5px 0px;">
 									<tr>
@@ -199,23 +200,32 @@
 								</table>
 							</c:forEach>
 						</div> --%>
-					<table border="1">
-						<tr>
-							<td>홍길동</td>
-							<td>추천수 2</td>
-						</tr>
-						<tr>
-							<td colspan="2"><br /> <a
-								href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-									<img width="50%"
-									src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-							</a></td>
-						</tr>
-						<tr>
-							<td colspan="2">내용 내용 내용</td>
-						</tr>
-					</table>
-				</div>
+				<table border="1">
+					<tr>
+						<th colspan="2" style="text-align: center; padding: 5px;">
+							<span style="font-style: italic; font-weight: bold; font-size: 15px;">
+								SNS
+							</span>
+						</th>
+					</tr>
+					<tr>
+						<td>글쓴이</td>
+						<td>추천수 2</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						내용 내용 내용<br/>
+						내용 내용 내용
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
