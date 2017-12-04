@@ -22,10 +22,11 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
         }
         
         // 세션에 올려진 로그인 객체를 확인
-        UserVO user = (UserVO)session.getAttribute("loginVO");  
+        UserVO user = (UserVO)session.getAttribute("loginVO");
+        // 비회원 객체
         UserVO user2 = (UserVO)session.getAttribute("nonMember");  
   
-        if (user == null || user2 == null) {  
+        if (user == null && user2 == null) {  
             response.sendRedirect(request.getContextPath()+"/sign/login.do");  
             return false;             
         }  
