@@ -31,17 +31,18 @@
   		<result column = "sto_addr" property ="storeAddr"/>
   		<result column = "reg_at" property ="regDate"/>
   	</resultMap>
+  	
   	<resultMap type = "cityVO" id="Map_CityVO">
   		<result column = "city_no" property = "cityNo"/>
   		<result column = "city_name" property = "cityName"/>
   	</resultMap>
+  	
   	<resultMap type ="locationVO" id="Map_LocationVO">
   		<result column = "loc_no" property ="locationNo"/>
   		<result column = "loc_name" property = "locationName"/> 
   			
   	</resultMap>
 	
-  	
 	
 	<!-- 진행중인 이벤트  조회 -->
 	<select id="selectAllEvent" resultMap="Map_EventVO">
@@ -52,9 +53,6 @@
 		ORDER BY EVE_NO DESC
 	</select>
 	
-
-	
-	
 	<!--  종료된 이벤트 조회  -->
 		<select id="selectEndEvent" resultMap="Map_EventVO">
 		SELECT EVE_NO, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD') as EVE_START
@@ -63,6 +61,7 @@
 		where to_char( SYSDATE, 'YY-MM-DD') > to_char( EVE_FIN, 'YY-MM-DD' )  
 		ORDER BY EVE_NO DESC
 	</select>
+	
 	<!--  매장명으로 이벤트 조회  -->
 	<select id ="selectEventBystoreName" resultMap="Map_EventVO" parameterType = "String">
 		SELECT EVE_NO, EVE_TITLE , EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD')as EVE_START
@@ -71,7 +70,6 @@
 		WHERE STO_NAME = #{store}
 		ORDER BY EVE_NO DESC
 	</select>
-	
 	
 	<!--  시 데이터 불러오기  -->
 		<select id ="selectCity" resultMap="Map_CityVO">
@@ -94,7 +92,6 @@
 			FROM T_STORE
 			WHERE LOC_NO = #{gugun}
 			ORDER BY STO_NO ASC
-		
 		</select>
 	
 	<select id="selectByNo" parameterType="int" resultMap="Map_EventVO" >
@@ -102,10 +99,19 @@
 		WHERE EVE_NO = #{no}
 	</select>
 	
+	<!-- 구군 이름 불러오기 -->
 	<select id="locationName" parameterType="String" resultType="String">
 		SELECT LOC_NAME
 		FROM T_LOCATION
 		WHERE LOC_NO = #{gugun}
+	</select>
+	
+	<!-- 매장명 검색 vo 리스트 -->
+	<select id="searchStoreName" parameterType="java.lang.String" resultMap="Map_StoreVO">
+		SELECT STO_NO, LOC_NO, STO_NAME, STO_PHONE, STO_ADDR 
+		FROM T_STORE
+		WHERE STO_NAME LIKE '%${value}%'
+		ORDER BY STO_NO ASC
 	</select>
 	
 	<!-- 새글 등록  -->

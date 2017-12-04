@@ -14,6 +14,7 @@ public interface EventService {
 	List<EventBoardVO> selectEndEvent();
 	List<EventBoardVO> selectEventBystoreName(String store);
 	List<StoreVO> selectStoreList(String gugun);
+	List<StoreVO> searchStoreName(String search);
 	List<CityVO> selectCity();
 	List selectLocation(String sido);
 	EventBoardVO selectOneEvent(int no);

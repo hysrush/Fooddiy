@@ -14,6 +14,8 @@ public interface EventDAO {
 	List<EventBoardVO> selectEventBystoreName(String store);
 	
 	List<StoreVO> selectStoreList(String gugun);
+	List<StoreVO> searchStoreName(String search);
+	
 	List<CityVO> selectCity();
 	List selectLocation(String sido);
 	EventBoardVO selectOne(int no);

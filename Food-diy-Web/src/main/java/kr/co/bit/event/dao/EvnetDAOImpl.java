@@ -92,4 +92,19 @@ public class EvnetDAOImpl implements EventDAO {
 		return locationName;
 	}
 
+	@Override
+	public List<StoreVO> searchStoreName(String search) {
+		List<StoreVO> storenameList = sqlSession.selectList(url + "searchStoreName", search);
+		
+		// 검색된 데이터가 있으면 list 리턴, 없으면 null 리턴
+		/*if (storenameList.size() >= 1) {
+			System.out.println("데이터 있음");
+			return storenameList;
+		} else {
+			System.out.println("데이터 없음");
+			return null;
+		}*/
+		return storenameList;
+	}
+
 }

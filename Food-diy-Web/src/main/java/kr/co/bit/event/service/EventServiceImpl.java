@@ -80,5 +80,11 @@ public class EventServiceImpl implements EventService{
 		String locationName = eventDAO.locationName(gugun);
 		return locationName;
 	}
+
+	@Override
+	public List<StoreVO> searchStoreName(String search) {
+		List<StoreVO> storenameList = eventDAO.searchStoreName(search);
+		return storenameList;
+	}
 	
 }
