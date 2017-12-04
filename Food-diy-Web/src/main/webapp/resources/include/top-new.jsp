@@ -431,7 +431,7 @@
 							</c:when>
 							<c:when test="${ not empty loginVO }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
-									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.do"> <i class="fa fa-user"></i>${ loginVO.id }</a>
+									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.do"> <i class="fa fa-user"></i>${ loginVO.name }</a>
 									<ul class="dropdown-menu">
 										<li>
 											<div class="dropdown-mega-content">
