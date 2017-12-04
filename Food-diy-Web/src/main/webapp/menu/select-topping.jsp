@@ -12,8 +12,8 @@
 						<span class="thumb-info-wrapper"> 
 							<img src="${ pageContext.request.contextPath }/resources/img/toppings/web/${ ingList.pic }" class="img-responsive" alt="" style="margin-top: 50px; margin-bottom: 50px">
 								<span class="thumb-info-title"> 
-								 	<span class="thumb-info-inner">${ ingList.name }</span>
-									<span class="thumb-info-type">${ ingList.eng_name }</span>
+								 	<span class="thumb-info-inner name">${ ingList.name }</span>
+									<span class="thumb-info-type eng_name">${ ingList.eng_name }</span>
 									<span class="thumb-info-type topping-price commaN">${ ingList.price }</span>
 								</span>
 						</span>
@@ -30,6 +30,18 @@
 		$('li .product-area-topping').each(function() {
 			$(this).click(function() {
 				
+				var name = $(this).find('.name').text();
+				var engName = $(this).find('.eng_name').text().split(" ");
+				var price = '+' + $(this).find('.topping-price').text();
+				
+				
+				if(engName.length == 1) {
+	 				engName = engName[0];
+	 			}
+				else{
+					engName = engName[0] + engName[1];
+				}
+				
 				if(!$(this).data('clickStatus')) {
 					
 					$(this).children().addClass('selected');
@@ -39,6 +51,13 @@
 						'border-width' : '3px'
 					});
 					
+					var div = '<div class = "'  + engName  +  '">';
+						div += name + " " + price;
+						div += "</div>";
+					
+					$('.order-table').find('.topping-info').append(div);
+					
+					
 					$(this).data('clickStatus', 1);
 				}
 				else {
@@ -47,6 +66,8 @@
 						'border-color' : '#DDD',
 						'border-width' : '1px'
 					});
+					
+					$('.order-table').find('.topping-info').children('.'+engName).remove();
 					
 					$(this).data('clickStatus', 0);
 				}

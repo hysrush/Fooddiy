@@ -146,7 +146,7 @@
 											<tbody>
 												<tr>
 													<td>매장</td>
-													<td><div>${ storeVO.storeName }</div></td>
+													<td><div>${ cartStoreVO.storeName }</div></td>
 												</tr>
 												<tr>
 													<td>수량</td>
@@ -244,7 +244,7 @@
 					
 					
 					$.ajax({
-						url : "./menu/deleteCart",
+						url : "${pageContext.request.contextPath}/menu/deleteCart",
 						type : "post",
 						data : {"no" : no},
 						success : function() {
