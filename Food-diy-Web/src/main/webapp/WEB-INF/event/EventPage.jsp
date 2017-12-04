@@ -269,30 +269,7 @@
 			        frmPaging();
 			    }
 			}
-			// 마지막 페이지 index
-			function pageLast(index, total, listCnt, pageCnt) {
-			    var totalPageCnt = Math.ceil(total / listCnt);
-			    var max = Math.ceil(totalPageCnt / pageCnt);
-			    while (max * pageCnt > index + pageCnt) {
-			        index += pageCnt;
-			    }
-			    var remainListCnt = total - listCnt * (index - 1);
-			    var remainPageCnt = Math.floor(remainListCnt / listCnt);
-			    if (remainListCnt % listCnt != 0) {
-			        remainPageCnt++;
-			    }
-			    var pageLastNum = 0;
-			    if (remainListCnt <= listCnt) {
-			        pageLastNum = index;
-			    } else if (remainPageCnt <= pageCnt) {
-			        pageLastNum = remainPageCnt + index - 1;
-			    } else {
-			        pageLastNum = pageCnt + index - 1;
-			    }
-			    document.getElementById("pageStartNum").value = index;
-			    document.getElementById("index").value = pageLastNum - 1;
-			    frmPaging();
-			}
+			
 			// index 리스트 처리
 			function pageIndex(pageStartNum) {
 			    document.getElementById("index").value = pageStartNum - 1;
