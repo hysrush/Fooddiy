@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <a id="custom-login-btn" href="javascript:loginWithKakao()">
 		<img src="${ pageContext.request.contextPath }/resources/img/login/kakao_login_btn_medium.png"/>
 </a>
@@ -15,7 +16,7 @@
         success: function(authObj) {
         	// 로그인 성공시, API를 호출합니다.
 	        Kakao.API.request({
-	          url: '/v1/user/me',
+	          url: '/v1/user/signup',
 	          success: function(res) {
 					var id = res.id;
 	            	$("#id").val(id);
@@ -24,12 +25,12 @@
 
 				},
 				fail : function(error) {
-					alert(JSON.stringify(error));
+					swal(JSON.stringify(error));
 				}
 			});
         },
         fail: function(err) {
-          alert(JSON.stringify(err));
+        	swal(JSON.stringify(err));
         }
       });
     };
