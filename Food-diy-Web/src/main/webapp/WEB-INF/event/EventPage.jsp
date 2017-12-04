@@ -124,35 +124,27 @@
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 												<div class="center">	
 													<!-- 1 -->
-												<c:forEach items="${ eventList }" var="eventVO">	
+															<c:forEach items="${ eventList }" var="eventVO">	
 													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
+														<ul>
+															<li>
+																<div class="col-md-6">
 																<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${ eventVO.no }">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</a>	
+																	<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style=" width:600px;height:150px">
+																</a>
 																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-																<span></span>
-																<span></span>
-															
-															</article>
-														</div>
+																<div class="col-md-6" align="left"> 
+																	<h4><strong>${ eventVO.content }</strong></h4>
+																	<br/>
+																	<br/>
+																	<span> ${ eventVO.startDate } &nbsp; ~  ${ eventVO.endDate }</span>														
+																</div>
+															<hr/><br/><br/>	
+															</li>				
+														</ul>
 													</div>
-													
 												</c:forEach>
+														
 														<br/>
 													<div align="right">		
 														<input type = "button" value="수정 "/>
@@ -165,30 +157,26 @@
 												<div class="center">
 													<!-- 종료된이벤트 탭   -->
 															
-												<c:forEach items="${ eventEndList }" var="eventVO">	
+													<c:forEach items="${ eventList }" var="eventVO">	
 													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<!-- <div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}"> -->
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
-																	</div>
-																	
-																<!-- </div> -->
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
+														<ul>
+															<li>
+																<div class="col-md-6">
+																<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${ eventVO.no }">
+																	<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style=" width:600px;height:150px">
+																</a>
 																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-															
-															</article>
-														</div>
+																<div class="col-md-6" align="left"> 
+																	<h4><strong>${ eventVO.content }</strong></h4>
+																	<br/>
+																	<br/>
+																	<span> ${ eventVO.startDate } &nbsp; ~  ${ eventVO.endDate }</span>														
+																</div>
+															<hr/><br/><br/>	
+															</li>				
+														</ul>
 													</div>
-												</c:forEach>	
+												</c:forEach>
 												
 
 													<div class="col-md-12">

@@ -65,7 +65,7 @@
 		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 		
 		<!-- modal -->
-   	 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+   	 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
     		
 <script>window.name="main"</script>
 <script>
@@ -79,7 +79,6 @@
 		}); */
 	
 
-        //창 열기 버튼을 클릭했을경우
         if("${msg}"){
         	swal("${msg}");
 		}
