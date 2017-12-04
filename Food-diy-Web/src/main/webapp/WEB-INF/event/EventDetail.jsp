@@ -161,26 +161,13 @@
 													<button id="com" class="btn btn-secondary">답글</button>
 												</div>
 											</div>
-																
-
-
-
-
-
-
-
-
-
-
-
-
 					</div>
 				</div>
 			</div>
 		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
-	
+	</div>
 	</div>
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
