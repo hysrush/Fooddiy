@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.PagingVO;
+import kr.co.bit.menu.vo.MenuVO;
 import kr.co.bit.service.SnsService;
 import kr.co.bit.vo.SnsBoardVO;
 
@@ -104,23 +105,20 @@ public class SnsController {
 
 		}
 	
-		// 글번호로 디테일 페이지 이동 
-		@RequestMapping(value="/SNSBoard-Modal.do",method=RequestMethod.GET)
-		public ModelAndView detail(@RequestParam("no") int no, HttpSession session) {
-			
+		@RequestMapping(value="/snsDetail.do", method=RequestMethod.GET)
+		public ModelAndView detail(@RequestParam("no") int no, HttpSession session) {		
 			
 			SnsBoardVO snsVO = snsService.selectOne(no);
-					
-					
-			ModelAndView mav = new ModelAndView();		
-			mav.setViewName("community/SNSBoard-Modal");
-			mav.addObject("snsVO",snsVO);
 			
+			ModelAndView mav = new ModelAndView();
+			//setViewName : 어떤 페이지를 보여줄것인가
+			mav.setViewName("community/SNSBoard-Modal");
+			//addObject : key 와 value 를 담아 보내는 메서드 
+			mav.addObject("snsVO", snsVO);
 			
 			return mav;
-			
 		}
-	
+		
 	
 	
 	

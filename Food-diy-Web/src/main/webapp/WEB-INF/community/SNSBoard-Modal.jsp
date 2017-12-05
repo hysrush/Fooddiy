@@ -9,7 +9,7 @@
 						<a href="#" data-ajax-portfolio-close data-tooltip data-original-title="Close"><i class="fa fa-th"></i></a>
 					</div>
 					<div class="col-md-10 center">
-						<h2 class="mb-none">오늘먹은 이탈리안 BMT!<!--  DB 제목값 --></h2>
+						<h2 class="mb-none">${snsVO.title }<!--  DB 제목값 --></h2>
 					</div>
 					<div class="portfolio-nav col-md-1">
 						<a href="#" data-ajax-portfolio-prev class="portfolio-nav-prev" data-tooltip data-original-title="Previous"><i class="fa fa-chevron-left"></i></a>
@@ -26,7 +26,7 @@
 		<div class="col-md-4">
 
 			<span class="img-thumbnail">
-				<img alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.png"> <!--  DB 첨부 이미지 값 -->
+				<img alt="" class="img-responsive" src="../upload/${ snsVO.fileName }"> <!--  DB 첨부 이미지 값 -->
 			</span>
 				<a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a>
 				<button type="button" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"><i class="fa fa-thumbs-up"></i> </button>
@@ -39,10 +39,10 @@
 					<div class="col-md-12 center">
 						<ul>
 							<li>
-								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart"></i>14</a>  <!--  좋아요 숫자  -->
+								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart"></i>${snsVO.like }</a>  <!--  좋아요 숫자  -->
 							</li>
 							<li>
-								<i class="fa fa-calendar"></i> 01 January 2017 <!--  등록일 DB값 -->
+								<i class="fa fa-calendar"></i> ${snsVO.regDate } <!--  등록일 DB값 -->
 							</li>
 						
 						</ul>
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 
-						<p class="mt-xlg">제가먹은 조합인데 너무 맛있더라구요 ~~ 재료는 뭐넣구 뭐넣구 뭐넣었어요 <!--  DB 내용 값 --></p>
+						<p class="mt-xlg">${snsVO.content }<!--  DB 내용 값 --></p>
 							
 								<div class = "row">
 									<table class="table">  <!--  DB에서 재료정보 받아오는 테이블  -->
