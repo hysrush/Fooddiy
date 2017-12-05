@@ -316,7 +316,6 @@ public class SignController {
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
-		session.setMaxInactiveInterval(10800);
 		session.setAttribute("nonMember", user);
 			
 		return "sign/sign";
