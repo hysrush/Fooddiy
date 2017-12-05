@@ -81,7 +81,7 @@ public class Select_Ing_Controller {
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
 	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
 			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
-			@RequestParam("sauce") String sauce, HttpSession session) {
+			@RequestParam("sauce") String sauce, @RequestParam("requirement") String requirement, HttpSession session) {
 
 		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
 
@@ -107,11 +107,10 @@ public class Select_Ing_Controller {
 			topping = topping.replaceAll("\\|\\|", ", ");
 
 			cartVO.setTotal_price(price.toString());
-			;
 			cartVO.setTopping(topping);
 			cartVO.setVegetable(vegetable);
 			cartVO.setSauce(sauce);
-
+			cartVO.setRequirement(requirement);	
 			System.out.println(cartVO);
 
 			// 장바구니에 추가

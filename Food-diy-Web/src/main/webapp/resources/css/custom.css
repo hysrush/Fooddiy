@@ -155,6 +155,9 @@ li {
 	color: white;
 }
 
+.featured-boxes .ing-image {
+	width : 100px;
+}
 
 @media (min-width : 992px) {
 	
@@ -163,9 +166,23 @@ li {
 	}
 }
 
+@media ( max-width : 1199px) {
+
+	.tabs.tabs-simple .nav-tabs > li a{
+		
+		padding : 15px 15px;
+	}
+	
+	.featured-boxes .ing-image {
+	width : 60px;
+	}
+		
+}
+
+
 /* Responsive */
 /* 991  */
-@media ( max-width : 991px) {
+@media ( max-width : 992px) {
 		#heading-primary{
 		font-size: 10px;
 	}

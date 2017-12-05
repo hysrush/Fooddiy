@@ -14,7 +14,14 @@
 								<span class="thumb-info-title"> 
 								 	<span class="thumb-info-inner name">${ ingList.name }</span>
 									<span class="thumb-info-type eng_name">${ ingList.eng_name }</span>
-									<span class="thumb-info-type topping-price commaN">${ ingList.price }</span>
+									<c:choose>
+										<c:when test='${ cartVO.size eq "30cm" }'>
+											<span class="thumb-info-type topping-price commaN">${ ingList.price * 2 }</span>
+										</c:when>
+										<c:otherwise>
+											<span class="thumb-info-type topping-price commaN">${ ingList.price }</span>
+										</c:otherwise>
+									</c:choose>
 								</span>
 						</span>
 					</span>

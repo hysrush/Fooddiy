@@ -12,12 +12,13 @@ public class CartVO implements Serializable{
 	private String size;
 	private String pic;
 	private int qty;
-	
 	private String bread;
 	private String cheese;
 	private String topping;
 	private String vegetable;
 	private String sauce;
+	private String requirement;
+	
 	private String regDate;
 	
 	public int getNo() {
@@ -98,6 +99,12 @@ public class CartVO implements Serializable{
 	public void setSauce(String sauce) {
 		this.sauce = sauce;
 	}
+	public String getRequirement() {
+		return requirement;
+	}
+	public void setRequirement(String requirement) {
+		this.requirement = requirement;
+	}
 	public String getRegDate() {
 		return regDate;
 	}
@@ -109,8 +116,8 @@ public class CartVO implements Serializable{
 	public String toString() {
 		return "CartVO [no=" + no + ", id=" + id + ", name=" + name + ", price=" + price + ", total_price="
 				+ total_price + ", size=" + size + ", pic=" + pic + ", qty=" + qty + ", bread=" + bread + ", cheese="
-				+ cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + ", regDate="
-				+ regDate + "]";
+				+ cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + ", requirement="
+				+ requirement + ", regDate=" + regDate + "]";
 	}
 
 	

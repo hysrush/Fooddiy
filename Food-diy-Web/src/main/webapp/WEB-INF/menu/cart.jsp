@@ -148,6 +148,7 @@
 															<div>${ cartVO.topping }</div>
 															<div>${ cartVO.vegetable }</div>
 															<div>${ cartVO.sauce }</div>
+															<div>${ cartVO.requirement }</div>
 														<td class="qty-total">
 															<div class="qty-holder">
 																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cartVO.qty }"> <a  class="qty-inc-btn" title="Inc">+</a> <a  class="edit-qty"><i class="fa fa-pencil"></i></a>
