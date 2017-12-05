@@ -10,7 +10,8 @@
 					<table border="1">
 						<tr>
 							<td>
-								<span style="font-style: italic; font-weight:bold; font-size: 15px;">NEW Menu</span>
+								<!-- <span style="font-style: italic; font-weight:bold; font-size: 15px;">NEW Menu</span> -->
+								<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">NEW Menu</strong>
 							</td>
 						</tr>
 					<!-- <div class="box-content"> -->
@@ -25,16 +26,16 @@
 						<tr>
 							<td>
 								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
-								<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-								<span> 바나나</span>
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+								<span style="text-align:center; font-size: 12px;" class="heading-primary">빨간맛</span>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-									<span> 사또밥</span>
+									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+									<span style="text-align:center; font-size: 12px;" class="heading-primary">궁금해 허니</span>
 								</a>
 							</td>
 						</tr>
@@ -46,24 +47,32 @@
 					<table border="1">
 						<tr>
 							<td>
-								<span style="font-style: italic; font-weight:bold; font-size: 17px;">Notice</span>&nbsp;&nbsp;
-								<a href="${ pageContext.request.contextPath }/community/noticeList.do">
-									<span style="font-style: italic; font-weight:bold; font-size: 12px;">+more</span>
-								</a>
+								<strong style="text-align: center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">Notice</strong>
+								<span style="display: inline-table; align: right; font-size: 11px;">
+									<a href="${ pageContext.request.contextPath }/community/noticeList.do"> +more</a>
+								</span>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a></td>
-						</tr>
-						<tr>
-							<td colspan="2"><a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a></td>
+							<td colspan="2">
+								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
+									<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+								</span>
+							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
-								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-									<span> 사또밥</span>
-								</a>
+								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
+									<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
+									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+									<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+								</span>
 							</td>
 						</tr>
 					<!-- <div class="box-content"> -->
@@ -83,7 +92,7 @@
 						</c:forEach> --%>
 				</div>
 				<!-- 이벤트  -->
-					<div class="visible-lg" style="text-align: center; padding:5px;">
+					<div class="col-xs-12 col-md-12" style="text-align: center; padding:5px;">
 						<%-- 
 						<c:forEach items="${ cf }" begin="0" end="2">
 							<a href="${ 광고페이지로 이동 }">
@@ -94,7 +103,7 @@
 						 <table border="1">
 						<tr>
 							<td>
-								<span style="font-style: italic; font-weight:bold; font-size: 15px;">EVENT</span>
+								<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">EVENT</strong>
 							</td>
 						</tr>
 					<!-- <div class="box-content"> -->
@@ -109,14 +118,14 @@
 						<tr>
 							<td>
 								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 									<span> 사또밥</span>
 								</a>
 							</td>
@@ -151,7 +160,7 @@
 							<div class="carousel-caption"></div>
 						</div>
 						<div class="item">
-							<img
+							<img 
 								src="${ pageContext.request.contextPath }/resources/img/slides/3.jpg"
 								alt="">
 							<div class="carousel-caption"></div>
@@ -198,9 +207,9 @@
 								<td>추천수 2</td>
 							</tr>
 							<tr>
-								<td colspan="2"><br/>
+								<td colspan="2">
 									<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-										<img width="50%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+										<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 									</a>
 								</td>
 							</tr>

@@ -33,3 +33,8 @@
 		}
 	});
 </script>
+<form id="kakaoForm" action="${ pageContext.request.contextPath }/sign/kakoLogin.do" method="post" style="display: none;">
+	<input type="hidden" id="id" name="id">
+	<input type="hidden" id="pw" name="pw">
+	<input type="submit" id="kaka">
+</form>

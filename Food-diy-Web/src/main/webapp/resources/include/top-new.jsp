@@ -126,7 +126,7 @@
 													<i class="fa fa-times"></i>
 												</a>
 												<figure class="product-image-area">
-													<a href="#" title="Product Name" class="product-image"> <img src="${ cartVO.pic}" alt="Product Name">
+													<a href="#" title="Product Name" class="product-image"> <img src="${ cartVO.pic }" alt="Product Name">
 													</a>
 												</figure>
 												<div class="product-details-area">
