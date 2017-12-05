@@ -124,35 +124,52 @@
 											<div class="tab-pane active" id="tabsNavigationSimple1">
 												<div class="center">	
 													<!-- 1 -->
-												<c:forEach items="${ eventList }" var="eventVO">	
+															<c:forEach items="${ eventList }" var="eventVO">	
 													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style="height:400px">
-																	</div>
-																	
-																</div>
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
+														<ul>
+															<li>
+																<div class="col-md-6">
 																<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${ eventVO.no }">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
-																</a>	
+																	<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style=" width:600px;height:150px">
+																</a>
 																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-																<span></span>
-																<span></span>
-															
-															</article>
-														</div>
+																<div class="col-md-6" align="left"> 
+																	<h4><strong>${ eventVO.content }</strong></h4>
+																	<br/>
+																	<br/>
+																	<span> ${ eventVO.startDate } &nbsp; ~  ${ eventVO.endDate }</span>														
+																</div>
+															<hr/><br/><br/>	
+															</li>				
+														</ul>
 													</div>
-													
 												</c:forEach>
+													
+														<div class="col-md-12">
+														<ul class="pagination">
+														
+															<!-- 이전 페이지 이동  -->
+															<li><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'><i class="fa fa-chevron-left"></i></a></li>
+														
+															<!--  페이지 번호  -->
+														<c:forEach var='i' begin ="${p.pageStartNum }" end = "${p.pageLastNum}" step="1">
+															<li class='pageIndex$[i]'><a onclick="pageIndex(${i});">${i}</a></li>
+														</c:forEach>
+															<!-- 다음 페이지 이동 -->
+															
+															  <li><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'><i class="fa fa-chevron-right"></i></a></li>
+														</ul>
+														
+															 <form action="./eventPage.do" method="post" id='frmPaging'>
+													            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
+													            <input type='hidden' name='index' id='index' value='${p.index}'>
+													            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
+													            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>    
+													        </form>
+													</div>	
+														
+														
+														
 														<br/>
 													<div align="right">		
 														<input type = "button" value="수정 "/>
@@ -165,42 +182,51 @@
 												<div class="center">
 													<!-- 종료된이벤트 탭   -->
 															
-												<c:forEach items="${ eventEndList }" var="eventVO">	
+													<c:forEach items="${ eventEndList }" var="eventVO">	
 													<div class="col-md-12">
-														<div class="recent-posts">
-															<article class="post">
-																<!-- <div class="owl-carousel owl-theme nav-inside pull-left mr-lg mb-sm" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}"> -->
-																	<div>
-																		<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }" style="height:400px">
-																	</div>
-																	
-																<!-- </div> -->
-																<div class="heading heading-tertiary heading-border heading-bottom-border">
-																	<h2 class="heading-tertiary"><strong>${ eventVO.title }</strong></h2>
+														<ul>
+															<li>
+																<div class="col-md-6">
+																<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${ eventVO.no }">
+																	<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style=" width:600px;height:150px">
+																</a>
 																</div>
-																
-																	<h5><strong>${ eventVO.content }</strong> <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a></h5>
-																
-																
-																<span class="label label-tertiary">시작일 : ${ eventVO.startDate } </span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="label label-tertiary">종료일 : ${ eventVO.endDate }</span>
-																								
-															
-															</article>
-														</div>
-													</div>
-												</c:forEach>	
-												
-
-													<div class="col-md-12">
-														<ul class="pagination">
-															<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-															<li class="active"><a href="#">1</a></li>
-															<li><a href="#">2</a></li>
-															<li><a href="#">3</a></li>
-															<li><a href="#">4</a></li>
-															<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+																<div class="col-md-6" align="left"> 
+																	<h4><strong>${ eventVO.content }</strong></h4>
+																	<br/>
+																	<br/>
+																	<span> ${ eventVO.startDate } &nbsp; ~  ${ eventVO.endDate }</span>														
+																</div>
+															<hr/><br/><br/>	
+															</li>				
 														</ul>
 													</div>
+												</c:forEach>
+													
+														<div class="col-md-12">
+														<ul class="pagination">
+														
+															<!-- 이전 페이지 이동  -->
+															<li><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'><i class="fa fa-chevron-left"></i></a></li>
+														
+															<!--  페이지 번호  -->
+														<c:forEach var='i' begin ="${p.pageStartNum }" end = "${p.pageLastNum}" step="1">
+															<li class='pageIndex$[i]'><a onclick="pageIndex(${i});">${i}</a></li>
+														</c:forEach>
+															<!-- 다음 페이지 이동 -->
+															
+															  <li><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'><i class="fa fa-chevron-right"></i></a></li>
+														</ul>
+														
+															 <form action="./eventPage.do" method="post" id='frmPaging'>
+													            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
+													            <input type='hidden' name='index' id='index' value='${p.index}'>
+													            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
+													            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>    
+													        </form>
+													</div>	
+													
+
 													
 												</div>
 											</div>
@@ -217,6 +243,76 @@
 				<jsp:include page="/resources/include/bottom.jsp"/>
 			</footer>
 		</div>
+		
+		
+		<script>
+			function frmPaging() {
+			    document.getElementById("frmPaging").submit();
+			}
+			// 이전 페이지 index
+			function pagePre(index, pageCnt) {
+			    if (0 < index - pageCnt) {
+			        index -= pageCnt;
+			        document.getElementById("pageStartNum").value = index;
+			        document.getElementById("index").value = index - 1;
+			        frmPaging();
+			    }
+			}
+			// 다음 페이지 index
+			function pageNext(index, total, listCnt, pageCnt) {
+			    var totalPageCnt = Math.ceil(total / listCnt);
+			    var max = Math.ceil(totalPageCnt / pageCnt);
+			    if (max * pageCnt > index + pageCnt) {
+			        index += pageCnt;
+			        document.getElementById("pageStartNum").value = index;
+			        document.getElementById("index").value = index - 1;
+			        frmPaging();
+			    }
+			}
+			
+			// index 리스트 처리
+			function pageIndex(pageStartNum) {
+			    document.getElementById("index").value = pageStartNum - 1;
+			    frmPaging();
+			}
+			// 리스트출력개수 처리
+			function listCnt() {
+			    document.getElementById("index").value = 0;
+			    document.getElementById("pageStartNum").value = 1;
+			    document.getElementById("listCnt").value = document.getElementById("listCount").value;
+			    frmPaging();
+			}
+			window.onload = function() {
+			    // 현재번호 active
+			    var index = document.getElementById("index").value;
+			    var pageIndex = document.querySelector('.pageIndex'+(Number(index)+1));
+			   
+			    // 리스트갯수 selected 처리
+			    $("#listCount > option").each(function () {
+			        if ($(this).val() == $('#listCnt').val()) {
+			            $(this).prop("selected", true);
+			        }
+			    });
+			}
+
+
+			</script>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 			<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

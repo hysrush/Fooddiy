@@ -66,7 +66,7 @@
 								<div class="form-group mt-md">
 									<label for="selectAddress2" class="col-sm-3 control-label">시/도</label>
 									<div class="col-sm-9">
-										<select class="form-control" id= "gugun">
+										<select class="form-control" id="gugun">
 											<option value="" selected="selected">구,군 을 선택해주세요 </option>
 											 	<c:forEach var="location" items="${ locationList }" varStatus="i">
 													<option value="${ location.locationNo }" >${ location.locationName }</option>
@@ -76,13 +76,13 @@
 								</div>
 							</section>
 							<div class="form-group">
-								<h4 class="mt-xlg mb-none text-uppercase">&nbsp;&nbsp;<strong id="searchInfo" >지역을 선택해주세요</strong></h4>
+								<h4 class="mt-xlg mb-none text-uppercase">&nbsp;&nbsp;<strong id="searchInfo1" >지역을 선택해주세요</strong></h4>
 								<br>
-								<div class="col-md-12 row" id="storeDiv">
+								<div class="col-md-12 row" id="storeDiv1" >
 									<form id="demo-form" class="form-horizontal mb-md" novalidate="novalidate">
 										<table class="table table-hover" >
-											<tbody id ="storeList">
-												<!-- 매장 리스트 -->
+											<!-- 매장 리스트 -->
+											<tbody id ="storeList1">
 											</tbody>
 										</table>
 										<!-- 방문매장 form값 -->
@@ -93,31 +93,38 @@
 						</div>
 						<!-- 매장명으로 찾기 -->
 						<div id="StoreSearch" class="tab-pane">
-							<form id="demo-form" class="form-horizontal mb-md"
-								novalidate="novalidate">
-								<section class="modalSection section section-default">
-									<div class="form-group mt-md">
-										<label for="selectAddress1" class="col-sm-3 control-label">매장명</label>
-										<div class="col-sm-9">
-											<div class="input-group input-group-md">
-												<input class="form-control" type="text" name="visitStore"
-													id="visitStore" placeholder="Search..."> <span
-													class="input-group-btn">
-													<button type="submit" class="btn btn-success btn-md">
-														<i class="fa fa-search"></i>
-													</button>
-												</span>
-											</div>
+							<section class="modalSection section section-default" style="margin-bottom: 0px;">
+								<div class="form-group mt-md">
+									<label for="selectAddress1" class="col-sm-3 control-label">매장명</label>
+									<div class="col-sm-9">
+										<!-- 검색창 / 검색 버튼 -->
+										<div class="input-group input-group-md">
+											<input class="form-control" type="text" name="searchWord" id="searchWord" placeholder="Search...">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-success btn-md" id="searchBtn">
+													<i class="fa fa-search"></i>
+												</button>
+											</span>
 										</div>
 									</div>
-								</section>
-								<br>
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Comment</label>
-									<div class="col-sm-9">
-									</div>
 								</div>
-							</form>
+							</section>
+							<br>
+							<div class="form-group">
+							<h4 class="mt-xlg mb-none text-uppercase">&nbsp;&nbsp;<strong id="searchInfo2" >매장명을 입력해주세요</strong></h4>
+							<br>
+							<div class="col-md-12 row" id="storeDiv2">
+								<form id="demo-form" class="form-horizontal mb-md" novalidate="novalidate">
+									<table class="table table-hover" >
+										<!-- 매장 리스트 -->
+										<tbody id ="storeList2">
+										</tbody>
+									</table>
+									<!-- 방문매장 form값 -->
+									<form:hidden id="visitStore" path="visitStore" value="선택없음" />
+								</form>
+							</div>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -168,14 +175,15 @@
 				
 						var data = JSON.parse(responseData);
 						
-						$('#storeList').empty();
+						$('#storeList1').empty();
 						
 						// div요소 변경
-						$('#storeDiv').css("max-height","250px");
-						$('#storeDiv').css("overflow","auto");
+						$('#storeDiv1').css("max-height","250px");
+						$('#storeDiv1').css("overflow","auto");
+						$('#storeDiv1').css("width","580px");
 						
 						// 검색완료 시, 구군 이름 표시
-						$("strong#searchInfo").text('"' + data.locationName + '"(으)로 검색');
+						$("strong#searchInfo1").text('"' + data.locationName + '"(으)로 검색');
 						
 					 	for(var i = 0 ; i < data.storeList.length; i++){
 							var contents = '';
@@ -190,7 +198,61 @@
 							contents += 				'onclick="goStoreName(\''+data.storeList[i].storeName+'\')" value="선택" data-dismiss="modal" /></td>';
 							contents += '</tr>';
 						
-							$('#storeList').append(contents);
+							$('#storeList1').append(contents);
+					 	}
+			}
+		});
+		
+	});
+	
+	$("#searchBtn").click(function(){
+		
+		var search = $("#searchWord").val();
+		//alert( "매장 검색값 : " + search);
+		
+		$.ajax({
+			url : "./search",
+			type : "post",
+			data : {"search" : search},
+			success : function(responseData){
+				
+						var data = JSON.parse(responseData);
+						
+						$('#storeList2').empty();
+						
+						// div요소 변경
+						$('#storeDiv2').css("max-height","250px");
+						$('#storeDiv2').css("overflow","auto");
+						$('#storeDiv2').css("width","600px");
+						
+						// 검색완료 시, 구군 이름 표시
+						$("strong#searchInfo2").text('"' + search + '"(으)로 검색');
+						
+						if (data.searchList == null) {
+							alert("test");
+							var contents = '';
+							contents += '<tr>';
+							contents += 	'<span>해당 매장으로 검색한 결과가 없습니다.';
+							contents += 	'다른 매장명으로 검색을 하려면 다시 입력한 후 검색버튼을 눌러주세요.</span>';
+							contents += '</tr>';
+						
+							$('#storeList2').append(contents);
+						}
+						
+					 	for(var i = 0 ; i < data.searchList.length; i++){
+							var contents = '';
+							contents += '<tr>';
+							contents +=		'<td width="25%">';
+							contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
+							contents +=			'<strong class="storeName" value="'+ data.searchList[i].storeName +'" >'+ data.searchList[i].storeName + '점</strong>';
+							contents +=			'<div class="storePhone post-meta">' + data.searchList[i].storePhone +'</div>';
+							contents +=		'</td>';
+							contents +=		'<td class="storeAddr">'+ data.searchList[i].storeAddr +'</td>';
+							contents +=		'<td><input class="btn btn-success btn-sm" type="button" name="storeChoice"';
+							contents += 				'onclick="goStoreName(\''+data.searchList[i].storeName+'\')" value="선택" data-dismiss="modal" /></td>';
+							contents += '</tr>';
+						
+							$('#storeList2').append(contents);
 					 	}
 			}
 		});
@@ -212,5 +274,6 @@
 		
 		$("#storeName").val(storeChoice + '점');
 	}
+	
 
 </script>

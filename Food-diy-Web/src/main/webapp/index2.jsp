@@ -58,9 +58,10 @@
 		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
+		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+	
 </head>
 	<body>
-	<div id="modal"></div>
 	<div class="body">
 		<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
@@ -98,8 +99,14 @@
 			<a href="${ pageContext.request.contextPath}/menu/select_ingredients.do">재료선택</a><br/>
 
 			<!-- Slider부분 -->
-			<jsp:include page="/resources/include/slider.jsp"/>
-		
+			<section class="visible-lg">
+				<jsp:include page="/resources/include/slider.jsp"/>
+			</section>
+			
+			<section class="hidden-lg">
+				<jsp:include page="/resources/include/mobile-slider.jsp"/>
+			</section>
+			
 		<footer class="light visible-lg" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
@@ -145,6 +152,5 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-		
 	</body>
 </html>

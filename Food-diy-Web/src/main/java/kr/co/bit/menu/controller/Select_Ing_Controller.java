@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.Select_Ing_Service;
+import kr.co.bit.menu.vo.CartStoreVO;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.IngredientsVO;
 import kr.co.bit.user.vo.UserVO;
@@ -31,7 +32,7 @@ public class Select_Ing_Controller {
 	private CartService cart_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(HttpSession session,String storeName, String storeAddr, String storePhone,
+	public ModelAndView Session(HttpSession session,String storeName,String storeAddr, String storePhone,
 			String name, String price, String size, String pic ) {
 		
 		
@@ -49,13 +50,12 @@ public class Select_Ing_Controller {
 
 		
 		if(storeName != null && storeAddr != null &&  storePhone != null) {
-			StoreVO storeVO = new StoreVO();
-			storeVO.setStoreName(storeName);
-			storeVO.setStoreAddr(storeAddr);
-			storeVO.setStorePhone(storePhone);
-			userVO.setStore(storeName);
+			CartStoreVO cartStoreVO = (CartStoreVO)session.getAttribute("cartStoreVO");
+			cartStoreVO.setStoreName(storeName);
+			cartStoreVO.setStoreAddr(storeAddr);
+			cartStoreVO.setStorePhone(storePhone);
 			
-			session.setAttribute("storeVO", storeVO);
+			session.setAttribute("cartStoreVO", cartStoreVO);
 		}
 		
 		if(name != null  && price != null && size != null && pic != null) {
@@ -93,10 +93,15 @@ public class Select_Ing_Controller {
 			@RequestParam("sauce") String sauce, HttpSession session) {
 
 		CartVO cartVO = (CartVO)session.getAttribute("cartVO");
-
+		StoreVO storeVO = (StoreVO)session.getAttribute("storeVO");
+		
+		System.out.println(storeVO.getStoreAddr());
+		
+		
 		cartVO.setBread(bread);
 		cartVO.setCheese(cheese);
 
+		
 		String [] toppings = topping.split("\\|\\|");
 		
 		Integer price = new Integer(cartVO.getPrice());

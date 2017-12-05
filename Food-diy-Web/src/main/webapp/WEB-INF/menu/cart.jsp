@@ -174,15 +174,15 @@
 														<tbody>
 															<tr>
 																<td>매장</td>
-																<td><div> ${ storeVO.storeName } </div></td>
+																<td><div> ${ cartStoreVO.storeName } </div></td>
 															</tr>
 															<tr>
 																<td>주소</td>
-																<td><div> ${ storeVO.storeAddr } </div></td>
+																<td><div> ${ cartStoreVO.storeAddr } </div></td>
 															</tr>
 															<tr>
 																<td>전화번호</td>
-																<td><div> ${ storeVO.storePhone } </div></td>
+																<td><div> ${ cartStoreVO.storePhone } </div></td>
 															</tr>
 															<tr>
 																<td>수량</td>
@@ -198,6 +198,7 @@
 														<div class="col-md-12">
 															<div class="col-md-12 actions-continue" style="">
 																<form method="get">
+																														
 																	<button type="submit" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
 																	<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick ="menuList()">계속 쇼핑하기</button>
 																</form>
@@ -266,7 +267,7 @@
 						
 						//상품삭제
 						$.ajax({
-							url : "./deleteCart",
+							url : "${pageContext.request.contextPath}/menu/deleteCart",
 							type : "post",
 							data : {
 								"no" : no
@@ -292,7 +293,7 @@
 				function productQtyUpdate(no, totalQty) {
 					//DB업데이트
 					$.ajax({
-						url : "./productQtyUpdate",
+						url : "${pageContext.request.contextPath}/menu/productQtyUpdate",
 						type : "post",
 						data : {"no" : no, "totalQty" : totalQty}
 					});
@@ -379,7 +380,6 @@
 		});
 		
 		function menuList() {
-			
 			location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 		}
 	</script>

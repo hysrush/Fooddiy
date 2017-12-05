@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.EventBoardVO;
+import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.event.vo.StoreVO;
 
 @RequestMapping("/event")
@@ -33,9 +34,14 @@ public class EventController {
 	@Autowired
 	private EventService eventService;
 
+	
+	
+	
+	
 	// 진행중인 이벤트 , 종료된 이벤트 보기
-	@RequestMapping("/eventPage.do")
-	public ModelAndView list() {
+	/*@RequestMapping("/eventPage.do")
+	public ModelAndView list(HttpServletRequest request
+							, HttpServletResponse response) {
 		List<EventBoardVO> eventList = eventService.selectAllEvent();
 		List<EventBoardVO> eventEndList = eventService.selectEndEvent();
 
@@ -43,6 +49,10 @@ public class EventController {
 		// setViewName : �뼱�뼡 �럹�씠吏�瑜� 蹂댁뿬以꾧쾬�씤媛�
 		mav.setViewName("event/EventPage");
 		// addObject : key �� value 瑜� �떞�븘 蹂대궡�뒗 硫붿꽌�뱶
+		
+	
+		
+		
 
 		mav.addObject("eventList", eventList);
 		mav.addObject("eventEndList", eventEndList);
@@ -50,6 +60,39 @@ public class EventController {
 		return mav;
 
 	}
+	*/
+	@RequestMapping(value ="/eventPage.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView paging(HttpServletRequest request
+							, HttpServletResponse response
+							, PagingVO paging) {
+		
+		
+		List<EventBoardVO> eventList = eventService.selectPaging(paging);
+		List<EventBoardVO> eventEndList = eventService.selectEndEvent(paging);
+		paging.setTotal(eventService.selectTotalPaging());
+		ModelAndView mav = new ModelAndView();
+		
+		System.out.println(eventService.selectTotalPaging());
+		
+		mav.setViewName("event/EventPage");
+		
+		mav.addObject("eventList" , eventList);
+		mav.addObject("eventEndList", eventEndList);
+		mav.addObject("p",paging);
+		
+		
+		return mav;
+			
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// 매장별 이벤트 , 종료된 매장별 이벤트 보기
 	@RequestMapping("/storeEventPage.do")

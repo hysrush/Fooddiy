@@ -181,6 +181,27 @@ public class ClaimController {
 
 	}
 	
+	// 스토어 이름 검색 ajax
+	@RequestMapping(value = "/search")
+	public void storeNameAjax(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "search", defaultValue = "") String search, Model model) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+		
+		List<StoreVO> searchList = eventService.searchStoreName(search);
+		
+		for (int i = 0; i < searchList.size(); i++) {
+			System.out.println(searchList.get(i).toString());
+		}
+		
+		System.out.println("검색한 매장명 :" + search);
+		
+		jsonObj.put("searchList", searchList);
+		
+		response.getWriter().print(jsonObj.toString());
+	}
+	
 	// 클레임 타입
 	@ModelAttribute("typeCode")
 	public Map<String, String> getTypeCode() {
@@ -193,13 +214,14 @@ public class ClaimController {
 		typeCode.put("S", "제안");
 		typeCode.put("X", "기타");
 		
+		/*
 		Iterator<String> iterator = typeCode.keySet().iterator();
 	    while (iterator.hasNext()) {
 	        String key = (String) iterator.next();
 	        System.out.print("key="+key);
 	        System.out.println(" value="+ typeCode.get(key));
 	    }
-		
+		*/
 		return typeCode;
 	}
 	// 이메일 도메인
@@ -220,7 +242,7 @@ public class ClaimController {
 		domainCode.add("hitel.net");
 		domainCode.add("freechal.com");
 		
-		System.out.println(domainCode.toString());
+		//System.out.println(domainCode.toString());
 		
 		return domainCode;
 	}

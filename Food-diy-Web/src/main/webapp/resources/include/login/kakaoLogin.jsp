@@ -4,6 +4,7 @@
 <a href="http://developers.kakao.com/logout"></a>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <script type='text/javascript'>
    //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -23,12 +24,12 @@
 
 				},
 				fail : function(error) {
-					alert(JSON.stringify(error));
+					swal(JSON.stringify(error));
 				}
 			});
 		},
 		fail : function(err) {
-			alert(JSON.stringify(err));
+			swal(JSON.stringify(err));
 		}
 	});
 </script>

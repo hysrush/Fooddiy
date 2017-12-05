@@ -1,9 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <script>
-	if("${msg}"){
-		alert("${msg}");
-	}
+	/* $(document).ready(function(){
+		if("${msg}"){
+			swal("${msg}").then(call);
+			
+		}
+	});
 	
-	location.href="${pageContext.request.contextPath}/index2.jsp";
+	function call(){
+		location.href="${pageContext.request.contextPath}/index2.jsp";
+	}  */
+	$(document).ready(function(){
+		
+		location.href="${pageContext.request.contextPath}/index2.jsp";
+	});
 </script>

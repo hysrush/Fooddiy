@@ -19,6 +19,7 @@ public class CartVO implements Serializable{
 	private String vegetable;
 	private String sauce;
 	private String regDate;
+	
 	public int getNo() {
 		return no;
 	}

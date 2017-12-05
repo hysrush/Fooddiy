@@ -36,7 +36,7 @@
 	 		 	var price = $(this).find('.price').text();
 
 	 		 	
-	 		 	if(id.length = 1) {
+	 		 	if(id.length == 1) {
 	 				id = id[0];
 	 			}
 				else{
