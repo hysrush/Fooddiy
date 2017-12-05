@@ -1,7 +1,5 @@
 package kr.co.bit.menu.dao;
 
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,13 +14,11 @@ public class CartStoreDAOImp implements CartStoreDAO {
 	private String url = "kr.co.bit.menu.dao.CartStoreDAO.";
 	
 	@Override
-	public List<CartStoreVO> selectOne(String id) {
-		
-		List<CartStoreVO> cartStoreVO = sqlSession.selectList(url + "selectOneCartStore", id);
-		
-		
+	public CartStoreVO selectOne(String id) {
+			
+		CartStoreVO cartStoreVO = sqlSession.selectOne(url + "selectOneCartStore", id);
 		return cartStoreVO;
-	}	
+	}
 	@Override
 	public void insert(CartStoreVO cartStoreVO) {
 		sqlSession.insert(url + "insertCartStore", cartStoreVO);
@@ -34,8 +30,8 @@ public class CartStoreDAOImp implements CartStoreDAO {
 	}
 	
 	@Override
-	public void delete(CartStoreVO cartStoreVO) {
-		sqlSession.delete(url + "deleteCartStore", cartStoreVO);
+	public void delete(String id) {
+		sqlSession.delete(url + "deleteCartStore", id);
 	}
 	
 	

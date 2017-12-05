@@ -29,7 +29,7 @@
 		where user_id = #{id}
 	</update>
 	
-	<delete id="deleteCartStore" parameterType="cartStoreVO">
+	<delete id="deleteCartStore" parameterType="String">
 		delete from t_CartStore
 		where user_id = #{id}
 	</delete>

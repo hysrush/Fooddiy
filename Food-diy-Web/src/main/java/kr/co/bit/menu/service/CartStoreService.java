@@ -6,9 +6,9 @@ import kr.co.bit.menu.vo.CartStoreVO;
 
 public interface CartStoreService {
 	
-	List<CartStoreVO> selectOneCartStore(String id);
+	CartStoreVO selectOneCartStore(String id);
 	void insertCartStore(CartStoreVO cartStoreVO);
 	void updateCartStore(CartStoreVO cartStoreVO);
-	void deleteCartStore(CartStoreVO cartStoreVO);
+	void deleteCartStore(String id);
 	
 }

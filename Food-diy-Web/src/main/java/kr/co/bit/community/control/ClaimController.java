@@ -197,6 +197,13 @@ public class ClaimController {
 		
 		System.out.println("검색한 매장명 :" + search);
 		
+		// 검색된 데이터가 있으면 list, 없으면 null 리턴
+		if (searchList.size() >= 1) {
+			System.out.println("데이터 있음");
+		} else {
+			System.out.println("데이터 없음");
+			searchList = null;
+		}
 		jsonObj.put("searchList", searchList);
 		
 		response.getWriter().print(jsonObj.toString());

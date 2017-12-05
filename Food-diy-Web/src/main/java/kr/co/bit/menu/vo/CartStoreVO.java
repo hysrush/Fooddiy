@@ -32,9 +32,8 @@ public class CartStoreVO {
 	@Override
 	public String toString() {
 		return "CartStoreVO [id=" + id + ", storeName=" + storeName + ", storeAddr=" + storeAddr + ", storePhone="
-				+ storePhone + "]";
+				+ storePhone + ", getId()=" + getId() + ", getStoreName()=" + getStoreName() + ", getStoreAddr()="
+				+ getStoreAddr() + ", getStorePhone()=" + getStorePhone() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-	
-	
-	
 }

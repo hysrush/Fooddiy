@@ -15,8 +15,8 @@ public class CartStoreServiceImp implements CartStoreService{
 	CartStoreDAO dao;
 	
 	@Override
-	public List<CartStoreVO> selectOneCartStore(String id) {
-		List<CartStoreVO> cartStoreVO = dao.selectOne(id);
+	public CartStoreVO selectOneCartStore(String id) {
+		CartStoreVO cartStoreVO = dao.selectOne(id);
 		return cartStoreVO;
 	}
 	
@@ -31,8 +31,8 @@ public class CartStoreServiceImp implements CartStoreService{
 	}
 	
 	@Override
-	public void deleteCartStore(CartStoreVO cartStoreVO) {
-		dao.delete(cartStoreVO);
+	public void deleteCartStore(String id) {
+		dao.delete(id);
 	}
 	
 }

@@ -27,7 +27,7 @@
 	height: 180px;
 }
 </style>
-<div class="modal fade" id="formModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" style="min-width: 320px;"
 	aria-labelledby="formModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -80,7 +80,7 @@
 								<br>
 								<div class="col-md-12 row" id="storeDiv1" >
 									<form id="demo-form" class="form-horizontal mb-md" novalidate="novalidate">
-										<table class="table table-hover" >
+										<table class="table table-hover">
 											<!-- 매장 리스트 -->
 											<tbody id ="storeList1">
 											</tbody>
@@ -180,15 +180,16 @@
 						// div요소 변경
 						$('#storeDiv1').css("max-height","250px");
 						$('#storeDiv1').css("overflow","auto");
-						$('#storeDiv1').css("width","580px");
+						$('#storeDiv1').css("max-width","580px");
 						
 						// 검색완료 시, 구군 이름 표시
 						$("strong#searchInfo1").text('"' + data.locationName + '"(으)로 검색');
 						
 					 	for(var i = 0 ; i < data.storeList.length; i++){
-							var contents = '';
+					 		
+					 		var contents = '';
 							contents += '<tr>';
-							contents +=		'<td width="25%">';
+							contents +=		'<td width="26%" nowrap>';
 							contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
 							contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '점</strong>';
 							contents +=			'<div class="storePhone post-meta">' + data.storeList[i].storePhone +'</div>';
@@ -197,7 +198,7 @@
 							contents +=		'<td><input class="btn btn-success btn-sm" type="button" name="storeChoice"';
 							contents += 				'onclick="goStoreName(\''+data.storeList[i].storeName+'\')" value="선택" data-dismiss="modal" /></td>';
 							contents += '</tr>';
-						
+							
 							$('#storeList1').append(contents);
 					 	}
 			}
@@ -223,17 +224,18 @@
 						// div요소 변경
 						$('#storeDiv2').css("max-height","250px");
 						$('#storeDiv2').css("overflow","auto");
-						$('#storeDiv2').css("width","600px");
+						$('#storeDiv2').css("max-width","600px");
 						
 						// 검색완료 시, 구군 이름 표시
 						$("strong#searchInfo2").text('"' + search + '"(으)로 검색');
 						
-						if (data.searchList == null) {
-							alert("test");
+						if (isNull(data.searchList)) {
 							var contents = '';
 							contents += '<tr>';
-							contents += 	'<span>해당 매장으로 검색한 결과가 없습니다.';
-							contents += 	'다른 매장명으로 검색을 하려면 다시 입력한 후 검색버튼을 눌러주세요.</span>';
+							contents +=		'<td width="25%">';
+							contents += 		'<span>해당 매장으로 검색한 결과가 없습니다.<br>';
+							contents += 		'다른 매장명으로 검색을 하려면 다시 입력한 후 검색버튼을 눌러주세요.</span>';
+							contents +=		'</td>';
 							contents += '</tr>';
 						
 							$('#storeList2').append(contents);
@@ -242,7 +244,7 @@
 					 	for(var i = 0 ; i < data.searchList.length; i++){
 							var contents = '';
 							contents += '<tr>';
-							contents +=		'<td width="25%">';
+							contents +=		'<td width="26%" nowrap>';
 							contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
 							contents +=			'<strong class="storeName" value="'+ data.searchList[i].storeName +'" >'+ data.searchList[i].storeName + '점</strong>';
 							contents +=			'<div class="storePhone post-meta">' + data.searchList[i].storePhone +'</div>';
@@ -275,5 +277,8 @@
 		$("#storeName").val(storeChoice + '점');
 	}
 	
+	function isNull(obj) {
+		return (typeof obj != "undefined" && obj != null && obj != "") ? false : true;
+	}
 
 </script>
