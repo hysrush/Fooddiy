@@ -244,7 +244,7 @@
 					 	for(var i = 0 ; i < data.searchList.length; i++){
 							var contents = '';
 							contents += '<tr>';
-							contents +=		'<td width="25%">';
+							contents +=		'<td width="26%" nowrap>';
 							contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
 							contents +=			'<strong class="storeName" value="'+ data.searchList[i].storeName +'" >'+ data.searchList[i].storeName + '점</strong>';
 							contents +=			'<div class="storePhone post-meta">' + data.searchList[i].storePhone +'</div>';
