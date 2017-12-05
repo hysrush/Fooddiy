@@ -106,7 +106,7 @@ $(document).ready(function(){
 
 
 					<c:choose>
-						<c:when test="${ storeVO == null }">	
+						<c:when test="${ cartStoreVO == null }">	
 							<form
 								action="${ pageContext.request.contextPath }/store/findStore.do"
 								enctype="multipart/form-data" method="post" class="cart"
