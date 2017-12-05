@@ -176,13 +176,13 @@
 															<strong>db사용자 아이디</strong>
 														</p>
 													</div>
-												</div> <span class="product-thumb-info"> <a
-													href="${ pageContext.request.contextPath }/notice/SNSBoard-Modal.jsp"
+												</div> <span class="product-thumb-info" > <a
+													href="${ pageContext.request.contextPath }/community/SNSBoard-Modal.do"
 													data-ajax-on-modal> <span
 														class="thumb-info thumb-info-lighten"> <span
 															class="thumb-info-wrapper"> <img
 																src="../upload/${ snsVO.fileName }"
-																class="img-responsive" alt="">
+																class="img-responsive" style="width:250px;height:250px">
 														</span>
 													</span>
 												</a> <span class="product-thumb-info-content"> <a
@@ -193,7 +193,7 @@
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
 														</span> <span>
-																<h4>${snsVO.content }</h4>
+																<h4>${snsVO.title }</h4>
 														</span>
 													</a>
 												</span>
@@ -312,17 +312,6 @@
 
 			</script>	
 	
-
-
-
-
-
-
-
-
-
-
-
 
 
 	<!-- Vendor -->

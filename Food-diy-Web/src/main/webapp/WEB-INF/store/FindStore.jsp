@@ -162,17 +162,12 @@
 														</div>
 													</div>
 											
-													<div class="row">
-														<div class="col-md-12">
-															<input type="button" id="search" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">	
-														</div>
-													</div>
 													
 											<h4 class="mt-xlg mb-none text-uppercase">&nbsp;&nbsp;<strong id="searchInfo" >지역을 선택해주세요</strong></h4>
 											<br>
 												<div  id="storeList">
 													<form action="storeEventPage.do" method ="post">
-														<table>
+														<table border="1">
 														
 															<tbody id ="storeList">
 																<!-- 매장 리스트 -->
@@ -290,7 +285,7 @@
 		          });
 			});
 
-				$("#search").click(function(){
+				$("#gugun").change(function(){
 					
 					var gugun = $("#gugun").val();
 					console.log( " 구군 값 : " + $("#gugun").val());
@@ -304,8 +299,10 @@
 									
 									$('#storeList').empty();
 							
-									$('#storeList').css("max-height","150px");
+									
+									$('#storeList').css("max-height","250px");
 									$('#storeList').css("overflow","auto");
+									$('#storeList').css("max-width","1000px");
 										
 										// 검색완료 시, 구군 이름 표시
 										$("strong#searchInfo").text('"' + data.locationName + '"(으)로 검색');
@@ -313,13 +310,13 @@
 									 	for(var i = 0 ; i < data.storeList.length; i++){
 											var contents = '';
 											contents += '<tr>';
-											contents +=		'<td style = "width: 30%">';
+											contents +=		'<td style = "width: 30%" nowrap>';
 											contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
 											contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '</strong>';
 											contents +=			'<div class="storePhone post-meta">' + data.storeList[i].storePhone +'</div>';
 											contents +=		'</td>';
-											contents +=		'<td class="storeAddr" style = "width: 50%">'+ data.storeList[i].storeAddr +'</td>';
-											contents +=		'<td style = "width: 20%" align ="right"><input class="btn btn-success btn-sm" type="button" name="storeChoice"';
+											contents +=		'<td class="storeAddr" style = "width: 65%">'+ data.storeList[i].storeAddr +'</td>';
+											contents +=		'<td style = "width: 5%" align ="right"><input class="btn btn-success btn-sm" type="button" name="storeChoice"';
 											contents += 				'onclick="test(\''+data.storeList[i].storeAddr+'\')" value="선택"  /></td>';
 											contents += '</tr>';
 										
