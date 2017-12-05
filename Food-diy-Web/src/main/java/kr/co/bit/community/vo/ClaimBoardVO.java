@@ -1,22 +1,38 @@
 package kr.co.bit.community.vo;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class ClaimBoardVO {
 	
 	private int no;
+	@NotNull
+    @Size(min=1, message="제목을 입력하세요!")
 	private String title;
+	@NotNull
+    @Size(min=1, message="내용을 입력하세요!")
 	private String content;
+	@NotNull
+    @Size(min=1, message="문의유형을 선택하세요!")
 	private String type;		// 문의 'I' / 칭찬 'P' / 불만 'C' / 제안 'S' / 기타 'X'
-	private String file;		// 파일
-
+	@NotNull
 	private String writer;		// User ID
-	
+	@NotNull
+    @Size(min=1, message="이메일ID를 입력하세요!")
 	private String emailID;		// User Email
+	@NotNull
+    @Size(min=1, message="이메일Domain을 입력하세요!")
 	private String emailDomain;
+	@NotNull
 	private String phone1;		// User Phone
+	@NotNull
+    @Size(min=1, message="중간번호를 입력하세요!")
 	private String phone2;
+	@NotNull
+    @Size(min=1, message="끝번호를 입력하세요!")
 	private String phone3;
 	
+	private String file;		// 파일
 	private String visitDate;	// 방문일
 	private String visitStore;	// 방문 매장명
 	
