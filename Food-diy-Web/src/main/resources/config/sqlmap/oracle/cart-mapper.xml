@@ -24,7 +24,6 @@
 		<result column="cart_size" property="size"/>
 		<result column="cart_pic" property="pic"/>
 		<result column="cart_qty" property="qty"/>
-		
 		<result column="cart_bread" property="bread"/>
 		<result column="cart_cheese" property="cheese"/>
 		<result column="cart_topping" property="topping"/>
@@ -86,5 +85,11 @@
 		WHERE menu_no = #{no}
 	</delete>
 		 -->
+	<!-- 전체  장바구니  조회 -->
+	<select id="selectmenu" parameterType="java.lang.String" resultMap="Map_cartVO">
+		<include refid="selectAll"/>
+		where cart_id = #{id}
+		ORDER BY cart_no ASC
+	</select>
 	
 </mapper>

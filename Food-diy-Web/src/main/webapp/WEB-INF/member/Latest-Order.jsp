@@ -69,6 +69,7 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
+<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <style type="text/css">
 #div01 {
 	width: 70px;
@@ -117,7 +118,7 @@
 								<ul class="nav nav-list mb-xlg">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
 									<li class="active">
-										<a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a>
+										<a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a>
 									</li>
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
@@ -129,144 +130,50 @@
 				<div class="container">
 						<div class="col-md-12r">
 
-							<div style="@media screen and (max-width:670px) " class="featured-boxes">
-									<div class="col-md-8 col-xs-12">
-										<div class="featured-box featured-box-primary align-left mt-xlg">
-										<table >
+							<div style="@media screen " class="featured-boxes">
+									<div class="col-md-9 col-xs-12">
+										<div class="featured-box featured-box-primary mt-xlg">
 											<div class="box-content">
-												<td style="width: 150px; text-align: center; " class=" col-xs-8"><h4  align="center" style="margin-left:65%; font-size:100%; width: 60px;" class="heading-primary text-uppercase mb-md"></h4></td>
-												<td><h4 align="center" style="margin-left:%;font-size:100%; width: 300px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4></td>
-												<td><h4 style=" margin-left:17%;font-size:100%; width: 80px; float: left; margin-left: 7%" class="heading-primary text-uppercase mb-md hidden-xs">날짜</h4></td>
-												<td><h4 align="center" style="margin-left:40%; font-size:100%; width: 150px; float: right;;" class="heading-primary text-uppercase mb-md hidden-xs">주문상태</h4></td>
-											</div> 
-											</table>	
-												<table  class="cart-totals">  
-													<tbody >
-														<tr  class="cart-subtotal">
-																
-															<th  style="text-align: center; width: 66px">
-																<strong >1</strong>
-															</th>
-															<td style="padding: 0px; width:20%;" style="" class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
-																	</a>
-																</td>
-															<td align="center" style="width: 150px; font-size:80%;">
-																<span class="amount">선택한 재료 내용</span>
-															</td>
-															<td style=" font-size:80%; width: 150px" align="center">
-																<span class="amount">2017-10-29</span>
-															</td>
-															<td align="left">
-																<button style="width: 60px; height: 30px; font-size: 12px" type="button" class="btn  btn-info"> 준비중 </button>
-															</td> 
-															<td  class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
-																	</a>
-																</td>
+												<table  class="cart-totals">
+													<tbody>
+														<tr>
+															<th style="text-align: center; font-size: 100%;"></th>
+															<th class="hidden-xs" style="width: 400px; text-align: center; font-size: 100%;"><h4 align="right" class="heading-primary text-uppercase mb-md"></h4></th>
+															<th colspan="2" style="width: 80px;"><h4 align="center" style="font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md">주문내용</h4></th>
+															<th colspan="1" style="width: 50px; "><h4 align="center" style="font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md ">가격</h4></th>
+															<th style="width: 50px;"><h4 style="margin-left: 40%; font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md ">날짜</h4></th>
+															
+															<!-- hidden-xs 안나오게 하는것 -->
 														</tr>
-														<tr  class="shipping">
-															<th style="text-align: center; width: 66px">
-																<strong >2</strong>
-															</th>
-															<td style="width:20%;" style="" class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
+														<c:forEach items="${ cartList }" var="cart">
+															<tr class="cart-subtotal">
+																<td class="product-thumbnail" style="width: 40px; height: 30px">
+																	<a href="#">
+																	<img id="myMenu"  alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
 																	</a>
 																</td>
-															<td align="center" style=" font-size:80%; width: 150px">
-																<span class="amount">선택한 재료 내용</span>
-															</td>
-															<td style=" font-size:80%; width: 200px" align="center">
-																<span class="amount">2017-10-29</span>
-															</td>
-															<td align="left">
-																<button style="background-color:orange; width: 80px; height: 30px; font-size: 14px" type="button" class="btn  btn-info"> 주문완료 </button>
-															</td>
-															<td  class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
-																	</a>
+																<td style="margin-left: 20%; width: 5%" class="product-action-td remove_product">
+																	<a href="#" title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a>
 																</td>
-														</tr>
-														<tr class="shipping">
-															<th style="text-align: center; width: 66px">
-																<strong >3</strong>
-															</th>
-															<td style="width:20%;" style="" class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
-																	</a>
+																<td class="hidden-xs" style="width: 30%;">
+																	<a><img style="width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
 																</td>
-															<td align="center" style=" font-size:80%; width: 150px">
-																<span class="amount">선택한 재료 내용</span>
-															</td>
-															<td style=" font-size:80%; width: 200px" align="center">
-																<span class="amount">2017-10-25</span>
-															</td>
-															<td align="left">
-																<button style="background-color:orange; width: 80px; height: 30px; font-size: 14px" type="button" class="btn  btn-info"> 주문완료 </button>
-															</td>
-															<td  class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
-																	</a>
+																<td align="center" style="width: 100px; font-size: 100%;">
+																	<span class="amount">${ cart.bread }<br />${cart.cheese }<br />${ cart.topping }<br />${ cart.vegetable }<br />${ cart.sauce }</span>
 																</td>
-														</tr>
-														<tr class="shipping">
-															<th style="text-align: center; width: 66px">
-																<strong >4</strong>
-															</th>
-															<td style="width:20%;" style="" class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
-																	</a>
+																<td style="font-size: 100%; " align="center">
+																	<span class="amount">${ cart.price }</span>
 																</td>
-															<td align="center" style=" font-size:80%; width: 150px">
-																<span class="amount">선택한 재료 내용</span>
-															</td>
-															<td style=" font-size:80%; width: 200px" align="center">
-																<span class="amount">2017-10-25</span>
-															</td>
-															<td align="left">
-																<button style="background-color:orange; width: 80px; height: 30px; font-size: 14px" type="button" class="btn  btn-info"> 주문완료 </button>
-															</td>
-															<td  class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
-																	</a>
+																<td style="font-size: 100%;" align="center">
+																	<span class="amount">${ cart.regDate }</span>
 																</td>
-														</tr>
-														<tr class="shipping">
-															<th style="text-align: center; width: 66px">
-																<strong >5</strong>
-															</th>
-															<td style="width:20%;" style="" class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:100%; height:100px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
-																	</a>
-																</td>
-															<td align="center" style=" font-size:80%; width: 150px">
-																<span class="amount">선택한 재료 내용</span>
-															</td>
-															<td style=" font-size:80%; width: 200px" align="center">
-																<span class="amount">2017-10-24</span>
-															</td>
-															<td align="left">
-																<button style="background-color:orange; width: 80px; height: 30px; font-size: 14px" type="button" class="btn  btn-info"> 주문완료 </button>
-															</td>
-															<td  class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:50%; height:40px" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
-																	</a>
-																</td>
-														</tr>
+															</tr>
+														</c:forEach>
 													</tbody>
 												</table>
+												</div> 
 										</div>	
-									<div class="header-search hidden-xs">
+								<!-- 	<div class="header-search hidden-xs">
 										<form id="searchForm" action="page-search-results.html" method="get">
 											<div  class="input-group">
 												<input style="width: 400px; float: right;" type="text" class="form-control" name="q" id="q" placeholder="Search..." required>
@@ -276,14 +183,14 @@
 											</div>
 										</form>
 										
-									</div>
+									</div> -->
 									</div>
 								</div>
 							</div>
 							</div>
 						</div>
 	
-				<div class="row">
+				<!-- <div class="row">
 								<div align="center" class="col-md-12">
 									<ul  class="pagination pull-center">
 										<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
@@ -292,7 +199,7 @@
 										<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
 									</ul>
 								</div>
-							</div>
+							</div> -->
 		</div>
 	</div>
 	</div>

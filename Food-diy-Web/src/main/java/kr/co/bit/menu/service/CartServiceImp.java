@@ -46,4 +46,10 @@ public class CartServiceImp implements CartService{
 	public void deleteCart(CartVO cartVO) {
 		dao.delete(cartVO);
 	}
+
+	@Override
+	public List<CartVO> selectMenu(String id) {
+		
+		return dao.selectMenu(id);
+	}
 }

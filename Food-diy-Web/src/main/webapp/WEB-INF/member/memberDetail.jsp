@@ -58,6 +58,7 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 	$(document).ready(function(){
 		
@@ -66,12 +67,10 @@
 			location.href="${pageContext.request.contextPath}/member/memberDel.do"; 
 		});
 		
-		if("${msg}"){
-			alert("${msg}");
-		}
 		
-		
-		
+	       if("${msg}"){
+	             swal("${msg}");
+	        }
 		
 	});
 </script>
@@ -122,7 +121,7 @@
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
@@ -255,21 +254,17 @@
 												</div>
 												<div class="modal-body">
 												<h4>안전한 회원탈퇴를 위해 비밀번호를 입력하세요.</h4>
-
 													<form action="${ pageContext.request.contextPath}/member/delCheck.do" id="frmSignIn" method="post" class="form-horizontal mb-lg" novalidate="novalidate">
-
-													<form action="${ pageContext.request.contextPath}/member/delCheck.do" id="demo-form" method="post" class="form-horizontal mb-lg" novalidate="novalidate">
-
 														<input type="hidden" name="id" value="${loginVO.id }">
 														<div class="form-group mt-lg">
 															<div class="col-sm-9">
 																<input type="password" name="pw" class="form-control" placeholder="password" required/>
 															</div>
 														</div>
-												<div class="modal-footer">
+													<div class="modal-footer">
 														<input id="okay" type="submit" class="btn btn-primary" value="확인">
 														<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-											</div>
+											    	</div>
 													</form>
 												</div>
 												</div>

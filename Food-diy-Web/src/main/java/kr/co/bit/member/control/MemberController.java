@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.community.service.ClaimService;
 import kr.co.bit.community.vo.ClaimBoardVO;
 import kr.co.bit.member.service.MemberService;
+import kr.co.bit.menu.service.CartService;
+import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.LoginVO;
@@ -37,12 +42,16 @@ import kr.co.bit.user.vo.UserVO;
 
 public class MemberController {
 
+	private static final int Latest = 0;
+	private static final int Order = 0;
 	@Autowired
 	private MemberService memberService;
 	@Autowired
 	private SignService signService;
 	@Autowired
 	private ClaimService claimService;
+	@Autowired
+	private CartService cart_Service;
 	
 	
 	
@@ -130,6 +139,7 @@ public class MemberController {
 			@RequestParam(value = "file") MultipartFile file, Model model) throws Exception {
 
 		
+		
 		// 1. fileName 설정 + eventVO에 fileName 저장
 		String fileName = "C:\\Users\\RYU\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
 		String saveFileName = file.getOriginalFilename();
@@ -178,23 +188,60 @@ public class MemberController {
 		return "member/memberDelclear";
 
 	}
+	//나만의 메뉴 넣기	
+	@RequestMapping(value = "/Latest-Order.do", method = RequestMethod.POST)
+	public String myMenu(UserVO member, BindingResult result,
+			@RequestParam(value = "myMenu") MultipartFile myMenu, Model model) throws Exception {
+
+		System.out.println(member.toString());
+		memberService.getMemberUpdate(member);
+		UserVO userVO = signService.login(member);
+
+		model.addAttribute("loginVO", userVO);
+
+		return "member/myMenu";
+
+	}
+	
 
 	// 최근 주문 내역
 	@RequestMapping(value = "/Latest-Order.do")
-	public String cart(Model model) {
-		if (!model.containsAttribute("Latest-Order")) {
-			model.addAttribute("Latest-Order", new ArrayList<MenuVO>());
-		}
+	public String Cart(@Param(value = "id") String id, HttpSession session) {
+
+		List<CartVO> cartList = cart_Service.selectMenu(id);
+
+		session.setAttribute("cartList", cartList);
+
 		return "member/Latest-Order";
 	}
-
-	// 최근 주문 내역
-	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(@ModelAttribute MenuVO menuVO, @ModelAttribute("Latest-Order") List<MenuVO> LatestOrder) {
-		LatestOrder.add(menuVO);
-		return "redirect:/";
+	
+	
+	@RequestMapping(value="/deleteCart", method = RequestMethod.POST )
+	public void DeleteCart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no, HttpSession session) throws Exception{
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
+		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		CartVO cartVO = new CartVO();
+		int number = no;
+		System.out.println(userVO);
+		System.out.println(no);
+		cartVO.setNo(number);
+		cartVO.setId(userVO.getId());
+		cart_Service.deleteCart(cartVO);
+		
+		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
+		for(int i = 0; i < cartList.size(); ++i) {
+			
+			System.out.println(cartList.get(i));
+		}
+		session.setAttribute("cartList", cartList);
+		System.out.println("삭제됨");
 	}
 	
+	
+	
+
 	// <Claim 컨트롤러>
 	// Claim 전체보기
 	@RequestMapping("/myQnA.do")

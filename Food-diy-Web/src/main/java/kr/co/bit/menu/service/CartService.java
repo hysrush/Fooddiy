@@ -12,5 +12,6 @@ public interface CartService {
 	void updateCart(CartVO cartVO);
 	void updateProductQty(CartVO cartVO);
 	void deleteCart(CartVO cartVO);
-	
+	//최근주문 내역
+	List<CartVO> selectMenu(String id);
 }

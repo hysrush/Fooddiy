@@ -82,6 +82,7 @@
 	
 	
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript">
 /* function Check(form) {
@@ -110,7 +111,9 @@ function fwrite_submit() {
 		return true;
 	}
 	else {
-		alert('약관에 동의해주세요.');
+		
+            swal("약관에 동의 해주세요.");
+            
 		return false;
 	}
 }

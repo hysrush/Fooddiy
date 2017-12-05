@@ -12,4 +12,5 @@ public interface CartDAO {
 	void update(CartVO cartVO);
 	void updateProductQty(CartVO cartVO);
 	void delete(CartVO cartVO);
+	List<CartVO> selectMenu(String id);
 }
