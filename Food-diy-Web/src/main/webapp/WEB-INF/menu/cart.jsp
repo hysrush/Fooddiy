@@ -165,7 +165,7 @@
 										<div class="panel panel-default">
 											<div class="panel-heading">
 												<h4 class="panel-title">
-													<a class="accordion-toggle" data-toggle="collapse" href="#panel-cart-total" aria-expanded="true"> 결제정보 </a>
+													<a>결제정보</a>
 												</h4>
 											</div>
 											<div id="panel-cart-total" class="accordion-body collapse in" aria-expanded="true">

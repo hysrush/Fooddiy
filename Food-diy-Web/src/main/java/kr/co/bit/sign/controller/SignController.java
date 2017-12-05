@@ -245,6 +245,21 @@ public class SignController {
 			model.addAttribute("kakaoVO", kakaoVO);
 			return "sign/kakaoSignUp";
 		}
+		
+		//장바구니
+        CartVO cartVO = new CartVO();
+        cartVO.setId(login.getId());
+		
+        List<CartVO> cartList = cartService.selectAllCart(cartVO);
+        CartStoreVO cartStoreVO = null;
+        
+        if(cartList.size() != 0) {
+        	System.out.println("null 아님");
+        	cartStoreVO = cartStoreService.selectOneCartStore(userVO.getId());
+        	model.addAttribute("cartStoreVO", cartStoreVO);
+        }
+		model.addAttribute("cartList", cartList);
+		
 
 		model.addAttribute("loginVO", userVO);
 		model.addAttribute("msg", "로그인!");
