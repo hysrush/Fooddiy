@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.member.dao.MemberDAO;
+import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.user.vo.UserVO;
 
 
@@ -46,6 +47,18 @@ public class MemberServiceImp  implements MemberService  {
 		
 		memberDAO.delete(id);
 	}
+
+	@Override
+	public void setmyMenu(CartVO member) {
+		memberDAO.setmyMenu(member);
+		
 	
+	}
+
+	@Override
+	public List<CartVO> getmyMenu(String id) {
+		return memberDAO.getmyMenu(id);
+	}
+
 	
 }

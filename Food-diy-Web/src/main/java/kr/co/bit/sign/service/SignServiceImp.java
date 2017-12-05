@@ -167,4 +167,5 @@ public class SignServiceImp implements SignService {
 		
 		return signDAOImp.checkMember(phoneCert);
 	}
+
 }

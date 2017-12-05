@@ -70,6 +70,7 @@
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
 <script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <style type="text/css">
 #div01 {
 	width: 70px;
@@ -78,6 +79,35 @@
 	border-style: solid;
 }
 </style>
+<script>
+$(document).ready(function(){
+	
+	$('table .remove_product').each(function() {
+		
+		$(this).click(function() {
+			
+			$(this).parent().remove();
+			
+			var no = $(this).siblings('.cartNo').text();
+			var id = "${ loginVO.id }";
+			
+			//상품삭제
+			$.ajax({
+				url : "${pageContext.request.contextPath}/member/deleteCart",
+				type : "post",
+				data : {
+					"no" : no,
+					"id" : id
+				},
+				success : function() {
+					window.location.reload();
+				}
+			});
+		});
+	});
+
+});
+</script>
 </head>
 <body>
 	<div class="body">
@@ -120,7 +150,7 @@
 									<li class="active">
 										<a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a>
 									</li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
@@ -139,21 +169,34 @@
 														<tr>
 															<th style="text-align: center; font-size: 100%;"></th>
 															<th class="hidden-xs" style="width: 400px; text-align: center; font-size: 100%;"><h4 align="right" class="heading-primary text-uppercase mb-md"></h4></th>
-															<th colspan="2" style="width: 80px;"><h4 align="center" style="font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md">주문내용</h4></th>
+															<th colspan="2" style="width: 80px;"><h4 align="right" style="margin-right:15%; font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md">주문내용</h4></th>
 															<th colspan="1" style="width: 50px; "><h4 align="center" style="font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md ">가격</h4></th>
-															<th style="width: 50px;"><h4 style="margin-left: 40%; font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md ">날짜</h4></th>
+															<th style="width: 60px;"><h4 style="margin-left: 40%; font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md ">날짜</h4></th>
 															
 															<!-- hidden-xs 안나오게 하는것 -->
 														</tr>
+														<c:choose>
+														<c:when test="${not empty cartList }">   <!-- 카트 디비가 비워져있으면 뜨게 하는것 -->
 														<c:forEach items="${ cartList }" var="cart">
 															<tr class="cart-subtotal">
-																<td class="product-thumbnail" style="width: 40px; height: 30px">
-																	<a href="#">
-																	<img id="myMenu"  alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/AA.jpg">
-																	</a>
+																<td class="cartNo" style="display: none;">${ cart.no }</td>
+																<td class="product-thumbnail" style="width: 30px; height: 30px">
+																	<form action="${pageContext.request.contextPath }/member/Latest-Order.do" method="post">
+																		<input type="hidden" name="id" value="${cart.id }">																		
+																		<input type="hidden" name="name" value="${cart.name }">																		
+																		<input type="hidden" name="price" value="${cart.price }">
+																		<input type="hidden" name="pic" value="${ cart.pic }" />
+																		<input type="hidden" name="size" value="${ cart.size }" />
+																		<input type="hidden" name="bread" value="${cart.bread }">																
+																		<input type="hidden" name="cheese" value="${cart.cheese }">																		
+																		<input type="hidden" name="topping" value="${cart.topping }">																		
+																		<input type="hidden" name="vegetable" value="${cart.vegetable }">																		
+																		<input type="hidden" name="sauce" value="${cart.sauce }">																		
+																		<input style="width: 35px; height: 30px" type="image" name="submit" src="${ pageContext.request.contextPath }/resources/img/AA.jpg" value=""/>
+																	</form>
 																</td>
 																<td style="margin-left: 20%; width: 5%" class="product-action-td remove_product">
-																	<a href="#" title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a>
+																	<a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a>
 																</td>
 																<td class="hidden-xs" style="width: 30%;">
 																	<a><img style="width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
@@ -169,6 +212,9 @@
 																</td>
 															</tr>
 														</c:forEach>
+														</c:when>
+														<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
+														</c:choose>
 													</tbody>
 												</table>
 												</div> 

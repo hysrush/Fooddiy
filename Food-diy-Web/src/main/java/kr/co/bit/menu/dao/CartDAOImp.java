@@ -56,6 +56,19 @@ public class CartDAOImp implements CartDAO {
 		
 		return sqlSession.selectList("kr.co.bit.menu.dao.CartDAO.selectmenu", id);
 	}
+
+	@Override
+	public List<CartVO> cartDelete(CartVO vo) {
+		// 최근 주문 내역 삭제
+		sqlSession.delete("kr.co.bit.menu.dao.CartDAO.cartDelete", vo.getNo());
+		
+		// 삭제 후 목록
+		System.out.println(vo.getId());
+		List<CartVO> cart = sqlSession.selectList("kr.co.bit.menu.dao.CartDAO.selectmenu", vo.getId());
+		
+		System.out.println(cart.toString());
+		return cart;
+	}
 	
 	
 

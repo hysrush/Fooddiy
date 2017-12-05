@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,30 +54,6 @@ public class MemberController {
 	@Autowired
 	private CartService cart_Service;
 	
-	
-	
-	
-	@RequestMapping("/myMenu.do")
-	public String myMenu() {
-
-		return "member/myMenu";
-
-	}
-
-	/*
-	 * @RequestMapping("/memberDelcheck.do") public String memberDelcheck(){
-	 * 
-	 * return "member/memberDelcheck";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping("/memberDelclear.do") public String memberDelclear(){
-	 * 
-	 * return "member/memberDelclear";
-	 * 
-	 * }
-	 * 
-	 */
 	// ---------------------------------------------------------------------------------------------------
 	// 회원정보 페이지 보여 주는 거
 	@RequestMapping("/memberDetail.do")
@@ -101,9 +78,6 @@ public class MemberController {
 		}
 
 		return "member/memberUpdate";
-		
-		
-		
 		
 	}
 
@@ -188,24 +162,31 @@ public class MemberController {
 		return "member/memberDelclear";
 
 	}
+	
 	//나만의 메뉴 넣기	
 	@RequestMapping(value = "/Latest-Order.do", method = RequestMethod.POST)
-	public String myMenu(UserVO member, BindingResult result,
-			@RequestParam(value = "myMenu") MultipartFile myMenu, Model model) throws Exception {
+	public String myMenu(CartVO member, Model model) throws Exception {
 
 		System.out.println(member.toString());
-		memberService.getMemberUpdate(member);
-		UserVO userVO = signService.login(member);
-
-		model.addAttribute("loginVO", userVO);
-
-		return "member/myMenu";
+		memberService.setmyMenu(member);
+		
+		return "member/Latest-Order";
 
 	}
 	
+	//나만의 메뉴 select
+	@RequestMapping(value = "/myMenu.do")
+	public String myMenuSelect(String id, Model model) throws Exception {
+
+		List<CartVO> cart = memberService.getmyMenu(id);
+		model.addAttribute("cartList", cart);
+		
+		return "member/myMenu";
+
+	}
 
 	// 최근 주문 내역
-	@RequestMapping(value = "/Latest-Order.do")
+	@RequestMapping(value = "/Latest-Order.do", method = RequestMethod.GET)
 	public String Cart(@Param(value = "id") String id, HttpSession session) {
 
 		List<CartVO> cartList = cart_Service.selectMenu(id);
@@ -215,32 +196,16 @@ public class MemberController {
 		return "member/Latest-Order";
 	}
 	
-	
-	@RequestMapping(value="/deleteCart", method = RequestMethod.POST )
-	public void DeleteCart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value ="no")Integer no, HttpSession session) throws Exception{
+	// 최근 주문 내역 삭제
+	@RequestMapping(value="/deleteCart", method=RequestMethod.POST)
+	public String cartDelete(CartVO vo, Model model) throws Exception{
 		
-		response.setContentType("text/html;charset=UTF-8");
+		System.out.println(vo.toString());
+		List<CartVO> cart = cart_Service.cartDelete(vo);
+		model.addAttribute("cartList", cart);
 		
-		UserVO userVO = (UserVO)session.getAttribute("loginVO");
-		CartVO cartVO = new CartVO();
-		int number = no;
-		System.out.println(userVO);
-		System.out.println(no);
-		cartVO.setNo(number);
-		cartVO.setId(userVO.getId());
-		cart_Service.deleteCart(cartVO);
-		
-		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
-		for(int i = 0; i < cartList.size(); ++i) {
-			
-			System.out.println(cartList.get(i));
-		}
-		session.setAttribute("cartList", cartList);
-		System.out.println("삭제됨");
+		return "삭제";
 	}
-	
-	
-	
 
 	// <Claim 컨트롤러>
 	// Claim 전체보기
