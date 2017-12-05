@@ -105,6 +105,10 @@
 	#storeName {
 		background-color: white;
 	}
+	.errorMsg {
+		font-size: 6px;
+		color: red;
+	}
 </style>
 <script type="text/javascript">
 	
@@ -412,7 +416,7 @@
 														</th>
 														<td>
 															<form:input path="title" type="text" class="form-control" id="title" name="title" placeholder="제목"/>
-															<form:errors path="title" class="form-control"></form:errors>
+															<form:errors path="title" class="form-control" id="title" cssClass="errorMsg"></form:errors>
 														</td>
 													</tr>
 													<tr>
