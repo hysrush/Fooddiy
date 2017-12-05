@@ -163,15 +163,15 @@
 														<c:when test="${ not empty cartList }">
 														<c:forEach items="${ cartList }" var="cart">
 															<tr class="cart_table_item">
-															<td style=" width: 10px" class="col-md-1">
-															<span style=" width: 10px" class="member-box checkbox">
+															<td style=" width: 15px" class="col-md-1">
+															<span style=" width: 15px" class="member-box checkbox">
 																<label for="memberme">
 																	<h5><input  type="checkbox" id="member3" name="member3"></h5>
 																</label>
 															</span>
 															</td>
 																<td class="hidden-xs" style="width: 30%;">
-																	<a><img style="width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
+																	<a><img style="margin-left:10%; width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
 																</td>
 																<td align="center" style="width: 100px; font-size: 100%;">
 																	<span class="amount">${ cart.bread }<br />${cart.cheese }<br />${ cart.topping }<br />${ cart.vegetable }<br />${ cart.sauce }</span>
@@ -188,9 +188,9 @@
 																		</div>
 																	</form>
 																</td>
-																<td style="padding-right:5px;">
+																<!-- <td style="padding-right:5px;">
 																	<button style=" width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
-																</td>
+																</td> -->
 															</tr>
 															</c:forEach>
 															</c:when>
