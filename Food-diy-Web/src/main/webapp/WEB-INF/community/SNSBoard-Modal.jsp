@@ -56,7 +56,7 @@
 							<div class="testimonial-author-thumbnail">
 								<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.png" class="img-responsive img-circle" alt="">
 							</div>
-								<p><strong>hysrush</strong></p>
+								<p><strong>${loginVO.id}</strong></p>
 						</div>
 					</div>
 
