@@ -394,7 +394,7 @@
 								<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
 								<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/notice/qna.jsp"> Community <span class="tip tip-hot">Hot!</span></a>
+						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/community/qna.do"> Community <span class="tip tip-hot">Hot!</span></a>
 							<ul class="dropdown-menu">
 								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
 								<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a></li>

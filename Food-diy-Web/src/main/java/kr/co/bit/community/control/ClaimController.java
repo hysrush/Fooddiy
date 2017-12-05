@@ -32,6 +32,9 @@ import kr.co.bit.community.vo.ClaimBoardVO;
 import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.sign.service.SignService;
+import kr.co.bit.sign.vo.LoginVO;
+import kr.co.bit.user.vo.UserVO;
 
 @RequestMapping("/community")
 @Controller
@@ -41,6 +44,8 @@ public class ClaimController {
 	private ClaimService claimService;
 	@Autowired
 	private EventService eventService;
+	@Autowired
+	private SignService signServiceImp;
 	
 	// <Claim 컨트롤러>
 	// Claim 전체보기
@@ -60,12 +65,33 @@ public class ClaimController {
 	
 	// Claim 새 글쓰기폼
 	@RequestMapping(value="/claimWrite.do", method=RequestMethod.GET)
-	public String writeForm(Model model) {
+	public String writeForm(Model model, HttpSession session) {
 		
 		List<CityVO> cityList = eventService.selectCity();
 		
 		// Form에서 가져온 Data를 ClaimBoardVO 객체 형태로 저장
 		ClaimBoardVO claimVO = new ClaimBoardVO();
+
+		// 로그인 회원 정보 가져오기
+		UserVO signIn = (UserVO)session.getAttribute("loginVO");
+		
+		// 1) 이메일
+		String loginEmail = signIn.getEmail();
+		String[] fullEmail = loginEmail.split("@");
+		String emailId = fullEmail[0];
+		String emailDomain = fullEmail[1];
+		
+		model.addAttribute("emailId", emailId);
+		model.addAttribute("emailDomain", emailDomain);
+		
+		// 2) 휴대폰
+		String loginPhone = signIn.getPhone();
+		String[] fullPhone = loginPhone.split("-");
+		String middleNum = fullPhone[1];
+		String lastNum = fullPhone[2];
+		
+		model.addAttribute("middleNum", middleNum);
+		model.addAttribute("lastNum", lastNum);
 		
 		// 공유영역에 등록
 		model.addAttribute("claimVO", claimVO);

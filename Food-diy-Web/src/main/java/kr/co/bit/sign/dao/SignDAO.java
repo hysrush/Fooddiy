@@ -24,4 +24,5 @@ public interface SignDAO {
 	
 	//가입 확인
 	int checkMember(UserVO phoneCert);
+	
 }

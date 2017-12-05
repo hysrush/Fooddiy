@@ -342,13 +342,13 @@
 														</th>
 														<td>
 															<form:input path="emailID" type="text" class="mail_input form-control" 
-																	id="emailID" name="emailID" value="loginUserEmailId"/>
+																	id="emailID" name="emailID" value="${ emailId }"/>
 															<span style="float: left;">&nbsp;&nbsp;<i class="fa fa-at"></i>&nbsp;&nbsp;</span>
 															<input type="text" class="mail_input form-control" 
-																	id="inputDomain" name="inputDomain" value="loginUserEmailDomain" readonly="readonly"/>
+																	id="inputDomain" name="inputDomain" value="${ emailDomain }" readonly="readonly"/>
 															<span style="float: left;">&nbsp;&nbsp;</span>
 															<form:select path="emailDomain" class="mail_sel form-control" id="emailDomain" name="emailDomain">
-																<option value="loginUserEmailDomain">선택하세요</option>
+																<option value="${ emailDomain }">선택하세요</option>
 																<form:options items="${domainCode}"/>
 																<option value="etc">직접입력</option>
 															</form:select>
@@ -368,11 +368,12 @@
 																<form:option value="019">019</form:option>
 															</form:select>
 															<span style="float: left;">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-															<form:input path="phone2" type="text" class="phone_input form-control" 
-																		id="phone2" name="phone2" placeholder="중간번호" maxlength="4" ref="num"/>
+															<!-- placeholder="중간번호" -->
+															<form:input path="phone2" type="text" class="phone_input form-control" value="${ middleNum }"
+																		id="phone2" name="phone2" maxlength="4" ref="num"/>
 															<span style="float: left;">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-															<form:input path="phone3" type="text" class="phone_input form-control" 
-																		id="phone3" name="phone3" placeholder="마지막번호" maxlength="4" ref="num"/>
+															<form:input path="phone3" type="text" class="phone_input form-control" value="${ lastNum }"
+																		id="phone3" name="phone3" maxlength="4" ref="num"/>
 														</td>
 													</tr>
 													<tr>
@@ -443,7 +444,7 @@
 														</td>
 													</tr>
 												</table>
-												<form:hidden path="writer" value="로그인ID"/>
+												<form:hidden path="writer" value="${ loginVO.id }"/>
 												<!-- 정보활용 동의 -->
 												<section class="agree section section-default" style="height: 100px; padding-top: 20px;">
 													<div class="row ">
