@@ -163,7 +163,7 @@ public class SignController {
         cartVO.setId(login.getId());
 		
         List<CartVO> cartList = cartService.selectAllCart(cartVO);
-		CartStoreVO cartStoreVO = cartStoreService.selectOneCartStore(signIn.getId());
+        List<CartStoreVO> cartStoreVO = cartStoreService.selectOneCartStore(signIn.getId());
         
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("cartStoreVO", cartStoreVO);

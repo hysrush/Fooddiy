@@ -14,7 +14,7 @@
 		<result column="sto_phone" property="storePhone" />
 	</resultMap>
 
-	<select id="selectOneCartStore" parameterType="String">
+	<select id="selectOneCartStore" parameterType="String" resultMap="Map_cartVO">
 		select user_id, sto_name, sto_addr, sto_phone from t_CartStore
 		where user_id = #{id}
 	</select>

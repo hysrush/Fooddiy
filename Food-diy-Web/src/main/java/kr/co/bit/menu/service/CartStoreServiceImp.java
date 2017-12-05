@@ -1,5 +1,7 @@
 package kr.co.bit.menu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,8 @@ public class CartStoreServiceImp implements CartStoreService{
 	CartStoreDAO dao;
 	
 	@Override
-	public CartStoreVO selectOneCartStore(String id) {
-		CartStoreVO cartStoreVO = dao.selectOne(id);
+	public List<CartStoreVO> selectOneCartStore(String id) {
+		List<CartStoreVO> cartStoreVO = dao.selectOne(id);
 		return cartStoreVO;
 	}
 	

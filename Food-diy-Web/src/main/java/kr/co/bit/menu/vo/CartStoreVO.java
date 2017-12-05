@@ -34,4 +34,7 @@ public class CartStoreVO {
 		return "CartStoreVO [id=" + id + ", storeName=" + storeName + ", storeAddr=" + storeAddr + ", storePhone="
 				+ storePhone + "]";
 	}
+	
+	
+	
 }
