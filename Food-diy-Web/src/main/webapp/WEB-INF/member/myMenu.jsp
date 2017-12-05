@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,7 +138,7 @@
 								<ul class="nav nav-list mb-xlg">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
 									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
@@ -157,6 +159,9 @@
 												<form method="post" action="">
 													<table class="shop_table cart">
 														<tbody>
+														<c:choose>
+														<c:when test="${ not empty cartList }">
+														<c:forEach items="${ cartList }" var="cart">
 															<tr class="cart_table_item">
 															<td style=" width: 10px" class="col-md-1">
 															<span style=" width: 10px" class="member-box checkbox">
@@ -165,18 +170,14 @@
 																</label>
 															</span>
 															</td>
-																
-																<td style="width: 30px" class="product-thumbnail col-sm-12 col-xs-1">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:65%; height:15%"  class="img-responsive " src="${ pageContext.request.contextPath }/resources/img/products/product-1.jpg">
-																	</a> 
-																</td >
-																<td class="product-name">
-																	<a  href="shop-product-sidebar.html">선택한 재료 내용</a>
-																	
+																<td class="hidden-xs" style="width: 30%;">
+																	<a><img style="width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
+																</td>
+																<td align="center" style="width: 100px; font-size: 100%;">
+																	<span class="amount">${ cart.bread }<br />${cart.cheese }<br />${ cart.topping }<br />${ cart.vegetable }<br />${ cart.sauce }</span>
 																</td>
 																<td style="padding-right: 5px" class="product-price">
-																	<span class="amount">5,000</span>
+																	<span class="amount">${ cart.price }</span>
 																</td>
 																<td class="product-quantity">
 																	<form enctype="multipart/form-data" method="post" class="cart">
@@ -191,71 +192,10 @@
 																	<button style=" width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
 																</td>
 															</tr>
-															<tr class="cart_table_item">
-																	<td style="width: 50px" class="col-md-8">
-																<span style="width: 50px" class="member-box checkbox">
-																	<label for="memberme">
-																		<h5><input  type="checkbox" id="member3" name="member3"></h5>
-																	</label>
-																</span>
-																</td>
-																<td style="width: 50%" class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:65%; height:15%" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-2.jpg">
-																	</a>
-																</td>
-																<td style="width: 10px" class="product-name">
-																	<a href="shop-product-sidebar.html">선택한 재료 내용</a>
-																</td>
-																<td class="product-price">
-																	<span class="amount">4500</span>
-																</td>
-																<td class="product-quantity">
-																	<form enctype="multipart/form-data" method="post" class="cart">
-																		<div class="quantity">
-																			<input type="button" id="minus" class="minus" value="-">
-																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																			<input type="button"  id="plus" class="plus" value="+">
-																	</form>
-																</td>
-																<td>
-																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
-																</td>
-															</tr>
-															<tr class="cart_table_item">
-																	<td style="width: 50px" class="col-md-8">
-																<span style="width: 50px" class="member-box checkbox">
-																	<label for="memberme">
-																		<h5><input  type="checkbox" id="member3" name="member3"></h5>
-																	</label>
-																</span>
-																</td>
-																<td class="product-thumbnail">
-																	<a href="shop-product-sidebar.html">
-																		<img style="width:65%; height:15%" alt="" class="img-responsive" src="${ pageContext.request.contextPath }/resources/img/products/product-3.jpg">
-																	</a>
-																</td>
-																<td class="product-name">
-																	<a href="shop-product-sidebar.html">선택한 재료 내용</a>
-																</td>
-																<td class="product-price">
-																	<span class="amount">5500</span>
-																</td>
-																<td class="product-quantity">
-																	<form enctype="multipart/form-data" method="post" class="cart">
-																		<div class="quantity">
-																			<input type="button" id="minus" class="minus" value="-">
-																			<input type="text" id="qty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																			<input type="button"  id="plus" class="plus" value="+">
-																		</div>
-																	</form>
-																</td>
-																<td>
-																	<button style="width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
-																</td>
-															</tr>
-															<tr>
-															</tr>
+															</c:forEach>
+															</c:when>
+															<c:otherwise>나만의 메뉴가 없습니다.</c:otherwise>
+															</c:choose>
 														</tbody>
 													</table>
 												</form>

@@ -14,4 +14,5 @@ public interface CartService {
 	void deleteCart(CartVO cartVO);
 	//최근주문 내역
 	List<CartVO> selectMenu(String id);
+	List<CartVO> cartDelete(CartVO vo);
 }

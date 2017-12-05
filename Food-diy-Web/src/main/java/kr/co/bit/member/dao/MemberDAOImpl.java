@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.user.vo.UserVO;
 
 @Repository
@@ -45,4 +46,15 @@ public class MemberDAOImpl implements MemberDAO {
 	public void updateStore(UserVO userVO) {
 		sqlSession.update("kr.co.bit.member.dao.updateStore", userVO);
 	}
+
+	@Override
+	public void setmyMenu(CartVO member) {
+		sqlSession.insert("kr.co.bit.member.dao.setmyMenu", member);
+	}
+
+	@Override
+	public List<CartVO> getmyMenu(String id) {
+		return sqlSession.selectList("kr.co.bit.member.dao.getmyMenu", id);
+	}
+
 }

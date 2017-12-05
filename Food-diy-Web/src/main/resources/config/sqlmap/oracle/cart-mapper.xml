@@ -92,4 +92,10 @@
 		ORDER BY cart_no ASC
 	</select>
 	
+	<!-- 최근 주문 내역 삭제 -->
+	<delete id="cartDelete" parameterType="java.lang.Integer">
+		delete from t_cart
+		where cart_no = #{no}
+	</delete>
+
 </mapper>
