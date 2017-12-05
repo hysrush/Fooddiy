@@ -150,7 +150,7 @@
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#tabsNavigationSimpleIcons1" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none">
-													<!-- <i class="icon-featured fa fa-user bread"></i> --> <img style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/bread_wheat.jpg" />
+													<!-- <i class="icon-featured fa fa-user bread"></i> --> <img class="ing-image" src="${pageContext.request.contextPath }/resources/img/menu_icon/bread_wheat.jpg" />
 
 											</span>
 										</span>
@@ -160,7 +160,7 @@
 										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons2" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
-													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/cheese_old_english.jpg" />
+													class="ing-image" src="${pageContext.request.contextPath }/resources/img/menu_icon/cheese_old_english.jpg" />
 
 											</span>
 										</span>
@@ -170,7 +170,7 @@
 										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons3" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
-													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/topping_double_meat.jpg" />
+													class="ing-image" src="${pageContext.request.contextPath }/resources/img/menu_icon/topping_double_meat.jpg" />
 											</span>
 										</span>
 									</span>
@@ -179,7 +179,7 @@
 										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons4" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
-													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/vegetable_lettuce.jpg" />
+													class="ing-image" src="${pageContext.request.contextPath }/resources/img/menu_icon/vegetable_lettuce.jpg" />
 											</span>
 										</span>
 									</span>
@@ -188,7 +188,7 @@
 										</p>
 								</a></li>
 								<li><a href="#tabsNavigationSimpleIcons5" data-toggle="tab"> <span class="featured-boxes featured-boxes-style-6 p-none m-none"> <span class="featured-box featured-box-primary featured-box-effect-6 p-none m-none"> <span class="box-content p-none m-none"> <img
-													style="width: 100px" src="${pageContext.request.contextPath }/resources/img/menu_icon/sauce_sweet_chilli.jpg" />
+													class="ing-image" src="${pageContext.request.contextPath }/resources/img/menu_icon/sauce_sweet_chilli.jpg" />
 											</span>
 										</span>
 									</span>
@@ -232,15 +232,15 @@
 											<tbody>
 												<tr>
 													<td>빵</td>
-													<td class = "bread-info"></td>
+													<td class="bread-info"></td>
 												</tr>
 												<tr>
 													<td>치즈</td>
-													<td class = "cheese-info"></td>
+													<td class="cheese-info"></td>
 												</tr>
 												<tr>
 													<td>토핑</td>
-													<td class = "topping-info"></td>
+													<td class="topping-info"></td>
 												</tr>
 												<tr>
 													<td>야채</td>
@@ -250,20 +250,21 @@
 													<td>소스</td>
 													<td class="sauce-info"></td>
 												</tr>
+												<tr>
+													<td>요구사항</td>
+													<td><textarea class="requirement-info" rows="3" cols="12"></textarea></td>
+												</tr>
 											</tbody>
 										</table>
 										<div class="row">
 											<div class="col-md-12">
 												<div class="col-md-12 actions-continue" style="">
 													<form class="order-form-web" method="post" action="${ pageContext.request.contextPath }/menu/cart.do" onsubmit="return webSubmint();">
-													
-														<input type="hidden" class="bread" name="bread" value="" /> 
-														<input type="hidden" class="cheese" name="cheese" value="" /> 
-														<input type="hidden" class="topping" name="topping" value="" /> 
-														<input type="hidden" class="vegetable" name="vegetable" value="" /> 
-														<input type="hidden" class="sauce" name="sauce" value="" />
+
+														<input type="hidden" class="bread" name="bread" value="" /> <input type="hidden" class="cheese" name="cheese" value="" /> <input type="hidden" class="topping" name="topping" value="" /> <input type="hidden" class="vegetable" name="vegetable" value="" /> <input type="hidden"
+															class="sauce" name="sauce" value="" /> <input type="hidden" class="requirement" name="requirement" value="" />
 														<div style="text-align: center">
-															<button type="submit" style="width : 200px; height : 50px; background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
+															<button type="submit" style="width: 200px; height: 50px; background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
 														</div>
 													</form>
 												</div>
@@ -274,7 +275,7 @@
 							</div>
 						</div>
 					</aside>
-					
+
 				</div>
 			</div>
 		</div>
@@ -381,17 +382,14 @@
 			<div class="row">
 				<div style="text-align: center;">
 					<form class="order-form" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
-						<input type="hidden" class="bread" name="bread" value="" /> 
-						<input type="hidden" class="cheese" name="cheese" value="" /> 
-						<input type="hidden" class="topping" name="topping" value="" /> 
-						<input type="hidden" class="vegetable" name="vegetable" value="" /> 
-						<input type="hidden" class="sauce" name="sauce" value="" />
+						<input type="hidden" class="bread" name="bread" value="" /> <input type="hidden" class="cheese" name="cheese" value="" /> <input type="hidden" class="topping" name="topping" value="" /> <input type="hidden" class="vegetable" name="vegetable" value="" /> <input type="hidden" class="sauce"
+							name="sauce" value="" />
 						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 					</form>
 				</div>
 			</div>
 
-			
+
 
 			<div class="modal order-modal-final" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
 				<div class="modal-dialog" style="top: 30%">
@@ -415,7 +413,7 @@
 	</div>
 
 	<script type="text/javascript">
-		function webSubmint() {
+		function webSubmint() {			
 			
 			if($('.order-table').find('.bread-info div').length < 1)  {
 				$('.order-modal-info').find('.info').text('빵을 선택해주세요.');
@@ -429,8 +427,11 @@
 				$('.order-modal-info').find('.info').text('소스를 선택해주세요.');
 				$(".order-modal-info").modal();
 				return  false;
+			}else if($('.requirement-info').val().length > 100) {
+				$('.order-modal-info').find('.info').text('100자 이하로 요구사항을 적어주세요.');
+				$(".order-modal-info").modal();
 			}
-			
+ 			
 			
 			var bread = $('.order-table').find('.bread-name').text();
 			var cheese =  $('.order-table').find('.cheese-name').text();
@@ -450,7 +451,7 @@
 			for(var i = 0; i < vegetableCnt; ++i) {
 				vegetable += $('.order-table').find('.vegetable-info').children().eq(i).text();
 				if(i + 1 < vegetableCnt) {
-					topping += ",";
+					vegetable += ", ";
 				}
 			}
 			
@@ -462,11 +463,15 @@
 
 			}
 			
+			var requirement = $('.requirement-info').val();
+			
 			$('.order-form-web .bread').attr('value', bread);
 			$('.order-form-web .cheese').attr('value', cheese);
 			$('.order-form-web .topping').attr('value', topping);
 			$('.order-form-web .vegetable').attr('value', vegetable);
 			$('.order-form-web .sauce').attr('value', sauce);
+			$('.order-form-web .requirement').attr('value', requirement);
+			
 			
 			return true;
 		}
@@ -484,6 +489,9 @@
 					$('.order-modal-info').find('.info').text('소스를 선택해주세요.');
 					$(".order-modal-info").modal();
 					return  false;
+			}else if($('.requirement-table').val().length > 100) {
+				$('.order-modal-info').find('.info').text('100자 이하로 요구사항을 적어주세요.');
+				$(".order-modal-info").modal();
 			}
 			
 			var bread = $('.bread-table').find('.name').text().split()[0].trim();
@@ -511,12 +519,15 @@
 			for(var i = 0; i < $('.sauce-table').find('tr').length; ++i) {
 				sauce += $('.sauce-table').find('.name').eq(i).text().split(' ')[0].trim() + " ";
 			}
+			
+			var requirement = $('.requirement-info').val();
 		
 			$('.order-form .bread').attr('value', bread);
 			$('.order-form .cheese').attr('value', cheese);
 			$('.order-form .topping').attr('value', topping);
 			$('.order-form .vegetable').attr('value', vegetable);
 			$('.order-form .sauce').attr('value', sauce);;
+			$('.order-form .requirement').attr('value', requirement);;
 			
 			return true;			
 		}

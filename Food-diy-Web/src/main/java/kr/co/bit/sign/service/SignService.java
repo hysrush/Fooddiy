@@ -13,4 +13,5 @@ public interface SignService {
 	String sender(UserVO member);
 	UserVO nonSignUp(UserVO mail);
 	int checkMember(UserVO phoneCert);
+	
 }

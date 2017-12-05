@@ -129,6 +129,10 @@
             <mvc:mapping path="/menu/cart.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
+        <mvc:interceptor>  
+            <mvc:mapping path="/community/claimWrite.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>
     </mvc:interceptors>
 	
 </beans>

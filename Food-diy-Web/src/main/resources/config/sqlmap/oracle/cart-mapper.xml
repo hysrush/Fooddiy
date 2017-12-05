@@ -10,7 +10,7 @@
 	<!-- sql 저장 : 전체 조회 -->
 	<sql id="selectAll">
 		SELECT cart_no, cart_id, cart_name, cart_price, cart_total_price, cart_size, cart_pic, cart_qty, cart_bread, cart_cheese, cart_topping, cart_vegetable,
-		cart_sauce, to_char(reg_at, 'yy-mm-dd') as reg_at
+		cart_sauce, cart_requirement, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_cart
 	</sql>
 	
@@ -29,6 +29,7 @@
 		<result column="cart_topping" property="topping"/>
 		<result column="cart_vegetable" property="vegetable"/>
 		<result column="cart_sauce" property="sauce"/>
+		<result column="cart_requirement" property="requirement"/>
 		<result column="reg_at" property="regDate"/>
 	</resultMap>
 	
@@ -43,10 +44,10 @@
 	
 	<insert id="insertCart" parameterType="cartVO">
 		insert into t_cart(cart_no, cart_id, cart_name, cart_price, cart_total_price, cart_size,
-		cart_pic, cart_bread, cart_cheese, cart_topping, cart_vegetable, cart_sauce)
+		cart_pic, cart_bread, cart_cheese, cart_topping, cart_vegetable, cart_sauce, cart_requirement)
 		 
 		values(seq_t_cart_no.nextval, #{id}, #{name}, #{price}, #{total_price}, #{size}, #{pic}
-		, #{bread}, #{cheese}, #{topping}, #{vegetable}, #{sauce})
+		, #{bread}, #{cheese}, #{topping}, #{vegetable}, #{sauce}, #{requirement})
 	</insert>
 	
 	<update id ="updateCart">
@@ -92,4 +93,10 @@
 		ORDER BY cart_no ASC
 	</select>
 	
+	<!-- 최근 주문 내역 삭제 -->
+	<delete id="cartDelete" parameterType="java.lang.Integer">
+		delete from t_cart
+		where cart_no = #{no}
+	</delete>
+
 </mapper>

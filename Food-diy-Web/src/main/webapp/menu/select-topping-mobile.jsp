@@ -12,7 +12,14 @@
 								<tr>
 									<td width="20%"><img style="width: 80px;" src="${ pageContext.request.contextPath }/resources/img/toppings/mobile/${ ingList.pic}" /></td>
 									<td width="50%"><strong class = "name">&nbsp;${ ingList.name} </strong> <strong class = "id">${ ingList.eng_name}</strong></td>
-									<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price commaN" style="float: right">+${ ingList.price}</strong></td>
+									<c:choose>
+										<c:when test='${ cartVO.size eq "30cm" }'>
+											<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price commaN" style="float: right">+${ ingList.price * 2}</strong></td>
+										</c:when>
+										<c:otherwise>
+											<td width="20%" style="text-align: right; color: red; font-size: 15px; "><strong class = "price commaN" style="float: right">+${ ingList.price * 2}</strong></td>
+										</c:otherwise>
+									</c:choose>
 								</tr>
 							</tbody>
 						</table>

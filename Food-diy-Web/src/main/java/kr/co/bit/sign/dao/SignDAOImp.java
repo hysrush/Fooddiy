@@ -11,6 +11,7 @@ public class SignDAOImp implements SignDAO {
 
 	@Autowired
 	private SqlSessionTemplate sql;
+	String url = "kr.co.bit.member.dao.";
 	
 	// 로그인
 	public UserVO login(UserVO login) {

@@ -148,6 +148,7 @@
 															<div>${ cartVO.topping }</div>
 															<div>${ cartVO.vegetable }</div>
 															<div>${ cartVO.sauce }</div>
+															<div>${ cartVO.requirement }</div>
 														<td class="qty-total">
 															<div class="qty-holder">
 																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cartVO.qty }"> <a  class="qty-inc-btn" title="Inc">+</a> <a  class="edit-qty"><i class="fa fa-pencil"></i></a>
@@ -165,7 +166,7 @@
 										<div class="panel panel-default">
 											<div class="panel-heading">
 												<h4 class="panel-title">
-													<a class="accordion-toggle" data-toggle="collapse" href="#panel-cart-total" aria-expanded="true"> 결제정보 </a>
+													<a>결제정보</a>
 												</h4>
 											</div>
 											<div id="panel-cart-total" class="accordion-body collapse in" aria-expanded="true">
