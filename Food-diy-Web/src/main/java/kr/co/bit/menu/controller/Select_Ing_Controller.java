@@ -54,8 +54,10 @@ public class Select_Ing_Controller {
 			cartStoreVO.setStoreName(storeName);
 			cartStoreVO.setStoreAddr(storeAddr);
 			cartStoreVO.setStorePhone(storePhone);
+			
+			System.out.println("cartStoreVO null");
+			
 			cartStore_Service.insertCartStore(cartStoreVO);
-
 			session.setAttribute("cartStoreVO", cartStoreVO);
 		}
 
@@ -127,9 +129,8 @@ public class Select_Ing_Controller {
 		}
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("menu/cart");
 		
-		return "redirect:menu/cart";
+		return "redirect:/cart";
 	}
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
@@ -137,6 +138,7 @@ public class Select_Ing_Controller {
 		return "menu/cart";
 	}
 
+	//장바구니에 등록된 메뉴삭제
 	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
 	public void DeleteCart(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "no") Integer no, HttpSession session) throws Exception {
@@ -164,7 +166,9 @@ public class Select_Ing_Controller {
 		
 		session.setAttribute("cartList", cartList);
 	}
-
+	
+	
+	//장바구니에 등록된 메뉴의 수량 변경
 	@RequestMapping(value = "/productQtyUpdate", method = RequestMethod.POST)
 	public void ProductQtyUpdate(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "no") Integer no, @RequestParam(value = "totalQty") Integer totalQty,
