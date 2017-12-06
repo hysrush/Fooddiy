@@ -175,7 +175,11 @@
 														<tbody>
 															<tr>
 																<td>매장</td>
-																<td><div> ${ cartStoreVO.storeName } </div></td>
+																<td><div>
+																		<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="chageStore()">변경</button> 
+																		${ cartStoreVO.storeName }  
+																	</div>
+																</td>
 															</tr>
 															<tr>
 																<td>주소</td>
@@ -197,7 +201,7 @@
 													</table>
 													<div class="row">
 														<div class="col-md-12">
-															<div class="col-md-12 actions-continue" style="">
+															<div class="col-md-12 actions-continue" >
 																<form method="get">
 																														
 																	<button type="submit" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
@@ -383,6 +387,11 @@
 		function menuList() {
 			location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 		}
+		
+		function changeStore() {
+			location.href = "${pageContext.request.contextPath}/store/findStore.do"
+		}
+		
 	</script>
 
 	<footer id="footer">

@@ -113,6 +113,12 @@
 	
 	$(document).ready(function(){
 		
+		$('.direct-order-button').removeClass('btn-primary');
+		$('.go-cart-button').removeClass('btn-primary');
+		
+		$('.direct-order-button').css('color','white');
+		$('.go-cart-button').css('color','white');
+		
 		// DatePicker
 		$('#visitDate').datepicker({
 			format : 'yyyy-mm-dd',	// 날짜 포맷

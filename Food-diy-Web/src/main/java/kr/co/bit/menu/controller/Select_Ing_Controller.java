@@ -115,11 +115,14 @@ public class Select_Ing_Controller {
 
 			// 장바구니에 추가
 			cart_Service.insertCart(cartVO);
-
+			
 			// 모든 잘바구니 불러오기
 			List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
 
 			session.setAttribute("cartList", cartList);
+			
+			//장바구니에 넣어주고 carVO를 비워준다.
+			session.setAttribute("cartVO", null);
 		}
 
 		ModelAndView mav = new ModelAndView();

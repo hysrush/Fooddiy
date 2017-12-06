@@ -68,3 +68,13 @@
 	}
 }
 
+@media (min-width: 992px) {
+	
+	#storeDiv1 {
+		width: 590px;
+	}
+}
+
+ .table-bordered tr > th {
+ 	width : 95px;
+ }

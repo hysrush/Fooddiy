@@ -78,7 +78,7 @@
 									</div>
 								</div>
 							</section>
-							<div class="form-group" style="max-width: 600px;">
+							<div class="form-group" style="width : 100%;">
 								<h4 class="mt-xlg mb-none text-uppercase">&nbsp;&nbsp;<strong id="searchInfo1" >지역을 선택해주세요</strong></h4>
 								<br>
 								<div class="col-md-12 row" id="storeDiv1" >

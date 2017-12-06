@@ -15,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.event.vo.locationVO;
 import kr.co.bit.menu.vo.CartVO;
-import kr.co.bit.menu.vo.IngredientsVO;
 import kr.co.bit.service.StoreService;
 import kr.co.bit.user.vo.UserVO;
 
@@ -37,7 +35,7 @@ public class StoreController {
 	@Autowired
 	private EventService eventService;
 	
-	@RequestMapping("/findStore.do")
+	@RequestMapping(value = "/findStore.do", method=RequestMethod.POST)
 	public ModelAndView list(HttpSession session, String name, String price, String size, String pic) {
 		List<CityVO> cityList = storeService.selectCity();
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
@@ -61,6 +59,16 @@ public class StoreController {
 		
 		System.out.println(cityList);
 				
+		return mav;
+	}
+	
+	@RequestMapping(value = "/findStore.do", method=RequestMethod.GET)
+	public ModelAndView list2() {
+		List<CityVO> cityList = storeService.selectCity();
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("store/FindStore");
+		mav.addObject("cityList", cityList);
 		return mav;
 	}
 	

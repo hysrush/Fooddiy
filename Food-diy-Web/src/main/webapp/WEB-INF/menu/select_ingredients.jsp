@@ -142,7 +142,7 @@
 			</div>
 
 
-			<div class="container web">
+			<div class="container web" style="min-height: 800px ">
 
 
 				<div class="row">
@@ -258,7 +258,7 @@
 										</table>
 										<div class="row">
 											<div class="col-md-12">
-												<div class="col-md-12 actions-continue" style="">
+												<div class="col-md-12 actions-continue" >
 													<form class="order-form-web" method="post" action="${ pageContext.request.contextPath }/menu/cart.do" onsubmit="return webSubmint();">
 
 														<input type="hidden" class="bread" name="bread" value="" /> <input type="hidden" class="cheese" name="cheese" value="" /> <input type="hidden" class="topping" name="topping" value="" /> <input type="hidden" class="vegetable" name="vegetable" value="" /> <input type="hidden"

@@ -161,7 +161,8 @@
 									</div>
 
 									<div class="cart-actions">
-										<a href="#" class="btn btn-primary" style="background-color: #0cc485;">바로주문</a> <a href="${ pageContext.request.contextPath}/menu/cart.do" class="btn btn-primary" style="background-color: #eb2771;">장바구니</a>
+										<a href="#" class="btn btn-primary direct-order-button" style="background-color: #0cc485;">바로주문</a>
+										<a href="${ pageContext.request.contextPath}/menu/cart.do" class="btn btn-primary go-cart-button" style="background-color: #eb2771;">장바구니</a>
 									</div>
 									<div class = "cart-none"style="text-align: center; display: none; padding: 10px 10px 10px 10px; margin-top: 10px;">
 										<h4>상품 주문내역이 없습니다.</h4>

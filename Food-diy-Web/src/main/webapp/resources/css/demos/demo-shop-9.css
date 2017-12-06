@@ -2730,7 +2730,9 @@ h2.word-rotator-title .word-rotate {
 	content: "\f0d8";
 	width: 26px;
 	height: 26px;
-	display: block;
+	/* 수정했음 - 서윤철  */
+	/* display: block; */
+	display: none;
 	border: 1px solid #ddd;
 	position: absolute;
 	right: 15px;
@@ -4255,6 +4257,7 @@ label .required {
 		padding-left: 30px;
 		padding-right: 30px;
 	}
+
 }
 
 .blog-posts article {
