@@ -94,6 +94,9 @@
 	crossorigin="anonymous">
 
 
+
+
+
 </head>
 <body>
 	<div class="body">
@@ -173,31 +176,33 @@
 															<img src="" class="img-responsive img-circle" alt="">
 														</div>
 														<p>
-															<strong>db사용자 아이디</strong>
+															<strong>${snsVO.id }</strong>
 														</p>
 													</div>
-												</div> <span class="product-thumb-info" > <a
-													href="${ pageContext.request.contextPath }/community/SNSBoard-Modal.do"
-													data-ajax-on-modal> <span
-														class="thumb-info thumb-info-lighten"> <span
-															class="thumb-info-wrapper"> <img
-																src="../upload/${ snsVO.fileName }"
-																class="img-responsive" style="width:250px;height:250px">
-														</span>
-													</span>
-												</a> <span class="product-thumb-info-content"> <a
-														href="${ pageContext.request.contextPath }/notice/SNSBoard-Modal.jsp">
-															<span>
-																<button type="button"
-																	class="mb-xs mt-xs mr-xs btn btn-borders btn-info">
-																	<i class="fa fa-thumbs-up"></i>
-																</button>
-														</span> <span>
-																<h4>${snsVO.title }</h4>
-														</span>
+												</div>
+												<div data-toggle="modal">
+													<span class="product-thumb-info">
+													<span class="thumb-info thumb-info-lighten">
+												 <a onclick="modal('${ snsVO.no }')">
+														<span class="thumb-info-wrapper"> 
+														<img src="../upload/${ snsVO.fileName }" class="img-responsive" style="width: 250px; height: 250px">
+															</span>
 													</a>
-												</span>
-											</span>
+													</span>
+													 <span class="product-thumb-info-content"> <a
+															href="${ pageContext.request.contextPath }/notice/SNSBoard-Modal.jsp">
+																<span>
+																	<button type="button"
+																		class="mb-xs mt-xs mr-xs btn btn-borders btn-info">
+																		<i class="fa fa-thumbs-up"></i>
+																	</button>
+															</span> <span>
+																	<h4>${snsVO.title }</h4>
+															</span>
+														</a>
+													</span>
+													</span>
+												</div>
 											</li>
 										</c:forEach>
 									</ul>
@@ -236,8 +241,8 @@
 						</form>
 					</div>
 
-					
-					<div class = "col-md-12" align="right">
+
+					<div class="col-md-12" align="right">
 						<a
 							href="${ pageContext.request.contextPath }/community/snsWrite.do"><input
 							type="button" value="글 등록 " /></a>
@@ -259,7 +264,32 @@
 
 	</div>
 
-<script>
+
+	<!-- 모달들 -->
+	<div class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="largeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<!-- 모달내용 -->
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+	function modal(snsNo) {
+	      $(".thumb-info").click(function() {
+	    	  $('div.modal').modal().removeData();
+	         var url = '${ pageContext.request.contextPath}/community/snsDetail.do?no='+snsNo;
+	         $('div.modal').modal({ remote : url  });
+	       
+	      })
+	   };
+
+	</script>
+
+
+	<script>
 			function frmPaging() {
 			    document.getElementById("frmPaging").submit();
 			}
@@ -308,10 +338,18 @@
 			        }
 			    });
 			}
+			
+			
+			
+			
+			
+		
+
+			
 
 
-			</script>	
-	
+			</script>
+
 
 
 	<!-- Vendor -->

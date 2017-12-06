@@ -44,8 +44,6 @@ public class ClaimController {
 	private ClaimService claimService;
 	@Autowired
 	private EventService eventService;
-	@Autowired
-	private SignService signServiceImp;
 	
 	// <Claim 컨트롤러>
 	// Claim 전체보기
@@ -105,10 +103,11 @@ public class ClaimController {
 	public String write(@Valid ClaimBoardVO claimVO, BindingResult result,
 						@RequestParam(value="file") MultipartFile file) throws Exception {
 		
-		/*if (result.hasErrors()) {
+		if (result.hasErrors()) {
 			// 에러일때 true => writeForm으로
-			return "community/claimWrite";
-		}*/
+			System.out.println("test");
+			//return "community/claimWrite";
+		}
 		
 		if (file != null) {
 			// 파일 업로드

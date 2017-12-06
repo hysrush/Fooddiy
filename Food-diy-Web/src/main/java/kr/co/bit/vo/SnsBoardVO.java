@@ -3,6 +3,8 @@ package kr.co.bit.vo;
 public class SnsBoardVO {
 
 	private int no;
+	private String id;  // 사용자 id
+	private String pic; // 사용자 사진
 	private String title;
 	private String content;
 	private String fileName;
@@ -14,6 +16,18 @@ public class SnsBoardVO {
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 	public String getTitle() {
 		return title;
@@ -53,9 +67,10 @@ public class SnsBoardVO {
 	}
 	@Override
 	public String toString() {
-		return "SnsBoardVO [no=" + no + ", title=" + title + ", content=" + content + ", fileName=" + fileName
-				+ ", like=" + like + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
+		return "SnsBoardVO [no=" + no + ", id=" + id + ", pic=" + pic + ", title=" + title + ", content=" + content
+				+ ", fileName=" + fileName + ", like=" + like + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
 	}
+	
 	
 	
 	

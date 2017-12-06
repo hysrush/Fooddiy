@@ -9,7 +9,8 @@
 				<table border="1">
 					<tr>
 						<td>
-							<span style="font-style: italic; font-weight: bold; font-size: 15px;">NEW Menu</span>
+							<!-- <span style="font-style: italic; font-weight: bold; font-size: 15px;">NEW Menu</span> -->
+							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">NEW Menu</strong>
 						</td>
 					</tr>
 					<!-- <div class="box-content"> -->
@@ -24,16 +25,16 @@
 					<tr>
 						<td>
 							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
-								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-								<span> 바나나</span>
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+								<span style="text-align:center; font-size: 12px;" class="heading-primary">빨간맛</span>
 							</a>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-								<span> 사또밥</span>
+							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+								<span style="text-align:center; font-size: 12px;" class="heading-primary">빨간맛</span>
 							</a>
 						</td>
 					</tr>
@@ -45,7 +46,7 @@
 				<table border="1">
 					<tr>
 						<td>
-						<span style="font-style: italic; font-weight: bold; font-size: 17px;">Notice</span>&nbsp;&nbsp;
+							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">Notice</strong>
 							<a href="${ pageContext.request.contextPath }/community/noticeList.do">
 								<span style="font-style: italic; font-weight: bold; font-size: 12px;">+more</span>
 							</a>
@@ -104,7 +105,7 @@
 				<table border="1">
 					<tr>
 						<td>
-							<span style="font-style: italic; font-weight: bold; font-size: 15px;">EVENT</span>
+							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">EVENT</strong>
 						</td>
 					</tr>
 					<!-- <div class="box-content"> -->
@@ -201,13 +202,13 @@
 							</c:forEach>
 						</div> --%>
 				<table border="1">
-					<tr>
+					<!-- <tr>
 						<th colspan="2" style="text-align: center; padding: 5px;">
-							<span style="font-style: italic; font-weight: bold; font-size: 15px;">
+							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">
 								SNS
-							</span>
+							</strong>
 						</th>
-					</tr>
+					</tr> -->
 					<tr>
 						<td>글쓴이</td>
 						<td>추천수 2</td>
@@ -221,6 +222,8 @@
 					</tr>
 					<tr>
 						<td colspan="2">
+						내용 내용 내용<br/>
+						내용 내용 내용<br/>
 						내용 내용 내용<br/>
 						내용 내용 내용
 						</td>

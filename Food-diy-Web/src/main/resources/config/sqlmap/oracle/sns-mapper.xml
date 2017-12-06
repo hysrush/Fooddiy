@@ -9,6 +9,8 @@
 
 	<resultMap type ="snsVO" id="Map_SnsVO">
   		<result column = "sns_no" property ="no"/>
+  		<result column = "user_id" property ="id"/>
+  		<result column = "user_pic" property ="pic"/>
   		<result column = "sns_title" property = "title"/>
   		<result column = "sns_content" property ="content"/>
   		<result column = "sns_fileName" property ="fileName"/>
@@ -23,7 +25,7 @@
  	<select id="selectSns" parameterType ="pagingVO" resultMap="Map_SnsVO">
  		SELECT *
 			FROM( SELECT ROWNUM RNUM, P.*
-			FROM( SELECT SNS_NO, SNS_TITLE, SNS_CONTENT, SNS_FILENAME, SNS_LIKE,
+			FROM( SELECT SNS_NO,USER_ID, USER_PIC, SNS_TITLE, SNS_CONTENT, SNS_FILENAME, SNS_LIKE,
 					TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT, VIEW_CNT
 			FROM T_SNS 
 			ORDER BY SNS_NO DESC) P )
@@ -39,12 +41,12 @@
 	<!-- 새글 등록  -->
 	<insert id="insertSNS" parameterType="snsVO">
 		
-		INSERT INTO T_SNS( SNS_NO, SNS_TITLE, SNS_CONTENT, SNS_FILENAME)
-					VALUES(SEQ_T_SNS_NO.NEXTVAL, #{title}, #{content},#{fileName})
+		INSERT INTO T_SNS( SNS_NO,USER_ID,USER_PIC, SNS_TITLE, SNS_CONTENT, SNS_FILENAME)
+					VALUES(SEQ_T_SNS_NO.NEXTVAL,#{id}, #{pic}, #{title}, #{content},#{fileName})
 	</insert>
 	<!--  글번호로 디테일 보기  -->
 		<select id="selectByNo" parameterType="int" resultMap="Map_SnsVO" >
-		SELECT SNS_NO, SNS_TITLE, SNS_CONTENT, SNS_FILENAME, SNS_LIKE,
+		SELECT SNS_NO, USER_ID, USER_PIC, SNS_TITLE, SNS_CONTENT, SNS_FILENAME, SNS_LIKE,
 						TO_CHAR(REG_AT, 'YY-MM-DD')AS REG_AT, VIEW_CNT
 		FROM T_SNS
 		WHERE SNS_NO = #{no}

@@ -21,12 +21,17 @@
 					<form:errors path="title" class="form-control"></form:errors>
 				</div>
 								
-				<%-- 
+				
 				<div class="form-group" align="left">
-					<label for="writer">글쓴이</label>
-					<form:input path="writer" type="text" class="form-control" id="writer" placeholder="제목"/>
-					<form:errors path="writer" class="form-control"></form:errors>
-				</div> --%>
+					<label for="id">글쓴이 : </label>
+					<form:input path="id" type="text" class="form-control" id="id" value ="${loginVO.id }" readonly="true"/>
+					<form:errors path="id" class="form-control"></form:errors>
+				</div>
+				<div class="form-group" align="left">
+					<label for="pic"></label>
+					<form:input path="pic" type="hidden" class="form-control" id="pic" value = "${loginVO.file }"/>
+					<form:errors path="pic" class="form-control"></form:errors>
+				</div> 
 				 <div class="form-group" align="left">
 					<label for="fileName">이벤트 첨부 파일</label>
 					<form:input path="fileName" type="file" class="form-control" id="fileName" placeholder="첨부파일"/>
