@@ -59,6 +59,8 @@
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+		
+		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 	
 </head>
 	<body>
@@ -70,7 +72,7 @@
 			
 			<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
-			
+	<%-- 		
 			<!-- QnA 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/community/qnaWrite.do">Q&A새글등록</a><br/>
 			<a href="${ pageContext.request.contextPath}/community/qna.do">Q&A게시판</a><br/>
@@ -97,7 +99,7 @@
 			
 			<!--  select_ingredients 컨트롤러 테스트 -->
 			<a href="${ pageContext.request.contextPath}/menu/select_ingredients.do">재료선택</a><br/>
-
+ --%>
 			<!-- Slider부분 -->
 			<section class="visible-lg">
 				<jsp:include page="/resources/include/slider.jsp"/>
