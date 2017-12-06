@@ -231,9 +231,7 @@ public class SignController {
 	@RequestMapping(value = "/kakoLogin.do", method = RequestMethod.POST)
 	public String kakaoLogin(UserVO login, Model model) {
 
-		UserVO userVO = new UserVO();
-
-		userVO = signServiceImp.login(login);
+		UserVO userVO = signServiceImp.login(login);
 
 		// 가입한 적 있는지 확인
 		if (userVO == null) {
