@@ -39,7 +39,7 @@ public class StoreController {
 	
 	//메뉴선택 -> 지점선택
 	@RequestMapping(value = "/findStore.do", method=RequestMethod.POST)
-	public ModelAndView findStore(HttpSession session, String name, String price, String size, String pic) {
+	public ModelAndView findStore(HttpSession session, String name, String price, String size, String type,String pic) {
 
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = user.getId();
@@ -51,6 +51,7 @@ public class StoreController {
 		cartVO.setName(name);
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
+		cartVO.setType(type);
 		cartVO.setPic(pic);
 		cartVO.setId(id);
 
@@ -75,10 +76,6 @@ public class StoreController {
 		CartStoreVO cartStoreVO = (CartStoreVO)session.getAttribute("cartStoreVO");
 		
 		System.out.println(cartStoreVO.getStoreAddr());
-		
-		
-		
-		
 		
 		mav.setViewName("store/FindStore");
 		mav.addObject("cityList", cityList);

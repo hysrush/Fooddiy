@@ -86,6 +86,7 @@ public class Select_Ing_Controller {
 			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
 			@RequestParam("sauce") String sauce, @RequestParam("requirement") String requirement, HttpSession session) {
 
+		System.out.println("post cart");
 		
 		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
 
@@ -136,11 +137,26 @@ public class Select_Ing_Controller {
 		}
 		
 	}
-
+	
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
-	public String Cart() {
+	public String Cart(HttpSession session,  String storeName, String storeAddr, String storePhone) {
+		CartStoreVO cartStoreVO = (CartStoreVO)session.getAttribute("cartStoreVO");
+		
+		
+		//지점변경 
+		if(storeName != null  && storeAddr != null && storePhone != null) {
+			
+			cartStoreVO.setStoreName(storeName);
+			cartStoreVO.setStoreAddr(storeAddr);
+			cartStoreVO.setStorePhone(storePhone);
+			cartStore_Service.updateCartStore(cartStoreVO);
+			
+			session.setAttribute("cartStoreVO", cartStoreVO);
+		}
+
 		return "menu/cart";
 	}
+		
 
 	//장바구니에 등록된 메뉴삭제
 	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)

@@ -364,7 +364,7 @@
 	 						        		
 	 						       		console.log("storeAddr = " + addr);
 	 						        	var contents = '';
-	 						            contents += '<form  class="test5" action = "" method="POST">';
+	 						            contents += '<form  class="test5" action = "" method="POST" onsubmit="return choice(\''+data.storeList[0].storeName+'\');">';
 	 						            contents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
 	 						            contents += '서브웨이'+data.storeList[0].storeName+ '<br/>' + data.storeList[0].storePhone+ '<br/>'; 
 	 						            contents += '<input type="hidden" name = "storeName" value='+data.storeList[0].storeName + ' />';
@@ -372,7 +372,7 @@
 	 						            contents += '<input type="hidden" name = "storePhone" value='+data.storeList[0].storePhone + ' />';
 	 						            contents += '<input type="hidden" name = "storeAddr2" value='+data.storeList[0].storeAddr2 + ' />';     
 	 						            //contents += '<input type="submit" value="선택"/>';
-	 						            contents += '<input type="submit" name = "storeChoice" onclick="choice(\''+data.storeList[0].storeName+'\')" value="선택" />';
+	 						            contents += '<input type="submit" name = "storeChoice" onsubmit="return choice(\''+data.storeList[0].storeName+'\');" value="선택" />';
 										contents += '</div>';
 										contents += '</form>';
 										
@@ -399,20 +399,20 @@
 				 
 	             function choice(storeName){
 	               
-	                 
 	                 //var btn= this;
 	                 var storeName = storeName;
 	               <c:choose>  
-	           		<c:when test="${cartStoreVO == null}">
-	                
-	                 $('.test5').attr('action', "${pageContext.request.contextPath}/menu/select_ingredients.do") // 메뉴페이지      
-	                 $('.test5').attr('method', "POST") // 메뉴페이지      
-	                </c:when>
-	                 
-	                 <c:otherwise>
-	                 $('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do")   //구매페이지
-	                 $('.test5').attr('method', "GET")   //구매페이지
-	                 </c:otherwise>
+		           		<c:when test="${cartStoreVO == null}">
+			                 $('.test5').attr('action', "${pageContext.request.contextPath}/menu/select_ingredients.do"); // 메뉴페이지      
+			                 $('.test5').attr('method', "POST"); // 메뉴페이지      
+			                 return true;
+		                </c:when>
+		                 
+		                 <c:otherwise>
+			                 $('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do");  //구매페이지
+			                 $('.test5').attr('method', "GET");   //구매페이지
+							return true;
+		                 </c:otherwise>
 	                </c:choose> 
 	              } 
 		</script>
