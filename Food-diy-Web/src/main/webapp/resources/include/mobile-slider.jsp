@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<br/>
 <div role="main" class="main">
 	<div class="container">
 		<div class="row">
@@ -24,7 +25,7 @@
 							 --%>
 					<tr>
 						<td>
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
 								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 								<span style="text-align:center; font-size: 12px;" class="heading-primary">빨간맛</span>
 							</a>
@@ -32,7 +33,7 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
 								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 								<span style="text-align:center; font-size: 12px;" class="heading-primary">빨간맛</span>
 							</a>
@@ -47,29 +48,29 @@
 					<tr>
 						<td>
 							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">Notice</strong>
-							<a href="${ pageContext.request.contextPath }/community/noticeList.do">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeList.do">
 								<span style="font-style: italic; font-weight: bold; font-size: 12px;">+more</span>
 							</a>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
 								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
 								<span> 사또밥</span>
 							</a>
@@ -119,14 +120,14 @@
 							 --%>
 					<tr>
 						<td>
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
 								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
 							</a>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
 								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
 								<span> 사또밥</span>
 							</a>
@@ -215,7 +216,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
 								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
 							</a>
 						</td>
