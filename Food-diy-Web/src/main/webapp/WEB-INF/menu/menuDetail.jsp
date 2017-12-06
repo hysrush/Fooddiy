@@ -19,7 +19,8 @@ $(document).ready(function(){
 		$('#half').css("display","none");
 		$('#half2').css("display","none");
 		$('#sand_price').val(${ menuDetailVO.price });
-		$('#sand_size').val(${ menuDetailVO.size });
+		var sand_size = $("input[type=radio][name=size]:checked").val();
+		$('#sand_size').val(sand_size);
 	}
 	else{
 		$('.inch').css("display","");
