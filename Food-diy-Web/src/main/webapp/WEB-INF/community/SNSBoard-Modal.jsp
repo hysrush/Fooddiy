@@ -31,9 +31,10 @@
 				<a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a>
 				
 					<!--  버튼 누르면 db의 snsVO.like 값이 1씩 증가하되 1인 1회만 가능하게  -->
-				<button type="button" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"><i class="fa fa-thumbs-up"></i> </button> 
-				
-				
+					<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
+						<i class="fa fa-thumbs-up"></i>
+					</button>
+		
 		</div>
 
 		<div class="col-md-8">
@@ -43,7 +44,7 @@
 					<div class="col-md-12 center">
 						<ul>
 							<li>
-								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart"></i>${snsVO.like }</a>  <!--  좋아요 숫자  -->
+								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart"></i id="heart">${snsVO.like}</i></a>  <!--  좋아요 숫자  -->
 							</li>
 							<li>
 								<i class="fa fa-calendar"></i> ${snsVO.regDate } <!--  등록일 DB값 -->
@@ -101,6 +102,12 @@
 								
 								</div>
 							<div class="comment">
+							<input type="text" id="replytext" placeholder="댓글을 작성해주세요" style="width:80%"/>
+        				
+        						<button type="button" id="btnReply">댓글 작성</button>
+        							<div id="listReply"></div>
+        							
+        						
 								<div class="testimonial testimonial-style-3">
 									
 										<div class="testimonial-author">
@@ -119,4 +126,39 @@
 							</div>
 						</div>
 					</div>
+    
+    
+  
+	<script>
+		
+	function like(no){
+			
+			var btn = this;
+			var no = no;
+			
+			$.ajax({
+					url : "./like",
+					type : "post",
+					data : {"no" : no},
+					success : function(responseData){
+						var data = JSON.parse(responseData);
+							alert("좋아요가 완료되었습니다.!");
+							alert(data.like);
+							
+							var contents = '';
+							contents +=  data.like;
+							
+							$('#heart').html(" 좋아요:" +data.like );
+			    
+						    } 
+					});    
+			}		
+		
+	
+	
+	
+	
+	
+	</script>
+	
     

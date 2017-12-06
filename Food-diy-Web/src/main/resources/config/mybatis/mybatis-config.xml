@@ -19,7 +19,8 @@
 	  	<typeAlias type="kr.co.bit.menu.vo.IngredientsVO" alias="ingVO"/>
 	  	<typeAlias type="kr.co.bit.menu.vo.CartVO" alias="cartVO"/>
 	  	<typeAlias type="kr.co.bit.vo.SnsBoardVO" alias="snsVO"/>
-
+	  	<typeAlias type="kr.co.bit.vo.SnsRepVO" alias="snsRepVO"/>
+		
 	  	
 
 	  	<typeAlias type="kr.co.bit.menu.vo.CartStoreVO" alias="cartStoreVO"/>

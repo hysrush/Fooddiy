@@ -21,12 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.PagingVO;
-import kr.co.bit.event.vo.StoreVO;
-import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.service.RepService;
 import kr.co.bit.service.SnsService;
 import kr.co.bit.vo.SnsBoardVO;
+import kr.co.bit.vo.SnsRepVO;
 
 @RequestMapping("/community")
 @Controller
@@ -34,6 +33,9 @@ public class SnsController {
 
 	@Autowired
 	private SnsService snsService;
+	private RepService repService;
+	
+	
 	
 	@RequestMapping(value ="/snsPage.do", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView paging(HttpServletRequest request
@@ -111,12 +113,14 @@ public class SnsController {
 		public ModelAndView detail(@RequestParam("no") int no, HttpSession session) {		
 			
 			SnsBoardVO snsVO = snsService.selectOne(no);
+			//List<SnsRepVO> repList = repService.list(no);
 			
 			ModelAndView mav = new ModelAndView();
 			//setViewName : 어떤 페이지를 보여줄것인가
 			mav.setViewName("community/SNSBoard-Modal");
 			//addObject : key 와 value 를 담아 보내는 메서드 
 			mav.addObject("snsVO", snsVO);
+			//mav.addObject("repList", repList);
 			
 			return mav;
 		}

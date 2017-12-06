@@ -195,8 +195,9 @@
 																<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
-																<h5 id= "likey"> 좋아요: ${snsVO.like }
-																</h5>
+																<i class="fa fa-heart" id="likey" align="right">${snsVO.like}</i>
+																
+																
 															</span> 
 															<span>
 																	<h4>${snsVO.title }</h4>
@@ -365,10 +366,7 @@
 							var contents = '';
 							contents +=  data.like;
 							
-							$('#likey').html(" 좋아요:" +data.like );
-							
-							
-							
+							$('#likey').text(data.like);
 			    
 						    } 
 					});    

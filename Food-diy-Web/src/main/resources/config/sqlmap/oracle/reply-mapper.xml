@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.bit.dao.ReplyDAO">
+
+	<resultMap type = "snsRepVO" id = "Map_repVO">
+	<result column = "REP_NO" property ="repNo"/>	
+	<result column = "SNS_NO" property ="snsNo"/>	
+	<result column = "USER_ID" property ="id"/>	
+	<result column = "USER_PIC" property ="pic"/>	
+	<result column = "REP_CONTENT" property ="content"/>	
+	<result column = "REG_AT" property ="regDate"/>	
+	</resultMap>
+
+
+ <!-- 댓글 입력 -->
+    <insert id="insertReply" parameterType="snsRepVO">
+        INSERT INTO T_REP(REP_NO, SNS_NO, USER_ID, USER_PIC, REP_CONTENT )
+        VALUES (SEQ_T_REP_NO.NEXTVAL, #{snsNo}, #{id}, #{pic}, #{content})
+    </insert>
+    
+    <!-- 댓글 목록 -->
+    <select id="selectReply" resultMap="Map_repVO">
+        SELECT REP_NO, SNS_NO, USER_ID, USER_PIC, REP_CONTENT, TO_CHAR(REG_AT,'YY-MM-DD')AS REG_AT
+        FROM T_REP 
+        WHERE SNS_NO = #{no} 
+        ORDER BY REP_NO
+    </select>
+
+
+
+
+
+
+
+</mapper>

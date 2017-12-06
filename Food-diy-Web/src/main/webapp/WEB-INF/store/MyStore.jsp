@@ -93,13 +93,13 @@ html, body {
 						<div class="col-md-12">
 							<ul class="breadcrumb">
 								<li><a href="#">Home</a></li>
-								<li class="active">Events</li>
+								<li class="active">FindStore</li>
 							</ul>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<h1>매장별 EVENT</h1>
+							<h1>매장찾기</h1>
 						</div>
 					</div>
 				</div>
@@ -333,9 +333,10 @@ html, body {
 														     iwRemoveable = true;
 								        	
 													        	 // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+													        	iwContents += '<form  class="nearStore" action = "" method="POST">';		
 							 						            iwContents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
 							 						            iwContents += '서브웨이'+storeName[j]+ '<br/>' + storePhone[j] + '<br/>'; 
-							 						            iwContents += '<input type="button" name = "storeChoice" onclick="choice(\''+storeName[j]+'\')" value="선택" />';
+							 						            iwContents += '<input type="submit" name = "storeChoice" onclick="choice(\''+storeName[j]+'\')" value="선택" />';
 																iwContents += '</div>';
 													        	
 													        	
@@ -365,7 +366,31 @@ html, body {
 	
 	
 		</script>
-
+				 
+	
+	
+		<script>
+	             function choice(storeName){
+	               
+	                 
+	                 //var btn= this;
+	                 var storeName = storeName;
+	               <c:choose>  
+	           		<c:when test="${cartStoreVO == null}">
+	                
+	                 $('.nearStore').attr('action', "${pageContext.request.contextPath}/menu/select_ingredients.do") // 메뉴페이지      
+	                 $('.nearStore').attr('method', "POST") // 메뉴페이지      
+	                </c:when>
+	                 
+	                 <c:otherwise>
+	                 $('.nearStore').attr('action', "${pageContext.request.contextPath}/menu/cart.do")   //구매페이지
+	                 $('.nearStore').attr('method', "GET")   //구매페이지
+	                 </c:otherwise>
+	                </c:choose> 
+	              } 
+		
+		
+		</script>
 
 
 </body>
