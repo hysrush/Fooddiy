@@ -54,6 +54,8 @@ public class StoreController {
 		cartVO.setType(type);
 		cartVO.setPic(pic);
 		cartVO.setId(id);
+		
+		System.out.println(type);
 
 		//SessionAttributes 통해 세션에 등록
 		mav.addObject("cartVO", cartVO);

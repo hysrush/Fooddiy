@@ -37,7 +37,7 @@ public class Select_Ing_Controller {
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
 	public ModelAndView Session(HttpSession session, String storeName, String storeAddr, String storePhone, String name,
-			String price, String size, String pic) {
+			String price, String type,String size, String pic) {
 
 		UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		String id = userVO.getId();
@@ -60,11 +60,12 @@ public class Select_Ing_Controller {
 		}
 
 		//메뉴선택에서 -> 재료선택으로 바로 이동했을 경우(지점을 선택했을 경우 바로 이동한다.)
-		if (name != null && price != null && size != null && pic != null) {
+		if (name != null && price != null && size != null && pic != null && type != null)  {
 			CartVO cartVO = new CartVO();
 			cartVO.setName(name);
 			cartVO.setPrice(price);
 			cartVO.setSize(size);
+			cartVO.setType(type);
 			cartVO.setPic(pic);
 			cartVO.setId(id);
 
