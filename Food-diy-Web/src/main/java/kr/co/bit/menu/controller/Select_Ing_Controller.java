@@ -130,7 +130,7 @@ public class Select_Ing_Controller {
 
 		ModelAndView mav = new ModelAndView();
 		
-		return "redirect:/cart";
+		return "redirect:/menu/cart.jsp";
 	}
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
