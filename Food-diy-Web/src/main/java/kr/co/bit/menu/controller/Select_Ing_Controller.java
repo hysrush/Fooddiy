@@ -89,9 +89,14 @@ public class Select_Ing_Controller {
 		System.out.println("post cart");
 		
 		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
-
+		
+		String type = cartVO.getType();
+		System.out.println(type);
 		//
-		if ( cartVO != null  ) {
+		if(type.equals('S')|| type.equals('N') || type.equals('D')) {
+			return "/menu/cart";
+		}
+		else if ( cartVO != null ) {
 			cartVO.setBread(bread);
 			cartVO.setCheese(cheese);
 			
@@ -132,9 +137,9 @@ public class Select_Ing_Controller {
 			//장바구니에 넣어주고 carVO를 비워준다.
 			session.setAttribute("cartVO", null);
 			return "/menu/cart";
-		}else {
-			return "/menu/cart";
 		}
+		
+			return "/menu/cart";
 		
 	}
 	
