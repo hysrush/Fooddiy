@@ -104,11 +104,9 @@
    });
 
    function modal(menuNo) {
-      $(".thumb-info").click(function() {
-         $('div.modal').modal().removeData();
-         var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo;
-         $('div.modal').modal({ remote : url   });
-      })
+        $('div.modal').modal().removeData();
+        var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo;
+        $('div.modal').modal({ remote : url   });
    }
    /* function modal(menuNo) {
     $(".portfolio-item").click(function(){
@@ -228,20 +226,20 @@
                               <c:forEach items="${ menuList }" var="menu">
                                  <c:if test='${ menu.type eq "R" }'>
 
-                                    <li   class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
+                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
                                        <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }" 
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
+	                                          <span class="thumb-info thumb-info-lighten">
+				                                   <a onclick="modal('${ menu.no }')">
+		                                          <span class="thumb-info-wrapper">
+		                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }" 
+		                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+		                                             <span class="thumb-info-title">
+		                                                <span class="thumb-info-inner">${ menu.name }</span>
+		                                                <span class="thumb-info-type">${ menu.price }원</span>
+		                                             </span>
+		                                          </span>
+				                                   </a>
+	                                          </span>
                                        </div>
                                     </li>
 

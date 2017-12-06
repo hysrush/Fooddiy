@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 <script>
 $(document).ready(function(){
+	
+	alert('aaaaaaaaaaaaa');
+	
 	// 사이드 메뉴 사이즈 숨김, 값 전달
 	if(${ menuDetailVO.type == 'M' }||${ menuDetailVO.type == 'S' }||${ menuDetailVO.type == 'N' }||${ menuDetailVO.type == 'D' } ){
 		$('.inch').css("display","none");
@@ -49,14 +52,23 @@ $(document).ready(function(){
 	
 	// 사이드 주문 시 매장으로	
 	$("form").submit(function(){
+		// 장바구니가 비었을때
 		if(${ cartStoreVO == null }){
-			$('#cart').attr('action', '${ pageContext.request.contextPath }/store/findStore.do').submit();				
+			$('#cart').attr('action', '${ pageContext.request.contextPath }/store/findStore.do')
+			return true;
 		}
-		else if(${ menuDetailVO.type == 'S' } || ${ menuDetailVO.type == 'N' } || ${ menuDetailVO.type == 'D' })
-				$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/cart.do').submit();
-			else
-				$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do').submit();
-	});
+		// 사이드 선택 시
+		else if(${ menuDetailVO.type == 'S' } || ${ menuDetailVO.type == 'N' } || ${ menuDetailVO.type == 'D' }){
+				
+			$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/cart.do')
+				return true;
+		}
+		else {
+			$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do');
+			return true;
+		}
+	});	
+	
 	
 });
 
