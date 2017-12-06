@@ -395,6 +395,11 @@
 			location.href = "${pageContext.request.contextPath}/store/findStore.do"
 		}
 		
+	 	history.pushState(null, null, "${pageContext.request.contextPath}/menu/cart.do");
+
+		window.onpopstate = function(event) {
+		 history.go(1);
+		}; 
 	</script>
 
 	<footer id="footer">

@@ -118,7 +118,7 @@
 							<div class="center" style="font-size: 9pt; font-weight: bold;">장바구니</div>
 							<div class="cart-dropdownmenu right">
 								<div class="dropdownmenu-wrapper">
-									<div class="cart-products">
+									<div class="cart-products" style="max-height:300px;overflow: auto;">
 										<c:forEach items="${ cartList }" var="cartVO">
 											<div class="product product-sm">
 												<div class ="cartNo" style="display: none">${ cartVO.no }</div>

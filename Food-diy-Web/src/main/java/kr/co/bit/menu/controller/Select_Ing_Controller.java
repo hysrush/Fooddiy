@@ -54,10 +54,8 @@ public class Select_Ing_Controller {
 			cartStoreVO.setStoreName(storeName);
 			cartStoreVO.setStoreAddr(storeAddr);
 			cartStoreVO.setStorePhone(storePhone);
-			
-			System.out.println("cartStoreVO null");
-			
 			cartStore_Service.insertCartStore(cartStoreVO);
+
 			session.setAttribute("cartStoreVO", cartStoreVO);
 		}
 
@@ -92,22 +90,28 @@ public class Select_Ing_Controller {
 		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
 
 		//
-		if (cartVO.getBread() == null && cartVO.getCheese() == null && cartVO.getSauce() == null) {
+		if ( cartVO != null  ) {
 			cartVO.setBread(bread);
 			cartVO.setCheese(cheese);
-
-			String[] toppings = topping.split("\\|\\|");
-
+			
+			String[] toppings;
 			Integer price = new Integer(cartVO.getPrice());
-			for (int i = 0; i < toppings.length; ++i) {
-
-				String subPrice = toppings[i].split("\\s")[1];
-				subPrice = subPrice.replace(",", "");
-				subPrice = subPrice.replace("+", "");
-
-				price += new Integer(subPrice);
+			
+			if(topping != null) {
+				toppings = topping.split("\\|\\|");
+				for (int i = 0; i < toppings.length; ++i) {
+					
+					String subPrice = toppings[i].split("\\s")[1];
+					subPrice = subPrice.replace(",", "");
+					subPrice = subPrice.replace("+", "");
+					
+					price += new Integer(subPrice);
+				}
+				topping = topping.replaceAll("\\|\\|", ", ");
+				
 			}
-			topping = topping.replaceAll("\\|\\|", ", ");
+
+			
 
 			cartVO.setTotal_price(price.toString());
 			cartVO.setTopping(topping);
@@ -126,11 +130,11 @@ public class Select_Ing_Controller {
 			
 			//장바구니에 넣어주고 carVO를 비워준다.
 			session.setAttribute("cartVO", null);
+			return "/menu/cart";
+		}else {
+			return "/menu/cart";
 		}
-
-		ModelAndView mav = new ModelAndView();
 		
-		return "redirect:/menu/cart.jsp";
 	}
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
