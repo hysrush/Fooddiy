@@ -12,6 +12,6 @@ public interface SnsService {
 	
 	void insert(SnsBoardVO snsVO);
 	 SnsBoardVO selectOne(int no);
-	
+	 void addLikeSns(int no);
 	
 }

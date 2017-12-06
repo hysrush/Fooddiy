@@ -44,5 +44,13 @@ public class SnsDAOImpl implements SnsDAO {
 		return snsDetail;
 	}
 	
+	// SNS좋아요 증가
+		@Override
+		public void addLikeSns(int no) {
+			sqlSession.update(url + "updateLikeSns", no);
+		}
+	
+	
+	
 	
 }

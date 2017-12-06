@@ -188,12 +188,15 @@
 												</a> <span class="product-thumb-info-content"> <a
 														href="${ pageContext.request.contextPath }/notice/SNSBoard-Modal.jsp">
 															<span>
-																<button type="button"
-																	class="mb-xs mt-xs mr-xs btn btn-borders btn-info">
+															
+																<!--  좋아요 버튼 누르면 snsVO.like 증가  -->
+																<button type="button"  onclick="like(${snsVO.no})" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
-														</span> <span>
-																<h4>${snsVO.content }</h4>
+															</span> 
+														
+														<span>
+															<h4>${snsVO.content }</h4>
 														</span>
 													</a>
 												</span>
@@ -307,13 +310,39 @@
 			            $(this).prop("selected", true);
 			        }
 			    });
-			}
+			};
 
 
 			</script>	
 	
 
-
+	<script>
+		
+	function like(no){
+			alert('no = ' + no);
+			
+			var btn = this;
+			var no = no;
+			
+			$.ajax({
+					url : "./like",
+					type : "post",
+					data : {"no" : no},
+					success : function(responseData){
+						var data = JSON.parse(responseData);
+							alert("좋아요!")
+							
+			    
+						    } 
+					});    
+			}			
+		
+	
+	
+	
+	
+	
+	</script>
 
 
 

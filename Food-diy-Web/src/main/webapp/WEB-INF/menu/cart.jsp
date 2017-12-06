@@ -176,7 +176,7 @@
 															<tr>
 																<td>매장</td>
 																<td><div>
-																		<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="chageStore()">변경</button> 
+																		<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="changeStore()">변경</button> 
 																		${ cartStoreVO.storeName }  
 																	</div>
 																</td>
@@ -388,6 +388,9 @@
 			location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 		}
 		
+		
+		
+		<!-- 
 		function changeStore() {
 			location.href = "${pageContext.request.contextPath}/store/findStore.do"
 		}

@@ -189,17 +189,19 @@
 															</span>
 													</a>
 													</span>
-													 <span class="product-thumb-info-content"> <a
-															href="${ pageContext.request.contextPath }/notice/SNSBoard-Modal.jsp">
+													 <span class="product-thumb-info-content">
 																<span>
-																	<button type="button"
-																		class="mb-xs mt-xs mr-xs btn btn-borders btn-info">
-																		<i class="fa fa-thumbs-up"></i>
-																	</button>
-															</span> <span>
+																	<!--  좋아요 버튼 누르면 snsVO.like 증가  -->
+																<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
+																	<i class="fa fa-thumbs-up"></i>
+																</button>
+																<h5 id= "likey"> 좋아요: ${snsVO.like }
+																</h5>
+															</span> 
+															<span>
 																	<h4>${snsVO.title }</h4>
 															</span>
-														</a>
+														
 													</span>
 													</span>
 												</div>
@@ -339,16 +341,48 @@
 			    });
 			}
 			
-			
-			
-			
-			
-		
-
-			
-
+	
 
 			</script>
+
+	
+	<script>
+		
+	function like(no){
+			
+			var btn = this;
+			var no = no;
+			
+			$.ajax({
+					url : "./like",
+					type : "post",
+					data : {"no" : no},
+					success : function(responseData){
+						var data = JSON.parse(responseData);
+							alert("좋아요가 완료되었습니다.!");
+							alert(data.like);
+							
+							var contents = '';
+							contents +=  data.like;
+							
+							$('#likey').html(" 좋아요:" +data.like );
+							
+							
+							
+			    
+						    } 
+					});    
+			}		
+		
+	
+	
+	
+	
+	
+	</script>
+	
+
+
 
 
 
