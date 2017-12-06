@@ -35,35 +35,39 @@ public class StoreController {
 	@Autowired
 	private EventService eventService;
 	
+	
+	//메뉴선택 -> 지점선택
 	@RequestMapping(value = "/findStore.do", method=RequestMethod.POST)
-	public ModelAndView list(HttpSession session, String name, String price, String size, String pic) {
-		List<CityVO> cityList = storeService.selectCity();
+	public ModelAndView findStore(HttpSession session, String name, String price, String size, String pic) {
+
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = user.getId();
 		ModelAndView mav = new ModelAndView();
-		// Form에서 가져온 Data를 CartVO 객체형태로 저장
-		CartVO cartVO = new CartVO();
 		
+		
+		//메뉴선택 단계에서 받아온 정보를 cartVO에 담아준다.
+		CartVO cartVO = new CartVO();
 		cartVO.setName(name);
 		cartVO.setPrice(price);
 		cartVO.setSize(size);
 		cartVO.setPic(pic);
 		cartVO.setId(id);
-				
-		
-		System.out.println(cartVO);
+
+		//SessionAttributes 통해 세션에 등록
 		mav.addObject("cartVO", cartVO);
-		
-		mav.setViewName("store/FindStore");
+				
+		//도시정보를 불러온다.
+		List<CityVO> cityList = storeService.selectCity();
 		mav.addObject("cityList", cityList);
 		
-		System.out.println(cityList);
+		mav.setViewName("store/FindStore");
 				
 		return mav;
 	}
 	
+	// 장바구니 -> 지점변경
 	@RequestMapping(value = "/findStore.do", method=RequestMethod.GET)
-	public ModelAndView list2() {
+	public ModelAndView changeStore() {
 		List<CityVO> cityList = storeService.selectCity();
 		ModelAndView mav = new ModelAndView();
 		

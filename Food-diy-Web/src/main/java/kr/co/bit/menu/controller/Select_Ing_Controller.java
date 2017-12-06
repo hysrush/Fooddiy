@@ -42,8 +42,12 @@ public class Select_Ing_Controller {
 		UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		String id = userVO.getId();
 		userVO.setStore(storeName);
+		
+		//기존에 session 등록된 선택된 지점을 불러온다.
 		CartStoreVO cartStoreVO = (CartStoreVO) session.getAttribute("cartStoreVO");
 
+		
+		//session에 등록된 지점이 없는 경우 cartStore에 지점 정보를 저장 후 세션에 등록
 		if (cartStoreVO == null) {
 			cartStoreVO = new CartStoreVO();
 			cartStoreVO.setId(id);
@@ -55,6 +59,7 @@ public class Select_Ing_Controller {
 			session.setAttribute("cartStoreVO", cartStoreVO);
 		}
 
+		//메뉴선택에서 -> 재료선택으로 바로 이동했을 경우(지점을 선택했을 경우 바로 이동한다.)
 		if (name != null && price != null && size != null && pic != null) {
 			CartVO cartVO = new CartVO();
 			cartVO.setName(name);
@@ -64,11 +69,9 @@ public class Select_Ing_Controller {
 			cartVO.setId(id);
 
 			session.setAttribute("cartVO", cartVO);
-
-			System.out.println(cartVO);
-
 		}
 
+		//select_ingredient.jsp에 보여줄 재료정보를 불러온다.
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
 
 		ModelAndView mav = new ModelAndView();
@@ -79,16 +82,14 @@ public class Select_Ing_Controller {
 	}
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
-	public ModelAndView Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
+	public String Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
 			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
 			@RequestParam("sauce") String sauce, @RequestParam("requirement") String requirement, HttpSession session) {
 
+		
 		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
 
-		System.out.println(cartVO);
-		System.out.println(topping);
-		System.out.println(vegetable);
-
+		//
 		if (cartVO.getBread() == null && cartVO.getCheese() == null && cartVO.getSauce() == null) {
 			cartVO.setBread(bread);
 			cartVO.setCheese(cheese);
@@ -127,8 +128,8 @@ public class Select_Ing_Controller {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("menu/cart");
-
-		return mav;
+		
+		return "redirect:menu/cart";
 	}
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
@@ -148,15 +149,19 @@ public class Select_Ing_Controller {
 
 		cartVO.setNo(number);
 		cartVO.setId(userVO.getId());
+		
+		//장바구니에서 해당 메뉴 삭제
 		cart_Service.deleteCart(cartVO);
 
+		//삭제후 새로운 장바구니리스트를 세션에 등록
 		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
 
+		//장바구니가 하나도 없는 경우 선택한 지점삭제 및 null로 초기화
 		if (cartList.size() == 0) {
 			cartStore_Service.deleteCartStore(userVO.getId());
 			session.setAttribute("cartStoreVO", null);
 		}
-
+		
 		session.setAttribute("cartList", cartList);
 	}
 
