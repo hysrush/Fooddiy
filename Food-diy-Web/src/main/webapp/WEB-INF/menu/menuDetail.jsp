@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script>
 $(document).ready(function(){
-	
+	// 사이드 메뉴 사이즈 숨김, 값 전달
 	if(${ menuDetailVO.type == 'M' }||${ menuDetailVO.type == 'S' }||${ menuDetailVO.type == 'N' }||${ menuDetailVO.type == 'D' } ){
 		$('.inch').css("display","none");
 		$('#sand_price').val(${ menuDetailVO.price });
@@ -18,6 +18,7 @@ $(document).ready(function(){
 		$('.inch').css("display","");
 	}	
 	
+	// 사이즈별 가격 표시
 	$('.inch').click(function(){
 	   var sand_size = $("input[type=radio][name=size]:checked").val();
 	   $('#sand_size').val(sand_size);
@@ -44,6 +45,17 @@ $(document).ready(function(){
 		   $("#price").html(${ menuDetailVO.price } + '원');
 		   $('#sand_price').val(${ menuDetailVO.price });
 	   }
+	});
+	
+	// 사이드 주문 시 매장으로	
+	$("form").submit(function(){
+		if(${ cartStoreVO == null }){
+			$('#cart').attr('action', '${ pageContext.request.contextPath }/store/findStore.do').submit();				
+		}
+		else if(${ menuDetailVO.type == 'S' } || ${ menuDetailVO.type == 'N' } || ${ menuDetailVO.type == 'D' })
+				$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/cart.do').submit();
+			else
+				$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do').submit();
 	});
 	
 });
@@ -103,29 +115,16 @@ $(document).ready(function(){
 						<input type="radio" name="size" value="30cm"><span
 							style="font-size: 18px; margin-left: 5px">30cm</span>
 					</p>
-
-
-					<c:choose>
-						<c:when test="${ cartStoreVO == null }">	
-							<form
-								action="${ pageContext.request.contextPath }/store/findStore.do"
-								enctype="multipart/form-data" method="post" class="cart"
-								style="margin-bottom: 10px">								
-						</c:when>
-						<c:otherwise>
-							<form
-								action="${ pageContext.request.contextPath }/menu/select_ingredients.do"
-								enctype="multipart/form-data" method="post" class="cart"
-								style="margin-bottom: 10px">
-						</c:otherwise>
-					</c:choose>	
-								<!-- submit하면 hidden으로 값 넘겨준다 -->
-								<input type="hidden" name="name" value="${ menuDetailVO.name }">
-								<input type="hidden" name="price" id="sand_price" value="${ menuDetailVO.price }">
-								<input type="hidden" name="size" id="sand_size" value="15cm">
-								<input type="hidden" name="pic" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
-								<button type="submit" href="#" class="btn btn-primary btn-icon">주문하기</button>
-							</form>
+					
+					<form enctype="multipart/form-data" method="post" class="cart" id="cart" style="margin-bottom: 10px">
+						<!-- submit하면 hidden으로 값 넘겨준다 -->
+						<input type="hidden" name="name" value="${ menuDetailVO.name }">
+						<input type="hidden" name="type" value="${ menuDetailVO.type }">
+						<input type="hidden" name="price" id="sand_price" value="${ menuDetailVO.price }">
+						<input type="hidden" name="size" id="sand_size" value="15cm">
+						<input type="hidden" name="pic" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
+						<button type="submit" href="#" class="btn btn-primary btn-icon" id="order">주문하기</button>
+					</form>
 
 					<div class="product_meta">
 						<span class="posted_in">알르레기 유발성분 : ${ menuDetailVO.allergy }
