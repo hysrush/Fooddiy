@@ -127,10 +127,7 @@
 						</div>
 					</div>
     
-    
-  
 	<script>
-		
 	function like(no){
 			
 			var btn = this;
@@ -152,8 +149,66 @@
 			    
 						    } 
 					});    
-			}		
-		
+			}
+	
+	
+	// ** 댓글 쓰기 버튼 클릭 이벤트 (ajax로 처리)
+	 $("#btnReply").click(function(){
+         var replytext=$("#replytext").val();
+         var bno="${dto.bno}"
+         var param="replytext="+replytext+"&bno="+bno;
+         $.ajax({                
+             type: "post",
+             url: "${path}/reply/insert.do",
+             data: param,
+             success: function(){
+                 alert("댓글이 등록되었습니다.");
+                 listReply2();
+             }
+         });
+     });
+	 // Controller방식
+	    // **댓글 목록1
+	    function listReply(){
+	        $.ajax({
+	            type: "get",
+	            url: "${path}/reply/list.do?bno=${dto.bno}",
+	            success: function(result){
+	            // responseText가 result에 저장됨.
+	                $("#listReply").html(result);
+	            }
+	        });
+	    }
+	    // RestController방식 (Json)
+	    // **댓글 목록2 (json)
+	    function listReply2(){
+	        $.ajax({
+	            type: "get",
+	            //contentType: "application/json", ==> 생략가능(RestController이기때문에 가능)
+	            url: "${path}/reply/listJson.do?bno=${dto.bno}",
+	            success: function(result){
+	                console.log(result);
+	                var output = "<table>";
+	                for(var i in result){
+	                    output += "<tr>";
+	                    output += "<td>"+result[i].userName;
+	                    output += "("+changeDate(result[i].regdate)+")<br>";
+	                    output += result[i].replytext+"</td>";
+	                    output += "<tr>";
+	                }
+	                output += "</table>";
+	                $("#listReply").html(output);
+	            }
+	        });
+	    }
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
