@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.vo.EventBoardVO;
 import kr.co.bit.event.vo.PagingVO;
+import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.vo.MenuVO;
 import kr.co.bit.service.SnsService;
 import kr.co.bit.vo.SnsBoardVO;
@@ -119,7 +121,36 @@ public class SnsController {
 			return mav;
 		}
 		
-	
+		// 좋아요 버튼눌렀을때 snsVO.like 값 1 씩 증가 
+		@RequestMapping(value="/like")
+		public void eventAjax(HttpServletRequest request
+									, HttpServletResponse response
+									, @RequestParam(value ="no", defaultValue ="") int no
+									, Model model) throws Exception {
+			
+			System.out.println(no);
+			
+			
+			snsService.addLikeSns(no);
+			SnsBoardVO snsVO = snsService.selectOne(no);
+			
+			response.setContentType("text/html;charset=UTF-8");
+			JSONObject jsonObj = new JSONObject();
+			int like = snsVO.getLike();
+		
+			
+			jsonObj.put("result", true);
+			jsonObj.put("like", like);
+			
+			System.out.println(snsVO);
+			
+			response.getWriter().print(jsonObj.toString());
+			
+		}
+		
+		
+		
+		
 	
 	
 }

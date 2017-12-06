@@ -25,22 +25,21 @@
 							 --%>
 						<tr>
 							<td>
-								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+								<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
 								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-								<span style="text-align:center; font-size: 12px;" class="heading-primary">빨간맛</span>
+								<span style="text-align:center; font-size: 12px;">빨간맛</span>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+								<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
 									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-									<span style="text-align:center; font-size: 12px;" class="heading-primary">궁금해 허니</span>
+									<span style="text-align:center; font-size: 12px;">궁금해 허니</span>
 								</a>
 							</td>
 						</tr>
 					</table>
-					<!-- </div> -->
 				</div>
 				<!-- 공지사항 -->
 				<div class="col-xs-12 col-md-12" style="text-align: center; padding: 5px;">
@@ -49,21 +48,21 @@
 							<td>
 								<strong style="text-align: center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">Notice</strong>
 								<span style="display: inline-table; align: right; font-size: 11px;">
-									<a href="${ pageContext.request.contextPath }/community/noticeList.do"> +more</a>
+									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeList.do"> +more</a>
 								</span>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
-									<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
 								</span>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
-									<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
 								</span>
 							</td>
 						</tr>
@@ -71,7 +70,7 @@
 							<td colspan="2">
 								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
 									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-									<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
 								</span>
 							</td>
 						</tr>
@@ -117,14 +116,14 @@
 							 --%>
 						<tr>
 							<td>
-								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+								<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
 									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<a href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+								<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
 									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
 									<span> 사또밥</span>
 								</a>
@@ -215,9 +214,50 @@
 							</tr>
 							<tr>
 								<td colspan="2">
+									내용 내용 내용<br/>
+									내용 내용 내용<br/>
+									내용 내용 내용<br/>
 									내용 내용 내용
 								</td>
 							</tr>
+							<tr>
+						<td>글쓴이</td>
+						<td>추천수 2</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							내용 내용 내용<br/>
+							내용 내용 내용<br/>
+							내용 내용 내용<br/>
+							내용 내용 내용
+						</td>
+					</tr>
+					<tr>
+						<td>글쓴이</td>
+						<td>추천수 2</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
+								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							내용 내용 내용<br/>
+							내용 내용 내용<br/>
+							내용 내용 내용<br/>
+							내용 내용 내용
+						</td>
+					</tr>
 						</table>
 					</div>
 			</div>

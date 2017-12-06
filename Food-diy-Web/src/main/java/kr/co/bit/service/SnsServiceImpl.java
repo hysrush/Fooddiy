@@ -42,4 +42,10 @@ public class SnsServiceImpl implements SnsService {
 		return snsDAO.selectOne(no);
 	}
 
+	@Override
+	public void addLikeSns(int no) {
+		snsDAO.addLikeSns(no);
+		
+	}
+
 }

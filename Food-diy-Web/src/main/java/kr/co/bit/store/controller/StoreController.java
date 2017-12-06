@@ -20,6 +20,7 @@ import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.event.vo.locationVO;
+import kr.co.bit.menu.vo.CartStoreVO;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.service.StoreService;
 import kr.co.bit.user.vo.UserVO;
@@ -67,9 +68,17 @@ public class StoreController {
 	
 	// 장바구니 -> 지점변경
 	@RequestMapping(value = "/findStore.do", method=RequestMethod.GET)
-	public ModelAndView changeStore() {
+	public ModelAndView changeStore(HttpSession session) {
 		List<CityVO> cityList = storeService.selectCity();
 		ModelAndView mav = new ModelAndView();
+		
+		CartStoreVO cartStoreVO = (CartStoreVO)session.getAttribute("cartStoreVO");
+		
+		System.out.println(cartStoreVO.getStoreAddr());
+		
+		
+		
+		
 		
 		mav.setViewName("store/FindStore");
 		mav.addObject("cityList", cityList);

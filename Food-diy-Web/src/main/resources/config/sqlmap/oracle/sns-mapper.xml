@@ -60,6 +60,14 @@
         SET view_cnt = view_cnt + 1
         WHERE notice_no = #{no}
     </update> -->
+
+	 		<!--   SNS 좋아요 증가--> 
+	<update id="updateLikeSns" parameterType="int">
+        UPDATE t_SNS
+        SET SNS_LIKE = SNS_LIKE + 1
+        WHERE SNS_NO = #{no}
+    </update>
+
   	
   	
 </mapper> 	
