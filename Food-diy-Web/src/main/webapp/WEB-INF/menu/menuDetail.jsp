@@ -7,15 +7,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-$(document).ready(function(){
-	
-	alert('aaaaaaaaaaaaa');
+$(document).ready(function(){	
 	
 	// 사이드 메뉴 사이즈 숨김, 값 전달
-	if(${ menuDetailVO.type == 'M' }||${ menuDetailVO.type == 'S' }||${ menuDetailVO.type == 'N' }||${ menuDetailVO.type == 'D' } ){
+	if(${ menuDetailVO.type == 'S' }||${ menuDetailVO.type == 'N' }||${ menuDetailVO.type == 'D' } ){
 		$('.inch').css("display","none");
 		$('#sand_price').val(${ menuDetailVO.price });
 		$('#sand_size').val(null);
+	}
+	else if(${ menuDetailVO.type == 'M' }){
+		$('#half').css("display","none");
+		$('#half2').css("display","none");
+		$('#sand_price').val(${ menuDetailVO.price });
+		$('#sand_size').val(${ menuDetailVO.size });
 	}
 	else{
 		$('.inch').css("display","");
@@ -53,17 +57,19 @@ $(document).ready(function(){
 	// 사이드 주문 시 매장으로	
 	$("form").submit(function(){
 		// 장바구니가 비었을때
-		if(${ cartStoreVO == null }){
+		if(${ cartStoreVO == null })
+		{
 			$('#cart').attr('action', '${ pageContext.request.contextPath }/store/findStore.do')
 			return true;
 		}
 		// 사이드 선택 시
-		else if(${ menuDetailVO.type == 'S' } || ${ menuDetailVO.type == 'N' } || ${ menuDetailVO.type == 'D' }){
-				
+		else if(${ menuDetailVO.type == 'S' } || ${ menuDetailVO.type == 'N' } || ${ menuDetailVO.type == 'D' })
+		{				
 			$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/cart.do')
-				return true;
+			return true;
 		}
-		else {
+		else
+		{
 			$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do');
 			return true;
 		}
@@ -124,8 +130,8 @@ $(document).ready(function(){
 					<p class="inch">
 						<input type="radio" name="size" value="15cm" checked="checked"><span
 							style="font-size: 18px; margin-left: 5px; margin-right: 20px">15cm</span>
-						<input type="radio" name="size" value="30cm"><span
-							style="font-size: 18px; margin-left: 5px">30cm</span>
+						<input type="radio" name="size" value="30cm" id="half"><span
+							style="font-size: 18px; margin-left: 5px" id="half2">30cm</span>
 					</p>
 					
 					<form enctype="multipart/form-data" method="post" class="cart" id="cart" style="margin-bottom: 10px">
