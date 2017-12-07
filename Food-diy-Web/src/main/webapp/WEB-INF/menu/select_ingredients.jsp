@@ -262,6 +262,12 @@
 												<div class="col-md-12 actions-continue" >
 													<form:form commandName="cartVO" class="order-form-web" method="post" action="${ pageContext.request.contextPath }/menu/cart.do" onsubmit="return webSubmint();">
 
+														<form:input type="hidden" path = "id"  name="id" value="${ cartVO.id }" />
+														<form:input type="hidden" path = "name"  name="name" value="${ cartVO.name }" />
+														<form:input type="hidden" path = "price"  name="price" value="${ cartVO.price }" />
+														<form:input type="hidden" path = "size"  name="size" value="${ cartVO.size }" />
+														<form:input type="hidden" path = "pic"  name="pic" value="${ cartVO.pic }" />
+														<form:input type="hidden" path = "type"  name="type" value="${ cartVO.type }" />
 														<form:input type="hidden" path = "bread" class="bread" name="bread" value="" />
 														<form:input type="hidden" path = "cheese" class="cheese" name="cheese" value="" /> 
 														<form:input type="hidden" path = "topping" class="topping" name="topping" value="" /> 
@@ -386,7 +392,7 @@
 
 			<div class="row">
 				<div style="text-align: center;">
-					<form:form class="order-form" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
+					<form:form commandName="cartVO" class="order-form" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
 						<form:input type="hidden" path ="bread" class="bread" name="bread" value="" /> 
 						<form:input type="hidden" path ="cheese" class="cheese" name="cheese" value="" /> 
 						<form:input type="hidden" path ="topping" class="topping" name="topping" value="" />
@@ -421,6 +427,7 @@
 	</div>
 
 	<script type="text/javascript">
+		
 		function webSubmint() {			
 			
 			if($('.order-table').find('.bread-info div').length < 1)  {
@@ -479,6 +486,8 @@
 			$('.order-form-web .vegetable').attr('value', vegetable);
 			$('.order-form-web .sauce').attr('value', sauce);
 			$('.order-form-web .requirement').attr('value', requirement);
+			
+			
 			
 			
 			return true;
