@@ -1,4 +1,4 @@
-package kr.co.bit.sign.mail;
+package kr.co.bit.util;
 
 import java.util.Random;
 
