@@ -82,11 +82,49 @@
 <script>
 $(document).ready(function(){
 	
+	$('table .product-thumbnail').each(function() {
+		
+			$(this).click(function() {
+				
+				var id = $(this).siblings('.id').text();
+				var name = $(this).siblings('.name').text();
+				var price = $(this).siblings('.price').text();
+				var pic = $(this).siblings('.pic').text();
+				var size = $(this).siblings('.size').text();
+				var bread = $(this).siblings('.bread').text();
+				var cheese = $(this).siblings('.cheese').text();
+				var topping = $(this).siblings('.topping').text();
+				var vegetable = $(this).siblings('.vegetable').text();
+				var sauce = $(this).siblings('.sauce').text();
+				
+				//나만의 메뉴 등록
+				$.ajax({
+					url : "${pageContext.request.contextPath }/member/Latest-Order",
+					type : "post",
+					data : {
+						"id" : id,
+						"name" : name,
+						"price" : price,
+						"pic" : pic,
+						"size" : size,
+						"bread" : bread,
+						"cheese" : cheese,
+						"topping" : topping,
+						"vegetable" : vegetable,
+						"sauce" : sauce
+					},
+					success : function(data) {
+						swal(data);
+					}
+				});
+			});
+		});
+	
+	
 	$('table .remove_product').each(function() {
 		
 		$(this).click(function() {
 			
-			$(this).parent().remove();
 			
 			var no = $(this).siblings('.cartNo').text();
 			var id = "${ loginVO.id }";
@@ -180,20 +218,18 @@ $(document).ready(function(){
 														<c:forEach items="${ cartList }" var="cart">
 															<tr class="cart-subtotal">
 																<td class="cartNo" style="display: none;">${ cart.no }</td>
+																<td class="id" style="display: none;">${ cart.id }</td>
+																<td class="name" style="display: none;">${ cart.name }</td>
+																<td class="price" style="display: none;">${ cart.price }</td>
+																<td class="pic" style="display: none;">${ cart.pic }</td>
+																<td class="size" style="display: none;">${ cart.size }</td>
+																<td class="bread" style="display: none;">${ cart.bread }</td>
+																<td class="cheese" style="display: none;">${ cart.cheese }</td>
+																<td class="topping" style="display: none;">${ cart.topping }</td>
+																<td class="vegetable" style="display: none;">${ cart.vegetable }</td>
+																<td class="sauce" style="display: none;">${ cart.sauce }</td>
 																<td class="product-thumbnail" style="width: 30px; height: 30px">
-																	<form action="${pageContext.request.contextPath }/member/Latest-Order.do" method="post">
-																		<input type="hidden" name="id" value="${cart.id }">																		
-																		<input type="hidden" name="name" value="${cart.name }">																		
-																		<input type="hidden" name="price" value="${cart.price }">
-																		<input type="hidden" name="pic" value="${ cart.pic }" />
-																		<input type="hidden" name="size" value="${ cart.size }" />
-																		<input type="hidden" name="bread" value="${cart.bread }">																
-																		<input type="hidden" name="cheese" value="${cart.cheese }">																		
-																		<input type="hidden" name="topping" value="${cart.topping }">																		
-																		<input type="hidden" name="vegetable" value="${cart.vegetable }">																		
-																		<input type="hidden" name="sauce" value="${cart.sauce }">																		
-																		<input style="width: 35px; height: 30px" type="image" name="submit" src="${ pageContext.request.contextPath }/resources/img/AA.jpg" value=""/>
-																	</form>
+																	<a><img style="width: 40px; height: 30px" alt="Product Name" class="img-responsive " src="${ pageContext.request.contextPath }/resources/img/AA.jpg"></a>
 																</td>
 																<td style="margin-left: 20%; width: 5%" class="product-action-td remove_product">
 																	<a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a>
@@ -205,7 +241,7 @@ $(document).ready(function(){
 																	<span class="amount">${ cart.bread }<br />${cart.cheese }<br />${ cart.topping }<br />${ cart.vegetable }<br />${ cart.sauce }</span>
 																</td>
 																<td style="font-size: 100%; " align="center">
-																	<span class="amount">${ cart.price }</span>
+																	<span class="amount">&#8361;${ cart.price }</span>
 																</td>
 																<td style="font-size: 100%;" align="center">
 																	<span class="amount">${ cart.regDate }</span>

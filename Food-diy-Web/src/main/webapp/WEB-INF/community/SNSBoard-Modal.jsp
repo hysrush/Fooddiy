@@ -102,10 +102,10 @@
 								
 								</div>
 							<div class="comment">
-							<input type="text" id="replytext" placeholder="댓글을 작성해주세요" style="width:80%"/>
+							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:80%"/>
         				
         						<button type="button" id="btnReply">댓글 작성</button>
-        							<div id="listReply"></div>
+        							<div id="listReply2"></div>
         							
         						
 								<div class="testimonial testimonial-style-3">
@@ -127,10 +127,7 @@
 						</div>
 					</div>
     
-    
-  
 	<script>
-		
 	function like(no){
 			
 			var btn = this;
@@ -152,8 +149,60 @@
 			    
 						    } 
 					});    
-			}		
-		
+			}
+	
+	
+	// ** 댓글 쓰기 버튼 클릭 이벤트 (ajax로 처리)
+	 $("#btnReply").click(function(){
+         var content=$("#content").val();
+         var snsNo="${snsVO.no}"
+         var param="content="+content+"&snsNo="+snsNo;
+         
+         alert(content + "  " + snsNo);
+         alert( param)
+         
+         $.ajax({                
+             type: "post",
+             url: "./insertRep",
+             data: {"snsNo": snsNo , "content":content},
+             success: function(){
+            	
+                 alert("댓글이 등록되었습니다.");
+                // listReply2();
+             }
+         });
+     });
+	
+	    // RestController방식 (Json)
+	    // **댓글 목록2 (json)
+	    function listReply2(){
+	        $.ajax({
+	            type: "get",
+	            //contentType: "application/json", ==> 생략가능(RestController이기때문에 가능)
+	            url: "./listJson.do?no=${snsVO.no}",
+	            success: function(result){
+	                console.log(result);
+	                var output = "<table>";
+	                for(var i in result){
+	                    output += "<tr>";
+	                    output += "<td>"+result[i].id;
+	                    output += "("+changeDate(result[i].regDate)+")<br>";
+	                    output += result[i].content+"</td>";
+	                    output += "<tr>";
+	                }
+	                output += "</table>";
+	                $("#listReply2").html(output);
+	            }
+	        });
+	    }
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

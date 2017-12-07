@@ -15,15 +15,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.service.RepService;
 import kr.co.bit.service.SnsService;
+import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.SnsBoardVO;
 import kr.co.bit.vo.SnsRepVO;
 
@@ -33,6 +36,7 @@ public class SnsController {
 
 	@Autowired
 	private SnsService snsService;
+	@Autowired
 	private RepService repService;
 	
 	
@@ -152,6 +156,46 @@ public class SnsController {
 			
 		}
 		
+			//댓글 입력 
+		  @RequestMapping(value="/insertRep", method=RequestMethod.POST)
+		    public void insertRep(@Valid SnsRepVO snsRepVO,
+		    		@RequestParam(value="content") String content,
+		    		@RequestParam(value="snsNo") int snsNo,
+		    		HttpSession session){
+		      
+			  
+			  
+			  System.out.println(snsNo);
+			  System.out.println(content);
+		        UserVO userVO = (UserVO) session.getAttribute("loginVO");
+		        String id = userVO.getId();
+		        String pic = userVO.getFile();
+		        
+		        System.out.println(id);
+		        System.out.println(pic);
+		        
+		        snsRepVO.setSnsNo(snsNo);
+		        snsRepVO.setContent(content);
+		        snsRepVO.setId(id);
+		        snsRepVO.setPic(pic);
+		        
+		        System.out.println(snsRepVO.toString());
+		        
+		        repService.insertRep(snsRepVO);
+		     
+		        
+		    }
+
+		
+		  // 댓글 목록(@RestController Json방식으로 처리 : 데이터를 리턴)
+		    @RequestMapping(value = "/listJson.do",  method=RequestMethod.GET)
+		    @ResponseBody // 리턴데이터를 json으로 변환(생략가능)
+		    public List<SnsRepVO> listJson(@RequestParam int no){
+		        List<SnsRepVO> list = repService.list(no);
+		        return list;
+		    }
+
+		  
 		
 		
 		

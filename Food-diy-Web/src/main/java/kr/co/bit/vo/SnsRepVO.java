@@ -18,7 +18,7 @@ public class SnsRepVO {
 		return snsNo;
 	}
 	public void setSnsNo(int snsNo) {
-		snsNo = snsNo;
+		this.snsNo = snsNo;
 	}
 	public String getId() {
 		return id;

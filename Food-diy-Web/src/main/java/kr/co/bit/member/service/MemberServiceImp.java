@@ -60,5 +60,10 @@ public class MemberServiceImp  implements MemberService  {
 		return memberDAO.getmyMenu(id);
 	}
 
+	@Override
+	public List<CartVO> delmyMenu(List<String> noList) {
+		return memberDAO.delmyMenu(noList);
+	}
+
 	
 }
