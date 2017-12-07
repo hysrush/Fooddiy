@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.ManagedArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -164,13 +167,13 @@ public class MemberController {
 	}
 	
 	//나만의 메뉴 넣기	
-	@RequestMapping(value = "/Latest-Order.do", method = RequestMethod.POST)
-	public String myMenu(CartVO member, Model model) throws Exception {
+	@RequestMapping(value = "/Latest-Order", method = RequestMethod.POST)
+	public @ResponseBody String myMenu(CartVO member, Model model) throws Exception {
 
 		System.out.println(member.toString());
 		memberService.setmyMenu(member);
 		
-		return "member/Latest-Order";
+		return "나만의 메뉴로 저~장 ☆";
 
 	}
 	
@@ -180,6 +183,19 @@ public class MemberController {
 
 		List<CartVO> cart = memberService.getmyMenu(id);
 		model.addAttribute("cartList", cart);
+		
+		return "member/myMenu";
+
+	}
+	
+	//나만의 메뉴 삭제
+	@RequestMapping(value = "/myMenuDel.do")
+	
+		public String myMenuDel(@RequestParam List<String> noList, Model model) throws Exception {
+		
+		System.out.println(noList.toString());
+		List<CartVO> cart = memberService.delmyMenu(noList);
+		model.addAttribute("cartList", cart); 
 		
 		return "member/myMenu";
 
@@ -204,7 +220,7 @@ public class MemberController {
 		List<CartVO> cart = cart_Service.cartDelete(vo);
 		model.addAttribute("cartList", cart);
 		
-		return "삭제";
+		return "member/Latest-Order";
 	}
 
 	// <Claim 컨트롤러>
@@ -243,7 +259,33 @@ public class MemberController {
 		return mav;
 	}
 	
-	
+	@RequestMapping(value = "/productQtyUpdate", method = RequestMethod.POST)
+	public void ProductQtyUpdate(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "no") Integer no, @RequestParam(value = "totalQty") Integer totalQty,
+			HttpSession session) throws Exception {
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		System.out.println(no);
+		System.out.println(totalQty);
+
+		UserVO userVO = (UserVO) session.getAttribute("loginVO");
+		CartVO cartVO = new CartVO();
+		int number = no;
+
+		cartVO.setNo(number);
+		cartVO.setId(userVO.getId());
+		cartVO.setQty(totalQty);
+
+		cart_Service.updateProductQty(cartVO);
+		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
+		for (int i = 0; i < cartList.size(); ++i) {
+
+			System.out.println(cartList.get(i));
+		}
+		session.setAttribute("cartList", cartList);
+		System.out.println("수량 변경");
+	}
 	
 	
 	

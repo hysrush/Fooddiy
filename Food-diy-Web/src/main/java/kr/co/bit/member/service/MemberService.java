@@ -17,5 +17,6 @@ public interface MemberService {
 	void memberDelte(String id);
 	void setmyMenu(CartVO member);
 	List<CartVO> getmyMenu(String id);
+	List<CartVO> delmyMenu(List<String> noList);
 	
 }
