@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.vo.SnsRepVO;
 
 @Repository
@@ -16,9 +17,9 @@ public class RepDAOImpl implements RepDAO {
 	private String url = "kr.co.bit.dao.RepDAO.";
 	
 	@Override
-	public List<SnsRepVO> list(int no) {
+	public List<SnsRepVO> list(PagingVO paging) {
 		
-		List<SnsRepVO> list = sqlSession.selectList(url+ "selectReply", no);
+		List<SnsRepVO> list = sqlSession.selectList(url+ "selectReply",paging);
 		return list;
 	}
 

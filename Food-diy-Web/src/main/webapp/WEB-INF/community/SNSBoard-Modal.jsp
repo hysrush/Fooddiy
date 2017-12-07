@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="ajax-container">
 	<div class="row">
 		<div class="col-md-12">
@@ -26,7 +27,7 @@
 		<div class="col-md-4">
 
 			<span class="img-thumbnail">
-				<img alt="" class="img-responsive" src="../upload/${ snsVO.fileName }"> <!--  DB 첨부 이미지 값 -->
+				<img alt="" class="img-responsive" src="../upload/SNS/${ snsVO.fileName }"> <!--  DB 첨부 이미지 값 -->
 			</span>
 				<a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a>
 				
@@ -107,21 +108,47 @@
         						<button type="button" id="btnReply">댓글 작성</button>
         							<div id="listReply2"></div>
         							
-        						
+        					<c:forEach items="${ repList }" var="repList">
 								<div class="testimonial testimonial-style-3">
 									
 										<div class="testimonial-author">
 											<div class="testimonial-author-thumbnail">
-												<img src="${ pageContext.request.contextPath}/resources/img/clients/client-10.jpg" class="img-responsive img-circle" alt="">
+												<img src=" ../upload/${repList.pic}" class="img-responsive img-circle" alt="">
 											</div>
-												<p><strong>kkiceama</strong></p>
+												<p><strong>${repList.id }</strong></p>
 											<span class="pull-right">
 												<span> <a href="#"><i class="fa fa-reply"></i>Update</a></span>
 											</span>
-												<p><strong>맛있게 잘 먹었어요~~</strong>
-											<span class="date pull-right">November 12, 2017 at 1:38 pm</span>
+												<p><strong>${repList.content }</strong>
+											<span class="date pull-right">${repList.regDate }</span>
 										</div>
 									</div>
+								</c:forEach>
+									<div class="col-md-12">
+														<ul class="pagination">
+														
+															<!-- 이전 페이지 이동  -->
+															<li><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'><i class="fa fa-chevron-left"></i></a></li>
+														
+															<!--  페이지 번호  -->
+														<c:forEach var='i' begin ="${p.pageStartNum }" end = "${p.pageLastNum}" step="1">
+															<li class='pageIndex$[i]'><a onclick="pageIndex(${i});">${i}</a></li>
+														</c:forEach>
+															<!-- 다음 페이지 이동 -->
+															
+															  <li><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'><i class="fa fa-chevron-right"></i></a></li>
+														</ul>
+														
+															 <form action="./snsDetail.do" method="post" id='frmPaging'>
+													            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
+													            <input type='hidden' name='index' id='index' value='${p.index}'>
+													            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
+													            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>    
+													        </form>
+													</div>	
+														
+								
+								
 								</div>
 							</div>
 						</div>
@@ -168,7 +195,12 @@
              success: function(){
             	
                  alert("댓글이 등록되었습니다.");
-                // listReply2();
+                 
+                 
+                 
+                 
+                 
+                 
              }
          });
      });
@@ -209,5 +241,58 @@
 	
 	
 	</script>
+	
+	<script>
+			function frmPaging() {
+			    document.getElementById("frmPaging").submit();
+			}
+			// 이전 페이지 index
+			function pagePre(index, pageCnt) {
+			    if (0 < index - pageCnt) {
+			        index -= pageCnt;
+			        document.getElementById("pageStartNum").value = index;
+			        document.getElementById("index").value = index - 1;
+			        frmPaging();
+			    }
+			}
+			// 다음 페이지 index
+			function pageNext(index, total, listCnt, pageCnt) {
+			    var totalPageCnt = Math.ceil(total / listCnt);
+			    var max = Math.ceil(totalPageCnt / pageCnt);
+			    if (max * pageCnt > index + pageCnt) {
+			        index += pageCnt;
+			        document.getElementById("pageStartNum").value = index;
+			        document.getElementById("index").value = index - 1;
+			        frmPaging();
+			    }
+			}
+			
+			// index 리스트 처리
+			function pageIndex(pageStartNum) {
+			    document.getElementById("index").value = pageStartNum - 1;
+			    frmPaging();
+			}
+			// 리스트출력개수 처리
+			function listCnt() {
+			    document.getElementById("index").value = 0;
+			    document.getElementById("pageStartNum").value = 1;
+			    document.getElementById("listCnt").value = document.getElementById("listCount").value;
+			    frmPaging();
+			}
+			window.onload = function() {
+			    // 현재번호 active
+			    var index = document.getElementById("index").value;
+			    var pageIndex = document.querySelector('.pageIndex'+(Number(index)+1));
+			   
+			    // 리스트갯수 selected 처리
+			    $("#listCount > option").each(function () {
+			        if ($(this).val() == $('#listCnt').val()) {
+			            $(this).prop("selected", true);
+			        }
+			    });
+			}
+
+
+			</script>	
 	
     

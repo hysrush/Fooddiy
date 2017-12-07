@@ -2,6 +2,7 @@ package kr.co.bit.event.vo;
 
 public class PagingVO {
     
+	private int no;
     private int pageCnt;          // 출력할 페이지번호 갯수
     private int index;            // 출력할 페이지번호
     private int pageStartNum;    // 출력할 페이지 시작 번호
@@ -13,7 +14,7 @@ public class PagingVO {
         pageCnt = 5;
         index = 0;
         pageStartNum = 1;
-        listCnt = 5;
+        listCnt = 3;
     }
     
     public PagingVO() {}
@@ -44,8 +45,21 @@ public class PagingVO {
         int n = (int)Math.ceil((double)total/listCnt);
         return getPageLastNum()==n ? false : n==0 ? false : true;
     }
+   
     
-    public int getPageCnt() {
+    
+    
+
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getPageCnt() {
         return pageCnt;
     }
     public void setPageCnt(int pageCnt) {
@@ -75,10 +89,13 @@ public class PagingVO {
     public void setTotal(int total) {
         this.total = total;
     }
+
+	@Override
+	public String toString() {
+		return "PagingVO [no=" + no + ", pageCnt=" + pageCnt + ", index=" + index + ", pageStartNum=" + pageStartNum
+				+ ", listCnt=" + listCnt + ", total=" + total + "]";
+	}
+
+	
     
-    @Override
-    public String toString() {
-        return "PagingDto [pageCnt=" + pageCnt + ", index=" + index + ", pageStartNum=" + pageStartNum + ", listCnt="
-                + listCnt + ", total=" + total + "]";
-    }
 }
