@@ -150,7 +150,7 @@ $(document).ready(function(){
 					<form:form commandName="cartVO" method="POST" id="submit">
 						<form:input path="name" type="hidden" value="${ menuDetailVO.name }"/>
 						<form:input path="type" type="hidden" value="${ menuDetailVO.type }"/>
-						<form:input path="price" type="hidden" id="sand_price" idvalue="${ menuDetailVO.price }"/>
+						<form:input path="price" type="hidden" id="sand_price" value="${ menuDetailVO.price }"/>
 						<form:input path="size" type="hidden" id="sand_size" value="15cm"/>
 						<form:input path="pic" type="hidden" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }"/>
 						<button type="submit" class="btn btn-primary btn-icon" id="order">주문하기</button>
