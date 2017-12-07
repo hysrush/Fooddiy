@@ -36,8 +36,7 @@ public class Select_Ing_Controller {
 	private CartStoreService cartStore_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(HttpSession session, String storeName, String storeAddr, String storePhone, String name,
-			String price, String type,String size, String pic) {
+	public ModelAndView Session(HttpSession session, String storeName, String storeAddr, String storePhone, CartVO cartVO){
 
 		UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		String id = userVO.getId();
@@ -59,8 +58,9 @@ public class Select_Ing_Controller {
 			session.setAttribute("cartStoreVO", cartStoreVO);
 		}
 
-			
-		System.out.println("size : " + size);
+		
+		System.out.println(cartVO);
+		/*System.out.println("size : " + size);
 		//메뉴선택에서 -> 재료선택으로 바로 이동했을 경우(지점을 선택했을 경우 바로 이동한다.)
 		if (name != null && price != null && size != null && pic != null && type != null)  {
 			CartVO cartVO = new CartVO();
@@ -72,7 +72,7 @@ public class Select_Ing_Controller {
 			cartVO.setId(id);
 
 			session.setAttribute("cartVO", cartVO);
-		}
+		}*/
 
 		//select_ingredient.jsp에 보여줄 재료정보를 불러온다.
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
