@@ -59,7 +59,6 @@ $(document).ready(function(){
 	
 	// 사이드 주문 시 매장으로	
 	$("#submit").submit(function(){
-		alert("aaaaa");
 		// 장바구니가 비었을때
 		if(${ cartStoreVO == null })
 		{
@@ -74,7 +73,6 @@ $(document).ready(function(){
 		}
 		else
 		{
-			alert("bbbbb");
 			$('#submit').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do');
 			return true;
 		}
