@@ -148,7 +148,7 @@ $(document).ready(function(){
 					</form> --%>
 					
 					<form:form commandName="cartVO" method="POST" id="submit">
-						<form:input path="id" type="hidden" value="${ userVO.id }"/>
+						<form:input path="id" type="hidden" value="${ loginVO.id }"/>
 						<form:input path="name" type="hidden" value="${ menuDetailVO.name }"/>
 						<form:input path="type" type="hidden" value="${ menuDetailVO.type }"/>
 						<form:input path="price" type="hidden" id="sand_price" value="${ menuDetailVO.price }"/>
