@@ -63,19 +63,19 @@ $(document).ready(function(){
 		// 장바구니가 비었을때
 		if(${ cartStoreVO == null })
 		{
-			$('#cart').attr('action', '${ pageContext.request.contextPath }/store/findStore.do')
+			$('#submit').attr('action', '${ pageContext.request.contextPath }/store/findStore.do')
 			return true;
 		}
 		// 사이드 선택 시
 		else if(${ menuDetailVO.type == 'S' } || ${ menuDetailVO.type == 'N' } || ${ menuDetailVO.type == 'D' })
 		{				
-			$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/cart.do')
+			$('#submit').attr('action', '${ pageContext.request.contextPath }/menu/cart.do')
 			return true;
 		}
 		else
 		{
 			alert("bbbbb");
-			$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do');
+			$('#submit').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do');
 			return true;
 		}
 	});	
