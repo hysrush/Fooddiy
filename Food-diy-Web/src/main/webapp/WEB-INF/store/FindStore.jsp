@@ -396,25 +396,34 @@
 				
 				 
 	
-				 
-	             function choice(storeName){
-	               
-	                 //var btn= this;
-	                 var storeName = storeName;
-	               <c:choose>  
-		           		<c:when test="${cartStoreVO == null}">
-			                 $('.test5').attr('action', "${pageContext.request.contextPath}/menu/select_ingredients.do"); // 메뉴페이지      
-			                 $('.test5').attr('method', "POST"); // 메뉴페이지      
-			                 return true;
-		                </c:when>
-		                 
-		                 <c:otherwise>
-			                 $('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do");  //구매페이지
-			                 $('.test5').attr('method', "GET");   //구매페이지
-							return true;
-		                 </c:otherwise>
-	                </c:choose> 
-	              } 
+		
+			function choice(storeName) {
+
+				//var btn= this;
+				var storeName = storeName;
+				if(${cartStore == null}) {
+					
+					if(${ cartVO.type == 'S' }||${ cartVO.type == 'N' }||${ cartVO.type == 'D' }) {
+						$('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do"); // 메뉴페이지      
+						$('.test5').attr('method', "POST"); // 메뉴페이지    
+						return true;
+					}
+					else {
+						$('.test5').attr('action', "${pageContext.request.contextPath}/menu/select_ingredients.do"); // 메뉴페이지      
+						$('.test5').attr('method', "POST"); // 메뉴페이지      
+						return true;
+					}
+				}
+				else {
+					$('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do"); //구매페이지
+					$('.test5').attr('method', "GET"); //구매페이지
+					return true;
+				}
+				
+				
+				
+	
+			}
 		</script>
 		<script>
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

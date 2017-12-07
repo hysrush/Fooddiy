@@ -147,7 +147,7 @@ public class SignController {
 
 	// => 로그인 실패시 다시 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String signIn(UserVO login, Model model) {
+	public String signIn(UserVO login, Model model, HttpSession session) {
 
 		UserVO signIn = signServiceImp.login(login);
 
@@ -158,18 +158,19 @@ public class SignController {
 			return "sign/login";
 		}
 		
+		String id = signIn.getId();
+		
 		//장바구니
         CartVO cartVO = new CartVO();
-        cartVO.setId(login.getId());
+        cartVO.setId(id);
 		
         List<CartVO> cartList = cartService.selectAllCart(cartVO);
-        CartStoreVO cartStoreVO = null;
+        CartStoreVO cartStoreVO = cartStoreService.selectOneCartStore(id);
         
-        if(cartList.size() != 0) {
-        	System.out.println("null 아님");
-        	cartStoreVO = cartStoreService.selectOneCartStore(signIn.getId());
+        if(cartStoreVO != null) {
         	model.addAttribute("cartStoreVO", cartStoreVO);
         }
+        
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("loginVO", signIn);
 		
@@ -232,7 +233,6 @@ public class SignController {
 	public String kakaoLogin(UserVO login, Model model) {
 
 		UserVO userVO = signServiceImp.login(login);
-
 		// 가입한 적 있는지 확인
 		if (userVO == null) {
 
@@ -243,19 +243,19 @@ public class SignController {
 			model.addAttribute("kakaoVO", kakaoVO);
 			return "sign/kakaoSignUp";
 		}
+		String id = userVO.getId();
 		
 		//장바구니
         CartVO cartVO = new CartVO();
-        cartVO.setId(login.getId());
+        cartVO.setId(id);
 		
         List<CartVO> cartList = cartService.selectAllCart(cartVO);
-        CartStoreVO cartStoreVO = null;
+        CartStoreVO cartStoreVO = cartStoreService.selectOneCartStore(id);
         
-        if(cartList.size() != 0) {
-        	System.out.println("null 아님");
-        	cartStoreVO = cartStoreService.selectOneCartStore(userVO.getId());
+        if(cartStoreVO != null) {
         	model.addAttribute("cartStoreVO", cartStoreVO);
         }
+        
 		model.addAttribute("cartList", cartList);
 		
 

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,26 +40,13 @@ public class StoreController {
 	
 	//메뉴선택 -> 지점선택
 	@RequestMapping(value = "/findStore.do", method=RequestMethod.POST)
-	public ModelAndView findStore(HttpSession session, String name, String price, String size, String type,String pic) {
+	public ModelAndView findStore(HttpSession session,@Valid CartVO cartVO, Model model) {
 
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = user.getId();
 		ModelAndView mav = new ModelAndView();
 		
-		
-		//메뉴선택 단계에서 받아온 정보를 cartVO에 담아준다.
-		CartVO cartVO = new CartVO();
-		cartVO.setName(name);
-		cartVO.setPrice(price);
-		cartVO.setSize(size);
-		cartVO.setType(type);
-		cartVO.setPic(pic);
-		cartVO.setId(id);
-		
-		System.out.println(type);
-
-		//SessionAttributes 통해 세션에 등록
-		mav.addObject("cartVO", cartVO);
+		session.setAttribute("sessionCartVO", cartVO);
 				
 		//도시정보를 불러온다.
 		List<CityVO> cityList = storeService.selectCity();
