@@ -98,6 +98,9 @@ public class MenuController {
 		
 		MenuVO menuDetailVO = menuService.selectOneMenu(no);
 		
+		CartVO cartVO = new CartVO();
+		session.setAttribute("cartVO", cartVO);
+		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
 		mav.setViewName("menu/menuDetail");

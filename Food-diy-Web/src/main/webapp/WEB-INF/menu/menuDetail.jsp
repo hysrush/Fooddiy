@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -135,7 +137,7 @@ $(document).ready(function(){
 							style="font-size: 18px; margin-left: 5px" id="half2">30cm</span>
 					</p>
 					
-					<form enctype="multipart/form-data" method="post" class="cart" id="cart" style="margin-bottom: 10px">
+					<%-- <form enctype="multipart/form-data" method="post" class="cart" id="cart" style="margin-bottom: 10px">
 						<!-- submit하면 hidden으로 값 넘겨준다 -->
 						<input type="hidden" name="name" value="${ menuDetailVO.name }">
 						<input type="hidden" name="type" value="${ menuDetailVO.type }">
@@ -143,7 +145,16 @@ $(document).ready(function(){
 						<input type="hidden" name="size" id="sand_size" value="15cm">
 						<input type="hidden" name="pic" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
 						<button type="submit" href="#" class="btn btn-primary btn-icon" id="order">주문하기</button>
-					</form>
+					</form> --%>
+					
+					<form:form commandName="cartVO" method="POST">
+						<form:input path="name" type="hidden" value="${ menuDetailVO.name }"/>
+						<form:input path="type" type="hidden" value="${ menuDetailVO.type }"/>
+						<form:input path="price" type="hidden" id="sand_price" idvalue="${ menuDetailVO.price }"/>
+						<form:input path="size" type="hidden" id="sand_size" value="15cm"/>
+						<form:input path="pic" type="hidden" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }"/>
+						<button type="submit" class="btn btn-default">등록</button>
+					</form:form>
 
 					<div class="product_meta">
 						<span class="posted_in">알르레기 유발성분 : ${ menuDetailVO.allergy }
