@@ -59,6 +59,8 @@ public class Select_Ing_Controller {
 			session.setAttribute("cartStoreVO", cartStoreVO);
 		}
 
+			
+		System.out.println("size : " + size);
 		//메뉴선택에서 -> 재료선택으로 바로 이동했을 경우(지점을 선택했을 경우 바로 이동한다.)
 		if (name != null && price != null && size != null && pic != null && type != null)  {
 			CartVO cartVO = new CartVO();
@@ -86,13 +88,12 @@ public class Select_Ing_Controller {
 	public String Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
 			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
 			@RequestParam("sauce") String sauce, @RequestParam("requirement") String requirement, HttpSession session) {
-
-		System.out.println("post cart");
-		
 		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
-		
 		String type = cartVO.getType();
-		System.out.println(type);
+		
+		
+		System.out.println("type  :  " + type);
+		
 		//
 		if(type.equals('S')|| type.equals('N') || type.equals('D')) {
 			return "/menu/cart";
