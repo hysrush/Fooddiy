@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -385,11 +386,14 @@
 
 			<div class="row">
 				<div style="text-align: center;">
-					<form class="order-form" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
-						<input type="hidden" class="bread" name="bread" value="" /> <input type="hidden" class="cheese" name="cheese" value="" /> <input type="hidden" class="topping" name="topping" value="" /> <input type="hidden" class="vegetable" name="vegetable" value="" /> <input type="hidden" class="sauce"
-							name="sauce" value="" />
+					<form:form class="order-form" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
+						<form:input type="hidden" path ="bread" class="bread" name="bread" value="" /> 
+						<form:input type="hidden" path ="cheese" class="cheese" name="cheese" value="" /> 
+						<form:input type="hidden" path ="topping" class="topping" name="topping" value="" />
+						<form:input type="hidden" path ="vegetable" class="vegetable" name="vegetable" value="" /> 
+						<form:input type="hidden" path ="sauce" class="sauce" name="sauce" value="" />
 						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
-					</form>
+					</form:form>
 				</div>
 			</div>
 

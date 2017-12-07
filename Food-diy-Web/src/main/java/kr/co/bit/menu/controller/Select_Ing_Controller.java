@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +37,7 @@ public class Select_Ing_Controller {
 	private CartStoreService cartStore_Service;
 
 	@RequestMapping(value = "/select_ingredients.do", method = RequestMethod.POST)
-	public ModelAndView Session(HttpSession session, String storeName, String storeAddr, String storePhone, CartVO cartVO){
+	public ModelAndView Session(HttpSession session, String storeName, String storeAddr, String storePhone, CartVO cartVO, Model model){
 
 		UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		String id = userVO.getId();
@@ -59,6 +60,7 @@ public class Select_Ing_Controller {
 		}
 
 		
+		cartVO.setId(id);
 		System.out.println(cartVO);
 		/*System.out.println("size : " + size);
 		//메뉴선택에서 -> 재료선택으로 바로 이동했을 경우(지점을 선택했을 경우 바로 이동한다.)
@@ -80,6 +82,7 @@ public class Select_Ing_Controller {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("menu/select_ingredients");
 		mav.addObject("ingList", ingList);
+		model.addAttribute("cartVO", cartVO);
 
 		return mav;
 	}
@@ -89,6 +92,7 @@ public class Select_Ing_Controller {
 		String type = cartVO.getType();
 		
 		
+		System.out.println(cartVO);
 		System.out.println("type  :  " + type);
 		
 		//
