@@ -24,8 +24,8 @@ public class RepServiceImpl implements RepService{
 	}
 
 	@Override
-	public void insert(SnsRepVO vo) {
-		repDAO.insert(vo);
+	public void insertRep(SnsRepVO snsRepVO) {
+		repDAO.insertRep(snsRepVO);
 		
 	}
 

@@ -23,8 +23,8 @@ public class RepDAOImpl implements RepDAO {
 	}
 
 	@Override
-	public void insert(SnsRepVO vo) {
-		sqlSession.insert(url+ "insertReply",vo);
+	public void insertRep(SnsRepVO snsRepVO) {
+		sqlSession.insert(url+ "insertReply",snsRepVO);
 		
 	}
 
