@@ -8,7 +8,7 @@ public interface RepService {
 
 	public List<SnsRepVO> list(int no);
     // 댓글 입력
-    public void insert(SnsRepVO vo);
+    public void insertRep(SnsRepVO snsRepVO);
     // 댓글 수정
     public void update(SnsRepVO vo);
     // 댓글 삭제
