@@ -9,7 +9,7 @@
 					 <table>
 						<tr>
 							<td>
-								<video width="266px" height="150px" controls autoplay>
+								<video width="266px" height="150px" loop="loop" controls autoplay>
 								  <source src="${pageContext.request.contextPath }/resources/video/subway.mp4" type="video/mp4">
 								</video>
 							</td>
@@ -77,30 +77,23 @@
 				<!-- 이벤트  -->
 					<div class="col-xs-12 col-md-12" style="text-align: center; padding:5px;">
 						 <table border="1">
-						<tr>
-							<td>
-								<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">EVENT</strong>
-							</td>
-						</tr>
-					
-						<tr>
-							<td>
-								<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-									<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/team1.jpg"/>
-								</a>
-							</td>
-						</tr>
+							<tr>
+								<td colspan="2">
+									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
+										<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/team1.jpg"/>
+									</a>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div><br/>
 				
 			<!--  슬라이드 -->
 			<div class="col-md-6">
-			<table border="1">
+			<table border="1" style="height: 720px">
 				<tr>
 					<td>
-						<div id="carousel-example-generic" class="carousel slide"
-					data-ride="carousel">
+						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<li data-target="#carousel-example-generic" data-slide-to="0"
@@ -112,20 +105,20 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img
-								src="${ pageContext.request.contextPath }/resources/img/slides/1.jpg"
+							<img style="height: 720px"
+								src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
 								alt="">
 							<div class="carousel-caption"></div>
 						</div>
 						<div class="item">
-							<img
-								src="${ pageContext.request.contextPath }/resources/img/slides/4.jpg"
+							<img style="height: 720px"
+								src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
 								alt="">
 							<div class="carousel-caption"></div>
 						</div>
 						<div class="item">
-							<img 
-								src="${ pageContext.request.contextPath }/resources/img/slides/3.jpg"
+							<img style="height: 720px"
+								src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
 								alt="">
 							<div class="carousel-caption"></div>
 						</div>
@@ -171,22 +164,18 @@
 					</div> --%>
 						<table border="1">
 							<tr>
-								<td>홍길동</td>
-								<td>추천수 2</td>
+								<td><strong style="text-align: center; font-size: 11px;" class="heading-primary text-uppercase mb-md">홍길동</strong></td>
+								<td><strong style="text-align: center; font-size: 11px;" class="heading-primary text-uppercase mb-md">추천수 2</strong></td>
 							</tr>
 							<tr>
 								<td colspan="2">
 									<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-										<img width="100%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
+										<img width="50%" align="left" src="${ pageContext.request.contextPath }/resources/img/menu/mn-brkfst-baceggchs.jpg"/>
 									</a>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									내용 내용 내용<br/>
-									내용 내용 내용<br/>
-									내용 내용 내용<br/>
-									내용 내용 내용
+									<span style="text-align: center; font-size: 12px;" class="heading-primary">
+										내용 내용 내용 
+										내용 내용 내용 
+									</span>
 								</td>
 							</tr>
 						</table>
