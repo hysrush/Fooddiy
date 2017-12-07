@@ -58,7 +58,8 @@ $(document).ready(function(){
 	});
 	
 	// 사이드 주문 시 매장으로	
-	$("form").submit(function(){
+	$("#submit").submit(function(){
+		alert("aaaaa");
 		// 장바구니가 비었을때
 		if(${ cartStoreVO == null })
 		{
@@ -73,6 +74,7 @@ $(document).ready(function(){
 		}
 		else
 		{
+			alert("bbbbb");
 			$('#cart').attr('action', '${ pageContext.request.contextPath }/menu/select_ingredients.do');
 			return true;
 		}
@@ -147,13 +149,13 @@ $(document).ready(function(){
 						<button type="submit" href="#" class="btn btn-primary btn-icon" id="order">주문하기</button>
 					</form> --%>
 					
-					<form:form commandName="cartVO" method="POST">
+					<form:form commandName="cartVO" method="POST" id="submit">
 						<form:input path="name" type="hidden" value="${ menuDetailVO.name }"/>
 						<form:input path="type" type="hidden" value="${ menuDetailVO.type }"/>
 						<form:input path="price" type="hidden" id="sand_price" idvalue="${ menuDetailVO.price }"/>
 						<form:input path="size" type="hidden" id="sand_size" value="15cm"/>
 						<form:input path="pic" type="hidden" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }"/>
-						<button type="submit" class="btn btn-default">등록</button>
+						<button type="submit" class="btn btn-primary btn-icon" id="order">주문하기</button>
 					</form:form>
 
 					<div class="product_meta">

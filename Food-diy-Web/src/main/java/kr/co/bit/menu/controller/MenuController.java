@@ -94,12 +94,15 @@ public class MenuController {
 	// menu 상세내용 조회
 	// ex) menu/menuDetail.do?no=1
 	@RequestMapping(value="/menuDetail.do", method=RequestMethod.GET)
-	public ModelAndView detail(@RequestParam("no") int no, HttpSession session) {		
+	public ModelAndView detail(@RequestParam("no") int no, HttpSession session, Model model) {		
 		
 		MenuVO menuDetailVO = menuService.selectOneMenu(no);
 		
 		CartVO cartVO = new CartVO();
-		session.setAttribute("cartVO", cartVO);
+		/*session.setAttribute("cartVO", cartVO);*/
+		model.addAttribute("cartVO", cartVO);
+		
+		
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
