@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.CartStoreService;
 import kr.co.bit.menu.service.Select_Ing_Service;
@@ -85,10 +85,7 @@ public class Select_Ing_Controller {
 	}
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
-	public String Add_cart(@RequestParam("bread") String bread, @RequestParam("cheese") String cheese,
-			@RequestParam("topping") String topping, @RequestParam("vegetable") String vegetable,
-			@RequestParam("sauce") String sauce, @RequestParam("requirement") String requirement, HttpSession session) {
-		CartVO cartVO = (CartVO) session.getAttribute("cartVO");
+	public String Add_cart(@Valid CartVO cartVO, HttpSession session) {
 		String type = cartVO.getType();
 		
 		
@@ -97,8 +94,42 @@ public class Select_Ing_Controller {
 		//
 		if(type.equals('S')|| type.equals('N') || type.equals('D')) {
 			return "/menu/cart";
+		}else if(cartVO != null) {
+			
+			String[] toppings;
+			String topping = cartVO.getTopping();
+			Integer price = new Integer(cartVO.getPrice());
+			
+			if (topping != null) {
+				toppings = topping.split("\\|\\|");
+				for (int i = 0; i < toppings.length; ++i) {
+
+					String subPrice = toppings[i].split("\\s")[1];
+					subPrice = subPrice.replace(",", "");
+					subPrice = subPrice.replace("+", "");
+
+					price += new Integer(subPrice);
+				}
+				topping = topping.replaceAll("\\|\\|", ", ");
+
+			}
+
+			cartVO.setTotal_price(price.toString());
+			cartVO.setTopping(topping);
+
+			// 장바구니에 추가
+			cart_Service.insertCart(cartVO);
+
+			// 모든 잘바구니 불러오기
+			List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
+
+			session.setAttribute("cartList", cartList);
+
+			// 장바구니에 넣어주고 carVO를 비워준다.
+			session.setAttribute("cartVO", null);
+			return "/menu/cart";
 		}
-		else if ( cartVO != null ) {
+/*		else if ( cartVO != null ) {
 			cartVO.setBread(bread);
 			cartVO.setCheese(cheese);
 			
@@ -139,7 +170,7 @@ public class Select_Ing_Controller {
 			//장바구니에 넣어주고 carVO를 비워준다.
 			session.setAttribute("cartVO", null);
 			return "/menu/cart";
-		}
+		}*/
 		
 			return "/menu/cart";
 		
