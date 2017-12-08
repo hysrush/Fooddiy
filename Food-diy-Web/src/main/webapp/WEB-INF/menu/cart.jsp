@@ -174,26 +174,26 @@
 													<table class="totals-table">
 														<tbody>
 															<tr>
-																<td>매장</td>
+																<th>매장</th>
 																<td>
 																		<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="changeStore()" style="padding: 4px 4px 1px">변경</button>
 																		<strong class = "storeName">${ cartStoreVO.storeName } </strong>  
 																</td>
 															</tr>
 															<tr>
-																<td>주소</td>
-																<td><div> ${ cartStoreVO.storeAddr } </div></td>
+																<th>주소</th>
+																<td><div style="font-size:12px"> ${ cartStoreVO.storeAddr } </div></td>
 															</tr>
 															<tr>
-																<td>전화번호</td>
+																<th>전화번호</th>
 																<td><div> ${ cartStoreVO.storePhone } </div></td>
 															</tr>
 															<tr>
-																<td>수량</td>
+																<th>수량</th>
 																<td class="final-qty"></td>
 															</tr>
 															<tr>
-																<td>총 가격</td>
+																<th>총 가격</th>
 																<td class="final-price commaN"></td>
 															</tr>
 														</tbody>
