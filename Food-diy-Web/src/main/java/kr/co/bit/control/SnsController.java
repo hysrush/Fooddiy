@@ -89,9 +89,9 @@ public class SnsController {
 			System.out.println("시작");
 
 			// 1. fileName 설정 + eventVO에 fileName 저장
-			//String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
-			//+ file.getOriginalFilename();
-			String fileName = "C:\\Users\\user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"+ file.getOriginalFilename();
+			String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
+			+ file.getOriginalFilename();
+			//String fileName = "C:\\Users\\user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"+ file.getOriginalFilename();
 			
 			String saveFileName = file.getOriginalFilename();
 
@@ -171,19 +171,20 @@ public class SnsController {
 			//댓글 입력 
 		  @RequestMapping(value="/insertRep", method=RequestMethod.POST)
 		    public void insertRep(@Valid SnsRepVO snsRepVO,
+		    		HttpServletRequest request,
 		    		HttpServletResponse response,
 		    		@RequestParam(value="content") String content,
 		    		@RequestParam(value="snsNo") int snsNo,
 		    		HttpSession session) throws Exception{
-		      
-			  System.out.println(snsNo);
-			  System.out.println(content);
+			  
+			  response.setContentType("text/html;charset=UTF-8");
+			  JSONObject jsonObj = new JSONObject();
+			  response.getWriter().print(jsonObj.toString());
+		   
 		        UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		        String id = userVO.getId();
 		        String pic = userVO.getFile();
-		        
-		        System.out.println(id);
-		        System.out.println(pic);
+		    
 		        
 		        snsRepVO.setSnsNo(snsNo);
 		        snsRepVO.setContent(content);
@@ -193,14 +194,14 @@ public class SnsController {
 		        System.out.println(snsRepVO.toString());
 		        
 		        repService.insertRep(snsRepVO);
-		        
-		        response.setContentType("text/html;charset=UTF-8");
-				JSONObject jsonObj = new JSONObject();
-				response.getWriter().print(jsonObj.toString());
+				
 				
 		        System.out.println(snsRepVO.toString());
 		        
-		        
+		        jsonObj.put("result", true);
+				jsonObj.put("snsRepVO", snsRepVO);
+				
+				System.out.println(snsRepVO.toString());
 		        
 		    }
 

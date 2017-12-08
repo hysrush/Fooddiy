@@ -195,7 +195,7 @@
 																<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
-																<i class="fa fa-heart" id="likey" align="right">${snsVO.like}</i>
+																<i class="fa fa-heart" id="likey">${snsVO.like}</i>
 																
 																
 															</span> 
@@ -235,7 +235,7 @@
 									class="fa fa-chevron-right"></i></a></li>
 						</ul>
 
-						<form action="./eventPage.do" method="post" id='frmPaging'>
+						<form action="./snsPage.do" method="post" id='frmPaging'>
 							<!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
 							<input type='hidden' name='index' id='index' value='${p.index}'>
 							<input type='hidden' name='pageStartNum' id='pageStartNum'
@@ -370,7 +370,7 @@
 			    
 						    } 
 					});    
-			}		
+			};		
 		
 	
 	

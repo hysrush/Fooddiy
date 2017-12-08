@@ -14,7 +14,7 @@ public class PagingVO {
         pageCnt = 5;
         index = 0;
         pageStartNum = 1;
-        listCnt = 3;
+        listCnt = 9;
     }
     
     public PagingVO() {}
