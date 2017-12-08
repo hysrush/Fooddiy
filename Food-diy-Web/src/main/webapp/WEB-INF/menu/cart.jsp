@@ -175,10 +175,9 @@
 														<tbody>
 															<tr>
 																<td>매장</td>
-																<td><div>
-																		<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="changeStore()">변경</button> 
-																		${ cartStoreVO.storeName }  
-																	</div>
+																<td>
+																		<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="changeStore()" style="padding: 4px 4px 1px">변경</button>
+																		<strong class = "storeName">${ cartStoreVO.storeName } </strong>  
 																</td>
 															</tr>
 															<tr>
@@ -227,6 +226,12 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 				$('.cart-dropdown').hide();			
+				
+				
+				if($('.storeName').text().length > 6) {
+					$('.storeName').css('font-size',
+							)
+				}
 				
 				$('#payInfo').stick_in_parent({
 			         offset_top : 200

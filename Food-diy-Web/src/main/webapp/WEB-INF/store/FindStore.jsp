@@ -401,7 +401,7 @@
 
 				//var btn= this;
 				var storeName = storeName;
-				if(${cartStore == null}) {
+				if(${cartStoreVO == null}) {
 					
 					if(${ cartVO.type == 'S' }||${ cartVO.type == 'N' }||${ cartVO.type == 'D' }) {
 						$('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do"); // 메뉴페이지      

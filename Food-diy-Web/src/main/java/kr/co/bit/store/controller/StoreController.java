@@ -42,6 +42,7 @@ public class StoreController {
 	@RequestMapping(value = "/findStore.do", method=RequestMethod.POST)
 	public ModelAndView findStore(HttpSession session,@Valid CartVO cartVO, Model model) {
 
+		
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = user.getId();
 		ModelAndView mav = new ModelAndView();
