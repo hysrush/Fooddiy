@@ -51,10 +51,16 @@ public class Select_Ing_Controller {
 		
 		// session에 등록된 지점이 없는 경우 cartStore에 지점 정보를 저장 후 세션에 등록
 		if (cartStoreVO == null) {
+			
+			
+			
 			cartStoreVO = new CartStoreVO();
 			cartStoreVO.setId(id);
 			cartStoreVO.setStoreName(storeName);
-			cartStoreVO.setStoreAddr(storeAddr);
+			
+			String addr = storeAddr.replaceAll(",", " ");
+			
+			cartStoreVO.setStoreAddr(addr);
 			cartStoreVO.setStorePhone(storePhone);
 			cartStore_Service.insertCartStore(cartStoreVO);
 
@@ -95,7 +101,10 @@ public class Select_Ing_Controller {
 			
 			cartStoreVO.setId(id);
 			cartStoreVO.setStoreName(storeName);
-			cartStoreVO.setStoreAddr(storeAddr);
+			
+			String addr = storeAddr.replaceAll(",", " ");
+			
+			cartStoreVO.setStoreAddr(addr);
 			cartStoreVO.setStorePhone(storePhone);
 			cartStore_Service.insertCartStore(cartStoreVO);
 
@@ -214,7 +223,10 @@ public class Select_Ing_Controller {
 		if (storeName != null && storeAddr != null && storePhone != null) {
 
 			cartStoreVO.setStoreName(storeName);
-			cartStoreVO.setStoreAddr(storeAddr);
+			
+			String addr = storeAddr.replaceAll(",", " ");
+			
+			cartStoreVO.setStoreAddr(addr);
 			cartStoreVO.setStorePhone(storePhone);
 			cartStore_Service.updateCartStore(cartStoreVO);
 

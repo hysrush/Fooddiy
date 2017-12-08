@@ -179,9 +179,10 @@ public class SignController {
 
 	// - 로그아웃
 	@RequestMapping("/logout")
-	public String logout(SessionStatus sessionStatus, Model model) {
+	public String logout(SessionStatus sessionStatus, Model model, HttpSession session) {
 		
 		sessionStatus.setComplete();
+		System.out.println(session.getAttribute("cartList"));
 		return "sign/sign";
 	}
 	

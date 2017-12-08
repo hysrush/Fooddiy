@@ -42,6 +42,7 @@ public class StoreController {
 	@RequestMapping(value = "/findStore.do", method=RequestMethod.POST)
 	public ModelAndView findStore(HttpSession session,@Valid CartVO cartVO, Model model) {
 
+		
 		UserVO user = (UserVO)session.getAttribute("loginVO");		
 		String id = user.getId();
 		ModelAndView mav = new ModelAndView();
@@ -119,7 +120,7 @@ public class StoreController {
 
 			response.setContentType("text/html;charset=UTF-8");
 			JSONObject jsonObj = new JSONObject();
-			System.out.println(gugun);
+			//System.out.println(gugun);
 			List<StoreVO> storeList = storeService.selectStoreList(gugun);
 			String locationName = eventService.locationName(gugun);
 			for (int i = 0; i < storeList.size(); i++) {
@@ -142,6 +143,10 @@ public class StoreController {
 			List<StoreVO> storeList = storeService.selectStoreAddr(store); //store = 주소 
 			
 			System.out.println(storeList.toString());
+			String addr = storeList.get(0).getStoreAddr();
+			
+			addr = addr.replaceAll(" ", ",");
+			storeList.get(0).setStoreAddr(addr);
 			
 			response.setContentType("text/html;charset=UTF-8");
 			JSONObject jsonObj = new JSONObject();

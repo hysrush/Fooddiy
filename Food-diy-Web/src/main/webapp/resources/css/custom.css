@@ -159,6 +159,15 @@ li {
 	width : 100px;
 }
 
+
+.totals-table tbody tr td {
+	padding : 10px 2px;		
+}
+.totals-table tbody tr th {
+	width : 70px;		
+}
+
+
 @media (min-width : 992px) {
 	
 	.mobile-select-menu {

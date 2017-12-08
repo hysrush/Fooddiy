@@ -331,7 +331,7 @@
 				});
 				 // 매장명으로 주소 가져오기 
 				function test(storeAddr){
- 					alert('storeAddr = ' + storeAddr);
+ 					//alert('storeAddr = ' + storeAddr);
  					
  					var btn = this;
  					var store = storeAddr;
@@ -363,6 +363,7 @@
 	 						        });
 	 						        		
 	 						       		console.log("storeAddr = " + addr);
+	 						      
 	 						        	var contents = '';
 	 						            contents += '<form  class="test5" action = "" method="POST" onsubmit="return choice(\''+data.storeList[0].storeName+'\');">';
 	 						            contents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
@@ -370,7 +371,7 @@
 	 						            contents += '<input type="hidden" name = "storeName" value='+data.storeList[0].storeName + ' />';
 	 						            contents += '<input type="hidden" name = "storeAddr" value='+ addr + ' />';
 	 						            contents += '<input type="hidden" name = "storePhone" value='+data.storeList[0].storePhone + ' />';
-	 						            contents += '<input type="hidden" name = "storeAddr2" value='+data.storeList[0].storeAddr2 + ' />';     
+	 						            //contents += '<input type="hidden" name = "storeAddr2" value='+data.storeList[0].storeAddr2 + ' />';     
 	 						            //contents += '<input type="submit" value="선택"/>';
 	 						            contents += '<input type="submit" name = "storeChoice" onsubmit="return choice(\''+data.storeList[0].storeName+'\');" value="선택" />';
 										contents += '</div>';
@@ -401,7 +402,7 @@
 
 				//var btn= this;
 				var storeName = storeName;
-				if(${cartStore == null}) {
+				if(${cartStoreVO == null}) {
 					
 					if(${ cartVO.type == 'S' }||${ cartVO.type == 'N' }||${ cartVO.type == 'D' }) {
 						$('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do"); // 메뉴페이지      
@@ -419,10 +420,6 @@
 					$('.test5').attr('method', "GET"); //구매페이지
 					return true;
 				}
-				
-				
-				
-	
 			}
 		</script>
 		<script>

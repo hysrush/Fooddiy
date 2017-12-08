@@ -110,8 +110,8 @@
 						<div class="custom-block">
 							<i class="fa fa-phone"></i> <span>(+404) 158 14 25 78</span> <span class="split"></span> <a href="#">CONTACT US</a>
 						</div>
-
-						<div class="cart-dropdown">
+						<c:if test="${ not empty loginVO }">
+							<div class="cart-dropdown">
 							<a href="#" class="cart-dropdown-icon"> <i class="minicart-icon"></i> <span class="cart-info"> <span class="cart-qty"></span> <span class="cart-text">item(s)</span>
 							</span>
 							</a>
@@ -170,6 +170,8 @@
 								</div>
 							</div>
 						</div>
+						</c:if>
+						
 					</div>
 				</div>
 			</div>
