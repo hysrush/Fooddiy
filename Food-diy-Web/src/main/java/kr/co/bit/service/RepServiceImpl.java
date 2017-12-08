@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.dao.RepDAO;
+import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.vo.SnsRepVO;
 @Service
 public class RepServiceImpl implements RepService{
@@ -15,9 +16,9 @@ public class RepServiceImpl implements RepService{
 	
 	
 	@Override
-	public List<SnsRepVO> list(int no) {
+	public List<SnsRepVO> list(PagingVO paging) {
 		
-		List<SnsRepVO> list = repDAO.list(no);
+		List<SnsRepVO> list = repDAO.list(paging);
 		
 		
 		return list;

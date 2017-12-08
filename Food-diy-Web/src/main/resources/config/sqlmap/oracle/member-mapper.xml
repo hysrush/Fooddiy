@@ -130,8 +130,13 @@
 	
 	<!-- mymenu 목록 -->
 	<select id="getmyMenu" parameterType="java.lang.String" resultMap="Map_cartVO">
-		select CART_ID, CART_NAME, CART_PRICE, CART_SIZE, CART_PIC, CART_BREAD, CART_CHEESE, CART_TOPPING, CART_VEGETABLE, CART_SAUCE from t_mymenu
+		select CART_no, CART_ID, CART_NAME, CART_PRICE, CART_SIZE, CART_PIC, CART_QTY, CART_BREAD, CART_CHEESE, CART_TOPPING, CART_VEGETABLE, CART_SAUCE from t_mymenu
 		where cart_id = #{id}
 	</select>
 	
+	<!-- mymenu 삭제 -->
+	<delete id="delmyMenu" parameterType="java.lang.Integer">
+		DELETE FROM t_mymenu
+		WHERE CART_NO = #{no}
+	</delete>
 </mapper>

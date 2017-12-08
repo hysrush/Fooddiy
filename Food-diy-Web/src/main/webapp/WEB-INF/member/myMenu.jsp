@@ -69,28 +69,154 @@
 }
 </style>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <script>
-	$(document).ready(function(){
 
-		
-		var q = parseInt($("#qty").val());
-		
-		$("#minus").click(function(){
-			
-			if(q<1){
-				alert("더이상 줄일 수 없습니다.");
-			}else{
-				$("#qty").val(--q);
+$(document).ready(function(){
+	$('.qty-holder').each(function() {
+		var totalQty = 0;
+		var totalPrice = 0;
+		var finalPrice = 0;
+		var oneProductPrice = 0;
+		var no = 0;
+		//감소
+		$(this).children('.qty-dec-btn').click(function() {
+			totalQty = $(this).siblings('.qty-input').val() * 1;
+			if(totalQty > 1) {
+				no = $(this).parents('td').siblings('.cartNo').text();
+				totalPrice = $(this).parents('td').siblings('.price-total').children('.total-price').text();
+
+				finalPrice = $('.final-price').text();
+				finalQty = $('.final-qty').text() * 1;
+				
+				totalPrice = uncomma(totalPrice) * 1;
+				finalPrice = uncomma(finalPrice) * 1;
+				
+				oneProductPrice = totalPrice / totalQty;
+				
+				totalPrice -= oneProductPrice;
+				finalPrice -= oneProductPrice;
+				
+				totalQty -= 1
+				finalQty -= 1;
+				
+				$(this).parents('td').siblings('.price-total').children('.total-price').text(comma(totalPrice) + "원");
+				
+				$('.final-price').text(comma(finalPrice) + "원");
+				$('.final-qty').text(finalQty);
+				 
+				 
+				 
+				$(this).siblings('.qty-input').val(totalQty);
 			}
 		});
 		
-		$("#plus").click(function(){
+		//증가
+		$(this).children('.qty-inc-btn').click(function() {
+				no = $(this).parents('td').siblings('.cartNo').text();
 			
-			$("#qty").val(++q);
+				totalQty = $(this).siblings('.qty-input').val() * 1;
+				totalPrice = $(this).parents('td').siblings('.price-total').children('.total-price').text();
 			
+				finalPrice = $('.final-price').text();
+				finalQty = $('.final-qty').text() * 1;
+				
+				totalPrice = uncomma(totalPrice) * 1;
+				finalPrice = uncomma(finalPrice) * 1;
+				
+				oneProductPrice = totalPrice / totalQty;
+				
+				totalPrice += oneProductPrice;
+				finalPrice += oneProductPrice;
+				
+				totalQty += 1
+				finalQty += 1;
+				
+				 
+				$(this).siblings('.qty-input').val(totalQty);
+				
 		});
+		
 	});
 	
+	
+	$("#cartgo").click(function(){
+		
+		
+		
+		
+	});
+	
+	$("#sns").click(function(){
+		// sns 등록폼으로 이동
+		location.href="${pageContext.request.contextPath}/community/SNSBoard.jsp"; 
+	});
+	
+	$("#order").click(function(){
+		
+		swal("주문이 완료되었습니다.");
+	});
+	
+	$("#del").click(function(){
+		
+		var no = [];
+		
+		$("input[name='cart']:checked").each(function() {
+			no.push($(this).val());
+	    });
+		
+		// controller로 배열 넘길 때 세팅 바꿔 줌
+		jQuery.ajaxSettings.traditional = true;
+	
+		$.ajax({
+			url : "${pageContext.request.contextPath}/member/myMenuDel.do",
+			type : "post",
+			data : {
+				noList : no
+			},
+			success : function(data){
+				location.reload();
+			}
+		});
+		
+	});
+	 
+	 
+/* 	 $("#del").click(function(){
+		  var cartno = "";
+		  var memberChk = document.getElementsByName("cartList");
+		  var chked = false;
+		  var indexid = false;
+		  for(i=0; i < memberChk.length; i++){
+		   if(memberChk[i].checked){
+		    if(indexid){
+		      cartno = cartno + '-';
+		    }
+		    cartno = cartno + memberChk[i].value;
+		    indexid = true;
+		   }
+		  }
+		  if(!indexid){
+		   alert("삭제할 사용자를 체크해 주세요");
+		   return;
+		  }
+		  document.myMenu.myMenuDel.value = cartno;       // 체크된 사용자 아이디를 '-'로 묶은 userid 를     document.userForm.delUserid 의 value로 저장 
+		  
+		  var agree=confirm("삭제 하시겠습니까?");
+		     if (agree){
+		   document.cartForm.execute.value = "myMenuDel";
+		     document.cartForm.submit();
+		     } 
+		  });﻿
+		  */
+	
+});
+
+function menuList() {
+location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
+}
+
+
 
 
 </script>
@@ -153,33 +279,41 @@
 
 							<div class="featured-boxes">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-10">
 										<div class="featured-box featured-box-primary align-left mt-sm">
 											<div class="box-content">
-												<form method="post" action="">
 													<table class="shop_table cart">
 														<tbody>
 														<c:choose>
 														<c:when test="${ not empty cartList }">
-														<c:forEach items="${ cartList }" var="cart">
-															<tr class="cart_table_item">
+														<c:forEach items="${cartList }" var="cart">
+															<tr>
+															<td class="cartNo" style="display: none;">${ cartVO.no }</td>
 															<td style=" width: 15px" class="col-md-1">
 															<span style=" width: 15px" class="member-box checkbox">
-																<label for="memberme">
-																	<h5><input  type="checkbox" id="member3" name="member3"></h5>
+																<label for="cart">
+																	<h5><input type="checkbox" class="cart" name="cart" value="${ cart.no }"/></h5>
 																</label>
 															</span>
 															</td>
-																<td class="hidden-xs" style="width: 30%;">
-																	<a><img style="margin-left:10%; width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
+																<td class="" style="width: 30%;">
+																	<a><img style="margin-left:30%; margin-right:40%; width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
 																</td>
-																<td align="center" style="width: 100px; font-size: 100%;">
+																<td align="center" style=" width: 180px; font-size: 100%;">
 																	<span class="amount">${ cart.bread }<br />${cart.cheese }<br />${ cart.topping }<br />${ cart.vegetable }<br />${ cart.sauce }</span>
 																</td>
-																<td style="padding-right: 5px" class="product-price">
-																	<span class="amount">${ cart.price }</span>
+																<td  class="product-price">
+																	<span class="amount">&#8361;${ cart.price }</span>
 																</td>
-																<td class="product-quantity">
+																<td style="width:50px;"></td>
+																
+																<td class="qty-total">
+																	<div class="qty-holder">
+																		<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cart.qty }"> <a  class="qty-inc-btn" title="Inc">+</a> 
+																	</div>
+																</td>
+																
+																<!-- <td class="product-quantity">
 																	<form enctype="multipart/form-data" method="post" class="cart">
 																		<div class="quantity">
 																			<input type="button" id="minus" class="minus" value="-">
@@ -187,7 +321,7 @@
 																			<input type="button" id="plus" class="plus" value="+">
 																		</div>
 																	</form>
-																</td>
+																</td> -->
 																<!-- <td style="padding-right:5px;">
 																	<button style=" width: 70px; height: 25px; font-size: 10px" type="button" class="btn  btn-info"> 결제 </button>
 																</td> -->
@@ -204,18 +338,20 @@
 									</div>  
 								</div>
 							</div>
-	
-
-			<div align="right" style="margin-bottom:5% ; margin-left: 29%" class="col-md-9 col-sm-6 col-xs-9 ">
-				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> 장바구니 </button>
-				<button style="width: 120px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> sns 등록 </button>
-				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> 메뉴삭제 </button>
-				<button style="width: 100px; height: 30px; font-size: 15px" type="button" class="btn  btn-info"> 주문 </button>
+					
+							<div align="right" style="margin-bottom:5% ; margin-left: 10% " class="col-md-9 col-xs-12">
+				<!-- 				<button id="cartgo"style="width: 100px; height: 30px; font-size: 13px" type="button" class="btn btn-info"> 장바구니 </button> -->				
+								<button id="sns" style="width: 100px; height: 30px; font-size: 13px" type="button" class="btn btn-info"> sns 등록 </button>
+								<button id="del" style="width: 100px; height: 30px; font-size: 13px" type="button" class="btn btn-info"> 메뉴삭제 </button>
+								<button id="order"style="width: 100px; height: 30px; font-size: 13px" type="button" class="btn btn-info"> 주문 </button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div></div></div></div>
 
 
 	<!-- ---------------------------------------------------------------------------------------------- -->

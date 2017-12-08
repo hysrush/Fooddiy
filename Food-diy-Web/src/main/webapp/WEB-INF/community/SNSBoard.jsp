@@ -173,7 +173,7 @@
 												<div class="testimonial testimonial-style-3">
 													<div class="testimonial-author">
 														<div class="testimonial-author-thumbnail">
-															<img src="" class="img-responsive img-circle" alt="">
+															<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="">
 														</div>
 														<p>
 															<strong>${snsVO.id }</strong>
@@ -185,7 +185,7 @@
 													<span class="thumb-info thumb-info-lighten">
 												 <a onclick="modal('${ snsVO.no }')">
 														<span class="thumb-info-wrapper"> 
-														<img src="../upload/${ snsVO.fileName }" class="img-responsive" style="width: 250px; height: 250px">
+														<img src="../upload/SNS/${ snsVO.fileName }" class="img-responsive" style="width: 250px; height: 250px">
 															</span>
 													</a>
 													</span>

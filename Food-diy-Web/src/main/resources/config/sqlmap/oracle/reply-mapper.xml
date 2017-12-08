@@ -22,16 +22,21 @@
     </insert>
     
     <!-- 댓글 목록 -->
-    <select id="selectReply" resultMap="Map_repVO">
-        SELECT REP_NO, SNS_NO, USER_ID, USER_PIC, REP_CONTENT, TO_CHAR(REG_AT,'YY-MM-DD')AS REG_AT
-        FROM T_REP 
-        WHERE SNS_NO = #{no} 
-        ORDER BY REP_NO
+    <select id="selectReply" parameterType ="pagingVO" resultMap="Map_repVO">
+        SELECT *
+			FROM( SELECT ROWNUM RNUM, P.*
+			FROM( SELECT REP_NO, SNS_NO, USER_ID, USER_PIC, REP_CONTENT, TO_CHAR(REG_AT,'YY-MM-DD')AS REG_AT
+			FROM T_REP
+			WHERE SNS_NO = #{no}
+			ORDER BY REP_NO DESC) P )
+			WHERE RNUM BETWEEN #{start} AND #{last} 
     </select>
 
 
-
-
+ <!--   SELECT REP_NO, SNS_NO, USER_ID, USER_PIC, REP_CONTENT, TO_CHAR(REG_AT,'YY-MM-DD')AS REG_AT
+        FROM T_REP 
+        WHERE SNS_NO = #{no} 
+        ORDER BY REP_NO-->
 
 
 
