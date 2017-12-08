@@ -156,10 +156,7 @@
 	 $("#btnReply").click(function(){
          var content=$("#content").val();
          var snsNo="${snsVO.no}"
-         var param="content="+content+"&snsNo="+snsNo;
-         
          alert(content + "  " + snsNo);
-         alert( param)
          
          $.ajax({                
              type: "post",
