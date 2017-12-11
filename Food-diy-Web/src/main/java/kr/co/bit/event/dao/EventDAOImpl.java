@@ -12,7 +12,7 @@ import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.event.vo.StoreVO;
 
 @Repository
-public class EvnetDAOImpl implements EventDAO {
+public class EventDAOImpl implements EventDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
