@@ -20,6 +20,7 @@
 	  	<typeAlias type="kr.co.bit.menu.vo.CartVO" alias="cartVO"/>
 	  	<typeAlias type="kr.co.bit.vo.SnsBoardVO" alias="snsVO"/>
 	  	<typeAlias type="kr.co.bit.vo.SnsRepVO" alias="snsRepVO"/>
+	  	<typeAlias type="kr.co.bit.order.vo.OrderVO" alias="orderVO"/>
 		
 	  	
 

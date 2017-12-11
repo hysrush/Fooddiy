@@ -201,11 +201,8 @@
 													<div class="row">
 														<div class="col-md-12">
 															<div class="col-md-12 actions-continue" >
-																<form method="get">
-																														
-																	<button type="submit" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
-																	<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick ="menuList()">계속 쇼핑하기</button>
-																</form>
+																<button class = "order-button" type="button" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
+																<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick ="menuList()">계속 쇼핑하기</button>
 															</div>
 														</div>
 													</div>
@@ -385,6 +382,44 @@
 							
 					});
 				});
+				
+				
+				$('.order-button').click(function() {
+					
+					var order = new Object(); 
+					var orderArray = new Array();
+					
+					order.id = "송강호";
+					order.name = "25";
+					order.size = "15cm";
+					order.type = "s";
+			             
+					orderArray.push(order);
+					
+/* 					order = new Object();
+					
+					order.name = "전지현";
+					order.age = "21";
+					ordergender = "여자";
+					order.nickname = "애니콜";
+			             
+			        orderArray.push(order); */
+					
+			     	// controller로 배열 넘길 때 세팅 바꿔 줌
+					jQuery.ajaxSettings.traditional = true;
+			        
+					var jsonArray = JSON.stringify(orderArray);
+					console.log("jsonArray : " + jsonArray);
+					$.ajax( {
+						url : "./insertOrder",
+						type : "POST",
+						dataType : 'json',
+						date : { "orderArray" : jsonArray },
+						success : function() {
+							location.href = '${pageContext.request.contextPath}/order/order.do';
+						}
+					});
+				}) ;
 				
 				
 		});
