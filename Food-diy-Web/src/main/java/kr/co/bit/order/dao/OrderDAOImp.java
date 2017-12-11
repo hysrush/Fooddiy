@@ -41,7 +41,12 @@ public class OrderDAOImp implements OrderDAO {
 	
 	@Override
 	public void insert(OrderVO orderVO) {
-		
+		System.out.println(orderVO);
+		System.out.println(orderVO);
+		System.out.println(orderVO);
+		System.out.println(orderVO);
+		System.out.println(orderVO);
+		System.out.println(orderVO);
 		sqlSession.insert(url + "insertOrder", orderVO);
 	}
 	

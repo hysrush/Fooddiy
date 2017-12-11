@@ -43,9 +43,16 @@ public class CartServiceImp implements CartService{
 		dao.updateProductQty(cartVO);
 	}
 	@Override
-	public void deleteCart(CartVO cartVO) {
-		dao.delete(cartVO);
+	public void deleteCartById(String id) {
+		dao.deleteById(id);
 	}
+	
+	@Override
+	public void deleteCartByNo(CartVO cartVO) {
+		dao.deleteByNo(cartVO);;
+	}
+	
+	
 
 	@Override
 	public List<CartVO> selectMenu(String id) {
