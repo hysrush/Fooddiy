@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.bit.dao.OrderDAO">
+
+	<sql id = "selectAll">
+		select order_no, sto_name, user_id, order_menu, order_bread, order_cheese, order_topping,
+		order_vegetable, order_sauce, order_qty, order_price, order_price, order_total_price,
+		order_eat_type, to_char(reg_at, 'yyyy-mm-dd hh24:mi:ss') as reg_at 
+		from t_order
+	</sql>
+
+	<resultMap type ="orderVO" id="Map_OrderVO">
+  		<result column = "order_no" property ="no"/>
+  		<result column = "sto_name" property ="storeName"/>
+  		<result column = "user_id" property ="id"/>
+  		
+  		<result column = "order_menu" property ="menu"/>
+  		<result column = "order_bread" property ="bread"/>
+  		<result column = "order_cheese" property ="cheese"/>
+  		<result column = "order_topping" property ="topping"/>
+  		<result column = "order_vegetable" property ="vegetable"/>
+  		<result column = "order_sauce" property ="sauce"/>
+  		<result column = "order_qty" property ="qty"/>
+  		<result column = "order_price" property ="price"/>
+  		<result column = "order_total_price" property ="total_price"/>
+  		
+  		<result column = "order_eat_type" property ="eatType"/>
+  		<result column = "reg_at" property ="regDate"/>
+
+  	</resultMap>
+  	
+  	
+  	<select id="selectAllOrder" parameterType="String" resultMap="Map_OrderVO">
+		<include refid="selectAll"/>
+		where sto_name = #{storeName}
+		order by reg_at des  	
+  	</select>
+ 
+  	<select id="selectByIdOrder" parameterType="String" resultMap="Map_OrderVO">
+		<include refid="selectAll"/>
+		where user_id = #{id}
+		order by reg_at des  	
+  	</select>
+
+  	<select id="selectByDateOrder" parameterType="String" resultMap="Map_OrderVO">
+		<include refid="selectAll"/>
+		where reg_at = #{date}
+		order by reg_at des  	
+  	</select>
+  	
+  	<insert id="insertOrder" parameterType="orderVO">
+  		insert into t_order(order_no, sto_name, user_id, order_menu, order_bread, order_cheese, order_topping, order_vegetable,
+  		order_sauce, order_qty, order_price, order_total_price, order_eat_type) 
+  		
+  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{menu}, #{bread}, #{cheese}, #{topping}, #{vegetable}, #{sauce},
+  		 #{qty}, #{price}, #{total_price}, #{eatType}, )
+  	</insert>
+  	
+  	<delete id="deleteOrder" parameterType="String">
+  		delete from t_order where user_id = #{id}
+  	</delete>
+</mapper>
