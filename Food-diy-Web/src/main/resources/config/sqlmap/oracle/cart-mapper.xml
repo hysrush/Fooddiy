@@ -59,9 +59,14 @@
 		update t_cart set cart_qty = #{qty} where cart_id = #{id} and cart_no = #{no}
 	</update>
 	
-	<delete id="deleteCart" parameterType="cartVO">
+	<delete id="deleteCartById" parameterType="String">
 		delete from t_cart 
-		where cart_no = #{no} and cart_id = #{id}
+		where cart_id = #{id}
+	</delete>
+
+	<delete id="deleteCartByNo" parameterType="cartVO">
+		delete from t_cart 
+		where cart_no = ${no} and cart_id = #{id}
 	</delete>
 <!-- 	
 	Menu 등록	

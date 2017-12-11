@@ -168,7 +168,8 @@
 										<label>도메인</label>
 										<select name="emailD" class="form-control" required>
 											<option value="@naver.com">@ naver.com</option>
-											<option value="@daum.net">@ daum.net</option>
+											<option value="@hanmail.net">@ daum.net</option>
+											<option value="@gmail.com">@ gmail.com</option>
 										</select>
 									</div>
 								</div>

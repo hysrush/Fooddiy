@@ -292,9 +292,7 @@
 		                  			var data = JSON.parse(responseData);
 		                  			
 		                  			// 3. result setting
-		  				          	alert('다녀옴 , result = ' + data.result);
-		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NAME);
-		  				          	alert('다녀옴 , guList[1] = ' + data.guList[0].LOC_NO);
+		  				  
 		                  			
 		  				          	$('#gugun').empty();
 			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
@@ -347,10 +345,15 @@
 						data : {"gugun" : gugun},
 						success : function(responseData){
 									var data = JSON.parse(responseData);
-									
-									alert("result = " + data.result);
-									alert("매장이름 = " + data.storeList[0].storeName);
+								
 									$('#storeList').empty();
+									
+									
+
+									$('#storeList').css("max-height","250px");
+									$('#storeList').css("overflow","auto");
+									$('#storeList').css("max-width","1000px");
+										
 								 	for(var i = 0 ; i < data.storeList.length; i++){
 										var contents = '';
 										contents += '<tr>';
@@ -381,9 +384,7 @@
  						data : {"store" : store},
  						success : function(responseData){
  							var data = JSON.parse(responseData);
- 							
- 							alert("result = " +data.result);
- 							alert("이벤트 제목 = " + data.eventList[0].imgFileName);
+ 					
  							
  							$('#eventList').empty();
  						for(var i=0; i< data.eventList.length; i++){	
@@ -395,7 +396,7 @@
 							contents += 		'<li>';
 							contents += 			'<div class="col-md-6">';
 							contents += 				'<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${ eventVO.no }">';
-							contents += 					'<img alt="" class="img-responsive img-rounded" src="../upload/'+data.eventList[i].imgFileName+'" width:600px;height:150px">';
+							contents += 					'<img alt="" class="img-responsive img-rounded" src="../upload/'+data.eventList[i].imgFileName+'"  style=" width:600px;height:150px" ">';
 							contents += 				'</a>';
 							contents += 			'</div>';
 							contents += 			'<div class="col-md-6" align="left">';

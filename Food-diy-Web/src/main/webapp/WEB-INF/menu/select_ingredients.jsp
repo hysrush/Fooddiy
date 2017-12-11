@@ -386,18 +386,44 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="sauce-name" >
+										<table >
+											<tr>
+												<td width="30%">요구사항</td>
+											</tr>
+										</table>
+									</a>
+								</h4>
+							</div>
+							<div id="requirement-select">
+								<div class="panel-body">
+									<textarea class="mobile-requirement-info" style = "width: 100%; height: 100%" rows="2" cols="40"></textarea>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
 				<div style="text-align: center;">
-					<form:form commandName="cartVO" class="order-form" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
+					<form:form commandName="cartVO" class="order-form-mobile" action="${ pageContext.request.contextPath }/menu/cart.do" method="post" onsubmit="return mobileSubmit();">
+						<form:input type="hidden" path = "id"  name="id" value="${ cartVO.id }" />
+						<form:input type="hidden" path = "name"  name="name" value="${ cartVO.name }" />
+						<form:input type="hidden" path = "price"  name="price" value="${ cartVO.price }" />
+						<form:input type="hidden" path = "size"  name="size" value="${ cartVO.size }" />
+						<form:input type="hidden" path = "pic"  name="pic" value="${ cartVO.pic }" />
+						<form:input type="hidden" path = "type"  name="type" value="${ cartVO.type }" />
 						<form:input type="hidden" path ="bread" class="bread" name="bread" value="" /> 
 						<form:input type="hidden" path ="cheese" class="cheese" name="cheese" value="" /> 
 						<form:input type="hidden" path ="topping" class="topping" name="topping" value="" />
 						<form:input type="hidden" path ="vegetable" class="vegetable" name="vegetable" value="" /> 
 						<form:input type="hidden" path ="sauce" class="sauce" name="sauce" value="" />
+						<form:input type="hidden" path = "requirement" class="requirement" name="requirement" value="" />
 						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
 					</form:form>
 				</div>
@@ -489,11 +515,9 @@
 			
 			
 			
-			
 			return true;
 		}
 		function mobileSubmit() {
-					
 			if($('.bread-table').find('td').length < 2)  {
 					$('.order-modal-info').find('.info').text('빵을 선택해주세요.');
 					$(".order-modal-info").modal();
@@ -506,10 +530,10 @@
 					$('.order-modal-info').find('.info').text('소스를 선택해주세요.');
 					$(".order-modal-info").modal();
 					return  false;
-			}else if($('.requirement-table').val().length > 100) {
+			}/* else if($('.requirement-table').val().length > 100) {
 				$('.order-modal-info').find('.info').text('100자 이하로 요구사항을 적어주세요.');
 				$(".order-modal-info").modal();
-			}
+			} */
 			
 			var bread = $('.bread-table').find('.name').text().split()[0].trim();
 			var cheese = $('.cheese-table').find('.name').text().split(' ')[0].trim(); 
@@ -537,14 +561,19 @@
 				sauce += $('.sauce-table').find('.name').eq(i).text().split(' ')[0].trim() + " ";
 			}
 			
-			var requirement = $('.requirement-info').val();
+			var requirement = $('.mobile-requirement-info').val();
 		
-			$('.order-form .bread').attr('value', bread);
-			$('.order-form .cheese').attr('value', cheese);
-			$('.order-form .topping').attr('value', topping);
-			$('.order-form .vegetable').attr('value', vegetable);
-			$('.order-form .sauce').attr('value', sauce);;
-			$('.order-form .requirement').attr('value', requirement);;
+			$('.order-form-mobile .bread').attr('value', bread);
+			$('.order-form-mobile .cheese').attr('value', cheese);
+			$('.order-form-mobile .topping').attr('value', topping);
+			$('.order-form-mobile .vegetable').attr('value', vegetable);
+			$('.order-form-mobile .sauce').attr('value', sauce);;
+			$('.order-form-mobile .requirement').attr('value', requirement);
+			
+			
+			
+			
+			
 			
 			return true;			
 		}

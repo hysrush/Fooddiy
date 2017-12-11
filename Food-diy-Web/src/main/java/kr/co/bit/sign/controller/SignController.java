@@ -148,7 +148,8 @@ public class SignController {
 	// => 로그인 실패시 다시 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String signIn(UserVO login, Model model, HttpSession session) {
-
+		
+		System.out.println(login.toString());
 		UserVO signIn = signServiceImp.login(login);
 
 		if (signIn == null) {

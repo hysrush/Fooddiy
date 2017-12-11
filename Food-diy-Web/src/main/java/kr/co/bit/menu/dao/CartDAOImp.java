@@ -46,9 +46,14 @@ public class CartDAOImp implements CartDAO {
 		sqlSession.update(url + "updateProductQty" ,  cartVO);
 	}
 	@Override
-	public void delete(CartVO cartVO) {
-		sqlSession.delete(url + "deleteCart", cartVO);
+	public void deleteById(String id) {
+		sqlSession.delete(url + "deleteCartById", id);
 
+	}
+	@Override
+	public void deleteByNo(CartVO cartVO) {
+		sqlSession.delete(url + "deleteCartByNo", cartVO);
+		
 	}
 
 	@Override

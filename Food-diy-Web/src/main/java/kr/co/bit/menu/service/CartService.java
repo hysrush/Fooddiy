@@ -11,7 +11,8 @@ public interface CartService {
 	void insertCart(CartVO cartVO);
 	void updateCart(CartVO cartVO);
 	void updateProductQty(CartVO cartVO);
-	void deleteCart(CartVO cartVO);
+	void deleteCartById(String id);
+	void deleteCartByNo(CartVO cartVO);
 	//최근주문 내역
 	List<CartVO> selectMenu(String id);
 	List<CartVO> cartDelete(CartVO vo);

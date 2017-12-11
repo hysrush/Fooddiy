@@ -305,11 +305,10 @@ html, body {
 		// 배열에 넣은 주소를 for문을 돌면서 마커로 찍는다 	
 		for(var i = 0; i< storeAddr.length; i++ ){
 			
-			
+			console.log(storeAddr[i]);
 			geocoder.addressSearch(storeAddr[i] , function(result, status) {
 														
 														console.log( "j = " + j + " , storeName: " +storeName[j]);
-														j++; 
 														// 정상적으로 검색이 완료됐으면 
 													     if (status === daum.maps.services.Status.OK) {
 													        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
@@ -335,7 +334,7 @@ html, body {
 													        	 // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 													        	iwContents += '<form  class="nearStore" action = "" method="POST">';		
 							 						            iwContents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
-							 						            iwContents += '서브웨이'+storeName[j]+ '<br/>' + storePhone[j] + '<br/>'; 
+							 						            iwContents += storeName[j]+ '<br/>' + storePhone[j] + '<br/>'; 
 							 						            iwContents += '<input type="submit" name = "storeChoice" onclick="choice(\''+storeName[j]+'\')" value="선택" />';
 																iwContents += '</div>';
 													        	
@@ -355,6 +354,7 @@ html, body {
 														          infowindow.open(map, marker);  
 														    });
 														        
+															j++; 
 											
 													        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 													       	// map.setCenter(coords);

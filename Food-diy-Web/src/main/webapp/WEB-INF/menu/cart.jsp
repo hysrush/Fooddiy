@@ -132,26 +132,26 @@
 														<td class="cartNo" style="display: none;">${ cartVO.no }</td>
 
 														<td class="product-action-td remove_product"><a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
-														<td class="product-image-td"><a href="#" title="Product Name"> <img src="${ cartVO.pic }" alt="Product Name"></a></td>
+														<td class="product-image-td"><a href="#" title="Product Name"> <img class="pic" src="${ cartVO.pic }" alt="Product Name"></a></td>
 														<td class="product-name-td">
-															<h2 class="product-name" >
+															<h2 class="product-name">
 																<a title="Product Name">
-																	<div>${ cartVO.name }</div>
-																	<div>${ cartVO.size }</div>
-																	<div class="commaN">${ cartVO.price }원</div>
+																	<div class="menu">${ cartVO.name }</div>
+																	<div class="size">${ cartVO.size }</div>
+																	<div class="commaN price">${ cartVO.price }원</div>
 																</a>
 															</h2>
 														</td>
 														<td>
-															<div>${ cartVO.bread }</div>
-															<div>${ cartVO.cheese }</div>
-															<div>${ cartVO.topping }</div>
-															<div>${ cartVO.vegetable }</div>
-															<div>${ cartVO.sauce }</div>
-															<div>${ cartVO.requirement }</div>
+															<div class="bread">${ cartVO.bread }</div>
+															<div class="cheese">${ cartVO.cheese }</div>
+															<div class="topping">${ cartVO.topping }</div>
+															<div class="vegetable">${ cartVO.vegetable }</div>
+															<div class="sauce">${ cartVO.sauce }</div>
+															<div class="requirement">${ cartVO.requirement }</div>
 														<td class="qty-total">
 															<div class="qty-holder">
-																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cartVO.qty }"> <a  class="qty-inc-btn" title="Inc">+</a> <a  class="edit-qty"><i class="fa fa-pencil"></i></a>
+																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cartVO.qty }"> <a class="qty-inc-btn" title="Inc">+</a> <a class="edit-qty"><i class="fa fa-pencil"></i></a>
 															</div>
 														</td>
 														<td class="price-total"><span class="text-primary commaN total-price" style="color: black">${ cartVO.qty*cartVO.total_price }원</span></td>
@@ -161,7 +161,7 @@
 										</table>
 									</div>
 								</div>
-								<aside class="col-md-4 col-lg-3 sidebar shop-sidebar" id = "payInfo">
+								<aside class="col-md-4 col-lg-3 sidebar shop-sidebar" id="payInfo">
 									<div class="panel-group">
 										<div class="panel panel-default">
 											<div class="panel-heading">
@@ -176,17 +176,16 @@
 															<tr>
 																<th>매장</th>
 																<td>
-																		<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="changeStore()" style="padding: 4px 4px 1px">변경</button>
-																		<strong class = "storeName">${ cartStoreVO.storeName } </strong>  
+																	<button type="button" class="chagee-store btn btn-borders btn-success mr-xs mb-sm" onclick="changeStore()" style="padding: 4px 4px 1px">변경</button> <strong class="storeName">${ cartStoreVO.storeName } </strong>
 																</td>
 															</tr>
 															<tr>
 																<th>주소</th>
-																<td><div style="font-size:12px"> ${ cartStoreVO.storeAddr } </div></td>
+																<td><div style="font-size: 12px">${ cartStoreVO.storeAddr }</div></td>
 															</tr>
 															<tr>
 																<th>전화번호</th>
-																<td><div> ${ cartStoreVO.storePhone } </div></td>
+																<td><div>${ cartStoreVO.storePhone }</div></td>
 															</tr>
 															<tr>
 																<th>수량</th>
@@ -200,12 +199,9 @@
 													</table>
 													<div class="row">
 														<div class="col-md-12">
-															<div class="col-md-12 actions-continue" >
-																<form method="get">
-																														
-																	<button type="submit" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
-																	<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick ="menuList()">계속 쇼핑하기</button>
-																</form>
+															<div class="col-md-12 actions-continue">
+																<button type="button" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">결제하기</button>
+																<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick="menuList()">계속 쇼핑하기</button>
 															</div>
 														</div>
 													</div>
@@ -223,19 +219,41 @@
 		</div>
 	</div>
 
+
+	<!-- 모달 -->
+	<div class="modal order-modal-final" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog" style="top: 30%">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
+					<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">결제</h4>
+				</div>
+				<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
+					<h2 class="info">결제 하시겠습니까?</h2>
+				</div>
+				<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
+					<button type="button" class="btn btn-default confirm" style="color: white; background-color: #7aa93c;">확인</button>
+												<button type="button" class="btn btn-default" data-dismiss="modal" style="color: #7aa93c; background-color: white; border-color: #7aa93c">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<script type="text/javascript">
 		$(document).ready(function() {
+					
+			
 				$('.cart-dropdown').hide();			
 				
 				
 				if($('.storeName').text().length > 6) {
-					$('.storeName').css('font-size',
-							)
+					$('.storeName').css('font-size',12);
 				}
 				
 				$('#payInfo').stick_in_parent({
 			         offset_top : 200
-			      });
+			    });
 				
 				
 				var finalPrice = 0;
@@ -387,6 +405,55 @@
 				});
 				
 				
+				$('.cart-submit').click(function() {
+					
+					
+					$(".order-modal-final").modal();
+
+				});
+				
+				
+				
+				$('.confirm').click(function() {
+						var length = $('.cart-table tr').length;
+						
+						var order = "";
+						order += '${ cartStoreVO.storeName }' + ",";	//지점명
+					    order += '${loginVO.id}' + ",";					//아이디
+					    order += uncomma($('.final-price').text())  +"--";		//총가격
+						
+	 					for(var i = 1; i < length; ++i) {
+	 						
+							var oneCart = $('.cart-table tr').eq(i);				   
+							
+						    order +=  oneCart.find('.menu').text() + ",";
+						   	order += oneCart.find('.bread').text() + ",";
+						   	order += oneCart.find('.cheese').text() + ","; 
+						   	order += oneCart.find('.topping').text() + ",";
+						   	order += oneCart.find('.vegetable').text() + ",";
+						   	order += oneCart.find('.sauce').text() + ",";
+						   	order += oneCart.find('.requirement').text() + ",";
+						   	order += oneCart.find('.pic').attr('src') + ",";
+						   	order += oneCart.find('.size').text() + ",";
+						   	order += oneCart.find('.qty-input').val() + ",";
+						   	order += uncomma(oneCart.find('.price').text())  + ",";
+						   	order += uncomma(oneCart.find('.price-total').text()) ;
+						   	
+						   	if(i + 1 < length ) {
+						   		order += "||";
+						   	}
+						   		
+						} 
+					    
+				    	$.ajax({
+							url :  "${pageContext.request.contextPath}/order/insertOrder",
+							type : "post",
+							data : {"order" : order},
+							success : function(){
+							location.href = "${pageContext.request.contextPath}/index2.jsp";
+							}
+						}); 
+				})
 		});
 		
 		function menuList() {

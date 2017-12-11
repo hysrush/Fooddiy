@@ -242,7 +242,7 @@ public class Select_Ing_Controller {
 			@RequestParam(value = "no") Integer no, HttpSession session) throws Exception {
 
 		response.setContentType("text/html;charset=UTF-8");
-
+		
 		UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		CartVO cartVO = new CartVO();
 		int number = no;
@@ -251,7 +251,7 @@ public class Select_Ing_Controller {
 		cartVO.setId(userVO.getId());
 
 		// 장바구니에서 해당 메뉴 삭제
-		cart_Service.deleteCart(cartVO);
+		cart_Service.deleteCartByNo(cartVO);
 
 		// 삭제후 새로운 장바구니리스트를 세션에 등록
 		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
@@ -273,6 +273,7 @@ public class Select_Ing_Controller {
 
 		response.setContentType("text/html;charset=UTF-8");
 
+		System.out.println("증감 : " +no);
 		System.out.println(no);
 		System.out.println(totalQty);
 

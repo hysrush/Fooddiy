@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 <script src="${ pageContext.request.contextPath }/resources/js/sign/check.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <script>
 	// 함수 시작
 	$(document).ready(function(){
@@ -43,7 +44,7 @@
 				},
 				url : "${ pageContext.request.contextPath }/sign/nonemail",
 				success : function(result){
-					alert("전송!");
+					swal("전송!");
 					var data = JSON.parse(result);
 			 		$("#pc").val(data[0]);
 					$("#n").val(data[1].name);
@@ -61,7 +62,7 @@
 		if(n == k ){
 			return true;
 		}else{
-			alert("인증 코드를 확인해 주세요.");
+			swal("인증 코드를 확인해 주세요.");
 			$("#pno").focus();
 			return false;
 		}
