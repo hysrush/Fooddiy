@@ -118,7 +118,7 @@ public class MemberController {
 		
 		
 		// 1. fileName 설정 + eventVO에 fileName 저장
-		String fileName = "C:\\Users\\RYU\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
+		String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
 		String saveFileName = file.getOriginalFilename();
 
 		member.setFile(saveFileName);
