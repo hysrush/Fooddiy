@@ -60,9 +60,9 @@
 					
 						<div class="testimonial-author">
 							<div class="testimonial-author-thumbnail">
-								<img src="${ pageContext.request.contextPath }/resources/img/clients/client-1.png" class="img-responsive img-circle" alt="">
+								<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="">
 							</div>
-								<p><strong>${loginVO.id}</strong></p>
+								<p><strong>${snsVO.id}</strong></p>
 						</div>
 					</div>
 
@@ -106,9 +106,10 @@
 							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:80%"/>
         				
         						<button type="button" id="btnReply">댓글 작성</button>
-        							<div id="listReply2"></div>
+        						
         							
         					<c:forEach items="${ repList }" var="repList">
+        					<div id="listReply">
 								<div class="testimonial testimonial-style-3">
 									
 										<div class="testimonial-author">
@@ -123,6 +124,7 @@
 											<span class="date pull-right">${repList.regDate }</span>
 										</div>
 									</div>
+								</div>	
 								</c:forEach>
 									<div class="col-md-12">
 														<ul class="pagination">
@@ -189,48 +191,35 @@
              type: "post",
              url: "./insertRep",
              data: {"snsNo": snsNo , "content":content},
-             success: function(){
+             success: function(responseData){
+            	var data = JSON.parse(responseData);
+            		
             	
                  alert("댓글이 등록되었습니다.");
-                 
-                 
-                 
-                 
-                 
+                  
+          		       var contents = '';
+          		       
+          		     /*   contents += '<div class="testimonial testimonial-style-3">';
+          		       contents += '<div class="testimonial-author">';	
+                 	   contents += 	'<div class ="testimonial-author-thumbnail">';
+                 	   contents +=		'<img src = "../upload/"\''+data.file+'\'" class ="img-responsive img-circle" alt="">';
+                 	   contents +=	'<div>';
+                 	   contents +=		'<p><strong>'+ data.userId+'</storong></p>';
+                 	   contents +=	'<span class="pull-right">';
+                 	   contents +=		'<span><a href="#"><i class="fa fa-reply"><i>Update</a></span>';
+                 	   contents +=	'</span>';
+                 	   contents +=		'<p><strong>' + data.snsCont + '</strong></p>';
+                 	   contents +=		'<span class="date pull-right">' +data.date+'</span>';
+                 	   contents +=	'</div>';
+                 	   contents +='</div>';
+                 		 */
+                 	   //contents += '<span>안녕하세요</span>';
+                 	   
+                 	$('#listReply').append(contents); 
                  
              }
          });
      });
-	
-	    // RestController방식 (Json)
-	    // **댓글 목록2 (json)
-	    function listReply2(){
-	        $.ajax({
-	            type: "get",
-	            //contentType: "application/json", ==> 생략가능(RestController이기때문에 가능)
-	            url: "./listJson.do?no=${snsVO.no}",
-	            success: function(result){
-	                console.log(result);
-	                var output = "<table>";
-	                for(var i in result){
-	                    output += "<tr>";
-	                    output += "<td>"+result[i].id;
-	                    output += "("+changeDate(result[i].regDate)+")<br>";
-	                    output += result[i].content+"</td>";
-	                    output += "<tr>";
-	                }
-	                output += "</table>";
-	                $("#listReply2").html(output);
-	            }
-	        });
-	    }
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
