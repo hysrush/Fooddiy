@@ -173,7 +173,7 @@
 														<br/>
 													<div align="right">		
 														<input type = "button" value="수정 "/>
-														<input type = "button" value="글 등록 "/>
+														<a href="${ pageContext.request.contextPath}/event/eventWrite.do"><input type = "button" value="글 등록 "/></a>
 													</div>
 													
 												</div>
