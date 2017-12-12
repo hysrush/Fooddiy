@@ -420,8 +420,8 @@
 						var order = "";
 						order += '${ cartStoreVO.storeName }' + ",";	//지점명
 					    order += '${loginVO.id}' + ",";					//아이디
+					    order += uncomma($('.final-price').text())  + ",";		//주문가격
 					    order += uncomma($('.final-price').text())  +"--";		//총가격
-						
 	 					for(var i = 1; i < length; ++i) {
 	 						
 							var oneCart = $('.cart-table tr').eq(i);				   

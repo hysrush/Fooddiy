@@ -43,7 +43,8 @@ public class OrderController {
 		OrderVO orderVO = new OrderVO();
 		orderVO.setStoreName(info[0]);
 		orderVO.setId(info[1]);
-		orderVO.setFinal_price(info[2]);
+		orderVO.setOrder_price(info[2]);;
+		orderVO.setFinal_price(info[3]);
 		orderVO.setMenu(orders[1]);
 		orderVO.setEatType("포장");
 		System.out.println(orderVO);

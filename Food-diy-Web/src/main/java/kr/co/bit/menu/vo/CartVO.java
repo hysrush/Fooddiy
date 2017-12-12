@@ -14,7 +14,6 @@ public class CartVO implements Serializable{
 	private int qty;
 	private String type;
 	
-	
 	private String bread;
 	private String cheese;
 	private String topping;

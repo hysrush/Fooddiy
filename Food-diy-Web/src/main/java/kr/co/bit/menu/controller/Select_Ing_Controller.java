@@ -121,12 +121,12 @@ public class Select_Ing_Controller {
 
 			String price = cartVO.getPrice();
 			cartVO.setTotal_price(price);
-			cartVO.setBread("");
-			cartVO.setCheese("");
-			cartVO.setTopping("");
-			cartVO.setVegetable("");
-			cartVO.setSauce("");
-			cartVO.setRequirement("");
+			cartVO.setBread(" ");
+			cartVO.setCheese(" ");
+			cartVO.setTopping(" ");
+			cartVO.setVegetable(" ");
+			cartVO.setSauce(" ");
+			cartVO.setRequirement(" ");
 
 			System.out.println(cartVO);
 			cart_Service.insertCart(cartVO);

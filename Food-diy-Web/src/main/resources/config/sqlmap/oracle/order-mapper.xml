@@ -6,8 +6,8 @@
 <mapper namespace="kr.co.bit.dao.OrderDAO">
 
 	<sql id = "selectAll">
-		select order_no, sto_name, user_id, order_finalPrice, order_menu, 
-		order_eat_type, to_char(reg_at, 'yyyy-mm-dd hh24:mi:ss') as reg_at 
+		select order_no, sto_name, user_id, order_orderPrice, order_finalPrice, order_menu, 
+		order_eat_type, order_payment, order_status, to_char(reg_at, 'yyyy-mm-dd hh24:mi:ss') as reg_at 
 		from t_order
 	</sql>
 
@@ -15,11 +15,13 @@
   		<result column = "order_no" property ="no"/>
   		<result column = "sto_name" property ="storeName"/>
   		<result column = "user_id" property ="id"/>
+  		<result column = "order_orderPrice" property ="order_price"/>
   		<result column = "order_finalPrice" property ="final_price"/>
   		<result column = "order_menu" property ="menu"/>
   		<result column = "order_eat_type" property ="eatType"/>
+  		<result column = "order_payment" property ="payment"/>
+  		<result column = "order_status" property ="orderStatus"/>
   		<result column = "reg_at" property ="regDate"/>
-
   	</resultMap>
   	
   	
@@ -42,9 +44,9 @@
   	</select>
   	
   	<insert id="insertOrder" parameterType="orderVO">
-  		insert into t_order(order_no, sto_name, user_id, order_finalPrice, order_menu, order_EAT_TYPE) 
+  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE) 
   		
-  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{final_price}, #{menu}, #{eatType} )
+  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType} )
   	</insert>
   	
   	<delete id="deleteOrder" parameterType="String">
