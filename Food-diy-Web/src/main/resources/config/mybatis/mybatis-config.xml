@@ -21,10 +21,7 @@
 	  	<typeAlias type="kr.co.bit.vo.SnsBoardVO" alias="snsVO"/>
 	  	<typeAlias type="kr.co.bit.vo.SnsRepVO" alias="snsRepVO"/>
 	  	<typeAlias type="kr.co.bit.order.vo.OrderVO" alias="orderVO"/>
-		
-	  	
-
+	  	<typeAlias type="kr.co.bit.member.vo.MemberOrderVO" alias="MemberOrderVO"/>
 	  	<typeAlias type="kr.co.bit.menu.vo.CartStoreVO" alias="cartStoreVO"/>
-
 	</typeAliases>
 </configuration>

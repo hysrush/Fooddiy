@@ -143,125 +143,9 @@ $(document).ready(function(){
 			});
 		});
 	});
-	
-	/* ----------------------------------------------------------------------------------------------------------------- */
-  	// sidebar li & ul 클래스 active
-	$('.orderManagementLI').addClass("active");
-	$('.orderManagementLI > ul').addClass("in");
-	$('.todayOrderList').addClass("active");
-
-    $('.footable').footable();            
-    
- 	//오늘날짜
-	var now = new Date();
-
-	var year = now.getFullYear();
-	var mon = (now.getMonth() + 1) > 9 ? ''
-			+ (now.getMonth() + 1) : '0'
-			+ (now.getMonth() + 1);
-	var day = now.getDate() > 9 ? '' + now.getDate()
-			: '0' + now.getDate();
-
-	var chan_val = year + '-' + mon + '-' + day;
-
-	$('.today').text(chan_val);
-	
-	var totalFinalPrice = 0;
-	var orderCount = 0;
-	$('tbody.todayOrderList tr').each(function() {
-		
-		var status = $(this).find('.orderStatus');
-						
-		if(status.text() == '0') {
-			status.text('주문취소');
-			status.attr('class', 'label label-danger');
-		}else {
-			if (status.text() == '1') {
-				status.text('대기중');
-				status.attr('class', 'label label-primary');
-				$(this).find('.cancel-button').append('<button type="button" class="btn btn-outline btn-danger button-cancel">주문취소</button>');
-			}else if (status.text() == '2') {
-				status.text('준비중');
-				status.children().attr('class', 'label label-warning');
-			} else{
-				status.text('준비완료');
-				status.attr('class', 'label label-information');
-			}
-			
-			totalFinalPrice += uncomma($(this).find('.finalPrice').text())*1;
-			++orderCount;
-		}
-	}); 
-	$('.total-count-order').text(orderCount);
-	$('.total-order-price').text(comma(totalFinalPrice) + "원");
-	
-	
-	
-	
-	$('.footable').footable();
-	
-	
-	// 삭제 alert창
-	function orderCancel(no) {
-		swal({
-	        title: "주문을 취소하시겠습니까?",
-	        type: "warning",
-	        showCancelButton: true,
-	        cancelButtonText: "취소",
-	        confirmButtonColor: "#DD6B55",
-	        confirmButtonText: "확인",
-	        closeOnConfirm: false
-	    }, function () {
-	        swal("주문이 취소되었습니다!", "", "success");
-	        // OK 누르면 삭제 실행
-	        $('.confirm').click(function () {
-	        	location.href = '${ pageContext.request.contextPath}/orderManagement/orderCancel.do?no=' + no;
-			});
-	    });
-	}
-	
-	//주문 취소 버튼 클릭 시 이벤트 발생 
-	$('.button-cancel').each(function() {
-		$(this).click(function() {
-			var no = $(this).parent().siblings('.orderNumber').text();
-			orderCancel(no);
-		});
-	});
-	
-	
-	// 데이터테이블 생성
-	$('.footable').css("width","100%");
-	$('.dataTables-example').DataTable({
-        pageLength: 25,
-        responsive: true,
-        dom: '<"html5buttons"B>lTfgitp',
-        buttons: [
-            {extend: 'copy'},
-            {extend: 'csv'},
-            {extend: 'excel', title: 'ExampleFile'},
-            {extend: 'pdf', title: 'ExampleFile'},
-            {extend: 'print',
-             customize: function (win){
-                    $(win.document.body).addClass('white-bg');
-                    $(win.document.body).css('font-size', '10px');
-                    $(win.document.body).find('table').addClass('compact').css('font-size', 'inherit');
-            	}
-            }
-        ]
-    });
 
 });
-
-function modalFunc(no) {
-	var url = "${pageContext.request.contextPath}/orderManagement/todayOrderDetail.do?no=" + no;
-	$('div.modal').modal().removeData();
-    $('div.modal').modal({ remote : url  });
-}
 </script>
-
-
-
-
 </head>
 <body>
 	<div class="body">
@@ -309,80 +193,113 @@ function modalFunc(no) {
 								</ul>
 		</aside></div></div>
 	
-		<div class="row">
-					<div class="col-lg-12">
-						<div class="ibox">
-							<div class="ibox-content">
-								<div class="table-responsive">
-									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="25">
-										<thead>
-											<tr>
-												<th data-hide="phone" data-sort-ignore="true">주문번호</th>
-												<th data-hide="phone" data-sort-ignore="true">주문시간</th>
-												<th data-hide="phone" data-sort-ignore="true">메뉴</th>
-												<th data-hide="phone" data-sort-ignore="true">주문자</th>
-												<th data-hide="phone" data-sort-ignore="true">주문금액</th>
-												<th data-hide="phone" data-sort-ignore="true">총 결제금액</th>
-												<th data-hide="phone" data-sort-ignore="true">결제방법</th>
-												<th data-hide="phone" data-sort-ignore="true">주문상태</th>
-												<th data-hide="phone" data-sort-ignore="true">주문취소</th>
-											</tr>
-										</thead>
-										<tbody class= "todayOrderList">
+		<div role="main" class="main shop">
 
-										<c:forEach items="${ orderList }" var="order">
-
-											<tr>
-													<td class="convType orderNumber" width="100px;">
-				                                    	${ order.no }
-			                                  		</td>
-														
-													<td>${ order.regDate }</td>
-													<td>
-														<a onclick = "modalFunc(${ order.no })">
-														<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" varStatus="status">
-															${ oneOrder.name }
-															<c:if test="${ !status.last }">, </c:if>
+				<div class="container">
+						<div class="col-md-12r">
+							<div class="featured-boxes">
+									<div class="col-md-9 col-xs-12">
+										<div class="featured-box featured-box-primary mt-xlg">
+											<div class="box-content">
+												<table>
+													<tbody>
+														<tr>
+															<th style="text-align: center; font-size: 100%;"></th>
+															<th style="width: 400px; text-align: center; font-size: 100%;"><h4 align="right" class="heading-primary text-uppercase mb-md"></h4></th>
+															<th colspan="2" style="width: 80px;"><h4 align="right" style="margin-right:15%; font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md">주문내용</h4></th>
+															<th colspan="1" style="width: 50px; "><h4 align="center" style="font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md ">가격</h4></th>
+															<th style="width: 60px;"><h4 style="margin-left: 40%; font-size: 140%; float: center;" class="heading-primary text-uppercase mb-md ">날짜</h4></th>
+															
+															<!-- hidden-xs 안나오게 하는것 -->
+														</tr>
+														<c:choose>
+														<c:when test="${ not empty orderList }">   <!-- 카트 디비가 비워져있으면 뜨게 하는것 -->
+														<c:forEach items="${ orderList }" var="order">
+															<tr class="cart-subtotal">
+																<td class="cartNo" style="display: none;">${ order.no }</td>
+																<td class="id" style="display: none;">${ order.id }</td>
+																<td class="price" style="display: none;">${ order.final_price }</td>
+																
+																<c:forEach items="${ order.detailOrderList }" var="list" varStatus="status" >
+																	<td class="pic" style="display: none;"><img src = ${ list.pic }/></td>
+																	<td class="size" style="display: none;">${ list.size }</td>
+																	<td class="bread" style="display: none;">${ list.bread }</td>
+																	<td class="cheese" style="display: none;">${ list.cheese }</td>
+																	<td class="topping" style="display: none;">${ list.topping }</td>
+																	<td class="vegetable" style="display: none;">${ list.vegetable }</td>
+																	<td class="sauce" style="display: none;">${ list.sauce }</td>
+																<c:choose>
+																<c:when test="${ status.end >=1 }">
+																<!-- 주문 내역 메뉴 2개 이상 -->
+																	<td class="product-thumbnail" style="width: 30px; height: 30px"></td>
+																	<td style="margin-left: 20%; width: 5%" class="product-action-td remove_product"></td>
+																	<td class="hidden-xs" style="width: 30%;"></td>
+																	<td align="center" style="width: 100px; font-size: 100%;">
+																		<span class="amount">${ list.bread }<br />${ list.cheese }<br />${ list.topping }<br />${ list.vegetable }<br />${ list.sauce }</span><br/>
+																	</td>
+																</c:when>
+																<c:otherwise>
+																<td class="product-thumbnail" style="width: 30px; height: 30px">
+																	<a><img style="width: 40px; height: 30px" alt="Product Name" class="img-responsive " src="${ pageContext.request.contextPath }/resources/img/AA.jpg"></a>
+																</td>
+																<td style="margin-left: 20%; width: 5%" class="product-action-td remove_product">
+																	<a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a>
+																</td>
+																<td class="hidden-xs" style="width: 30%;">
+																	<a><img style="width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="${ list.pic }"></a>
+																</td>
+																<td align="center" style="width: 100px; font-size: 100%;">
+																	<span class="amount">${ list.bread }<br />${ list.cheese }<br />${ list.topping }<br />${ list.vegetable }<br />${ list.sauce }</span>
+																</td>
+																</c:otherwise>
+																</c:choose>
+																</c:forEach>
+																<td style="font-size: 100%; " align="center">
+																	<span class="amount">&#8361;${ order.final_price }</span>
+																</td>
+																<td style="font-size: 100%;" align="center">
+																	<span class="amount">${ order.regDate }</span>
+																</td>
+															</tr>
 														</c:forEach>
-														</a>
-			                                   		</td>
-													<td width="10%" nowrap>
-														${ order.id }
-													</td>	
-													
-													<td class = "commaN orderPrice">${ order.order_price }원</td>											
-													<td class = "commaN finalPrice">${ order.final_price }원</td>											
-													<td>${ order.payment }</td>			
-													
-													<td><span class="orderStatus label label-primary">${ order.orderStatus }</span></td>		
-													<td class = "cancel-button"></td>									
-											</tr>
-										</c:forEach>
-										</tbody>
-									</table>
+														</c:when>
+														<c:otherwise>
+															<h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
+														</c:choose>
+													</tbody>
+												</table>
+												</div> 
+										</div>	
+								<!-- 	<div class="header-search hidden-xs">
+										<form id="searchForm" action="page-search-results.html" method="get">
+											<div  class="input-group">
+												<input style="width: 400px; float: right;" type="text" class="form-control" name="q" id="q" placeholder="Search..." required>
+												<span style="" class="input-group-btn">
+													<button  class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+												</span>
+											</div>
+										</form>
+										
+									</div> -->
+									</div>
 								</div>
 							</div>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="footer">
-				<jsp:include page="/resources/include/bottom.jsp"/>
-			</div>
+	
+				<!-- <div class="row">
+								<div align="center" class="col-md-12">
+									<ul  class="pagination pull-center">
+										<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+										<li class="active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+									</ul>
+								</div>
+							</div> -->
 		</div>
 	</div>
-
-
-	<!-- 모달 -->
-	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<!-- 모달내용 -->
-				
-			</div>
-		</div>
 	</div>
-
 	<!-- ---------------------------------------------------------------------------------------------- -->
 		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
