@@ -292,25 +292,37 @@ html, body {
 		var storeAddr = new Array();
 		var storeName = new Array();
 		var storePhone = new Array();
+		var storeZip = new Array();
 		<c:forEach items="${storeList}" var="store">
 			storeAddr.push("${store.storeAddr}");
 			storeName.push("${store.storeName}");
 			storePhone.push("${store.storePhone}");
-		</c:forEach>		 
-			
-		console.log( "storeName: " +storeName[0]);
-		
+			storeZip.push("${store.storeZip}");
+		</c:forEach>
 		var j = 0;
 		
 		// 배열에 넣은 주소를 for문을 돌면서 마커로 찍는다 	
 		for(var i = 0; i< storeAddr.length; i++ ){
 			
-			console.log(storeAddr[i]);
 			geocoder.addressSearch(storeAddr[i] , function(result, status) {
 														
-														console.log( "j = " + j + " , storeName: " +storeName[j]);
+														//console.log( "j = " + j + " , storeName: " +storeName[j]);
 														// 정상적으로 검색이 완료됐으면 
-													     if (status === daum.maps.services.Status.OK) {
+													    if (status === daum.maps.services.Status.OK) {
+													    	console.log("result = " + result[0].road_address.zone_no);
+													    	
+													    	for(var index = 0 ; index < storeAddr.length ; index++){
+													    		//console.log("storeAddr[index] = " + storeAddr[index]);
+													    		if(storeZip[index] == result[0].road_address.zone_no)
+													    			
+													    			
+													    			
+													    			break;
+																}
+													    	
+													    	//console.log("index = " + index);
+													    	// console.log("storeName[index] = " + storeName[index]);
+													    	
 													        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 													
 													    	 // 마커 이미지의 이미지 크기 입니다
@@ -354,11 +366,12 @@ html, body {
 														          infowindow.open(map, marker);  
 														    });
 														        
-															j++; 
+														
 											
 													        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 													       	// map.setCenter(coords);
 													    } 
+													 	j++; 
 			});
 			
 			

@@ -53,7 +53,6 @@
 <!-- Theme Custom CSS -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
-<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 <!-- 이미지 캐러셀 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -418,25 +417,25 @@
 						var length = $('.cart-table tr').length;
 						
 						var order = "";
-						order += '${ cartStoreVO.storeName }' + ",";	//지점명
-					    order += '${loginVO.id}' + ",";					//아이디
-					    order += uncomma($('.final-price').text())  + ",";		//주문가격
+						order += '${ cartStoreVO.storeName }' + "*";	//지점명
+					    order += '${loginVO.id}' + "*";					//아이디
+					    order += uncomma($('.final-price').text())  + "*";		//주문가격
 					    order += uncomma($('.final-price').text())  +"--";		//총가격
 	 					for(var i = 1; i < length; ++i) {
 	 						
 							var oneCart = $('.cart-table tr').eq(i);				   
 							
-						    order +=  oneCart.find('.menu').text() + ",";
-						   	order += oneCart.find('.bread').text() + ",";
-						   	order += oneCart.find('.cheese').text() + ","; 
-						   	order += oneCart.find('.topping').text() + ",";
-						   	order += oneCart.find('.vegetable').text() + ",";
-						   	order += oneCart.find('.sauce').text() + ",";
-						   	order += oneCart.find('.requirement').text() + ",";
-						   	order += oneCart.find('.pic').attr('src') + ",";
-						   	order += oneCart.find('.size').text() + ",";
-						   	order += oneCart.find('.qty-input').val() + ",";
-						   	order += uncomma(oneCart.find('.price').text())  + ",";
+						    order +=  oneCart.find('.menu').text() + "*";
+						   	order += oneCart.find('.bread').text() + "*";
+						   	order += oneCart.find('.cheese').text() + "*"; 
+						   	order += oneCart.find('.topping').text() + "*";
+						   	order += oneCart.find('.vegetable').text() + "*";
+						   	order += oneCart.find('.sauce').text() + "*";
+						   	order += oneCart.find('.requirement').text() + "*";
+						   	order += oneCart.find('.pic').attr('src') + "*";
+						   	order += oneCart.find('.size').text() + "*";
+						   	order += oneCart.find('.qty-input').val() + "*";
+						   	order += uncomma(oneCart.find('.price').text())  + "*";
 						   	order += uncomma(oneCart.find('.price-total').text()) ;
 						   	
 						   	if(i + 1 < length ) {
