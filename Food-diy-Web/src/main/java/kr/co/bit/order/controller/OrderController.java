@@ -38,7 +38,7 @@ public class OrderController {
 		
 		String orders [] = order.split("--");
 		//지점, 아이디, 총 결제 가격
-		String info [] = orders[0].split("\\|");
+		String info [] = orders[0].split("\\*");
 		
 		OrderVO orderVO = new OrderVO();
 		orderVO.setStoreName(info[0]);

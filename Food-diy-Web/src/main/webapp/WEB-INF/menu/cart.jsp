@@ -417,25 +417,25 @@
 						var length = $('.cart-table tr').length;
 						
 						var order = "";
-						order += '${ cartStoreVO.storeName }' + "|";	//지점명
-					    order += '${loginVO.id}' + "|";					//아이디
-					    order += uncomma($('.final-price').text())  + "|";		//주문가격
+						order += '${ cartStoreVO.storeName }' + "*";	//지점명
+					    order += '${loginVO.id}' + "*";					//아이디
+					    order += uncomma($('.final-price').text())  + "*";		//주문가격
 					    order += uncomma($('.final-price').text())  +"--";		//총가격
 	 					for(var i = 1; i < length; ++i) {
 	 						
 							var oneCart = $('.cart-table tr').eq(i);				   
 							
-						    order +=  oneCart.find('.menu').text() + "|";
-						   	order += oneCart.find('.bread').text() + "|";
-						   	order += oneCart.find('.cheese').text() + "|"; 
-						   	order += oneCart.find('.topping').text() + "|";
-						   	order += oneCart.find('.vegetable').text() + "|";
-						   	order += oneCart.find('.sauce').text() + "|";
-						   	order += oneCart.find('.requirement').text() + "|";
-						   	order += oneCart.find('.pic').attr('src') + "|";
-						   	order += oneCart.find('.size').text() + "|";
-						   	order += oneCart.find('.qty-input').val() + "|";
-						   	order += uncomma(oneCart.find('.price').text())  + "|";
+						    order +=  oneCart.find('.menu').text() + "*";
+						   	order += oneCart.find('.bread').text() + "*";
+						   	order += oneCart.find('.cheese').text() + "*"; 
+						   	order += oneCart.find('.topping').text() + "*";
+						   	order += oneCart.find('.vegetable').text() + "*";
+						   	order += oneCart.find('.sauce').text() + "*";
+						   	order += oneCart.find('.requirement').text() + "*";
+						   	order += oneCart.find('.pic').attr('src') + "*";
+						   	order += oneCart.find('.size').text() + "*";
+						   	order += oneCart.find('.qty-input').val() + "*";
+						   	order += uncomma(oneCart.find('.price').text())  + "*";
 						   	order += uncomma(oneCart.find('.price-total').text()) ;
 						   	
 						   	if(i + 1 < length ) {

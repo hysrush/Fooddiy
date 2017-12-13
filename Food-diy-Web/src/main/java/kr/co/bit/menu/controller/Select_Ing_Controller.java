@@ -127,6 +127,7 @@ public class Select_Ing_Controller {
 			cartVO.setVegetable(" ");
 			cartVO.setSauce(" ");
 			cartVO.setRequirement(" ");
+			cartVO.setSize(" ");
 
 			System.out.println(cartVO);
 			cart_Service.insertCart(cartVO);
