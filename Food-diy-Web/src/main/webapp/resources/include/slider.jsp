@@ -48,29 +48,18 @@
 									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeList.do"> +more</a>
 								</span>
 							</td>
+							
+						
 						</tr>
+						<c:forEach items="${ notice }" var="n">
 						<tr>
 							<td colspan="2">
 								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
-									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
+									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">${ n.title }</a>
 								</span>
 							</td>
 						</tr>
-						<tr>
-							<td colspan="2">
-								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
-									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
-								</span>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<span style="text-align: center; font-size: 12px;" class="heading-primary text-uppercase mb-md">
-									<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-									<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${notice.no}">공지사항 제목</a>
-								</span>
-							</td>
-						</tr>
+						</c:forEach>
 					</table>
 				</div>
 				

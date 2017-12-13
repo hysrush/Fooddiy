@@ -1,6 +1,7 @@
 package kr.co.bit.sign.controller;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +28,7 @@ import kr.co.bit.user.vo.UserVO;
  * 
  */
 @SessionAttributes({"loginVO", "cartVO", "storeVO", "cartList", "cartStoreVO"})
-@RequestMapping("/sign")
+@RequestMapping({"/sign", "/main"})
 @Controller
 public class SignController {
 
@@ -360,6 +361,20 @@ public class SignController {
 	public String orderCheck() {
 		
 		return null;
+	}
+	
+	/**
+	 * 
+	 *  4. main 화면
+	 * 
+	 * */
+	@RequestMapping("/Start")
+	public String main(Model model) {
+	
+		Map<String, List<Object>> list = signServiceImp.main();
+		
+		model.addAttribute("notice", list.get("notice"));
+		return "main/index";
 	}
 	
 	
