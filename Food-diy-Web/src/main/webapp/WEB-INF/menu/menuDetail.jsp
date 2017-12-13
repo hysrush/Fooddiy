@@ -135,17 +135,7 @@ $(document).ready(function(){
 							style="font-size: 18px; margin-left: 5px; margin-right: 20px">15cm</span>
 						<input type="radio" name="size" value="30cm" id="half"><span
 							style="font-size: 18px; margin-left: 5px" id="half2">30cm</span>
-					</p>
-					
-					<%-- <form enctype="multipart/form-data" method="post" class="cart" id="cart" style="margin-bottom: 10px">
-						<!-- submit하면 hidden으로 값 넘겨준다 -->
-						<input type="hidden" name="name" value="${ menuDetailVO.name }">
-						<input type="hidden" name="type" value="${ menuDetailVO.type }">
-						<input type="hidden" name="price" id="sand_price" value="${ menuDetailVO.price }">
-						<input type="hidden" name="size" id="sand_size" value="15cm">
-						<input type="hidden" name="pic" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }">
-						<button type="submit" href="#" class="btn btn-primary btn-icon" id="order">주문하기</button>
-					</form> --%>
+					</p>					
 					
 					<form:form commandName="cartVO" method="POST" id="submit">
 						<form:input path="id" type="hidden" value="${ loginVO.id }"/>
