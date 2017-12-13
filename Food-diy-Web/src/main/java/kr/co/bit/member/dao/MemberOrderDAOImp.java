@@ -36,11 +36,5 @@ public class MemberOrderDAOImp  implements MemberOrderDAO{
 		session.update(url + "cancelOrder", no);
 	}
 
-	@Override
-	public List<MemberOrderVO> selectByToday(String today) {
-		List<MemberOrderVO> orderListToday = session.selectList(url + "selectByToday", today);
-		return orderListToday;
-	}
-
 	
 }

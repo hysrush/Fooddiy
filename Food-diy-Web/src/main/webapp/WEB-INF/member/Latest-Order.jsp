@@ -366,9 +366,6 @@ function modalFunc(no) {
 					</div>
 				</div>
 			</div>
-			<div class="footer">
-				<jsp:include page="/resources/include/bottom.jsp"/>
-			</div>
 		</div>
 	</div>
 
@@ -384,7 +381,7 @@ function modalFunc(no) {
 	</div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
-		<footer id="footer">
+		<footer id="footer" class="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
 	</div>

@@ -32,12 +32,6 @@
 		where user_id = #{id}
   	</select>
 	
-	<select id="selectByToday" parameterType="String" resultMap="Map_MemberOrderVO">
-		<include refid="selectAll"/>
-		where to_char(reg_at, 'yy/mm/dd') = #{today} 
-		order by order_no desc
-  	</select>
-	
 	<select id="selectByNo"  resultMap="Map_MemberOrderVO">
 		<include refid="selectAll"/>
   	</select>	

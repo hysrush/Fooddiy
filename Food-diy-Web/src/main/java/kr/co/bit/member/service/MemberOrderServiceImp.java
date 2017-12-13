@@ -34,13 +34,5 @@ public class MemberOrderServiceImp  implements MemberOrderService{
 	public void cancelOrder(int no) {
 		dao.cancelOrder(no);
 	}
-
-
-	@Override
-	public List<MemberOrderVO> selectByToday(String today) {
-		List<MemberOrderVO> orderListToday = dao.selectByToday(today);
-		return orderListToday;
-	}
-	
 	
 }
