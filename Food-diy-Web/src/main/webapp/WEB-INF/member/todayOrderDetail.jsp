@@ -51,19 +51,19 @@
 			<tbody>
 				<tr >
 					<th width = "30%">주문번호</td>
-					<td>${ orderVO.no }</td>
+					<td>${ memberorderVO.no }</td>
 				</tr>
 				<tr>
 					<th>주문시간</td>
-					<td>${ orderVO.regDate }</td>
+					<td>${ memberorderVO.regDate }</td>
 				</tr>
 				<tr>
 					<th>결제방법</td>
-					<td>${ orderVO.payment }</td>
+					<td>${ memberorderVO.payment }</td>
 				</tr>
 				<tr>
 					<th>결제금액</td>
-					<td class = "commaN">${ orderVO.final_price }원</td>
+					<td class = "commaN">${ memberorderVO.final_price }원</td>
 				</tr>
 			</tbody>
 		</table>
@@ -77,7 +77,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ orderVO.detailOrderList }" var="oneMenu">
+					<c:forEach items="${ memberorderVO.detailOrderList }" var="oneMenu">
 						<tr >
 							<td>
 								${ oneMenu.name} <br>

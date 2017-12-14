@@ -119,11 +119,13 @@ public class MemberController {
 		
 		// 1. fileName 설정 + eventVO에 fileName 저장
 		String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
+		String afileName = "C:\\Users\\bit-user\\git\\Fooddiy-manager\\Food-manager-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
 		String saveFileName = file.getOriginalFilename();
 
 		member.setFile(saveFileName);
 
 		System.out.println(fileName);
+		System.out.println(afileName);
 		System.out.println(saveFileName);
 		System.out.println("들어가나");
 
@@ -133,9 +135,15 @@ public class MemberController {
 		BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
 		buffStream.write(bytes);
 		buffStream.close();
-
+		
+		// 관리자 업로드 저장
+		byte[] abytes;
+		abytes = file.getBytes();
+		BufferedOutputStream abuffStream = new BufferedOutputStream(new FileOutputStream(new File(afileName)));
+		abuffStream.write(abytes);
+		abuffStream.close();
+		
 		System.out.println("들어가나 2");
-
 		
 		System.out.println(member.toString());
 		memberService.getMemberUpdate(member);
@@ -213,7 +221,7 @@ public class MemberController {
 			String menu = todayOrderList.get(i).getMenu();
 			String [] menus = menu.split("\\|\\|");
 			
-			System.out.println("menus.length =  " + menus.length);
+//			System.out.println("menus.length =  " + menus.length);
 			
 			for(int j = 0; j < menus.length; ++j) {
 				DetailOrderVO vo = new DetailOrderVO();
@@ -236,7 +244,7 @@ public class MemberController {
 			todayOrderList.get(i).setDetailOrderList(list);
 		}
 		
-		System.out.println(todayOrderList);
+//		System.out.println(todayOrderList);
 		mav.setViewName("member/Latest-Order");
 		mav.addObject("orderList", todayOrderList);
 		return mav;
@@ -246,7 +254,7 @@ public class MemberController {
 		
 		service.cancelOrder(no);
 		
-		return "redirect:/orderManagement/todayOrderList.do";
+		return "redirect:/member/Latest-Order.do";
 		
 	}
 	
@@ -284,20 +292,20 @@ public class MemberController {
 		orderVO.setDetailOrderList(list);
 		
 		mav.addObject("orderVO", orderVO);
-		mav.setViewName("orderManagement/todayOrderDetail");
+		mav.setViewName("member/todayOrderDetail");
 		
 		return mav;
 	}
-	
-	@RequestMapping("/orderList.do")
+/*	
+	@RequestMapping("/Latest-Order.do")
 	public String orderList() {
 		
-		//List<OrderVO> orderList = service.selectByNo();
+//		List<MemberOrderVO> orderList;
 		
-		return "orderManagement/orderList";
+		return "member/Latest-Order";
 	}
 	
-	
+	*/
 
 	
 	// 최근 주문 내역 삭제
