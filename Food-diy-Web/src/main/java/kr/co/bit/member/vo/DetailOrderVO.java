@@ -1,11 +1,7 @@
-package kr.co.bit.menu.vo;
+package kr.co.bit.member.vo;
 
-import java.io.Serializable;
-
-public class CartVO implements Serializable{
+public class DetailOrderVO {
 	
-	private int no;
-	private String id;
 	private String name;
 	private String price;
 	private String total_price;
@@ -20,21 +16,6 @@ public class CartVO implements Serializable{
 	private String vegetable;
 	private String sauce;
 	private String requirement;
-	
-	private String regDate;
-	
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}
@@ -113,20 +94,11 @@ public class CartVO implements Serializable{
 	public void setRequirement(String requirement) {
 		this.requirement = requirement;
 	}
-	public String getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
-	}
-	
 	@Override
 	public String toString() {
-		return "CartVO [no=" + no + ", id=" + id + ", name=" + name + ", price=" + price + ", total_price="
-				+ total_price + ", size=" + size + ", pic=" + pic + ", qty=" + qty + ", type=" + type + ", bread="
-				+ bread + ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce="
-				+ sauce + ", requirement=" + requirement + ", regDate=" + regDate + "]";
+		return "DetailOrderVO [name=" + name + ", price=" + price + ", total_price=" + total_price + ", size=" + size
+				+ ", pic=" + pic + ", qty=" + qty + ", type=" + type + ", bread=" + bread + ", cheese=" + cheese
+				+ ", topping=" + topping + ", vegetable=" + vegetable + ", sauce=" + sauce + ", requirement="
+				+ requirement + "]";
 	}
-
-	
 }

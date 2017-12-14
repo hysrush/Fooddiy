@@ -88,8 +88,6 @@ public class StoreController {
 		System.out.println(storeList);
 		
 		return mav;
-				
-		
 		
 	}
 	

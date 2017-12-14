@@ -1,5 +1,8 @@
 package kr.co.bit.sign.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import kr.co.bit.user.vo.UserVO;
 
 public interface SignDAO {
@@ -24,5 +27,8 @@ public interface SignDAO {
 	
 	//가입 확인
 	int checkMember(UserVO phoneCert);
+
+	// main
+	Map<String, List<Object>> main();
 	
 }

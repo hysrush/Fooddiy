@@ -1,5 +1,9 @@
 package kr.co.bit.sign.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,13 +21,13 @@ public class SignDAOImp implements SignDAO {
 	public UserVO login(UserVO login) {
 		
 		// API 가입 확인 또는 아이디 비밀번호 확인
-		int check = sql.selectOne("kr.co.bit.member.dao.loginCheck", login);
+		int check = sql.selectOne(url+"loginCheck", login);
 
 		if(check == 0 ) {
 			return null;
 		}
 			
-		return sql.selectOne("kr.co.bit.member.dao.login", login);
+		return sql.selectOne(url+"login", login);
 		
 	}
 
@@ -33,54 +37,65 @@ public class SignDAOImp implements SignDAO {
 		// 비회원
 		if(memberVO.getType().equals("N")) {
 		
-			sql.insert("kr.co.bit.member.dao.nonSignUp", memberVO);
+			sql.insert(url+"nonSignUp", memberVO);
 		}else {
-			sql.insert("kr.co.bit.member.dao.signUp", memberVO);
+			sql.insert(url+"signUp", memberVO);
 		}
 		
 	}
 	
 	public int checkId(String id) {
 		
-		return sql.selectOne("kr.co.bit.member.dao.checkId", id);
+		return sql.selectOne(url+"checkId", id);
 	}
 
 	// id 찾기
 	public UserVO lostId(UserVO lost) {
 		
 		// 가입한 건지 확인
-		int check = sql.selectOne("kr.co.bit.member.dao.lostIdCheck", lost);
+		int check = sql.selectOne(url+"lostIdCheck", lost);
 		
 		if(check == 0) {
 			return null;
 		}
 
-		return sql.selectOne("kr.co.bit.member.dao.lostId", lost);
+		return sql.selectOne(url+"lostId", lost);
 
 	}
 	
 	// pw 찾기
 	public UserVO lostPw(UserVO lost) {
 		
-		int check = sql.selectOne("kr.co.bit.member.dao.lostPwCheck", lost);
+		int check = sql.selectOne(url+"lostPwCheck", lost);
 		
 		if(check == 0) {
 			return null;
 		}
-		return sql.selectOne("kr.co.bit.member.dao.lostPw", lost);
+		return sql.selectOne(url+"lostPw", lost);
 	}
 
 	// 임시 비밀번호 설정
 	public void setPw(UserVO setpw) {
 	
-		sql.insert("kr.co.bit.member.dao.pwUpdate", setpw);
+		sql.insert(url+"pwUpdate", setpw);
 	}
 
 	//가입했는지 확인
 	public int checkMember(UserVO phoneCert) {
 		
 		System.out.println(phoneCert);
-		return sql.selectOne("kr.co.bit.member.dao.checkMember", phoneCert);
+		return sql.selectOne(url+"checkMember", phoneCert);
+	}
+
+	// main
+	public Map<String, List<Object>> main() {
+		
+		Map<String, List<Object>> map = new HashMap<>();
+		
+		map.put("notice", sql.selectList("kr.co.bit.main.mainN"));
+		System.out.println(map.get("notice").toString());
+	
+		return map;
 	}
 	
 }

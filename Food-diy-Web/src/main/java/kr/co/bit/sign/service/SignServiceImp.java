@@ -1,5 +1,7 @@
 package kr.co.bit.sign.service;
 
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
@@ -166,6 +168,11 @@ public class SignServiceImp implements SignService {
 	public int checkMember(UserVO phoneCert) {
 		
 		return signDAOImp.checkMember(phoneCert);
+	}
+
+	// Main
+	public Map<String, List<Object>> main() {
+		return signDAOImp.main();
 	}
 
 }

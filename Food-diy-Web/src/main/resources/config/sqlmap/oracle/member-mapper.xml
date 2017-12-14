@@ -5,6 +5,47 @@
 <!-- DAO에서 sql문 불러 올 때 사용해야 하는 이름 -->
 <mapper namespace="kr.co.bit.member.dao">
 
+	
+	<sql id = "selectAll">
+		select order_no, sto_name, user_id, order_orderPrice, order_finalPrice, order_menu, 
+		order_eat_type, order_payment, order_status, to_char(reg_at, 'yyyy-mm-dd hh24:mi:ss') as reg_at 
+		from t_order
+	</sql>
+
+	<resultMap type ="MemberOrderVO" id="Map_MemberOrderVO">
+  		<result column = "order_no" property ="no"/>
+  		<result column = "sto_name" property ="storeName"/>
+  		<result column = "user_id" property ="id"/>
+  		<result column = "order_orderPrice" property ="order_price"/>
+  		<result column = "order_finalPrice" property ="final_price"/>
+  		<result column = "order_menu" property ="menu"/>
+  		<result column = "order_eat_type" property ="eatType"/>
+  		<result column = "order_payment" property ="payment"/>
+  		<result column = "order_status" property ="orderStatus"/>
+  		<result column = "reg_at" property ="regDate"/>
+  	</resultMap>
+	
+	
+	
+	<select id="selectAllOrder" resultMap="Map_MemberOrderVO" parameterType="java.lang.String">
+		<include refid="selectAll"/>
+		where user_id = #{id}
+  	</select>
+	
+	<select id="selectByNo"  resultMap="Map_MemberOrderVO">
+		<include refid="selectAll"/>
+  	</select>	
+	
+	<update id="cancelOrder" parameterType="int">
+		update t_order set order_status = 0 where order_no = #{no} 
+	</update>
+
+
+
+
+
+
+
 	<resultMap type="userVO" id="mapLoginVO">
 		<result column="user_id" property="id"/>
 		<result column="user_pw" property="pw"/>

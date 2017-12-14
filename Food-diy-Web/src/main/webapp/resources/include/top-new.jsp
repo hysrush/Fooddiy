@@ -100,7 +100,7 @@
 			</div>
 			<div class="header-column header-column-center">
 				<div class="header-logo">
-					<a href="${ pageContext.request.contextPath }/index2.jsp"> <img alt="Subway" style="margin: 0px;" width="220" height="95" src="${ pageContext.request.contextPath }/resources/img/subwayLOGO.jpg">
+					<a href="${ pageContext.request.contextPath }/main/Start"> <img alt="Subway" style="margin: 0px;" width="220" height="95" src="${ pageContext.request.contextPath }/resources/img/subwayLOGO.jpg">
 					</a>
 				</div>
 			</div>

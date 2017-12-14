@@ -3,23 +3,19 @@ package kr.co.bit.member.control;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.ManagedArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,12 +27,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.community.service.ClaimService;
 import kr.co.bit.community.vo.ClaimBoardVO;
+import kr.co.bit.member.service.MemberOrderService;
 import kr.co.bit.member.service.MemberService;
+import kr.co.bit.member.vo.DetailOrderVO;
+import kr.co.bit.member.vo.MemberOrderVO;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.vo.CartVO;
-import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.order.vo.OrderVO;
 import kr.co.bit.sign.service.SignService;
-import kr.co.bit.sign.vo.LoginVO;
 import kr.co.bit.user.vo.UserVO;
 
 @Controller
@@ -56,6 +54,8 @@ public class MemberController {
 	private ClaimService claimService;
 	@Autowired
 	private CartService cart_Service;
+	@Autowired
+	private MemberOrderService service;
 	
 	// ---------------------------------------------------------------------------------------------------
 	// 회원정보 페이지 보여 주는 거
@@ -201,16 +201,104 @@ public class MemberController {
 
 	}
 
-	// 최근 주문 내역
-	@RequestMapping(value = "/Latest-Order.do", method = RequestMethod.GET)
-	public String Cart(@Param(value = "id") String id, HttpSession session) {
+	//주문내역 
+	@RequestMapping("/Latest-Order.do")
+	public ModelAndView todayOrderList(String id, ModelAndView mav) {
+		
+		List<MemberOrderVO> todayOrderList = service.selectAll(id);
+		
+		for(int i = 0 ; i < todayOrderList.size(); ++i) {
 
-		List<CartVO> cartList = cart_Service.selectMenu(id);
+			List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
+			String menu = todayOrderList.get(i).getMenu();
+			String [] menus = menu.split("\\|\\|");
+			
+			System.out.println("menus.length =  " + menus.length);
+			
+			for(int j = 0; j < menus.length; ++j) {
+				DetailOrderVO vo = new DetailOrderVO();
+				String [] oneMenu = menus[j].split("\\*");
 
-		session.setAttribute("cartList", cartList);
-
-		return "member/Latest-Order";
+				vo.setName(oneMenu[0]);
+				vo.setBread(oneMenu[1]);
+				vo.setCheese(oneMenu[2]);
+				vo.setTopping(oneMenu[3]);
+				vo.setVegetable(oneMenu[4]);
+				vo.setSauce(oneMenu[5]);
+				vo.setRequirement(oneMenu[6]);
+				vo.setPic(oneMenu[7]);
+				vo.setSize(oneMenu[8]);
+				vo.setQty(new Integer(oneMenu[9]));
+				vo.setPrice(oneMenu[10]);
+				vo.setTotal_price(oneMenu[11]);
+				list.add(vo);
+			}
+			todayOrderList.get(i).setDetailOrderList(list);
+		}
+		
+		System.out.println(todayOrderList);
+		mav.setViewName("member/Latest-Order");
+		mav.addObject("orderList", todayOrderList);
+		return mav;
 	}
+	@RequestMapping(value = "/orderCancel.do", method = RequestMethod.GET)
+	public String cancelOrder(@RequestParam("no") int no) {
+		
+		service.cancelOrder(no);
+		
+		return "redirect:/orderManagement/todayOrderList.do";
+		
+	}
+	
+	
+	@RequestMapping(value = "/todayOrderDetail.do", method = RequestMethod.GET) 
+	public ModelAndView orderDetail(ModelAndView mav, @RequestParam("no") int no) {
+		
+		MemberOrderVO orderVO = service.selectByNo(no);
+		
+		String menu = orderVO.getMenu();
+		String [] menus = menu.split("\\|\\|");
+		
+		
+		List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
+		for(int i = 0 ; i < menus.length; ++i) {
+			DetailOrderVO vo = new DetailOrderVO();
+			String [] oneMenu = menus[i].split("\\*");
+			
+			vo.setName(oneMenu[0]);
+			vo.setBread(oneMenu[1]);
+			vo.setCheese(oneMenu[2]);
+			vo.setTopping(oneMenu[3]);
+			vo.setVegetable(oneMenu[4]);
+			vo.setSauce(oneMenu[5]);
+			vo.setRequirement(oneMenu[6]);
+			vo.setPic(oneMenu[7]);
+			vo.setSize(oneMenu[8]);
+			vo.setQty(new Integer(oneMenu[9]));
+			vo.setPrice(oneMenu[10]);
+			vo.setTotal_price(oneMenu[11]);
+			
+			list.add(vo);
+		}
+		
+		orderVO.setDetailOrderList(list);
+		
+		mav.addObject("orderVO", orderVO);
+		mav.setViewName("orderManagement/todayOrderDetail");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/orderList.do")
+	public String orderList() {
+		
+		//List<OrderVO> orderList = service.selectByNo();
+		
+		return "orderManagement/orderList";
+	}
+	
+	
+
 	
 	// 최근 주문 내역 삭제
 	@RequestMapping(value="/deleteCart", method=RequestMethod.POST)
