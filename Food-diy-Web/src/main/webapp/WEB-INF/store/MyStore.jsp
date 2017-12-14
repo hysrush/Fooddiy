@@ -311,7 +311,7 @@ html, body {
 													    if (status === daum.maps.services.Status.OK) {
 													    	console.log("result = " + result[0].road_address.zone_no);
 													    	
-													    	for(var index = 0 ; index < storeAddr.length ; index++){
+													   /*  	for(var index = 0 ; index < storeAddr.length ; index++){
 													    		//console.log("storeAddr[index] = " + storeAddr[index]);
 													    		if(storeZip[index] == result[0].road_address.zone_no)
 													    			
@@ -319,7 +319,7 @@ html, body {
 													    			
 													    			break;
 																}
-													    	
+													    	 */
 													    	//console.log("index = " + index);
 													    	// console.log("storeName[index] = " + storeName[index]);
 													    	
