@@ -9,9 +9,9 @@ public interface StoreService {
 
 	List<StoreVO> selectStoreAll();
 	List<StoreVO> selectStoreList(String gugun);
+	List selectLocation(String sido);
 	List<StoreVO> selectStoreAddr(String store);
 	List<CityVO> selectCity();
-	List selectLocation(String sido);
 	
 	
 	
