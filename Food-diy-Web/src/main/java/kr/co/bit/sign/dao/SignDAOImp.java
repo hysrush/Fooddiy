@@ -93,8 +93,13 @@ public class SignDAOImp implements SignDAO {
 		Map<String, List<Object>> map = new HashMap<>();
 		
 		map.put("notice", sql.selectList("kr.co.bit.main.mainN"));
+		map.put("sns", sql.selectList("kr.co.bit.main.mainS"));
+		map.put("event", sql.selectList("kr.co.bit.main.mainE"));
+		
 		System.out.println(map.get("notice").toString());
-	
+		System.out.println(map.get("sns").toString());
+		System.out.println(map.get("event").toString());
+		
 		return map;
 	}
 	

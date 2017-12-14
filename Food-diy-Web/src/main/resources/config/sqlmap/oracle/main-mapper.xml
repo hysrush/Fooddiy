@@ -21,10 +21,49 @@
   		<result column="view_cnt" property="viewCnt"/>
   		<result column="reg_at" property="regDate"/>
   	</resultMap>
+  	
+  	<resultMap type ="snsVO" id="Map_SnsVO">
+  		<result column = "sns_no" property ="no"/>
+  		<result column = "user_id" property ="id"/>
+  		<result column = "user_pic" property ="pic"/>
+  		<result column = "sns_title" property = "title"/>
+  		<result column = "sns_content" property ="content"/>
+  		<result column = "sns_fileName" property ="fileName"/>
+  		<result column = "sns_like" property ="like"/>
+  		<result column = "reg_at" property ="regDate"/>
+  		<result column = "view_cnt" property ="viewCnt"/>
+  	</resultMap>
+	
+	<resultMap type="eventVO" id="Map_EventVO"> 	
+   		<result column="eve_no" property="no"/>
+   		<result column="sto_name" property="storeName"/>
+  	 	<result column="eve_title" property="title"/>
+  		<result column="eve_content" property="content"/>
+  		<result column="eve_filename" property="imgFileName"/>
+  		<result column="eve_start" property="startDate"/>
+  		<result column="eve_fin" property="endDate"/> 
+  		<result column="reg_at" property="regDate"/>
+  	</resultMap> 
 	
 	<!-- main 페이지에 공지사항 ** mapper에서 쿼리문 내에 부등식이 있을 경우 <![CDATA[ 내용 ]]>을 이용한다. 부등식이라고 인식해 주는 태그-->
 	<select id="mainN" resultMap="Map_noticeVO">
 		select * from (select * from t_notice order by reg_at desc)
+		<![CDATA[
+		where rownum <=3
+ 		]]>
+	</select>
+	
+	<!-- SNS -->
+	<select id="mainS" resultMap="Map_SnsVO">
+		select * from (select * from t_sns order by sns_like desc)
+		<![CDATA[
+		where rownum <=3
+ 		]]>
+	</select>
+	
+	<!-- 이벤트 -->
+	<select id="mainE" resultMap="Map_EventVO">
+		select * from (select * from t_event order by eve_start desc)
 		<![CDATA[
 		where rownum <=3
  		]]>

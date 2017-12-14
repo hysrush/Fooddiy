@@ -61,7 +61,12 @@
 		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 		
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
-	
+<style>
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+</style>
 </head>
 	<body>
 	<div class="body">

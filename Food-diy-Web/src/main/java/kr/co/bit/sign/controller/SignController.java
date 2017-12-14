@@ -374,6 +374,9 @@ public class SignController {
 		Map<String, List<Object>> list = signServiceImp.main();
 		
 		model.addAttribute("notice", list.get("notice"));
+		model.addAttribute("sns", list.get("sns"));
+		model.addAttribute("event", list.get("event"));
+		
 		return "main/index";
 	}
 	

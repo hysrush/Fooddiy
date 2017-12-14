@@ -20,78 +20,45 @@
 			<div class="row">
 			<!-- 이벤트  -->
 			<div class="col-xs-6" style="text-align: center;">
-				<%-- 
-						<c:forEach items="${ cf }" begin="0" end="2">
-							<a href="${ 광고페이지로 이동 }">
-								<img width="100%" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png"/>
-							</a>
-						</c:forEach>
-						 --%>
 				<table border="1">
 					<tr>
 						<td>
 							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">EVENT</strong>
 						</td>
 					</tr>
+					<c:forEach items="${ event }" var="e">
 					<tr>
 						<td>
-							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.do?no=${e.no}">
+								<img width="50%" style="padding:5px;" src="../upload/${ e.imgFileName }" />
 								<br/>
 							</a>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.">
-								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
-								<span> 사또밥</span>
-							</a>
-						</td>
-					</tr>
+					</c:forEach>
 				</table>
 			</div>
 			<!-- SNS정보 -->
 			<div class="col-xs-6" style="text-align: center;">
-				<%-- <div>
-							<c:forEach items="${ sns }" begin="0" end="2">
-								<table style="margin:5px 0px;">
-									<tr>
-										<td rowspan="2">${ sns.id }</td>
-										<td>${ sns.reco }</td>
-									</tr>
-									<tr>
-										<td colspan="2">
-											<a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-												<img width="100%" src="${ sns.poto }"/>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2"><hr/>${ sns.content }</td>
-									</tr>
-								</table>
-							</c:forEach>
-						</div> --%>
-				<table border="1">
-					<tr>
-						<td>글쓴이</td>
+				<table style="margin: 5px 0px;" border="1">
+				<c:forEach items="${ sns }" var="s">
+						<tr>
+						<td>${ s.id }</td>
 						<td>추천수 2</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">
-								<img width="50%" style="padding:5px;" src="${ pageContext.request.contextPath }/resources/img/admin-banner.png" />
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
+								<img width="50%" style="padding:5px;" src="../upload/${ s.fileName }" />
 							</a>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-						내용 내용 내용<br/>
-						내용 내용 내용<br/>
-						내용 내용 내용<br/>
+							${ s.content }
 						</td>
 					</tr>
+				</c:forEach>
 				</table>
 			</div>
 		</div>
