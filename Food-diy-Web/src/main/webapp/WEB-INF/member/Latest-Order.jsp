@@ -310,15 +310,14 @@ function modalFunc(no) {
 		</aside></div></div>
 	
 		<div class="row">
-					<div class="col-lg-12">
+					<div class="col-lg-9">
 						<div class="ibox">
 							<div class="ibox-content">
 								<div class="table-responsive">
 									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="25">
 										<thead>
-											<tr>
+											<tr style="margin-top: 15%">
 												<th data-hide="phone" data-sort-ignore="true">주문번호</th>
-												<th data-hide="phone" data-sort-ignore="true">주문시간</th>
 												<th data-hide="phone" data-sort-ignore="true">메뉴</th>
 												<th data-hide="phone" data-sort-ignore="true">주문자</th>
 												<th data-hide="phone" data-sort-ignore="true">주문금액</th>
@@ -337,7 +336,6 @@ function modalFunc(no) {
 				                                    	${ order.no }
 			                                  		</td>
 														
-													<td>${ order.regDate }</td>
 													<td>
 														<a onclick = "modalFunc(${ order.no })">
 														<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" varStatus="status">
