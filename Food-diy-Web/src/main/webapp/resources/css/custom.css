@@ -191,7 +191,7 @@ li {
 @media ( max-width : 991px) {
 	
 	.modal .modal-dialog .modal-content .modal-body {
-		padding : 0 0 20px 20px;
+		/* padding : 0 0 20px 20px; */
 	}
 } 
 
@@ -199,7 +199,7 @@ li {
 
 /* Responsive */
 /* 991  */
-@media ( max-width : 992px) {
+@media ( max-width : 991px) {
 		#heading-primary{
 		font-size: 10px;
 	}

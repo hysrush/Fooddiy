@@ -8,7 +8,6 @@ import kr.co.bit.order.vo.OrderVO;
 
 public interface MemberOrderService {
 	public List<MemberOrderVO> selectAll(String id);
-	public List<MemberOrderVO> selectByToday(String today);
 	public MemberOrderVO selectByNo(int no);
 	public void cancelOrder(int no);
 }

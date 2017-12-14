@@ -82,7 +82,7 @@ public class StoreController {
 		List<StoreVO> storeList = storeService.selectStoreAll();
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("store/MyStore");
+		mav.setViewName("store/StoreTest");
 		mav.addObject("storeList", storeList);
 		
 		System.out.println(storeList);

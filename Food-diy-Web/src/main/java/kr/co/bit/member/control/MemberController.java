@@ -203,14 +203,9 @@ public class MemberController {
 
 	//주문내역 
 	@RequestMapping("/Latest-Order.do")
-	public ModelAndView todayOrderList(ModelAndView mav) {
+	public ModelAndView todayOrderList(String id, ModelAndView mav) {
 		
-		String pattern = "yy/MM/dd";
-		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-		String today = sdf.format(new Date()).toString();
-		
-		
-		List<MemberOrderVO> todayOrderList = service.selectByToday(today);
+		List<MemberOrderVO> todayOrderList = service.selectAll(id);
 		
 		for(int i = 0 ; i < todayOrderList.size(); ++i) {
 
