@@ -371,10 +371,10 @@ html, body {
 	        	        
 	        	    
 					        
-	       			   console.log("title : " + marker.getTitle());
 	        	        // 마커에 클릭이벤트를 등록합니다
 	        	        //if(marker.getTitle == )
 	        	       for(var k = 0; k < storeZip.length; k++) 	
+	       			   console.log("title" +i +" : " + marker.getTitle());
 	        	        if(marker.getTitle() == storeZip[k]){
 	       			   console.log("k : " + k);
 					       		    var iwContents = '';
@@ -405,7 +405,7 @@ html, body {
 					          infowindow.open(map, marker);  
 					    	});
 	        	        
-	        	        	break;
+	        	        	
 	        	        }
 	        	        
 	        	        
