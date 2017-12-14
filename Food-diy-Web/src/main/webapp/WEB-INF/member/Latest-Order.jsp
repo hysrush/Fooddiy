@@ -366,23 +366,88 @@ function modalFunc(no) {
 			</div>
 		</div>
 	</div>
-
+</div>
 
 	<!-- 모달 -->
 	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- 모달내용 -->
-				
+				<div class="modal-body" style="max-height:500px;overflow: auto;">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th style="text-align: center" colspan="2">주문 결제정보</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${ orderList }" var="order">
+			
+				<tr >
+					<th width = "30%">주문번호</th>
+					<td>${ order.no }</td>
+				</tr>
+				<tr>
+					<th>주문시간</th>
+					<td>${ order.regDate }</td>
+				</tr>
+				<tr>
+					<th>결제방법</th>
+					<td>${ order.payment }</td>
+				</tr>
+				<tr>
+					<th>결제금액</th>
+					<td class = "commaN">${ order.final_price }원</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>메뉴</th>
+						<th>주문옵션</th>
+						<th>수량</th>
+						<th>합계금액</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${ order.detailOrderList }" var="order">
+						<tr >
+							<td>
+								${ order.name} <br>
+								${ order.size} <br>
+								<div class = "commaN">${ order.price}원</div>	
+							</td>
+							<td>
+								${ order.bread}	<br>
+								${ order.cheese}	<br>
+								${ order.topping}	<br>
+								${ order.vegetable}	<br>
+								${ order.sauce}	<br>
+								${ order.requirement}
+							</td>
+							<td>${ order.qty}</td>
+							<td class = "commaN">${ order.total_price }원</td>
+						</tr>
+					</c:forEach>
+					
+				</tbody>
+			</table>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+	</div>
+					
 			</div>
 		</div>
 	</div>
+</body>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
 		<footer id="footer" class="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
-	</div>
 
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
