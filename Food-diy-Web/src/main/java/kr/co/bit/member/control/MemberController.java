@@ -258,9 +258,59 @@ public class MemberController {
 		
 	}
 	
-	
-	@RequestMapping(value = "/todayOrderDetail.do", method = RequestMethod.GET) 
+	// 주문 내역 상세 보기
+	@RequestMapping(value = "/todayOrderDetail.do") 
 	public ModelAndView orderDetail(ModelAndView mav, @RequestParam("no") int no) {
+		
+		MemberOrderVO todayOrderList = service.selectByNo(no);
+		
+		String menu = todayOrderList.getMenu();
+		String [] menus = menu.split("\\|\\|");
+		
+		
+		List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
+		for(int i = 0 ; i < menus.length; ++i) {
+			DetailOrderVO vo = new DetailOrderVO();
+			String [] oneMenu = menus[i].split("\\*");
+			
+			vo.setName(oneMenu[0]);
+			vo.setBread(oneMenu[1]);
+			vo.setCheese(oneMenu[2]);
+			vo.setTopping(oneMenu[3]);
+			vo.setVegetable(oneMenu[4]);
+			vo.setSauce(oneMenu[5]);
+			vo.setRequirement(oneMenu[6]);
+			vo.setPic(oneMenu[7]);
+			vo.setSize(oneMenu[8]);
+			vo.setQty(new Integer(oneMenu[9]));
+			vo.setPrice(oneMenu[10]);
+			vo.setTotal_price(oneMenu[11]);
+			
+			list.add(vo);
+		}
+		
+		todayOrderList.setDetailOrderList(list);
+		
+		mav.addObject("member", todayOrderList);
+		mav.setViewName("member/todayOrderDetail");
+		
+		return mav;
+	}
+	
+//	-------------------------------------------
+/*	@RequestMapping(value = "/orderCancel.do", method = RequestMethod.GET)
+	public String cancelOrder1(@RequestParam("no") int no) {
+		
+		service.cancelOrder(no);
+		
+		return "redirect:/member/todayOrderList.do";
+		
+	}*/
+	
+	
+//	나만의 메뉴 디테일
+	@RequestMapping(value = "/mymenuDetail.do") 
+	public ModelAndView myMenuDetail(ModelAndView mav, @RequestParam("no") int no) {
 		
 		MemberOrderVO orderVO = service.selectByNo(no);
 		
@@ -291,21 +341,20 @@ public class MemberController {
 		
 		orderVO.setDetailOrderList(list);
 		
-		mav.addObject("orderVO", orderVO);
+		mav.addObject("memberorderVO", orderVO);
 		mav.setViewName("member/todayOrderDetail");
 		
 		return mav;
 	}
-/*	
-	@RequestMapping("/Latest-Order.do")
-	public String orderList() {
-		
-//		List<MemberOrderVO> orderList;
-		
-		return "member/Latest-Order";
-	}
 	
-	*/
+//	@RequestMapping("/Latest-Order.do")
+//	public String orderList() {
+//		
+//		List<OrderVO> orderList;
+//		
+//		return "member/Latest-Order";
+//	}
+	
 
 	
 	// 최근 주문 내역 삭제

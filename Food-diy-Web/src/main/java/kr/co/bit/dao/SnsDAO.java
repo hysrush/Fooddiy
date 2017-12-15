@@ -9,6 +9,7 @@ public interface SnsDAO {
 
 	
 	List<SnsBoardVO> selectSns(PagingVO paging);
+	List<SnsBoardVO> selectHit();
 	int selectTotalPaging();
 	
 	void insert(SnsBoardVO snsVO);

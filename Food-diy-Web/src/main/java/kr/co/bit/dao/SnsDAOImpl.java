@@ -49,6 +49,12 @@ public class SnsDAOImpl implements SnsDAO {
 		public void addLikeSns(int no) {
 			sqlSession.update(url + "updateLikeSns", no);
 		}
+
+		@Override
+		public List<SnsBoardVO> selectHit() {
+			List<SnsBoardVO> list = sqlSession.selectList(url + "selectHitSns");
+			return list;
+		}
 	
 	
 	

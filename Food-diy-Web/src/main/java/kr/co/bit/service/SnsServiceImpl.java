@@ -48,4 +48,10 @@ public class SnsServiceImpl implements SnsService {
 		
 	}
 
+	@Override
+	public List<SnsBoardVO> selectHit() {
+		List<SnsBoardVO> list = snsDAO.selectHit();
+		return list;
+	}
+
 }

@@ -1,29 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>INSPINIA | E-commerce</title>
+<title> | 주문 상세 내역 | </title>
 
-<link href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/resources/font-awesome/css/font-awesome.css" rel="stylesheet">
-<!-- dataTables -->
-<link href="${ pageContext.request.contextPath }/resources/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
-<!-- FooTable -->
-<link href="${ pageContext.request.contextPath }/resources/css/plugins/footable/footable.core.css" rel="stylesheet">
-
-<link href="${ pageContext.request.contextPath }/resources/css/animate.css" rel="stylesheet">
-<link href="${ pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet">
-
-<!-- sweetalert js & css -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> 
 <link rel="stylesheet" href="https://wfolly.firebaseapp.com/node_modules/sweetalert/dist/sweetalert.css">
 <style type="text/css">
 	.convType > span {
@@ -50,20 +37,20 @@
 			</thead>
 			<tbody>
 				<tr >
-					<th width = "30%">주문번호</td>
-					<td>${ memberorderVO.no }</td>
+					<th width = "30%">주문번호</th>
+					<td>${ member.no }</td>
 				</tr>
 				<tr>
-					<th>주문시간</td>
-					<td>${ memberorderVO.regDate }</td>
+					<th>주문시간</th>
+					<td>${ member.regDate }</td>
 				</tr>
 				<tr>
-					<th>결제방법</td>
-					<td>${ memberorderVO.payment }</td>
+					<th>결제방법</th>
+					<td>${ member.payment }</td>
 				</tr>
 				<tr>
-					<th>결제금액</td>
-					<td class = "commaN">${ memberorderVO.final_price }원</td>
+					<th>결제금액</th>
+					<td class = "commaN">${ member.final_price }원</td>
 				</tr>
 			</tbody>
 		</table>
@@ -77,7 +64,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ memberorderVO.detailOrderList }" var="oneMenu">
+					<c:forEach items="${ member.detailOrderList }" var="oneMenu">
 						<tr >
 							<td>
 								${ oneMenu.name} <br>
@@ -103,7 +90,7 @@
 		<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
 	</div>
 </body>
-
+<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 <script>
 	$(document).ready(function(){ 
 		//숫자표기
