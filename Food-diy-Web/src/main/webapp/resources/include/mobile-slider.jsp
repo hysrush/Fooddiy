@@ -21,16 +21,16 @@
 			<!-- 이벤트  -->
 			<div class="col-xs-6 main" style="text-align: center;">
 				<table>
-					<tr>
+					<!-- <tr>
 						<td>
 							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">EVENT</strong>
 						</td>
-					</tr>
+					</tr> -->
 					<c:forEach items="${ event }" var="e">
 					<tr>
 						<td>
 							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.do?no=${e.no}">
-								<img style="width: 200px; height: 200px;" src="../upload/${ e.imgFileName }" />
+								<img style="width: 100%; margin-left:5%;" src="../upload/${ e.imgFileName }" />
 								<br/>
 							</a>
 						</td>
@@ -39,9 +39,9 @@
 				</table>
 			</div>
 			<!-- SNS정보 -->
-			<div class="col-xs-6 main" style="text-align: center;">
-				<table>
-				<c:forEach items="${ sns }" var="s">
+			<div class="col-xs-6 main" style="text-align: center !important;">
+				<table  style="width: 160px;">
+				<c:forEach items="${ sns }" var="s" begin="0" end="0">
 						<tr>
 						<td>추천수 ${ s.like }</td>
 						<td>${ s.id }</td>
@@ -49,8 +49,20 @@
 					<tr>
 						<td colspan="2">
 							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
-								<img style="width: 100px; height: 100px;" border=1 align=left src="../upload/${ s.fileName }"/><br/>
-								<strong style="margin-left: 5px;">${ s.title }</strong>
+								<img style="width: 100%; margin-left:5%;" src="../upload/${ s.fileName }"/><br/>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
+								<strong>${ s.title }</strong>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
 								<small>${ s.content }</small>
 							</a>
 						</td>

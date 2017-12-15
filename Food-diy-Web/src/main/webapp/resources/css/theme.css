@@ -3862,7 +3862,7 @@ html.dark .text-muted {
 }
 
 #footer.light {
-	padding-top: 60px;
+	/* padding-top: 60px; */
 	background: #FFF;
 	border-top: 1px solid #DDD;
 }

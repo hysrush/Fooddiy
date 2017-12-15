@@ -2,26 +2,25 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div role="main" class="main">
-	<div class= "container">
+	<div class= "container" style="bord">
 		<div class="row">
+			<!-- 공지사항  -->
 			<div class="col-sm-3 main">
+				<!-- 동영상 -->
 				<div class="col-sm-12 main">
 					<table>
 						<tr>
-							<td>
-								<video style="width: 100%; height: 50%;" loop="loop" controls autoplay>
-									<source src="${pageContext.request.contextPath }/resources/video/subway.mp4" type="video/mp4">
-								</video>
-							</td>
+							<td><video style="width: 100%; height: 50%;" controls
+									autoplay>
+									<source
+										src="${pageContext.request.contextPath }/resources/video/subway.mp4"
+										type="video/mp4">
+								</video></td>
 						</tr>
 					</table>
 				</div>
-				
 				<!-- 신메뉴  -->
 				<div class="col-sm-12 main">
-					<a style="text-decoration: none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
-						<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/main_celeb.jpg" />
-					</a>
 					<%-- <table border="1">
 						<!-- <tr>
 							<td>
@@ -37,15 +36,22 @@
 							</td>
 						</tr>
 					</table> --%>
+					
+					<div class="col-sm-12 main">
+						<a style="text-decoration: none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/main_celeb.jpg" />
+						</a>
+					</div>	
 				</div>
-				<!-- 이벤트  -->
-				<div class="col-sm-12 main" style="text-align: center;">
-					<table border="1">
+				<!-- 이벤트 -->
+				<div class="col-sm-12 main">
+					<table>
 						<c:forEach items="${ event }" var="e">
 							<tr>
 								<td colspan="2"><a style="text-decoration: none"
 									href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${e.no}">
-										<img width="100%" src="${ pageContext.request.contextPath }/upload/${e.imgFileName}" />
+										<img width="100%"
+										src="${ pageContext.request.contextPath }/upload/${e.imgFileName}" />
 								</a></td>
 							</tr>
 						</c:forEach>
@@ -55,14 +61,13 @@
 			<br />
 			<!--  슬라이드 -->
 			<div class="col-sm-6 main">
-			<table border="1">
+			<table>
 				<tr>
 					<td>
 						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
-						<li data-target="#carousel-example-generic" data-slide-to="0"
-							class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 					</ol>
@@ -70,20 +75,20 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img style="height: 720px"
-								src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
+							<img style="width:100%"
+								src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
 								alt="">
 							<div class="carousel-caption"></div>
 						</div>
 						<div class="item">
-							<img style="height: 720px"
-								src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
+							<img style="width:100%"
+								src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
 								alt="">
 							<div class="carousel-caption"></div>
 						</div>
 						<div class="item">
-							<img style="height: 720px"
-								src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
+							<img style="width:100%"
+								src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
 								alt="">
 							<div class="carousel-caption"></div>
 						</div>
@@ -104,15 +109,15 @@
 				</tr>
 			</table>
 			</div>
-			
-			<!-- SNS정보 -->
 				<div class="col-sm-3 main" style="text-align: center;">
 					<!-- 공지사항 -->
-					<div class="col-sm-12 main" style="text-align: center;">
-						<table border="1">
+					<div class="col-sm-12 main">
+						<table style="border-top: 1px solid olive;">
 							<tr>
-								<td>
+								<td style="width:100%">
 									<strong style="text-align: center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">Notice</strong>
+								</td>
+								<td>
 									<span style="display: inline-table; align: right; font-size: 11px;">
 										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeList.do"> +more</a>
 									</span>
@@ -120,7 +125,7 @@
 							</tr>
 							<c:forEach items="${ notice }" var="n">
 								<tr>
-									<td colspan="2" style="width: 290px;">
+									<td colspan="2">
 										<span style="font-size: 12px;" class="heading-primary text-uppercase mb-md">
 											<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">${ n.title }</a>
 										</span>
@@ -129,20 +134,26 @@
 							</c:forEach>
 						</table>
 					</div>
+					<!-- SNS정보 -->
 					<div class="col-sm-12 main">
-						<table border="1">
+						<table>
+							<tr style="border: 1px solid olive;">
+								<td colspan="2">
+									<strong style="text-align: center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">SNS</strong>
+								</td>
+							</tr>
 							<c:forEach items="${ sns }" var="s">
-								<tr>
-									<td>${ s.id }</td>
-									<td>추천수 ${ s.like }</td>
+								<tr style="border: 1px solid olive;">
+									<td style="border: 1px solid olive;">${ s.id }</td>
+									<td style="border: 1px solid olive;">추천수 ${ s.like }</td>
 								</tr>
-								<tr>
-									<td style="width: 120px;">
-										<a href="${ pageContext.request.contextPath }/community//snsDetail.do?no=${s.no}">
-											<img style="width:100%" src="../upload/${ s.fileName }"/>
+								<tr style="border: 1px solid olive;">
+									<td style="width: 120px; border: 1px solid olive;">
+										<a href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
+											<img style="width:100%" src="../upload/${ s.fileName }" alt="Loading...">
 										</a>
 									</td>
-									<td style="width: 170px;">
+									<td style="width: 170px; border: 1px solid olive;">
 									<strong> ${ s.title }</strong><br/>
 									<small>${ s.content }</small>
 									</td>
