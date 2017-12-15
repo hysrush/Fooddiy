@@ -145,62 +145,7 @@ $(document).ready(function(){
 	});
 	
 	/* ----------------------------------------------------------------------------------------------------------------- */
-  	// sidebar li & ul 클래스 active
-	$('.orderManagementLI').addClass("active");
-	$('.orderManagementLI > ul').addClass("in");
-	$('.todayOrderList').addClass("active");
-
-    $('.footable').footable();            
-    
- 	//오늘날짜
-	var now = new Date();
-
-	var year = now.getFullYear();
-	var mon = (now.getMonth() + 1) > 9 ? ''
-			+ (now.getMonth() + 1) : '0'
-			+ (now.getMonth() + 1);
-	var day = now.getDate() > 9 ? '' + now.getDate()
-			: '0' + now.getDate();
-
-	var chan_val = year + '-' + mon + '-' + day;
-
-	$('.today').text(chan_val);
-	
-	var totalFinalPrice = 0;
-	var orderCount = 0;
-	$('tbody.todayOrderList tr').each(function() {
-		
-		var status = $(this).find('.orderStatus');
-						
-		if(status.text() == '0') {
-			status.text('주문취소');
-			status.attr('class', 'label label-danger');
-		}else {
-			if (status.text() == '1') {
-				status.text('대기중');
-				status.attr('class', 'label label-primary');
-				$(this).find('.cancel-button').append('<button type="button" class="btn btn-outline btn-danger button-cancel">주문취소</button>');
-			}else if (status.text() == '2') {
-				status.text('준비중');
-				status.children().attr('class', 'label label-warning');
-			} else{
-				status.text('준비완료');
-				status.attr('class', 'label label-information');
-			}
-			
-			totalFinalPrice += uncomma($(this).find('.finalPrice').text())*1;
-			++orderCount;
-		}
-	}); 
-	$('.total-count-order').text(orderCount);
-	$('.total-order-price').text(comma(totalFinalPrice) + "원");
-	
-	
-	
-	
-	$('.footable').footable();
-	
-	
+  
 	// 삭제 alert창
 	function orderCancel(no) {
 		swal({
@@ -227,36 +172,14 @@ $(document).ready(function(){
 			orderCancel(no);
 		});
 	});
-	
-	
-	// 데이터테이블 생성
-	$('.footable').css("width","100%");
-	$('.dataTables-example').DataTable({
-        pageLength: 25,
-        responsive: true,
-        dom: '<"html5buttons"B>lTfgitp',
-        buttons: [
-            {extend: 'copy'},
-            {extend: 'csv'},
-            {extend: 'excel', title: 'ExampleFile'},
-            {extend: 'pdf', title: 'ExampleFile'},
-            {extend: 'print',
-             customize: function (win){
-                    $(win.document.body).addClass('white-bg');
-                    $(win.document.body).css('font-size', '10px');
-                    $(win.document.body).find('table').addClass('compact').css('font-size', 'inherit');
-            	}
-            }
-        ]
-    });
 
 });
 
-function modalFunc(no) {
-	var url = "${pageContext.request.contextPath}/orderManagement/todayOrderDetail.do?no=" + no;
-	$('div.modal').modal().removeData();
-    $('div.modal').modal({ remote : url  });
-}
+	function modalFunc(no) {
+		var url = "${pageContext.request.contextPath}/member/todayOrderDetail.do?no=" + no;
+		 $('div.modal').modal().removeData(); 
+	     $('div.modal').modal({ remote : url  });
+	}
 </script>
 
 
@@ -337,7 +260,7 @@ function modalFunc(no) {
 			                                  		</td>
 														
 													<td>
-														<a onclick = "modalFunc(${ order.no })">
+														<a onclick = "modalFunc('${ order.no }')">
 														<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" varStatus="status">
 															${ oneOrder.name }
 															<c:if test="${ !status.last }">, </c:if>
@@ -373,7 +296,7 @@ function modalFunc(no) {
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- 모달내용 -->
-				<div class="modal-body" style="max-height:500px;overflow: auto;">
+	<%-- 			<div class="modal-body" style="max-height:500px;overflow: auto;">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -433,16 +356,11 @@ function modalFunc(no) {
 					</c:forEach>
 					
 				</tbody>
-			</table>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			</table> --%>
 	</div>
 					
 			</div>
 		</div>
-	</div>
-</body>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
 		<footer id="footer" class="footer">
@@ -484,9 +402,6 @@ function modalFunc(no) {
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-
-</body>
-
 
 </body>
 </html>
