@@ -51,6 +51,7 @@ public class SnsController {
 		
 		
 		List<SnsBoardVO> snsList = snsService.selectSns(paging);
+		List<SnsBoardVO> hitList = snsService.selectHit();
 		
 		paging.setTotal(snsService.selectTotalPaging());
 		ModelAndView mav = new ModelAndView();
@@ -59,6 +60,7 @@ public class SnsController {
 		mav.setViewName("community/SNSBoard");
 		
 		mav.addObject("snsList" , snsList);
+		mav.addObject("hitList" , hitList);
 		
 		mav.addObject("p",paging);
 		
