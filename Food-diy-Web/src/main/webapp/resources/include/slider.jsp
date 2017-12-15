@@ -4,24 +4,21 @@
 <div role="main" class="main">
 	<div class= "container">
 		<div class="row">
-			<div class="col-xs-12 col-md-3">
-				<br />
-				<div class="col-xs-12 col-md-12"
-					style="text-align: center; padding: 5px;">
+			<div class="col-sm-3 main">
+				<div class="col-sm-12 main">
 					<table>
 						<tr>
-							<td><video width="266px" height="150px" loop="loop" controls
-									autoplay>
-									<source
-										src="${pageContext.request.contextPath }/resources/video/subway.mp4"
-										type="video/mp4">
-								</video></td>
+							<td>
+								<video style="width: 100%; height: 50%;" loop="loop" controls autoplay>
+									<source src="${pageContext.request.contextPath }/resources/video/subway.mp4" type="video/mp4">
+								</video>
+							</td>
 						</tr>
 					</table>
 				</div>
+				
 				<!-- 신메뉴  -->
-				<div class="col-xs-12 col-md-12"
-					style="text-align: center; padding: 5px;">
+				<div class="col-sm-12 main">
 					<a style="text-decoration: none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
 						<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/main_celeb.jpg" />
 					</a>
@@ -41,37 +38,14 @@
 						</tr>
 					</table> --%>
 				</div>
-
-				<!-- 공지사항 -->
-				<div class="col-xs-12 col-md-12" style="text-align: center;">
-					<table border="1">
-						<tr>
-							<td>
-								<strong style="text-align: center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">Notice</strong>
-								<span style="display: inline-table; align: right; font-size: 11px;">
-									<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeList.do"> +more</a>
-								</span>
-							</td>
-						</tr>
-						<c:forEach items="${ notice }" var="n">
-							<tr>
-								<td colspan="2"><span style="font-size: 12px;"
-									class="heading-primary text-uppercase mb-md"> <a
-										style="text-decoration: none"
-										href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">${ n.title }</a>
-								</span></td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
 				<!-- 이벤트  -->
-				<div class="col-xs-12 col-md-12" style="text-align: center; padding: 5px;">
+				<div class="col-sm-12 main" style="text-align: center;">
 					<table border="1">
 						<c:forEach items="${ event }" var="e">
 							<tr>
 								<td colspan="2"><a style="text-decoration: none"
-									href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
-										<img width="100%" src="${ pageContext.request.contextPath }/upload/${s.imgFileName}" />
+									href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${e.no}">
+										<img width="100%" src="${ pageContext.request.contextPath }/upload/${e.imgFileName}" />
 								</a></td>
 							</tr>
 						</c:forEach>
@@ -80,8 +54,8 @@
 			</div>
 			<br />
 			<!--  슬라이드 -->
-			<div class="col-md-6">
-			<table border="1" style="height: 720px">
+			<div class="col-sm-6 main">
+			<table border="1">
 				<tr>
 					<td>
 						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -132,26 +106,46 @@
 			</div>
 			
 			<!-- SNS정보 -->
-				<div class="col-xs-12 col-md-3" style="text-align: center; padding:5px;">
-					<div>
-						<table style="margin:5px 0px;" border="1">
+				<div class="col-sm-3 main" style="text-align: center;">
+					<!-- 공지사항 -->
+					<div class="col-sm-12 main" style="text-align: center;">
+						<table border="1">
+							<tr>
+								<td>
+									<strong style="text-align: center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">Notice</strong>
+									<span style="display: inline-table; align: right; font-size: 11px;">
+										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeList.do"> +more</a>
+									</span>
+								</td>
+							</tr>
+							<c:forEach items="${ notice }" var="n">
+								<tr>
+									<td colspan="2" style="width: 290px;">
+										<span style="font-size: 12px;" class="heading-primary text-uppercase mb-md">
+											<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">${ n.title }</a>
+										</span>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					<div class="col-sm-12 main">
+						<table border="1">
 							<c:forEach items="${ sns }" var="s">
 								<tr>
 									<td>${ s.id }</td>
 									<td>추천수 ${ s.like }</td>
 								</tr>
 								<tr>
-									<td colspan="2">
+									<td style="width: 120px;">
 										<a href="${ pageContext.request.contextPath }/community//snsDetail.do?no=${s.no}">
-											<img style="width:50%;" src="../upload/${ s.fileName }"/>
+											<img style="width:100%" src="../upload/${ s.fileName }"/>
 										</a>
 									</td>
-								</tr>
-								<tr>
-									<td><strong> ${ s.title }</strong><br/></td>
-								</tr>
-								<tr>
-									<td><small>${ s.content }</small></td>
+									<td style="width: 170px;">
+									<strong> ${ s.title }</strong><br/>
+									<small>${ s.content }</small>
+									</td>
 								</tr>
 						</c:forEach>
 						</table>

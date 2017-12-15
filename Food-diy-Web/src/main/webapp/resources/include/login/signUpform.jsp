@@ -97,7 +97,7 @@
 		$("#reset").click(function(){
 			
 			if(confirm("취소할 거예요?")){
-				location.href="${ pageContext.request.contextPath }/index2.jsp";
+				location.href="${ pageContext.request.contextPath }/main/Start";
 			}else{
 				window.location.reload();
 			}
@@ -115,12 +115,12 @@
 					<input type="hidden" name="root" value="${ phoneCert.root }"/>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-6">
+							<div class="col-xs-6">
 								<label>ID*</label> <input name="id" id="id" type="text"
 									class="form-control" maxlength="16" oninput="checkId()"
 									placeholder="영소문자/숫자, 6~16자" required />
 							</div>
-							<div class="col-md-6">
+							<div class="col-xs-6">
 								<label>이름*</label> <input type="text" name="name"
 									value="${ phoneCert.name }" class="form-control"
 									placeholder="영소문자/숫자, 6~16자" readonly />
@@ -129,12 +129,12 @@
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-6">
+							<div class="col-xs-6">
 								<label>비밀번호*</label> <input name="pw" id="pw" type="password"
 									class="form-control" maxlength="16" required
 									oninput="checkPw()" placeholder="영소문자/숫자, 6~16자" required>
 							</div>
-							<div class="col-md-6">
+							<div class="col-xs-6">
 								<label>비밀번호 확인*</label> <input name="pwCheck" id="pwCheck"
 									type="password" class="form-control" maxlength="16" required
 									oninput="checkPw()" required>
@@ -143,56 +143,20 @@
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-xs-4 col-md-4">
-								<label>전화번호 </label> <input name="phone1" type="tel" value="${ phoneCert.phone1 }" class="form-control" readonly>
+							<div class="col-xs-6">
+								<label>전화번호 </label> <input name="phone1" type="tel" value="${ phoneCert.phone }" class="form-control" readonly>
 							</div>
-							<br />
-							<div class="col-xs-4 col-md-4">
-								<input type="tel" name="phone2" value="${ phoneCert.phone2 }"
-									class="form-control" readonly>
-							</div>
-							<div class="col-xs-4 col-md-4">
-								<input type="tel" name="phone3" value="${ phoneCert.phone3 }"
-									class="form-control" readonly>
+							<div class="col-xs-6">
+								<label>생년월일</label> <input type="text" name="birth" value="${ phoneCert.birth }" class="form-control" readonly>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-xs-6 col-md-6">
-								<label>E-mail </label> <input name="email" type="text" class="form-control" required>
-							</div>
-							<div class="row">
-								<div class="form-group">
-									<div class="col-xs-6 col-md-5">
-										<label>도메인</label>
-										<select name="emailD" class="form-control" required>
-											<option value="@naver.com">@ naver.com</option>
-											<option value="@hanmail.net">@ daum.net</option>
-											<option value="@gmail.com">@ gmail.com</option>
-										</select>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group">
-							<div class="col-md-3">
-								<label>생년월일</label> <input type="text" name="birthYear"
-									value="${ phoneCert.birthYear }년" class="form-control" readonly>
-							</div>
-							<div class="col-md-3">
-								<label> </label> <input name="birthMonth" type="text"
-									value="${ phoneCert.birthMonth }월" class="form-control"
-									readonly>
-							</div>
-							<div class="col-md-3">
-								<label> </label> <input name="birthDay" type="text"
-									value="${ phoneCert.birthDay }일" class="form-control" readonly>
-							</div>
-							<br />
-							<div class="col-md-3">
+							<div class="col-xs-6">
+								<label>E-mail </label> <input name="email" type="text" class="form-control" required placeholder="mama@naver.com">
+							</div><br/>
+							<div class="col-xs-6" style="margin-top: 10px;">
 								<label> 성별 </label> 남 <input id="man" name="sex" type="radio"
 									value="남자" disabled="disabled" /> 여 <input id="woman"
 									name="sex" type="radio" value="여자" disabled="disabled" />
@@ -208,7 +172,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<span class="member-box checkbox"> <label for="member">
 									<h5>
 										<input name="check" type="checkbox" id="member" value="확인" />
@@ -219,11 +183,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<!-- btn btn-info mb-md -->
 							<input type="submit" id="signUp" class="btn btn-info mb-md form-control" value="가입">
 						</div>
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<input type="button" id="reset" class="btn btn-info mb-md form-control" value="취소">
 						</div>
 					</div>

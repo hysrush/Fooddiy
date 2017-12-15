@@ -99,7 +99,7 @@
 					<!-- START -->
 					<div class="col-md-9">
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-8">
 								<div class="tabs tabs-bottom tabs-center tabs-simple">
 									<div class="tab-content">
 										<div class="tab-pane active" id="memberLogin">

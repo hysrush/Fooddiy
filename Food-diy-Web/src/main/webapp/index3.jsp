@@ -2,5 +2,4 @@
     pageEncoding="UTF-8"%>
 <script>
 	document.location.href="${pageContext.request.contextPath}/main/Start";
-
 </script>

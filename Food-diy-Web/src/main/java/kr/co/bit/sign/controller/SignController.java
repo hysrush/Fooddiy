@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.CartStoreService;
@@ -67,62 +68,32 @@ public class SignController {
 			return "sign/login";
 		}
 		
-		// 휴대전화 인증할 때 받은 회원 정보 저장
-		PhoneCertVO cert = new PhoneCertVO();
 		
-		cert.setName(phoneCert.getName());
-		
-		String[] phone = phoneCert.getPhone().split("-");
-		String[] birth = phoneCert.getBirth().split("/");
-		
-		cert.setPhone1(phone[0]);
-		cert.setPhone2(phone[1]);
-		cert.setPhone3(phone[2]);
-		
-		cert.setBirthYear(birth[0]);
-		cert.setBirthMonth(birth[1]);
-		cert.setBirthDay(birth[2]);
-		
-		cert.setSex(phoneCert.getSex());
-		cert.setRoot("일반");
-		
+		phoneCert.setRoot("일반");
 		
 		// 전달
-		model.addAttribute("phoneCert", cert);
+		model.addAttribute("phoneCert", phoneCert);
 		
 		return "sign/signUp";
 	}
 
 	// - 회원 등록
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
-	public String signUp(PhoneCertVO phoneCert, Model model) {
+	public String signUp(UserVO phoneCert, Model model, RedirectAttributes redirect) {
 		
-		UserVO userVO = new UserVO();
+		phoneCert.setType("U");
+		phoneCert.setFile("null");
 		
-		userVO.setId(phoneCert.getId());
-		userVO.setPw(phoneCert.getPw());
-		userVO.setName(phoneCert.getName());
-		userVO.setBirth(phoneCert.getBirthYear() + phoneCert.getBirthMonth() + phoneCert.getBirthDay());
-		userVO.setPhone(phoneCert.getPhone1() + "-" + phoneCert.getPhone2() + "-" + phoneCert.getPhone3());
-		userVO.setEmail(phoneCert.getEmail() + phoneCert.getEmailD());
-		userVO.setSex(phoneCert.getSex());
-		userVO.setRoot(phoneCert.getRoot());
-		userVO.setFile("null");
-		userVO.setType("U");
-		
-		signServiceImp.signUp(userVO);
+		signServiceImp.signUp(phoneCert);
 		
 		// 회원가입 후 자동 로그인
-		UserVO login = new UserVO();
-		login.setId(userVO.getId());
-		login.setPw(userVO.getPw());
+		phoneCert = signServiceImp.login(phoneCert);
 		
-		userVO = signServiceImp.login(login);
+		model.addAttribute("loginVO", phoneCert);
 		
-		model.addAttribute("loginVO", userVO);
-		model.addAttribute("msg", "가입 성공~!");
+		redirect.addFlashAttribute("msg", "[ "+phoneCert.getId()+" ] 님 회원가입에 성공!");
 		
-		return "sign/sign";
+		return "redirect:/main/Start";
 	}
 
 	// - id 중복 체크
@@ -148,7 +119,7 @@ public class SignController {
 
 	// => 로그인 실패시 다시 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String signIn(UserVO login, Model model, HttpSession session) {
+	public String signIn(UserVO login, Model model, HttpSession session, RedirectAttributes redirect) {
 		
 		System.out.println(login.toString());
 		UserVO signIn = signServiceImp.login(login);
@@ -176,16 +147,21 @@ public class SignController {
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("loginVO", signIn);
 		
-		return "sign/sign";
+		redirect.addFlashAttribute("msg", "[ "+signIn.getId()+" ] 님 로그인 성공!");
+		
+		return "redirect:/main/Start";
 	}
 
 	// - 로그아웃
 	@RequestMapping("/logout")
-	public String logout(SessionStatus sessionStatus, Model model, HttpSession session) {
+	public String logout(SessionStatus sessionStatus, Model model, HttpSession session, RedirectAttributes redirect) {
 		
 		sessionStatus.setComplete();
 		System.out.println(session.getAttribute("cartList"));
-		return "sign/sign";
+		
+		redirect.addFlashAttribute("msg", "로그아웃");
+		
+		return "redirect:/main/Start";
 	}
 	
 	
@@ -196,8 +172,7 @@ public class SignController {
 		UserVO lostVO = signServiceImp.lostId(lost);
 		
 		if(lostVO == null) {
-			model.addAttribute("msg", "입력하신 정보에 해당하는 가입 이력이 없습니다. "
-					+ "회원가입 후 이용해 주세요.");
+			model.addAttribute("msg", "입력하신 정보에 해당하는 가입 이력이 없습니다. 회원가입 후 이용해 주세요.");
 			return "sign/login";
 		
 		}
@@ -233,7 +208,7 @@ public class SignController {
 
 	// kakao api 로그인
 	@RequestMapping(value = "/kakoLogin.do", method = RequestMethod.POST)
-	public String kakaoLogin(UserVO login, Model model) {
+	public String kakaoLogin(UserVO login, Model model, RedirectAttributes redirect) {
 
 		UserVO userVO = signServiceImp.login(login);
 		// 가입한 적 있는지 확인
@@ -260,17 +235,17 @@ public class SignController {
         }
         
 		model.addAttribute("cartList", cartList);
-		
-
 		model.addAttribute("loginVO", userVO);
-		model.addAttribute("msg", "로그인!");
-		return "sign/sign";
+		
+		redirect.addFlashAttribute("msg", "[ "+userVO.getId()+" ] 님 가입 성공!");
+		
+		return "redirect:/main/Start";
 
 	}
 	
 	// 카카오톡 가입
 	@RequestMapping(value = "/kakaoSignUp.do", method = RequestMethod.POST)
-	public String kakaoSignUp(PhoneCertVO kakaoVO, Model model, HttpSession session) {
+	public String kakaoSignUp(PhoneCertVO kakaoVO, Model model, HttpSession session, RedirectAttributes redirect) {
 		
 		// 회원 가입
 		UserVO kakao = new UserVO();
@@ -297,7 +272,9 @@ public class SignController {
 		
 		model.addAttribute("loginVO", kakao);
 		
-		return "sign/sign";
+		redirect.addFlashAttribute("msg", "[ "+kakao.getName()+" ] 님 카카오 로그인 성공!");
+		
+		return "redirect:/main/Start";
 	}
 
 	// 네이버 로그인
@@ -332,13 +309,15 @@ public class SignController {
 
 	// 이메일 인증 후 session 객체에만 등록
 	@RequestMapping(value="/nonemailCheck")
-	public String nonMemberSign(UserVO nonMember, Model model, HttpSession session) {
+	public String nonMemberSign(UserVO nonMember, Model model, HttpSession session, RedirectAttributes redirect) {
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
 		session.setAttribute("nonMember", user);
-			
-		return "sign/sign";
+		
+		redirect.addFlashAttribute("msg", "[ "+user.getName()+" ] 님 로그인 성공!");
+		
+		return "redirect:/main/Start";
 	}
 	
 	// session저장만 할 것임
@@ -347,7 +326,7 @@ public class SignController {
 		
 		session.invalidate();
 		
-		return "sign/logout";
+		return "main/index";
 		
 	}
 	
@@ -368,7 +347,7 @@ public class SignController {
 	 *  4. main 화면
 	 * 
 	 * */
-	@RequestMapping("/Start")
+	@RequestMapping("/Start") 	// RequestParam에서 required=false는 값이 있든지 없든지 상관 안 하겠다는 속성 @RequestParam(value="msg", required=false) String msg, 
 	public String main(Model model) {
 	
 		Map<String, List<Object>> list = signServiceImp.main();
