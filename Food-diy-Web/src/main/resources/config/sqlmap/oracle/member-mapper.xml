@@ -32,8 +32,9 @@
 		where user_id = #{id}
   	</select>
 	
-	<select id="selectByNo"  resultMap="Map_MemberOrderVO">
+	<select id="selectByNo"  parameterType="int" resultMap="Map_MemberOrderVO">
 		<include refid="selectAll"/>
+		where order_no = #{no}
   	</select>	
 	
 	<update id="cancelOrder" parameterType="int">

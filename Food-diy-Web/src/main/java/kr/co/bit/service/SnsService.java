@@ -8,6 +8,7 @@ import kr.co.bit.vo.SnsBoardVO;
 public interface SnsService {
 
 	List<SnsBoardVO> selectSns(PagingVO paging);
+	List<SnsBoardVO> selectHit();
 	int selectTotalPaging();
 	
 	void insert(SnsBoardVO snsVO);

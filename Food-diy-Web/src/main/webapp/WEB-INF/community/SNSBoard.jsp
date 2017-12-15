@@ -157,7 +157,79 @@
 					</div>
 
 					<!-- START! -->
+						<div class="col-md-10" style="height:30px;">
+							<span class="label label-lg label-danger">Best!!</span>
+						</div>
+						<span><input type="hidden" value="공백"/></span>
+						<span><input type="hidden" value="공백"/></span>
+						<span><input type="hidden" value="공백"/></span>
+						
+						<div class="col-md-10" >
+						<div class="container"style= "border:1px solid black" >
+							<div class="row">
 
+								<div class="sort-destination-loader sort-destination-loader-showing">
+									<ul class="portfolio-list sort-destination popup-gallery-ajax"
+										data-sort-id="portfolio">
+											<c:forEach items="${ hitList }" var="snsHit" begin="0" end="3">
+													<li class="col-md-3 col-sm-10 col-xs-12 isotope-item brands">
+													<div class="testimonial testimonial-style-3">
+														<div class="testimonial-author">
+															<div class="testimonial-author-thumbnail">
+																<img src="../upload/${snsHit.pic}" class="img-responsive img-circle" alt="">
+															</div>
+															<p>
+																<strong>${snsHit.id }</strong>
+															</p>
+														</div>
+													</div>
+													<div data-toggle="modal">
+														<span class="product-thumb-info">
+														<span class="thumb-info thumb-info-lighten">
+													 <a onclick="modal('${ snsHit.no }')">
+															<span class="thumb-info-wrapper"> 
+															<img src="../upload/SNS/${ snsHit.fileName }" class="img-responsive" style="width: 250px; height: 250px">
+																</span>
+														</a>
+														</span>
+														 <span class="product-thumb-info-content">
+																	<span>
+																		<!--  좋아요 버튼 누르면 snsVO.like 증가  -->
+																	<button type="button"  onclick="like('${snsHit.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
+																		<i class="fa fa-thumbs-up"></i>
+																	</button>
+																	<i class="fa fa-heart" id="likey">${snsHit.like}</i>
+																	
+																	
+																</span> 
+																<span>
+																		<h4>${snsHit.title }</h4>
+																</span>
+															
+														</span>
+														</span>
+													</div>
+												</li>
+											
+										
+										</c:forEach>
+									</ul>
+								</div>
+							</div>
+						</div>
+						</div>				
+					
+					
+					<div class="col-md-2 hidden-xs">
+					</div>
+					<br/>
+					<br/>
+					<br/>
+					<div class="col-md-10">
+							 
+						</div>
+					<div class="col-md-2 hidden-xs">
+					</div>
 					<div class="col-md-10">
 						<div class="container">
 							<div class="row">
@@ -215,6 +287,16 @@
 
 						</div>
 
+					</div>
+					<div class="col-md-2 hidden-xs">
+					</div>
+					<div class="col-md-2 hidden-xs">
+					</div>
+					<div class="col-md-2 hidden-xs">
+					</div>
+					<div class="col-md-2 hidden-xs">
+					</div>
+					<div class="col-md-2 hidden-xs">
 					</div>
 					<div class="col-md-12" align="center">
 						<ul class="pagination">
