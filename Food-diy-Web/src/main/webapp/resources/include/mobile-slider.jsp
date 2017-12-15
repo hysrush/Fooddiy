@@ -5,7 +5,7 @@
 <div role="main" class="main">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-12 main">
 				<table>
 					<tr>
 						<td>
@@ -19,8 +19,8 @@
 		</div><br/>
 			<div class="row">
 			<!-- 이벤트  -->
-			<div class="col-xs-6" style="text-align: center;">
-				<table border="1">
+			<div class="col-xs-6 main" style="text-align: center;">
+				<table>
 					<tr>
 						<td>
 							<strong style="text-align:center; font-style: italic; font-size: 15px;" class="heading-primary text-uppercase mb-md">EVENT</strong>
@@ -30,7 +30,7 @@
 					<tr>
 						<td>
 							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/notice/noticeDetail.do?no=${e.no}">
-								<img width="50%" style="padding:5px;" src="../upload/${ e.imgFileName }" />
+								<img style="width: 200px; height: 200px;" src="../upload/${ e.imgFileName }" />
 								<br/>
 							</a>
 						</td>
@@ -39,23 +39,20 @@
 				</table>
 			</div>
 			<!-- SNS정보 -->
-			<div class="col-xs-6" style="text-align: center;">
-				<table style="margin: 5px 0px;" border="1">
+			<div class="col-xs-6 main" style="text-align: center;">
+				<table>
 				<c:forEach items="${ sns }" var="s">
 						<tr>
+						<td>추천수 ${ s.like }</td>
 						<td>${ s.id }</td>
-						<td>추천수 2</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
-								<img width="50%" style="padding:5px;" src="../upload/${ s.fileName }" />
+								<img style="width: 100px; height: 100px;" border=1 align=left src="../upload/${ s.fileName }"/><br/>
+								<strong style="margin-left: 5px;">${ s.title }</strong>
+								<small>${ s.content }</small>
 							</a>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							${ s.content }
 						</td>
 					</tr>
 				</c:forEach>

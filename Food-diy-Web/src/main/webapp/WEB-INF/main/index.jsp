@@ -61,12 +61,27 @@
 		<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 		
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+		
+		<!-- modal -->
+   	 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <style>
 a {
   color: #337ab7;
   text-decoration: none;
 }
+div.main{
+	margin: 0 !important;
+	padding: 0 !important;
+}
 </style>
+<script>
+$(document).ready(function(){
+	
+  if("${msg}"){
+	 	swal("${msg}");
+	}
+});
+</script>		
 </head>
 	<body>
 	<div class="body">
@@ -79,11 +94,11 @@ a {
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 
 			<!-- Slider부분 -->
-			<section class="visible-lg">
+			<section class="hidden-xs">
 				<jsp:include page="/resources/include/slider.jsp"/>
 			</section>
 			
-			<section class="hidden-lg">
+			<section class="visible-xs">
 				<jsp:include page="/resources/include/mobile-slider.jsp"/>
 			</section>
 			
