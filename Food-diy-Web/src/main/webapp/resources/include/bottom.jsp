@@ -9,7 +9,7 @@
 					src="${ pageContext.request.contextPath }/resources/img/subwayLOGO.jpg">
 				</a>
 			</div>
-			<div class="col-md-7">
+			<div class="col-md-8">
 				<p>
 					<i class="fa fa-map-marker"></i> 
 					Food-Diy-Order&nbsp;&nbsp;
@@ -21,7 +21,7 @@
 				© Copyright 2017. All Rights Reserved.
 				</p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a> | 
 				<a href="">이용약관</a> | 
 				<a href="">개인정보취급방침</a>

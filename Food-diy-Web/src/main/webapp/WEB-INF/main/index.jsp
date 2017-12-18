@@ -66,12 +66,19 @@
    	 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <style>
 a {
-  color: #337ab7;
+  color: #29311e;
   text-decoration: none;
 }
 div.main{
 	margin: 0 !important;
 	padding: 0 !important;
+}
+td{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+hr{
+	background-color : #feca07;
 }
 </style>
 <script>

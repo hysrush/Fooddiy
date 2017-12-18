@@ -50,14 +50,13 @@
 			<div class="top-menu-area">
 				<a href="#">Links <i class="fa fa-caret-down"></i></a>
 				<ul class="top-menu">
-					<li><a href="demo-shop-9-myaccount.html">My Account</a></li>
-					<li><a href="#">Daily Deal</a></li>
-					<li><a href="#">My Wishlist</a></li>
-					<li><a href="demo-shop-9-blog.html">Blog</a></li>
-					<li><a href="demo-shop-9-login.html">Log in</a></li>
+					<li><a href="${ pageContext.request.contextPath }/main/Start">Home</a></li>
+					<li><a href="${ pageContext.request.contextPath }/sign/siteT">Sitemap</a></li>
+					<li><a href="${ pageContext.request.contextPath }/sign/login.do">Log in</a></li>
+					<li><a href="${ pageContext.request.contextPath }/sign/signUp.do">Join</a></li>
 				</ul>
 			</div>
-			<p class="welcome-msg">DEFAULT WELCOME MSG!</p>
+			<p class="welcome-msg">Welcome to Subway!</p>
 		</div>
 	</div>
 	<div class="header-container container">
@@ -320,9 +319,9 @@
 									<div class="dropdown-mega-content">
 										<div class="row">
 											<div class="col-md-8">
-												<div class="dropdown-mega-top">
+												<!-- <div class="dropdown-mega-top">
 													<span>Suggestions:</span> <a href="demo-shop-9-category-4col.html">3D</a> <a href="demo-shop-9-category-4col.html">Mobile</a> <a href="demo-shop-9-category-4col.html">Camera</a> <a href="demo-shop-9-category-4col.html">Headsets</a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 										<div class="row">

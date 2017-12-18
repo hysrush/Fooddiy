@@ -187,5 +187,16 @@ public class StoreController {
 
 			return mav;
 		}
+		
+		// 매장 찾기
+		@RequestMapping(value = "/findStore")
+		public String find(Model model) {
+					
+			//도시정보를 불러온다.
+			List<CityVO> cityList = storeService.selectCity();
+			model.addAttribute("cityList", cityList);
+			
+			return "store/FindStore";
+		}
 
 }

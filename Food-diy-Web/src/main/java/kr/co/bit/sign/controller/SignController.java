@@ -347,7 +347,7 @@ public class SignController {
 	 *  4. main 화면
 	 * 
 	 * */
-	@RequestMapping("/Start") 	// RequestParam에서 required=false는 값이 있든지 없든지 상관 안 하겠다는 속성 @RequestParam(value="msg", required=false) String msg, 
+	@RequestMapping("/Start") 	// RequestParam에서 required=false는 값이 있든지 없든지 상관 안 하겠다는 속성 @RequestParam(value="msg", required=false) String msg
 	public String main(Model model) {
 	
 		Map<String, List<Object>> list = signServiceImp.main();
@@ -357,6 +357,19 @@ public class SignController {
 		model.addAttribute("event", list.get("event"));
 		
 		return "main/index";
+	}
+	
+	//이용약관
+	@RequestMapping("/siteT")
+	public String tos() {
+
+		return "main/Tos";
+	}
+	
+	//이용약관
+	@RequestMapping("/siteP")
+	public String privacy() {
+		return "main/Privacy";
 	}
 	
 	
