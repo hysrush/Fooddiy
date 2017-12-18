@@ -32,10 +32,17 @@
 				<a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a>
 				
 					<!--  버튼 누르면 db의 snsVO.like 값이 1씩 증가하되 1인 1회만 가능하게  -->
-					<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
+					<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info" style="width:100px"> 
 						<i class="fa fa-thumbs-up"></i>
 					</button>
-		
+						
+				<c:choose>
+       				<c:when test="">
+          
+       				</c:when>
+				</c:choose>
+					<input type="button" class="btn btn-primary"  onclick="action('E', ${snsVO.no})" value="수정"/>
+					<input type="button" class="btn btn-primary"  onclick="action('D', ${snsVO.no})" value="삭제"/>		
 		</div>
 
 		<div class="col-md-8">
@@ -110,7 +117,7 @@
         							
         					<c:forEach items="${ repList }" var="repList">
         					<div id="listReply">
-								<div class="testimonial testimonial-style-3">
+							 	<div class="testimonial testimonial-style-3">
 									
 										<div class="testimonial-author">
 											<div class="testimonial-author-thumbnail">
@@ -123,7 +130,7 @@
 												<p><strong>${repList.content }</strong>
 											<span class="date pull-right">${repList.regDate }</span>
 										</div>
-									</div>
+									</div> 
 								</div>	
 								</c:forEach>
 									<div class="col-md-12">
@@ -148,6 +155,7 @@
 													            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>    
 													        </form>
 													</div>	
+													
 														
 								
 								
@@ -155,6 +163,28 @@
 							</div>
 						</div>
 					</div>
+    
+    <script>
+	function action(type, no) {
+		switch (type) {
+		case 'E':
+			location.href = '${ pageContext.request.contextPath}/community/snsModifyForm.do?no=' + no;
+			break;
+		case 'D':
+			location.href = '${ pageContext.request.contextPath}/community/deleteSns.do?no=' + no;
+			break;
+		default:
+			break;
+		}
+    }
+	
+	
+	// 삭제 alert창
+	
+    
+    </script>
+    
+    
     
 	<script>
 	function like(no){
@@ -199,32 +229,28 @@
                   
           		       var contents = '';
           		       
-          		     /*   contents += '<div class="testimonial testimonial-style-3">';
+          		        contents += '<div class="testimonial testimonial-style-3">';
           		       contents += '<div class="testimonial-author">';	
                  	   contents += 	'<div class ="testimonial-author-thumbnail">';
-                 	   contents +=		'<img src = "../upload/"\''+data.file+'\'" class ="img-responsive img-circle" alt="">';
+                 	   contents +=		'<img src = "../upload/"\''+data.snsRepVO.pic+'\'" class ="img-responsive img-circle" alt="">';
                  	   contents +=	'<div>';
-                 	   contents +=		'<p><strong>'+ data.userId+'</storong></p>';
+                 	   contents +=		'<p><strong>'+ data.snsRepVO.id+'</storong></p>';
                  	   contents +=	'<span class="pull-right">';
                  	   contents +=		'<span><a href="#"><i class="fa fa-reply"><i>Update</a></span>';
                  	   contents +=	'</span>';
-                 	   contents +=		'<p><strong>' + data.snsCont + '</strong></p>';
-                 	   contents +=		'<span class="date pull-right">' +data.date+'</span>';
+                 	   contents +=		'<p><strong>' + data.snsRepVO.content + '</strong></p>';
+                 	   contents +=		'<span class="date pull-right">' +data.snsRepVO.regDate+'</span>';
                  	   contents +=	'</div>';
                  	   contents +='</div>';
-                 		 */
+                 		 
                  	   //contents += '<span>안녕하세요</span>';
+                 	
                  	   
                  	$('#listReply').append(contents); 
                  
              }
          });
      });
-	
-	
-	
-	
-	
 	
 	</script>
 	

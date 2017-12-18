@@ -98,9 +98,9 @@
 
 									<h4 class="heading-primary">이벤트</h4>
 								<ul class="nav nav-list mb-xlg">
-									<li class="active"><a href="${ pageContext.request.contextPath }/event/EventPage.jsp">브랜드 이벤트</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 이벤트</a></li>
 									<li>
-										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">점포별 이벤트</a>
+										<a href="${ pageContext.request.contextPath}/event/storeEventPage.do">점포별 이벤트</a>
 									</li>
 								</ul>
 							</aside>
@@ -171,10 +171,7 @@
 														
 														
 														<br/>
-													<div align="right">		
-														<input type = "button" value="수정 "/>
-														<a href="${ pageContext.request.contextPath}/event/eventWrite.do"><input type = "button" value="글 등록 "/></a>
-													</div>
+												
 													
 												</div>
 											</div>

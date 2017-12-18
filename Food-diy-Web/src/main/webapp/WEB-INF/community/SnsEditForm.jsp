@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> | SNS 등록폼 | </title>
+<title> | SNS 수정폼 | </title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -18,13 +18,13 @@
 </head>
 <body>
 	<div align="center" >
-		<h2>SNS 등록폼</h2>
+		<h2>SNS 수정폼</h2>
 		<form:form commandName="snsVO" method="POST" enctype="multipart/form-data">
 			<div style="max-width: 800px;">
 			
 				<div class="form-group" align="left">
 					<label for="title">제목</label>
-					<form:input path="title" type="text" class="form-control" id="title" placeholder="제목"/>
+					<form:input path="title" type="text" class="form-control" id="title" placeholder="제목" value = "${snsVO.title }"/>
 					<form:errors path="title" class="form-control"></form:errors>
 				</div>
 								
@@ -40,15 +40,16 @@
 					<form:errors path="pic" class="form-control"></form:errors>
 				</div> 
 				 <div class="form-group" align="left">
-					<label for="fileName">이벤트 첨부 파일</label>
-					<form:input path="fileName" type="file" class="form-control" id="fileName" placeholder="첨부파일"/>
+					<label for="fileName">SNS 첨부 파일</label>
+					<form:input path="fileName" type="file" class="form-control" id="fileName" placeholder="첨부파일"
+					value = "${snsVO.fileName }"/>
 					<form:errors path="fileName" class="form-control"></form:errors>
 				</div>
 				  
 				
 				<div class="form-group" align="left">
-					<label for="content">이벤트 내용</label>
-					<form:textarea path="content" class="form-control" rows="5" id="content" placeholder="내용"/>
+					<label for="content">SNS 내용</label>
+					<form:textarea path="content" class="form-control" rows="5" id="content" placeholder="내용" value = "${snsVO.content }"/>
 					<form:errors path="content" class="form-control"></form:errors>
 				</div>
 				

@@ -54,4 +54,16 @@ public class SnsServiceImpl implements SnsService {
 		return list;
 	}
 
+	@Override
+	public void update(SnsBoardVO snsVO) {
+		snsDAO.update(snsVO);
+		
+	}
+
+	@Override
+	public void delete(int no) {
+		snsDAO.delete(no);
+		
+	}
+
 }

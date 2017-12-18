@@ -12,6 +12,8 @@ public interface SnsDAO {
 	List<SnsBoardVO> selectHit();
 	int selectTotalPaging();
 	
+	void delete(int no);
+	void update(SnsBoardVO snsVO);
 	void insert(SnsBoardVO snsVO);
 	SnsBoardVO selectOne(int no);
 	void addLikeSns(int no);

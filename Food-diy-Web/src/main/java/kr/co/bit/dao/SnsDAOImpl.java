@@ -55,6 +55,18 @@ public class SnsDAOImpl implements SnsDAO {
 			List<SnsBoardVO> list = sqlSession.selectList(url + "selectHitSns");
 			return list;
 		}
+
+		@Override
+		public void update(SnsBoardVO snsVO) {
+			sqlSession.update(url + "updateSns", snsVO);
+			
+		}
+
+		@Override
+		public void delete(int no) {
+			sqlSession.delete(url + "deleteSns", no);
+			
+		}
 	
 	
 	

@@ -10,6 +10,8 @@ public interface SnsService {
 	List<SnsBoardVO> selectSns(PagingVO paging);
 	List<SnsBoardVO> selectHit();
 	int selectTotalPaging();
+	void update(SnsBoardVO snsVO);
+	void delete(int no);
 	
 	void insert(SnsBoardVO snsVO);
 	 SnsBoardVO selectOne(int no);
