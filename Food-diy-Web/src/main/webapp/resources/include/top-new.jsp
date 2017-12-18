@@ -431,7 +431,6 @@
 									</a>
 								</li>
 							</c:when>
-							<!-- 일반 회원 로그인 -->
 							<c:when test="${ loginVO.type eq 'U' }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
 									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.do"> <i class="fa fa-user"></i>${ loginVO.name }</a>
@@ -465,7 +464,6 @@
 										</li>
 									</ul></li>
 							</c:when>
-							<!-- 비회원 로그인 -->
 							<c:otherwise>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
 									<a href="${ pageContext.request.contextPath }/sign/nonlogout?id=${loginVO.id}"><i class="fa fa-user"></i> ${ loginVO.name }</a>
