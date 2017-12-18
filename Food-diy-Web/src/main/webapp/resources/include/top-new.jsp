@@ -404,7 +404,7 @@
 								<li><a href="${ pageContext.request.contextPath }/community/snsPage.do" data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>
 							</ul></li>
 						<!-- 회원 로그인하면 My page -->
-						<c:if test="${ not empty loginVO }">
+						<c:if test="${ (not empty loginVO) and (loginVO.type eq 'U')  }">
 							<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.do" class="dropdown-toggle"> My Page </a>
 								<ul class="dropdown-menu">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
@@ -415,11 +415,11 @@
 							</li>
 						</c:if>
 						<!-- 비회원 로그인하면 주문내역 조회 -->
-						<c:if test="${ not empty nonMember }">
+						<c:if test="${ loginVO.type eq 'N' }">
 							<li class="dropdown"><a href="${ pageContext.request.contextPath }/sign/nonmemberMenu.jsp">주문내역조회</a></li>
 						</c:if>
 						<c:choose>
-							<c:when test="${ empty loginVO and empty nonMember }">
+							<c:when test="${ empty loginVO }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
 									<a href="${ pageContext.request.contextPath }/sign/login.do">
 										<i class="fa fa-user"></i> Sign IN
@@ -431,7 +431,8 @@
 									</a>
 								</li>
 							</c:when>
-							<c:when test="${ not empty loginVO }">
+							<!-- 일반 회원 로그인 -->
+							<c:when test="${ loginVO.type eq 'U' }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin logged" id="headerAccount">
 									<a class="dropdown-toggle" href="${ pageContext.request.contextPath }/member/memberDetail.do"> <i class="fa fa-user"></i>${ loginVO.name }</a>
 									<ul class="dropdown-menu">
@@ -464,9 +465,10 @@
 										</li>
 									</ul></li>
 							</c:when>
+							<!-- 비회원 로그인 -->
 							<c:otherwise>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
-									<a href="${ pageContext.request.contextPath }/sign/nonlogout?id=${nonMember.id}"><i class="fa fa-user"></i> ${ nonMember.name }</a>
+									<a href="${ pageContext.request.contextPath }/sign/nonlogout?id=${loginVO.id}"><i class="fa fa-user"></i> ${ loginVO.name }</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
