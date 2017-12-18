@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -210,10 +210,13 @@
 					</div>
 				</div>
 			</div>
-		<footer id="footer">
-			<jsp:include page="/resources/include/bottom.jsp" />
+		<footer class="light visible-lg" id="footer">
+			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
-	</div>
+		
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp"/>
+		</footer>
 	</div>
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
