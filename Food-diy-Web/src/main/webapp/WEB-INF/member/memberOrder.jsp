@@ -263,8 +263,7 @@ $(document).ready(function(){
 															</tr>
 														</c:forEach>
 														</c:when>
-														<c:otherwise>
-															<h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
+														<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
 														</c:choose>
 													</tbody>
 												</table>

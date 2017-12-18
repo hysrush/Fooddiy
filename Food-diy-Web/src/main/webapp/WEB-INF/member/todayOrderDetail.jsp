@@ -27,6 +27,7 @@
 		</button>
 		<i class="fa fa-list-alt modal-icon"></i>
 		<h4 class="modal-title">주문 상세</h4>
+		<a> ${cart.pic }</a>
 	</div>
 	<div class="modal-body" style="max-height:500px;overflow: auto;">
 		<table class="table table-bordered">
@@ -37,7 +38,7 @@
 			</thead>
 			<tbody>
 				<tr >
-					<th width = "30%">주문번호</th>
+					<th width = "22%">주문번호</th>
 					<td>${ member.no }</td>
 				</tr>
 				<tr>
@@ -87,7 +88,7 @@
 			</table>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+		<button type="button" value="Click" onclick="Click.reload()" id="Click" class="btn btn-white" data-dismiss="modal">Close</button>
 	</div>
 </body>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>

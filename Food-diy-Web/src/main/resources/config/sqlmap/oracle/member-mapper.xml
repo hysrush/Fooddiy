@@ -25,7 +25,15 @@
   		<result column = "reg_at" property ="regDate"/>
   	</resultMap>
 	
+	<resultMap type="MemberOrderVO" id="Map_menu">
+		<result column="menu_pic" property="pic"/>	
+	</resultMap>
 	
+	
+	<select id="menuPic" parameterType="java.lang.String" resultMap="Map_menu">
+		select menu_pic from t_menu
+		where menu_name = #{name}
+	</select>
 	
 	<select id="selectAllOrder" resultMap="Map_MemberOrderVO" parameterType="java.lang.String">
 		<include refid="selectAll"/>

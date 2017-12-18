@@ -7,6 +7,7 @@ public class MemberOrderVO {
 	private int no; 
 	private String storeName;
 	private String id;
+	private String pic;
 	private String order_price;
 	private String final_price;
 	private String menu;
@@ -84,7 +85,14 @@ public class MemberOrderVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	@Override
+	
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+/*	@Override
 	public String toString() {
 		return "OrderVO [no=" + no + ", storeName=" + storeName + ", id=" + id + ", order_price=" + order_price
 				+ ", final_price=" + final_price + ", menu=" + menu + ", detailOrderList=" + detailOrderList
@@ -95,6 +103,13 @@ public class MemberOrderVO {
 				+ ", getOrderStatus()=" + getOrderStatus() + ", getRegDate()=" + getRegDate() + ", getClass()="
 				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-	
+	*/
+	@Override
+	public String toString() {
+		return "MemberOrderVO [no=" + no + ", storeName=" + storeName + ", id=" + id + ", pic=" + pic + ", order_price="
+				+ order_price + ", final_price=" + final_price + ", menu=" + menu + ", detailOrderList="
+				+ detailOrderList + ", eatType=" + eatType + ", payment=" + payment + ", orderStatus=" + orderStatus
+				+ ", regDate=" + regDate + "]";
+	}
 	
 }

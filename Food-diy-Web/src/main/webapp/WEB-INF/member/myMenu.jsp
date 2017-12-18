@@ -279,9 +279,10 @@ location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 
 							<div class="featured-boxes">
 								<div class="row">
-									<div class="col-md-10">
+									<div class="col-md-12">
 										<div class="featured-box featured-box-primary align-left mt-sm">
 											<div class="box-content">
+											<form>
 													<table class="shop_table cart">
 														<tbody>
 														<c:choose>
@@ -297,9 +298,10 @@ location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 															</span>
 															</td>
 																<td class="" style="width: 30%;">
-																	<a><img style="margin-left:30%; margin-right:40%; width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="../upload/${ cart.pic }"></a>
+																	<a><img style="margin-left:30%; margin-right:40%; width: 80%; height: 85px" alt="Product Name" class="img-responsive " src="${ cart.pic }"></a>
 																</td>
-																<td align="center" style=" width: 180px; font-size: 100%;">
+																<td style=" text-align:center; width: 250px;"> ${ cart.name } </td>
+																<td align="center" style=" width: 230px; font-size: 100%;">
 																	<span class="amount">${ cart.bread }<br />${cart.cheese }<br />${ cart.topping }<br />${ cart.vegetable }<br />${ cart.sauce }</span>
 																</td>
 																<td  class="product-price">
@@ -328,7 +330,7 @@ location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 															</tr>
 															</c:forEach>
 															</c:when>
-															<c:otherwise>나만의 메뉴가 없습니다.</c:otherwise>
+															<c:otherwise><h3>나만의 메뉴가 없습니다.</h3></c:otherwise>
 															</c:choose>
 														</tbody>
 													</table>

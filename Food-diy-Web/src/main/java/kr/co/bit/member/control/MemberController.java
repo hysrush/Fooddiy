@@ -259,7 +259,7 @@ public class MemberController {
 	}
 	
 	// 주문 내역 상세 보기
-	@RequestMapping(value = "/todayOrderDetail.do") 
+	@RequestMapping(value = "/todayOrderDetail.do",method = RequestMethod.GET) 
 	public ModelAndView orderDetail(ModelAndView mav, @RequestParam("no") int no) {
 		
 		MemberOrderVO todayOrderList = service.selectByNo(no);
@@ -298,17 +298,10 @@ public class MemberController {
 	}
 	
 //	-------------------------------------------
-/*	@RequestMapping(value = "/orderCancel.do", method = RequestMethod.GET)
-	public String cancelOrder1(@RequestParam("no") int no) {
-		
-		service.cancelOrder(no);
-		
-		return "redirect:/member/todayOrderList.do";
-		
-	}*/
 	
 	
-//	나만의 메뉴 디테일
+	
+/*//	나만의 메뉴 디테일
 	@RequestMapping(value = "/mymenuDetail.do") 
 	public ModelAndView myMenuDetail(ModelAndView mav, @RequestParam("no") int no) {
 		
@@ -345,16 +338,8 @@ public class MemberController {
 		mav.setViewName("member/todayOrderDetail");
 		
 		return mav;
-	}
-	
-//	@RequestMapping("/Latest-Order.do")
-//	public String orderList() {
-//		
-//		List<OrderVO> orderList;
-//		
-//		return "member/Latest-Order";
-//	}
-	
+	}*/
+
 
 	
 	// 최근 주문 내역 삭제
