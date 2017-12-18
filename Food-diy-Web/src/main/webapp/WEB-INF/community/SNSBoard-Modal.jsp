@@ -25,7 +25,7 @@
 
 	<div class="row mb-xl">
 		<div class="col-md-4">
-
+					<input type ="hidden" value = "${loginVO.id }"/>
 			<span class="img-thumbnail">
 				<img alt="" class="img-responsive" src="../upload/SNS/${ snsVO.fileName }"> <!--  DB 첨부 이미지 값 -->
 			</span>
@@ -36,13 +36,13 @@
 						<i class="fa fa-thumbs-up"></i>
 					</button>
 						
-				<c:choose>
-       				<c:when test="">
+			 	<c:choose>
+       				<c:when test="${loginVO.id == snsVO.id}">
           
-       				</c:when>
-				</c:choose>
 					<input type="button" class="btn btn-primary"  onclick="action('E', ${snsVO.no})" value="수정"/>
 					<input type="button" class="btn btn-primary"  onclick="action('D', ${snsVO.no})" value="삭제"/>		
+       				</c:when>
+				</c:choose> 
 		</div>
 
 		<div class="col-md-8">
