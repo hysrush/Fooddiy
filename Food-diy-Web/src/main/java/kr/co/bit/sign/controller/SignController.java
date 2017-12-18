@@ -366,7 +366,7 @@ public class SignController {
 		return "main/Tos";
 	}
 	
-	//이용약관
+	//개인정보취급
 	@RequestMapping("/siteP")
 	public String privacy() {
 		return "main/Privacy";
