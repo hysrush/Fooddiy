@@ -8,6 +8,12 @@ public class SnsBoardVO {
 	private String title;
 	private String content;
 	private String fileName;
+	private String name;
+	private String bread;
+	private String cheese;
+	private String topping;
+	private String vegetable;
+	private String sauce;
 	private int like;
 	private String regDate;
 	private int viewCnt;
@@ -47,6 +53,42 @@ public class SnsBoardVO {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getBread() {
+		return bread;
+	}
+	public void setBread(String bread) {
+		this.bread = bread;
+	}
+	public String getCheese() {
+		return cheese;
+	}
+	public void setCheese(String cheese) {
+		this.cheese = cheese;
+	}
+	public String getTopping() {
+		return topping;
+	}
+	public void setTopping(String topping) {
+		this.topping = topping;
+	}
+	public String getVegetable() {
+		return vegetable;
+	}
+	public void setVegetable(String vegetable) {
+		this.vegetable = vegetable;
+	}
+	public String getSauce() {
+		return sauce;
+	}
+	public void setSauce(String sauce) {
+		this.sauce = sauce;
+	}
 	public int getLike() {
 		return like;
 	}
@@ -68,9 +110,10 @@ public class SnsBoardVO {
 	@Override
 	public String toString() {
 		return "SnsBoardVO [no=" + no + ", id=" + id + ", pic=" + pic + ", title=" + title + ", content=" + content
-				+ ", fileName=" + fileName + ", like=" + like + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
+				+ ", fileName=" + fileName + ", name=" + name + ", bread=" + bread + ", cheese=" + cheese + ", topping="
+				+ topping + ", vegetable=" + vegetable + ", sauce=" + sauce + ", like=" + like + ", regDate=" + regDate
+				+ ", viewCnt=" + viewCnt + "]";
 	}
-	
 	
 	
 	
