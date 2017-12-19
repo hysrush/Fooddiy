@@ -73,6 +73,20 @@ public class StoreController {
 		return mav;
 	}
 	
+	// 로그인 없이 지점선택
+	@RequestMapping(value = "/findStore2.do", method=RequestMethod.GET)
+	public ModelAndView goStore(Model model) {
+				
+		ModelAndView mav = new ModelAndView();
+						
+		//도시정보를 불러온다.
+		List<CityVO> cityList = storeService.selectCity();
+		mav.addObject("cityList", cityList);		
+		mav.setViewName("store/FindStore");
+				
+		return mav;		
+	}
+	
 	
 	
 	

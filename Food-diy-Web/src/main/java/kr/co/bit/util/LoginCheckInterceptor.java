@@ -26,15 +26,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
         // 비회원 객체
         UserVO user2 = (UserVO)session.getAttribute("nonMember");  
   
-        if (user == null && user2 == null) {
-        	System.out.println("test1");
-        	System.out.println("test1");
-        	System.out.println("test1");
-        	System.out.println("test1");
-        	System.out.println("test1");
-        	System.out.println("test1");
-        	System.out.println("test1");
-        	System.out.println("test1");
+        if (user == null && user2 == null) {        	
         	session.invalidate();
             response.sendRedirect(request.getContextPath()+"/sign/login.do");  
             
