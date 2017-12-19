@@ -22,7 +22,7 @@
 				</p>
 			</div>
 			<div class="col-md-3">
-				<a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a> | 
+				<a href="${ pageContext.request.contextPath}/event/findStore2.do">매장찾기</a> | 
 				<a href="">이용약관</a> | 
 				<a href="">개인정보취급방침</a>
 				<%-- <ul>
