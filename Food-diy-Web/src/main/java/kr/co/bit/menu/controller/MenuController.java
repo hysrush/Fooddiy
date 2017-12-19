@@ -40,7 +40,7 @@ public class MenuController {
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("menu/menuList");
+		mav.setViewName("member/menuList");
 		//addObject : key와 value를 담아 보내는 메서드
 		mav.addObject("menuList", menuList);
 		
