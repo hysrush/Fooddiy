@@ -3,6 +3,7 @@ package kr.co.bit.control;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.event.vo.PagingVO;
+import kr.co.bit.member.service.MemberOrderService;
+import kr.co.bit.member.vo.DetailOrderVO;
+import kr.co.bit.member.vo.MemberOrderVO;
 import kr.co.bit.service.RepService;
 import kr.co.bit.service.SnsService;
 import kr.co.bit.user.vo.UserVO;
@@ -38,7 +42,8 @@ public class SnsController {
 	private SnsService snsService;
 	@Autowired
 	private RepService repService;
-	
+	@Autowired
+	private MemberOrderService service;
 	
 	
 	@RequestMapping(value ="/snsPage.do", method= {RequestMethod.POST, RequestMethod.GET})
@@ -70,11 +75,38 @@ public class SnsController {
 	
 	// 새글등록 폼으로 보내기
 		@RequestMapping(value = "/snsWrite.do", method = RequestMethod.GET)
-		public String writeForm(HttpServletRequest request, HttpServletResponse response, Model model) {
+		public String writeForm(String id, HttpServletRequest request, HttpServletResponse response, Model model) {
 
 			SnsBoardVO snsVO = new SnsBoardVO();
+			List<MemberOrderVO> todayOrderList = service.selectAll(id);	
+			
+			for(int i = 0 ; i < todayOrderList.size(); ++i) {
 
+				List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
+				String menu = todayOrderList.get(i).getMenu();
+				String [] menus = menu.split("\\/\\/");
+				
+				
+				System.out.println("menus.length =  " + menus.length);
+				
+				for(int j = 0; j < menus.length; ++j) {
+					DetailOrderVO vo = new DetailOrderVO();
+					String [] oneMenu = menus[j].split("\\*");
+
+					vo.setName(oneMenu[0]);
+					vo.setBread(oneMenu[1]);
+					vo.setCheese(oneMenu[2]);
+					vo.setTopping(oneMenu[3]);
+					vo.setVegetable(oneMenu[4]);
+					vo.setSauce(oneMenu[5]);
+					list.add(vo);
+				}
+				todayOrderList.get(i).setDetailOrderList(list);
+				System.out.println(todayOrderList.get(i).getDetailOrderList());
+			}	
+			
 			model.addAttribute("snsVO", snsVO);
+			model.addAttribute("todayOrder", todayOrderList);
 
 			return "community/SnsWriteForm";
 

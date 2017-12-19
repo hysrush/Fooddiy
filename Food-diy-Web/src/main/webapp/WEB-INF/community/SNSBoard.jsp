@@ -315,9 +315,7 @@
 
 
 					<div class="col-md-12" align="right">
-						<a
-							href="${ pageContext.request.contextPath }/community/snsWrite.do"><input
-							type="button" value="글 등록 " /></a>
+						<a href="${ pageContext.request.contextPath }/community/snsWrite.do?id=${loginVO.id}"><input type="button" value="글 등록 " /></a>
 					</div>
 
 
