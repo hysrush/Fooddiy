@@ -52,8 +52,6 @@ public class Select_Ing_Controller {
 		// session에 등록된 지점이 없는 경우 cartStore에 지점 정보를 저장 후 세션에 등록
 		if (cartStoreVO == null) {
 			
-			
-			
 			cartStoreVO = new CartStoreVO();
 			cartStoreVO.setId(id);
 			cartStoreVO.setStoreName(storeName);
@@ -113,10 +111,7 @@ public class Select_Ing_Controller {
 		}
 		
 		String type = cartVO.getType();
-		System.out.println(cartVO);
-		System.out.println("type  :  " + type);
-
-		//
+		
 		if (type.equals("S") || type.equals("N") || type.equals("D")) {
 
 			String price = cartVO.getPrice();
@@ -142,8 +137,6 @@ public class Select_Ing_Controller {
 
 			return "/menu/cart";
 		} else if (cartVO != null) {
-
-			System.out.println("-------------------------------------------------------Error");
 
 			String[] toppings;
 			String topping = cartVO.getTopping();
