@@ -2,8 +2,8 @@ package kr.co.bit.member.dao;
 
 import java.util.List;
 
-import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.CartVO;
 
 
 public interface MemberDAO {

@@ -1,4 +1,4 @@
-package kr.co.bit.menu.dao;
+package kr.co.bit.dao;
 
 import java.io.IOException;
 import java.util.List;

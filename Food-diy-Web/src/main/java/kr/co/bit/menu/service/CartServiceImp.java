@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.menu.dao.CartDAO;
-import kr.co.bit.menu.vo.CartVO;
+import kr.co.bit.vo.CartVO;
 
 
 @Service

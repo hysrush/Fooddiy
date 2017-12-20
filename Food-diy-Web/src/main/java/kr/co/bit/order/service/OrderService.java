@@ -2,7 +2,7 @@ package kr.co.bit.order.service;
 
 import java.util.List;
 
-import kr.co.bit.order.vo.OrderVO;
+import kr.co.bit.vo.OrderVO;
 
 public interface OrderService {
 	

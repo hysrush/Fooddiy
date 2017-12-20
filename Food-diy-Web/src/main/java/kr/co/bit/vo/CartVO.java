@@ -1,4 +1,4 @@
-package kr.co.bit.menu.vo;
+package kr.co.bit.vo;
 
 import java.io.Serializable;
 import java.util.List;

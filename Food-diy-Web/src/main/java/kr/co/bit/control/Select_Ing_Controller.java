@@ -1,4 +1,4 @@
-package kr.co.bit.menu.controller;
+package kr.co.bit.control;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.menu.service.CartService;
 import kr.co.bit.menu.service.CartStoreService;
 import kr.co.bit.menu.service.Select_Ing_Service;
-import kr.co.bit.menu.vo.CartStoreVO;
-import kr.co.bit.menu.vo.CartVO;
-import kr.co.bit.menu.vo.IngredientsVO;
 import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.CartStoreVO;
+import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.IngredientsVO;
 
 @RequestMapping("/menu")
 @Controller

@@ -32,10 +32,10 @@ import kr.co.bit.member.service.MemberService;
 import kr.co.bit.member.vo.DetailOrderVO;
 import kr.co.bit.member.vo.MemberOrderVO;
 import kr.co.bit.menu.service.CartService;
-import kr.co.bit.menu.vo.CartVO;
-import kr.co.bit.order.vo.OrderVO;
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.OrderVO;
 
 @Controller
 /* @SessionAttributes("/member") */

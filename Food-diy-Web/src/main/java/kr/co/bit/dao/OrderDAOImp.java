@@ -1,4 +1,4 @@
-package kr.co.bit.order.dao;
+package kr.co.bit.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.order.vo.OrderVO;
+import kr.co.bit.vo.OrderVO;
 
 @Repository
 public class OrderDAOImp implements OrderDAO {

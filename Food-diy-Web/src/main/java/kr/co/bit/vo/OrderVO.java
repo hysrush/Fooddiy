@@ -1,4 +1,4 @@
-package kr.co.bit.order.vo;
+package kr.co.bit.vo;
 
 import java.util.List;
 

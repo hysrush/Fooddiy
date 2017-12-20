@@ -1,8 +1,8 @@
-package kr.co.bit.order.dao;
+package kr.co.bit.dao;
 
 import java.util.List;
 
-import kr.co.bit.order.vo.OrderVO;
+import kr.co.bit.vo.OrderVO;
 
 public interface OrderDAO {
 	

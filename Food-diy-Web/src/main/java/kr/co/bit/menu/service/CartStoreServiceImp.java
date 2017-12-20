@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.menu.dao.CartStoreDAO;
-import kr.co.bit.menu.vo.CartStoreVO;
+import kr.co.bit.vo.CartStoreVO;
 
 @Service
 public class CartStoreServiceImp implements CartStoreService{

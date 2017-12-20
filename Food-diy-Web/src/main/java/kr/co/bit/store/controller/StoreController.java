@@ -21,10 +21,10 @@ import kr.co.bit.event.service.EventService;
 import kr.co.bit.event.vo.CityVO;
 import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.event.vo.locationVO;
-import kr.co.bit.menu.vo.CartStoreVO;
-import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.service.StoreService;
 import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.CartStoreVO;
+import kr.co.bit.vo.CartVO;
 
 @RequestMapping("/store")
 @SessionAttributes("cartVO")
