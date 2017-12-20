@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.community.service.ClaimService;
 import kr.co.bit.community.vo.ClaimBoardVO;
-import kr.co.bit.service.CartService;
+import kr.co.bit.menu.service.CartService;
 import kr.co.bit.service.MemberOrderService;
 import kr.co.bit.service.MemberService;
 import kr.co.bit.sign.service.SignService;
