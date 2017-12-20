@@ -18,11 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.MenuService;
 import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.menu.vo.MenuVO;
-import kr.co.bit.user.vo.UserVO;
 
 @Controller
 @RequestMapping("/menu")
@@ -40,7 +38,7 @@ public class MenuController {
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("member/menuList");
+		mav.setViewName("menu/menuList");
 		//addObject : key와 value를 담아 보내는 메서드
 		mav.addObject("menuList", menuList);
 		
