@@ -67,7 +67,7 @@
 					
 						<div class="testimonial-author">
 							<div class="testimonial-author-thumbnail">
-								<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="">
+								<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
 							</div>
 								<p><strong>${snsVO.id}</strong></p>
 						</div>
@@ -110,7 +110,7 @@
 									
 										<div class="testimonial-author">
 											<div class="testimonial-author-thumbnail">
-												<img src=" ../upload/${repList.pic}" class="img-responsive img-circle" alt="">
+												<img src=" ../upload/${repList.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
 											</div>
 												<p><strong>${repList.id }</strong></p>
 											<span class="pull-right">
