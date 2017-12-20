@@ -116,8 +116,8 @@
 								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
 								<li class="active"><a href="#">Subway 소식</a>
 									<ul>
-										<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-										<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+										<li class="active"><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+										<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 									</ul>
 								</li>
 								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
@@ -185,7 +185,7 @@
 														<tr>
 															<td>${ notice.no }</td>
 															<td>
-																<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ notice.no }">
+																<a href="${ pageContext.request.contextPath }/community/subway/noticeDetail.do?no=${ notice.no }">
 																	<c:out value="${ notice.title }" />
 																</a>
 															</td>

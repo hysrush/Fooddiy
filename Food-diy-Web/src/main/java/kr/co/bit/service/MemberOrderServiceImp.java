@@ -1,12 +1,12 @@
-package kr.co.bit.member.service;
+package kr.co.bit.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.bit.member.dao.MemberOrderDAO;
-import kr.co.bit.member.vo.MemberOrderVO;
+import kr.co.bit.dao.MemberOrderDAO;
+import kr.co.bit.vo.MemberOrderVO;
 
 
 @Service

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,26 +64,6 @@
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
-<script type="text/javascript">
-	function doAction(btn, type) {
-		switch (btn) {
-		case 'L':
-			if (type == 'A') {
-				location.href = "${ pageContext.request.contextPath}/community/notice.do";
-			} else if (type == 'B') {
-				location.href = "${ pageContext.request.contextPath}/community/news.do";
-			}
-			break;
-		default:
-			break;
-		}
-	}
-	
-	function submit() {
-		document.getElementById("dForm").submit();
-	}
-	
-</script>
 </head>
 <body>
 	<div class="body">
@@ -124,12 +105,12 @@
 								<li class="active"><a href="#">Subway 소식</a>
 									<ul>
 										<c:if test="${ noticeVO.type eq 'A' }">
-											<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-											<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+											<li class="active"><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 										</c:if>
 										<c:if test="${ noticeVO.type eq 'B' }">
-											<li><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-											<li class="active"><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+											<li class="active"><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 										</c:if>
 									</ul>
 								</li>
@@ -154,10 +135,10 @@
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
 							<ul class="nav nav-tabs">
 								<c:if test="${ noticeVO.type eq 'A' }">
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
 								</c:if>
 								<c:if test="${ noticeVO.type eq 'B' }">
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">보도자료</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath }/community/subway/notice.do">보도자료</a></li>
 								</c:if>
 							</ul>
 							<div class="tab-content">
@@ -167,7 +148,7 @@
 											<div class="post-content">
 												<div class="post-meta" style="float: right;">
 													<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
-													<span><a href="${ pageContext.request.contextPath }/community/notice.do">Subway소식</a> > </span>
+													<span><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway소식</a> > </span>
 													<c:if test="${ noticeVO.type eq 'A' }">
 														<span><a href="#">공지사항</a></span>
 													</c:if>
@@ -194,30 +175,28 @@
 															</tr>
 														<tr>
 															<!-- 내용 -->
-															<td colspan="3"><p><c:out value="${ noticeVO.content }"></c:out></p></td>
+															<td colspan="3">
+																<c:if test="${ not empty noticeVO.filePath }">
+																	<div class="text-center">
+																		<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/notice/${ noticeVO.filePath }">
+																	</div>
+																</c:if>
+																<!-- 자동 단락 나누기 (jstl - fn) -->
+																<p class="text-left">${ fn:replace(noticeVO.content, cn, br) }</p>
+															</td>
 														</tr>
 														<!-- 첨부파일 -->
-														<c:if test="${ not empty fileList }">
-															<tr>
-																<th width="15%">첨부파일</th>
-																<td colspan="5"><c:forEach items="${ fileList }"
-																		var="file">
-																		<a href="#" onclick="submit(); return false;"> <input
-																			type="hidden" value="${ file.fileSaveName }">
-																			${ file.fileOriName }
-																		</a>
-																	&nbsp;(${ file.fileSize })bytes<br>
-																	</c:forEach></td>
-															</tr>
-															<tr>
-																<th width="15%">미리보기</th>
-																<td colspan="5"><c:forEach items="${ fileList }"
-																		var="file">
-																		<img src="/Mission-Web/upload/${ file.fileSaveName }"
-																			style="max-width: 200px">
-																	&nbsp;&nbsp;
-																</c:forEach></td>
-															</tr>
+														<c:if test="${ not empty noticeVO.filePath }">
+														<tr>
+															<td colspan="3">
+																<div class="text-left">
+																	<i class="fa fa-file"></i>&nbsp;
+																	<a href="#">
+																		<span class="text-muted">${ fileVO.fileOriName } (${ fileVO.fileSize }KB)</span>
+																	</a>
+																</div>
+															</td>
+														</tr>
 														</c:if>
 													</table>
 												</form>
@@ -278,5 +257,21 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+		
+<script type="text/javascript">
+	function doAction(btn, type) {
+		switch (btn) {
+		case 'L':
+			if (type == 'A') {
+				location.href = "${ pageContext.request.contextPath}/community/subway/notice.do";
+			} else if (type == 'B') {
+				location.href = "${ pageContext.request.contextPath}/community/subway/news.do";
+			}
+			break;
+		default:
+			break;
+		}
+	}
+</script>
 </body>
 </html>

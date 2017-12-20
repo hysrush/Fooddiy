@@ -1,10 +1,10 @@
-package kr.co.bit.community.service;
+package kr.co.bit.service;
 
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import kr.co.bit.community.vo.NoticeBoardVO;
+import kr.co.bit.vo.NoticeBoardVO;
 
 
 public interface NoticeService {
@@ -16,5 +16,6 @@ public interface NoticeService {
 	void insertNotice(NoticeBoardVO noticeVO);
 	void modifyNotice(NoticeBoardVO noticeVO);
 	void removeNotice(int no);
+	void removeNoticeSome(List<Integer> list);
 	void updateViewcntNotice(int no, HttpSession session);
 }

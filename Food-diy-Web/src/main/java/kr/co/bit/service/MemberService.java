@@ -1,10 +1,10 @@
-package kr.co.bit.member.service;
+package kr.co.bit.service;
 
 import java.util.List;
 
 import kr.co.bit.sign.vo.LoginVO;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.UserVO;
 
 
 public interface MemberService {

@@ -18,9 +18,9 @@ import kr.co.bit.service.CartService;
 import kr.co.bit.service.CartStoreService;
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.PhoneCertVO;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.CartStoreVO;
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.UserVO;
 
 /**
  * 

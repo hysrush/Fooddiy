@@ -19,10 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.service.CartService;
 import kr.co.bit.service.CartStoreService;
 import kr.co.bit.service.Select_Ing_Service;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.CartStoreVO;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.IngredientsVO;
+import kr.co.bit.vo.UserVO;
 
 @RequestMapping("/menu")
 @Controller

@@ -19,11 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.service.EventService;
 import kr.co.bit.service.StoreService;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.CartStoreVO;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.CityVO;
 import kr.co.bit.vo.StoreVO;
+import kr.co.bit.vo.UserVO;
 import kr.co.bit.vo.locationVO;
 
 @RequestMapping("/store")

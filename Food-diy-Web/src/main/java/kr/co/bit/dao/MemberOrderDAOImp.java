@@ -1,4 +1,4 @@
-package kr.co.bit.member.dao;
+package kr.co.bit.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.member.vo.MemberOrderVO;
+import kr.co.bit.vo.MemberOrderVO;
 
 
 @Repository

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.bit.service.CartService;
 import kr.co.bit.service.CartStoreService;
 import kr.co.bit.service.OrderService;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.OrderVO;
+import kr.co.bit.vo.UserVO;
 
 @RequestMapping("/order")
 @Controller

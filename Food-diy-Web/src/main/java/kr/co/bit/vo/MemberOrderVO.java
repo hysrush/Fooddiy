@@ -1,4 +1,4 @@
-package kr.co.bit.member.vo;
+package kr.co.bit.vo;
 
 import java.util.List;
 

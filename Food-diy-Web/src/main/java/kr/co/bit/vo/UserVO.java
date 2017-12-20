@@ -1,4 +1,4 @@
-package kr.co.bit.user.vo;
+package kr.co.bit.vo;
 
 public class UserVO {
 	
