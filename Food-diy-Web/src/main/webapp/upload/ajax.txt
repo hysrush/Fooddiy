@@ -1,0 +1,42 @@
+<script>
+/* 
+function myMenu(){
+	
+	var id = ${ cart.id };
+	var name = ${ cart.name };
+	var price = ${ cart.price };
+	var size = ${ cart.size };
+	var pic = ${ cart.pic };
+	var bread = ${ cart.bread };
+	var cheese = ${ cart.cheese };
+	var topping = ${ cart.topping };
+	var vegetable = ${ cart. };
+	var sauce =
+		
+	
+	
+	$.ajax({
+		url : ,
+		type : 'post',
+		data : {
+			id : 'id',
+			name : 'name',
+			price : 'price',
+			size : 'size',
+			pic : 'pic',
+			bread : 'bread',
+			cheese : 'cheese',
+			topping : 'topping',
+			vegetable : 'vegetable',
+			sauce : 'sauce'
+			
+		},
+		success : function(){
+			
+		}
+
+	});
+}
+
+ */
+</script>

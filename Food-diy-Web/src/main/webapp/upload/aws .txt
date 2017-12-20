@@ -1,0 +1,10 @@
+ << 호스트이름>>
+
+myfooddiydb.c9whzhikouap.ap-northeast-2.rds.amazonaws.com
+
+
+ SID = ORCL
+
+사용자이름 hysrush
+
+비밀번호 woals9437

@@ -19,7 +19,9 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="modal-header ">
+
+
+	<div class="modal-header ">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		<h4 class="modal-title" id="largeModalLabel">MENU</h4>
 	</div>
@@ -30,42 +32,56 @@ $(document).ready(function(){
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th  style="text-align: center" colspan="2"><h4>주문 정보</h4> </th>
+					<th  style="text-align: center" colspan="2"><h4>주문 결제정보</h4> </th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr >
-					<th width="15%">메뉴 사진</th>
-					<td><img style="width: 100%" src="${ cartList.pic}"/></td>
-			
+					<th width="9%">주문번호</th>
+					<td>${ member.no }</td>
+				</tr>
+				<tr>
+					<th>주문시간</th>
+					<td>${ member.regDate }</td>
+				</tr>
+				<tr>
+					<th>결제방법</th>
+					<td>${ member.payment }</td>
+				</tr>
+				<tr>
+					<th>결제금액</th>
+					<td class = "commaN">${ member.final_price }원</td>
+				</tr>
 			</tbody>
 		</table>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th width="15%">메뉴</th>
-						<th width="62%">주문옵션</th>
+						<th width="9%">메뉴</th>
+						<th>주문옵션</th>
 						<th>수량</th>
 						<th>합계금액</th>
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach items="${ member.detailOrderList }" var="oneMenu">
 						<tr >
 							<td>
-								${ cartList.name} <br>
-								${ cartList.size} <br>
+								${ oneMenu.name} <br>
+								${ oneMenu.size} <br>
 							</td>
 							<td>
-								${ cartList.bread}	<br>
-								${ cartList.cheese}	<br>
-								${ cartList.topping}	<br>
-								${ cartList.vegetable}	<br>
-								${ cartList.sauce}	<br>
-								${ cartList.requirement}
+								${ oneMenu.bread}	<br>
+								${ oneMenu.cheese}	<br>
+								${ oneMenu.topping}	<br>
+								${ oneMenu.vegetable}	<br>
+								${ oneMenu.sauce}	<br>
+								${ oneMenu.requirement}
 							</td>
-							<td>${ cartList.qty}</td>
-							<td class = "commaN">${ cartList.total_price }원</td>
+							<td>${ oneMenu.qty}</td>
+							<td class = "commaN">${ oneMenu.total_price }원</td>
 						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 							<div class="modal-footer" >

@@ -94,7 +94,7 @@
 							<div class="col-md-12">
 								<ul class="breadcrumb">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
-									<li class="active">나의 문의사항</li>
+									<li class="active"><h3>나의 문의사항</h3></li>
 								</ul>
 							</div>
 						</div>
@@ -141,6 +141,14 @@
 								<br>
 								<form action="/Mission-Web/fileDownload" method="post" id="dForm">
 									<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th width="15%">메뉴</th>
+													<th width="62%">주문옵션</th>
+													<th>수량</th>
+													<th>합계금액</th>
+												</tr>
+											</thead>
 										<tr>
 											<!-- 타입 -->
 											<c:if test="${ claimVO.type eq 'I'}"><td>문의</td></c:if>
