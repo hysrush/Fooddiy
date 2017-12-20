@@ -39,7 +39,7 @@
 			 	<c:choose>
        				<c:when test="${loginVO.id == snsVO.id}">
           
-					<input type="button" class="btn btn-primary"  onclick="action('E', ${snsVO.no})" value="수정"/>
+					<input type="button" class="btn btn-primary"  onclick="action('E', ${snsVO.no}, '${loginVO.id}')" value="수정"/>
 					<input type="button" class="btn btn-primary"  onclick="action('D', ${snsVO.no})" value="삭제"/>		
        				</c:when>
 				</c:choose> 
@@ -154,10 +154,10 @@
 					</div>
     
     <script>
-	function action(type, no) {
+	function action(type, no,id) {
 		switch (type) {
 		case 'E':
-			location.href = '${ pageContext.request.contextPath}/community/snsModifyForm.do?no=' + no;
+			location.href = '${ pageContext.request.contextPath}/community/snsModifyForm.do?no='+no +'&id='+ id;
 			break;
 		case 'D':
 			location.href = '${ pageContext.request.contextPath}/community/deleteSns.do?no=' + no;
