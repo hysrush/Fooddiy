@@ -116,9 +116,6 @@
 			var name = name;
 			console.log(name);
 	
-			
-			
-			
 		//alert('선택한 매장명 : ' + data);
 		
 		
