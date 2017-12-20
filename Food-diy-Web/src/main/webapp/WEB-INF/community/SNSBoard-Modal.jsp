@@ -114,7 +114,11 @@
 											</div>
 												<p><strong>${repList.id }</strong></p>
 											<span class="pull-right">
-												<span> <a href="#"><i class="fa fa-reply"></i>Update</a></span>
+												<c:choose>
+       												<c:when test="${loginVO.id == repList.id}">
+														<span> <button onclick="repDel('D', ${repList.repNo})"><i class="fa fa-reply"></i>삭제</button></span>
+													</c:when>
+												</c:choose>		
 											</span>
 												<p><strong>${repList.content }</strong>
 											<span class="date pull-right">${repList.regDate }</span>
@@ -166,6 +170,18 @@
 			break;
 		}
     }
+	
+	function repDel(type, no) {
+		switch (type) {
+		case 'D':
+			location.href = '${ pageContext.request.contextPath}/community/deleteRep.do?no=' +no;
+			break;
+		default:
+			break;
+		}
+    }
+	
+	
 	
 	
 	// 삭제 alert창

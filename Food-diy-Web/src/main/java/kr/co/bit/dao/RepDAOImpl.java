@@ -36,8 +36,8 @@ public class RepDAOImpl implements RepDAO {
 	}
 
 	@Override
-	public void delete(int repNo) {
-		// TODO Auto-generated method stub
+	public void deleteRep(int no) {
+		sqlSession.delete(url + "deleteReply" , no);
 		
 	}
 
