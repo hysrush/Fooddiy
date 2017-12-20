@@ -2,8 +2,8 @@ package kr.co.bit.dao;
 
 import java.util.List;
 
-import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.vo.CityVO;
+import kr.co.bit.vo.StoreVO;
 
 public interface StoreDAO {
 

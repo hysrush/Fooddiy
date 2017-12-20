@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.vo.CityVO;
+import kr.co.bit.vo.StoreVO;
 
 @Repository
 public class StoreDAOImpl implements StoreDAO {

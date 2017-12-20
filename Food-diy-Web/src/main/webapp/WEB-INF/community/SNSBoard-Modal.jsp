@@ -39,7 +39,7 @@
 			 	<c:choose>
        				<c:when test="${loginVO.id == snsVO.id}">
           
-					<input type="button" class="btn btn-primary"  onclick="action('E', ${snsVO.no})" value="수정"/>
+					<input type="button" class="btn btn-primary"  onclick="action('E', ${snsVO.no}, '${loginVO.id}')" value="수정"/>
 					<input type="button" class="btn btn-primary"  onclick="action('D', ${snsVO.no})" value="삭제"/>		
        				</c:when>
 				</c:choose> 
@@ -77,44 +77,26 @@
 							
 								<div class = "row">
 									<table class="table">  <!--  DB에서 재료정보 받아오는 테이블  -->
-										<thead>
-											<tr>
-												<th>
-													메뉴 이름
-												</th>
-												<th>
-													빵 
-												</th>
-												<th>
-													야채, 토핑  
-												</th>
-												
-												<th>
-													소스
-												</th>
-											</tr>
-										</thead>
 										<tbody>
-											<tr>
-												<td>
-													${snsVO.name}
-												</td>
-												<td>
-													${snsVO.bread}   
-												</td>
-												<td>
-													야채 : ${ snsVO.vegetable } &nbsp;&nbsp;&nbsp; 토핑: ${snsVO.topping }
-												</td>
-												<td>
-													${snsVO.sauce }
-												</td>
-												
-											</tr>
-											
+																
+										  <tr>
+					                        <td width="15%"><strong> 메뉴이름</strong></td>
+					                        <td>${snsVO.name}</td>
+					                      </tr>                 
+					                      <tr>
+					                      	<td><strong>빵 </strong></td>
+					                        <td>${snsVO.bread}</td>
+					                      </tr>
+					                      <tr>
+					                       	<td><strong>야채, 토핑 </strong></td>
+					                        <td>야채 : ${ snsVO.vegetable }<br/>
+					                        	 토핑: ${snsVO.topping }</td>
+					                      </tr>
+					                      <tr>
+					                        <td><strong>소스</strong></td>
+					                        <td>${snsVO.sauce }</td>
 										</tbody>
 									</table>
-								
-								
 								</div>
 							<div class="comment">
 							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:80%"/>
@@ -132,7 +114,11 @@
 											</div>
 												<p><strong>${repList.id }</strong></p>
 											<span class="pull-right">
-												<span> <a href="#"><i class="fa fa-reply"></i>Update</a></span>
+												<c:choose>
+       												<c:when test="${loginVO.id == repList.id}">
+														<span> <button onclick="repDel('D', ${repList.repNo})"><i class="fa fa-reply"></i>삭제</button></span>
+													</c:when>
+												</c:choose>		
 											</span>
 												<p><strong>${repList.content }</strong>
 											<span class="date pull-right">${repList.regDate }</span>
@@ -172,10 +158,10 @@
 					</div>
     
     <script>
-	function action(type, no) {
+	function action(type, no,id) {
 		switch (type) {
 		case 'E':
-			location.href = '${ pageContext.request.contextPath}/community/snsModifyForm.do?no=' + no;
+			location.href = '${ pageContext.request.contextPath}/community/snsModifyForm.do?no='+no +'&id='+ id;
 			break;
 		case 'D':
 			location.href = '${ pageContext.request.contextPath}/community/deleteSns.do?no=' + no;
@@ -184,6 +170,18 @@
 			break;
 		}
     }
+	
+	function repDel(type, no) {
+		switch (type) {
+		case 'D':
+			location.href = '${ pageContext.request.contextPath}/community/deleteRep.do?no=' +no;
+			break;
+		default:
+			break;
+		}
+    }
+	
+	
 	
 	
 	// 삭제 alert창

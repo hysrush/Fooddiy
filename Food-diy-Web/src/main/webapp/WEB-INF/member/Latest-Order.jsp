@@ -26,48 +26,79 @@
 		<meta name="author" content="okler.net">
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="${ pageContext.request.contextPath}/resources/img/favicon.ico" type="image/x-icon" />
-		<link rel="apple-touch-icon" href="${ pageContext.request.contextPath}/resources/img/apple-touch-icon.png">
+<link rel="shortcut icon"
+	href="${ pageContext.request.contextPath}/resources/img/favicon.ico"
+	type="image/x-icon" />
+<link rel="apple-touch-icon"
+	href="${ pageContext.request.contextPath}/resources/img/apple-touch-icon.png">
 
-		<!-- Mobile Metas -->
-		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Mobile Metas -->
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<!-- Web Fonts  -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+<!-- Web Fonts  -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light"
+	rel="stylesheet" type="text/css">
 
-		<!-- Vendor CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/animate/animate.min.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/simple-line-icons/css/simple-line-icons.min.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.carousel.min.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.theme.default.min.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.min.css">
+<!-- Vendor CSS -->
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/animate/animate.min.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/simple-line-icons/css/simple-line-icons.min.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/assets/owl.theme.default.min.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.min.css">
 
-		<!-- Theme CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme-elements.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme-blog.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/theme-shop.css">
+<!-- Theme CSS -->
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/theme.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/theme-elements.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/theme-blog.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/theme-shop.css">
 
-		<!-- Current Page CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/settings.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/navigation.css">
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/css/component.css">
+<!-- Current Page CSS -->
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/settings.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/layers.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/css/navigation.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/css/component.css">
 
-		<!-- Skin CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/skins/skin-shop-9.css"> 
+<!-- Skin CSS -->
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/skins/skin-shop-9.css">
 
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
+<!-- Theme Custom CSS -->
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
-		<!-- Head Libs -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
+<!-- Head Libs -->
+<script
+	src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
+<!-- Theme Custom CSS -->
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
 
 <script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
@@ -196,7 +227,7 @@ $(document).ready(function(){
 			        swal("주문이 취소되었습니다!", "", "success");
 			        // OK 누르면 삭제 실행
 			        $('.confirm').click(function () {
-			        	location.href = '${ pageContext.request.contextPath}/member/orderCancel.do?no=' + no;
+			        	location.href = '${ pageContext.request.contextPath}/orderManagement/orderCancel.do?no=' + no;
 					});
 			    });
 			}
@@ -208,18 +239,12 @@ $(document).ready(function(){
 					orderCancel(no);
 				});
 			});
+			
 });
 
-function modalFunc(no) {
-	var url = "${pageContext.request.contextPath}/member/todayOrderDetail.do?no=" + no;
-	$('div.modal').modal().removeData();
-    $('div.modal').modal({ remote : url  });
-}
+ 
+
 </script>
-
-
-
-
 </head>
 <body>
 	<div class="body">
@@ -319,17 +344,22 @@ function modalFunc(no) {
 													</c:otherwise>
 													</c:choose>
 													</c:forEach>
-													<td>${ order.no }</td>
+													
+													<td class="convType orderNumber" id="no" width="100px;">
+				                                    	${ order.no }
+			                                  		</td>
 													<td>
-														<a onclick = "modalFunc(${ order.no })">
-														
-														<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" varStatus="status">
+													<div data-toggle="modal">
+													<a onclick="modal('${ order.no }')"> 
+													<!-- <div class="input-group date col-md-12" data-toggle="modal" data-target="#formModal"> -->
+														<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" >
 															${ oneOrder.name }
-															
-															
-															<c:if test="${ !status.last }">, </c:if>
 														</c:forEach>
-														</a>
+													</a> 
+													
+													</div>
+														<%-- <jsp:include page="/resources/include/member/todayOrderDetail.jsp"></jsp:include>  --%>
+													
 			                                   		</td>
 													<td width="10%" nowrap>
 														${ order.id }
@@ -341,6 +371,7 @@ function modalFunc(no) {
 													<td><span class="orderStatus label label-primary">${ order.orderStatus }</span></td>		
 													<td class = "cancel-button"></td>									
 											</tr>
+											
 										</c:forEach>
 										</c:when>
 										<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
@@ -356,57 +387,103 @@ function modalFunc(no) {
 		</div>
 	</div>
 </div>
-
-	<!-- 모달 -->
-	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<!-- 모달내용 -->
-	
-		 	</div>
-			</div>
-	</div>
-
 	<!-- ---------------------------------------------------------------------------------------------- -->
-		<footer id="footer" class="footer">
-			<jsp:include page="/resources/include/bottom.jsp"/>
-		</footer>
+	<footer class="light visible-lg" id="footer">
+		<jsp:include page="/resources/include/bottom.jsp"/>
+	</footer>
+	
+	<footer class="light hidden-lg" id="footer">
+		<jsp:include page="/resources/include/mobile-bottom.jsp"/>
+	</footer>
+	
+	<!-- 모달들 -->
+   <div class="modal fade" tabindex="-1" role="dialog"
+      aria-labelledby="largeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+            <!-- 모달내용 -->
+         </div>
+      </div>
+   </div>
 
-		<!-- Vendor -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/common/common.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/isotope/jquery.isotope.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
-		
-		<!-- Theme Base, Components and Settings -->
-		<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
-		
-		<!-- Current Page Vendor and Views -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
-		
-		<!-- Current Page Vendor and Views -->
-		<script src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script>
 
-		<!-- Demo -->
-		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
-		
-		<!-- Theme Custom -->
-		<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
-		
-		<!-- Theme Initialization Files -->
-		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+
+<script>
+function modal(menuNo) {
+    $('div.modal').modal().removeData(); 
+   var url = '${ pageContext.request.contextPath}/member/todayOrderDetail.do?no=' + menuNo;
+   $('div.modal').modal({ remote : url });
+}   
+
+
+
+</script>
+	<!-- Vendor -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/common/common.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/isotope/jquery.isotope.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
+
+	<!-- Theme Base, Components and Settings -->
+	<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
+
+	<!-- Current Page Vendor and Views -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+
+	<!-- Current Page Vendor and Views -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script>
+
+	<!-- Demo -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
+
+	<!-- Theme Custom -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
+
+	<!-- Theme Initialization Files -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+
+ 	<!-- Mainly scripts -->
+	<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/js/jquery.metisMenu.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/js/jquery.slimscroll.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="${ pageContext.request.contextPath}/resources/js/inspinia.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/js/pace.min.js"></script>
 
 </body>
 </html>

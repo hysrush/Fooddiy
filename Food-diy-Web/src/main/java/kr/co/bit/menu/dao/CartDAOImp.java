@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.menu.vo.CartVO;
+import kr.co.bit.vo.CartVO;
 
 
 @Repository

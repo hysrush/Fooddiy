@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.menu.vo.CartStoreVO;
+import kr.co.bit.vo.CartStoreVO;
 
 @Repository
 public class CartStoreDAOImp implements CartStoreDAO {

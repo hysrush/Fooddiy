@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.member.dao.MemberDAO;
-import kr.co.bit.menu.vo.CartVO;
 import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.CartVO;
 
 
 @Service

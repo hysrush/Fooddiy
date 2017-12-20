@@ -2,7 +2,7 @@ package kr.co.bit.menu.service;
 
 import java.util.List;
 
-import kr.co.bit.menu.vo.CartStoreVO;
+import kr.co.bit.vo.CartStoreVO;
 
 public interface CartStoreService  {
 	

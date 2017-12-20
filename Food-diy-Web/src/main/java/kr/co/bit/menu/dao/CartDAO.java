@@ -2,7 +2,7 @@ package kr.co.bit.menu.dao;
 
 import java.util.List;
 
-import kr.co.bit.menu.vo.CartVO;
+import kr.co.bit.vo.CartVO;
 
 public interface CartDAO {
 	

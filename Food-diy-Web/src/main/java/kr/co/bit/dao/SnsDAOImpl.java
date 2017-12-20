@@ -6,8 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.event.vo.EventBoardVO;
-import kr.co.bit.event.vo.PagingVO;
+import kr.co.bit.vo.PagingVO;
 import kr.co.bit.vo.SnsBoardVO;
 
 @Repository
