@@ -1,8 +1,8 @@
-package kr.co.bit.community.dao;
+package kr.co.bit.dao;
 
 import java.util.List;
 
-import kr.co.bit.community.vo.NoticeBoardVO;
+import kr.co.bit.vo.NoticeBoardVO;
 
 
 public interface NoticeDAO {
@@ -14,5 +14,6 @@ public interface NoticeDAO {
 	void insert(NoticeBoardVO noticeVO);
 	void update(NoticeBoardVO noticeVO);
 	void delete(int no);
+	void deleteSome(List<Integer> list);
 	void addViewcnt(int no);
 }

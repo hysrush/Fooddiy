@@ -1,4 +1,4 @@
-package kr.co.bit.community.service;
+package kr.co.bit.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.bit.community.dao.NoticeDAO;
-import kr.co.bit.community.vo.NoticeBoardVO;
+import kr.co.bit.dao.NoticeDAO;
+import kr.co.bit.vo.NoticeBoardVO;
 
 @Service
 public class NoticeServiceImp implements NoticeService {
@@ -49,6 +49,11 @@ public class NoticeServiceImp implements NoticeService {
 	@Override
 	public void removeNotice(int no) {
 		noticeDAO.delete(no);
+	}
+	// Notice 글 다중 삭제
+	@Override
+	public void removeNoticeSome(List<Integer> list) {
+		noticeDAO.deleteSome(list);
 	}
 	// Notice 조회수 증가
 	@Override
