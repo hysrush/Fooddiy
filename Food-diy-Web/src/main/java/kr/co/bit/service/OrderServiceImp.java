@@ -1,4 +1,4 @@
-package kr.co.bit.order.service;
+package kr.co.bit.service;
 
 import java.util.List;
 

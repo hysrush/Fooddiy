@@ -1,4 +1,4 @@
-package kr.co.bit.menu.controller;
+package kr.co.bit.control;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.event.vo.StoreVO;
 import kr.co.bit.menu.service.MenuService;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.MenuVO;
 

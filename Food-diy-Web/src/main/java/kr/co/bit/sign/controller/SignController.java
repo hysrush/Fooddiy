@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.bit.menu.service.CartService;
-import kr.co.bit.menu.service.CartStoreService;
+import kr.co.bit.service.CartService;
+import kr.co.bit.service.CartStoreService;
 import kr.co.bit.sign.service.SignService;
 import kr.co.bit.sign.vo.PhoneCertVO;
 import kr.co.bit.user.vo.UserVO;
