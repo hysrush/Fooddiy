@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.bit.sign.service.SignService;
+import kr.co.bit.service.SignService;
 
 @RequestMapping({"/main"})
 @Controller

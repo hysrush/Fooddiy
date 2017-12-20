@@ -23,13 +23,13 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.community.service.ClaimService;
-import kr.co.bit.community.vo.ClaimBoardVO;
 import kr.co.bit.service.CartService;
+import kr.co.bit.service.ClaimService;
 import kr.co.bit.service.MemberOrderService;
 import kr.co.bit.service.MemberService;
-import kr.co.bit.sign.service.SignService;
+import kr.co.bit.service.SignService;
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.ClaimBoardVO;
 import kr.co.bit.vo.DetailOrderVO;
 import kr.co.bit.vo.MemberOrderVO;
 import kr.co.bit.vo.UserVO;
