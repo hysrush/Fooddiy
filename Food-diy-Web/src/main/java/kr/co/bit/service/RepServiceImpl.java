@@ -37,8 +37,8 @@ public class RepServiceImpl implements RepService{
 	}
 
 	@Override
-	public void delete(int repNo) {
-		// TODO Auto-generated method stub
+	public void deleteRep(int no) {
+		repDAO.deleteRep(no);
 		
 	}
 

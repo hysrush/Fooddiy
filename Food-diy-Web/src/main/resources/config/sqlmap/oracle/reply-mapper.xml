@@ -38,6 +38,12 @@
         WHERE SNS_NO = #{no} 
         ORDER BY REP_NO-->
 
+	<delete id ="deleteReply" parameterType ="int">
+		DELETE T_REP
+		WHERE REP_NO = #{no}
+	</delete>
+
+
 
 
 </mapper>

@@ -341,12 +341,16 @@ public class SnsController {
 		        
 		    }
 
-		
-
+		  @RequestMapping(value="/deleteRep")
+		  public String deleteRep(@RequestParam("no")int no) {
 		  
+			  repService.deleteRep(no);
 		
-		
-		
-	
+		  return "redirect:/community/snsPage.do";
+		  
+		  }
+		  	
+				
+			
 	
 }
