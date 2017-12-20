@@ -6,7 +6,7 @@
 
 <configuration>
 	<typeAliases>
-	  	<typeAlias type="kr.co.bit.user.vo.UserVO" alias="userVO"/>
+	  	<typeAlias type="kr.co.bit.vo.UserVO" alias="userVO"/>
 	  	<typeAlias type="kr.co.bit.vo.CityVO"  alias="cityVO"/>
 	  	<typeAlias type="kr.co.bit.vo.locationVO"  alias="locationVO"/>
 	  	<typeAlias type="kr.co.bit.vo.StoreVO"  alias="storeVO"/>
@@ -21,7 +21,7 @@
 	  	<typeAlias type="kr.co.bit.vo.SnsBoardVO" alias="snsVO"/>
 	  	<typeAlias type="kr.co.bit.vo.SnsRepVO" alias="snsRepVO"/>
 	  	<typeAlias type="kr.co.bit.vo.OrderVO" alias="orderVO"/>
-	  	<typeAlias type="kr.co.bit.member.vo.MemberOrderVO" alias="MemberOrderVO"/>
+	  	<typeAlias type="kr.co.bit.vo.MemberOrderVO" alias="MemberOrderVO"/>
 	  	<typeAlias type="kr.co.bit.vo.CartStoreVO" alias="cartStoreVO"/>
 	</typeAliases>
 </configuration>
