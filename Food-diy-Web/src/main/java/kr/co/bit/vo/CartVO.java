@@ -3,8 +3,6 @@ package kr.co.bit.vo;
 import java.io.Serializable;
 import java.util.List;
 
-import kr.co.bit.member.vo.DetailOrderVO;
-
 public class CartVO implements Serializable{
 	
 	private int no;

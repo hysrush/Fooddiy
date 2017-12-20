@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div role="main" class="main">
-	<div class= "container" style="bord"><br/>
-		<div class="row">
+	<div class= "container"><br/>
+		<div class="row"  style="max-height: 760px;">
 			<div class="col-sm-3 main">
 				<!-- 동영상 -->
 					<div class="col-sm-12 main">
@@ -58,14 +58,15 @@
 							</tr>
 							<tr>
 								<td>
+									<img width="100%" src="${ pageContext.request.contextPath }/resources/img/Left_bn_20130903.jpg"/>
 								</td>
 							</tr>
 						</table>
 					</div>
 				</div>
-				<!--  슬라이드 -->
+				<!--  슬라이드 --><br/>
 				<div class="col-sm-6 main">
-					<table style="max-height: 729px;">
+					<table>
 						<tr>
 							<td>
 								<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -86,13 +87,13 @@
 								</div>
 								<div class="item">
 									<img style="width:100%"
-										src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
+										src="${ pageContext.request.contextPath }/resources/img/main/new_product_20171110 (1).jpg"
 										alt="">
 									<div class="carousel-caption"></div>
 								</div>
 								<div class="item">
 									<img style="width:100%"
-										src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
+										src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
 										alt="">
 									<div class="carousel-caption"></div>
 								</div>
@@ -121,21 +122,26 @@
 						</a>
 					</div>
 					<!-- SNS정보 -->
-					<div class="col-sm-12 main"><br/>
+					<div class="col-sm-12 main" style=" text-overflow:ellipsis; overflow:hidden"><br/>
 						<table style="width: 100%">
 							<tr style="border-bottom: 1px solid olive;">
-								<td colspan="2">
+								<td >
 									<strong style="font-style: italic; font-size: 15px;">Subway-SNS</strong>
+								</td>
+								<td colspan="2">
+									<span style="display: inline-table; align: right; font-size: 11px;">
+										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do"> +more</a>
+									</span>
 								</td>
 							</tr>
 							<c:forEach items="${ sns }" var="s">
 								<tr style="border-bottom: 1px solid olive;">
-									<td>${ s.id }</td>
+									<td><strong style="font-size: 11px;">${ s.id }</strong></td>
 									<td colspan="2">추천수 ${ s.like }</td>
 								</tr>
 								<tr style="border-bottom: 1px solid olive;">
 									<td style="width: 100px;">
-										<a href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
+										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
 											<img style="width:100%" src="../upload/${ s.fileName }" alt="Loading...">
 										</a>
 									</td>
