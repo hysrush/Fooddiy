@@ -19,8 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.menu.service.MenuService;
-import kr.co.bit.menu.vo.CartVO;
-import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.MenuVO;
 
 @Controller
 @RequestMapping("/menu")

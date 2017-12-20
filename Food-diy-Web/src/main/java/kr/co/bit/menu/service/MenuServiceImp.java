@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.menu.dao.MenuDAO;
-import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.vo.MenuVO;
 
 @Service
 public class MenuServiceImp implements MenuService {

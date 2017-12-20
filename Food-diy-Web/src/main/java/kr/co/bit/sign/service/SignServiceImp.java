@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import kr.co.bit.sign.dao.SignDAO;
 import kr.co.bit.sign.vo.MailVO;
 import kr.co.bit.sign.vo.PhoneCertVO;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.util.MailKey;
+import kr.co.bit.vo.UserVO;
 
 @Service
 public class SignServiceImp implements SignService {

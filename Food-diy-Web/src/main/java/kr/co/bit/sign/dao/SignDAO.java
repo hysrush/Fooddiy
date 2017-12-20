@@ -3,7 +3,7 @@ package kr.co.bit.sign.dao;
 import java.util.List;
 import java.util.Map;
 
-import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.UserVO;
 
 public interface SignDAO {
 	

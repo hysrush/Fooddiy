@@ -13,7 +13,7 @@ public interface RepService {
     // 댓글 수정
     public void update(SnsRepVO vo);
     // 댓글 삭제
-    public void delete(int repNo);
+    public void deleteRep(int no);
 	
 	
 	

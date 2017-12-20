@@ -28,9 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.bit.community.service.ClaimService;
 import kr.co.bit.community.vo.ClaimBoardVO;
 import kr.co.bit.service.EventService;
-import kr.co.bit.user.vo.UserVO;
 import kr.co.bit.vo.CityVO;
 import kr.co.bit.vo.StoreVO;
+import kr.co.bit.vo.UserVO;
 
 @RequestMapping("/community")
 @Controller
