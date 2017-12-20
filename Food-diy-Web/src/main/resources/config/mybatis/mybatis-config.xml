@@ -15,13 +15,13 @@
 	  	<typeAlias type="kr.co.bit.community.vo.QnaBoardVO" alias="qnaVO"/>
 	  	<typeAlias type="kr.co.bit.community.vo.NoticeBoardVO" alias="noticeVO"/>
 	  	<typeAlias type="kr.co.bit.community.vo.ClaimBoardVO" alias="claimVO"/>
-	  	<typeAlias type="kr.co.bit.menu.vo.MenuVO" alias="menuVO"/>
-	  	<typeAlias type="kr.co.bit.menu.vo.IngredientsVO" alias="ingVO"/>
-	  	<typeAlias type="kr.co.bit.menu.vo.CartVO" alias="cartVO"/>
+	  	<typeAlias type="kr.co.bit.vo.MenuVO" alias="menuVO"/>
+	  	<typeAlias type="kr.co.bit.vo.IngredientsVO" alias="ingVO"/>
+	  	<typeAlias type="kr.co.bit.vo.CartVO" alias="cartVO"/>
 	  	<typeAlias type="kr.co.bit.vo.SnsBoardVO" alias="snsVO"/>
 	  	<typeAlias type="kr.co.bit.vo.SnsRepVO" alias="snsRepVO"/>
-	  	<typeAlias type="kr.co.bit.order.vo.OrderVO" alias="orderVO"/>
+	  	<typeAlias type="kr.co.bit.vo.OrderVO" alias="orderVO"/>
 	  	<typeAlias type="kr.co.bit.member.vo.MemberOrderVO" alias="MemberOrderVO"/>
-	  	<typeAlias type="kr.co.bit.menu.vo.CartStoreVO" alias="cartStoreVO"/>
+	  	<typeAlias type="kr.co.bit.vo.CartStoreVO" alias="cartStoreVO"/>
 	</typeAliases>
 </configuration>
