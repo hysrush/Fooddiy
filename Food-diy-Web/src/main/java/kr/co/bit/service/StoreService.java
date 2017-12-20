@@ -2,8 +2,8 @@ package kr.co.bit.service;
 
 import java.util.List;
 
-import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.vo.CityVO;
+import kr.co.bit.vo.StoreVO;
 
 public interface StoreService {
 

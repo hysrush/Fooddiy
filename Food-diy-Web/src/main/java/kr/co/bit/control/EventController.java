@@ -1,4 +1,4 @@
-package kr.co.bit.event.control;
+package kr.co.bit.control;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.event.service.EventService;
-import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.EventBoardVO;
-import kr.co.bit.event.vo.PagingVO;
-import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.service.EventService;
+import kr.co.bit.vo.CityVO;
+import kr.co.bit.vo.EventBoardVO;
+import kr.co.bit.vo.PagingVO;
+import kr.co.bit.vo.StoreVO;
 
 @RequestMapping("/event")
 @Controller

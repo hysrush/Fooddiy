@@ -1,4 +1,4 @@
-package kr.co.bit.event.vo;
+package kr.co.bit.vo;
 
 public class EventBoardVO {
 
