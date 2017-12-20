@@ -34,14 +34,15 @@ public class SignDAOImp implements SignDAO {
 	// 회원가입
 	public void signUp(UserVO memberVO) {
 		
-		// 비회원
+		/*// 비회원
 		if(memberVO.getType().equals("N")) {
 		
 			sql.insert(url+"nonSignUp", memberVO);
 		}else {
 			sql.insert(url+"signUp", memberVO);
 		}
-		
+		*/
+		sql.insert(url+"signUp", memberVO);
 	}
 	
 	public int checkId(String id) {

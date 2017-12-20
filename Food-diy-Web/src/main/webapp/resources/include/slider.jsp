@@ -31,8 +31,8 @@
 										</tr>
 										<c:forEach items="${ notice }" var="n">
 										<tr style="border-bottom: 1px solid olive;">
-											<td colspan="2">
-												<span style="font-size: 12px;" class="heading-primary text-uppercase mb-md">
+											<td colspan="2" style="width: 292px;">
+												<span style="font-size: 12px; text-overflow:ellipsis; overflow:hidden" class="heading-primary text-uppercase mb-md">
 													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">&nbsp;${ n.title }</a>
 												</span>
 											</td>
@@ -114,22 +114,22 @@
 						</tr>
 				</table>
 				</div>
-				<div class="col-sm-3 main" style="text-align: center;">
+				<div class="col-sm-3 main">
 					<!-- 신메뉴  -->
 					<div class="col-sm-12 main">
-						<a style="text-decoration: none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+						<a style="text-decoration: none" href="${ pageContext.request.contextPath }/menu/menuAll.do#recommend">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/main_celeb.jpg" />
 						</a>
 					</div>
 					<!-- SNS정보 -->
-					<div class="col-sm-12 main" style=" text-overflow:ellipsis; overflow:hidden"><br/>
+					<div class="col-sm-12 main" ><br/>
 						<table style="width: 100%">
 							<tr style="border-bottom: 1px solid olive;">
-								<td >
+								<td style="width: 60%">
 									<strong style="font-style: italic; font-size: 15px;">Subway-SNS</strong>
 								</td>
-								<td colspan="2">
-									<span style="display: inline-table; align: right; font-size: 11px;">
+								<td>
+									<span style="display: inline-table; align-content : center; font-size: 11px;">
 										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do"> +more</a>
 									</span>
 								</td>
@@ -137,17 +137,19 @@
 							<c:forEach items="${ sns }" var="s">
 								<tr style="border-bottom: 1px solid olive;">
 									<td><strong style="font-size: 11px;">${ s.id }</strong></td>
-									<td colspan="2">추천수 ${ s.like }</td>
+									<td><strong style="font-size: 11px;">추천수 ${ s.like }</strong></td>
 								</tr>
 								<tr style="border-bottom: 1px solid olive;">
-									<td style="width: 100px;">
+									<td>
 										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
 											<img style="width:100%" src="../upload/${ s.fileName }" alt="Loading...">
 										</a>
 									</td>
-									<td colspan="2">
-										<strong> ${ s.title }</strong><br/>
-										<small>${ s.content }</small>
+									<td>
+										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
+											<strong> ${ s.title }</strong><br/>
+											<small>${ s.content }</small>
+										</a>
 									</td>
 								</tr>
 						</c:forEach>
@@ -155,7 +157,7 @@
 					</div>
 					<!-- 매장 찾기 -->
 					<div class="col-sm-12">
-						<br/><br/>
+						<br/>
 						<a href="${ pageContext.request.contextPath }/store/findStore">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 						</a>

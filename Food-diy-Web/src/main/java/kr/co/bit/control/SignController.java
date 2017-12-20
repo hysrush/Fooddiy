@@ -83,6 +83,7 @@ public class SignController {
 		phoneCert.setType("U");
 		phoneCert.setFile("null");
 		
+		System.out.println(phoneCert.toString());
 		signServiceImp.signUp(phoneCert);
 		
 		// 회원가입 후 자동 로그인
