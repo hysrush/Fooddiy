@@ -87,7 +87,7 @@
 		<!--  게시물 수정  -->
 	<update id = "updateSns" parameterType = "snsVO" >
 			UPDATE T_SNS
-			SET  SNS_TITLE = #{title}, SNS_CONTENT = #{content}, SNS_FILENAME = #{fileName}
+			SET  SNS_TITLE = #{title}, SNS_CONTENT = #{content}, SNS_FILENAME = #{fileName}, MENU_NAME = #{name}, MENU_BREAD = #{bread}, MENU_CHEESE = #{cheese}, MENU_TOPPING = #{topping}, MENU_VEGETABLE = #{vegetable} , MENU_SAUCE = #{sauce}
 			WHERE SNS_NO = #{no}		
 	
 	</update>

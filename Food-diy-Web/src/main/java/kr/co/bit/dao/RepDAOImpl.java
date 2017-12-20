@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.event.vo.PagingVO;
+import kr.co.bit.vo.PagingVO;
 import kr.co.bit.vo.SnsRepVO;
 
 @Repository
@@ -36,8 +36,8 @@ public class RepDAOImpl implements RepDAO {
 	}
 
 	@Override
-	public void delete(int repNo) {
-		// TODO Auto-generated method stub
+	public void deleteRep(int no) {
+		sqlSession.delete(url + "deleteReply" , no);
 		
 	}
 

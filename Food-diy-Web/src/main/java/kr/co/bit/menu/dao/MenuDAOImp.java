@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.menu.vo.MenuVO;
+import kr.co.bit.vo.MenuVO;
 
 @Repository
 public class MenuDAOImp implements MenuDAO {

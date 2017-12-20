@@ -112,6 +112,13 @@
 
 <script type="text/javascript">
 
+
+	/* function goOrderName(name){
+			var name = name;
+			console.log(name);
+	
+		//alert('선택한 매장명 : ' + data); */
+
 	function goOrderName(name , bread , cheese , topping , vegetable , sauce){
 		console.log(name + ',' + bread + ',' + cheese + ',' + topping + ',' + vegetable + ',' + sauce);
 		
@@ -122,8 +129,8 @@
 		$('#vegetable').val(vegetable);
 		$('#sauce').val(sauce);
 		
-					
-		console.log($('#name'));
+	
+
 		
 		
 		
