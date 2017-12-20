@@ -1,25 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<!DOCTYPE html">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<title> | 최극 주문 내역 | </title>
-
-<meta name="keywords" content="HTML5 Template" />
-<meta name="description" content="Porto - Responsive HTML5 Template">
-<meta name="author" content="okler.net">
-
 		<!-- Basic -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title>Fooddiy-Order</title>	
+		<title>| 최근 주문 내역 | </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -62,6 +51,11 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
 
+		<!-- 이미지 캐러셀 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
 
@@ -69,8 +63,6 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 
-<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 <style type="text/css">
 #div01 {
 	width: 70px;
@@ -79,149 +71,10 @@
 	border-style: solid;
 }
 </style>
-<script>
-$(document).ready(function(){
-	
-	$('table .product-thumbnail').each(function() {
-		
-			$(this).click(function() {
-				
-				var id = $(this).siblings('.id').text();
-				var name = $(this).siblings('.name').text();
-				var price = $(this).siblings('.price').text();
-				var pic = $(this).siblings('.pic').text();
-				var size = $(this).siblings('.size').text();
-				var bread = $(this).siblings('.bread').text();
-				var cheese = $(this).siblings('.cheese').text();
-				var topping = $(this).siblings('.topping').text();
-				var vegetable = $(this).siblings('.vegetable').text();
-				var sauce = $(this).siblings('.sauce').text();
-				
-				//나만의 메뉴 등록
-				$.ajax({
-					url : "${pageContext.request.contextPath }/member/Latest-Order",
-					type : "post",
-					data : {
-						"id" : id,
-						"name" : name,
-						"price" : price,
-						"pic" : pic,
-						"size" : size,
-						"bread" : bread,
-						"cheese" : cheese,
-						"topping" : topping,
-						"vegetable" : vegetable,
-						"sauce" : sauce
-					},
-					success : function(data) {
-						swal(data);
-					}
-				});
-			});
-		});
-	
-	
-	$('table .remove_product').each(function() {
-		
-		$(this).click(function() {
-			
-			
-			var no = $(this).siblings('.cartNo').text();
-			var id = "${ loginVO.id }";
-			
-			//상품삭제
-			$.ajax({
-				url : "${pageContext.request.contextPath}/member/deleteCart",
-				type : "post",
-				data : {
-					"no" : no,
-					"id" : id
-				},
-				success : function() {
-					window.location.reload();
-				}
-			});
-		});
-	});
-	
-	/* ----------------------------------------------------------------------------------------------------------------- */
-  
-
-			
-			var totalFinalPrice = 0;
-			var orderCount = 0;
-			$('tbody.todayOrderList tr').each(function() {
-				
-				var status = $(this).find('.orderStatus');
-								
-				if(status.text() == '0') {
-					status.text('주문취소');
-					status.attr('class', 'label label-danger');
-				}else {
-					if (status.text() == '1') {
-						status.text('대기중');
-						status.attr('class', 'label label-primary');
-						$(this).find('.cancel-button').append('<button type="button" class="btn btn-outline btn-danger button-cancel">주문취소</button>');
-					}else if (status.text() == '2') {
-						status.text('준비중');
-						status.children().attr('class', 'label label-warning');
-					} else{
-						status.text('준비완료');
-						status.attr('class', 'label label-information');
-					}
-					
-					totalFinalPrice += uncomma($(this).find('.finalPrice').text())*1;
-					++orderCount;
-				}
-			}); 
-			$('.total-count-order').text(orderCount);
-			$('.total-order-price').text(comma(totalFinalPrice) + "원");
-			
-			
-			
-			
-			
-			
-			// 삭제 alert창
-			function orderCancel(no) {
-				swal({
-			        title: "주문을 취소하시겠습니까?",
-			        type: "warning",
-			        showCancelButton: true,
-			        cancelButtonText: "취소",
-			        confirmButtonColor: "#DD6B55",
-			        confirmButtonText: "확인",
-			        closeOnConfirm: false
-			    }, function () {
-			        swal("주문이 취소되었습니다!", "", "success");
-			        // OK 누르면 삭제 실행
-			        $('.confirm').click(function () {
-			        	location.href = '${ pageContext.request.contextPath}/orderManagement/orderCancel.do?no=' + no;
-					});
-			    });
-			}
-			
-			//주문 취소 버튼 클릭 시 이벤트 발생 
-			$('.button-cancel').each(function() {
-				$(this).click(function() {
-					var no = $(this).parent().siblings('.orderNumber').text();
-					orderCancel(no);
-				});
-			});
-});
-
-
-function modalFunc(no) {
-	var url = "${pageContext.request.contextPath}/member/todayOrderDetail.do?no=" + no;
-	$('div.modal').modal().removeData();
-    $('div.modal').modal({ remote : url  });
-}
-</script>
-
-
-
 
 </head>
+
+
 <body>
 	<div class="body">
 		<header id="header"
@@ -232,8 +85,9 @@ function modalFunc(no) {
 		<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 		<!-- ---------------------------------------------------------------------------------------------- -->
-	<div role="main" class="main">
-	<section class="page-header">
+			
+			
+				<section class="page-header">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
@@ -245,16 +99,18 @@ function modalFunc(no) {
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>내 정보</h1>
+								<h1>Left Sidebar</h1>
 							</div>
 						</div>
 					</div>
 				</section>
 				
 			<div class="container">
-				<div class="row">
+				
+
+					<div class="row">
 					<div style="width: 600px">
-						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
+						<div style="margin-top: 2%" class="col-md-3">
 							<aside  class="sidebar">
 
 								<h3 class="heading-primary">Categories</h3>
@@ -267,84 +123,131 @@ function modalFunc(no) {
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
-	
-		<div class="row">
-					<div class="col-lg-9">
-						<div class="ibox">
-							<div class="ibox-content">
-								<div class="table-responsive">
-									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="25">
-										<thead>
-											<tr style="margin-top: 15%">
-												<th style="width: 45px" data-hide="phone" data-sort-ignore="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-												<th  data-hide="phone" data-sort-ignore="true">번호</th>
-												<th  data-hide="phone" data-sort-ignore="true">메뉴</th>
-												<th data-hide="phone" data-sort-ignore="true">주문자</th>
-												<th data-hide="phone" data-sort-ignore="true">주문금액</th>
-												<th data-hide="phone" data-sort-ignore="true">결제방법</th>
-												<th data-hide="phone" data-sort-ignore="true">주문상태</th>
-												<th data-hide="phone" data-sort-ignore="true">주문취소</th>
-											</tr>
-										</thead>
-										<tbody class= "todayOrderList">
-										<c:choose>
-										<c:when test="${ not empty cartList }">
-										<c:forEach items="${ cartList }" var="cart">
+		
+			
+			<div role="main" class="main shop">
 
-											<tr class="cart-subtotal">
-												<td class="cartNo" style="display: none;">${ cart.no }</td>
-																<td class="id" style="display: none;">${ cart.id }</td>
-																<td class="price" style="display: none;">${ cart.price }</td>
-																
-													
-													<td class="convType orderNumber" width="100px;">
-				                                    	${ cart.no }
-			                                  		</td>
-													<td>
-													<a onclick = "modalFunc(${ cart.no })">
-														${cart.name }
-														
-														</a>
-			                                   		</td>
-													<td width="10%" nowrap>
-														${ cart.id }
-													</td>	
-													
-													<td class = "commaN finalPrice">${ cart.price }원</td>											
-													
-													<td class = "cancel-button"></td>									
-											</tr>
-											
-										</c:forEach>
-										</c:when>
-										<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
-										</c:choose>
-										</tbody>
-									</table>
+				<div class="container">
+
+
+						<div class="col-md-2r">
+
+
+							<div class="featured-boxes">
+									<div class="col-sm-5">
+										<div class="featured-box featured-box-primary align-left mt-xlg">
+											<div class="box-content">
+												<h4 class="heading-primary text-uppercase mb-md">주문정보</h4>
+												<table class="cart-totals">
+													<tbody>
+														<tr class="cart-subtotal">
+															<th>
+																<strong>주문번호</strong>
+															</th>
+															<td>
+																<strong><span class="amount">BDNSY07276</span></strong>
+															</td>
+														</tr>
+														<tr class="shipping">
+															<th>
+																주문시간															</th>
+															<td>
+																2017.11.02 / 오후 7:21<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
+															</td>
+														</tr>
+														<tr class="shipping">
+															<th>
+																<strong>결제방법</strong>
+															</th>
+															<td>
+																<span class="amount">카드</span>
+															</td>
+														</tr>
+														<tr class="shipping">
+															<th>
+																결제금액															</th>
+															<td>
+																12,600원<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="featured-boxes">
+									<div class="col-sm-5">
+										<div class="featured-box featured-box-primary align-left mt-xlg">
+											<div class="box-content">
+												<h4 class="heading-primary text-uppercase mb-md">주문내역</h4>
+												<table class="cart-totals">
+													<tbody>
+														<tr class="cart-subtotal">
+															<th>
+																<strong>스테이크 & 치즈</strong>
+															</th>
+															<td>
+																<strong><span class="amount">12,800원</span></strong>
+															</td>
+														</tr>
+														<tr class="shipping">
+															<th>
+																가격
+															</th>
+															<td>
+																9,800원(30cm)<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
+															</td>
+														</tr>
+														<tr class="shipping">
+															<th>
+																추가선택
+															</th>
+															<td>
+																베이컨 +1<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
+															</td>
+														</tr>
+														<tr class="shipping">
+															<th>
+																요구사항
+															</th>
+															<td>
+																양상추 +1, 할라피뇨 -1<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
+															</td>
+														</tr>
+														<tr class="shipping">
+															<th>
+																수량
+															</th>
+															<td>
+															1개<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
+
+
+			<div style="margin-bottom:5% ; margin-left: 47%" class="col-md-8">
+				<button style="width: 130px; height: 40px; font-size: 20px" type="button" class="btn  btn-info">  첫화면 </button>
 			</div>
 		</div>
-	</div>
-</div>
-
-	<!-- 모달 -->
-	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<!-- 모달내용 -->
-	
-		 	</div>
-			</div>
-	</div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
-		<footer id="footer" class="footer">
+	<div>
+		<footer id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
+	</div>
 
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
@@ -382,15 +285,63 @@ function modalFunc(no) {
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 
-	<!-- Mainly scripts -->
-	<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js"></script>
-	<script src="${ pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script src="${ pageContext.request.contextPath}/resources/js/jquery.metisMenu.js"></script>
-	<script src="${ pageContext.request.contextPath}/resources/js/jquery.slimscroll.min.js"></script>
+</body>
 
-	<!-- Custom and plugin javascript -->
-	<script src="${ pageContext.request.contextPath}/resources/js/inspinia.js"></script>
-	<script src="${ pageContext.request.contextPath}/resources/js/pace.min.js"></script>
+
+
+
+<!-- Vendor -->
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/common/common.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/isotope/jquery.isotope.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script
+	src="${ pageContext.request.contextPath }/resources/vendor/vide/vide.min.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="${ pageContext.request.contextPath }/resources/js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script
+	src="${ pageContext.request.contextPath }/resources/js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script
+	src="${ pageContext.request.contextPath }/resources/js/theme.init.js"></script>
+
+<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+			ga('create', 'UA-12345678-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+		 -->
 
 </body>
 </html>

@@ -1,6 +1,9 @@
 package kr.co.bit.menu.vo;
 
 import java.io.Serializable;
+import java.util.List;
+
+import kr.co.bit.member.vo.DetailOrderVO;
 
 public class CartVO implements Serializable{
 	
@@ -126,6 +129,14 @@ public class CartVO implements Serializable{
 				+ total_price + ", size=" + size + ", pic=" + pic + ", qty=" + qty + ", type=" + type + ", bread="
 				+ bread + ", cheese=" + cheese + ", topping=" + topping + ", vegetable=" + vegetable + ", sauce="
 				+ sauce + ", requirement=" + requirement + ", regDate=" + regDate + "]";
+	}
+	public String getmyMenu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setDetailOrderList(List<DetailOrderVO> list) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

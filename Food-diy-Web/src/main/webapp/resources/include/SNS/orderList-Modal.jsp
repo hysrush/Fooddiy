@@ -79,13 +79,14 @@
 														
 														<c:forEach items = "${  order.detailOrderList }" var = "oneOrder">
 															${ oneOrder.name }
+															<input type="hidden" val="${oneOrder}"/>
 														</c:forEach>
 														
 			                                   		</td>											
 													<td class = "commaN finalPrice">${ order.final_price }원</td>
 													<td>
-													<c:forEach items = "${  order.detailOrderList }" var = "oneOrder">
-														<input class="btn btn-success btn-sm" type="button" name="orderChoice" onclick="goOrderName(${oneOrder.name})" value="선택" data-dismiss="modal" />
+													<c:forEach items = "${order.detailOrderList }" var = "oneOrder">
+														<input class="btn btn-success btn-sm" type="button" name="orderChoice" onclick="goOrderName('${oneOrder.name}','${oneOrder.bread}','${oneOrder.cheese}','${oneOrder.topping}','${oneOrder.vegetable}','${oneOrder.sauce}')" value="선택" data-dismiss="modal" />
 													</c:forEach>	
 													</td>
 										
@@ -110,13 +111,27 @@
 </div>
 
 <script type="text/javascript">
-	
+
 
 	function goOrderName(name){
 			var name = name;
 			console.log(name);
 	
 		//alert('선택한 매장명 : ' + data);
+
+	function goOrderName(name , bread , cheese , topping , vegetable , sauce){
+		console.log(name + ',' + bread + ',' + cheese + ',' + topping + ',' + vegetable + ',' + sauce);
+		
+		$('#name').val(name);
+		$('#bread').val(bread);
+		$('#cheese').val(cheese);
+		$('#topping').val(topping);
+		$('#vegetable').val(vegetable);
+		$('#sauce').val(sauce);
+		
+					
+		console.log($('#name'));
+
 		
 		
 		

@@ -313,7 +313,7 @@ public class SignController {
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
-		session.setAttribute("nonMember", user);
+		session.setAttribute("loginVO", user);
 		
 		redirect.addFlashAttribute("msg", "[ "+user.getName()+" ] 님 로그인 성공!");
 		

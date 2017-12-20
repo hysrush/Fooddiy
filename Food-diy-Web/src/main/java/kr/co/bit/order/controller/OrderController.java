@@ -36,13 +36,23 @@ public class OrderController {
 			@RequestParam(value = "order") String order, HttpSession session) throws Exception{
 		response.setContentType("text/html;charset=UTF-8");
 		
+		
+		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		String id = userVO.getId();
+		String type = userVO.getType();
+		
 		String orders [] = order.split("--");
 		//지점, 아이디, 총 결제 가격
 		String info [] = orders[0].split("\\*");
 		
 		OrderVO orderVO = new OrderVO();
 		orderVO.setStoreName(info[0]);
-		orderVO.setId(info[1]);
+		
+		if(type.equals("N")) {
+			orderVO.setId("비회원");
+		}else {
+			orderVO.setId(info[1]);	
+		}
 		orderVO.setOrder_price(info[2]);;
 		orderVO.setFinal_price(info[3]);
 		orderVO.setMenu(orders[1]);
@@ -50,10 +60,6 @@ public class OrderController {
 		System.out.println(orderVO);
 		
 		orderService.insertOrder(orderVO);
-		
-		
-		UserVO userVO = (UserVO)session.getAttribute("loginVO");
-		String id = userVO.getId();
 		
 		cartStore_Service.deleteCartStore(id);
 		cart_Service.deleteCartById(id);;

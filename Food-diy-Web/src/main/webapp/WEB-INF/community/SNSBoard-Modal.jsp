@@ -83,8 +83,12 @@
 													메뉴 이름
 												</th>
 												<th>
-													추가재료 
+													빵 
 												</th>
+												<th>
+													야채, 토핑  
+												</th>
+												
 												<th>
 													소스
 												</th>
@@ -93,13 +97,16 @@
 										<tbody>
 											<tr>
 												<td>
-													이탈리안 BMT
+													${snsVO.name}
 												</td>
 												<td>
-													에그마요 추가 , 더블미트 추가  할라피뇨 - 
+													${snsVO.bread}   
 												</td>
 												<td>
-													렌치, 핫칠리
+													야채 : ${ snsVO.vegetable } &nbsp;&nbsp;&nbsp; 토핑: ${snsVO.topping }
+												</td>
+												<td>
+													${snsVO.sauce }
 												</td>
 												
 											</tr>

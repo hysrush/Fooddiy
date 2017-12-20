@@ -21,15 +21,19 @@
 </head>
 
 <body>
+
+
+
 	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">
-			<span aria-hidden="true">×</span><span class="sr-only">Close</span>
-		</button>
-		<i class="fa fa-list-alt modal-icon"></i>
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">&times;</button>
 		<h4 class="modal-title">주문 상세</h4>
 		<a> ${cart.pic }</a>
 	</div>
-	<div class="modal-body" style="max-height:500px;overflow: auto;">
+	
+	<div class="modal-body shop" style="max-height:500px;overflow: auto;">
+
+		<!-- 모달 속 상세내용 -->
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -87,9 +91,7 @@
 				</tbody>
 			</table>
 	</div>
-	<div class="modal-footer">
-		<button type="button" value="Click" onclick="Click.reload()" id="Click" class="btn btn-white" data-dismiss="modal">Close</button>
-	</div>
+
 </body>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 <script>
@@ -98,6 +100,9 @@
 		for(var i = 0; i < $('.commaN').length; ++i) {
 			$('.commaN').eq(i).text(comma($('.commaN').eq(i).text()));
 		}
+		
+		
 	});
+	
 </script>
 </html>
