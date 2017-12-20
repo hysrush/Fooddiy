@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.dao.StoreDAO;
-import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.vo.CityVO;
+import kr.co.bit.vo.StoreVO;
 
 @Service
 public class StoreServiceImpl implements StoreService{

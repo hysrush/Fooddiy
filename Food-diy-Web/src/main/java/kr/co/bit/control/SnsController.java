@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.event.vo.PagingVO;
 import kr.co.bit.member.service.MemberOrderService;
 import kr.co.bit.member.vo.DetailOrderVO;
 import kr.co.bit.member.vo.MemberOrderVO;
 import kr.co.bit.service.RepService;
 import kr.co.bit.service.SnsService;
 import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.PagingVO;
 import kr.co.bit.vo.SnsBoardVO;
 import kr.co.bit.vo.SnsRepVO;
 

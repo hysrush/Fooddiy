@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.dao.SnsDAO;
-import kr.co.bit.event.vo.PagingVO;
+import kr.co.bit.vo.PagingVO;
 import kr.co.bit.vo.SnsBoardVO;
 
 @Service

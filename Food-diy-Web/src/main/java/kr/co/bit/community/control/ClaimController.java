@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,12 +27,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.community.service.ClaimService;
 import kr.co.bit.community.vo.ClaimBoardVO;
-import kr.co.bit.event.service.EventService;
-import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.StoreVO;
-import kr.co.bit.sign.service.SignService;
-import kr.co.bit.sign.vo.LoginVO;
+import kr.co.bit.service.EventService;
 import kr.co.bit.user.vo.UserVO;
+import kr.co.bit.vo.CityVO;
+import kr.co.bit.vo.StoreVO;
 
 @RequestMapping("/community")
 @Controller

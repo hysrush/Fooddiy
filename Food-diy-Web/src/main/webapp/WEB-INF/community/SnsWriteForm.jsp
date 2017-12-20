@@ -341,15 +341,15 @@
 										<div class="form-group" align="left">
 											<!-- 1:1문의 작성폼 시작  -->
 										<form:form commandName="snsVO" method="POST"  name="csForm" id="csForm" enctype="multipart/form-data">
-												<input id="name" type="hidden" value=""/>
-												<input id="bread" type="hidden" value=""/>
-												<input id="cheese" type="hidden" value=""/>
-												<input id="topping" type="hidden" value=""/>
-												<input id="vegetable" type="hidden" value=""/>
-												<input id="sauce" type="hidden" value=""/>
-												
+											<form:input path ="name" name="name"  id="name" type="hidden"  value="" readonly="readonly" />
+											<form:input path ="bread" name="bread"  id="bread" type="hidden" value="" readonly="readonly" />
+											<form:input path ="cheese" name="cheese"  id="cheese" type="hidden" value="" readonly="readonly" />
+											<form:input path ="topping" name="topping"  id="topping" type="hidden" value="" readonly="readonly" />
+											<form:input path ="vegetable" name="vegetable"  id="vegetable" type="hidden" value="" readonly="readonly" />
+											<form:input path ="sauce" name="sauce"  id="sauce" type="hidden"  value="" readonly="readonly" />	
 												<table class="table table-bordered">
 													<tr>
+														 		
 														<th>
 															<form:label for="title" path="title" cssErrorClass="error">제목</form:label>
 														</th>
@@ -398,7 +398,6 @@
 														</td>
 													</tr>
 													
-													
 													<tr>
 														<th>
 															<label>주문내역</label>
@@ -409,12 +408,6 @@
 																	<div class="input-group date col-md-12" data-toggle="modal" data-target="#formModal">
 																		<input type="text" class="form-control" readonly="readonly" placeholder="주문내역" name="orderList" id="orderList"/>
 																		<span class="input-group-addon"><i class="fa fa-home"></i></span>
-																		<form:input path = "name" name="name"  id="name" type="hidden" value=""/>
-																		<form:input path = "bread" name="bread"  id="bread" type="hidden" value=""/>
-																		<form:input path = "cheese" name="cheese"  id="cheese" type="hidden" value=""/>
-																		<form:input path = "topping" name="topping"  id="topping" type="hidden" value=""/>
-																		<form:input path = "vegetable" name="vegetable"  id="vegetable" type="hidden" value=""/>
-																		<form:input path = "sauce" name="sauce"  id="sauce" type="hidden" value=""/>				
 																	</div>
 																	<!-- 매장찾기 모달창 -->
 																	<jsp:include page="/resources/include/SNS/orderList-Modal.jsp"></jsp:include>

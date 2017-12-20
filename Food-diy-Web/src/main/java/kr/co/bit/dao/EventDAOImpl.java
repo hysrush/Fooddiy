@@ -1,4 +1,4 @@
-package kr.co.bit.event.dao;
+package kr.co.bit.dao;
 
 import java.util.List;
 
@@ -6,17 +6,17 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.bit.event.vo.CityVO;
-import kr.co.bit.event.vo.EventBoardVO;
-import kr.co.bit.event.vo.PagingVO;
-import kr.co.bit.event.vo.StoreVO;
+import kr.co.bit.vo.CityVO;
+import kr.co.bit.vo.EventBoardVO;
+import kr.co.bit.vo.PagingVO;
+import kr.co.bit.vo.StoreVO;
 
 @Repository
 public class EventDAOImpl implements EventDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	private String url = "kr.co.bit.event.dao.EventDAO.";
+	private String url = "kr.co.bit.dao.EventDAO.";
 	
 	// �씠踰ㅽ듃 �쟾泥대낫湲� 
 	@Override

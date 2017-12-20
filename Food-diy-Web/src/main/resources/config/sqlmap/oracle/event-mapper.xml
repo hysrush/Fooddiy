@@ -3,7 +3,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.bit.event.dao.EventDAO">
+<mapper namespace="kr.co.bit.dao.EventDAO">
  	
   	<sql id="selectAll">
 		SELECT EVE_NO, STO_NAME, EVE_TITLE, EVE_CONTENT, EVE_FILENAME, TO_CHAR(EVE_START, 'YY-MM-DD') as EVE_START,

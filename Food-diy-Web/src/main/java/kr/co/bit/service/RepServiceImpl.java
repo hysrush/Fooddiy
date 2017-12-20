@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.bit.dao.RepDAO;
-import kr.co.bit.event.vo.PagingVO;
+import kr.co.bit.vo.PagingVO;
 import kr.co.bit.vo.SnsRepVO;
 @Service
 public class RepServiceImpl implements RepService{

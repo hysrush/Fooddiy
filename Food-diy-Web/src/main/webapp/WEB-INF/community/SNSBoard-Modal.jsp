@@ -77,44 +77,26 @@
 							
 								<div class = "row">
 									<table class="table">  <!--  DB에서 재료정보 받아오는 테이블  -->
-										<thead>
-											<tr>
-												<th>
-													메뉴 이름
-												</th>
-												<th>
-													빵 
-												</th>
-												<th>
-													야채, 토핑  
-												</th>
-												
-												<th>
-													소스
-												</th>
-											</tr>
-										</thead>
 										<tbody>
-											<tr>
-												<td>
-													${snsVO.name}
-												</td>
-												<td>
-													${snsVO.bread}   
-												</td>
-												<td>
-													야채 : ${ snsVO.vegetable } &nbsp;&nbsp;&nbsp; 토핑: ${snsVO.topping }
-												</td>
-												<td>
-													${snsVO.sauce }
-												</td>
-												
-											</tr>
-											
+																
+										  <tr>
+					                        <td width="15%"><strong> 메뉴이름</strong></td>
+					                        <td>${snsVO.name}</td>
+					                      </tr>                 
+					                      <tr>
+					                      	<td><strong>빵 </strong></td>
+					                        <td>${snsVO.bread}</td>
+					                      </tr>
+					                      <tr>
+					                       	<td><strong>야채, 토핑 </strong></td>
+					                        <td>야채 : ${ snsVO.vegetable }<br/>
+					                        	 토핑: ${snsVO.topping }</td>
+					                      </tr>
+					                      <tr>
+					                        <td><strong>소스</strong></td>
+					                        <td>${snsVO.sauce }</td>
 										</tbody>
 									</table>
-								
-								
 								</div>
 							<div class="comment">
 							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:80%"/>
