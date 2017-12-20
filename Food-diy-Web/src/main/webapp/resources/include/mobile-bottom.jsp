@@ -18,8 +18,8 @@
 			</div>
 			<div class="col-xs-12">
 				<a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a> | 
-				<a href="">이용약관</a> | 
-				<a href="">개인정보취급방침</a>
+				<a href="${ pageContext.request.contextPath}/main/siteT">이용약관</a> | 
+				<a href="${ pageContext.request.contextPath}/main/siteP">개인정보취급방침</a>
 				<%-- <ul>
 					<li><a href="${ pageContext.request.contextPath}/event/FindStore.do">매장찾기</a></li>
 					<li><a href="">이용약관</a></li>

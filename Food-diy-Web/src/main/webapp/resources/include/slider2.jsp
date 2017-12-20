@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div role="main" class="main">
-	<div class= "container"><br/>
-		<div class="row"  style="max-height: 760px;">
+	<div class= "container" style="bord"><br/>
+		<div class="row" style="max-height: 760px;">
+			<table>
+		
+		
+			</table>
 			<div class="col-sm-3 main">
 				<!-- 동영상 -->
 					<div class="col-sm-12 main">
@@ -87,13 +91,13 @@
 								</div>
 								<div class="item">
 									<img style="width:100%"
-										src="${ pageContext.request.contextPath }/resources/img/main/new_product_20171110 (1).jpg"
+										src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
 										alt="">
 									<div class="carousel-caption"></div>
 								</div>
 								<div class="item">
 									<img style="width:100%"
-										src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
+										src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
 										alt="">
 									<div class="carousel-caption"></div>
 								</div>
