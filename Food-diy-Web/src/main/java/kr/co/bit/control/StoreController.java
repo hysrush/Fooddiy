@@ -65,8 +65,7 @@ public class StoreController {
 		ModelAndView mav = new ModelAndView();
 		
 		CartStoreVO cartStoreVO = (CartStoreVO)session.getAttribute("cartStoreVO");
-		
-		System.out.println(cartStoreVO.getStoreAddr());
+	
 		
 		mav.setViewName("store/FindStore");
 		mav.addObject("cityList", cityList);
@@ -99,7 +98,6 @@ public class StoreController {
 		mav.setViewName("store/StoreTest");
 		mav.addObject("storeList", storeList);
 		
-		System.out.println(storeList);
 		
 		return mav;
 		
@@ -121,7 +119,7 @@ public class StoreController {
 			jsonObj.put("result", true);
 			jsonObj.put("guList", locationList);
 
-			response.getWriter().print(jsonObj.toString());
+	
 
 		}
 
@@ -135,14 +133,12 @@ public class StoreController {
 			//System.out.println(gugun);
 			List<StoreVO> storeList = storeService.selectStoreList(gugun);
 			String locationName = eventService.locationName(gugun);
-			for (int i = 0; i < storeList.size(); i++) {
-				System.out.println(storeList.get(i).toString());
-			}
+			
 				
 			jsonObj.put("result", true);
 			jsonObj.put("storeList", storeList);
 			jsonObj.put("locationName", locationName);
-			response.getWriter().print(jsonObj.toString());
+		
 		}
 		
 		@RequestMapping(value="/test4")
@@ -151,10 +147,10 @@ public class StoreController {
 									, @RequestParam(value ="store", defaultValue ="") String store
 									, Model model) throws Exception {
 			
-			System.out.println(store);
+			
 			List<StoreVO> storeList = storeService.selectStoreAddr(store); //store = 주소 
 			
-			System.out.println(storeList.toString());
+			
 			String addr = storeList.get(0).getStoreAddr();
 			
 			addr = addr.replaceAll(" ", ",");
@@ -168,7 +164,7 @@ public class StoreController {
 			jsonObj.put("result", true);
 			jsonObj.put("storeList", storeList);
 			
-			response.getWriter().print(jsonObj.toString());
+			
 			
 		}
 		
@@ -212,5 +208,40 @@ public class StoreController {
 			
 			return "store/FindStore";
 		}
+		
+		
+		
+		
+		
+		
+		@RequestMapping(value = "findStoreU.do" ,method= {RequestMethod.POST, RequestMethod.GET} )
+		public ModelAndView findStoreU() {
+		
+			ModelAndView mav = new ModelAndView();
+			
+			//도시정보를 불러온다.
+			List<CityVO> cityList = storeService.selectCity();
+			mav.addObject("cityList", cityList);
+			mav.setViewName("store/findStoreU");
+			
+			return mav;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 }

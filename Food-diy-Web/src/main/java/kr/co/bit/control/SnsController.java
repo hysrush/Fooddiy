@@ -87,7 +87,7 @@ public class SnsController {
 				String [] menus = menu.split("\\/\\/");
 				
 				
-				System.out.println("menus.length =  " + menus.length);
+			
 				
 				for(int j = 0; j < menus.length; ++j) {
 					DetailOrderVO vo = new DetailOrderVO();
@@ -102,7 +102,6 @@ public class SnsController {
 					list.add(vo);
 				}
 				todayOrderList.get(i).setDetailOrderList(list);
-				System.out.println(todayOrderList.get(i).getDetailOrderList());
 			}	
 			
 			model.addAttribute("snsVO", snsVO);
@@ -117,7 +116,7 @@ public class SnsController {
 		public String write(@Valid SnsBoardVO snsVO, BindingResult result,
 				@RequestParam(value = "fileName") MultipartFile file) throws Exception {
 
-			System.out.println("시작");
+			
 
 			// 1. fileName 설정 + eventVO에 fileName 저장
 			String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
@@ -131,9 +130,7 @@ public class SnsController {
 			
 			snsVO.setFileName(saveFileName);
 
-			System.out.println(fileName);
-			System.out.println(saveFileName);
-			System.out.println("들어가나");
+		
 
 			// 2. 경로에 이미지파일 저장
 			byte[] bytes;
@@ -148,10 +145,7 @@ public class SnsController {
 			buffStreams.write(ubyte);
 			buffStreams.close();
 			
-			
-			
-			System.out.println("들어가나 2");
-
+		
 			// eventVO에 저장
 			snsService.insert(snsVO);
 
@@ -176,7 +170,6 @@ public class SnsController {
 			mav.addObject("snsVO", snsVO);
 			mav.addObject("repList", repList);
 			mav.addObject("p",paging);
-			System.out.println(repList);
 			//mav.addObject("repList", repList);
 			
 			return mav;
@@ -196,7 +189,7 @@ public class SnsController {
 				String [] menus = menu.split("\\/\\/");
 				
 				
-				System.out.println("menus.length =  " + menus.length);
+			
 				
 				for(int j = 0; j < menus.length; ++j) {
 					DetailOrderVO vo = new DetailOrderVO();
@@ -211,7 +204,7 @@ public class SnsController {
 					list.add(vo);
 				}
 				todayOrderList.get(i).setDetailOrderList(list);
-				System.out.println(todayOrderList.get(i).getDetailOrderList());
+				
 			}	
 
 			model.addAttribute("snsVO", snsVO);
@@ -240,10 +233,6 @@ public class SnsController {
 							
 							snsVO.setFileName(saveFileName);
 
-							System.out.println(fileName);
-							System.out.println(saveFileName);
-							System.out.println("들어가나");
-
 							// 2. 경로에 이미지파일 저장
 							byte[] bytes;
 							bytes = file.getBytes();
@@ -260,15 +249,11 @@ public class SnsController {
 					
 					
 					
-					//새 글로 수정
-					System.out.println("2 : " + snsVO.toString());
-					
-					
-					
+				
 					
 					
 					snsService.update(snsVO);
-					System.out.println("3 : " + snsVO.toString());
+				
 					
 					return "redirect:/community/snsPage.do";
 			
@@ -299,9 +284,7 @@ public class SnsController {
 									, HttpServletResponse response
 									, @RequestParam(value ="no", defaultValue ="") int no
 									, Model model) throws Exception {
-			
-			System.out.println(no);
-			
+		
 			
 			snsService.addLikeSns(no);
 			SnsBoardVO snsVO = snsService.selectOne(no);
@@ -314,7 +297,6 @@ public class SnsController {
 			jsonObj.put("result", true);
 			jsonObj.put("like", like);
 			
-			System.out.println(snsVO);
 			
 			response.getWriter().print(jsonObj.toString());
 			
@@ -342,19 +324,14 @@ public class SnsController {
 		        snsRepVO.setContent(content);
 		        snsRepVO.setId(id);
 		        snsRepVO.setPic(pic);
-		        
-		        System.out.println(snsRepVO.toString());
+		    
 		        
 		        repService.insertRep(snsRepVO);
 				
-				
-		        System.out.println(snsRepVO.toString());
-		        
+			
 		        jsonObj.put("result", true);
 				jsonObj.put("snsRepVO", snsRepVO);
 				
-				System.out.println(snsRepVO.toString());
-		        
 		    }
 
 		  @RequestMapping(value="/deleteRep")
