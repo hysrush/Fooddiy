@@ -396,10 +396,10 @@
 								<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
 								<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 							</ul></li>
-							<li class="dropdown"><a href="${ pageContext.request.contextPath }/store/findStore.do" class="dropdown-toggle"> STORE 
+							<li class="dropdown"><a href="${ pageContext.request.contextPath }/store/findStoreU.do" class="dropdown-toggle"> STORE 
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="${ pageContext.request.contextPath}/store/findStore.do">매장찾기</a></li>
+								<li><a href="${ pageContext.request.contextPath}/store/findStoreU.do">매장찾기</a></li>
 								
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/community/qna.do"> Community <span class="tip tip-hot">Hot!</span></a>
