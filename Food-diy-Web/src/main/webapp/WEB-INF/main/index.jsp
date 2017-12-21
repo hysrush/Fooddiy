@@ -109,11 +109,11 @@ $(document).ready(function(){
 				<jsp:include page="/resources/include/mobile-slider.jsp"/>
 			</section>
 			
-		<footer class="light visible-lg" id="footer">
+		<footer class="light visible-lg" id="footer" style="margin-top: 3%; padding: 2% 0 0;">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
 		
-		<footer class="light hidden-lg" id="footer">
+		<footer class="light hidden-lg" id="footer" style="margin-top: 5px; padding: 5px 0 0;">
 			<jsp:include page="/resources/include/mobile-bottom.jsp"/>
 		</footer>
 	</div>

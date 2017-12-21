@@ -82,44 +82,117 @@
 <script>
 $(document).ready(function(){
 	
-	$('table .product-thumbnail').each(function() {
-		
-			$(this).click(function() {
-				
-				var id = $(this).siblings('.id').text();
-				var name = $(this).siblings('.name').text();
-				var price = $(this).siblings('.price').text();
-				var pic = $(this).siblings('.pic').text();
-				var size = $(this).siblings('.size').text();
-				var bread = $(this).siblings('.bread').text();
-				var cheese = $(this).siblings('.cheese').text();
-				var topping = $(this).siblings('.topping').text();
-				var vegetable = $(this).siblings('.vegetable').text();
-				var sauce = $(this).siblings('.sauce').text();
-				
-				//나만의 메뉴 등록
-				$.ajax({
-					url : "${pageContext.request.contextPath }/member/Latest-Order",
-					type : "post",
-					data : {
-						"id" : id,
-						"name" : name,
-						"price" : price,
-						"pic" : pic,
-						"size" : size,
-						"bread" : bread,
-						"cheese" : cheese,
-						"topping" : topping,
-						"vegetable" : vegetable,
-						"sauce" : sauce
-					},
-					success : function(data) {
-						swal(data);
-					}
-				});
+		$('.qty-holder').each(function() {
+			var totalQty = 0;
+			var totalPrice = 0;
+			var finalPrice = 0;
+			var oneProductPrice = 0;
+			var no = 0;
+			//감소
+			$(this).children('.qty-dec-btn').click(function() {
+				totalQty = $(this).siblings('.qty-input').val() * 1;
+				if(totalQty > 1) {
+					no = $(this).parents('td').siblings('.cartNo').text();
+					totalPrice = $(this).parents('td').siblings('.price-total').children('.total-price').text();
+
+					finalPrice = $('.final-price').text();
+					finalQty = $('.final-qty').text() * 1;
+					
+					totalPrice = uncomma(totalPrice) * 1;
+					finalPrice = uncomma(finalPrice) * 1;
+					
+					oneProductPrice = totalPrice / totalQty;
+					
+					totalPrice -= oneProductPrice;
+					finalPrice -= oneProductPrice;
+					
+					totalQty -= 1
+					finalQty -= 1;
+					
+					$(this).parents('td').siblings('.price-total').children('.total-price').text(comma(totalPrice) + "원");
+					
+					$('.final-price').text(comma(finalPrice) + "원");
+					$('.final-qty').text(finalQty);
+					 
+					 
+					 
+					$(this).siblings('.qty-input').val(totalQty);
+				}
 			});
+			
+			//증가
+			$(this).children('.qty-inc-btn').click(function() {
+					no = $(this).parents('td').siblings('.cartNo').text();
+				
+					totalQty = $(this).siblings('.qty-input').val() * 1;
+					totalPrice = $(this).parents('td').siblings('.price-total').children('.total-price').text();
+				
+					finalPrice = $('.final-price').text();
+					finalQty = $('.final-qty').text() * 1;
+					
+					totalPrice = uncomma(totalPrice) * 1;
+					finalPrice = uncomma(finalPrice) * 1;
+					
+					oneProductPrice = totalPrice / totalQty;
+					
+					totalPrice += oneProductPrice;
+					finalPrice += oneProductPrice;
+					
+					totalQty += 1
+					finalQty += 1;
+					
+					 
+					$(this).siblings('.qty-input').val(totalQty);
+					
+			});
+			
 		});
-	
+		
+		
+		$("#cartgo").click(function(){
+			
+			
+			
+			
+		});
+		
+		$("#sns").click(function(){
+			// sns 등록폼으로 이동
+			location.href="${pageContext.request.contextPath}/community/snsPage.do"; 
+		});
+		
+		$("#order").click(function(){
+			
+			swal("주문이 완료되었습니다.");
+		});
+		
+		// 나만의 메뉴 삭제
+		$("#del").click(function(){
+			
+			var no = [];
+			
+			$("input[name='cart']:checked").each(function() {
+				no.push($(this).val());
+		    });
+			
+			console.log(no);
+			
+			// controller로 배열 넘길 때 세팅 바꿔 줌
+			jQuery.ajaxSettings.traditional = true;
+		
+			$.ajax({
+				url : "${pageContext.request.contextPath}/member/myMenuDel.do",
+				type : "post",
+				data : {
+					noList : no
+				},
+				success : function(data){
+					location.reload();
+				}
+			});
+			
+		});
+		 
 	
 	$('table .remove_product').each(function() {
 		
@@ -180,8 +253,6 @@ $(document).ready(function(){
 			
 			
 			
-			
-			
 			// 삭제 alert창
 			function orderCancel(no) {
 				swal({
@@ -211,13 +282,12 @@ $(document).ready(function(){
 });
 
 
-function modalFunc(no) {
-	var url = "${pageContext.request.contextPath}/member/todayOrderDetail.do?no=" + no;
-	$('div.modal').modal().removeData();
-    $('div.modal').modal({ remote : url  });
-}
+function mymodal(mymenuNo) {
+    $('div.modal').modal().removeData();
+    var url = '${ pageContext.request.contextPath}/member/myMenuDetail.do?no=' + mymenuNo;
+    $('div.modal').modal({ remote : url });
+} 
 </script>
-
 
 
 
@@ -260,10 +330,8 @@ function modalFunc(no) {
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
-									<li class="active">
-										<a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a>
-									</li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a> </li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
@@ -273,17 +341,13 @@ function modalFunc(no) {
 						<div class="ibox">
 							<div class="ibox-content">
 								<div class="table-responsive">
-									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="25">
+									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
 										<thead>
-											<tr style="margin-top: 15%">
-												<th style="width: 45px" data-hide="phone" data-sort-ignore="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-												<th  data-hide="phone" data-sort-ignore="true">번호</th>
-												<th  data-hide="phone" data-sort-ignore="true">메뉴</th>
-												<th data-hide="phone" data-sort-ignore="true">주문자</th>
+											<tr style="font-size:15px; margin-top: 15%">
+												<th  data-hide="phone" data-sort-ignore="true"></th>
+												<th data-hide="phone" data-sort-ignore="true">메뉴</th>
+												<th style="width: 70px" data-hide="phone" data-sort-ignore="true">주문자</th>
 												<th data-hide="phone" data-sort-ignore="true">주문금액</th>
-												<th data-hide="phone" data-sort-ignore="true">결제방법</th>
-												<th data-hide="phone" data-sort-ignore="true">주문상태</th>
-												<th data-hide="phone" data-sort-ignore="true">주문취소</th>
 											</tr>
 										</thead>
 										<tbody class= "todayOrderList">
@@ -292,27 +356,26 @@ function modalFunc(no) {
 										<c:forEach items="${ cartList }" var="cart">
 
 											<tr class="cart-subtotal">
-												<td class="cartNo" style="display: none;">${ cart.no }</td>
-																<td class="id" style="display: none;">${ cart.id }</td>
-																<td class="price" style="display: none;">${ cart.price }</td>
-																
-													
-													<td class="convType orderNumber" width="100px;">
-				                                    	${ cart.no }
-			                                  		</td>
+													<td class="cartNo" style="display: none;">${ cart.no }</td>
+				                                    <td><input name="cart" type="checkbox" value="${ cart.no }"></td>
 													<td>
-													<a onclick = "modalFunc(${ cart.no })">
+													<a style=" width: 230px" onclick = "mymodal(${ cart.no })">
 														${cart.name }
 														
 														</a>
 			                                   		</td>
-													<td width="10%" nowrap>
+													<td width="20%" nowrap>
 														${ cart.id }
 													</td>	
 													
 													<td class = "commaN finalPrice">${ cart.price }원</td>											
-													
-													<td class = "cancel-button"></td>									
+													<td class="qty-total">
+															<div class="qty-holder">
+																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cart.qty }"> 
+																<a class="qty-inc-btn" title="Inc">+</a> <a class="edit-qty"></a>
+															</div>
+																<button class="btn btn-primary btn-icon" style="width: 20%; height: 30px" id="order">결제</button>
+														</td>
 											</tr>
 											
 										</c:forEach>
@@ -321,7 +384,10 @@ function modalFunc(no) {
 										</c:choose>
 										</tbody>
 									</table>
-								</div>
+								</div>							<div  align="center" style="font-size:15; margin-top:8%; margin-left: 52%">	
+																<button class="btn btn-primary btn-icon" style=" width: 23%; height: 30px" id="del">메뉴삭제</button>
+																<button class="btn btn-primary btn-icon" style=" width: 23%; height: 30px" id="">SNS글등록</button>
+																</div>
 							</div>
 						</div>
 					</div>

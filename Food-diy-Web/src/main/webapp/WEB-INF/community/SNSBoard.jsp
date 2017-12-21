@@ -163,7 +163,7 @@
 													<div class="testimonial testimonial-style-3">
 														<div class="testimonial-author">
 															<div class="testimonial-author-thumbnail">
-																<img src="../upload/${snsHit.pic}" class="img-responsive img-circle" alt="">
+																<img src="../upload/${snsHit.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
 															</div>
 															<p>
 																<strong>${snsHit.id }</strong>
@@ -232,7 +232,7 @@
 												<div class="testimonial testimonial-style-3">
 													<div class="testimonial-author">
 														<div class="testimonial-author-thumbnail">
-															<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="">
+															<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt=""  style= "width:45px;height:45px;">
 														</div>
 														<p>
 															<strong>${snsVO.id }</strong>

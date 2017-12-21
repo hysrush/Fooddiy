@@ -63,6 +63,27 @@
 	        	$("#pw").css("background-color", "#FFCECE");
 	        }
 	    }
+	
+		//이메일 형식
+	    function checkEmail() {		
+
+			var email = document.getElementById("email").value;
+
+			console.log(email);
+			var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+				if(exptext.test(email)==false){
+					
+					$("#mailError").css("visibility", "visible");
+					$("#mailError").css("color", "#ed5565").text("형식이 올바르지 않습니다.");
+					$("#mailError").css("visibility", "visible");
+					$('#signUp').attr('disabled', true);
+					
+			}else{
+				$("#mailError").css("visibility", "hidden");
+			}
+		}
+
 
 	// 함수 시작
 	$(document).ready(function(){
@@ -144,7 +165,7 @@
 					<div class="row">
 						<div class="form-group">
 							<div class="col-xs-6">
-								<label>전화번호 </label> <input name="phone1" type="tel" value="${ phoneCert.phone }" class="form-control" readonly>
+								<label>전화번호 </label> <input name="phone" type="tel" value="${ phoneCert.phone }" class="form-control" readonly>
 							</div>
 							<div class="col-xs-6">
 								<label>생년월일</label> <input type="text" name="birth" value="${ phoneCert.birth }" class="form-control" readonly>
@@ -154,7 +175,8 @@
 					<div class="row">
 						<div class="form-group">
 							<div class="col-xs-6">
-								<label>E-mail </label> <input name="email" type="text" class="form-control" required placeholder="mama@naver.com">
+								<label>E-mail </label> <input id="email" name="email" type="text" class="form-control" 
+												placeholder="mama@naver.com" required="required" oninput="checkEmail()">
 							</div><br/>
 							<div class="col-xs-6" style="margin-top: 10px;">
 								<label> 성별 </label> 남 <input id="man" name="sex" type="radio"
@@ -162,15 +184,16 @@
 									name="sex" type="radio" value="여자" disabled="disabled" />
 								<c:choose>
 									<c:when test="${ phoneCert.sex eq '남자'}">
-										<input id="man" name="sex" type="hidden" value="남자" />
+										<input name="sex" type="hidden" value="남자" />
 									</c:when>
 									<c:otherwise>
-										<input id="woman" name="sex" type="hidden" value="여자" />
+										<input name="sex" type="hidden" value="여자" />
 									</c:otherwise>
 								</c:choose>
 							</div>
 						</div>
 					</div>
+						<strong id="mailError" style="visibility: hidden; color: #ed5565; font-size: 12px;" ></strong>
 					<div class="row">
 						<div class="col-xs-12">
 							<span class="member-box checkbox"> <label for="member">

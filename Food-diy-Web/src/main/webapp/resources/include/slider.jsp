@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div role="main" class="main">
-	<div class= "container" style="bord"><br/>
-		<div class="row">
+	<div class= "container"><br/>
+		<div class="row"  style="max-height: 760px;">
 			<div class="col-sm-3 main">
 				<!-- 동영상 -->
 					<div class="col-sm-12 main">
@@ -31,8 +31,8 @@
 										</tr>
 										<c:forEach items="${ notice }" var="n">
 										<tr style="border-bottom: 1px solid olive;">
-											<td colspan="2">
-												<span style="font-size: 12px;" class="heading-primary text-uppercase mb-md">
+											<td colspan="2" style="width: 292px;">
+												<span style="font-size: 12px; text-overflow:ellipsis; overflow:hidden" class="heading-primary text-uppercase mb-md">
 													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">&nbsp;${ n.title }</a>
 												</span>
 											</td>
@@ -58,14 +58,15 @@
 							</tr>
 							<tr>
 								<td>
+									<img width="100%" src="${ pageContext.request.contextPath }/resources/img/Left_bn_20130903.jpg"/>
 								</td>
 							</tr>
 						</table>
 					</div>
 				</div>
-				<!--  슬라이드 -->
+				<!--  슬라이드 --><br/>
 				<div class="col-sm-6 main">
-					<table style="max-height: 729px;">
+					<table>
 						<tr>
 							<td>
 								<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -86,13 +87,13 @@
 								</div>
 								<div class="item">
 									<img style="width:100%"
-										src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
+										src="${ pageContext.request.contextPath }/resources/img/main/new_product_20171110 (1).jpg"
 										alt="">
 									<div class="carousel-caption"></div>
 								</div>
 								<div class="item">
 									<img style="width:100%"
-										src="${ pageContext.request.contextPath }/resources/img/main/morning_img.jpg"
+										src="${ pageContext.request.contextPath }/resources/img/main/써브웨이_진행중인_이벤트-블록행사-포스터.jpg"
 										alt="">
 									<div class="carousel-caption"></div>
 								</div>
@@ -113,35 +114,42 @@
 						</tr>
 				</table>
 				</div>
-				<div class="col-sm-3 main" style="text-align: center;">
+				<div class="col-sm-3 main">
 					<!-- 신메뉴  -->
 					<div class="col-sm-12 main">
-						<a style="text-decoration: none" href="${ pageContext.request.contextPath }/notice/noticeDetail.jsp">
+						<a style="text-decoration: none" href="${ pageContext.request.contextPath }/menu/menuAll.do#recommend">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/main_celeb.jpg" />
 						</a>
 					</div>
 					<!-- SNS정보 -->
-					<div class="col-sm-12 main"><br/>
+					<div class="col-sm-12 main" ><br/>
 						<table style="width: 100%">
 							<tr style="border-bottom: 1px solid olive;">
-								<td colspan="2">
+								<td style="width: 60%">
 									<strong style="font-style: italic; font-size: 15px;">Subway-SNS</strong>
+								</td>
+								<td>
+									<span style="display: inline-table; align-content : center; font-size: 11px;">
+										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do"> +more</a>
+									</span>
 								</td>
 							</tr>
 							<c:forEach items="${ sns }" var="s">
 								<tr style="border-bottom: 1px solid olive;">
-									<td>${ s.id }</td>
-									<td colspan="2">추천수 ${ s.like }</td>
+									<td><strong style="font-size: 11px;">${ s.id }</strong></td>
+									<td><strong style="font-size: 11px;">추천수 ${ s.like }</strong></td>
 								</tr>
 								<tr style="border-bottom: 1px solid olive;">
-									<td style="width: 100px;">
-										<a href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
+									<td>
+										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
 											<img style="width:100%" src="../upload/${ s.fileName }" alt="Loading...">
 										</a>
 									</td>
-									<td colspan="2">
-										<strong> ${ s.title }</strong><br/>
-										<small>${ s.content }</small>
+									<td>
+										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
+											<strong> ${ s.title }</strong><br/>
+											<small>${ s.content }</small>
+										</a>
 									</td>
 								</tr>
 						</c:forEach>
@@ -149,7 +157,7 @@
 					</div>
 					<!-- 매장 찾기 -->
 					<div class="col-sm-12">
-						<br/><br/>
+						<br/>
 						<a href="${ pageContext.request.contextPath }/store/findStore">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 						</a>

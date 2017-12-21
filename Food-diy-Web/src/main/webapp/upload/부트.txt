@@ -1,0 +1,38 @@
+텍스트
+부제목 - <small>
+강조 - <mark>
+추가 - <ins>
+밑줄 - <u>
+글씨 두껍게 - <strong>
+이탤릭체로 렌더링 - <em>
+<p class="text-left">좌측정렬된 텍스트.</p>
+<p class="text-center">중앙정렬된 텍스트.</p>
+<p class="text-right">우측정렬된 텍스트.</p>
+<p class="text-justify">양쪽정렬된 텍스트.</p>
+<p class="text-nowrap">그냥 텍스트.</p>
+
+약어
+마우스를 올렸을때 원래 텍스틑를 보여줌 - <abbr title="attribute">attr</abbr>
+
+인용구
+
+<blockquote class="blockquote-reverse">
+  ...
+</blockquote>    - 오른쪽 정렬
+
+<ul>
+  <li>...</li>
+</ul>			- 목록표시
+
+<ol>
+  <li>...</li>
+</ol>			- 순서가 명확한 목록들
+
+
+얼룩말같은 줄무늬 행  - <table class="table table-striped">
+  ...
+</table
+
+
+placeholder  - 이메일을 입력하시오 같은...
+

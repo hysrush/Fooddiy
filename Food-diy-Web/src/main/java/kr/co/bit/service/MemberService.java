@@ -2,7 +2,6 @@ package kr.co.bit.service;
 
 import java.util.List;
 
-import kr.co.bit.sign.vo.LoginVO;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.UserVO;
 
@@ -18,5 +17,6 @@ public interface MemberService {
 	void setmyMenu(CartVO member);
 	List<CartVO> getmyMenu(String id);
 	List<CartVO> delmyMenu(List<String> noList);
+	CartVO getmyMenuDetail(int no);
 	
 }

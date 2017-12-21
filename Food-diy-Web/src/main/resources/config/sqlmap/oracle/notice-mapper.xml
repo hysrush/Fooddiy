@@ -3,13 +3,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.bit.community.dao.NoticeDAO">
+<mapper namespace="kr.co.bit.dao.NoticeDAO">
   	
 	<!-- ||| Notice 게시글 쿼리문 ||| -->
 	
 	<!-- sql 저장 : 전체 조회 -->
   	<sql id="selectAll_notice">
-		SELECT notice_no, notice_writer, notice_title, notice_type, notice_content,
+		SELECT notice_no, notice_writer, notice_title, notice_type, notice_content, notice_file, 
 				view_cnt, to_char(reg_at, 'yy-mm-dd') as reg_at
 		FROM t_notice
 	</sql>
@@ -21,6 +21,7 @@
   		<result column="notice_writer" property="writer"/>
   		<result column="notice_title" property="title"/>
   		<result column="notice_content" property="content"/>
+  		<result column="notice_file" property="filePath"/>
   		<result column="view_cnt" property="viewCnt"/>
   		<result column="reg_at" property="regDate"/>
   	</resultMap>
@@ -46,14 +47,15 @@
 	
 	<!-- Notice 글 등록 -->
 	<insert id="insertNotice" parameterType="noticeVO">
-		INSERT INTO t_notice(notice_no, notice_writer, notice_title, notice_type, notice_content)
-		VALUES(seq_t_notice_no.nextval, #{writer}, #{title}, #{type}, #{content})
+		INSERT INTO t_notice(notice_no, notice_writer, notice_title, notice_type, notice_content, notice_file)
+		VALUES(seq_t_notice_no.nextval, #{writer}, #{title}, #{type}, #{content}, #{filePath})
 	</insert>
 	
 	<!-- Notice 글 수정 -->
 	<update id="modifyNotice" parameterType="noticeVO">
 		UPDATE t_notice
-		SET notice_title = #{title}, notice_content = #{content}, notice_type = #{type}
+		SET notice_title = #{title}, notice_content = #{content}, notice_file = #{filePath}, 
+			notice_type = #{type}, reg_at = #{regDate}
 		WHERE notice_no = #{no}
 	</update>
 	
@@ -61,6 +63,15 @@
 	<delete id="removeNotice" parameterType="int" >
 		DELETE FROM t_notice
 		WHERE notice_no = #{no}
+	</delete>
+	
+	<!-- Notice 다중 삭제 -->
+	<delete id="removeNoticeSome" parameterType="java.util.List">
+		DELETE FROM t_notice
+		WHERE notice_no IN
+			<foreach item="item" index="index" collection="list" open="(" close=")" separator="," >
+       			#{item}
+ 			</foreach>
 	</delete>
 	
 	<!-- Notice 조회수 증가 -->

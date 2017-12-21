@@ -23,13 +23,13 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.bit.community.service.ClaimService;
-import kr.co.bit.community.vo.ClaimBoardVO;
 import kr.co.bit.service.CartService;
+import kr.co.bit.service.ClaimService;
 import kr.co.bit.service.MemberOrderService;
 import kr.co.bit.service.MemberService;
-import kr.co.bit.sign.service.SignService;
+import kr.co.bit.service.SignService;
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.ClaimBoardVO;
 import kr.co.bit.vo.DetailOrderVO;
 import kr.co.bit.vo.MemberOrderVO;
 import kr.co.bit.vo.UserVO;
@@ -194,44 +194,18 @@ public class MemberController {
 	}
 	
 //	나만의 메뉴 디테일
-/*	@RequestMapping(value ="/myMenu.do")
-	public String myMenu(String id, Model model) throws Exception {
+	@RequestMapping(value ="/myMenuDetail.do")
+	public String myMenu(int no, Model model) throws Exception {
 		
-		List<CartVO> cart = memberService.getmyMenu(id);
+		System.out.println(no);
+		CartVO cart = memberService.getmyMenuDetail(no);
 		
-		for(int i = 0 ; i < cart.size(); ++i) {
+		System.out.println(cart.toString());
 
-			List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
-			String menu = cart.get(i).getmyMenu();
-			String [] menus = menu.split("\\|\\|");
-			
-//			System.out.println("menus.length =  " + menus.length);
-			
-			for(int j = 0; j < menus.length; ++j) {
-				DetailOrderVO vo = new DetailOrderVO();
-				String [] oneMenu = menus[j].split("\\*");
-
-				vo.setName(oneMenu[0]);
-				vo.setBread(oneMenu[1]);
-				vo.setCheese(oneMenu[2]);
-				vo.setTopping(oneMenu[3]);
-				vo.setVegetable(oneMenu[4]);
-				vo.setSauce(oneMenu[5]);
-				vo.setRequirement(oneMenu[6]);
-				vo.setPic(oneMenu[7]);
-				vo.setSize(oneMenu[8]);
-				vo.setQty(new Integer(oneMenu[9]));
-				vo.setPrice(oneMenu[10]);
-				vo.setTotal_price(oneMenu[11]);
-				list.add(vo);
-			}
-			cart.get(i).setDetailOrderList(list);
-		}
-		
 		System.out.println("cartList");
 		model.addAttribute("cartList", cart);
-		return "member/myMenu";
-	}*/
+		return "member/myMenuDetail";
+	}
 
 	
 	//나만의 메뉴 삭제
@@ -248,7 +222,7 @@ public class MemberController {
 	}
 
 	//주문내역 
-	@RequestMapping("/menuList.do")
+	@RequestMapping("/Latest-Order.do")
 	public ModelAndView todayOrderList(String id, ModelAndView mav) {
 		
 		List<MemberOrderVO> todayOrderList = service.selectAll(id);
@@ -283,7 +257,7 @@ public class MemberController {
 		}
 		
 //		System.out.println(todayOrderList);
-		mav.setViewName("member/menuList");
+		mav.setViewName("member/Latest-Order");
 		mav.addObject("orderList", todayOrderList);
 		return mav;
 	}
@@ -297,7 +271,7 @@ public class MemberController {
 	}
 	
 	// 주문 내역 상세 보기
-	@RequestMapping(value = "/menuDetail.do",method = RequestMethod.GET) 
+	@RequestMapping(value = "/Latest-OrderDetail.do",method = RequestMethod.GET) 
 	public ModelAndView orderDetail(ModelAndView mav, @RequestParam("no") int no) {
 		
 		MemberOrderVO todayOrderList = service.selectByNo(no);
@@ -330,7 +304,7 @@ public class MemberController {
 		todayOrderList.setDetailOrderList(list);
 		
 		mav.addObject("member", todayOrderList);
-		mav.setViewName("member/menuDetail");
+		mav.setViewName("member/Latest-OrderDetail");
 		
 		System.out.println("찍음 ");
 		return mav;
@@ -397,6 +371,7 @@ public class MemberController {
 	@RequestMapping("/myQnA.do")
 	public ModelAndView listAll(String id) {
 		
+		System.out.println(id);
 		List<ClaimBoardVO> claimList = claimService.selectClaim(id);
 		System.out.println(claimList);
 		ModelAndView mav = new ModelAndView();

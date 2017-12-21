@@ -123,9 +123,11 @@ public class SnsController {
 			String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
 			+ file.getOriginalFilename();
 			//String fileName = "C:\\Users\\user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"+ file.getOriginalFilename();
-			
+			String uFileName = "C:\\Users\\bit-user\\git\\Fooddiy-manager\\Food-manager-Web\\src\\main\\webapp\\upload\\SNS\\"
+			+ file.getOriginalFilename();
+					
 			String saveFileName = file.getOriginalFilename();
-
+				
 			
 			snsVO.setFileName(saveFileName);
 
@@ -139,7 +141,15 @@ public class SnsController {
 			BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
 			buffStream.write(bytes);
 			buffStream.close();
-
+			//관리자 경로에 파일 저장
+			byte[] ubyte;
+			ubyte = file.getBytes();
+			BufferedOutputStream buffStreams = new BufferedOutputStream(new FileOutputStream(new File(uFileName)));
+			buffStreams.write(ubyte);
+			buffStreams.close();
+			
+			
+			
 			System.out.println("들어가나 2");
 
 			// eventVO에 저장
@@ -225,7 +235,8 @@ public class SnsController {
 							//String fileName = "C:\\Users\\user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"+ file.getOriginalFilename();
 							
 							String saveFileName = file.getOriginalFilename();
-
+					String uFileName = "C:\\Users\\bit-user\\git\\Fooddiy-manager\\Food-manager-Web\\src\\main\\webapp\\upload\\SNS\\"
+							+ file.getOriginalFilename();			
 							
 							snsVO.setFileName(saveFileName);
 
@@ -239,7 +250,12 @@ public class SnsController {
 							BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
 							buffStream.write(bytes);
 							buffStream.close();
-					
+							byte[] ubyte;
+							ubyte = file.getBytes();
+							BufferedOutputStream buffStreams = new BufferedOutputStream(new FileOutputStream(new File(uFileName)));
+							buffStreams.write(ubyte);
+							buffStreams.close();
+							
 					
 					
 					

@@ -4,35 +4,36 @@
 <br/>
 <div role="main" class="main">
 	<div class="container">
-		<div class="row">
+		<div class="row"><br/>
 			<div class="col-xs-12 main">
 				<table style="text-align: center;">
 					<tr>
-						<td align="center">
-							<video width="200%" controls autoplay>
+						<td colspan="2" align="center">
+							<video width="100%" controls autoplay>
 								<source src="${pageContext.request.contextPath }/resources/video/subway.mp4" type="video/mp4">
 							</video><br/><br/>
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td style="width: 160px;">
 							<!-- <strong style="font-size: 20px; font-style: italic; color:#feca07;"> BEST </strong> -->
 							<strong style="font-weight: bold; font-size: 20px"> SNS </strong>
-							<img width="10%" src="${ pageContext.request.contextPath }/resources/img/다운로드.jpg"/> 
+							<img width="15%" src="${ pageContext.request.contextPath }/resources/img/다운로드.jpg"/> 
 							
 						</td>
 						<td>
-							<a href="${ pageContext.request.contextPath }/community/snsPage.do"><strong style="font-size: 13px; font-style: italic;"> SNS more+</strong></a>
+							<span style="display: inline-table; align: right; font-size: 11px;">
+								<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do"> more+</a>
+							</span>
 						</td>
-						
 					</tr>
 					<tr>
 						<c:forEach items="${ sns }" var="s" begin="0" end="1">
 						<td><br/>
-							<table  style="width: 160px;">
+							<table>
 								<tr>
-									<td>추천수 ${ s.like }</td>
-									<td>${ s.id }</td>
+									<td><strong style="margin-left: 5%; font-weight: bold; color:aqua;">&nbsp;&nbsp;추천수 ${ s.like }</strong></td>
+									<td><strong style="font-weight: bold; color:aqua; margin-left: 8%">&nbsp;&nbsp;${ s.id }</strong></td>
 								</tr>
 								<tr>
 									<td colspan="2">
