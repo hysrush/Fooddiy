@@ -59,7 +59,7 @@ public class SignController {
 	@RequestMapping(value = "/phoneCertForm.do", method = RequestMethod.POST)
 	public String phoneCertForm(UserVO phoneCert, Model model) {
 		
-		System.out.println(phoneCert.toString());
+		/*System.out.println(phoneCert.toString());*/
 		// 회원 가입했는지 확인(번호랑 이름)
 		int num = signServiceImp.checkMember(phoneCert);
 		if(num == 1) {
@@ -83,7 +83,7 @@ public class SignController {
 		phoneCert.setType("U");
 		phoneCert.setFile("null");
 		
-		System.out.println(phoneCert.toString());
+		/*System.out.println(phoneCert.toString());*/
 		signServiceImp.signUp(phoneCert);
 		
 		// 회원가입 후 자동 로그인
@@ -157,7 +157,7 @@ public class SignController {
 	public String logout(SessionStatus sessionStatus, Model model, HttpSession session, RedirectAttributes redirect) {
 		
 		sessionStatus.setComplete();
-		System.out.println(session.getAttribute("cartList"));
+		/*System.out.println(session.getAttribute("cartList"));*/
 		
 		redirect.addFlashAttribute("msg", "로그아웃");
 		
