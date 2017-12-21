@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.bit.service.ClaimService;
 import kr.co.bit.service.EventService;
@@ -97,7 +98,7 @@ public class ClaimController {
 	// Claim 새 글쓰기
 	@RequestMapping(value="/claimWrite.do", method=RequestMethod.POST)
 	public String write(@Valid ClaimBoardVO claimVO, BindingResult result,
-						@RequestParam(value="file") MultipartFile file) throws Exception {
+						@RequestParam(value="file") MultipartFile file, RedirectAttributes r) throws Exception {
 		
 		if (result.hasErrors()) {
 			// 에러일때 true => writeForm으로
@@ -133,8 +134,9 @@ public class ClaimController {
 		
 		// Claim 새 글 등록
 		claimService.insertClaim(claimVO);
-		
-		return "redirect:/community/claim.do";
+	/*	r.addFlashAttribute("id", claimVO.getWriter());*/
+		System.out.println(claimVO.getWriter());
+		return "member/myQnA.do?id="+claimVO.getWriter();
 	}
 	
 	// Claim 글 상세내용 조회 & 게시글 조회수 증가 처리

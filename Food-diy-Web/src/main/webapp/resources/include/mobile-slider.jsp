@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row"><br/>
 			<div class="col-xs-12 main">
-				<table style="text-align: center;">
+				<table style="text-align: center; width: 100%">
 					<tr>
 						<td colspan="2" align="center">
 							<video width="100%" controls autoplay>
@@ -15,43 +15,41 @@
 						</td>
 					</tr>
 					<tr>
-						<td style="width: 160px;">
+						<td align="center" colspan="2">
 							<!-- <strong style="font-size: 20px; font-style: italic; color:#feca07;"> BEST </strong> -->
-							<strong style="font-weight: bold; font-size: 20px"> SNS </strong>
-							<img width="15%" src="${ pageContext.request.contextPath }/resources/img/다운로드.jpg"/> 
-							
-						</td>
-						<td>
-							<span style="display: inline-table; align: right; font-size: 11px;">
-								<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do"> more+</a>
-							</span>
+							<a href="${ pageContext.request.contextPath }/community/snsPage.do">
+								<img width="60%" src="${ pageContext.request.contextPath }/resources/img/lik2.jpg"/>
+							</a>
+							<strong style="font-size: 12px; text-align: right">
+								
+							</strong>
 						</td>
 					</tr>
 					<tr>
 						<c:forEach items="${ sns }" var="s" begin="0" end="1">
 						<td><br/>
-							<table>
+							<table style="width: 100%">
 								<tr>
-									<td><strong style="margin-left: 5%; font-weight: bold; color:aqua;">&nbsp;&nbsp;추천수 ${ s.like }</strong></td>
-									<td><strong style="font-weight: bold; color:aqua; margin-left: 8%">&nbsp;&nbsp;${ s.id }</strong></td>
+									<td><strong style="font-weight: bold; color:aqua;">추천수 ${ s.like }</strong></td>
+									<td align="right"><strong style="font-weight: bold; color:aqua;">${ s.id }</strong></td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
-											<img style="width: 100%; margin-left:5%;" src="../upload/${ s.fileName }"/><br/>
+										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+											<img style="width: 100%; height: 170px;" src="../upload/${ s.fileName }"/><br/>
 										</a>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
+										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
 											<strong>${ s.title }</strong>
 										</a>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${s.no}">
+										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
 											<small>${ s.content }</small>
 										</a>
 									</td>

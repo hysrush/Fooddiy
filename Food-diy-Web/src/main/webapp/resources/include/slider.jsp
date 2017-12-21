@@ -18,10 +18,12 @@
 							<tr>
 								<td>
 									<!-- 공지사항 -->
-									<table>
+									<table style="margin-top: 5%">
 										<tr style="border-bottom: 1px solid olive;">
 											<td style="width:100%">
-												<strong style="font-style: italic; font-size: 15px;">&nbsp;What's New</strong>
+												<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/notice.do">
+													<strong style="font-style: italic; font-size: 15px;">&nbsp;What's New</strong>
+												</a>
 											</td>
 											<td>
 												<span style="display: inline-table; align: right; font-size: 11px;">
@@ -64,8 +66,8 @@
 						</table>
 					</div>
 				</div>
-				<!--  슬라이드 --><br/>
-				<div class="col-sm-6 main">
+				<!--  슬라이드 -->
+				<div class="col-sm-6 main" st>
 					<table>
 						<tr>
 							<td>
@@ -122,30 +124,33 @@
 						</a>
 					</div>
 					<!-- SNS정보 -->
-					<div class="col-sm-12 main" ><br/>
-						<table style="width: 100%">
+					<div class="col-sm-12 main" >
+						<table style="width: 100%; margin-top: 2%">
 							<tr style="border-bottom: 1px solid olive;">
-								<td style="width: 60%">
-									<strong style="font-style: italic; font-size: 15px;">Subway-SNS</strong>
+								<td width="50%">
+									<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+										<strong style="font-style: italic; font-size: 15px;">&nbsp;What's BEST SNS</strong>
+									</a>
 								</td>
-								<td>
+								<td colspan="2" align="right">
 									<span style="display: inline-table; align-content : center; font-size: 11px;">
 										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do"> +more</a>
 									</span>
 								</td>
 							</tr>
-							<c:forEach items="${ sns }" var="s">
+							<c:forEach items="${ sns }" var="s" end="1">
 								<tr style="border-bottom: 1px solid olive;">
-									<td><strong style="font-size: 11px;">${ s.id }</strong></td>
-									<td><strong style="font-size: 11px;">추천수 ${ s.like }</strong></td>
+									<td></td>
+									<td align="left"><strong style="font-size: 12px; margin-left: 5%">${ s.id }</strong></td>
+									<td align="right"><strong style="font-size: 12px; padding-top: 3%; padding-bottom: 3%">추천수 ${ s.like }</strong></td>
 								</tr>
 								<tr style="border-bottom: 1px solid olive;">
 									<td>
 										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<img style="width:100%" src="../upload/${ s.fileName }" alt="Loading...">
+											<img style="width:100%; height: 175px;" src="../upload/${ s.fileName }" alt="Loading...">
 										</a>
 									</td>
-									<td>
+									<td align="center" colspan="2">
 										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
 											<strong> ${ s.title }</strong><br/>
 											<small>${ s.content }</small>
@@ -156,8 +161,7 @@
 						</table>
 					</div>
 					<!-- 매장 찾기 -->
-					<div class="col-sm-12">
-						<br/>
+					<div class="col-sm-12" style="margin-top: 2%">
 						<a href="${ pageContext.request.contextPath }/store/findStore">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 						</a>

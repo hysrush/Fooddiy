@@ -194,7 +194,7 @@
 									<p>본인명의의 휴대폰을 통해 인증합니다.</p>
 									<div class="row mt-xlg">
 										<div class="col-md-12">
-											<button id="phoneCert" class="btn btn-info mb-md form-control" data-toggle="modal" data-target="#modal">인증하기</button>
+											<button id="phoneCert" class="btn btn-info mb-md form-control btn-primary btn-icon" data-toggle="modal" data-target="#modal">인증하기</button>
 										</div>
 									</div>
 								</div>
@@ -245,7 +245,7 @@
 											<div class="form-group">
 												<div class="col-xs-12 col-md-12">
 													<!-- <a href="javascript:fnPopup();" class="btn btn-info mb-md form-control"> 인증하기 </a> -->
-													<input type="submit" id="check" value="인증하기" class="btn btn-info mb-md form-control"/>
+													<input type="submit" id="check" value="인증하기" class="btn btn-info mb-md form-control btn-primary btn-icon"/>
 												</div>
 											</div>
 										</form>

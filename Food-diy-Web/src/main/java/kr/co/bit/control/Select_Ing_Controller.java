@@ -69,9 +69,6 @@ public class Select_Ing_Controller {
 			cartVO = sessionCartVO;
 			session.setAttribute("sessionCartVO", null);
 		}
-			 
-			
-		System.out.println("select Ingredients : " + cartVO);
 		
 		// select_ingredient.jsp에 보여줄 재료정보를 불러온다.
 		List<IngredientsVO> ingList = ing_Service.selectAllIng();
@@ -124,7 +121,6 @@ public class Select_Ing_Controller {
 			cartVO.setRequirement(" ");
 			cartVO.setSize(" ");
 
-			System.out.println(cartVO);
 			cart_Service.insertCart(cartVO);
 
 			// 모든 잘바구니 불러오기
@@ -171,39 +167,6 @@ public class Select_Ing_Controller {
 			session.setAttribute("cartVO", null);
 			return "/menu/cart";
 		}
-		/*
-		 * else if ( cartVO != null ) { cartVO.setBread(bread);
-		 * cartVO.setCheese(cheese);
-		 * 
-		 * String[] toppings; Integer price = new Integer(cartVO.getPrice());
-		 * 
-		 * if(topping != null) { toppings = topping.split("\\|\\|"); for (int i
-		 * = 0; i < toppings.length; ++i) {
-		 * 
-		 * String subPrice = toppings[i].split("\\s")[1]; subPrice =
-		 * subPrice.replace(",", ""); subPrice = subPrice.replace("+", "");
-		 * 
-		 * price += new Integer(subPrice); } topping =
-		 * topping.replaceAll("\\|\\|", ", ");
-		 * 
-		 * }
-		 * 
-		 * 
-		 * 
-		 * cartVO.setTotal_price(price.toString()); cartVO.setTopping(topping);
-		 * cartVO.setVegetable(vegetable); cartVO.setSauce(sauce);
-		 * cartVO.setRequirement(requirement); System.out.println(cartVO);
-		 * 
-		 * // 장바구니에 추가 cart_Service.insertCart(cartVO);
-		 * 
-		 * // 모든 잘바구니 불러오기 List<CartVO> cartList =
-		 * cart_Service.selectAllCart(cartVO);
-		 * 
-		 * session.setAttribute("cartList", cartList);
-		 * 
-		 * //장바구니에 넣어주고 carVO를 비워준다. session.setAttribute("cartVO", null);
-		 * return "/menu/cart"; }
-		 */
 
 		return "/menu/cart";
 
@@ -267,10 +230,6 @@ public class Select_Ing_Controller {
 
 		response.setContentType("text/html;charset=UTF-8");
 
-		System.out.println("증감 : " +no);
-		System.out.println(no);
-		System.out.println(totalQty);
-
 		UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		CartVO cartVO = new CartVO();
 		int number = no;
@@ -281,10 +240,7 @@ public class Select_Ing_Controller {
 
 		cart_Service.updateProductQty(cartVO);
 		List<CartVO> cartList = cart_Service.selectAllCart(cartVO);
-		for (int i = 0; i < cartList.size(); ++i) {
 
-			System.out.println(cartList.get(i));
-		}
 		session.setAttribute("cartList", cartList);
 		System.out.println("수량 변경");
 	}

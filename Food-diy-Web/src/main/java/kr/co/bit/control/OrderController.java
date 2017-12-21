@@ -36,7 +36,6 @@ public class OrderController {
 			@RequestParam(value = "order") String order, HttpSession session) throws Exception{
 		response.setContentType("text/html;charset=UTF-8");
 		
-		
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
 		String id = userVO.getId();
 		String type = userVO.getType();
@@ -57,10 +56,8 @@ public class OrderController {
 		orderVO.setFinal_price(info[3]);
 		orderVO.setMenu(orders[1]);
 		orderVO.setEatType("포장");
-		System.out.println(orderVO);
 		
 		orderService.insertOrder(orderVO);
-		
 		cartStore_Service.deleteCartStore(id);
 		cart_Service.deleteCartById(id);;
 		
@@ -76,6 +73,4 @@ public class OrderController {
 		
 		return "menu/orderedPage";
 	}
-	
-
 }

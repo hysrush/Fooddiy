@@ -18,8 +18,8 @@
 	          url: '/v1/user/me',
 	          success: function(res) {
 					var id = res.id;
-	            	$("#id").val(id);
-	            	$("#pw").val(id);
+	            	$("#kakaoid").val(id);
+	            	$("#kakaopw").val(id);
 	            	$("#kaka").click();
 
 				},
@@ -34,7 +34,7 @@
 	});
 </script>
 <form id="kakaoForm" action="${ pageContext.request.contextPath }/sign/kakoLogin.do" method="post" style="display: none;">
-	<input type="hidden" id="id" name="id">
-	<input type="hidden" id="pw" name="pw">
+	<input type="hidden" id="kakaoid" name="id">
+	<input type="hidden" id="kakaopw" name="pw">
 	<input type="submit" id="kaka">
 </form>

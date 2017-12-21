@@ -19,9 +19,9 @@
 			  url: '/v1/user/me',
 	          success: function(res) {
 					var id = res.id;
-	            	$("#id").val(id);
-	            	$("#pw").val(id);
-	            	$("#kaka").click();
+	            	$("#mkakaoid").val(id);
+	            	$("#mkakaopw").val(id);
+	            	$("#mkaka").click();
 
 				},
 				fail : function(error) {
@@ -36,9 +36,9 @@
     };
   //]]>
 </script>
-<form id="kakaoForm" action="${ pageContext.request.contextPath }/sign/kakoLogin.do" method="post" style="display: none;">
-	<input type="hidden" id="id" name="id">
-	<input type="hidden" id="pw" name="pw">
-	<input type="submit" id="kaka">
+<form saction="${ pageContext.request.contextPath }/sign/kakoLogin.do" method="post" style="display: none;">
+	<input type="hidden" id="mkakaoid" name="id">
+	<input type="hidden" id="mkakaopw" name="pw">
+	<input type="submit" id="mkaka">
 </form>
 
