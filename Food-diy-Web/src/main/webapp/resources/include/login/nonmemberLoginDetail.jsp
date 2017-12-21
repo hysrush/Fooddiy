@@ -107,7 +107,7 @@
 											</select>
 											</div>
 											<div class="col-md-4">
-												<input type="button" value="인증코드" id="nonCheck"  class="btn btn-info pull-right form-control" data-loading-text="Loading..."/>
+												<input type="button" value="인증코드" id="nonCheck"  class="btn btn-info pull-right form-control btn-primary btn-icon" data-loading-text="Loading..."/>
 											</div>
 										</div>
 									</div>
@@ -124,7 +124,7 @@
 												<input type="text" name="pno" id="pno" class="form-control" required="required"/>
 											</div><br/>
 											<div class="col-md-6">
-												<input type="submit" value="인증확인" id="nonSign"class="btn btn-info pull-right form-control"/>
+												<input type="submit" value="인증확인" id="nonSign"class="btn btn-info pull-right form-control btn-primary btn-icon"/>
 											</div>
 										</div>
 									</div>

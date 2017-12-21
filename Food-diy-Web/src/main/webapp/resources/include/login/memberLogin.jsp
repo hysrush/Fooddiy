@@ -104,7 +104,7 @@
 											</span> -->
 										</div>
 										<div class="col-xs-6 col-md-6 pull-right">
-											<input type="submit" value="Login" class="btn btn-info pull-right mb-xl" data-loading-text="Loading...">
+											<input type="submit" value="로그인" class="btn btn-info pull-right mb-xl btn-primary btn-icon" data-loading-text="Loading...">
 										</div>
 									</div>
 								</form>
@@ -120,7 +120,8 @@
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div> --%>
 									<div class="col-xs-6 col-md-6">
-										<a href="${ pageContext.request.contextPath }/sign/signUp.do" class="btn btn-info mb-md form-control">회원가입</a>
+										<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
+										class="btn btn-info mb-md form-control btn-primary btn-icon" style="padding-bottom: 10px;">회원가입</a>
 									</div>
 								</div>
 								<%-- <div class="row mt-xs">
@@ -161,10 +162,10 @@
 										</div><br/>
 										<div class="form-group">
 											<div class="col-xs-6 col-md-6">
-												<input type="submit" id="lost" value="확인" class="btn btn-info mb-md form-control" />
+												<input type="submit" value="확인" class="btn btn-info mb-md form-control btn-primary btn-icon" />
 											</div>
 											<div class="col-xs-6 col-md-6">
-												<input type="button" value="취소" data-dismiss="modal" class="btn btn-info mb-md form-control" />
+												<input type="button" value="취소" data-dismiss="modal" class="btn btn-info mb-md form-control btn-primary btn-icon" />
 											</div>
 										</div>
 									</form>
@@ -218,10 +219,10 @@
 										<div class="form-group">
 											<div class="col-xs-6 col-md-6">
 												<!-- <a href="javascript:fnPopup();" class="btn btn-info mb-md form-control"> 인증하기 </a> -->
-												<input type="submit" id="lost" value="확인" class="btn btn-info mb-md form-control" />
+												<input type="submit" value="확인" class="btn btn-info mb-md form-control btn-primary btn-icon" />
 											</div>
 											<div class="col-xs-6 col-md-6">
-												<input type="button" value="취소" data-dismiss="modal" class="btn btn-info mb-md form-control" />
+												<input type="button" value="취소" data-dismiss="modal" class="btn btn-info mb-md form-control btn-primary btn-icon" />
 											</div>
 										</div>
 									</form>

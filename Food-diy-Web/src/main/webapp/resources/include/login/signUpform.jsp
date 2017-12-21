@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="${ pageContext.request.contextPath }/resources/css/sweetalert/sweetalert.css" rel="stylesheet">
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/js/sweetalert/sweetalert.min.js"></script>
 <script>
 	// 유효성 검사
 	function isNull(obj){
@@ -116,12 +118,17 @@
 		
 		// 취소 버튼
 		$("#reset").click(function(){
-			
-			if(confirm("취소할 거예요?")){
-				location.href="${ pageContext.request.contextPath }/main/Start";
-			}else{
-				window.location.reload();
-			}
+			 swal({
+				 	title: "",
+			        text: "취소하실 거예요?",
+			        type: "warning",
+			        showCancelButton: true,
+			        confirmButtonColor: "#DD6B55",
+			        confirmButtonText: "Yes!",
+			        closeOnConfirm: false
+			    }, function () {
+			    	location.href="${ pageContext.request.contextPath }/main/Start";
+				});
 		});
 	});
 	
@@ -208,10 +215,10 @@
 					<div class="row">
 						<div class="col-xs-6">
 							<!-- btn btn-info mb-md -->
-							<input type="submit" id="signUp" class="btn btn-info mb-md form-control" value="가입">
+							<input type="submit" id="signUp" class="btn btn-info mb-md form-control btn-primary btn-icon" value="가입">
 						</div>
 						<div class="col-xs-6">
-							<input type="button" id="reset" class="btn btn-info mb-md form-control" value="취소">
+							<input type="button" id="reset" class="btn btn-info mb-md form-control btn-primary btn-icon" value="취소">
 						</div>
 					</div>
 				</form>

@@ -11,7 +11,7 @@
 						<div class="featured-box featured-box-primary align-left mt-xlg">
 							<div class="box-content">
 								<h4 class="heading-primary text-uppercase mb-md">주문조회</h4>
-								<form action="${ pageContext.request.contextPath }/" id="frmSignIn" method="post">
+								<form action="${ pageContext.request.contextPath }/" method="post">
 									<div class="row">
 										<div class="form-group">
 											<div class="col-md-12">
@@ -35,8 +35,8 @@
 									</div>
 									<div class="row mt-xlg">
 										<div class="col-md-12">
-											<input type="submit" value=" 조회하기 " id="pno" 
-												class="btn btn-info mb-md form-control" data-loading-text="Loading..."/>
+											<input type="submit" value=" 조회하기 " id="menuCheck" 
+												class="btn btn-info mb-md form-control btn-primary btn-icon" data-loading-text="Loading..."/>
 										</div>
 									</div>
 								</form>

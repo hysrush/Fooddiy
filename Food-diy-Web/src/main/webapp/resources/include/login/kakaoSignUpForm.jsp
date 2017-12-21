@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/js/sweetalert/sweetalert.min.js"></script>
 <script>
 	$(document).ready(function(){
 		// 가입 버튼 비활성화
@@ -24,15 +25,18 @@
 		
 		// 취소 버튼
 		$("#reset").click(function(){
-			
-			if(confirm("취소할 거예요?")){
-				location.href="${ pageContext.request.contextPath }/index2.jsp";
-			}else{
-				
-			}
+		    swal({
+		        title: "취소하실 거예요?",
+		        type: "warning",
+		        showCancelButton: true,
+		        confirmButtonColor: "#DD6B55",
+		        confirmButtonText: "Yes!",
+		        closeOnConfirm: false
+		    }, function () {
+		    	location.href="${ pageContext.request.contextPath }/main/Start";
+			});
 		});
 	});
-	
 </script>
 <!-- 회원 가입 -->
 <div class="featured-box featured-box-primary align-left mt-xlg">
@@ -135,11 +139,11 @@
 						<div class="col-md-6">
 							<!-- btn btn-info mb-md -->
 							<input type="submit" id="signUp"
-								class="btn btn-info mb-md form-control" value="가입">
+								class="btn btn-info mb-md form-control mb-md form-control btn-primary btn-icon" value="가입">
 						</div>
 						<div class="col-md-6">
 							<input type="button" id="reset"
-								class="btn btn-info mb-md form-control" value="취소">
+								class="btn btn-info mb-md form-control mb-md form-control btn-primary btn-icon" value="취소">
 						</div>
 					</div>
 				</form>
