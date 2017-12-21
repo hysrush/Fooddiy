@@ -430,7 +430,7 @@
 															<label for="content">내용</label>
 														</th>
 														<td>
-															<-ool-p-plform:textarea path="content" class="form-control" rows="5" id="content" name="content" placeholder="내용"/>
+															<form:textarea path="content" class="form-control" rows="5" id="content" name="content" placeholder="내용"/>
 															<form:errors path="content" class="form-control"></form:errors>
 														</td>
 													</tr>
