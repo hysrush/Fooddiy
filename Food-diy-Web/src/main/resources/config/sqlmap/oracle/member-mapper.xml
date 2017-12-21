@@ -194,4 +194,10 @@
 		DELETE FROM t_mymenu
 		WHERE CART_NO = #{no}
 	</delete>
+	
+	<!-- myQnA 삭제 -->
+	<delete id="delmyQnA" parameterType="java.lang.Integer">
+		DELETE FROM t_claim
+		WHERE CLAIM_NO = #{no}
+	</delete>
 </mapper>

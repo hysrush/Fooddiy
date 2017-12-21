@@ -141,39 +141,43 @@
 								<br>
 								<form action="/Mission-Web/fileDownload" method="post" id="dForm">
 									<table class="table table-bordered">
-											<thead>
-												<tr>
-													<th width="15%">메뉴</th>
-													<th width="62%">주문옵션</th>
-													<th>수량</th>
-													<th>합계금액</th>
-												</tr>
-											</thead>
 										<tr>
+											<td class="col-md-1" style="width: 10%" colspan="2"> 
+												<h4 class="mb-none" ><strong>제목 </strong></h4>
+											</td>
 											<!-- 타입 -->
+											<td class="col-xs-7" colspan="1">
+												<h4 class="mb-none">
+													<c:out value="${ claimVO.title }"></c:out>
+												</h4>
+											</td>
+											<!-- 타입 -->
+											
 											<c:if test="${ claimVO.type eq 'I'}"><td>문의</td></c:if>
 											<c:if test="${ claimVO.type eq 'P'}"><td>칭찬</td></c:if>
 											<c:if test="${ claimVO.type eq 'S'}"><td>제안</td></c:if>
 											<c:if test="${ claimVO.type eq 'C'}"><td>불만</td></c:if>
 											<c:if test="${ claimVO.type eq 'X'}"><td>기타</td></c:if>
+											
 											<!-- 제목 -->
-											<td class="col-xs-3" colspan="2">
-												<h4 class="mb-none">
-													<strong><c:out value="${ claimVO.title }"></c:out></strong>
-												</h4>
-											</td>
-										</tr>
+										</tr> 
 										<tr>
-											<div class="post-meta">
+												<td>
+												<h5 style="height: 10px"> 조회수</h5>
+												</td>
+										
 												<!-- 조회수 -->
-												<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ claimVO.viewCnt }</td>
+												<td width="15%"><i class="fa fa-eye"></i>&nbsp;&nbsp; ${ claimVO.viewCnt }</td>
+										
+												<td colspan="1">
+												<h5 style="height: 10px"> </h5>
+												</td>
 												<!-- 등록일 -->
-												<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ claimVO.regDate }</td>
-											</div>
+												<td width="15%"><i class="fa fa-calendar"></i>${ claimVO.regDate }</td>
 										</tr>
 										<tr>
 											<!-- 내용 -->
-											<td colspan="4"><p><c:out value="${ claimVO.content }"></c:out></p></td>
+											<td colspan="4" style="height: 250px"><p><c:out value="${ claimVO.content }"></c:out></p></td>
 										</tr>
 										<!-- 첨부파일 -->
 										<c:if test="${ not empty claimVO.file }">
@@ -181,7 +185,7 @@
 												<th width="15%">첨부파일</th>
 												<td colspan="3">
 													<div align="center">
-														<img alt="" class="img-responsive img-rounded" src="../upload/${ claimVO.file }" style="height:400px">
+														<img alt="" class="img-responsive img-rounded" src="../upload/${ claimVO.file }" style="height:200px">
 													</div>
 												</td>
 											</tr>

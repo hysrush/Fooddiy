@@ -17,8 +17,18 @@ public class UserVO {
 	private String root;
 	private String type;
 	private String regDate;
+	private String oriFile;
 	
 	
+	
+	public String getOriFile() {
+		return oriFile;
+	}
+
+	public void setOriFile(String oriFile) {
+		this.oriFile = oriFile;
+	}
+
 	public String getFile() {
 		return file;
 	}
@@ -136,7 +146,8 @@ public class UserVO {
 	public String toString() {
 		return "UserVO [no=" + no + ", id=" + id + ", name=" + name + ", pw=" + pw + ", birth=" + birth + ", sex=" + sex
 				+ ", email=" + email + ", phone=" + phone + ", store=" + store + ", file=" + file + ", grade=" + grade
-				+ ", root=" + root + ", type=" + type + ", regDate=" + regDate + "]";
+				+ ", root=" + root + ", type=" + type + ", regDate=" + regDate + ", oriFile=" + oriFile + "]";
 	}
+	
 	
 }

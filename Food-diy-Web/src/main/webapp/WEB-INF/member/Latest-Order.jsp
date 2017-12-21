@@ -301,7 +301,7 @@ $(document).ready(function(){
 																	<td width="10%" nowrap> ${ order.id } </td>	
 																	<td class = "commaN finalPrice">${ order.final_price }원</td>											
 																	<td>${ order.payment }</td>			
-																	<td><span class="orderStatus label label-primary">${ order.orderStatus }</span></td>		
+																	<td><span style="background-color: green;" class="orderStatus label label-primary">${ order.orderStatus }</span></td>		
 																	<td class = "cancel-button"></td>		
 																	</tr>
 											    	</c:forEach>
@@ -322,20 +322,17 @@ $(document).ready(function(){
 </div>
 </div>
 
-   <div class="container">
-
-	<footer class="light visible-lg" id="footer">
-		<jsp:include page="/resources/include/bottom.jsp"/>
-	</footer>
-	
-	<footer class="light hidden-lg" id="footer">
-		<jsp:include page="/resources/include/mobile-bottom.jsp"/>
-	</footer>
-
-   </div>
+	<div class="container">
+		<footer class="light visible-lg" id="footer">
+			<jsp:include page="/resources/include/bottom.jsp" />
+		</footer>
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp" />
+		</footer>
+	</div>
 
 
-   <!-- 모달들 -->
+	<!-- 모달들 -->
    <div class="modal fade" tabindex="-1" role="dialog"
       aria-labelledby="largeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">

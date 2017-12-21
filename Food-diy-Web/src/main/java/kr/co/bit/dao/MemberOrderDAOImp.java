@@ -23,12 +23,12 @@ public class MemberOrderDAOImp  implements MemberOrderDAO{
 		List<MemberOrderVO> allOrderList = session.selectList(url + "selectAllOrder", id);
 		
 		for(int i=0; i<allOrderList.size(); i++) {
-			System.out.println(allOrderList.get(i).getMenu());
+//			System.out.println(allOrderList.get(i).getMenu());
 			String[] name = allOrderList.get(i).getMenu().split("\\*\\/");
 			
 			
-			System.out.println("name " + i + " : " + name[1]);
-			System.out.println(name[1].split("\\*")[0]);
+//			System.out.println("name " + i + " : " + name[1]);
+//			System.out.println(name[1].split("\\*")[0]);
 			allOrderList.get(i).setPic(name[1].split("\\*")[0]);
 		}
 		return allOrderList;

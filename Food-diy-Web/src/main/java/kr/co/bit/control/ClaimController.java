@@ -134,9 +134,10 @@ public class ClaimController {
 		
 		// Claim 새 글 등록
 		claimService.insertClaim(claimVO);
-	/*	r.addFlashAttribute("id", claimVO.getWriter());*/
+		r.addAttribute("id", claimVO.getWriter());
+		
 		System.out.println(claimVO.getWriter());
-		return "member/myQnA.do?id="+claimVO.getWriter();
+		return "redirect:/member/myQnA.do";
 	}
 	
 	// Claim 글 상세내용 조회 & 게시글 조회수 증가 처리

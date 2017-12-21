@@ -66,7 +66,7 @@ public class MemberController {
 	@RequestMapping(value = "/pwcheck.do", method = RequestMethod.POST)
 	public String pwcheck(UserVO login, Model model) {
 
-		System.out.println(login.toString());
+//		System.out.println(login.toString());
 		UserVO signIn = signService.login(login);
 
 		if (signIn == null) {
@@ -110,9 +110,19 @@ public class MemberController {
 	// 회원이 수정한 정보 db에 저장
 	@RequestMapping(value = "/memberUpdate.do", method = RequestMethod.POST)
 	public String memberUpdateForm(UserVO member, BindingResult result,
-			@RequestParam(value = "file") MultipartFile file, Model model) throws Exception {
+			@RequestParam(value = "file", required=false) MultipartFile file, Model model) throws Exception {
 
-		
+		if(file.isEmpty()) {
+			
+			member.setFile(member.getOriFile());
+			memberService.getMemberUpdate(member);
+			UserVO userVO = signService.login(member);
+
+			model.addAttribute("loginVO", userVO);
+			
+			return "member/memberDetail";
+			
+		}
 		
 		// 1. fileName 설정 + eventVO에 fileName 저장
 		String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\" + file.getOriginalFilename();
@@ -121,10 +131,8 @@ public class MemberController {
 
 		member.setFile(saveFileName);
 
-		System.out.println(fileName);
-		System.out.println(afileName);
-		System.out.println(saveFileName);
-		System.out.println("들어가나");
+		/*System.out.println(saveFileName);
+		System.out.println("들어가나");*/
 
 		// 2. 경로에 이미지파일 저장
 		byte[] bytes;
@@ -140,9 +148,7 @@ public class MemberController {
 		abuffStream.write(abytes);
 		abuffStream.close();
 		
-		System.out.println("들어가나 2");
 		
-		System.out.println(member.toString());
 		memberService.getMemberUpdate(member);
 		UserVO userVO = signService.login(member);
 
@@ -164,7 +170,6 @@ public class MemberController {
 	public String memberPwCheck(String id, SessionStatus session) throws Exception {
 
 		session.setComplete();
-		System.out.println(id);
 		memberService.memberDelte(id);
 
 		return "member/memberDelclear";
@@ -175,7 +180,6 @@ public class MemberController {
 	@RequestMapping(value = "/Latest-Order", method = RequestMethod.POST)
 	public @ResponseBody String myMenu(CartVO member, Model model) throws Exception {
 
-		System.out.println(member.toString());
 		memberService.setmyMenu(member);
 		
 		return "나만의 메뉴로 저~장 ☆";
@@ -197,12 +201,9 @@ public class MemberController {
 	@RequestMapping(value ="/myMenuDetail.do")
 	public String myMenu(int no, Model model) throws Exception {
 		
-		System.out.println(no);
 		CartVO cart = memberService.getmyMenuDetail(no);
 		
-		System.out.println(cart.toString());
 
-		System.out.println("cartList");
 		model.addAttribute("cartList", cart);
 		return "member/myMenuDetail";
 	}
@@ -213,7 +214,6 @@ public class MemberController {
 	
 		public String myMenuDel(@RequestParam List<String> noList, Model model) throws Exception {
 		
-		System.out.println(noList.toString());
 		List<CartVO> cart = memberService.delmyMenu(noList);
 		model.addAttribute("cartList", cart); 
 		
@@ -306,7 +306,6 @@ public class MemberController {
 		mav.addObject("member", todayOrderList);
 		mav.setViewName("member/Latest-OrderDetail");
 		
-		System.out.println("찍음 ");
 		return mav;
 	}
 	
@@ -359,7 +358,6 @@ public class MemberController {
 	@RequestMapping(value="/deleteCart", method=RequestMethod.POST)
 	public String cartDelete(CartVO vo, Model model) throws Exception{
 		
-		System.out.println(vo.toString());
 		List<CartVO> cart = cart_Service.cartDelete(vo);
 		model.addAttribute("cartList", cart);
 		
@@ -369,11 +367,10 @@ public class MemberController {
 	// <Claim 컨트롤러>
 	// Claim 전체보기
 	@RequestMapping("/myQnA.do")
-	public ModelAndView listAll(String id) {
+	public ModelAndView listAll(@RequestParam(value="id", required=false) String id) {
 		
 		System.out.println(id);
 		List<ClaimBoardVO> claimList = claimService.selectClaim(id);
-		System.out.println(claimList);
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
 		mav.setViewName("member/myQnA");
@@ -403,6 +400,20 @@ public class MemberController {
 		return mav;
 	}
 	
+
+	//1:1문의 삭제
+	@RequestMapping(value = "/myQnADel.do")
+	
+		public String myQnADel(@RequestParam List<String> noList, Model model) throws Exception {
+		
+		System.out.println(noList.toString());
+		List<ClaimBoardVO> cart = memberService.delmyQnA(noList);
+		model.addAttribute("cartList", cart); 
+		
+		return "member/myQnA";
+
+	}
+	
 	@RequestMapping(value = "/productQtyUpdate", method = RequestMethod.POST)
 	public void ProductQtyUpdate(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "no") Integer no, @RequestParam(value = "totalQty") Integer totalQty,
@@ -430,6 +441,7 @@ public class MemberController {
 		session.setAttribute("cartList", cartList);
 		System.out.println("수량 변경");
 	}
+	
 	
 	
 	

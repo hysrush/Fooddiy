@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.bit.dao.MemberDAO;
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.ClaimBoardVO;
 import kr.co.bit.vo.UserVO;
 
 
@@ -63,6 +64,10 @@ public class MemberServiceImp  implements MemberService  {
 	@Override
 	public List<CartVO> delmyMenu(List<String> noList) {
 		return memberDAO.delmyMenu(noList);
+	}
+	@Override
+	public List<ClaimBoardVO> delmyQnA(List<String> noList) {
+		return memberDAO.delmyQnA(noList);
 	}
 
 	@Override

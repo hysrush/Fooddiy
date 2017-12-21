@@ -369,13 +369,16 @@ function mymodal(mymenuNo) {
 													</td>	
 													
 													<td class = "commaN finalPrice">${ cart.price }원</td>											
-													<td class="qty-total">
+													<td class="qty-total" style="width: 150px">
 															<div class="qty-holder">
 																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cart.qty }"> 
 																<a class="qty-inc-btn" title="Inc">+</a> <a class="edit-qty"></a>
 															</div>
-																<button class="btn btn-primary btn-icon" style="width: 20%; height: 30px" id="order">결제</button>
-														</td>
+														</td> 
+															<td>
+																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
+															</td>
+														
 											</tr>
 											
 										</c:forEach>
@@ -384,10 +387,10 @@ function mymodal(mymenuNo) {
 										</c:choose>
 										</tbody>
 									</table>
-								</div>							<div  align="center" style="font-size:15; margin-top:8%; margin-left: 52%">	
-																<button class="btn btn-primary btn-icon" style=" width: 23%; height: 30px" id="del">메뉴삭제</button>
-																<button class="btn btn-primary btn-icon" style=" width: 23%; height: 30px" id="">SNS글등록</button>
-																</div>
+								</div>							<div  align="center" style="font-size:15; margin-top:8%; margin-left: 74%">	
+																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3" id="del">메뉴삭제</button>
+																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> SNS글등록</button>
+																</div>  
 							</div>
 						</div>
 					</div>
@@ -408,11 +411,16 @@ function mymodal(mymenuNo) {
 	</div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
-		<footer id="footer" class="footer">
-			<jsp:include page="/resources/include/bottom.jsp"/>
+	<div class="container">
+		<footer class="light visible-lg" id="footer">
+			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp" />
+		</footer>
+	</div>
 
-		<!-- Vendor -->
+	<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>

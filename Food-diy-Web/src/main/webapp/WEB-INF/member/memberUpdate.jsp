@@ -192,6 +192,7 @@
 					
 			<form action="${pageContext.request.contextPath}/member/memberUpdate.do" name="up" id="frmBillingAddress" method="post" onsubmit="return userPw()" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="${ loginVO.id }"/>
+				<input type="hidden" name="file" va/>
 				<div class="col-xs-12 col-md-4 ">
 				<c:choose>
                 <c:when test="${ loginVO.file ne null }">
