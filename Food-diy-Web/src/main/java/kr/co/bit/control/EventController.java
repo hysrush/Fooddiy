@@ -100,6 +100,8 @@ public class EventController {
 		// 2. return value parse
 		jsonObj.put("result", true);
 		jsonObj.put("guList", locationList);
+		response.getWriter().print(jsonObj.toString());
+		
 
 	}
 
@@ -139,7 +141,7 @@ public class EventController {
 		jsonObj.put("result", true);
 		jsonObj.put("eventList", eventList);
 		
-		
+		response.getWriter().print(jsonObj.toString());
 		
 	}
 	
