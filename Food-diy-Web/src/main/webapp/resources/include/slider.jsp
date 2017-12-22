@@ -162,7 +162,7 @@
 					</div>
 					<!-- 매장 찾기 -->
 					<div class="col-sm-12" style="margin-top: 2%">
-						<a href="${ pageContext.request.contextPath }/store/findStore">
+						<a href="${ pageContext.request.contextPath }/store/findStoreU.do">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 						</a>
 					</div>
