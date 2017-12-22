@@ -44,9 +44,9 @@
   	</select>
   	
   	<insert id="insertOrder" parameterType="orderVO">
-  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE) 
+  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE, order_payment) 
   		
-  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType} )
+  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType}, #{payment} )
   	</insert>
   	
   	<delete id="deleteOrder" parameterType="String">

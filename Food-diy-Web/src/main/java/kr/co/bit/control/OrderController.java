@@ -54,8 +54,14 @@ public class OrderController {
 		}
 		orderVO.setOrder_price(info[2]);;
 		orderVO.setFinal_price(info[3]);
+		orderVO.setEatType(info[4]);
+		orderVO.setPayment(info[5]);
 		orderVO.setMenu(orders[1]);
-		orderVO.setEatType("포장");
+		
+		System.out.println(orderVO);
+		System.out.println(orderVO);
+		System.out.println(orderVO);
+		
 		
 		orderService.insertOrder(orderVO);
 		cartStore_Service.deleteCartStore(id);
@@ -66,11 +72,11 @@ public class OrderController {
 	}
 	
 	
-	@RequestMapping(value= "/orderedPage.do")
+	@RequestMapping(value = "/paymentPage.do", method = RequestMethod.GET)
 	public String orderedPage(HttpSession session) {
 		
 		
 		
-		return "menu/orderedPage";
+		return "menu/paymentPage";
 	}
 }
