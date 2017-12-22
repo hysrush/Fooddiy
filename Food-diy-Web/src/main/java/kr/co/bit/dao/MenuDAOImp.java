@@ -27,7 +27,7 @@ public class MenuDAOImp implements MenuDAO {
 	public MenuVO selectOne(int no) {
 		MenuVO menuDetail = sqlSession.selectOne(url + "selectOneMenu", no);
 		return menuDetail;
-	}
+	}	
 	//새 메뉴 쓰기
 	@Override
 	public void insert(MenuVO menuVO) {

@@ -69,11 +69,24 @@
 	   }
    });
 
-   function modal(menuNo) {
-        $('div.modal').modal().removeData();
-        var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo;
-        $('div.modal').modal({ remote : url });
-   }   
+   function modal(menuNo, menuName) {	   
+	   //공백, 특수문자 넘기기 위해서 인코딩
+	   var mn = encodeURIComponent(menuName);
+	   $('div.modal').modal().removeData();
+       var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo + '&name=' + mn;
+       $('div.modal').modal({ remote : url });
+   }
+   function menuAjax(menuNo, menuName) {
+	   //공백, 특수문자 넘기기 위해서 인코딩
+	   var mn = encodeURIComponent(menuName);
+	   location.href = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo + '&name=' + mn;
+   }
+   /* function modal2(snsHitNo) {
+       $('#myModal2').modal().removeData();
+       var url = '${ pageContext.request.contextPath}/menu/menuDetail2.do?no=' + snsHitNo;
+       $('#myModal2').modal({ remote : url });
+   } */
+   
 </script>
 
 </head>
@@ -107,8 +120,7 @@
          </section>
 
          <div class="container">
-
-            <div class="row">
+         	<div class="row">
 
                <div class="col-md-3">
                   <aside class="sidebar hidden-sm hidden-xs" data-plugin-sticky
@@ -156,9 +168,21 @@
                   </nav>
                </aside>
 
-
-
                <div class="col-md-9">
+               
+	             <!-- Menu ajax 뜨는 부분 -->
+		         <div id="porfolioAjaxBox" class="ajax-box ajax-box-init mb-lg">
+		
+					<div class="bounce-loader">
+						<div class="bounce1"></div>
+						<div class="bounce2"></div>
+						<div class="bounce3"></div>
+					</div>
+			
+					<div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+			
+				 </div>              
+               
                   <div id="slidemenu">
                      <ul class="nav nav-pills sort-source" data-sort-id="portfolio"
                         data-option-key="filter"
@@ -172,9 +196,9 @@
                                  <c:if test='${ menu.type eq "R" }'>
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
 	                                          <span class="thumb-info thumb-info-lighten">
-				                                   <a onclick="modal('${ menu.no }')">
+				                                   <a onclick="menuAjax('${ menu.no }','${ menu.name }')" data-ajax-on-page>
 		                                          <span class="thumb-info-wrapper">
 		                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }" 
 		                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -192,9 +216,9 @@
                                  <c:if test='${ menu.type eq "P" }'>
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
+                                          <a href="#" data-href="${ pageContext.request.contextPath}/menu/menuDetail.do" data-ajax-on-page>
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -203,8 +227,8 @@
                                                 <span class="thumb-info-type">${ menu.price }원</span>
                                              </span>
                                           </span>
-                                          </a>
                                           </span>
+                                          </a>
                                        </div>
                                     </li>
 
@@ -214,7 +238,7 @@
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item best">
                                        <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
+                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -234,7 +258,7 @@
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item classic">
                                        <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
+                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -254,7 +278,7 @@
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item breakfast">
                                        <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
+                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -274,7 +298,7 @@
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item salad">
                                        <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
+                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -294,7 +318,7 @@
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item addition">
                                        <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
+                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -314,7 +338,7 @@
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item beverage">
                                        <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }')">
+                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -355,7 +379,7 @@
 
 
    <!-- 모달들 -->
-   <div class="modal fade" tabindex="-1" role="dialog"
+   <div class="modal fade" tabindex="-1" role="dialog" id="myModal"
       aria-labelledby="largeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
          <div class="modal-content">
@@ -363,6 +387,14 @@
          </div>
       </div>
    </div>
+   <!-- <div class="modal2 fade" tabindex="-1" role="dialog" id="myModal2"
+      aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none; z-index: 1060;">
+      <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+            모달내용
+         </div>
+      </div>
+   </div> -->
    
 
    <!-- Vendor -->

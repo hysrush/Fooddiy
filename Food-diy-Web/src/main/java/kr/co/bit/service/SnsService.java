@@ -9,6 +9,7 @@ public interface SnsService {
 
 	List<SnsBoardVO> selectSns(PagingVO paging);
 	List<SnsBoardVO> selectHit();
+	List<SnsBoardVO> selectHit(String name);
 	int selectTotalPaging();
 	void update(SnsBoardVO snsVO);
 	void delete(int no);

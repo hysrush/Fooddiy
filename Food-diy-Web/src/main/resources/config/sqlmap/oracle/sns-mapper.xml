@@ -52,6 +52,14 @@
 				ORDER BY SNS_LIKE DESC
   	</select>
   	
+  	<!-- SNS 타입별, 좋아요 순 -->
+  	<select id="selectTypeHitSns" resultMap="Map_SnsVO">
+  		SELECT SNS_NO,USER_ID, USER_PIC, SNS_TITLE, SNS_CONTENT, SNS_FILENAME, SNS_LIKE,
+						TO_CHAR(REG_AT, 'YY-MM-DD') as REG_AT, VIEW_CNT
+				FROM T_SNS 
+				WHERE MENU_NAME = #{NAME}   
+				ORDER BY SNS_LIKE DESC
+  	</select>
 
   	
   		<!--  페이징 total 쿼리 -->

@@ -53,6 +53,11 @@ public class SnsServiceImpl implements SnsService {
 		List<SnsBoardVO> list = snsDAO.selectHit();
 		return list;
 	}
+	@Override
+	public List<SnsBoardVO> selectHit(String name) {
+		List<SnsBoardVO> list = snsDAO.selectHit(name);
+		return list;
+	}
 
 	@Override
 	public void update(SnsBoardVO snsVO) {

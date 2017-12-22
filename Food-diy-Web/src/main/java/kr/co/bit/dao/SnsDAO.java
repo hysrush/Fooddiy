@@ -10,6 +10,7 @@ public interface SnsDAO {
 	
 	List<SnsBoardVO> selectSns(PagingVO paging);
 	List<SnsBoardVO> selectHit();
+	List<SnsBoardVO> selectHit(String name);
 	int selectTotalPaging();
 	
 	void delete(int no);

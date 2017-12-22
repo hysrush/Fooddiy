@@ -26,7 +26,7 @@ public class MenuServiceImp implements MenuService {
 	public MenuVO selectOneMenu(int no) {
 		MenuVO menuDetail = menuDAO.selectOne(no);
 		return menuDetail;
-	}
+	}	
 	// Menu 새 글쓰기
 	@Override
 	public void insertMenu(MenuVO menuVO) {

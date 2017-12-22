@@ -54,6 +54,11 @@ public class SnsDAOImpl implements SnsDAO {
 			List<SnsBoardVO> list = sqlSession.selectList(url + "selectHitSns");
 			return list;
 		}
+		@Override
+		public List<SnsBoardVO> selectHit(String name) {
+			List<SnsBoardVO> list = sqlSession.selectList(url + "selectTypeHitSns", name);
+			return list;
+		}
 
 		@Override
 		public void update(SnsBoardVO snsVO) {

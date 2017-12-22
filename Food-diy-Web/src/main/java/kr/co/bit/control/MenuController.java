@@ -19,8 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.service.MenuService;
+import kr.co.bit.service.RepService;
+import kr.co.bit.service.SnsService;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.MenuVO;
+import kr.co.bit.vo.PagingVO;
+import kr.co.bit.vo.SnsBoardVO;
+import kr.co.bit.vo.SnsRepVO;
 
 @Controller
 @RequestMapping("/menu")
@@ -28,6 +33,10 @@ public class MenuController {
 	
 	@Autowired
 	private MenuService menuService;
+	@Autowired
+	private SnsService snsService;
+	@Autowired
+	private RepService repService;
 	
 	// <menu 컨트롤러>
 	// menu 전체보기
@@ -44,6 +53,10 @@ public class MenuController {
 		
 		return mav;		
 	}
+	
+	/*// menu 모달창에서 sns 보여주기
+	@RequestMapping("/")*/
+	
 	
 	// menu 새 글쓰기 폼
 	@RequestMapping(value="/menuWrite.do", method=RequestMethod.GET)
@@ -90,26 +103,49 @@ public class MenuController {
 	}	
 	
 	// menu 상세내용 조회
-	// ex) menu/menuDetail.do?no=1
+	// ex) menu/menuDetail.do?no=1&type='R'
 	@RequestMapping(value="/menuDetail.do", method=RequestMethod.GET)
-	public ModelAndView detail(@RequestParam("no") int no, HttpSession session, Model model) {		
-		
+	public ModelAndView detail(@RequestParam("no") int no,
+								@RequestParam("name") String name, HttpSession session, Model model) {
+		System.out.println(name);
 		MenuVO menuDetailVO = menuService.selectOneMenu(no);
+		List<SnsBoardVO> hitList = snsService.selectHit(name);
 		
 		CartVO cartVO = new CartVO();
 		/*session.setAttribute("cartVO", cartVO);*/
-		model.addAttribute("cartVO", cartVO);
-		
-		
+		model.addAttribute("cartVO", cartVO);		
 		
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
 		mav.setViewName("menu/menuDetail");
 		//addObject : key 와 value 를 담아 보내는 메서드 
 		mav.addObject("menuDetailVO", menuDetailVO);
+		mav.addObject("hitList", hitList);
 		
 		return mav;
 	}
+	
+	// sns 상세내용 조회
+	@RequestMapping(value="/menuDetail2.do", method=RequestMethod.GET)
+	public ModelAndView detail(@RequestParam("no") int no, HttpSession session, PagingVO paging) {		
+		
+		SnsBoardVO snsVO = snsService.selectOne(no);
+		paging.setNo(no);
+		
+		List<SnsRepVO> repList = repService.list(paging);
+		
+		ModelAndView mav = new ModelAndView();
+		//setViewName : 어떤 페이지를 보여줄것인가
+		mav.setViewName("menu/snsModal");
+		//addObject : key 와 value 를 담아 보내는 메서드 
+		mav.addObject("snsVO", snsVO);
+		mav.addObject("repList", repList);
+		mav.addObject("p",paging);
+		//mav.addObject("repList", repList);
+		
+		return mav;
+	}
+	
 	
 	
 	
