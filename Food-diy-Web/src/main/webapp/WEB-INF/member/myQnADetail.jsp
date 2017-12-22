@@ -143,7 +143,7 @@
 									<table class="table table-bordered">
 										<tr>
 											<td class="col-md-1" style="width: 10%" colspan="2"> 
-												<h4 class="mb-none" ><strong>제목 </strong></h4>
+												<h4 class="mb-none" >제목 </h4>
 											</td>
 											<!-- 타입 -->
 											<td class="col-xs-7" colspan="1">

@@ -219,7 +219,7 @@
 							<div class="col-md-4"></div>
 							<div class="col-md-3"></div>
 							<div class="col-md-4 col-xs-10" style="margin-left:4%">
-									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">쿠폰북</button>
+									<button class="btn btn-info" data-toggle="modal" data-target="#InfoModal">쿠폰북</button>
 									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
 									<button class="btn btn-info" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
@@ -249,6 +249,8 @@
 												</div>
 										</div>
 									</div>
+									
+									
 									<div class="modal fade" id="frmSignIn" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -272,6 +274,30 @@
 													</form>
 												</div>
 												</div>
+										</div>
+									</div>
+									
+										<!--쿠폰북 디테일  -->					
+										<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h3 class="modal-title" id="formModalLabel"><strong>쿠폰북</strong></h3>
+												</div>
+												<div class="modal-body ">
+												<table class="table table-bordered">
+													<tr>
+														<td>
+														<img style="width: 100%" src="${ pageContext.request.contextPath }/resources/img/coupon1.jpg">
+														</td>													
+													</tr>
+												</table>
+												</div>
+												<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+												</div>
+											</div>
 										</div>
 									</div>
 							</div>
