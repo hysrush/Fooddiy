@@ -165,7 +165,7 @@ public class SnsController {
 			
 			ModelAndView mav = new ModelAndView();
 			//setViewName : 어떤 페이지를 보여줄것인가
-			mav.setViewName("community/SNSBoard-Modal");
+			mav.setViewName("community/SNSBoard-Modal2");
 			//addObject : key 와 value 를 담아 보내는 메서드 
 			mav.addObject("snsVO", snsVO);
 			mav.addObject("repList", repList);
