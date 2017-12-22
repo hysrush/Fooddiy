@@ -1,12 +1,13 @@
 package kr.co.bit.vo;
 
 public class FileVO {
-	
 	private int no;
+	private int boardNo;
 	private String name;
 	private String fileOriName;
 	private String fileSaveName;
 	private double fileSize;
+	private String filePath;
 	private String contentType;
 	
 	
@@ -46,11 +47,22 @@ public class FileVO {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
+	public int getBoardNo() {
+		return boardNo;
+	}
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	@Override
 	public String toString() {
-		return "FileVO [no=" + no + ", name=" + name + ", fileOriName=" + fileOriName + ", fileSaveName=" + fileSaveName
-				+ ", fileSize=" + fileSize + ", contentType=" + contentType + "]";
+		return "FileVO [no=" + no + ", boardNo=" + boardNo + ", name=" + name + ", fileOriName=" + fileOriName
+				+ ", fileSaveName=" + fileSaveName + ", fileSize=" + fileSize + ", filePath=" + filePath
+				+ ", contentType=" + contentType + "]";
 	}
-	
-	
 }

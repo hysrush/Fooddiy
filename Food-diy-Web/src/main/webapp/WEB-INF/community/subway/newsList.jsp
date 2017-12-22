@@ -57,22 +57,30 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">	
 		
+		<!-- dataTables -->
+		<link href="${ pageContext.request.contextPath }/resources/css/dataTables/datatables.min.css" rel="stylesheet">
+	    <!-- FooTable -->
+	    <link href="${ pageContext.request.contextPath }/resources/css/footable/footable.core.css" rel="stylesheet">
+		
 		<!-- js -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-		
-<script type="text/javascript">
-	function doAction(type) {
-		switch (type) {
-		case 'W':
-			location.href = "${ pageContext.request.contextPath}/community/noticeWrite.do";
-			break;
-		default:
-			break;
-		}
+
+<style type="text/css">
+	#title a {
+		color: #666666 !important;
+		font-weight: bold;
 	}
-</script>
+	.dataTables_wrapper {
+		padding-bottom: 0 !important;
+	}
+	.filter {
+		float: right;
+		width: 140px;
+		padding-right: 10px;
+	}
+</style>		
 </head>
 <body>
 	<div class="body">
@@ -113,15 +121,15 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
 								<li class="active"><a href="#">Subway 소식</a>
 									<ul>
-										<li><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-										<li class="active"><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+										<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+										<li class="active"><a href="#">보도자료</a></li>
 									</ul>
 								</li>
 								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
 							</ul>
 						</aside>
 					</div>
@@ -148,7 +156,7 @@
 									<div class="center">
 										<div class="col-md-12">
 											<!-- 필터 및 검색 -->
-											<div class="col-md-12">
+											<!-- <div class="col-md-12">
 												<div class="col-md-3" style="float: right;">
 													<form action="">
 														<div class="input-group input-group-md">
@@ -168,47 +176,53 @@
 														<option value="title+content">제목+내용</option>
 													</select>
 												</div>
+											</div> -->
+											<div class="col-md-3 input-group" style="float: right;">
+												<input type="text" class="input-sm form-control" placeholder="검색어를 입력해주세요" aria-controls="DataTables_Table_0">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
+												</span>
+											</div>
+											<div class="filter">
+												<select class="form-control">
+													<option value="title">제목</option>
+													<option value="content">내용</option>
+													<option value="title+content">제목+내용</option>
+												</select>
 											</div>
 											<!-- 테이블 -->
-											<table class="table table-hover" width="80%">
-												<thead>
-													<tr>
-													<th>번호</th>
-													<th>제목</th>
-													<th>작성일</th>
-													<th>조회수</th>
-													</tr>
-												</thead>
-												<tbody>
+											<div class="table-responsive" style="width: 100%">
+												<table class="footable table table-hover toggle-arrow-tiny dataTables-example" width="80%" data-page-size="100">
+													<thead>
+														<tr>
+														    <th data-hide="phone" data-sort-ignore="true">번호</th>
+														    <th data-toggle="true" data-sort-ignore="true">제목</th>
+														    <th data-hide="phone" data-sort-ignore="true">등록일</th>
+														    <th data-hide="phone" data-sort-ignore="true">조회수</th>
+														</tr>
+													</thead>
+													<tbody>
 														<c:forEach items="${ newsList }" var="news">
-														<c:if test="${ news.type eq 'B' }">
-															<tr>
-																<td>${ news.no }</td>
-																<td>
-																	<a href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${ news.no }">
-																		<c:out value="${ news.title }" />
-																	</a>
-																</td>
-																<td>${ news.regDate }</td>
-																<td>${ news.viewCnt }</td>
-															</tr>
-														</c:if>
+															<c:if test="${ news.type eq 'B' }">
+																<tr>
+																	<td>${ news.no }</td>
+																	<td id="title">
+																		<a href="${ pageContext.request.contextPath }/community/subway/noticeDetail.do?no=${ news.no }">
+																			<c:out value="${ news.title }" />
+																		</a>
+																	</td>
+																	<td>${ news.regDate }</td>
+																	<td>${ news.viewCnt }</td>
+																</tr>
+															</c:if>
 														</c:forEach>
-												</tbody>
-											</table>
+													</tbody>
+												</table>
+											</div>
 											<!-- 페이지네이션 -->
 											<div class="col-md-12 center">
 												<ul class="pagination pull-center">
-													<li><a href="#"><i class="fa fa-chevron-left"></i></a>
-													</li>
-													<li class="active"><a href="#">1</a></li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#"><i class="fa fa-chevron-right"></i></a>
-													</li>
 												</ul>
-												<br>
-												<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
 											</div>
 										</div>
 									</div>
@@ -230,40 +244,122 @@
 		</footer>
 	</div>
 
-		<!-- Vendor -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/common/common.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/isotope/jquery.isotope.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
-		
-		<!-- Theme Base, Components and Settings -->
-		<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
-		
-		<!-- Current Page Vendor and Views -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
-		
-		<!-- Current Page Vendor and Views -->
-		<script src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script>
+	<!-- Vendor -->
+	<%-- <script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script> --%>
+	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/common/common.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/isotope/jquery.isotope.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
+	
+	<!-- Theme Base, Components and Settings -->
+	<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
+	
+	<!-- Current Page Vendor and Views -->
+	<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+	
+	<!-- dataTables -->
+	<script src="${ pageContext.request.contextPath }/resources/js/dataTables/datatables.min.js"></script>
+    <!-- FooTable -->
+    <script src="${ pageContext.request.contextPath }/resources/js/footable/footable.all.min.js"></script>
+	
+	<!-- Current Page Vendor and Views -->
+	<script src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script>
 
-		<!-- Demo -->
-		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
+	<!-- Demo -->
+	<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
+	
+	<!-- Theme Custom -->
+	<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
+	
+	<!-- Theme Initialization Files -->
+	<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+
+	<!-- Page-Level Scripts -->
+    <script type="text/javascript">
+		$(document).ready(function() {
+			
+			// footable 시작
+			$('.footable').footable();
+		    
+			// 데이터테이블 생성 & 옵션 변경
+			$('.footable').css("width","100%");
+			var table = $('.dataTables-example').DataTable({
+				pageLength: 10,
+                bPaginate: true,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                "oLanguage": {
+                	// 기본 info (고정값)
+                	"sInfo": "총 데이터 : _TOTAL_개 (현재 페이지 : _START_ to _END_)",
+                	// 검색 후 info (고정값)
+                    "sInfoFiltered": "*",
+                    // 결과 없을때 info
+                	"sInfoEmpty": "검색 결과 : _TOTAL_개",
+                	// 결과 없을때 테이블 안 info
+                    "sZeroRecords" : "입력하신 검색어와 일치하는 결과가 없습니다. 다시 한번 검색해주세요!",
+                    // 검색 text
+                    "sSearch" : "전체 검색 : ",
+                    // 로딩 text
+                    "sLoadingRecords" : "읽는중...",
+                    // 처리 text
+                    "sProcessing" : "처리중...",
+                    // 보기 text
+                    "sLengthMenu" : "보기 : _MENU_",
+                    // 페이징 버튼 text
+                    "oPaginate": {
+                    	"sPrevious": "<<",
+                    	"sNext": ">>"
+                      }
+                },
+                "iDisplayLength": -1,
+                // 우선순위 Sort
+                "aaSorting": [[ 5, "desc" ]], // Sort by first column descending
+                // 컬럼 Sort 없애기
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [ 0 ] }
+                ],
+                // 버튼 옵션
+                buttons: [
+                    {extend: 'copy', text: '<i class="fa fa-copy" aria-hidden="true"> Copy</i>'},
+                    //{extend: 'csv'},
+                    {extend: 'excel', title: 'ExcelFile', text: '<i class="fa fa-file-excel-o" aria-hidden="true"> Excel</i>'},
+                    {extend: 'pdf', title: 'PdfFile', text: '<i class="fa fa-file-pdf-o" aria-hidden="true"> Pdf</i>'},
+                    {extend: 'print', text: '<i class="fa fa-print" aria-hidden="true"> Print</i>',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+                            $(win.document.body).find('table').addClass('compact').css('font-size', 'inherit');
+                    	}
+                    }
+                ]
+            });
+			// 데이터테이블 검색입력 시, 단어 추출 작업
+			$('#DataTables_Table_0_filter input').keyup(function() {
+				var keyupWord = $(this).val();
+				var empty = $('table .dataTables_empty').text();
+				var text = $('#DataTables_Table_0_info').text();
+				
+				if (empty == "입력하신 검색어와 일치하는 결과가 없습니다. 다시 한번 검색해주세요!") {
+					$('#DataTables_Table_0_info').html(text.replace("*", "<br><strong>" + keyupWord + "</strong>와(과) 일치하는 검색결과가 없습니다."));
+				} else if (keyupWord.length > 0){
+					$('#DataTables_Table_0_info').html(text.replace("*", "<br><strong>" + keyupWord + "</strong>와(과) 일치하는 검색결과입니다."));
+				} 
+			});
+			
+		});
 		
-		<!-- Theme Custom -->
-		<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
-		
-		<!-- Theme Initialization Files -->
-		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+	</script>		
 </body>
 </html>
