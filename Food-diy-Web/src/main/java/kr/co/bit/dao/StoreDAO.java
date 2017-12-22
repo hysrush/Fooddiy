@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.bit.vo.CityVO;
 import kr.co.bit.vo.StoreVO;
+import kr.co.bit.vo.locationVO;
 
 public interface StoreDAO {
 
@@ -11,7 +12,7 @@ public interface StoreDAO {
 	List<StoreVO> selectStoreList(String gugun);
 	List<StoreVO> selectStoreAddr(String store);
 	List<CityVO> selectCity();
-	List selectLocation(String sido);
+	List<locationVO> selectLocation(String sido);
 	
 	
 }

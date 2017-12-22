@@ -2,51 +2,63 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="ajax-container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="portfolio-title">
-				<div class="row" >
-					
-					<div class="col-md-10 center" >
-						<h2 class="mb-none">${snsVO.title }<!--  DB 제목값 --></h2>
-					</div>
-					<!-- style ="background-color:#7aa93c" -->
-				</div>
-			</div>
+	
 
-			<hr class="tall">
-		</div>
-	</div>
-
-	<div class="row mb-xl">
-		<div class="col-md-4">
-			<div class="testimonial testimonial-style-3">
+	<div class="row mb-xl" >
+		<div class="col-md-6">
+		<%-- 	<div class="testimonial testimonial-style-3">
 			<div class="testimonial-author">
 				<div class="testimonial-author-thumbnail">
 					<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
 				</div>
 					<p><strong>${snsVO.id}</strong></p>
 			</div>
-		</div>
+		</div> --%>
 		<input type ="hidden" value = "${loginVO.id }"/>
 			<span class="img-thumbnail">
-				<img alt="" class="img-responsive" src="../upload/SNS/${ snsVO.fileName }"> <!--  DB 첨부 이미지 값 -->
+				<img alt="" class="img-responsive" src="../upload/SNS/${ snsVO.fileName }" style="height: 700px;"> <!--  DB 첨부 이미지 값 -->
 			</span>
-				<!-- <a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a> -->
+				<%-- <!-- <a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a> -->
 				
 					<!--  버튼 누르면 db의 snsVO.like 값이 1씩 증가하되 1인 1회만 가능하게  -->
 					<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info" style="width:70px"> 
 						Like! &nbsp;<i class="fa fa-thumbs-up"></i>
-					</button>
+					</button> --%>
 						
 		</div>
 
-		<div class="col-md-8">
+		<div class="col-md-6">
 
-			<div class="portfolio-info">
+		
+				<div class="testimonial testimonial-style-3">
+			<div class="testimonial-author">
+				<div class="testimonial-author-thumbnail">
+					<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
+				</div>
+					<p><strong>${snsVO.id}</strong></p>
+			</div>
+		</div> 
+			<div class="row">
+				<div class="col-md-12">
+					<div style = "width:400px;height:120px">${snsVO.content } </div>
+				</div>			
+			</div>	
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div style = "width:400px;height:70px"><strong># ${snsVO.name } #${snsVO.bread } #${snsVO.cheese } #${snsVO.topping }<br/> #${snsVO.vegetable } #${snsVO.sauce }</strong> </div>
+				</div>			
+			</div>	
+				 <div class="portfolio-info">
+					<hr style = "border-top: 1px solid #2f2c2c;width:465px"/>
 				<div class="row">
-					<div class="col-md-12 center">
-						<ul>
+						<div class="col-md-3" align="left">
+						<button type="button"  onclick="like('${snsVO.no}')" class="btn btn-borders btn-success mr-xs mb-sm" style="width:70px"> 
+							Like! &nbsp;<i class="fa fa-thumbs-up"></i>
+						</button>
+						</div>
+					<div class="col-md-9 center">
+						 <ul>
 							<li>
 								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart"></i id="heart">${snsVO.like}</i></a>  <!--  좋아요 숫자  -->
 							</li>
@@ -57,84 +69,41 @@
        					<c:when test="${loginVO.id == snsVO.id}">
           
 							<li>
-								<button class="mb-xs mt-xs mr-xs btn btn-borders btn-info" onclick="action('E', ${snsVO.no}, '${loginVO.id}')"><i class="fa fa-pencil"></i></button>
+								<button class="btn btn-borders btn-success mr-xs mb-sm" onclick="action('E', ${snsVO.no}, '${loginVO.id}')"><i class="fa fa-pencil"></i></button>
 							</li>
 							<li>
-								<button class="mb-xs mt-xs mr-xs btn btn-borders btn-info" onclick="action('D', ${snsVO.no})" ><i class="fa fa-trash-o"></i></button>		
+								<button class="btn btn-borders btn-success mr-xs mb-sm" onclick="action('D', ${snsVO.no})" ><i class="fa fa-trash-o"></i></button>		
 							</li>
        				</c:when>
 				</c:choose> 
 						</ul>
+					 
 					</div>
 				</div>
-			</div>
-			<div class="row">
-			<div class="col-md-12 center">
-				<div style = "width:590px;height:20px"></div>
-			</div>
-			</div>	
-			
+				<hr style = "border-top: 1px solid #2f2c2c;width:465px"/>	
+			</div> 
+						
+			<div class="row" >
+				<div class="col-md-12" style = "height:70px;">
+				 		
+							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:70%"/>
+        				
+        						<span style="align-content:inherit; "><button type="button" id="btnReply" class="btn btn-3d btn-success mr-xs mb-sm" style="align-self: baseline;">comment</button></span>
+        	</div>
+        	</div>
+		
+		
 			<div class="row">
 				<div class="col-md-12">
-					<div style = "width:590px;height:200px">${snsVO.content } </div>
-				</div>			
-			</div>	
-
-					<%-- 	<p class="mt-xlg">${snsVO.content }<!--  DB 내용 값 --></p> --%>
-							
-								<div class = "row">
-									
-									<table class="table table-bordered" style = "width:590px">
-									
-										<tbody>
-											<tr>
-												<td>
-													<strong>메뉴이름</strong>
-												</td>
-												<td>
-													${snsVO.name }
-												</td>
-											</tr>
-										
-											<tr>
-												<td>
-													<strong>빵 , 치즈</strong>
-												</td>
-												<td>
-													빵 : ${snsVO.bread }<br/>
-													치즈 : ${snsVO.cheese }
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<strong>야채, 토핑</strong>
-												</td>
-												  <td>야채 : ${ snsVO.vegetable }<br/>
-					                        	 토핑: ${snsVO.topping }</td>
-												
-											</tr>
-											<tr>
-												<td>
-													소스 
-												</td>
-												<td>
-													${snsVO.sauce }
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							<div class="comment">
-							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:80%"/>
-        				
-        						<button type="button" id="btnReply" class="btn btn-info mr-xs mb-sm" style="align-self: baseline;">댓글 작성</button>
+	
         						
+				 <div class="comment">
         							
+        					<div id="listReply" >
         					<c:forEach items="${ repList }" var="repList">
-        					<div id="listReply">
 							 	<div class="testimonial testimonial-style-3">
 									
-										<div class="testimonial-author">
+										<div class="testimonial-author" style= "height:60px">
 											<div class="testimonial-author-thumbnail">
 												<img src=" ../upload/${repList.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
 											</div>
@@ -142,48 +111,35 @@
 											<span class="pull-right">
 												<c:choose>
        												<c:when test="${loginVO.id == repList.id}">
-														<span> <button onclick="repDel('D', ${repList.repNo})" class="btn btn-quaternary mr-xs mb-sm">삭제</button></span>
+														<span> <button onclick="repDel('D', ${repList.repNo})" class="btn btn-borders btn-success mr-xs mb-sm">삭제</button></span>
 													</c:when>
 												</c:choose>		
 											</span>
 												<p><strong>${repList.content }</strong>
-											<%-- <span class="date pull-right">${repList.regDate }</span> --%>
+										
 										</div>
 									</div> 
-								</div>	
 								</c:forEach>
-									<div class="col-md-12">
-														<ul class="pagination">
-														
-															<!-- 이전 페이지 이동  -->
-															<li><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'><i class="fa fa-chevron-left"></i></a></li>
-														
-															<!--  페이지 번호  -->
-														<c:forEach var='i' begin ="${p.pageStartNum }" end = "${p.pageLastNum}" step="1">
-															<li class='pageIndex$[i]'><a onclick="pageIndex(${i});">${i}</a></li>
-														</c:forEach>
-															<!-- 다음 페이지 이동 -->
-															
-															  <li><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'><i class="fa fa-chevron-right"></i></a></li>
-														</ul>
-														
-															 <form action="./snsDetail.do" method="post" id='frmPaging'>
-													            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
-													            <input type='hidden' name='index' id='index' value='${p.index}'>
-													            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
-													            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>    
-													        </form>
-													</div>	
-													
-														
-								
-								
+							</div>	 
+						</div>
+					</div>			
+	
 								</div>
 							</div>
 						</div>
 					</div>
     
     <script>
+    $(document).ready(function() {
+		
+		$('#listReply').css("max-height","270px");
+		$('#listReply').css("overflow","auto");
+		$('#listReply').css("max-width","500px");
+			
+    	
+    });
+    
+    
 	function action(type, no,id) {
 		switch (type) {
 		case 'E':

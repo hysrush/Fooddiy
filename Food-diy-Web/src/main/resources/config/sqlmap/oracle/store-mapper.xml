@@ -41,7 +41,7 @@
 		</select>	
 		
 	<!--  구 데이터 불러오기  -->	
-		<select id ="selectLocation" resultType="hashmap" parameterType="String">
+		<select id ="selectLocation" resultMap="Map_LocationVO" parameterType="String">
 			SELECT LOC_NO ,LOC_NAME
 			  FROM T_LOCATION
 			 WHERE CITY_NO = #{sido}

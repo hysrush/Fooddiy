@@ -137,7 +137,7 @@
                 <c:choose>
                 <c:when test="${ loginVO.file ne null }">
 	                <div class="col-md-3 col-lg-3 " align="left">
-		                <img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 10%; padding-right:10%; margin-top: 8%; height:300px; width: 300px;">
+		                <img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 7%; padding-right:10%; margin-top: 8%; height:300px; width: 300px;">
 	                </div>
                 </c:when>
     	            <c:otherwise>
@@ -214,9 +214,12 @@
       </div>
     </div>
 
-							<div style="margin-top: 1%;  ">
+							<div style="margin-top: 1%;">
 							<div class="row">
-							<div  style="margin-left:68%">
+							<div class="col-md-4"></div>
+							<div class="col-md-3"></div>
+							<div class="col-md-4 col-xs-10" style="margin-left:4%">
+									<button class="btn btn-info" data-toggle="modal" data-target="#InfoModal">쿠폰북</button>
 									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
 									<button class="btn btn-info" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
@@ -246,6 +249,8 @@
 												</div>
 										</div>
 									</div>
+									
+									
 									<div class="modal fade" id="frmSignIn" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -271,19 +276,46 @@
 												</div>
 										</div>
 									</div>
+									
+										<!--쿠폰북 디테일  -->					
+										<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h3 class="modal-title" id="formModalLabel"><strong>쿠폰북</strong></h3>
+												</div>
+												<div class="modal-body ">
+												<table class="table table-bordered">
+													<tr>
+														<td>
+														<img style="width: 100%" src="${ pageContext.request.contextPath }/resources/img/coupon1.jpg">
+														</td>													
+													</tr>
+												</table>
+												</div>
+												<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+												</div>
+											</div>
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		<!-- ---------------------------------------------------------------------------------------------- -->
-		<div>
-		<footer id="footer">
-			<jsp:include page="/resources/include/bottom.jsp"/>
+	<div class="container">
+		<footer class="light visible-lg" id="footer">
+			<jsp:include page="/resources/include/bottom.jsp" />
+		</footer>
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp" />
 		</footer>
 	</div>
 
-		<!-- Vendor -->
+	<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>

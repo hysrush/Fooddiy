@@ -3,6 +3,7 @@ package kr.co.bit.dao;
 import java.util.List;
 
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.ClaimBoardVO;
 import kr.co.bit.vo.UserVO;
 
 
@@ -17,5 +18,6 @@ public interface MemberDAO {
 	List<CartVO> getmyMenu(String id);
 	List<CartVO> delmyMenu(List<String> noList);
 	CartVO getmyMenuDetail(int no);
+	List<ClaimBoardVO> delmyQnA(List<String> noList);
 	
 }

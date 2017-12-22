@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.ClaimBoardVO;
 import kr.co.bit.vo.UserVO;
 
 @Repository
@@ -65,6 +66,20 @@ public class MemberDAOImpl implements MemberDAO {
 		for(int i=0; i<noList.size(); i++) {
 			
 			sqlSession.delete("kr.co.bit.member.dao.delmyMenu", Integer.parseInt(noList.get(i)));
+			
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public List<ClaimBoardVO> delmyQnA(List<String> noList) {
+		
+		List<ClaimBoardVO> claim = new ArrayList<>();
+		
+		for(int i=0; i<noList.size(); i++) {
+			
+			sqlSession.delete("kr.co.bit.member.dao.delmyQnA", Integer.parseInt(noList.get(i)));
 			
 		}
 		

@@ -275,7 +275,7 @@
 														<form:input type="hidden" path = "sauce" class="sauce" name="sauce" value="" /> 
 														<form:input type="hidden" path = "requirement" class="requirement" name="requirement" value="" />
 														<div style="text-align: center">
-															<button type="submit" style="width: 200px; height: 50px; background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
+															<button type="submit" style="width: 200px; height: 50px; background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">선택완료</button>
 														</div>
 													</form:form>
 												</div>
@@ -424,7 +424,7 @@
 						<form:input type="hidden" path ="vegetable" class="vegetable" name="vegetable" value="" /> 
 						<form:input type="hidden" path ="sauce" class="sauce" name="sauce" value="" />
 						<form:input type="hidden" path = "requirement" class="requirement" name="requirement" value="" />
-						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">주문하기</button>
+						<button class="btn btn-tertiary mr-xs mb-sm cart-submit select-menu-button">선택완료</button>
 					</form:form>
 				</div>
 			</div>

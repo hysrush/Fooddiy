@@ -1,6 +1,8 @@
 package kr.co.bit.control;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -106,43 +109,53 @@ public class StoreController {
 	
 	// 시정보 ajax
 		@RequestMapping(value = "/test")
-		public void chargeReqAjaxByToss(HttpServletRequest request, HttpServletResponse response,
+		public @ResponseBody List<locationVO> chargeReqAjaxByToss(HttpServletRequest request, HttpServletResponse response,
 				@RequestParam(value = "sido", defaultValue = "") String sido, Model model) throws Exception {
 
+			/*	
 			response.setContentType("text/html;charset=UTF-8");
-			JSONObject jsonObj = new JSONObject();
+			JSONObject jsonObj = new JSONObject();*/
 
 			// 1. Select 구 군 정보
 			List<locationVO> locationList = storeService.selectLocation(sido);
-
+			
 			// 2. return value parse
+			/*	
 			jsonObj.put("result", true);
 			jsonObj.put("guList", locationList);
-
-	
+		 	*/
+			return locationList;
 
 		}
 
 		// 시,도 군,구 정보 ajax
 		@RequestMapping(value = "/test3")
-		public void gugunajax(HttpServletRequest request, HttpServletResponse response,
+		public @ResponseBody Map<String, Object> gugunajax(HttpServletRequest request, HttpServletResponse response,
 				@RequestParam(value = "gugun", defaultValue = "") String gugun, Model model) throws Exception {
-
+			
+			/*
 			response.setContentType("text/html;charset=UTF-8");
-			JSONObject jsonObj = new JSONObject();
+			JSONObject jsonObj = new JSONObject();*/
 			//System.out.println(gugun);
 			List<StoreVO> storeList = storeService.selectStoreList(gugun);
 			String locationName = eventService.locationName(gugun);
 			
-				
+			/*		
 			jsonObj.put("result", true);
 			jsonObj.put("storeList", storeList);
 			jsonObj.put("locationName", locationName);
+			*/
+			
+			Map<String, Object> m = new HashMap<>();
+			m.put("storeList", storeList);
+			m.put("locationName", locationName);
+			
+			return m;
 		
 		}
 		
 		@RequestMapping(value="/test4")
-		public void eventAjax(HttpServletRequest request
+		public @ResponseBody List<StoreVO> eventAjax(HttpServletRequest request
 									, HttpServletResponse response
 									, @RequestParam(value ="store", defaultValue ="") String store
 									, Model model) throws Exception {
@@ -156,15 +169,16 @@ public class StoreController {
 			addr = addr.replaceAll(" ", ",");
 			storeList.get(0).setStoreAddr(addr);
 			
-			response.setContentType("text/html;charset=UTF-8");
+			/*response.setContentType("text/html;charset=UTF-8");
 			JSONObject jsonObj = new JSONObject();
 			
 		
 			
 			jsonObj.put("result", true);
 			jsonObj.put("storeList", storeList);
+			*/
 			
-			
+			return storeList;
 			
 		}
 		

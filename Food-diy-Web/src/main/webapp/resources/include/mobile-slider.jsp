@@ -18,7 +18,7 @@
 						<td align="center" colspan="2">
 							<!-- <strong style="font-size: 20px; font-style: italic; color:#feca07;"> BEST </strong> -->
 							<a href="${ pageContext.request.contextPath }/community/snsPage.do">
-								<img width="60%" src="${ pageContext.request.contextPath }/resources/img/lik2.jpg"/>
+								<strong style="font-style: italic; font-size: 15px;">&nbsp;What's New</strong>
 							</a>
 							<strong style="font-size: 12px; text-align: right">
 								
@@ -67,7 +67,7 @@
 				<table>
 					<tr>
 						<td>
-							<a href="${ pageContext.request.contextPath }/store/findStore">
+							<a href="${ pageContext.request.contextPath }/store/findStoreU.do">
 								<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 							</a>
 						</td>

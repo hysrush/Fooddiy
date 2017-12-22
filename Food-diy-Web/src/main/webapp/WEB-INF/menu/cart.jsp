@@ -199,7 +199,9 @@
 													<div class="row">
 														<div class="col-md-12">
 															<div class="col-md-12 actions-continue">
-																<button type="button" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">결제하기</button>
+																<form action = "${pageContext.request.contextPath }/order/paymentPage.do" method="get">
+																	<button type="submit" style="background-color: #0cc485; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-submit">주문하기</button>
+																</form>
 																<button type="button" style="background-color: gray; border: 0px; font-size: 12pt; font-weight: bold;" class="btn btn-tertiary mr-xs mb-sm cart-button" onclick="menuList()">계속 쇼핑하기</button>
 															</div>
 														</div>
@@ -217,27 +219,6 @@
 			</div>
 		</div>
 	</div>
-
-
-	<!-- 모달 -->
-	<div class="modal order-modal-final" id="noAnimModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog" style="top: 30%">
-			<div class="modal-content">
-				<div class="modal-header" style="background-color: #7aa93c; padding: 10px 20px 10px 10px">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white; font-size: 30px">×</button>
-					<h4 class="modal-title" id="noAnimModalLabel" style="color: white;">결제</h4>
-				</div>
-				<div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
-					<h2 class="info">결제 하시겠습니까?</h2>
-				</div>
-				<div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
-					<button type="button" class="btn btn-default confirm" style="color: white; background-color: #7aa93c;">확인</button>
-												<button type="button" class="btn btn-default" data-dismiss="modal" style="color: #7aa93c; background-color: white; border-color: #7aa93c">취소</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -258,15 +239,10 @@
 				var finalPrice = 0;
 				var finalQty = 0;
 				
-				
-				
 				//총 가격
 				for(var i = 0; i < $('.total-price').length; ++i) {
 					finalPrice += uncomma($('.total-price').eq(i).text())*1;
-
 				}
-				
-				
 				//총 수량
 				for(var i = 0; i < $('.qty-input').length; ++i) {
 					finalQty += $('.qty-input').eq(i).val() * 1;
@@ -359,10 +335,7 @@
 							$('.final-price').text(comma(finalPrice) + "원");
 							$('.final-qty').text(finalQty);
 							 
-							 
-							 
 							$(this).siblings('.qty-input').val(totalQty);
-							
 							
 							//DB업데이트
 							productQtyUpdate(no, totalQty)
@@ -399,69 +372,14 @@
 							
 							//DB업데이트
 							productQtyUpdate(no, totalQty); 
-							
 					});
 				});
-				
-				
-				$('.cart-submit').click(function() {
-					
-					
-					$(".order-modal-final").modal();
-
-				});
-				
-				
-				
-				$('.confirm').click(function() {
-						var length = $('.cart-table tr').length;
-						
-						var order = "";
-						order += '${ cartStoreVO.storeName }' + "*";	//지점명
-					    order += '${loginVO.id}' + "*";					//아이디
-					    order += uncomma($('.final-price').text())  + "*";		//주문가격
-					    order += uncomma($('.final-price').text())  +"--";		//총가격
-	 					for(var i = 1; i < length; ++i) {
-	 						
-							var oneCart = $('.cart-table tr').eq(i);				   
-							
-						    order +=  oneCart.find('.menu').text() + "*";
-						   	order += oneCart.find('.bread').text() + "*";
-						   	order += oneCart.find('.cheese').text() + "*"; 
-						   	order += oneCart.find('.topping').text() + "*";
-						   	order += oneCart.find('.vegetable').text() + "*";
-						   	order += oneCart.find('.sauce').text() + "*";
-						   	order += oneCart.find('.requirement').text() + "*";
-						   	order += oneCart.find('.pic').attr('src') + "*";
-						   	order += oneCart.find('.size').text() + "*";
-						   	order += oneCart.find('.qty-input').val() + "*";
-						   	order += uncomma(oneCart.find('.price').text())  + "*";
-						   	order += uncomma(oneCart.find('.price-total').text()) ;
-						   	
-						   	if(i + 1 < length ) {
-						   		order += "||";
-						   	}
-						   		
-						} 
-					    
-				    	$.ajax({
-							url :  "${pageContext.request.contextPath}/order/insertOrder",
-							type : "post",
-							data : {"order" : order},
-							success : function(){
-							location.href = "${pageContext.request.contextPath}/index2.jsp";
-							}
-						}); 
-				})
 		});
 		
 		function menuList() {
 			location.href = "${pageContext.request.contextPath}/menu/menuAll.do";
 		}
 		
-		
-		
-		<!-- 
 		function changeStore() {
 			location.href = "${pageContext.request.contextPath}/store/findStore.do"
 		}

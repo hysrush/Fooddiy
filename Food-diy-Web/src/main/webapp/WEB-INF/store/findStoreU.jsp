@@ -203,8 +203,12 @@
 					</div>			
 				</div><!-- container -->
 			</div>	<!-- main -->				
-				<footer id="footer">
+				<footer class="light visible-lg" id="footer" style="margin-top: 3%; padding: 2% 0 0;">
 					<jsp:include page="/resources/include/bottom.jsp"/>
+				</footer>
+		
+				<footer class="light hidden-lg" id="footer" style="margin-top: 5px; padding: 5px 0 0;">
+					<jsp:include page="/resources/include/mobile-bottom.jsp"/>
 				</footer>
 		</div> <!-- body -->						
 							
@@ -271,13 +275,15 @@
 		              type: "post",
 		              data : { "sido" : sido },
 		              success : function(responseData){
-		                  			var data = JSON.parse(responseData);
+		            	  
+		            	var data = JSON.parse(responseData);
+		            	console.log(data)
 		                  			
 		                  			
 		  				          	$('#gugun').empty();
 			  				        $('#gugun').append('<option value="" selected="selected">구,군 을 선택해주세요 </option>');
-		  				          	for(var i = 0 ; i < data.guList.length ; i++){
-		  				          		$('#gugun').append('<option value="'+ data.guList[i].LOC_NO + '">' + data.guList[i].LOC_NAME + '</option>');	
+		  				          	for(var i = 0 ; i < data.length ; i++){
+		  				          		$('#gugun').append('<option value="'+ data[i].locationNo + '">' + data[i].locationName + '</option>');	
 		  				          	} 	
 		              }
 		          });
@@ -341,10 +347,10 @@
  						success : function(responseData){
  							var data = JSON.parse(responseData);
  							
- 						
+ 							console.log(data);
  							
  							var geocoder = new daum.maps.services.Geocoder();
- 							var addr = data.storeList[0].storeAddr;
+ 							var addr = data[0].storeAddr;
 									
 	 						// 주소로 좌표를 검색합니다
 	 						geocoder.addressSearch( store, function(result, status) {
@@ -363,12 +369,12 @@
 	 						       		console.log("storeAddr = " + addr);
 	 						      
 	 						        	var contents = '';
-	 						            contents += '<form  class="test5" action = "" method="POST" onsubmit="return choice(\''+data.storeList[0].storeName+'\');">';
+	 						            contents += '<form  class="test5" action = "" method="POST" onsubmit="return choice(\''+data[0].storeName+'\');">';
 	 						            contents += '<div style="width:150px;height:80px;text-align:center;padding:6px 0;">';
-	 						            contents += '서브웨이'+data.storeList[0].storeName+ '<br/>' + data.storeList[0].storePhone+ '<br/>'; 
-	 						            contents += '<input type="hidden" name = "storeName" value='+data.storeList[0].storeName + ' />';
+	 						            contents += '서브웨이'+data[0].storeName+ '<br/>' + data[0].storePhone+ '<br/>'; 
+	 						            contents += '<input type="hidden" name = "storeName" value='+data[0].storeName + ' />';
 	 						            contents += '<input type="hidden" name = "storeAddr" value='+ addr + ' />';
-	 						            contents += '<input type="hidden" name = "storePhone" value='+data.storeList[0].storePhone + ' />';
+	 						            contents += '<input type="hidden" name = "storePhone" value='+data[0].storePhone + ' />';
 	 						            //contents += '<input type="hidden" name = "storeAddr2" value='+data.storeList[0].storeAddr2 + ' />';     
 	 						            //contents += '<input type="submit" value="선택"/>';
 	 						            //contents += '<input type="submit" name = "storeChoice" onsubmit="return choice(\''+data.storeList[0].storeName+'\');" value="선택" />';
@@ -400,7 +406,7 @@
 
 				//var btn= this;
 				var storeName = storeName;
-				if(${cartStoreVO == null}) {
+				if(${ cartStoreVO == null}) {
 					
 					if(${ cartVO.type == 'S' }||${ cartVO.type == 'N' }||${ cartVO.type == 'D' }) {
 						$('.test5').attr('action', "${pageContext.request.contextPath}/menu/cart.do"); // 메뉴페이지      

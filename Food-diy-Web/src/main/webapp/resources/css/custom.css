@@ -1,5 +1,76 @@
 /* Add here all your CSS customizations */
 
+/*  결제 화면  */
+.payment-info .panel.panel-default .panel-heading a {
+	font-size : 27px;
+	padding : 20px 20px 20px 40px !important; 
+}
+.payment-info .panel.panel-default .panel-body{
+	font-size : 18px;
+	padding : 20px 20px 20px 40px !important;
+}
+
+.panel .accordion-body .panel-body table tbody tr th div:first-child {
+	width : 165.56px;
+}
+
+.panel .accordion-body .panel-body table.user-info tbody tr td div:first-child {
+	margin-left: 10px
+}
+.panel .accordion-body .panel-body table tbody tr td .select-option .col {
+	float : left;
+	width : 256.67px;
+	margin-left: 10px
+}
+
+.panel .accordion-body .panel-body table tbody tr td .select-option .col label {
+	font-size : 18px;
+	font-weight: normal;
+	margin-left: 5px;
+	vertical-align: middle;
+}
+
+.kakaoPay , .naverPay{
+	overflow: hidden;
+	width: 81px;
+	height: 30px;
+}
+
+.kakaoPay {
+	background: url(../img/payment/kakaoPay.png) no-repeat 0 0 
+}
+
+.naverPay {
+	background: url(../img/payment/naverPay-2.jpg) no-repeat 0 0 
+}
+
+.payment-submit {
+	background-color: #0cc485 !important; 
+	border: 0px; 
+	font-size: 20pt !important; 
+	font-weight: bold; 
+	width: 290px; 
+	height: 60px;
+	margin: 20px 0 0 0;
+	border-color:  #0cc485 !important
+}
+
+.final-table tbody tr {
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.final-table tbody tr th {
+	width : 120px;
+}
+
+
+.final-table tbody tr td {
+	padding : 10px 0 10px 0;
+	width: 180px;
+	text-align: right;
+}
+
+/* ------------------------------------------------------- */
 
 .shop .cart-title {
 	margin : 10px;

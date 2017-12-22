@@ -67,6 +67,38 @@
 	border-style: solid;
 }
 </style>
+		<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//삭제
+	$("#del").click(function(){
+		
+		var no = [];
+		
+		$("input[name='cart']:checked").each(function() {
+			no.push($(this).val());
+	    });
+		
+		console.log(no);
+		
+		// controller로 배열 넘길 때 세팅 바꿔 줌
+		jQuery.ajaxSettings.traditional = true;
+	
+		$.ajax({
+			url : "${pageContext.request.contextPath}/member/myQnADel.do",
+			type : "post",
+			data : {
+				noList : no
+			},
+			success : function(data){
+				location.reload();
+			}
+		});
+		
+	});
+	});
+</script>
 </head>
 <body>
 	<div class="body">
@@ -111,82 +143,66 @@
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
-		
 			
 			<div role="main" class="main shop">
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="ibox">
+							<div class="ibox-content">
+								<div class="table-responsive">
+									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
+										<thead>
+											<tr style="font-size:15px; margin-top: 15%">
+												<th  data-hide="phone" data-sort-ignore="true"></th>
+												<th  data-hide="phone" data-sort-ignore="true">번호</th>
+												<th data-hide="phone" data-sort-ignore="true">내용</th>
+												<th style="width: 70px" data-hide="phone" data-sort-ignore="true">등록일</th>
+												<th data-hide="phone" data-sort-ignore="true">조회수</th>
+												<th data-hide="phone" data-sort-ignore="true">답변여부</th>
+											</tr>
+										</thead>
+										<tbody class= "todayOrderList">
+										<c:choose>
+										<c:when test="${ not empty claimList  }">
+										<c:forEach items="${ claimList  }" var="claim">
 
-				<div class="container">
-
-
-						<div class="col-md-12r">
-
-
-							<div class="featured-boxes">
-									<div class="col-sm-8  ">
-										<div class="featured-box featured-box-primary align-left mt-xlg">
-											<div style="text-align: center;" class="box-content">
-												<h4  style="width: 32px; margin-right:10%; float: left;" class="heading-primary text-uppercase mb-md hidden-xs"></h4>
-												<h4 align="center" style="margin-right:8%; width: 100px; float: left;" class="heading-primary text-uppercase mb-md">내용</h4>
-												<h4 style="margin-left:3%; width: 125px; float: left;" class="heading-primary text-uppercase mb-md hidden-xs">등록일</h4>
-												<h4 style="margin-left:12%; width: 117px; float: left;" class="heading-primary text-uppercase mb-md">답변여부</h4>
-												
-												<table class="cart-totals"> 
-													<tbody>
-														<c:forEach items="${ claimList }" var="claim">
-														
-														  <tr class="cart-subtotal">
-															<th style="text-align: center;">
-																<strong>${ claim.no }</strong>
-															</th>
-															<td class="col-md-4" align="center">
-																<a class="amount" href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }"><c:out value="${ claim.title }" /></a>
-																
-															</td>
-															<td class="col-md-2" align="right">
+											<tr class="cart-subtotal">
+													<td class="cartNo" style="display: none;">${ claim.no }</td>
+				                                    <td><input name="cart" type="checkbox" value="${ claim.no }"></td>
+													<td width="10%">
+														${ claim.no }
+													</td>	
+													<td class="col-md-3" >
+																<a class="amount" href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }">
+																<c:out value="${ claim.title }" /></a>
+													</td>
+													
+													<td class="col-md-2" >
 																<span class="amount ">${ claim.regDate }</span>
-															</td>
-															<td align="center">
-																<button style="margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
-
-															</td>
-														</tr>
-														<!-- <tr class="shipping">
-															<th style="text-align: center;">
-																2															
-															</th>
-															<td align="center" style="width: 300px">
-																칭찬합니다<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
-															</td>
-															<td align="right">
-																<span > 2017-09-28<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method"></span>
-															</td>
-															<td align="center">
-																<button style="background-color:orange; margin-left:40%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 답변완료 </button>
-															</td>
-														</tr> -->
-													  </c:forEach>
-													</tbody>
-												</table>
-											</div>
-										</div>	
-								<!-- 		<div align="right" style="float: right;" class="col-md-8">
-											<button style=" width: 100px; height: 30px; font-size: 14px" type="button" class="btn  btn-info">  글쓰기 </button>
-										</div><br/><br/>
-									<div class="header-search hidden-xs">
-										<form id="searchForm" action="page-search-results.html" method="get">
-											<div  class="input-group">
-												<input style="width: 400px; float: right;" type="text" class="form-control" name="q" id="q" placeholder="Search..." required>
-												<span style="" class="input-group-btn">
-													<button  class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-												</span>
-											</div>
-										</form>
-										
-									</div> -->
-									</div>
+													</td>										
+													<td class="col-md-2" >
+																<span class="fa fa-eye">&nbsp;&nbsp;${ claim.viewCnt }</span>
+													</td>										
+													<td align="center">
+														<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
+													</td>
+											</tr>
+											
+										</c:forEach>
+										</c:when>
+										<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
+										</c:choose>
+										</tbody>
+									</table>
 								</div>
-							</div>
-							</div>
+												<div align="right" style="margin-right: 15%; margin-top: 5%">
+													<button class="btn btn-primary btn-icon" id="del"
+														style="width: 17%; height: 30px">삭제</button>
+												</div>
+								</div>
+						</div>
+					</div>
+				</div>
 						</div>
 						
 	
@@ -197,13 +213,16 @@
 </div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
-	<div>
-		<footer id="footer">
-			<jsp:include page="/resources/include/bottom.jsp"/>
+	<div class="container">
+		<footer class="light visible-lg" id="footer">
+			<jsp:include page="/resources/include/bottom.jsp" />
+		</footer>
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp" />
 		</footer>
 	</div>
 
-		<!-- Vendor -->
+	<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
