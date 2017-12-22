@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.bit.vo.CityVO;
 import kr.co.bit.vo.StoreVO;
+import kr.co.bit.vo.locationVO;
 
 @Repository
 public class StoreDAOImpl implements StoreDAO {
@@ -49,9 +50,9 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public List selectLocation(String sido) {
+	public List<locationVO> selectLocation(String sido) {
 		
-		List list = sqlSession.selectList(url +"selectLocation", sido);
+		List<locationVO> list = sqlSession.selectList(url +"selectLocation", sido);
 		return list;
 	}
 
