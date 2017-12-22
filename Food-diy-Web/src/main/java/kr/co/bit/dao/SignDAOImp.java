@@ -43,6 +43,7 @@ public class SignDAOImp implements SignDAO {
 		}
 		*/
 		sql.insert(url+"signUp", memberVO);
+		sql.insert("kr.co.bit.member.dao.insertStamp", memberVO.getId());
 	}
 	
 	public int checkId(String id) {

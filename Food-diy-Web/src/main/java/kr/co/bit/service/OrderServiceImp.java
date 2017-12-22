@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.bit.dao.MemberOrderDAO;
 import kr.co.bit.dao.OrderDAO;
 import kr.co.bit.vo.OrderVO;
 
@@ -14,6 +15,9 @@ public class OrderServiceImp implements OrderService{
 	
 	@Autowired
 	private OrderDAO dao;
+	
+	@Autowired
+	private MemberOrderDAO mdao;
 	
 	@Override
 	public List<OrderVO> selectAllOrder(String storeName) {
@@ -36,7 +40,15 @@ public class OrderServiceImp implements OrderService{
 	
 	@Override
 	public void insertOrder(OrderVO orderVO) {
+		
+		if(orderVO.getId().equals("비회원")) {
+			dao.insert(orderVO);
+			return;
+		}
+		
 		dao.insert(orderVO);
+		mdao.updateCoupon(orderVO.getId());
+		
 	}
 	
 	@Override

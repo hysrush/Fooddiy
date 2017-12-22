@@ -75,5 +75,10 @@ public class MemberServiceImp  implements MemberService  {
 		return memberDAO.getmyMenuDetail(no);
 	}
 
+	// 사용자 스탬프 조회
+	public int selectStamp(String id) {
+		return memberDAO.selectStamp(id);
+	}
+
 	
 }

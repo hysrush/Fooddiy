@@ -301,7 +301,7 @@ $(document).ready(function(){
 																	<td width="10%" nowrap> ${ order.id } </td>	
 																	<td class = "commaN finalPrice">${ order.final_price }원</td>											
 																	<td>${ order.payment }</td>			
-																	<td><span style="background-color: green;" class="orderStatus label label-primary">${ order.orderStatus }</span></td>		
+																	<td><span style=" background-color: green;" class="orderStatus label label-primary">${ order.orderStatus }</span></td>		
 																	<td class = "cancel-button"></td>		
 																	</tr>
 											    	</c:forEach>

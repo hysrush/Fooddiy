@@ -20,5 +20,6 @@ public interface MemberService {
 	List<CartVO> delmyMenu(List<String> noList);
 	List<ClaimBoardVO> delmyQnA(List<String> noList);
 	CartVO getmyMenuDetail(int no);
+	int selectStamp(String id);
 	
 }

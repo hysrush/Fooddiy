@@ -65,6 +65,7 @@
 		<result column="user_grade" property="grade"/>
 		<result column="user_type" property="type"/>
 		<result column="user_pic" property="file"/>
+		<result column="" property="stemp"/>
 	</resultMap>
 	
 	<!-- DB t_menu와 MenuVO의 변수가 맞지 않으므로 mapping -->
@@ -200,4 +201,26 @@
 		DELETE FROM t_claim
 		WHERE CLAIM_NO = #{no}
 	</delete>
+	
+	<!-- 스탬프 저장  -->
+	<insert id="insertStamp" parameterType="java.lang.String">
+		insert into t_stamp(user_id)
+		values(#{id})
+	</insert>
+	
+	<!-- 스탬프 추가 전 사용자 정보 -->
+	<select id="selectById" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select user_point from T_stamp
+		where user_id = #{id}
+	</select>
+	
+	<!-- 스탬프 추가 -->
+	<update id="updateCoupon" parameterType="userVO">
+		Update T_stamp
+	 SET
+	 	user_point = #{stamp}
+	 where
+	 	user_id = #{id}
+	</update>
+	
 </mapper>
