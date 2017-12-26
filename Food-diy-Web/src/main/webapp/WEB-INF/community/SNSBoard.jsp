@@ -185,7 +185,7 @@
 																	<button type="button"  onclick="like('${snsHit.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																		<i class="fa fa-thumbs-up"></i>
 																	</button>
-																	<i class="fa fa-heart" id="likey">${snsHit.like}</i>
+																	<i class="fa fa-heart" id="${snsHit.no}">${snsHit.like}</i>
 																	
 																	
 																</span> 
@@ -231,7 +231,7 @@
 											<li class="col-md-3 col-sm-10 col-xs-12 isotope-item brands">
 												<div class="testimonial testimonial-style-3">
 													<div class="testimonial-author">
-														<div class="testimonial-author-thumbnail">
+														<div class="testimonial-author-thumbnail" >
 															<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt=""  style= "width:45px;height:45px;">
 														</div>
 														<p>
@@ -254,7 +254,7 @@
 																<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
-																<i class="fa fa-heart" id="likey">${snsVO.like}</i>
+																<i class="fa fa-heart" id="${snsVO.no}">${snsVO.like}</i>
 																
 																
 															</span> 
@@ -436,7 +436,7 @@
 							var contents = '';
 							contents +=  data.like;
 							
-							$('#likey').text(data.like);
+							$('#'+data.no+'').text(data.like);
 			    
 						    } 
 					});    

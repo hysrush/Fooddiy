@@ -296,6 +296,7 @@ public class SnsController {
 			
 			jsonObj.put("result", true);
 			jsonObj.put("like", like);
+			jsonObj.put("no", no);
 			
 			
 			response.getWriter().print(jsonObj.toString());
@@ -309,11 +310,12 @@ public class SnsController {
 		    		HttpServletResponse response,
 		    		@RequestParam(value="content") String content,
 		    		@RequestParam(value="snsNo") int snsNo,
-		    		HttpSession session) throws Exception{
+		    		HttpSession session,
+		    		PagingVO paging) throws Exception{
 			  
 			  response.setContentType("text/html;charset=UTF-8");
 			  JSONObject jsonObj = new JSONObject();
-			  response.getWriter().print(jsonObj.toString());
+			
 		   
 		        UserVO userVO = (UserVO) session.getAttribute("loginVO");
 		        String id = userVO.getId();
@@ -328,10 +330,18 @@ public class SnsController {
 		        
 		        repService.insertRep(snsRepVO);
 				
+		        paging.setNo(snsNo);
+				
+				List<SnsRepVO> repList = repService.list(paging);
+		        
 			
 		        jsonObj.put("result", true);
 				jsonObj.put("snsRepVO", snsRepVO);
+				jsonObj.put("repList", repList);
 				
+				System.out.println(repList);
+				
+				response.getWriter().print(jsonObj.toString());
 		    }
 
 		  @RequestMapping(value="/deleteRep")
