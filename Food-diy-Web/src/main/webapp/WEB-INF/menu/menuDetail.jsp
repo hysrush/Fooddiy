@@ -159,12 +159,10 @@
    });   
   
 
-   function modal(menuNo, menuName) {	   
-	   //공백, 특수문자 넘기기 위해서 인코딩
-	   var mn = encodeURIComponent(menuName);
-	   $('#myModal2').modal().removeData();
-       location.href = '${ pageContext.request.contextPath}/community/snsDetail.do?no='+snsNo;
-       $('#myModal2').modal({ remote : url });
+   function modal(snsNo) {
+	   $('div.modal').modal().removeData();
+       var url = '${ pageContext.request.contextPath}/community/snsDetail.do?no='+snsNo;
+       $('div.modal').modal({ remote : url });
    }   
    
    
@@ -414,14 +412,7 @@
          </div>
       </div>
    </div>
-   <!-- <div class="modal2 fade" tabindex="-1" role="dialog" id="myModal2"
-      aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none; z-index: 1060;">
-      <div class="modal-dialog modal-lg">
-         <div class="modal-content">
-            모달내용
-         </div>
-      </div>
-   </div> -->
+   
    
 
    <!-- Vendor -->

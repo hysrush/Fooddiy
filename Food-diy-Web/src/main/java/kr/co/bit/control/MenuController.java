@@ -83,7 +83,6 @@ public class MenuController {
 					
 					System.out.println(fileName);
 					System.out.println(saveFileName);
-					System.out.println("들어갔나염?");
 					
 					//2. 경로에 이미지파일 저장
 					byte[] bytes;
@@ -92,7 +91,6 @@ public class MenuController {
 					buffStream.write(bytes);
 					buffStream.close();
 					
-					System.out.println("들어가나염2?");					
 					
 					menuService.insertMenu(menuVO);
 	
