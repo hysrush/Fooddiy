@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import kr.co.bit.dao.SignDAO;
 import kr.co.bit.util.MailKey;
 import kr.co.bit.vo.MailVO;
+import kr.co.bit.vo.OrderVO;
 import kr.co.bit.vo.PhoneCertVO;
 import kr.co.bit.vo.UserVO;
 
@@ -174,5 +175,17 @@ public class SignServiceImp implements SignService {
 	public Map<String, List<Object>> main() {
 		return signDAOImp.main();
 	}
+	
+	// 주문번호로 조회
+	@Override
+	public int orderCheck(String num) {
+		return signDAOImp.orderCheck(num);
+	}
+
+	@Override
+	public OrderVO orderDetail(String no) {
+		return signDAOImp.orderDetail(no);
+	}
+	
 
 }

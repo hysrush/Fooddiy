@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bit.vo.OrderVO;
 import kr.co.bit.vo.UserVO;
 
 @Repository
@@ -43,6 +44,7 @@ public class SignDAOImp implements SignDAO {
 		}
 		*/
 		sql.insert(url+"signUp", memberVO);
+		sql.insert("kr.co.bit.member.dao.insertStamp", memberVO.getId());
 	}
 	
 	public int checkId(String id) {
@@ -102,6 +104,20 @@ public class SignDAOImp implements SignDAO {
 		System.out.println(map.get("event").toString());*/
 		
 		return map;
+	}
+
+	// 비회원 주문조회
+	@Override
+	public int orderCheck(String num) {
+		
+		// 1. 주문번호에 맞는 주문이 있는지 조회
+		int n = sql.selectOne("kr.co.bit.dao.OrderDAO.orderCheck", num);
+		
+		return n;
+	}
+	
+	public OrderVO orderDetail(String no) {
+		return sql.selectOne("kr.co.bit.dao.OrderDAO.orderCheckDetail", no);
 	}
 	
 }

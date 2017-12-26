@@ -376,7 +376,7 @@ function mymodal(mymenuNo) {
 															</div>
 														</td> 
 															<td>
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
+																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3" id="order">결제 </button>
 															</td>
 														
 											</tr>

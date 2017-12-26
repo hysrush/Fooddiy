@@ -130,15 +130,15 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li ><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-									<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a>
+									<li ><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway 소식</a>
 										<ul>
-											<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-											<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 										</ul>
 									</li>
 									<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
+									<li class="active"><a href="#">SNS게시판</a></li>
 							</ul>
 						</aside>
 					</div>
@@ -185,7 +185,7 @@
 																	<button type="button"  onclick="like('${snsHit.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																		<i class="fa fa-thumbs-up"></i>
 																	</button>
-																	<i class="fa fa-heart" id="likey">${snsHit.like}</i>
+																	<i class="fa fa-heart" id="${snsHit.no}">${snsHit.like}</i>
 																	
 																	
 																</span> 
@@ -231,7 +231,7 @@
 											<li class="col-md-3 col-sm-10 col-xs-12 isotope-item brands">
 												<div class="testimonial testimonial-style-3">
 													<div class="testimonial-author">
-														<div class="testimonial-author-thumbnail">
+														<div class="testimonial-author-thumbnail" >
 															<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt=""  style= "width:45px;height:45px;">
 														</div>
 														<p>
@@ -254,7 +254,7 @@
 																<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
-																<i class="fa fa-heart" id="likey">${snsVO.like}</i>
+																<i class="fa fa-heart" id="${snsVO.no}">${snsVO.like}</i>
 																
 																
 															</span> 
@@ -436,7 +436,7 @@
 							var contents = '';
 							contents +=  data.like;
 							
-							$('#likey').text(data.like);
+							$('#'+data.no+'').text(data.like);
 			    
 						    } 
 					});    

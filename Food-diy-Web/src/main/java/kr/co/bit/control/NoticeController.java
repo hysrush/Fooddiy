@@ -3,6 +3,7 @@ package kr.co.bit.control;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,18 +65,37 @@ public class NoticeController {
 		noticeService.updateViewcntNotice(no, session);
 		
 		NoticeBoardVO noticeVO = noticeService.selectOneNotice(no);
-		FileVO fileVO = fileService.selectOneFile(no);
-		
+
 		ModelAndView mav = new ModelAndView();
 		//setViewName : 어떤 페이지를 보여줄것인가
 		mav.setViewName("community/subway/noticeDetail");
 		//addObject : key 와 value 를 담아 보내는 메서드 
 		mav.addObject("noticeVO", noticeVO);
-		mav.addObject("fileVO", fileVO);
+
+		// file 존재하면,
+		if (noticeVO.getFileOX().equals("O")) {
+			System.out.println("Test");
+			// 해당 번호에 맞는 fileVO 읽어오기
+			FileVO fileVO = fileService.selectOneFile(no);
+			mav.addObject("fileVO", fileVO);
+		}
+
 		// 줄바꿈 
 		mav.addObject("br", "<br/>");
 		mav.addObject("cn", "\n");
 		
 		return mav;
+	}
+	// file 다운로드
+	@RequestMapping(value="/downloadFile.do", method=RequestMethod.GET)
+	public String download(@RequestParam(value="no") int boardNo, HttpServletResponse response) {
+		
+		try {
+			fileService.downloadFile(response, boardNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "";
 	}
 }

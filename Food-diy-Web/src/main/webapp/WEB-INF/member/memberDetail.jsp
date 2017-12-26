@@ -72,8 +72,15 @@
 	             swal("${msg}");
 	        }
 	       
+	       
+	       $("#stamp").click(function(){
+	    	   	$('div.modal').modal().removeData();
+				var url = '${ pageContext.request.contextPath}/member/myStamp.do?id=${loginVO.id}';
+	   	    	$('div.modal').modal({ remote : url });
+	       });
 		
 	});
+
 </script>
 <style type="text/css">
 #div01 {
@@ -219,7 +226,7 @@
 							<div class="col-md-4"></div>
 							<div class="col-md-3"></div>
 							<div class="col-md-4 col-xs-10" style="margin-left:4%">
-									<button class="btn btn-info" data-toggle="modal" data-target="#InfoModal">쿠폰북</button>
+									<button class="btn btn-info"  data-toggle="modal" id="stamp">쿠폰북</button>
 									<button class="btn btn-info" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
 									<button class="btn btn-info" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
@@ -278,7 +285,7 @@
 									</div>
 									
 										<!--쿠폰북 디테일  -->					
-										<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+									<%-- 	<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -289,7 +296,7 @@
 												<table class="table table-bordered">
 													<tr>
 														<td>
-														<img style="width: 100%" src="${ pageContext.request.contextPath }/resources/img/coupon1.jpg">
+														<img style="width: 100%" src="${ pageContext.request.contextPath }/resources/img/coupon4.jpg">
 														</td>													
 													</tr>
 												</table>
@@ -299,7 +306,7 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> --%>
 							</div>
 						</div>
 					</div>

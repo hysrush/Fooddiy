@@ -22,34 +22,46 @@
   		<result column = "order_payment" property ="payment"/>
   		<result column = "order_status" property ="orderStatus"/>
   		<result column = "reg_at" property ="regDate"/>
+  		<result column="order_num" property="num"/>
   	</resultMap>
   	
   	
   	<select id="selectAllOrder" parameterType="String" resultMap="Map_OrderVO">
 		<include refid="selectAll"/>
 		where sto_name = #{storeName}
-		order by reg_at des  	
+		order by reg_at desc
   	</select>
  
   	<select id="selectByIdOrder" parameterType="String" resultMap="Map_OrderVO">
 		<include refid="selectAll"/>
 		where user_id = #{id}
-		order by reg_at des  	
+		order by reg_at desc
   	</select>
 
   	<select id="selectByDateOrder" parameterType="String" resultMap="Map_OrderVO">
 		<include refid="selectAll"/>
 		where reg_at = #{date}
-		order by reg_at des  	
+		order by reg_at desc
   	</select>
   	
   	<insert id="insertOrder" parameterType="orderVO">
-  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE, order_payment) 
+  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE, order_payment, order_num) 
   		
-  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType}, #{payment} )
+  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType}, #{payment}, #{num} )
   	</insert>
   	
   	<delete id="deleteOrder" parameterType="String">
   		delete from t_order where user_id = #{id}
   	</delete>
+  	
+  	<!-- 비회원 주문 조회 -->
+  	<select id="orderCheck" parameterType="java.lang.String" resultType="java.lang.Integer">
+  		select COUNT(order_num) from t_order
+  		where order_num = #{num}
+  	</select>
+  	
+  	<select id="orderCheckDetail" parameterType="java.lang.String" resultMap="Map_OrderVO" >
+  		<include refid="selectAll"/>
+  		where order_num = #{num}
+  	</select>
 </mapper>

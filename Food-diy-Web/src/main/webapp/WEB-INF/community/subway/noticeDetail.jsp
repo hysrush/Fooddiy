@@ -64,6 +64,19 @@
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
+<style type="text/css">
+	#title h4{
+		color: #339900 !important;
+		font-weight: bold;
+	}
+	td p {
+		padding: 20px 30px 30px 20px;
+	}
+	img {
+		padding-top: 10px;
+		max-width: 700px;
+	}
+</style>
 </head>
 <body>
 	<div class="body">
@@ -101,7 +114,7 @@
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-								<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
 								<li class="active"><a href="#">Subway 소식</a>
 									<ul>
 										<c:if test="${ noticeVO.type eq 'A' }">
@@ -115,7 +128,7 @@
 									</ul>
 								</li>
 								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
-								<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
 							</ul>
 						</aside>
 					</div>
@@ -147,7 +160,7 @@
 										<div class="center">
 											<div class="post-content">
 												<div class="post-meta" style="float: right;">
-													<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+													<span><a href="${ pageContext.request.contextPath }/main/Start"><i class="fa fa-home"></i></a> > </span>
 													<span><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway소식</a> > </span>
 													<c:if test="${ noticeVO.type eq 'A' }">
 														<span><a href="#">공지사항</a></span>
@@ -160,10 +173,10 @@
 												<form action="/Mission-Web/fileDownload" method="post" id="dForm">
 													<table class="table table-bordered">
 															<tr>
-																<td>
+																<td id="title">
 																	<!-- 제목 -->
 																	<h4 class="mb-none">
-																		<strong><c:out value="${ noticeVO.title }"></c:out></strong>
+																		<c:out value="${ noticeVO.title }"></c:out>
 																	</h4>
 																</td>
 																<div class="post-meta">
@@ -176,9 +189,9 @@
 														<tr>
 															<!-- 내용 -->
 															<td colspan="3">
-																<c:if test="${ not empty noticeVO.filePath }">
+																<c:if test="${ not empty fileVO }">
 																	<div class="text-center">
-																		<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/notice/${ noticeVO.filePath }">
+																		<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/notice/${ fileVO.filePath }">
 																	</div>
 																</c:if>
 																<!-- 자동 단락 나누기 (jstl - fn) -->
@@ -186,14 +199,15 @@
 															</td>
 														</tr>
 														<!-- 첨부파일 -->
-														<c:if test="${ not empty noticeVO.filePath }">
+														<c:if test="${ not empty fileVO }">
 														<tr>
 															<td colspan="3">
 																<div class="text-left">
 																	<i class="fa fa-file"></i>&nbsp;
-																	<a href="#">
-																		<span class="text-muted">${ fileVO.fileOriName } (${ fileVO.fileSize }KB)</span>
+																	<a onclick="action('F', ${ noticeVO.no })">
+																		<span class="text-muted fileName">${ fileVO.fileOriName }</span>
 																	</a>
+																		<span class="text-muted"> (${ fileVO.fileSize }KB)</span>
 																</div>
 															</td>
 														</tr>
@@ -201,7 +215,7 @@
 													</table>
 												</form>
 												<div class="center">
-													<button type="button" class="btn btn-primary" onclick="doAction('L','${ noticeVO.type }')">목록</button>
+													<button type="button" class="btn btn-primary" onclick="action('L','${ noticeVO.type }')">목록</button>
 												</div>
 											</div>
 										</div>
@@ -259,14 +273,31 @@
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 		
 <script type="text/javascript">
-	function doAction(btn, type) {
+	$(document).ready(function() {
+		
+		// 파일명 호버 효과
+		$(".fileName").hover( function () { 
+			$(this).css('text-decoration', 'underline');
+		}, function () { 
+			$(this).css('text-decoration', 'none');
+		} );
+	    
+	});
+	
+	// Notice action 함수
+	function action(btn, type) {
 		switch (btn) {
 		case 'L':
+			// Notice 리스트 / A - 공지사항, B - 보도자료
 			if (type == 'A') {
 				location.href = "${ pageContext.request.contextPath}/community/subway/notice.do";
 			} else if (type == 'B') {
 				location.href = "${ pageContext.request.contextPath}/community/subway/news.do";
 			}
+			break;
+		case 'F':
+			// File 다운로드
+			location.href = '${ pageContext.request.contextPath}/community/subway/downloadFile.do?no=' + type;
 			break;
 		default:
 			break;

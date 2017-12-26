@@ -60,12 +60,36 @@
 		
 		
 <style type="text/css">
-#div01 {
-	width: 70px;
-	text-align: center;
-	border-width: 2px;
-	border-style: solid;
-}
+	#div01 {
+		width: 70px;
+		text-align: center;
+		border-width: 2px;
+		border-style: solid;
+	}
+	.fa-building {
+		padding-top: 10px;
+	}
+	#contents {
+		padding: 20px 30px 30px 20px;
+	}
+	.content {
+		padding-left: 30px;
+	}
+	.contentOnly {
+		padding: 20px 30px 30px 20px;
+	}
+	.visitTable {
+		width: 25%;
+		border-top: 2px solid #7aa93c;
+	}
+	.visitTable tr {
+		border-bottom: 2px solid #7aa93c;
+    	padding: 10px;
+	}
+	.visitTable th, .visitTable td {
+		border-left: 1px solid white !important;
+		border-right: 1px solid white !important;
+	}
 </style>
 <script type="text/javascript">
 	function doAction(type) {
@@ -134,7 +158,7 @@
 						<div class="center">
 							<div class="post-content">
 								<div class="post-meta" style="float: right;">
-									<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+									<span><a href="${ pageContext.request.contextPath }/main/Start"><i class="fa fa-home"></i></a> > </span>
 									<span><a href="#">커뮤니티</a> > </span>
 									<span><a href="${ pageContext.request.contextPath }/community/claim.do">1:1문의</a></span>
 								</div>
@@ -142,42 +166,51 @@
 								<form action="/Mission-Web/fileDownload" method="post" id="dForm">
 									<table class="table table-bordered">
 										<tr>
-											<td class="col-md-1" style="width: 10%" colspan="2"> 
-												<h4 class="mb-none" >제목 </h4>
+											<td> 
+												<!-- 타입 -->
+												<c:if test="${ claimVO.type eq 'I'}">문의</c:if>
+												<c:if test="${ claimVO.type eq 'P'}">칭찬</c:if>
+												<c:if test="${ claimVO.type eq 'S'}">제안</c:if>
+												<c:if test="${ claimVO.type eq 'C'}">불만</c:if>
+												<c:if test="${ claimVO.type eq 'X'}">기타</c:if>
 											</td>
-											<!-- 타입 -->
-											<td class="col-xs-7" colspan="1">
+											<td id="title">
+												<!-- 제목 -->
 												<h4 class="mb-none">
 													<c:out value="${ claimVO.title }"></c:out>
 												</h4>
 											</td>
-											<!-- 타입 -->
-											
-											<c:if test="${ claimVO.type eq 'I'}"><td>문의</td></c:if>
-											<c:if test="${ claimVO.type eq 'P'}"><td>칭찬</td></c:if>
-											<c:if test="${ claimVO.type eq 'S'}"><td>제안</td></c:if>
-											<c:if test="${ claimVO.type eq 'C'}"><td>불만</td></c:if>
-											<c:if test="${ claimVO.type eq 'X'}"><td>기타</td></c:if>
-											
-											<!-- 제목 -->
-										</tr> 
-										<tr>
-												<td>
-												<h5 style="height: 10px"> 조회수</h5>
-												</td>
-										
+											<div class="post-meta">
 												<!-- 조회수 -->
-												<td width="15%"><i class="fa fa-eye"></i>&nbsp;&nbsp; ${ claimVO.viewCnt }</td>
-										
-												<td colspan="1">
-												<h5 style="height: 10px"> </h5>
-												</td>
+												<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ claimVO.viewCnt }</td>
 												<!-- 등록일 -->
-												<td width="15%"><i class="fa fa-calendar"></i>${ claimVO.regDate }</td>
+												<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ claimVO.regDate }</td>
+											</div>
 										</tr>
 										<tr>
-											<!-- 내용 -->
-											<td colspan="4" style="height: 250px"><p><c:out value="${ claimVO.content }"></c:out></p></td>
+											<td colspan="4" style="height: 250px" id="contents">
+												<!-- 방문일 / 방문매장명 -->
+												<c:choose>
+													<c:when test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
+														<table class="table table-bordered text-center col-md-2 visitTable">
+															<tr>
+																<th><i class="fa fa-building"></i> 방문매장</th>
+																<td>${ claimVO.visitStore }</td>
+															</tr>
+															<tr>
+																<th><i class="fa fa-calendar-o"></i> 방문일</th>
+																<td>${ claimVO.visitDate }</td>
+															</tr>
+														</table>
+														<!-- 내용 -->
+														<p class="text-left col-md-9 content"><c:out value="${ claimVO.content }"></c:out></p>
+													</c:when>
+													<c:otherwise>
+														<!-- 내용 -->
+														<p class="text-left contentOnly"><c:out value="${ claimVO.content }"></c:out></p>
+													</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 										<!-- 첨부파일 -->
 										<c:if test="${ not empty claimVO.file }">

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.bit.vo.MemberOrderVO;
+import kr.co.bit.vo.UserStamp;
 
 
 @Repository
@@ -43,6 +44,22 @@ public class MemberOrderDAOImp  implements MemberOrderDAO{
 	@Override
 	public void cancelOrder(int no) {
 		session.update(url + "cancelOrder", no);
+	}
+
+	// 스탬프
+	@Override
+	public void updateCoupon(String id) {
+		
+		// 사용자의 주문 전 스탬프 확인
+		int stemp = session.selectOne(url+"selectById", id);
+		
+		UserStamp p = new UserStamp();
+		
+		p.setId(id);
+		p.setStamp(++stemp);
+		
+		session.update(url+"updateCoupon", p);
+		
 	}
 
 	

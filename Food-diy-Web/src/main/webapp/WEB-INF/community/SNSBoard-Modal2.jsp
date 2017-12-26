@@ -60,7 +60,7 @@
 					<div class="col-md-9 center">
 						 <ul>
 							<li>
-								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart"></i id="heart">${snsVO.like}</i></a>  <!--  좋아요 숫자  -->
+								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart" id="heart">${snsVO.like}</i></a>  <!--  좋아요 숫자  -->
 							</li>
 							<li>
 								<i class="fa fa-calendar"></i> ${snsVO.regDate } <!--  등록일 DB값 -->
@@ -191,7 +191,7 @@
 							var contents = '';
 							contents +=  data.like;
 							
-							$('#heart').html(" 좋아요:" +data.like );
+							$('#heart').html(data.like );
 			    
 						    } 
 					});    
@@ -232,6 +232,24 @@
                  		 
                  	   //contents += '<span>안녕하세요</span>';
                  	
+                 	/*   for(var i = 0 ; i<data.repList.length; i++){  
+           		    	 
+           		
+            		   contents += '<div class="testimonial testimonial-style-3">';
+            		   contents += '<div class="testimonial-author">';	    	  
+                   	   contents +=		'<img src = "../upload/'+data.repList[i].pic+'" class ="img-responsive img-circle" alt="" style= "width:45px;height:45px;">';
+                   	   contents +=		'<p><strong>'+ data.repList[i].id+'</storong></p>';
+                   	   contents +=	'<span class="pull-right">';
+                   	   contents +=	'</span>';
+                   	   contents +=		'<p><strong>' + data.repList[i].content + '</strong></p>';
+            
+                   	   contents +=	'</div>';
+                   	   contents +='</div>';
+            		     }	 
+                   	   //contents += '<span>안녕하세요</span>';
+                 	    */
+                 	   
+                 	   
                  	   
                  	$('#listReply').append(contents); 
                  
@@ -241,57 +259,5 @@
 	
 	</script>
 	
-	<script>
-			function frmPaging() {
-			    document.getElementById("frmPaging").submit();
-			}
-			// 이전 페이지 index
-			function pagePre(index, pageCnt) {
-			    if (0 < index - pageCnt) {
-			        index -= pageCnt;
-			        document.getElementById("pageStartNum").value = index;
-			        document.getElementById("index").value = index - 1;
-			        frmPaging();
-			    }
-			}
-			// 다음 페이지 index
-			function pageNext(index, total, listCnt, pageCnt) {
-			    var totalPageCnt = Math.ceil(total / listCnt);
-			    var max = Math.ceil(totalPageCnt / pageCnt);
-			    if (max * pageCnt > index + pageCnt) {
-			        index += pageCnt;
-			        document.getElementById("pageStartNum").value = index;
-			        document.getElementById("index").value = index - 1;
-			        frmPaging();
-			    }
-			}
-			
-			// index 리스트 처리
-			function pageIndex(pageStartNum) {
-			    document.getElementById("index").value = pageStartNum - 1;
-			    frmPaging();
-			}
-			// 리스트출력개수 처리
-			function listCnt() {
-			    document.getElementById("index").value = 0;
-			    document.getElementById("pageStartNum").value = 1;
-			    document.getElementById("listCnt").value = document.getElementById("listCount").value;
-			    frmPaging();
-			}
-			window.onload = function() {
-			    // 현재번호 active
-			    var index = document.getElementById("index").value;
-			    var pageIndex = document.querySelector('.pageIndex'+(Number(index)+1));
-			   
-			    // 리스트갯수 selected 처리
-			    $("#listCount > option").each(function () {
-			        if ($(this).val() == $('#listCnt').val()) {
-			            $(this).prop("selected", true);
-			        }
-			    });
-			}
 
-
-			</script>	
-	
     

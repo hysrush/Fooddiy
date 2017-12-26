@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +62,12 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-		
+	
+<style type="text/css">
+	.toggle label {
+		font-weight: bold;
+	}
+</style>	
 </head>
 <body>
 	<div class="body">
@@ -100,11 +106,11 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-									<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a>
+									<li class="active"><a href="#">자주묻는 질문</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway 소식</a>
 										<ul>
-											<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-											<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 										</ul>
 									</li>
 									<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
@@ -150,7 +156,7 @@
 							<div class="tab-content">
 								<div class="tab-pane active" id="tabsNavigationSimple1">
 									<div class="center">
-										<h4>푸디오더</h4>
+										<br>
 										<div class="col-md-12">
 											<div class="toggle toggle-primary" data-plugin-toggle
 												data-plugin-options="{ 'isAccordion': true }">
@@ -159,7 +165,8 @@
 														<c:if test="${ qna.type eq 'F'}">
 															<label>Q. ${ qna.question }</label>
 															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
+																<!-- 자동 단락 나누기 (jstl - fn) -->
+																<p class="text-center">${ fn:replace(qna.answer, cn, br) }</p>
 																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
 															</div>
 														</c:if>
@@ -171,7 +178,7 @@
 								</div>
 								<div class="tab-pane" id="tabsNavigationSimple2">
 									<div class="center">
-										<h4>포인트</h4>
+										<br>
 										<div class="col-md-12">
 											<div class="toggle toggle-primary" data-plugin-toggle
 												data-plugin-options="{ 'isAccordion': true }">
@@ -180,7 +187,8 @@
 														<c:if test="${ qna.type eq 'P'}">
 															<label>Q. ${ qna.question }</label>
 															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
+																<!-- 자동 단락 나누기 (jstl - fn) -->
+																<p class="text-center">${ fn:replace(qna.answer, cn, br) }</p>
 																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
 															</div>
 														</c:if>
@@ -192,7 +200,7 @@
 								</div>
 								<div class="tab-pane" id="tabsNavigationSimple3">
 									<div class="center">
-										<h4>단체주문</h4>
+										<br>
 										<div class="col-md-12">
 											<div class="toggle toggle-primary" data-plugin-toggle
 												data-plugin-options="{ 'isAccordion': true }">
@@ -201,7 +209,8 @@
 														<c:if test="${ qna.type eq 'O'}">
 															<label>Q. ${ qna.question }</label>
 															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
+																<!-- 자동 단락 나누기 (jstl - fn) -->
+																<p class="text-center">${ fn:replace(qna.answer, cn, br) }</p>
 																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
 															</div>
 														</c:if>
@@ -213,7 +222,7 @@
 								</div>
 								<div class="tab-pane" id="tabsNavigationSimple4">
 									<div class="center">
-										<h4>회원정보</h4>
+										<br>
 										<div class="col-md-12">
 											<div class="toggle toggle-primary" data-plugin-toggle
 												data-plugin-options="{ 'isAccordion': true }">
@@ -222,7 +231,8 @@
 														<c:if test="${ qna.type eq 'M'}">
 															<label>Q. ${ qna.question }</label>
 															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
+																<!-- 자동 단락 나누기 (jstl - fn) -->
+																<p class="text-center">${ fn:replace(qna.answer, cn, br) }</p>
 																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
 															</div>
 														</c:if>
@@ -234,7 +244,7 @@
 								</div>
 								<div class="tab-pane" id="tabsNavigationSimple5">
 									<div class="center">
-										<h4>기타</h4>
+										<br>
 										<div class="col-md-12">
 											<div class="toggle toggle-primary" data-plugin-toggle
 												data-plugin-options="{ 'isAccordion': true }">
@@ -243,7 +253,8 @@
 														<c:if test="${ qna.type eq 'X'}">
 															<label>Q. ${ qna.question }</label>
 															<div class="toggle-content">
-																<p>A. ${ qna.answer }</p>
+																<!-- 자동 단락 나누기 (jstl - fn) -->
+																<p class="text-center">${ fn:replace(qna.answer, cn, br) }</p>
 																<p style="font-size: 9pt;" align="right">${ qna.regDate }</p>
 															</div>
 														</c:if>

@@ -40,7 +40,7 @@
 				type : "post",
 				data : {
 					"name" : e.name.value,
-					"email" : e.email.value + e.emailD.value
+					"email" : e.email.value
 				},
 				url : "${ pageContext.request.contextPath }/sign/nonemail",
 				success : function(result){
@@ -67,12 +67,32 @@
 			return false;
 		}
 	}
+	
+	//이메일 형식
+    function checkEmail() {		
+
+		var email = document.getElementById("nonEmail").value;
+
+		console.log(email);
+		var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+			if(exptext.test(email)==false){
+				
+				$("#error").css("visibility", "visible");
+				$("#error").css("color", "#ed5565").text("형식이 올바르지 않습니다.");
+				$("#error").css("visibility", "visible");
+				$('#nonCheck').attr('disabled', true);
+				
+		}else{
+			$("#error").css("visibility", "hidden");
+		}
+	}
 
 </script>
 <!-- 비회원 로그인/주문조회 코드 -->
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-8">
 			<div class="featured-boxes">
 				<div class="row">
 					<div class="col-sm-6">
@@ -95,22 +115,16 @@
 									</div>
 									<div class="row">
 										<div class="form-group">
-											<div class="col-md-4">
+											<div class="col-md-6">
 												<label>이메일</label>&nbsp;
-													<input name="email" type="text" class="form-control" required>
+													<input id="nonEmail" name="email" type="text" class="form-control" placeholder="mama@naver.com" required="required" oninput="checkEmail()">
 											</div><br/>
-											<div class="col-md-4">
-												<select name="emailD" class="form-control" required>
-													<option>도메인 선택</option>
-													<option value="@naver.com">@ naver.com</option>
-													<option value="@daum.net">@ daum.net</option>
-											</select>
-											</div>
-											<div class="col-md-4">
+											<div class="col-md-6">
 												<input type="button" value="인증코드" id="nonCheck"  class="btn btn-info pull-right form-control btn-primary btn-icon" data-loading-text="Loading..."/>
 											</div>
 										</div>
 									</div>
+									<strong id="error" style="visibility: hidden; color: #ed5565; font-size: 12px;" ></strong>
 								</form>
 								<!-- 인증 번호 확인 & 비회원 가입 -->
 								<form action="${ pageContext.request.contextPath }/sign/nonemailCheck" name="nonemailCheck" onsubmit="return check()">

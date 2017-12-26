@@ -4,7 +4,7 @@
 <div class="mobile-nav">
 	<div class="mobile-nav-wrapper">
 		<ul class="mobile-side-menu">
-			<li><a href="${ pageContext.request.contextPath}/index2.jsp">Home</a></li>
+			<li><a href="${ pageContext.request.contextPath}/main/Start">Home</a></li>
 			<li><span class="mmenu-toggle"></span> <a href="#">Menu</a>
 				<ul>
 					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do">전체메뉴 ALL MENU</a></li>

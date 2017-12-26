@@ -85,7 +85,7 @@
 						<div class="center">
 							<div class="post-content">
 								<div class="post-meta" style="float: right;">
-									<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+									<span><a href="${ pageContext.request.contextPath }/main/Start"><i class="fa fa-home"></i></a> > </span>
 									<span><a href="#">커뮤니티</a> > </span>
 									<span><a href="${ pageContext.request.contextPath }/community/claim.do">1:1문의</a></span>
 								</div>

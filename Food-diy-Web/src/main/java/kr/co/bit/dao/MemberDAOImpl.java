@@ -91,4 +91,9 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("kr.co.bit.member.dao.getmyMenuDetail", no);
 	}
 
+	@Override
+	public int selectStamp(String id) {
+		return sqlSession.selectOne("kr.co.bit.member.dao.selectById", id);
+	}
+
 }

@@ -89,10 +89,8 @@
 			
 			f.id.value = "${ lostId }";
 		}
-		
+        
 	});
-
-
 </script>
 </head>
 <body>
@@ -126,7 +124,7 @@
 			
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 						</aside>
 					</div>
@@ -137,10 +135,10 @@
 							<div class="col-md-12">
 								<div class="tabs tabs-bottom tabs-center tabs-simple">
 									<ul class="nav nav-tabs">
-										<li class="active">
+										<li class="active" id="y">
 											<a href="#memberLogin" data-toggle="tab" aria-expanded="true"> 회원</a>
 										</li>
-										<li class="">
+										<li class="" id="n">
 											<a href="#nonLogin" data-toggle="tab" aria-expanded="false"> 비회원</a>
 										</li>
 									</ul>
@@ -151,7 +149,7 @@
 										</div>
 										<!--  비회원 로그인    -->
 										<div class="tab-pane" id="nonLogin">
-											<jsp:include page="/resources/include/login/nonmemberLogin.jsp"/>
+											<jsp:include page="/resources/include/login/nonmemberLoginDetail.jsp" />
 										</div>
 									</div>
 								</div>
@@ -162,9 +160,6 @@
 			</div>
 		</div>
 	</div>
-	
-<div id="alertModal" title="안녕">
-</div>
 
 	<footer class="light visible-lg" id="footer">
 		<jsp:include page="/resources/include/bottom.jsp"/>

@@ -1,7 +1,5 @@
 package kr.co.bit.vo;
 
-import java.util.List;
-
 public class OrderVO {
 
 	private int no;
@@ -14,6 +12,22 @@ public class OrderVO {
 	private String payment;
 	private int orderStatus;		// 0 : 주문취소 , 2 : 대기중 , 3 : 준비중  , 4 : 준비완료
 	private String regDate;
+	private String num; //비회원만 가지는 주문 번호
+	private String email; // 비회원에게 주문번호 전달
+
+
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -74,12 +88,11 @@ public class OrderVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	
 	@Override
 	public String toString() {
 		return "OrderVO [no=" + no + ", storeName=" + storeName + ", id=" + id + ", order_price=" + order_price
 				+ ", final_price=" + final_price + ", menu=" + menu + ", eatType=" + eatType + ", payment=" + payment
-				+ ", orderStatus=" + orderStatus + ", regDate=" + regDate + "]";
+				+ ", orderStatus=" + orderStatus + ", regDate=" + regDate + ", num=" + num + ", email=" + email + "]";
 	}
-	
-	
 }

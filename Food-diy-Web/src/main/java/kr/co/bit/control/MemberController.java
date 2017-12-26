@@ -442,6 +442,16 @@ public class MemberController {
 		System.out.println("수량 변경");
 	}
 	
+	// 쿠폰 보여 주기
+	@RequestMapping("/myStamp.do")
+	public String selectStamp(String id, Model model) {
+		System.out.println(id);
+		int no = memberService.selectStamp(id);
+		
+		model.addAttribute("stamp", no);
+		System.out.println(no);
+		return "member/myStampDetail";
+	}
 	
 	
 	

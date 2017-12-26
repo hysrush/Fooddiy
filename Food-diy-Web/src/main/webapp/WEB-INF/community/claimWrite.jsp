@@ -110,149 +110,6 @@
 		color: red;
 	}
 </style>
-<script type="text/javascript">
-	
-	// 카운트 초기화
-	var cnt = 0;
-	
-	$(document).ready(function(){
-		
-		$('.direct-order-button').removeClass('btn-primary');
-		$('.go-cart-button').removeClass('btn-primary');
-		
-		$('.direct-order-button').css('color','white');
-		$('.go-cart-button').css('color','white');
-		
-		// DatePicker
-		$('#visitDate').datepicker({
-			format : 'yyyy-mm-dd',	// 날짜 포맷
-			defaultDate: '+0d',
-			endDate: '+0d',			// 오늘 이후 날짜 선택 불가
-        	todayBtn: 'linked',		// 오늘날짜 바로 선택 버튼
-			autoclose: true,		// 선택시, 자동 닫힘
-			todayHighlight: true,	// 오늘날짜 하이라이트
-			orientation: (($('html[dir="rtl"]').get(0)) ? 'bottom right' : 'bottom'),
-			container: '#header',
-			rtl: (($('html[dir="rtl"]').get(0)) ? true : false)
-		});
-		
-		// 방문 - 라디오 버튼 변경시 이벤트
-        $("input[name='radioVisit']:radio").change(function() {
-	        // 라디오 버튼 값을 가져온다.
-	        var visit = this.value;
-	                          
-			if(visit == "Y"){							// '매장방문'일 경우,
-			    // 매장선택 & 방문일 활성화
-			    $(".visit").css("display","block");
-			} else if (visit == "N") {					// '매장방문 외'일 경우,
-				// 매장선택 & 방문일 비활성화
-				$(".visit").css("display","none");
-			}
-         });
-		
-     	// 첨부파일 +(추가) 버튼 클릭시 이벤트
-        $('#btnAddFile').click (function () {
-        	// 카운트 증가
-        	cnt ++;
-        	//alert(cnt);
-        	
-        	// fileDiv1에 있는 내용을 복사 후 생성
-	        var div = document.createElement('div');
-	        div.innerHTML = document.getElementById('fileDiv1').innerHTML;
-	
-			if(cnt >= 5){
-			    // 그리고 해당 첨부파일은 5개 이상 생성할수 없도록 제한
-		        alert("ERROR : 첨부파일을 5개 이상 추가 하실 수 없습니다!");
-			    
-			    // 카운트 초기화
-		        cnt = 4;
-		    } else {
-		    	// 첨부파일 div 추가
-				document.getElementById('file_AddSection').appendChild(div);
-		       	// class 요소 변경
-				$("#file_AddSection > div").attr("class", "fileDiv col-md-12");
-				// id 요소 변경
-		       	$("#file_AddSection > div:last").attr("id", "fileDiv" + parseInt(cnt + 1));
-				// input 요소 변경
-		    	//$("#file_AddSection div > button:last").attr("name", "file" + parseInt(cnt + 1));
-				// 버튼 요소 변경
-		    	$("#file_AddSection div > button:last").attr("name", "btnMinusFile");
-		    	$("#file_AddSection div > button:last").attr("onclick", "removeFile(this)");
-		    	$("#file_AddSection div > button:last").css("background","gray");
-		    	$("#file_AddSection div > button:last").css("border-color","gray");
-				// 아이콘 요소 변경
-		    	$("#file_AddSection div > button > i:last").attr("class", "fa fa-minus");
-		    }
-      	});
-     	
-     	// 이메일 이벤트
-     	$("#emailDomain").change(function() {
-			
-			var emailDomain = this.value;
-			var inputDomain;
-			
-			// 직접입력 선택 시,
-			if (emailDomain == "etc") {
-				$("#inputDomain").attr("readonly", false);	// 해제
-				$("#inputDomain").val("");
-				$("#inputDomain").focus();
-				
-				// 직접입력 입력 시,
-				$("#inputDomain").change(function() {
-					inputDomain = this.value;
-					if (inputDomain !== "") {
-						$("#emailDomain option:selected").val(inputDomain);
-						//alert(inputDomain);
-						
-						// 맘바뀌어서 다시 다른 도메인 선택 시,
-						$("#emailDomain").change(function() {
-							//alert(inputDomain);
-							var replay = $(this).find('option:selected').val();
-							
-							if (replay == inputDomain){
-								$(this).find('option:selected').val("etc");	
-								$("#inputDomain").attr("readonly", false);	// 해제
-								$("#inputDomain").val("");
-								$("#inputDomain").focus();
-							}
-						});
-					}
-				});
-			} else {
-				$("#inputDomain").attr("readonly", true);	// 설정
-				$("#inputDomain").val(emailDomain);
-			}
-		});
-     	
-     	// 서밋버튼 이벤트
-     	$("#claimSubmit").click(function() {
-     		// 동의 - 라디오 버튼 변경시 이벤트
-     		var agree = $(':radio[name="radioAgree"]:checked').val();
-  			
-  	        if(agree == "Y"){							// '동의함'일 경우,
-  	        	return true;
-  			} else if (agree == "N") {					// '동의 안함'일 경우,
-  				alert("Error : 개인정보 이용 동의 하셔야 신청 가능합니다.");
-  				return false;
-  			}
-  	        
-		});
-     	
-	});
-	
-	// 첨부파일 -(제거) 버튼 클릭시 이벤트
-	function removeFile(obj){
-		// 카운트 감소
-		cnt --;
-		//alert(cnt);
-		
-        var index = $("#file_AddSection div > button[name='btnMinusFile']").index(obj);
-        $("#file_AddSection div").eq(index).remove();
-    }
-
-	
-</script>
-
 </head>
 <body>
 	<div class="body" style="min-width: 320px;">
@@ -290,11 +147,11 @@
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li><a href="${ pageContext.request.contextPath }/community/qna.do">자주묻는 질문</a></li>
-									<li><a href="${ pageContext.request.contextPath }/community/notice.do">Subway 소식</a>
+									<li><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway 소식</a>
 										<ul>
-											<li class="active"><a href="${ pageContext.request.contextPath }/community/notice.do">공지사항</a></li>
-											<li><a href="${ pageContext.request.contextPath }/community/news.do">보도자료</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 										</ul>
 									</li>
 									<li class="active"><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
@@ -319,14 +176,14 @@
 							</div>
 						</section>
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
-							<!-- <ul class="nav nav-tabs">
+							<ul class="nav nav-tabs">
 								<li class="active">
 									<a href="#tabsNavigationSimple1" data-toggle="tab">1:1 문의하기</a>
 								</li>
 								<li>
-									<a href="#tabsNavigationSimple2" data-toggle="tab">나의 문의내역</a>
+									<a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${ loginVO.id }">나의 문의내역</a>
 								</li>
-							</ul> -->
+							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="tabsNavigationSimple1">
 									<div class="center">
@@ -481,48 +338,6 @@
 										</div>
 									</div>
 								</div>
-								<!-- <div class="tab-pane" id="tabsNavigationSimple2">
-									<div class="center">
-										<br>
-										<table class="table table-hover" width="80%">
-											<thead>
-												<tr>
-												<th>번호</th>
-												<th>제목</th>
-												<th>작성일</th>
-												<th>조회수</th>
-												</tr>
-											</thead>
-											<tbody>
-											</tbody>
-										</table>
-										<div class="center">
-											<div class="col-md-12">
-												<ul class="pagination pull-center">
-													<li>
-														<a href="#"><i class="fa fa-chevron-left"></i></a>
-													</li>
-													<li class="active">
-														<a href="#">1</a>
-													</li>
-													<li>
-														<a href="#">2</a>
-													</li>
-													<li>
-														<a href="#">3</a>
-													</li>
-													<li>
-														<a href="#"><i class="fa fa-chevron-right"></i></a>
-													</li>
-												</ul>
-											</div>
-											<button type="button" class="btn btn-primary" onclick="doAction('W')">글쓰기</button>
-										</div>
-										<div class="center">
-											<button type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
-										</div>
-									</div>
-								</div> -->
 							</div>
 						</div>
 					</div>
@@ -579,5 +394,147 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+
+<script type="text/javascript">
+	
+	// 카운트 초기화
+	var cnt = 0;
+	
+	$(document).ready(function(){
+		
+		$('.direct-order-button').removeClass('btn-primary');
+		$('.go-cart-button').removeClass('btn-primary');
+		
+		$('.direct-order-button').css('color','white');
+		$('.go-cart-button').css('color','white');
+		
+		// DatePicker
+		$('#visitDate').datepicker({
+			format : 'yyyy-mm-dd',	// 날짜 포맷
+			defaultDate: '+0d',
+			endDate: '+0d',			// 오늘 이후 날짜 선택 불가
+        	todayBtn: 'linked',		// 오늘날짜 바로 선택 버튼
+			autoclose: true,		// 선택시, 자동 닫힘
+			todayHighlight: true,	// 오늘날짜 하이라이트
+			orientation: (($('html[dir="rtl"]').get(0)) ? 'bottom right' : 'bottom'),
+			container: '#header',
+			rtl: (($('html[dir="rtl"]').get(0)) ? true : false)
+		});
+		
+		// 방문 - 라디오 버튼 변경시 이벤트
+        $("input[name='radioVisit']:radio").change(function() {
+	        // 라디오 버튼 값을 가져온다.
+	        var visit = this.value;
+	                          
+			if(visit == "Y"){							// '매장방문'일 경우,
+			    // 매장선택 & 방문일 활성화
+			    $(".visit").css("display","block");
+			} else if (visit == "N") {					// '매장방문 외'일 경우,
+				// 매장선택 & 방문일 비활성화
+				$(".visit").css("display","none");
+			}
+         });
+		
+     	// 첨부파일 +(추가) 버튼 클릭시 이벤트
+        $('#btnAddFile').click (function () {
+        	// 카운트 증가
+        	cnt ++;
+        	//alert(cnt);
+        	
+        	// fileDiv1에 있는 내용을 복사 후 생성
+	        var div = document.createElement('div');
+	        div.innerHTML = document.getElementById('fileDiv1').innerHTML;
+	
+			if(cnt >= 5){
+			    // 그리고 해당 첨부파일은 5개 이상 생성할수 없도록 제한
+		        alert("ERROR : 첨부파일을 5개 이상 추가 하실 수 없습니다!");
+			    
+			    // 카운트 초기화
+		        cnt = 4;
+		    } else {
+		    	// 첨부파일 div 추가
+				document.getElementById('file_AddSection').appendChild(div);
+		       	// class 요소 변경
+				$("#file_AddSection > div").attr("class", "fileDiv col-md-12");
+				// id 요소 변경
+		       	$("#file_AddSection > div:last").attr("id", "fileDiv" + parseInt(cnt + 1));
+				// input 요소 변경
+		    	//$("#file_AddSection div > button:last").attr("name", "file" + parseInt(cnt + 1));
+				// 버튼 요소 변경
+		    	$("#file_AddSection div > button:last").attr("name", "btnMinusFile");
+		    	$("#file_AddSection div > button:last").attr("onclick", "removeFile(this)");
+		    	$("#file_AddSection div > button:last").css("background","gray");
+		    	$("#file_AddSection div > button:last").css("border-color","gray");
+				// 아이콘 요소 변경
+		    	$("#file_AddSection div > button > i:last").attr("class", "fa fa-minus");
+		    }
+      	});
+     	
+     	// 이메일 이벤트
+     	$("#emailDomain").change(function() {
+			
+			var emailDomain = this.value;
+			var inputDomain;
+			
+			// 직접입력 선택 시,
+			if (emailDomain == "etc") {
+				$("#inputDomain").attr("readonly", false);	// 해제
+				$("#inputDomain").val("");
+				$("#inputDomain").focus();
+				
+				// 직접입력 입력 시,
+				$("#inputDomain").change(function() {
+					inputDomain = this.value;
+					if (inputDomain !== "") {
+						$("#emailDomain option:selected").val(inputDomain);
+						//alert(inputDomain);
+						
+						// 맘바뀌어서 다시 다른 도메인 선택 시,
+						$("#emailDomain").change(function() {
+							//alert(inputDomain);
+							var replay = $(this).find('option:selected').val();
+							
+							if (replay == inputDomain){
+								$(this).find('option:selected').val("etc");	
+								$("#inputDomain").attr("readonly", false);	// 해제
+								$("#inputDomain").val("");
+								$("#inputDomain").focus();
+							}
+						});
+					}
+				});
+			} else {
+				$("#inputDomain").attr("readonly", true);	// 설정
+				$("#inputDomain").val(emailDomain);
+			}
+		});
+     	
+     	// 서밋버튼 이벤트
+     	$("#claimSubmit").click(function() {
+     		// 동의 - 라디오 버튼 변경시 이벤트
+     		var agree = $(':radio[name="radioAgree"]:checked').val();
+  			
+  	        if(agree == "Y"){							// '동의함'일 경우,
+  	        	return true;
+  			} else if (agree == "N") {					// '동의 안함'일 경우,
+  				alert("Error : 개인정보 이용 동의 하셔야 신청 가능합니다.");
+  				return false;
+  			}
+  	        
+		});
+     	
+	});
+	
+	// 첨부파일 -(제거) 버튼 클릭시 이벤트
+	function removeFile(obj){
+		// 카운트 감소
+		cnt --;
+		//alert(cnt);
+		
+        var index = $("#file_AddSection div > button[name='btnMinusFile']").index(obj);
+        $("#file_AddSection div").eq(index).remove();
+    }
+	
+</script>		
 </body>
 </html>
