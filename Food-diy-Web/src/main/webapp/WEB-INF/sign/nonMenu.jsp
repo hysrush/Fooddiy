@@ -187,7 +187,6 @@
 			</div>
 		</div>
 	</div>
-	
 		<!-- 모달 -->
 	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">

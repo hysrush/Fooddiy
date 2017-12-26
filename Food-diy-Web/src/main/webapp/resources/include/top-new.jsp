@@ -21,7 +21,7 @@
 						<li><a href="#"><img src="${ pageContext.request.contextPath}/resources/img/demos/shop/fr.png" alt="French">French</a></li>
 					</ul>
 				</div>
-
+<!-- 
 				<div class="compare-dropdown">
 					<a href="#"><i class="fa fa-retweet"></i> Compare (2)</a>
 
@@ -44,7 +44,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<div class="top-menu-area">
@@ -107,7 +107,7 @@
 				<div class="row">
 					<div class="cart-area">
 						<div class="custom-block">
-							<i class="fa fa-phone"></i> <span>(+404) 158 14 25 78</span> <span class="split"></span> <a href="#">CONTACT US</a>
+							<i class="fa fa-phone"></i> <span>(+02) 486-999</span> <span class="split"></span> <a href="#">CONTACT US</a>
 						</div>
 						<c:if test="${ not empty loginVO }">
 							<div class="cart-dropdown">
@@ -398,11 +398,12 @@
 							</ul></li>
 							<li class="dropdown"><a href="${ pageContext.request.contextPath }/store/findStoreU.do" class="dropdown-toggle"> STORE 
 						</a>
-							<ul class="dropdown-menu">
+							<%-- <ul class="dropdown-menu">
 								<li><a href="${ pageContext.request.contextPath}/store/findStoreU.do">매장찾기</a></li>
 								
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/community/qna.do"> Community <span class="tip tip-hot">Hot!</span></a>
+							</ul> --%>
+							</li>
+						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/community/qna/qna.do"> Community <span class="tip tip-hot">Hot!</span></a>
 							<ul class="dropdown-menu">
 								<li><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
 								<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway소식</a></li>

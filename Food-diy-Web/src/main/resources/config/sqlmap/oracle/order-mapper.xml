@@ -45,15 +45,20 @@
   	</select>
   	
   	<insert id="insertOrder" parameterType="orderVO">
-  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE, order_payment, order_num) 
+  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE, order_payment) 
   		
-  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType}, #{payment}, #{num} )
+  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType}, #{payment})
   	</insert>
   	
   	<delete id="deleteOrder" parameterType="String">
   		delete from t_order where user_id = #{id}
   	</delete>
   	
+  	<!-- 비회원 주문 넣기 -->
+  	<select id="noninsertOrder">
+  		insert into t_order(order_no, sto_name, user_id, order_OrderPrice, order_finalPrice, order_menu, order_EAT_TYPE, order_payment, order_num) 
+  		values(seq_t_order_no.nextval, #{storeName}, #{id}, #{order_price}, #{final_price}, #{menu}, #{eatType}, #{payment}, #{num} )
+  	</select>
   	<!-- 비회원 주문 조회 -->
   	<select id="orderCheck" parameterType="java.lang.String" resultType="java.lang.Integer">
   		select COUNT(order_num) from t_order

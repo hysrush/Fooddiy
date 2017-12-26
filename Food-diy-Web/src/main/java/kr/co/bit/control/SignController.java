@@ -157,12 +157,12 @@ public class SignController {
 
 	// - 로그아웃
 	@RequestMapping("/logout")
-	public String logout(SessionStatus sessionStatus, Model model, HttpSession session, RedirectAttributes redirect) {
+	public String logout(SessionStatus sessionStatus, Model model, HttpSession session/*, RedirectAttributes redirect*/) {
 		
 		sessionStatus.setComplete();
 		/*System.out.println(session.getAttribute("cartList"));*/
 		
-		redirect.addFlashAttribute("msg", "로그아웃");
+		/*redirect.addFlashAttribute("msg", "로그아웃");*/
 		
 		return "redirect:/main/Start";
 	}

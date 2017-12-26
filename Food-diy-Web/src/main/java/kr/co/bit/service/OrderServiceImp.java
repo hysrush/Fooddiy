@@ -75,7 +75,7 @@ public class OrderServiceImp implements OrderService{
 			}
 			
 			orderVO.setNum(num);
-			dao.insert(orderVO);
+			dao.noninsert(orderVO);
 			return;
 		}
 		

@@ -90,7 +90,6 @@
 
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 
-
 </head>
 <body>
 	<div class="body">
@@ -430,8 +429,7 @@
 					data : {"no" : no},
 					success : function(responseData){
 						var data = JSON.parse(responseData);
-							alert("좋아요가 완료되었습니다.!");
-							alert(data.like);
+						swal("좋아요 " + " + "+ data.like);
 							
 							var contents = '';
 							contents +=  data.like;
@@ -440,13 +438,8 @@
 			    
 						    } 
 					});    
-			};		
+			}		
 		
-	
-	
-	
-	
-	
 	</script>
 	
 

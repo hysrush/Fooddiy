@@ -11,4 +11,5 @@ public interface OrderDAO {
 	List<OrderVO> selectByDate(String date);
 	void insert(OrderVO orderVO);
 	void delete(String id);
+	void noninsert(OrderVO orderVO);
 }

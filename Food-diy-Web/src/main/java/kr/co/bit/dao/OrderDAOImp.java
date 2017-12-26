@@ -54,4 +54,10 @@ public class OrderDAOImp implements OrderDAO {
 	public void delete(String id) {
 		sqlSession.delete(url + "deleteOrder", id);
 	}
+
+	@Override
+	public void noninsert(OrderVO orderVO) {
+		sqlSession.insert(url + "noninsertOrder", orderVO);
+		
+	}
 }

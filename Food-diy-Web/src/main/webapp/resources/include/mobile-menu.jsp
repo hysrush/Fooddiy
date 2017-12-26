@@ -5,7 +5,7 @@
 	<div class="mobile-nav-wrapper">
 		<ul class="mobile-side-menu">
 			<li><a href="${ pageContext.request.contextPath}/main/Start">Home</a></li>
-			<li><span class="mmenu-toggle"></span> <a href="#">Menu</a>
+			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath}/menu/menuAll.do">Menu</a>
 				<ul>
 					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do">전체메뉴 ALL MENU</a></li>
 					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#recommend">추천메뉴 FAVORITES</a></li>
@@ -21,11 +21,11 @@
 			<li><span class="mmenu-toggle"></span> <a href="#">EVENT
 					<span class="tip tip-new">New</span></a>
 				<ul>
-					<li><a href="${ pageContext.request.contextPath}/event/EventPage.jsp">브랜드 EVENT</a></li>
-					<li><a href="${ pageContext.request.contextPath}/event/StoreEventPage.jsp">매장별 EVENT</a></li>
+					<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
+					<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 				</ul>
 			</li>
-			<li><span class="mmenu-toggle"></span> <a href="#">Community
+			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath }/community/qna/qna.do">Community
 					<span class="tip tip-hot">Hot!</span></a>
 				<ul>
 					<li><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
@@ -36,8 +36,8 @@
 				</ul>
 			</li>
 			<!-- 비회원 로그인하면 주문내역 조회 -->
-			<c:if test="${ not empty nonMember }">
-				<li><a href="#">주문내역조회</a></li>
+			<c:if test="${ (empty loginVO) or (loginVO.type eq 'U') }">
+				<li><a href="${ pageContext.request.contextPath }/sign/orderCheck">주문내역조회</a></li>
 			</c:if>
 			<c:choose>
 				<c:when test="${ empty loginVO and empty nonMember }">
