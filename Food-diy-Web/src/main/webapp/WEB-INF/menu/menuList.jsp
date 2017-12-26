@@ -48,9 +48,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Head Libs -->
 <script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
+
 
 <script>
    $(document).ready(function() {
@@ -69,23 +69,11 @@
 	   }
    });
 
-   function modal(menuNo, menuName) {	   
+   function detail(menuNo, menuName) {	   
 	   //공백, 특수문자 넘기기 위해서 인코딩
 	   var mn = encodeURIComponent(menuName);
-	   $('div.modal').modal().removeData();
-       var url = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo + '&name=' + mn;
-       $('div.modal').modal({ remote : url });
-   }
-   function menuAjax(menuNo, menuName) {
-	   //공백, 특수문자 넘기기 위해서 인코딩
-	   var mn = encodeURIComponent(menuName);
-	   location.href = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo + '&name=' + mn;
-   }
-   /* function modal2(snsHitNo) {
-       $('#myModal2').modal().removeData();
-       var url = '${ pageContext.request.contextPath}/menu/menuDetail2.do?no=' + snsHitNo;
-       $('#myModal2').modal({ remote : url });
-   } */
+       location.href = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo + '&name=' + mn;
+   }  
    
 </script>
 
@@ -170,55 +158,22 @@
 
                <div class="col-md-9">
                
-	             <!-- Menu ajax 뜨는 부분 -->
-		         <div id="porfolioAjaxBox" class="ajax-box ajax-box-init mb-lg">
-		
-					<div class="bounce-loader">
-						<div class="bounce1"></div>
-						<div class="bounce2"></div>
-						<div class="bounce3"></div>
-					</div>
-			
-					<div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
-			
-				 </div>              
-               
                   <div id="slidemenu">
                      <ul class="nav nav-pills sort-source" data-sort-id="portfolio"
                         data-option-key="filter"
                         data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"></ul>
+                        
                      <div class="row">
-                        <div
-                           class="sort-destination-loader sort-destination-loader-showing">
-                           <ul class="portfolio-list sort-destination"   data-sort-id="portfolio">
+                        <div class="sort-destination-loader sort-destination-loader-showing">
+                           <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
                            
                               <c:forEach items="${ menuList }" var="menu">
                                  <c:if test='${ menu.type eq "R" }'>
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
                                        <div class="portfolio-item">
-	                                          <span class="thumb-info thumb-info-lighten">
-				                                   <a onclick="menuAjax('${ menu.no }','${ menu.name }')" data-ajax-on-page>
-		                                          <span class="thumb-info-wrapper">
-		                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }" 
-		                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-		                                             <span class="thumb-info-title">
-		                                                <span class="thumb-info-inner">${ menu.name }</span>
-		                                                <span class="thumb-info-type">${ menu.price }원</span>
-		                                             </span>
-		                                          </span>
-				                                   </a>
-	                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test='${ menu.type eq "P" }'>
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-                                       <div class="portfolio-item">
-                                          <a href="#" data-href="${ pageContext.request.contextPath}/menu/menuDetail.do" data-ajax-on-page>
                                           <span class="thumb-info thumb-info-lighten">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -227,8 +182,28 @@
                                                 <span class="thumb-info-type">${ menu.price }원</span>
                                              </span>
                                           </span>
+                                          </a>
+                                          </span>
+                                       </div>
+                                    </li>
+
+                                 </c:if>
+                                 <c:if test='${ menu.type eq "P" }'>
+
+                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
+                                       <div class="portfolio-item">
+                                          <span class="thumb-info thumb-info-lighten">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
+                                          <span class="thumb-info-wrapper">
+                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
+                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
+                                             <span class="thumb-info-title">
+                                                <span class="thumb-info-inner">${ menu.name }</span>
+                                                <span class="thumb-info-type">${ menu.price }원</span>
+                                             </span>
                                           </span>
                                           </a>
+                                          </span>
                                        </div>
                                     </li>
 
@@ -236,9 +211,9 @@
                                  <c:if test='${ menu.type eq "B" }'>
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item best">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -256,9 +231,9 @@
                                  <c:if test="${ menu.type eq 'C' }">
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item classic">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -276,9 +251,9 @@
                                  <c:if test="${ menu.type eq 'M' }">
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item breakfast">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -296,9 +271,9 @@
                                  <c:if test="${ menu.type eq 'S' }">
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item salad">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -316,9 +291,9 @@
                                  <c:if test="${ menu.type eq 'N' }">
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item addition">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -336,9 +311,9 @@
                                  <c:if test="${ menu.type eq 'D' }">
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item beverage">
-                                       <div class="portfolio-item" data-toggle="modal"   data-target="#largeModal">
+                                       <div class="portfolio-item">
                                           <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="modal('${ menu.no }','${ menu.name }')">
+                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
                                           <span class="thumb-info-wrapper">
                                              <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
                                              class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
@@ -376,25 +351,7 @@
 	</footer>
 
    </div>
-
-
-   <!-- 모달들 -->
-   <div class="modal fade" tabindex="-1" role="dialog" id="myModal"
-      aria-labelledby="largeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-         <div class="modal-content">
-            <!-- 모달내용 -->
-         </div>
-      </div>
-   </div>
-   <!-- <div class="modal2 fade" tabindex="-1" role="dialog" id="myModal2"
-      aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none; z-index: 1060;">
-      <div class="modal-dialog modal-lg">
-         <div class="modal-content">
-            모달내용
-         </div>
-      </div>
-   </div> -->
+   
    
 
    <!-- Vendor -->
@@ -427,5 +384,7 @@
    <script src="${pageContext.request.contextPath}/resources/js/sticky-kit.min.js"></script>
    <!-- Theme Initialization Files -->
    <script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+   <!-- Examples -->
+   <script src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script>
 </body>
 </html>

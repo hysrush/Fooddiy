@@ -54,8 +54,6 @@ public class MenuController {
 		return mav;		
 	}
 	
-	/*// menu 모달창에서 sns 보여주기
-	@RequestMapping("/")*/
 	
 	
 	// menu 새 글쓰기 폼
