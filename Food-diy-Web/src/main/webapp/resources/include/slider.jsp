@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div role="main" class="main">
+<div role="main" class="main"><br/>
 	<div class= "container"><br/>
 		<div class="row"  style="max-height: 760px;">
 			<div class="col-sm-3 main">
@@ -10,7 +10,7 @@
 						<table>
 							<tr>
 								<td>
-									<video style="width: 100%; height: 50%;" controls autoplay>
+									<video style="width: 100%; height: 40%;" controls autoplay>
 										<source src="${pageContext.request.contextPath }/resources/video/subway.mp4" type="video/mp4">
 									</video>
 								</td>

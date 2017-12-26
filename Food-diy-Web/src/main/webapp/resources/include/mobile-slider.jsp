@@ -18,7 +18,7 @@
 						<td align="center" colspan="2">
 							<!-- <strong style="font-size: 20px; font-style: italic; color:#feca07;"> BEST </strong> -->
 							<a href="${ pageContext.request.contextPath }/community/snsPage.do">
-								<strong style="font-style: italic; font-size: 15px;">&nbsp;What's New</strong>
+								<strong style="font-style: italic; font-size: 15px; color: #61bf99e0">&nbsp;What's BEST SNS</strong>
 							</a>
 							<strong style="font-size: 12px; text-align: right">
 								
@@ -30,8 +30,8 @@
 						<td><br/>
 							<table style="width: 100%">
 								<tr>
-									<td><strong style="font-weight: bold; color:aqua;">추천수 ${ s.like }</strong></td>
-									<td align="right"><strong style="font-weight: bold; color:aqua;">${ s.id }</strong></td>
+									<th><strong style="font-weight: bolder; color:#333;">&nbsp;&nbsp;추천수 ${ s.like }</strong></th>
+									<th align="right"><strong style="font-weight: bolder; color:#333;">${ s.id }</strong></th>
 								</tr>
 								<tr>
 									<td colspan="2">
