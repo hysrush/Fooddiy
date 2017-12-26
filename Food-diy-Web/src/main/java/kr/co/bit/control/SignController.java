@@ -1,12 +1,15 @@
 package kr.co.bit.control;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +22,7 @@ import kr.co.bit.service.CartStoreService;
 import kr.co.bit.service.SignService;
 import kr.co.bit.vo.CartStoreVO;
 import kr.co.bit.vo.CartVO;
+import kr.co.bit.vo.OrderVO;
 import kr.co.bit.vo.PhoneCertVO;
 import kr.co.bit.vo.UserVO;
 
@@ -110,9 +114,8 @@ public class SignController {
 	 * */
 	
 	// 로그인 화면
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = {"/login.do"}, method = RequestMethod.GET)
 	public String signInForm() {
-
 		
 		return "sign/login";
 	}
@@ -336,10 +339,59 @@ public class SignController {
 	 * 	 - 주문조회
 	 * */
 	
-	@RequestMapping("/orderCheck")
+	// 주문조회 페이지로 이동
+	@RequestMapping({"/orderCheck"})
 	public String orderCheck() {
 		
-		return null;
+		return "sign/nonMenu";
+	}
+	
+	@RequestMapping("/orderCheckForm")
+	public @ResponseBody int orderCheckForm(String num, Model model) {
+		
+		int code = signServiceImp.orderCheck(num);
+
+		return code;
+	}
+	
+	@RequestMapping("/{no}/nonMenuDetail")
+	public String orderMenuDetail(@PathVariable String no, Model model) {
+		
+		OrderVO order = signServiceImp.orderDetail(no);
+		CartVO menu = new CartVO();
+		
+		String[] m1 = order.getMenu().split("\\|\\|");
+		
+		for(int i=0; i<m1.length; i++) {
+			System.out.println(m1[i]);
+			String[] m2 = m1[i].split("\\*\\*\\/");
+			// 메뉴 디테일
+			String[] m3 = m2[0].split("\\*");
+			menu.setName(m3[0]);
+			menu.setBread(m3[1]);
+			menu.setCheese(m3[2]);
+			menu.setTopping(m3[3]);
+			menu.setVegetable(m3[4]);
+			menu.setSauce(m3[5]);
+			
+			// 사진
+			System.out.println(m2[1]);
+			String[] m4 = m2[1].split("\\*");
+			menu.setPic(m4[0]);
+			menu.setSize(m4[1]);
+			menu.setQty(Integer.parseInt(m4[2]));
+			menu.setPrice(m4[3]);
+			menu.setTotal_price(m4[4]);
+		}
+		
+		Map<String, Object> orderMap = new HashMap<>();
+		
+		orderMap.put("order", order);
+		orderMap.put("menu", menu);
+		
+		model.addAttribute("orderMenu", orderMap);
+		
+		return "sign/nonMenuDetail";
 	}
 	
 }

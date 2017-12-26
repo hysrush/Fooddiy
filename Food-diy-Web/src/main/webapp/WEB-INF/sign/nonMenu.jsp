@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title> | 비회원 | </title>	
+		<title> | 주문조회 | </title>	
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -61,7 +61,44 @@
 
 	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="${ pageContext.request.contextPath }/resources/js/sign/check.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+<script>
+
+	function mymodal(no) {
+	    $('div.modal').modal().removeData();
+	    var url = '${ pageContext.request.contextPath}/sign/'+no+'/nonMenuDetail';
+	    $('div.modal').modal({ remote : url });
+	} 
 	
+	$(document).ready(function(){
+		//주문 조회를 눌렀을 때 모달창으로 확인
+		$("#menuCheck").click(function(){
+			
+			var n = $("#orderNum").val();
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/sign/orderCheckForm",
+				type : "post",
+				data : {
+					'num' : n
+				},
+				error : function(request,status,error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+				},
+				success : function(code){
+					if(code == 0){
+						swal("주문 사항이 없습니다.", "확인 후 다시 입력해 주세요.", "error");
+					
+					} else{ // 모달창 띄우기
+						mymodal(n);
+					}
+				}
+			});
+		});
+	});
+	
+</script>
 </head>
 <body>
 	<div class="body">
@@ -85,8 +122,8 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-12">
-								<h1>주문조회</h1>
+							<div class="col-md-6">
+								<h1>주문조회 </h1>
 							</div>
 						</div>
 					</div>
@@ -94,33 +131,44 @@
 			
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3">
-						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
-						</aside>
-					</div>
-
+				<div class="col-md-4"></div>
 					<!-- START -->
-					<div class="col-md-9">
+					<div class="col-md-6">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="tabs tabs-bottom tabs-center tabs-simple">
 									<ul class="nav nav-tabs">
 										<li class="active">
-											<a href="#nonLogin" data-toggle="tab" aria-expanded="false"> 주문조회</a>
+											<a href="#nonmemberMenu" data-toggle="tab" aria-expanded="false"> 주문조회</a>
 										</li>
 									</ul>
-										<!--  비회원 로그인    -->
-										<div class="tab-pane active" id="nonLogin">
+									<div class="tab-content">
+										<!-- 주문조회 -->
+										<div class="tab-pane  active" id="nonmemberMenu">
 											<div class="container">
-												<div class="col-md-12">
-													<div class="row">
-														<div class="col-md-12">
-															<div class="tabs tabs-bottom tabs-center tabs-simple">
-																<div class="tab-content">
-																	<!-- 주문조회 -->
-																	<div class="tab-pane  active" id="nonmemberMenu">
-																		<div class="container">
-																			<jsp:include page="/resources/include/login/nonmemberMenu.jsp"></jsp:include>
+												<div class="row">
+													<div class="col-md-8">
+														<div class="featured-boxes">
+															<div class="row">
+																<div class="col-sm-6">
+																	<div class="featured-box featured-box-primary align-left mt-xlg">
+																		<div class="box-content">
+																			<h4 class="heading-primary text-uppercase mb-md">주문조회</h4>
+																			<form>
+																				<div class="row">
+																					<div class="form-group">
+																						<div class="col-md-12">
+																							<input type="text" id="orderNum" class="form-control" placeholder="주문 번호를 입력하세요" size="60px" required="required">
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row mt-xlg">
+																					<div class="col-md-12s">
+																						<input type="button" value=" 조회하기 " id="menuCheck" 
+																							class="btn btn-info mb-md form-control btn-primary btn-icon" data-loading-text="Loading..."/>
+																					</div>
+																				</div>
+																			</form>
 																		</div>
 																	</div>
 																</div>
@@ -138,7 +186,17 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	
+		<!-- 모달 -->
+	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- 모달내용 -->
+	
+		 	</div>
+			</div>
+	</div>
 		<footer class="light visible-lg" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp"/>
 		</footer>
@@ -146,7 +204,7 @@
 		<footer class="light hidden-lg" id="footer">
 			<jsp:include page="/resources/include/mobile-bottom.jsp"/>
 		</footer>
-	
+
 <!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>

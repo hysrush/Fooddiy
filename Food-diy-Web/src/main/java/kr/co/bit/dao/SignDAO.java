@@ -3,6 +3,7 @@ package kr.co.bit.dao;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.bit.vo.OrderVO;
 import kr.co.bit.vo.UserVO;
 
 public interface SignDAO {
@@ -30,5 +31,11 @@ public interface SignDAO {
 
 	// main
 	Map<String, List<Object>> main();
+
+	// 주문 번호 조회로 일단 주문 사항 있는지 확인
+	int orderCheck(String num);
+	
+	// 주문번호에 해당하는 주문 사항
+	OrderVO orderDetail(String no);
 	
 }

@@ -3,6 +3,7 @@ package kr.co.bit.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.bit.vo.OrderVO;
 import kr.co.bit.vo.PhoneCertVO;
 import kr.co.bit.vo.UserVO;
 
@@ -17,5 +18,7 @@ public interface SignService {
 	UserVO nonSignUp(UserVO mail);
 	int checkMember(UserVO phoneCert);
 	Map<String, List<Object>> main();
+	int orderCheck(String num);
+	OrderVO orderDetail(String no);
 	
 }

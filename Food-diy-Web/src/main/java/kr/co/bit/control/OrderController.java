@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,6 +50,7 @@ public class OrderController {
 		
 		if(type.equals("N")) {
 			orderVO.setId("비회원");
+			orderVO.setEmail(userVO.getEmail());
 		}else {
 			orderVO.setId(info[1]);	
 		}
@@ -73,9 +75,13 @@ public class OrderController {
 	
 	
 	@RequestMapping(value = "/paymentPage.do", method = RequestMethod.GET)
-	public String orderedPage(HttpSession session) {
+	public String orderedPage(HttpSession session, Model model) {
 		
+		UserVO userVO = (UserVO)session.getAttribute("loginVO");
 		
+		if(userVO.getType().equals("N")) {
+			model.addAttribute("msg", "고객님의 이메일로 주문 번호가 전송되었습니다.");
+		}
 		
 		return "menu/paymentPage";
 	}

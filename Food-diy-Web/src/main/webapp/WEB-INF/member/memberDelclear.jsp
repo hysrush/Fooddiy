@@ -68,7 +68,7 @@
 		
 		$("#first").click(function(){
 	
-			location.href="${pageContext.request.contextPath}/index2.jsp"; 
+			location.href="${pageContext.request.contextPath}/main/Start"; 
 		});
 	});
 		

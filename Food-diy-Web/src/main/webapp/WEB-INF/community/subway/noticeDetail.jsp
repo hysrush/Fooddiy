@@ -160,7 +160,7 @@
 										<div class="center">
 											<div class="post-content">
 												<div class="post-meta" style="float: right;">
-													<span><a href="${ pageContext.request.contextPath }/index2.jsp"><i class="fa fa-home"></i></a> > </span>
+													<span><a href="${ pageContext.request.contextPath }/main/Start"><i class="fa fa-home"></i></a> > </span>
 													<span><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway소식</a> > </span>
 													<c:if test="${ noticeVO.type eq 'A' }">
 														<span><a href="#">공지사항</a></span>

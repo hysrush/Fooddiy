@@ -409,6 +409,9 @@
 								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/community/snsPage.do" data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/subway-sns.jpg">SNS 게시판</a></li>
 							</ul></li>
+							<c:if test="${ (empty loginVO) or (loginVO.type eq 'N') }">
+								<li class="dropdown"><a href="${ pageContext.request.contextPath }/sign/orderCheck">주문내역조회</a></li>
+							</c:if>
 						<!-- 회원 로그인하면 My page -->
 						<c:if test="${ (not empty loginVO) and (loginVO.type eq 'U')  }">
 							<li class="dropdown"><a href="${ pageContext.request.contextPath }/member/memberDetail.do" class="dropdown-toggle"> My Page </a>
@@ -419,10 +422,6 @@
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 							</li>
-						</c:if>
-						<!-- 비회원 로그인하면 주문내역 조회 -->
-						<c:if test="${ loginVO.type eq 'N' }">
-							<li class="dropdown"><a href="${ pageContext.request.contextPath }/sign/nonmemberMenu.jsp">주문내역조회</a></li>
 						</c:if>
 						<c:choose>
 							<c:when test="${ empty loginVO }">

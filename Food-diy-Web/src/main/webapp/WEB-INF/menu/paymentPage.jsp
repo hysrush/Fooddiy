@@ -59,7 +59,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Head Libs -->
 <script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
-
+<!-- alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+<script>
+	$(document).ready(function(){
+		
+		if("${msg}"){
+			swal("${msg}");
+		}
+	});
+</script>
 </head>
 </head>
 <body>
@@ -77,7 +86,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb">
-							<li><a href="${ pageContext.request.contextPath }/index2.jsp">HOME</a></li>
+							<li><a href="${ pageContext.request.contextPath }/main/Start">HOME</a></li>
 							<li><a href="${ pageContext.request.contextPath }/menu/cart.do">장바구니</a></li>
 							<li class="active">결제</li>
 						</ul>
@@ -420,7 +429,7 @@
 					type : "post",
 					data : {"order" : order},
 					success : function(){
-					location.href = "${pageContext.request.contextPath}/index2.jsp";
+					location.href = "${ pageContext.request.contextPath }/main/Start";
 					}
 				}); 
 			})

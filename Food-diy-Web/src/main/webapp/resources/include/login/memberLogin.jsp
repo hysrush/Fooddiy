@@ -69,7 +69,7 @@
 <!-- 회원 로그인 -->
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-8">
 			<div class="featured-boxes">
 				<div class="row">
 					<div class="col-sm-6">
@@ -110,7 +110,7 @@
 								</form>
 								<!-- API 로그인 -->
 								<div class="row mt-xs" align="center">
-									<div class="col-md-6 visible-lg">
+									<div class="col-md-8 visible-lg">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
 									<div class="col-xs-6 hidden-lg">
@@ -119,11 +119,11 @@
 									<%-- <div class="col-xs-12 col-md-6">
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div> --%>
-									<div class="col-xs-6 col-md-6">
+									<div class="col-xs-6 col-md-4">
 										<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
-										class="btn btn-info mb-md form-control btn-primary btn-icon" style="padding-bottom: 10px;">회원가입</a>
+										class="btn btn-info mb-md form-control btn-primary btn-icon" style="padding-top: 10px; padding-bottom: 30px;">회원가입</a>
 									</div>
-								</div>
+								</div>    
 								<%-- <div class="row mt-xs">
 									<div class="col-md-12">
 										<a href="${ pageContext.request.contextPath }/sign/signUp.do" class="btn btn-info mb-md form-control">회원가입</a>
@@ -149,22 +149,28 @@
 						<div align="center" class="box-content">
 							<h4> 아이디 찾기</h4><br/>
 							<div class="row mt-xlg">
-								<div class="col-md-12">
+								<div>
 									<form name="form_lost" method="post" target="main" action="${ pageContext.request.contextPath }/sign/lostId.do">
 										<div class="form-group">
-											<div class="col-xs-4 col-md-4">
+											<div class="col-xs-2 col-md-2"></div>
+											<div class="col-xs-8 col-md-8">
 												<label>이름 </label>
 													<input type="text" name="name" placeholder="류대현" class="form-control" required/>
 											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-xs-2 col-md-2"></div>
 											<div class="col-xs-8 col-md-8">
 													<label>휴대 전화 </label> <input name="phone" id="phone" type="text" class="form-control" placeholder="(- 빼고 입력)" maxlength="13" required>
 											</div>
-										</div><br/>
+										</div>
+										<br/>
 										<div class="form-group">
-											<div class="col-xs-6 col-md-6">
+											<div class="col-xs-2 col-md-2"></div>
+											<div class="col-xs-4 col-md-4">
 												<input type="submit" value="확인" class="btn btn-info mb-md form-control btn-primary btn-icon" />
 											</div>
-											<div class="col-xs-6 col-md-6">
+											<div class="col-xs-4 col-md-4">
 												<input type="button" value="취소" data-dismiss="modal" class="btn btn-info mb-md form-control btn-primary btn-icon" />
 											</div>
 										</div>
