@@ -62,17 +62,6 @@
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
-<script type="text/javascript">
-	function doAction(type) {
-		switch (type) {
-		case 'W':
-			location.href = "${ pageContext.request.contextPath}/community/claimWrite.do";
-			break;
-		default:
-			break;
-		}
-	}
-</script>
 </head>
 <body>
 	<div class="body">
@@ -124,7 +113,7 @@
 										<c:if test="${ claim.type  eq 'X' }">기타</c:if>
 									</td>
 									<td><a
-										href="${ pageContext.request.contextPath }/community/claimDetail.do?no=${ claim.no }">
+										href="${ pageContext.request.contextPath }/community/claim/claimDetail.do?no=${ claim.no }">
 											<c:out value="${ claim.title }" />
 									</a></td>
 									<td>${ claim.regDate }</td>

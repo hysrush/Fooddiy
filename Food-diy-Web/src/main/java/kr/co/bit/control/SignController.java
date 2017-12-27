@@ -114,7 +114,7 @@ public class SignController {
 	 * */
 	
 	// 로그인 화면
-	@RequestMapping(value = {"/login.do"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String signInForm() {
 		
 		return "sign/login";
@@ -126,7 +126,8 @@ public class SignController {
 		
 		System.out.println(login.toString());
 		UserVO signIn = signServiceImp.login(login);
-
+		
+		// 아이디랑 비밀번호가 맞는지 확인
 		if (signIn == null) {
 			String msg = "아이디 또는 비밀번호를 확인해 주세요.";
 			model.addAttribute("msg", msg);

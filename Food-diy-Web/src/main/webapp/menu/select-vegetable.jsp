@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<div class="row">
+	<section class="section section-default" style="margin: 0 15px 15px 15px">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10">
+					<p class="mb-none">
+						야채의 경우 기본적으로 모두 선택되어있습니다. 선택하기시기 전에 <strong>야채명과 양</strong>이 정확한지 확인해 주세요.<br> 매장별 많고 적음이 상이하니, 이점 확인하기 바랍니다.<br>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
 <ul class="products-grid columns4" data-sort-id="portfolio">
 	<c:forEach items="${ ingList }" var="ingList">
 		<c:if test='${ ingList.type eq "V" }'>

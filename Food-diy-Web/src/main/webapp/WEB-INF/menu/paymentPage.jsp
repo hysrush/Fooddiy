@@ -204,7 +204,7 @@
 																		<div class="sauce">${ cartVO.sauce }</div>
 																		<div class="requirement">${ cartVO.requirement }</div>
 																	<td>
-																		<div class="qty-total">${ cartVO.qty }</div>개
+																		<div class="qty-total">${ cartVO.qty }개</div>
 																	</td>
 																	<td class="price-total"><span class="text-primary commaN total-price" style="color: black">${ cartVO.qty*cartVO.total_price }원</span></td>
 																</tr>
@@ -306,8 +306,8 @@
 													</table>
 													<div class="row">
 														<div class="col-md-12">
-															<div class="col-md-12 actions-continue">
-																<button type="submit" class="btn btn-tertiary mr-xs mb-sm payment-submit">결제하기</button>
+															<div class="col-md-12 actions-continue" style="padding-left: 0px">
+																<button type="submit" class="btn btn-tertiary mr-xs mb-sm payment-submit" >결제하기</button>
 															</div>
 														</div>
 													</div>
@@ -414,7 +414,7 @@
 			   	order += oneCart.find('.requirement').text() + "*";
 			   	order += oneCart.find('.pic').attr('src') + "*";
 			   	order += oneCart.find('.size').text() + "*";
-			   	order += oneCart.find('.qty-total').text() + "*";
+			   	order += uncomma(oneCart.find('.qty-total').text()) + "*";
 			   	order += uncomma(oneCart.find('.price').text())  + "*";
 			   	order += uncomma(oneCart.find('.price-total').text()) ;
 				   	

@@ -89,7 +89,7 @@
 
 
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 </head>
 <body>
 	<div class="body">
@@ -418,7 +418,6 @@
 
 	
 	<script>
-		
 	function like(no){
 			
 			var btn = this;
@@ -437,10 +436,9 @@
 							
 							$('#'+data.no+'').text(data.like);
 			    
-						    } 
-					});    
-			}		
-		
+					 } 
+			});    
+	}	
 	</script>
 	
 

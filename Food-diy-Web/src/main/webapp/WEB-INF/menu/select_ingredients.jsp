@@ -126,23 +126,6 @@
 				</div>
 			</div>
 
-			<div class="body">
-				<div id="mobile-menu-overlay"></div>
-
-				<div role="main" class="main">
-
-					<div class="slider-container rev_slider_wrapper" style="height: 500px;">
-						<div id="revolutionSlider" class="slider rev_slider manual">
-							<ul>
-								<li data-transition="fade"><img src="${pageContext.request.contextPath }/resources/img/carousels/박재범1.jpg" alt="slide bg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
-								<li data-transition="fade"><img src="${pageContext.request.contextPath }/resources/img/carousels/하하서브2.png" alt="slide bg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
 			<div class="container web" style="min-height: 800px ">
 
 
@@ -253,7 +236,7 @@
 												</tr>
 												<tr>
 													<td>요구사항</td>
-													<td><textarea class="requirement-info" rows="3" cols="12"></textarea></td>
+													<td><textarea class="requirement-info"  style = "width: 100%; height: 100%" rows="3" cols="12"></textarea></td>
 												</tr>
 											</tbody>
 										</table>
@@ -292,7 +275,6 @@
 		</div>
 
 		<div class="container mobile-select-menu">
-
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="panel-group panel-group-lg table" id="accordion5">

@@ -1,6 +1,7 @@
 package kr.co.bit.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,17 @@ public class FileDAOImp implements FileDAO {
 	public void insert(FileVO fileVO) {
 		sqlSession.insert(url + "insertFile", fileVO);
 	}
-	// File 보기
+	// File 보기 (파일번호)
 	@Override
 	public FileVO selectOne(int no) {
 		FileVO fileDetail = sqlSession.selectOne(url + "selectOneFile", no);
 		return fileDetail;
+	}
+	// File 리스트 보기
+	@Override
+	public List<FileVO> selectList(Map<String, Object> fileMap) {
+		List<FileVO> fileList = sqlSession.selectList(url +"selectFileList", fileMap);
+		return fileList;
 	}
 	// File 수정
 	@Override

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,34 +75,31 @@
 	}
 	.content {
 		padding-left: 30px;
+		max-width: 770px;
 	}
 	.contentOnly {
 		padding: 20px 30px 30px 20px;
 	}
 	.visitTable {
-		width: 25%;
-		border-top: 2px solid #7aa93c;
+		border: 2px solid #7aa93c;
 	}
 	.visitTable tr {
 		border-bottom: 2px solid #7aa93c;
     	padding: 10px;
 	}
 	.visitTable th, .visitTable td {
-		border-left: 1px solid white !important;
-		border-right: 1px solid white !important;
+		border-left: 2px solid #7aa93c !important;
+		border-right: 2px solid #7aa93c !important;
+	}
+	img {
+		padding: 10px;
+		max-width: 200px;
+		max-height: 200px;
+	}
+	#totalImg {
+		max-width: 700px;
 	}
 </style>
-<script type="text/javascript">
-	function doAction(type) {
-		switch (type) {
-		case 'L':
-			history.back();   //이전페이지로 가기
-			break;
-		default:
-			break;
-		}
-	}
-</script>
 </head>
 <body>
 	<div class="body">
@@ -188,45 +186,66 @@
 											</div>
 										</tr>
 										<tr>
-											<td colspan="4" style="height: 250px" id="contents">
+											<td colspan="4" id="contents">
 												<!-- 방문일 / 방문매장명 -->
 												<c:choose>
 													<c:when test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
-														<table class="table table-bordered text-center col-md-2 visitTable">
+														<table class="table table-bordered text-center col-md-12 visitTable">
 															<tr>
 																<th><i class="fa fa-building"></i> 방문매장</th>
 																<td>${ claimVO.visitStore }</td>
-															</tr>
-															<tr>
 																<th><i class="fa fa-calendar-o"></i> 방문일</th>
 																<td>${ claimVO.visitDate }</td>
 															</tr>
+															<tr>
+																<th><i class="fa fa-calendar-o"></i> 답변 메일</th>
+																<td colspan="3">${ claimVO.emailID }@${ claimVO.emailDomain }</td>
+															</tr>
+															<tr>
+																<th><i class="fa fa-calendar-o"></i> 연락처</th>
+																<td colspan="3">${ claimVO.phone1 }-${ claimVO.phone2 }-${ claimVO.phone3 }</td>
+															</tr>
 														</table>
 														<!-- 내용 -->
-														<p class="text-left col-md-9 content"><c:out value="${ claimVO.content }"></c:out></p>
+														<p class="text-left col-md-12 content">
+															<!-- 자동 단락 나누기 (jstl - fn) -->
+															${ fn:replace(claimVO.content, cn, br) }
+														</p>
 													</c:when>
 													<c:otherwise>
 														<!-- 내용 -->
-														<p class="text-left contentOnly"><c:out value="${ claimVO.content }"></c:out></p>
+														<p class="text-left contentOnly">
+															<!-- 자동 단락 나누기 (jstl - fn) -->
+															${ fn:replace(claimVO.content, cn, br) }
+														</p>
 													</c:otherwise>
 												</c:choose>
 											</td>
 										</tr>
 										<!-- 첨부파일 -->
-										<c:if test="${ not empty claimVO.file }">
+										<c:if test="${ not empty fileList }">
 											<tr>
 												<th width="15%">첨부파일</th>
-												<td colspan="3">
-													<div align="center">
-														<img alt="" class="img-responsive img-rounded" src="../upload/${ claimVO.file }" style="height:200px">
-													</div>
+												<td colspan="3" id="totalImg">
+													<c:forEach items="${ fileList }" var="file">
+														<div class="col-md-4">
+															<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
+															<div class="text-left">
+																<i class="fa fa-file"></i>&nbsp;
+																<a onclick="action('F', ${ file.no })">
+																	<span class="text-muted fileName">${ file.fileOriName }</span>
+																</a>
+																	<span class="text-muted"> (${ file.fileSize }KB)</span>
+															</div>
+														</div>
+													</c:forEach>
 												</td>
 											</tr>
 										</c:if>
 									</table>
 								</form>
 								<div class="center">
-									<button style="width: 100px" type="button" class="btn btn-primary" onclick="doAction('L')">목록</button>
+									<button style="width: 100px" type="button" class="btn btn-primary" onclick="action('L')">목록</button>
 								</div>
 							</div>
 						</div>
@@ -286,13 +305,34 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		// 파일명 호버 효과
+		$(".fileName").hover( function () { 
+			$(this).css('text-decoration', 'underline');
+		}, function () { 
+			$(this).css('text-decoration', 'none');
+		} );
+	    
+	});
+	
+	// Notice action 함수
+	function action(btn, type) {
+		switch (btn) {
+		case 'L':
+			history.back();   //이전페이지로 가기
+			break;
+		case 'F':
+			// File 다운로드
+			location.href = '${ pageContext.request.contextPath}/community/claim/downloadFile.do?no=' + type;
+			break;
+		default:
+			break;
+		}
+	}
+</script>
 </body>
-
-
-
-
-
 
 </body>
 </html>
