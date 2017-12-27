@@ -3,8 +3,10 @@ package kr.co.bit.control;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,12 +27,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.service.CartService;
 import kr.co.bit.service.ClaimService;
+import kr.co.bit.service.FileService;
 import kr.co.bit.service.MemberOrderService;
 import kr.co.bit.service.MemberService;
 import kr.co.bit.service.SignService;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.ClaimBoardVO;
 import kr.co.bit.vo.DetailOrderVO;
+import kr.co.bit.vo.FileVO;
 import kr.co.bit.vo.MemberOrderVO;
 import kr.co.bit.vo.UserVO;
 
@@ -53,6 +57,8 @@ public class MemberController {
 	private CartService cart_Service;
 	@Autowired
 	private MemberOrderService service;
+	@Autowired
+	private FileService fileService;
 	
 	// ---------------------------------------------------------------------------------------------------
 	// 회원정보 페이지 보여 주는 거
@@ -397,10 +403,25 @@ public class MemberController {
 		//addObject : key 와 value 를 담아 보내는 메서드 
 		mav.addObject("claimVO", claimVO);
 		
+		// file 존재하면,
+		if (claimVO.getFileOX().equals("O")) {
+			// Mybatis에 매개변수 2개를 보내기 위해 map 생성
+			Map<String, Object> fileMap = new HashMap<>();
+			fileMap.put("boardNo", no);
+			fileMap.put("name", "claimFile");
+			// 해당 번호에 맞는 fileVO 읽어오기
+			/*FileVO fileVO = fileService.selectOneFile(fileMap);
+			mav.addObject("fileVO", fileVO);*/
+			List<FileVO> fileList = fileService.selectFileList(fileMap);
+			mav.addObject("fileList", fileList);
+		}
+
+		// 줄바꿈 
+		mav.addObject("br", "<br/>");
+		mav.addObject("cn", "\n");
+		
 		return mav;
 	}
-	
-
 	//1:1문의 삭제
 	@RequestMapping(value = "/myQnADel.do")
 	

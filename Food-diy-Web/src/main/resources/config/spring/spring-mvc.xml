@@ -132,7 +132,7 @@
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
         <mvc:interceptor>  
-            <mvc:mapping path="/community/claimWrite.do" />
+            <mvc:mapping path="/community/claim/claimWriteForm.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
     </mvc:interceptors>
