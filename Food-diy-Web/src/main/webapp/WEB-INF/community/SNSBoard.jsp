@@ -435,9 +435,9 @@
 							
 							$('#'+data.no+'').text(data.like);
 			    
-						 } 
-				});    
-		}
+					 } 
+			});    
+	}	
 	</script>
 	
 
