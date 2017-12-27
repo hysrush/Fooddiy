@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
     <http>
-        <intercept-url pattern="/**" access="hasRole('USER')" />
+        <intercept-url pattern="/**" access="hasRole('loginVO')" />
        
         <session-management invalid-session-url="/sign/login.do">
         	<concurrency-control max-sessions="1" expired-url="/sign/login.do"/>
@@ -16,7 +16,7 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="user" password="password" authorities="ROLE_USER" />
+                <user name="id" password="pw" authorities="loginVO" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
