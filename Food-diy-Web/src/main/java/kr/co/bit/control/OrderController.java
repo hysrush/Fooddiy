@@ -60,11 +60,6 @@ public class OrderController {
 		orderVO.setPayment(info[5]);
 		orderVO.setMenu(orders[1]);
 		
-		System.out.println(orderVO);
-		System.out.println(orderVO);
-		System.out.println(orderVO);
-		
-		
 		orderService.insertOrder(orderVO);
 		cartStore_Service.deleteCartStore(id);
 		cart_Service.deleteCartById(id);;
