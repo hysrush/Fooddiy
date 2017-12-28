@@ -14,6 +14,7 @@ import kr.co.bit.vo.MenuVO;
 public interface MenuDAO {
 	
 	List<MenuVO> selectAll();
+	List<MenuVO> selectType(String type);
 	MenuVO selectOne(int no);
 	void insert(MenuVO menuVO);
 	void update(MenuVO menuVO);

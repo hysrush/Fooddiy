@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +22,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.bit.service.MenuService;
-import kr.co.bit.service.RepService;
 import kr.co.bit.service.SnsService;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.MenuVO;
-import kr.co.bit.vo.PagingVO;
 import kr.co.bit.vo.SnsBoardVO;
-import kr.co.bit.vo.SnsRepVO;
 
 @Controller
 @RequestMapping("/menu")
@@ -34,9 +34,7 @@ public class MenuController {
 	@Autowired
 	private MenuService menuService;
 	@Autowired
-	private SnsService snsService;
-	@Autowired
-	private RepService repService;
+	private SnsService snsService;	
 	
 	// <menu 컨트롤러>
 	// menu 전체보기
@@ -52,6 +50,28 @@ public class MenuController {
 		mav.addObject("menuList", menuList);
 		
 		return mav;		
+	}
+	
+	
+	// menu 타입별 분류
+	@RequestMapping(value="/menuList.do", method=RequestMethod.GET)
+	public ModelAndView listType(@RequestParam(value="type", defaultValue="E") String type) {		
+		
+		List<MenuVO> menuList = null;
+		
+		if(type.equals("E")) {
+			menuList = menuService.selectAllMenu();		
+		}
+		else {
+			menuList = menuService.selectTypeMenu(type);			
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("menu/menuList");
+		mav.addObject("menuList", menuList);
+		/*mav.addObject("type", type);*/
+		
+		return mav;
+		
 	}
 	
 	
@@ -119,31 +139,32 @@ public class MenuController {
 		mav.addObject("hitList", hitList);
 		
 		return mav;
-	}
+	}	
 	
-	// sns 상세내용 조회
-	@RequestMapping(value="/menuDetail2.do", method=RequestMethod.GET)
-	public ModelAndView detail(@RequestParam("no") int no, HttpSession session, PagingVO paging) {		
+	
+	// 좋아요 버튼눌렀을때 snsVO.like 값 1 씩 증가 
+	@RequestMapping(value="/like")
+	public void eventAjax(HttpServletRequest request
+								, HttpServletResponse response
+								, @RequestParam(value ="no", defaultValue ="") int no
+								, Model model) throws Exception {	
 		
+		snsService.addLikeSns(no);
 		SnsBoardVO snsVO = snsService.selectOne(no);
-		paging.setNo(no);
 		
-		List<SnsRepVO> repList = repService.list(paging);
+		response.setContentType("text/html;charset=UTF-8");
+		JSONObject jsonObj = new JSONObject();
+		int like = snsVO.getLike();
+	
 		
-		ModelAndView mav = new ModelAndView();
-		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("menu/snsModal");
-		//addObject : key 와 value 를 담아 보내는 메서드 
-		mav.addObject("snsVO", snsVO);
-		mav.addObject("repList", repList);
-		mav.addObject("p",paging);
-		//mav.addObject("repList", repList);
+		jsonObj.put("result", true);
+		jsonObj.put("like", like);
+		jsonObj.put("no", no);
 		
-		return mav;
+		
+		response.getWriter().print(jsonObj.toString());
+		
 	}
-	
-	
-	
 	
 /*	// '주문하기'선택 후 매장화면으로	
 	@RequestMapping(value="/findStore.do", method=RequestMethod.POST)
