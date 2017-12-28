@@ -176,7 +176,7 @@ $(document).ready(function(){
 			<div class="container">
 				<div class="row">
 					<div style="width: 600px">
-						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
+						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3 hidden-xs">
 							<aside class="sidebar">
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
