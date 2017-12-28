@@ -40,13 +40,13 @@
 		</div> 
 			<div class="row">
 				<div class="col-md-12">
-					<div style = "width:400px;height:120px">${snsVO.content } </div>
+					<div style = "height:120px">${snsVO.content } </div>
 				</div>			
 			</div>	
 			
 			<div class="row">
 				<div class="col-md-12">
-					<div style = "width:400px;height:70px"><strong># ${snsVO.name } #${snsVO.bread } #${snsVO.cheese } #${snsVO.topping }<br/> #${snsVO.vegetable } #${snsVO.sauce }</strong> </div>
+					<div style = "height:70px"><strong># ${snsVO.name } #${snsVO.bread } #${snsVO.cheese } #${snsVO.topping }<br/> #${snsVO.vegetable } #${snsVO.sauce }</strong> </div>
 				</div>			
 			</div>	
 				 <div class="portfolio-info">
