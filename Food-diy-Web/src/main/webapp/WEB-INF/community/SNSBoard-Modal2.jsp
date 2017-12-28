@@ -35,8 +35,10 @@
 			<div class="testimonial-author">
 				<div class="testimonial-author-thumbnail">
 					<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
+					
 				</div>
 					<p><strong>${snsVO.id}</strong></p>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:35px;height:35px;">&times;</button>
 			</div>
 		</div> 
 			<div class="row">
