@@ -152,7 +152,7 @@
 						<span><input type="hidden" value="공백"/></span>
 						
 						<div class="col-md-10" >
-						<div class="container"style= "border:4px solid #7aa93c;padding-bottom: 20px;" >
+						<div class="container" style= "border-bottom:4px solid #7aa93c;padding-bottom: 20px;" >
 							<div class="row">
 
 								<div class="sort-destination-loader sort-destination-loader-showing">
@@ -442,6 +442,8 @@
 	</script>
 	
 
+		
+	
 
 
 
