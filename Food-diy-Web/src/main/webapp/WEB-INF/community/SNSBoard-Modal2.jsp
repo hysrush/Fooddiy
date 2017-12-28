@@ -191,7 +191,7 @@
 					data : {"no" : no},
 					success : function(responseData){
 						var data = JSON.parse(responseData);
-							swal("좋아요 " + " + "+ data.like);
+							swal("좋아요를 누르셨습니다!");
 							
 							var contents = '';
 							contents +=  data.like;
