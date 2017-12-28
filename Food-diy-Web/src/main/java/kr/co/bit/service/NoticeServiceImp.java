@@ -25,8 +25,8 @@ public class NoticeServiceImp implements NoticeService {
 	}
 	// Notice 레코드 갯수 메서드 추가
 	@Override
-	public int countNotice(String searchOption, String keyword) throws Exception {
-		int searchCnt = noticeDAO.searchCnt(searchOption, keyword);
+	public int countNotice(String type, String searchOption, String keyword) throws Exception {
+		int searchCnt = noticeDAO.searchCnt(type, searchOption, keyword);
 		return searchCnt;
 	}
 	// 타입별 Notice 전체보기

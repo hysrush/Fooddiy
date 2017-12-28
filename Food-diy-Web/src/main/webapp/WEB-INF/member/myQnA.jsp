@@ -60,15 +60,25 @@
 		
 		
 <style type="text/css">
-	#div01 {
-		width: 70px;
-		text-align: center;
-		border-width: 2px;
-		border-style: solid;
-	}
-	.label {
-		font-size: 12px;
-	}
+#div01 {
+	width: 70px;
+	text-align: center;
+	border-width: 2px;
+	border-style: solid;
+}
+
+.label {
+	font-size: 12px;
+}
+
+#cnt {
+	width: 80px;
+	height: 30px;
+	font-size: 13px;
+	background-color: #d1dade;
+	color: #5e5e5e;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -125,9 +135,8 @@
 										<thead>
 											<tr style="font-size:15px; margin-top: 15%">
 												<th  data-hide="phone" data-sort-ignore="true"></th>
-												<th  data-hide="phone" data-sort-ignore="true">번호</th>
 												<th data-hide="phone" data-sort-ignore="true">유형</th>
-												<th data-hide="phone" data-sort-ignore="true">내용</th>
+												<th data-hide="phone" data-sort-ignore="true">제목</th>
 												<th style="width: 70px" data-hide="phone" data-sort-ignore="true">등록일</th>
 												<th data-hide="phone" data-sort-ignore="true">답변여부</th>
 											</tr>
@@ -136,27 +145,23 @@
 										<c:choose>
 										<c:when test="${ not empty claimList  }">
 										<c:forEach items="${ claimList  }" var="claim">
-
 											<tr class="claimList">
-													<td class="cartNo" style="display: none;">${ claim.no }</td>
-				                                    <td><input name="cart" type="checkbox" value="${ claim.no }"></td>
-													<td width="10%">
-														${ claim.no }
-													</td>	
-													<td class="col-md-2 convType" width="100px;">
-					                                    <span class="label label-primary">${ claim.type }</span>
-				                                    </td>								
-													<td class="col-md-3" >
-																<a class="amount" href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }">
-																<c:out value="${ claim.title }" /></a>
-													</td>
-													
-													<td class="col-md-2" >
-																<span class="amount ">${ claim.regDate }</span>
-													</td>										
-													<td align="center">
-														<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
-													</td>
+												<td class="cartNo" style="display: none;">${ claim.no }</td>
+			                                    <td width="8%"><input name="cart" type="checkbox" value="${ claim.no }"></td>
+												<td class="convType" width="11%">
+				                                    <span class="label label-primary">${ claim.type }</span>
+			                                    </td>								
+												<td>
+													<a class="amount" href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }">
+													<c:out value="${ claim.title }" /></a>
+												</td>
+												
+												<td width="15%">
+													<span class="amount ">${ claim.regDate }</span>
+												</td>										
+												<td align="center" width="15%">
+													<button id="cnt" type="button" class="btn col-md-3"> 접수완료 </button>
+												</td>
 											</tr>
 											
 										</c:forEach>
