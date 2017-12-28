@@ -42,10 +42,6 @@
   	</resultMap>
 	
 	<!-- 전체 Notice 게시글 조회 -->
-	<!-- <select id="selectAllNotice" resultMap="Map_noticeVO">
-		<include refid="selectAll_notice"/>
-		ORDER BY notice_no DESC
-	</select> -->
 	<select id="selectAllNotice" resultMap="Map_noticeVO">
 		<include refid="selectAll_notice"/>
 		<!-- WHERE절을 include 태그로 삽입 -->

@@ -31,9 +31,10 @@ public class NoticeDAOImp implements NoticeDAO{
 	}
 	// 게시글 레코드 갯수
 	@Override
-	public int searchCnt(String searchOption, String keyword) throws Exception {
+	public int searchCnt(String type, String searchOption, String keyword) throws Exception {
 		// 검색옵션, 키워드 맵에 저장
 	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("type", type);
 	    map.put("searchOption", searchOption);
 	    map.put("keyword", keyword);
 	    int searchCnt = sqlSession.selectOne(url + "searchCnt", map);

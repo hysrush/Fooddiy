@@ -46,12 +46,12 @@ public class NoticeController {
 	}*/
 	// 공지사항 전체보기
 	@RequestMapping("/notice.do")
-	public ModelAndView	searchNotice(@RequestParam(defaultValue="notice_title") String searchOption,
+	public ModelAndView	listNotice(@RequestParam(defaultValue="notice_title") String searchOption,
             @RequestParam(defaultValue="") String keyword) throws Exception {
 		
 		List<NoticeBoardVO> noticeList = noticeService.selectAllNotice("A", searchOption, keyword);
 		// 레코드의 갯수
-		int count = noticeService.countNotice(searchOption, keyword);
+		int count = noticeService.countNotice("A", searchOption, keyword);
 
 		// 데이터를 맵에 저장
 	    Map<String, Object> map = new HashMap<String, Object>();
@@ -70,11 +70,21 @@ public class NoticeController {
 	}
 	// 보도자료 전체보기
 	@RequestMapping("/news.do")
-	public ModelAndView listNews() {
+	public ModelAndView listNews(@RequestParam(defaultValue="notice_title") String searchOption,
+            @RequestParam(defaultValue="") String keyword) throws Exception {
 		
-		ModelAndView mav = new ModelAndView();
-		
-		List<NoticeBoardVO> newsList = noticeService.selectType("B");
+		List<NoticeBoardVO> newsList = noticeService.selectAllNotice("B", searchOption, keyword);
+		// 레코드의 갯수
+		int count = noticeService.countNotice("B", searchOption, keyword);
+
+		// 데이터를 맵에 저장
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("count", count); // 레코드의 갯수
+	    map.put("searchOption", searchOption); // 검색옵션
+	    map.put("keyword", keyword); // 검색키워드
+	    
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
 		//setViewName : 어떤 페이지를 보여줄것인가
 		mav.setViewName("community/subway/newsList");
 		//addObject : key 와 value 를 담아 보내는 메서드 
