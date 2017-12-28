@@ -77,50 +77,54 @@
 	</head>
 	<body>
 		<div class="body">
-			<header id="header"
-				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
-				<jsp:include page="/resources/include/top-new.jsp"/>
-			</header>
-
-			<!-- Mobile menu 부분 -->
-			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 			
-			
-			<div role="main" class="main">
+						
+		<header id="header"
+			data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
+			<jsp:include page="/resources/include/top-new.jsp" />
+		</header>
+		<!-- Mobile menu 부분 -->
+		<jsp:include page="/resources/include/mobile-menu.jsp" />
+		<div role="main" class="main">
 
-				<section class="page-header">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="breadcrumb">
-									<li><a href="#">Home</a></li>
-									<li class="active">Events</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<h1>매장별 EVENT</h1>
-							</div>
+			<section class="page-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="breadcrumb">
+								<li><a
+									href="#">매장선택</a></li>
+								<li class="active">Store</li>
+							</ul>
 						</div>
 					</div>
-				</section>
-
-				<div class="container">
-
 					<div class="row">
-						<div class="col-md-3">
-							<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
-
-									<h4 class="heading-primary">이벤트</h4>
-								<ul class="nav nav-list mb-xlg">
-									<li class="active"><a href="${ pageContext.request.contextPath }/store/findStore.do">매장 찾기</a></li>
-									<li>
-										<a href="${ pageContext.request.contextPath }/store/myStore.do">근처 매장</a>
-									</li>
-								</ul>
-							</aside>
+						<div class="col-md-12">
+							<h1>매장선택</h1>
 						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 hidden-xs hidden-sm">
+						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+							<h4 class="heading-primary"><strong>Store </strong></h4>
+
+							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+									<li class="active" ><a href="${ pageContext.request.contextPath }/store/findStore.do">매장선택</a></li>
+									
+							</ul>
+						</aside>
+					</div>
+						
+						
+					
+						
+						
 							<div class="col-md-9">
 		
 									<div class="tabs tabs-bottom tabs-center tabs-simple">
