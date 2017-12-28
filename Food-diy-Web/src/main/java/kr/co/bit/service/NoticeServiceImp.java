@@ -19,14 +19,20 @@ public class NoticeServiceImp implements NoticeService {
 	// <Notice Service>
 	// Notice 전체보기
 	@Override
-	public List<NoticeBoardVO> selectAllNotice() {
-		List<NoticeBoardVO> listAll = noticeDAO.selectAll();
+	public List<NoticeBoardVO> selectAllNotice(String type, String searchOption, String keyword) throws Exception {
+		List<NoticeBoardVO> listAll = noticeDAO.selectAll(type, searchOption, keyword);
 		return listAll;
+	}
+	// Notice 레코드 갯수 메서드 추가
+	@Override
+	public int countNotice(String searchOption, String keyword) throws Exception {
+		int searchCnt = noticeDAO.searchCnt(searchOption, keyword);
+		return searchCnt;
 	}
 	// 타입별 Notice 전체보기
 	@Override
 	public List<NoticeBoardVO> selectType(String type) {
-		List<NoticeBoardVO> listType = noticeDAO.selectAll();
+		List<NoticeBoardVO> listType = noticeDAO.selectType(type);
 		return listType;
 	}
 	// 글번호별 Notice 글보기

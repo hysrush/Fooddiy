@@ -127,7 +127,7 @@
 										</c:if>
 									</ul>
 								</li>
-								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/claim/claimWriteForm.do">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
 							</ul>
 						</aside>
@@ -181,9 +181,9 @@
 																</td>
 																<div class="post-meta">
 																	<!-- 조회수 -->
-																	<td width="15%"><i class="fa fa-eye"></i> 조회수 ${ noticeVO.viewCnt }</td>
+																	<td width="130px"><i class="fa fa-eye"></i> 조회수 ${ noticeVO.viewCnt }</td>
 																	<!-- 등록일 -->
-																	<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ noticeVO.regDate }</td>
+																	<td width="150px"><i class="fa fa-calendar"></i>&nbsp;${ noticeVO.regDate }</td>
 																</div>
 															</tr>
 														<tr>
@@ -205,13 +205,13 @@
 														<tr>
 															<td colspan="3">
 																<c:forEach items="${ fileList }" var="file">
-																	<div class="text-left">
-																		<i class="fa fa-file"></i>&nbsp;
-																		<a onclick="action('F', ${ file.no })">
-																			<span class="text-muted fileName">${ file.fileOriName }</span>
-																		</a>
-																			<span class="text-muted"> (${ file.fileSize }KB)</span>
-																	</div>
+																<div class="text-left">
+																	<i class="fa fa-file"></i>&nbsp;
+																	<a onclick="action('F', ${ file.no })">
+																		<span class="text-muted fileName">${ file.fileOriName }</span>
+																	</a>
+																		<span class="text-muted"> (${ file.fileSize }KB)</span>
+																</div>
 																</c:forEach>
 															</td>
 														</tr>

@@ -173,11 +173,11 @@
 													<div data-toggle="modal">
 														<span class="product-thumb-info">
 														<span class="thumb-info thumb-info-lighten">
-													 <a onclick="modal('${ snsHit.no }')">
-															<span class="thumb-info-wrapper"> 
-															<img src="../upload/SNS/${ snsHit.fileName }" class="img-responsive" style="width: 250px; height: 250px">
+													
+															<span class="thumb-info-wrapper" onclick="modal('${ snsHit.no }')"> 
+															<img src="../upload/SNS/${ snsHit.fileName }" class="img-responsive" style="width: 100%; height: 250px">
 																</span>
-														</a>
+														
 														</span>
 														 <span class="product-thumb-info-content">
 																	<span>
@@ -242,11 +242,11 @@
 												<div data-toggle="modal">
 													<span class="product-thumb-info">
 													<span class="thumb-info thumb-info-lighten">
-												 <a onclick="modal('${ snsVO.no }')">
-														<span class="thumb-info-wrapper"> 
+												
+														<span class="thumb-info-wrapper" onclick="modal('${ snsVO.no }')"> 
 														<img src="../upload/SNS/${ snsVO.fileName }" class="img-responsive" style="width: 250px; height: 250px">
 															</span>
-													</a>
+													
 													</span>
 													 <span class="product-thumb-info-content">
 																<span>
@@ -315,7 +315,7 @@
 
 
 					<div class="col-md-12" align="right">
-						<a href="${ pageContext.request.contextPath }/community/snsWrite.do?id=${loginVO.id}"><input type="button" value="글 등록 " /></a>
+						<a href="${ pageContext.request.contextPath }/community/snsWrite.do?id=${loginVO.id}"><button  class="btn btn-borders btn-success" >글 등록</button></a>
 					</div>
 
 
@@ -351,12 +351,12 @@
 
 	<script>
 	function modal(snsNo) {
-	      $(".thumb-info").click(function() {
+	   
 	    	  $('div.modal').modal().removeData();
 	         var url = '${ pageContext.request.contextPath}/community/snsDetail.do?no='+snsNo;
 	         $('div.modal').modal({ remote : url  });
 	       
-	      })
+	     
 	   };
 
 	</script>

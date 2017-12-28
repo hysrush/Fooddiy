@@ -136,7 +136,7 @@
         </mvc:interceptor>
         <!-- 1:1문의 -->
         <mvc:interceptor>  
-            <mvc:mapping path="/community/claim/claimWriteForm.do" />
+            <mvc:mapping path="/community/claim/claimWrite.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
         <!-- sns페이지 -->
