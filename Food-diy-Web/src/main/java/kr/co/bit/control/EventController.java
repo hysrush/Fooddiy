@@ -114,13 +114,15 @@ public class EventController {
 		JSONObject jsonObj = new JSONObject();
 
 		List<StoreVO> storeList = eventService.selectStoreList(gugun);
-
+		String locationName = eventService.locationName(gugun);
 		jsonObj.put("result", true);
 		jsonObj.put("storeList", storeList);
-
+		jsonObj.put("locationName", locationName);
 		response.getWriter().print(jsonObj.toString());
 
 	}
+	
+	
 	 // 마커에 위치표시 
 	@RequestMapping(value="/test4")
 	public void eventAjax(HttpServletRequest request
@@ -136,7 +138,7 @@ public class EventController {
 		List<EventBoardVO> eventList = eventService.selectEventBystoreName(store);
 		
 
-		
+		System.out.println(eventList);
 		
 		jsonObj.put("result", true);
 		jsonObj.put("eventList", eventList);

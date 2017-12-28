@@ -68,35 +68,27 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
 
+		<!-- sweetalert js & css -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> 
+		<link rel="stylesheet" href="https://wfolly.firebaseapp.com/node_modules/sweetalert/dist/sweetalert.css">
+		
 		<!-- js -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
 		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
-<script type="text/javascript">
-	function doAction(type) {
-		switch (type) {
-		case 'L':
-			location.href = "${ pageContext.request.contextPath}/community/claim.do";
-			break;
-		default:		
-			break;
-		}
-	}
-	
-</script>
 <style type="text/css">
 	.mail_input, .mail_sel, .phone_input, .phone_sel {
 		width: 30%;
 		float: left;
 	}
-	#csForm > tbody > tr > td:FIRST-CHILD {
+	#noticeForm > tbody > tr > td:FIRST-CHILD {
 		width: 15%;
 		text-align: center;
 		font-weight: bold;
 		color: black;
 	}
-	#csForm th {
+	#noticeForm th {
 		min-width: 78px;
 		background-color: #7aa93c;
 		color: white;
@@ -182,6 +174,7 @@
 								</li>
 								<li>
 									<a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${ loginVO.id }">나의 문의내역</a>
+									<%-- <a href="${ pageContext.request.contextPath}/community/claim/claim.do">나의 문의내역</a> --%>
 								</li>
 							</ul>
 							<div class="tab-content">
@@ -190,11 +183,11 @@
 										<br>
 										<div class="form-group" align="left">
 											<!-- 1:1문의 작성폼 시작  -->
-											<form:form commandName="claimVO" method="POST" name="csForm" id="csForm" enctype="multipart/form-data" >
+											<form:form commandName="claimVO" method="POST" name="noticeForm" id="noticeForm" enctype="multipart/form-data" >
 												<table class="table table-bordered">
 													<tr>
 														<th>
-															<form:label for="type" path="type" cssErrorClass="error">분야</form:label>
+															<form:label for="type" path="type" cssErrorClass="error">분야*</form:label>
 														</th>
 														<td>
 															 <form:select path="type" class="form-control" id="type" name="type">
@@ -205,7 +198,7 @@
 													</tr>
 													<tr>
 														<th>
-															<label for="email">답변 메일</label>
+															<label for="email">답변 메일*</label>
 														</th>
 														<td>
 															<form:input path="emailID" type="text" class="mail_input form-control" 
@@ -217,7 +210,7 @@
 															<form:select path="emailDomain" class="mail_sel form-control" id="emailDomain" name="emailDomain">
 																<option value="${ emailDomain }">선택하세요</option>
 																<form:options items="${domainCode}"/>
-																<option value="etc">직접입력</option>
+																<option value="">직접입력</option>
 															</form:select>
 														</td>
 													</tr>
@@ -245,11 +238,11 @@
 													</tr>
 													<tr>
 														<th>
-															<label>장소</label>
+															<label>장소*</label>
 														</th>
 														<td>
 															<div style="float: left;">
-																<input type="radio" name="radioVisit" class="radioVisit" value="Y" checked="checked">매장 방문
+																<input type="radio" name="radioVisit" class="radioVisit" value="Y" checked="checked" id="visit">매장 방문
 																<input type="radio" name="radioVisit" class="radioVisit" value="N" >매장 방문 외
 															</div>
 															<br><br>
@@ -275,7 +268,7 @@
 													</tr>
 													<tr>
 														<th>
-															<label for="title">제목</label>
+															<label for="title">제목*</label>
 														</th>
 														<td>
 															<form:input path="title" type="text" class="form-control" id="title" name="title" placeholder="제목"/>
@@ -284,7 +277,7 @@
 													</tr>
 													<tr>
 														<th>
-															<label for="content">내용</label>
+															<label for="content">내용*</label>
 														</th>
 														<td>
 															<form:textarea path="content" class="form-control" rows="5" id="content" name="content" placeholder="내용"/>
@@ -293,13 +286,13 @@
 													</tr>
 													<tr>
 														<th>
-															<label for="file">파일첨부</label>
+															<label for="claimFile">파일첨부</label>
 														</th>
 														<td>
 															<div class="file_BasicSection">
 																<div class="fileDiv col-md-12" id="fileDiv1" >
-																	<form:input path="file" type="file" class="file_input form-control" id="file" 
-																				name="file" placeholder="파일첨부" style="float: left; width: 70%;"/>&nbsp;&nbsp;
+																	<form:input path="claimFile" type="file" id="claimFile" name="claimFile1" placeholder="파일첨부" 
+																				class="file_input form-control" style="float: left; width: 70%;" />&nbsp;&nbsp;															
 																	<button type="button" class="btn btn-success mr-xs mb-sm" id="btnAddFile" ><i class="fa fa-plus"></i></button>
 																</div>
 															</div>
@@ -332,7 +325,8 @@
 													</div>
 												</div>
 												<div class="center">
-													<button type="submit" class="btn btn-default" id="claimSubmit">등록</button>
+													<button type="button" class="btn btn-default" id="eraser">지우기</button>
+													<button type="submit" class="btn btn-primary" id="claimSubmit">등록</button>
 												</div>
 											</form:form>
 										</div>
@@ -388,6 +382,8 @@
 		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
 		<!-- 호텔데모 js -->
 		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-hotel.js"></script>
+		 <!-- Jquery Validate -->
+    <script src="${ pageContext.request.contextPath }/resources/js/validate/jquery.validate.min.js"></script>
 		
 		<!-- Theme Custom -->
 		<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
@@ -459,7 +455,7 @@
 				// id 요소 변경
 		       	$("#file_AddSection > div:last").attr("id", "fileDiv" + parseInt(cnt + 1));
 				// input 요소 변경
-		    	//$("#file_AddSection div > button:last").attr("name", "file" + parseInt(cnt + 1));
+		    	$("#file_AddSection div > input:last").attr("name", "claimFile" + parseInt(cnt + 1));
 				// 버튼 요소 변경
 		    	$("#file_AddSection div > button:last").attr("name", "btnMinusFile");
 		    	$("#file_AddSection div > button:last").attr("onclick", "removeFile(this)");
@@ -477,7 +473,7 @@
 			var inputDomain;
 			
 			// 직접입력 선택 시,
-			if (emailDomain == "etc") {
+			if (emailDomain == "") {
 				$("#inputDomain").attr("readonly", false);	// 해제
 				$("#inputDomain").val("");
 				$("#inputDomain").focus();
@@ -495,7 +491,7 @@
 							var replay = $(this).find('option:selected').val();
 							
 							if (replay == inputDomain){
-								$(this).find('option:selected').val("etc");	
+								$(this).find('option:selected').val("");	
 								$("#inputDomain").attr("readonly", false);	// 해제
 								$("#inputDomain").val("");
 								$("#inputDomain").focus();
@@ -513,14 +509,108 @@
      	$("#claimSubmit").click(function() {
      		// 동의 - 라디오 버튼 변경시 이벤트
      		var agree = $(':radio[name="radioAgree"]:checked').val();
+  			// 방문 - 라디오 버튼 변경시 이벤트
+			var  visit = $("input:radio[name='radioVisit']:checked").val();
   			
   	        if(agree == "Y"){							// '동의함'일 경우,
+  	        	if(visit == "Y"){							// '매장방문'일 경우,
+  				    // 매장선택 & 방문일 활성화
+  					var store = $("#storeName").val();
+  					var date = $("#visitDate").val();
+  					
+  					if (store == "") {
+  						swal({
+  			   				title: "Error!",
+  			   				text: "방문하신 매장을 선택해주세요!",
+  			                type: "error"
+  			       	 	});
+  						return false;
+  					}
+  					if (date == "") {
+  						swal({
+  			   				title: "Error!",
+  			   				text: "방문하신 날짜를 선택해주세요!",
+  			                type: "error"
+  			       	 	});
+  						return false;
+  					}
+  				}
+  	  	        if (visit == "N") {					// '매장방문 외'일 경우,
+  					return true;
+  				}
   	        	return true;
-  			} else if (agree == "N") {					// '동의 안함'일 경우,
-  				alert("Error : 개인정보 이용 동의 하셔야 신청 가능합니다.");
+  			}
+  	        if (agree == "N") {					// '동의 안함'일 경우,
+  				swal({
+	   				title: "Error!",
+	   				text: "개인정보 이용 동의 하셔야 신청 가능합니다.",
+	                type: "error"
+	       	 	});
   				return false;
   			}
   	        
+		});
+     	
+     // Form 유효성 검사 작업
+		$("#noticeForm").validate({
+			// 규칙
+			rules: {
+                type: "required", 
+				title: {
+                    required: true,
+                    maxlength: 90
+                },
+                content: {
+                    required: true,
+                    maxlength: 2000
+                },
+                emailDomain: "required"
+            },
+          	//규칙체크 실패 시, 출력될 메시지
+            messages : {
+            	type: {
+                    required : "문의 유형을 선택해주세요!",
+                },
+            	title: {
+                    required : "제목을 입력해주세요!",
+                    maxlength : "{0}글자 이하로 작성하세요!",
+                },
+                content: {
+                	 required : "내용을 입력해주세요!",
+                     maxlength : "{0}글자 이하로 작성하세요!",
+                },
+                emailDomain: {
+                    required : "이메일 도메인을 입력해주세요!",
+                },
+            },
+			//규칙체크 실패 시, 실행될 이벤트
+            invalidHandler: function (form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                	validator.errorList[0].element.focus();
+                	swal({
+    	   				title: "Error!",
+    	   				text: validator.errorList[0].message,
+    	                type: "error"
+    	       	 	});
+                }
+            },
+			//규칙체크 성공 시, 실행될 이벤트
+            submitHandler: function(form) {
+            	swal({
+	   				title: "등록 완료!",
+	                type: "success"
+	       	 	}, function () {
+			        // OK 누르면 Submit 실행
+			        form.submit();
+			        //$('#noticeForm').submit();
+			    });
+            }
+        });
+     
+		// 폼 초기화
+		$('#eraser').click(function () {
+			$('#noticeForm input[type="text"], textarea').val(""); 
 		});
      	
 	});
