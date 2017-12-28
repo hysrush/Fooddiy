@@ -187,6 +187,10 @@
 																<div class="col-md-6" align="left"> 
 																	<h4><strong>${ eventVO.content }</strong></h4>
 																	<br/>
+																		
+																	<span><i class="fa fa-mobile"></i>모바일 &nbsp;&nbsp; <i class="fa fa-desktop"></i> 인터넷 &nbsp;&nbsp;<i class="fa fa-shopping-basket"></i>포장
+																		</span>
+																	<br/>
 																	<br/>
 																	<span> ${ eventVO.startDate } &nbsp; ~  ${ eventVO.endDate }</span>														
 																</div>
