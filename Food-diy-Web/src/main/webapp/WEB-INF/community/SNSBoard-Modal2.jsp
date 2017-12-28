@@ -213,21 +213,21 @@
                  swal("댓글이 등록되었습니다.");
                   
           		       var contents = '';
-          		       
+          		    
           		        contents += '<div class="testimonial testimonial-style-3">';
-          		       contents += '<div class="testimonial-author">';	
-                 	   contents += 	'<div class ="testimonial-author-thumbnail">';
-                 	   contents +=		'<img src = "../upload/"\''+data.repList[0].pic+'\'" class ="img-responsive img-circle" alt="">';
-                 	   contents +=	'<div>';
-                 	   contents +=		'<p><strong>'+ data.repList[0].id+'</storong></p>';
-                 	   contents +=	'<span class="pull-right">';
-                 	   contents +=		'<span><a href="#"><i class="fa fa-reply"><i>Update</a></span>';
-                 	   contents +=	'</span>';
-                 	   contents +=		'<p><strong>' + data.repList[0].content + '</strong></p>';
-                 	   contents +=		'<span class="date pull-right">' +data.repList[0].regDate+'</span>';
-                 	   contents +=	'</div>';
-                 	   contents +='</div>';
-                 		 
+          		       	contents += '<div class="testimonial-author" >';	
+                 	 	contents += 	'<div class ="testimonial-author-thumbnail">';
+                 	  	contents +=			'<img src = "../upload/'+ data.repList[0].pic +'" class ="img-responsive img-circle" alt="" style= "width:45px;height:45px;">';
+                 	 	contents +=	    '</div>';
+                 	   	contents +=		'<p><strong>'+ data.repList[0].id+'</strong></p>';
+                 	   	contents +=		'<p><strong>' + data.repList[0].content + '</strong></p>';
+                 	   	contents +=	'</div>';
+                 	    contents +='</div>';
+                 	    
+                 	    
+                 	
+						
+                 	
                  	   //contents += '<span>안녕하세요</span>';
                  	
                  	/*   for(var i = 0 ; i<data.repList.length; i++){  

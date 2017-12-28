@@ -189,26 +189,30 @@
 														<tr>
 															<!-- 내용 -->
 															<td colspan="3">
-																<c:if test="${ not empty fileVO }">
-																	<div class="text-center">
-																		<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/notice/${ fileVO.filePath }">
-																	</div>
+																<c:if test="${ not empty fileList }">
+																	<c:forEach items="${ fileList }" var="file">
+																		<div class="text-center">
+																			<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
+																		</div>
+																	</c:forEach>
 																</c:if>
 																<!-- 자동 단락 나누기 (jstl - fn) -->
 																<p class="text-left">${ fn:replace(noticeVO.content, cn, br) }</p>
 															</td>
 														</tr>
 														<!-- 첨부파일 -->
-														<c:if test="${ not empty fileVO }">
+														<c:if test="${ not empty fileList }">
 														<tr>
 															<td colspan="3">
-																<div class="text-left">
-																	<i class="fa fa-file"></i>&nbsp;
-																	<a onclick="action('F', ${ noticeVO.no })">
-																		<span class="text-muted fileName">${ fileVO.fileOriName }</span>
-																	</a>
-																		<span class="text-muted"> (${ fileVO.fileSize }KB)</span>
-																</div>
+																<c:forEach items="${ fileList }" var="file">
+																	<div class="text-left">
+																		<i class="fa fa-file"></i>&nbsp;
+																		<a onclick="action('F', ${ file.no })">
+																			<span class="text-muted fileName">${ file.fileOriName }</span>
+																		</a>
+																			<span class="text-muted"> (${ file.fileSize }KB)</span>
+																	</div>
+																</c:forEach>
 															</td>
 														</tr>
 														</c:if>

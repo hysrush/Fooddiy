@@ -1,6 +1,8 @@
 package kr.co.bit.control;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -74,10 +76,13 @@ public class NoticeController {
 
 		// file 존재하면,
 		if (noticeVO.getFileOX().equals("O")) {
-			System.out.println("Test");
+			// Mybatis에 매개변수 2개를 보내기 위해 map 생성
+			Map<String, Object> fileMap = new HashMap<>();
+			fileMap.put("boardNo", no);
+			fileMap.put("name", "noticeFile");
 			// 해당 번호에 맞는 fileVO 읽어오기
-			FileVO fileVO = fileService.selectOneFile(no);
-			mav.addObject("fileVO", fileVO);
+			List<FileVO> fileList = fileService.selectFileList(fileMap);
+			mav.addObject("fileList",fileList);
 		}
 
 		// 줄바꿈 
@@ -88,14 +93,13 @@ public class NoticeController {
 	}
 	// file 다운로드
 	@RequestMapping(value="/downloadFile.do", method=RequestMethod.GET)
-	public String download(@RequestParam(value="no") int boardNo, HttpServletResponse response) {
+	public void download(@RequestParam(value="no") int no, HttpServletResponse response) {
 		
 		try {
-			fileService.downloadFile(response, boardNo);
+			fileService.downloadFile(response, no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "";
 	}
 }

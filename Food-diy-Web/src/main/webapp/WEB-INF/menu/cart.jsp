@@ -132,7 +132,7 @@
 
 														<td class="product-action-td remove_product"><a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
 														<td class="product-image-td"><a href="#" title="Product Name"> <img class="pic" src="${ cartVO.pic }" alt="Product Name"></a></td>
-														<td class="product-name-td">
+														<td class="product-name-td info">
 															<h2 class="product-name">
 																<a title="Product Name">
 																	<div class="menu">${ cartVO.name }</div>
@@ -141,7 +141,7 @@
 																</a>
 															</h2>
 														</td>
-														<td>
+														<td class ="ingredients">
 															<div class="bread">${ cartVO.bread }</div>
 															<div class="cheese">${ cartVO.cheese }</div>
 															<div class="topping">${ cartVO.topping }</div>
@@ -160,6 +160,7 @@
 										</table>
 									</div>
 								</div>
+								
 								<aside class="col-md-4 col-lg-3 sidebar shop-sidebar" id="payInfo">
 									<div class="panel-group">
 										<div class="panel panel-default">

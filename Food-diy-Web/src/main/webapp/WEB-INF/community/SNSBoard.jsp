@@ -89,7 +89,7 @@
 
 
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 </head>
 <body>
 	<div class="body">
@@ -143,6 +143,7 @@
 					</div>
 
 					<!-- START! -->
+					
 						<div class="col-md-10" style="height:30px;">
 							<span class="label label-lg label-danger">Best!!</span>
 						</div>
@@ -151,7 +152,7 @@
 						<span><input type="hidden" value="공백"/></span>
 						
 						<div class="col-md-10" >
-						<div class="container"style= "border:1px solid black" >
+						<div class="container"style= "border:4px solid #7aa93c;padding-bottom: 20px;" >
 							<div class="row">
 
 								<div class="sort-destination-loader sort-destination-loader-showing">
@@ -204,7 +205,7 @@
 							</div>
 						</div>
 						</div>				
-					
+				
 					
 					<div class="col-md-2 hidden-xs">
 					</div>
@@ -417,7 +418,6 @@
 
 	
 	<script>
-		
 	function like(no){
 			
 			var btn = this;
@@ -436,10 +436,9 @@
 							
 							$('#'+data.no+'').text(data.like);
 			    
-						    } 
-					});    
-			}		
-		
+					 } 
+			});    
+	}	
 	</script>
 	
 

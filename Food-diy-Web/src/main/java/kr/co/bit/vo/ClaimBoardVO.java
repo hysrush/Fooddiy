@@ -1,43 +1,32 @@
 package kr.co.bit.vo;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class ClaimBoardVO {
 	
 	private int no;
-	@NotNull
-    @Size(min=1, message="제목을 입력하세요!")
 	private String title;
-	@NotNull
-    @Size(min=1, message="내용을 입력하세요!")
 	private String content;
-	@NotNull
-    @Size(min=1, message="문의유형을 선택하세요!")
 	private String type;		// 문의 'I' / 칭찬 'P' / 불만 'C' / 제안 'S' / 기타 'X'
-	@NotNull
 	private String writer;		// User ID
-	@NotNull
-    @Size(min=1, message="이메일ID를 입력하세요!")
 	private String emailID;		// User Email
-	@NotNull
-    @Size(min=1, message="이메일Domain을 입력하세요!")
 	private String emailDomain;
-	@NotNull
 	private String phone1;		// User Phone
-	@NotNull
-    @Size(min=1, message="중간번호를 입력하세요!")
 	private String phone2;
-	@NotNull
-    @Size(min=1, message="끝번호를 입력하세요!")
 	private String phone3;
-	
-	private String file;		// 파일
 	private String visitDate;	// 방문일
 	private String visitStore;	// 방문 매장명
 	
+	private String fileOX;	// 파일 유 'O'/ 무 'X'
 	private String regDate;
 	private int viewCnt;
+	// ********************************************
+	// DB에 저장 안하고 쓰는 것들
+	private List<MultipartFile> claimFile;  //첨부파일임.
+	private String temp;
+	// ********************************************
 	
 	public int getNo() {
 		return no;
@@ -123,18 +112,31 @@ public class ClaimBoardVO {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
-	public String getFile() {
-		return file;
+	public String getFileOX() {
+		return fileOX;
 	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setFileOX(String fileOX) {
+		this.fileOX = fileOX;
+	}
+	public String getTemp() {
+		return temp;
+	}
+	public void setTemp(String temp) {
+		this.temp = temp;
+	}
+	public List<MultipartFile> getClaimFile() {
+		return claimFile;
+	}
+	public void setClaimFile(List<MultipartFile> claimFile) {
+		this.claimFile = claimFile;
 	}
 	@Override
 	public String toString() {
-		return "ClaimBoardVO [no=" + no + ", title=" + title + ", content=" + content + ", type=" + type + ", file="
-				+ file + ", writer=" + writer + ", emailID=" + emailID + ", emailDomain=" + emailDomain + ", phone1="
-				+ phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", visitDate=" + visitDate + ", visitStore="
-				+ visitStore + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
+		return "ClaimBoardVO [no=" + no + ", title=" + title + ", content=" + content + ", type=" + type + ", writer="
+				+ writer + ", emailID=" + emailID + ", emailDomain=" + emailDomain + ", phone1=" + phone1 + ", phone2="
+				+ phone2 + ", phone3=" + phone3 + ", visitDate=" + visitDate + ", visitStore=" + visitStore
+				+ ", fileOX=" + fileOX + ", regDate=" + regDate + ", viewCnt=" + viewCnt + ", claimFile=" + claimFile
+				+ "]";
 	}
 	
 }
