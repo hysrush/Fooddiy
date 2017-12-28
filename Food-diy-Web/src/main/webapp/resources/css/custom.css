@@ -1,4 +1,67 @@
 /* Add here all your CSS customizations */
+/* 최근주문내역 버튼 */
+
+button.basic-btn {
+	background-color : #7aa93c;
+	border-color : #7aa93c;
+	color : white;
+}
+
+td.cancel-button button.button-cancel{
+	font-size : 10px;
+	color : rgb(236, 71, 88);
+	background-color : white;
+	padding : 3px 8px;
+	font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+	border: 1px solid #ed5565;
+	border-radius: .25em;
+}
+ td span.label-danger {
+ 	font-size: 10px;
+ 	background-color: #ed5565;
+ 	color: #FFFFFF;
+ 	
+ 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	font-weight: 600;
+ 	padding: 3px 8px;
+ 	text-shadow: none;
+ }
+ 
+ td span.label-warning {
+ 	font-size: 10px;
+ 	background-color: #f8ac59;
+ 	color: #FFFFFF;
+ 	
+ 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	font-weight: 600;
+ 	padding: 3px 8px;
+ 	text-shadow: none;
+ }
+ td span.label-primary {
+ 	font-size: 10px;
+ 	background-color: #1ab394;
+ 	color: #FFFFFF;
+ 	
+ 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	font-weight: 600;
+ 	padding: 3px 8px;
+ 	text-shadow: none;
+ }
+ td span.label-information {
+ 	font-size: 10px;
+ 	background-color: #d1dade;
+ 	color: #5e5e5e;
+ 	
+ 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	font-weight: 600;
+ 	padding: 3px 8px;
+ 	text-shadow: none;
+ }
+
 
 /*  결제 화면  */
 .payment-info .panel.panel-default .panel-heading a {

@@ -78,7 +78,7 @@ public class SnsController {
 		public String writeForm(String id, HttpServletRequest request, HttpServletResponse response, Model model) {
 
 			SnsBoardVO snsVO = new SnsBoardVO();
-			List<MemberOrderVO> todayOrderList = service.selectAll(id);	
+			List<MemberOrderVO> todayOrderList = service.selectFavoriteMenu(id);	
 			
 			for(int i = 0 ; i < todayOrderList.size(); ++i) {
 
@@ -119,11 +119,17 @@ public class SnsController {
 			
 
 			// 1. fileName 설정 + eventVO에 fileName 저장
-			String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
-			+ file.getOriginalFilename();
+			/*String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
+			+ file.getOriginalFilename();*/
+			String fileName = "../upload/SNS/"
+					+ file.getOriginalFilename();
+			
+			
 			//String fileName = "C:\\Users\\user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"+ file.getOriginalFilename();
-			String uFileName = "C:\\Users\\bit-user\\git\\Fooddiy-manager\\Food-manager-Web\\src\\main\\webapp\\upload\\SNS\\"
-			+ file.getOriginalFilename();
+			/*String uFileName = "C:\\Users\\bit-user\\git\\Fooddiy-manager\\Food-manager-Web\\src\\main\\webapp\\upload\\SNS\\"
+			+ file.getOriginalFilename();*/
+			String uFileName = "../upload/SNS/"
+					+ file.getOriginalFilename();
 					
 			String saveFileName = file.getOriginalFilename();
 				
@@ -180,7 +186,7 @@ public class SnsController {
 
 			
 			SnsBoardVO snsVO = snsService.selectOne(no);
-			List<MemberOrderVO> todayOrderList = service.selectAll(id);	
+			List<MemberOrderVO> todayOrderList = service.selectFavoriteMenu(id);	
 			
 			for(int i = 0 ; i < todayOrderList.size(); ++i) {
 

@@ -1,6 +1,7 @@
 package kr.co.bit.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 
@@ -85,5 +86,10 @@ public class OrderServiceImp implements OrderService{
 	@Override
 	public void deleteOrder(String id) {
 		dao.delete(id);
+	}
+	
+	@Override
+	public void cancelOrder(Map<String, String> info) {
+		dao.cancel(info);
 	}
 }

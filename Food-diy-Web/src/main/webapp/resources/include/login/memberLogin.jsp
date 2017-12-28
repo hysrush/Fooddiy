@@ -147,6 +147,7 @@
 				<div class="featured-boxes">
 					<div class="featured-box featured-box-primary align-left mt-xlg">
 						<div align="center" class="box-content">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4> 아이디 찾기</h4><br/>
 							<div class="row mt-xlg">
 								<div>
@@ -194,6 +195,7 @@
 				<div class="featured-boxes">
 					<div class="featured-box featured-box-primary align-left mt-xlg">
 						<div align="center" class="box-content">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4> 비밀번호 찾기</h4>
 							<div class="row mt-xlg">
 								<div class="col-md-12">

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.ClaimBoardVO;
+import kr.co.bit.vo.MemberOrderVO;
 import kr.co.bit.vo.UserVO;
 
 @Repository
@@ -54,8 +55,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<CartVO> getmyMenu(String id) {
-		return sqlSession.selectList("kr.co.bit.member.dao.getmyMenu", id);
+	public List<MemberOrderVO> getmyMenu(String id) {
+		return sqlSession.selectList("kr.co.bit.member.dao.selectMyMenu", id);
 	}
 
 	@Override

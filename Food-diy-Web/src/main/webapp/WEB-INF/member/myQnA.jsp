@@ -172,8 +172,7 @@
 									</table>
 								</div>
 												<div align="right" style="margin-right: 15%; margin-top: 5%">
-													<button class="btn btn-primary btn-icon" id="del"
-														style="width: 17%; height: 30px">삭제</button>
+													<button class="btn btn-primary btn-icon" id="del" style="width: 17%; height: 30px">삭제</button>
 												</div>
 								</div>
 						</div>

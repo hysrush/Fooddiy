@@ -341,7 +341,57 @@ function mymodal(mymenuNo) {
 						<div class="ibox">
 							<div class="ibox-content">
 								<div class="table-responsive">
-									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
+									<%-- <table class="footable table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="25">
+											<thead>
+												<tr style="font-size: 15px; margin-top: 15%">
+													<th style="width: 45px" data-hide="phone" data-sort-ignore="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+													<th data-hide="phone" data-sort-ignore="true">주문번호</th>
+													<th data-hide="phone" data-sort-ignore="true">메뉴</th>
+													<th data-hide="phone" data-sort-ignore="true">주문자</th>
+													<th data-hide="phone" data-sort-ignore="true">주문금액</th>
+												</tr>
+											</thead>
+											<tbody class="todayOrderList">
+												<c:choose>
+													<c:when test="${ not empty orderList }">
+														<c:forEach items="${ orderList }" var="order">
+															<tr class="cart-subtotal">
+																<td class="id" style="display: none;">${ order.id }</td>
+																<td class="price" style="display: none;">${ order.final_price }</td>
+																<td class="product-thumbnail" style="width: 30px; height: 30px"><a><img style="width: 40px; height: 30px" alt="Product Name" class="img-responsive " src="${ pageContext.request.contextPath }/resources/img/AA.jpg"></a></td>
+																<c:forEach items="${ order.detailOrderList }" var="list" varStatus="status">
+																	<td class="size" style="display: none;">${ list.size }</td>
+																	<td class="name" style="display: none;">${ list.name }</td>
+																	<td class="pic" style="display: none;">${ list.pic }</td>
+																	<td class="bread" style="display: none;">${ list.bread }</td>
+																	<td class="cheese" style="display: none;">${ list.cheese }</td>
+																	<td class="topping" style="display: none;">${ list.topping }</td>
+																	<td class="vegetable" style="display: none;">${ list.vegetable }</td>
+																	<td class="sauce" style="display: none;">${ list.sauce }</td>
+																</c:forEach>
+																<td class="convType orderNumber" id="no" width="100px;">${ order.no }</td>
+																<td width = 20%>
+																	<div data-toggle="modal" data-target="#largeModal">
+																		<a onclick="modal('${ order.no }')"> 
+																			<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" varStatus="status">
+																				${ oneOrder.name }
+																				<c:if test="${ !status.last }">, </c:if>
+																			</c:forEach>
+																		</a>
+																	</div>
+																</td>
+																<td width="10%" nowrap>${ order.id }</td>
+																<td class="commaN finalPrice">${ order.final_price }원</td>
+															</tr>
+														</c:forEach>
+													</c:when>
+													<c:otherwise>
+														<h3 id="del">최근 주문 내용이 없습니다.</h3>
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+										</table> --%>
+									 <table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
 										<thead>
 											<tr style="font-size:15px; margin-top: 15%">
 												<th  data-hide="phone" data-sort-ignore="true"></th>
@@ -352,26 +402,26 @@ function mymodal(mymenuNo) {
 										</thead>
 										<tbody class= "todayOrderList">
 										<c:choose>
-										<c:when test="${ not empty cartList }">
-										<c:forEach items="${ cartList }" var="cart">
+										<c:when test="${ not empty menuList }">
+										<c:forEach items="${ menuList }" var="menu">
 
 											<tr class="cart-subtotal">
-													<td class="cartNo" style="display: none;">${ cart.no }</td>
-				                                    <td><input name="cart" type="checkbox" value="${ cart.no }"></td>
+													<td class="cartNo" style="display: none;">${ menu.no }</td>
+				                                    <td><input name="cart" type="checkbox" value="${ menu.no }"></td>
 													<td>
-													<a style=" width: 230px" onclick = "mymodal(${ cart.no })">
-														${cart.name }
+													<a style=" width: 230px" onclick = "mymodal(${ menu.no })">
+														${menu.menu }
 														
 														</a>
 			                                   		</td>
 													<td width="20%" nowrap>
-														${ cart.id }
+														${ menu.id }
 													</td>	
 													
-													<td class = "commaN finalPrice">${ cart.price }원</td>											
+													<td class = "commaN finalPrice">${ menu.finalPrice }원</td>											
 													<td class="qty-total" style="width: 150px">
 															<div class="qty-holder">
-																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value="${ cart.qty }"> 
+																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value=""> 
 																<a class="qty-inc-btn" title="Inc">+</a> <a class="edit-qty"></a>
 															</div>
 														</td> 
@@ -386,11 +436,22 @@ function mymodal(mymenuNo) {
 										<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
 										</c:choose>
 										</tbody>
+<<<<<<< HEAD
 									</table>
+								</div>						
+																<div class="row">
+																<div class="col-md-8 col-xs-5"></div>	
+																<div class="col-md-4 col-xs-6" align="center" style="font-size:15; margin-top:7%; margin-left: 0%">	
+																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon" id="del">메뉴삭제</button>
+																<button style="margin-left:1%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon"> SNS글등록</button>
+=======
+									</table> 
 								</div>							<div  align="center" style="font-size:15; margin-top:8%; margin-left: 74%">	
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3" id="del">메뉴삭제</button>
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> SNS글등록</button>
+																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn basic-btn col-md-3" id="del">메뉴삭제</button>
+																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn basic-btn col-md-3"> SNS글등록</button>
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 																</div>  
+																</div>
 							</div>
 						</div>
 					</div>

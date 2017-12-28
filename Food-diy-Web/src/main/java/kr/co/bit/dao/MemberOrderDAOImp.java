@@ -1,12 +1,14 @@
 package kr.co.bit.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.bit.vo.MemberOrderVO;
+import kr.co.bit.vo.OrderVO;
 import kr.co.bit.vo.UserStamp;
 
 
@@ -19,20 +21,11 @@ public class MemberOrderDAOImp  implements MemberOrderDAO{
 	private String url = "kr.co.bit.member.dao.";
 	
 	// 최근 주문 내역 목록
-	public List<MemberOrderVO> selectAll(String id) {
+	public List<MemberOrderVO> selectFavoriteMenu(String id) {
 		
-		List<MemberOrderVO> allOrderList = session.selectList(url + "selectAllOrder", id);
+		List<MemberOrderVO> allFavoriteMenu = session.selectList(url + "selectAllOrder", id);
 		
-		for(int i=0; i<allOrderList.size(); i++) {
-//			System.out.println(allOrderList.get(i).getMenu());
-			String[] name = allOrderList.get(i).getMenu().split("\\*\\/");
-			
-			
-//			System.out.println("name " + i + " : " + name[1]);
-//			System.out.println(name[1].split("\\*")[0]);
-			allOrderList.get(i).setPic(name[1].split("\\*")[0]);
-		}
-		return allOrderList;
+		return allFavoriteMenu;
 	}
 	
 	public MemberOrderVO selectByNo(int no) {
@@ -61,6 +54,10 @@ public class MemberOrderDAOImp  implements MemberOrderDAO{
 		session.update(url+"updateCoupon", p);
 		
 	}
-
+	
+	@Override
+	public void addFavoriteMenu(Map<String, String> info) {
+		session.insert(url + "addMyMenu", info);
+	}
 	
 }
