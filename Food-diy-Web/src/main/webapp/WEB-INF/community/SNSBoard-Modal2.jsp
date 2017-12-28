@@ -16,7 +16,8 @@
 		</div> --%>
 		<input type ="hidden" value = "${loginVO.id }"/>
 			<span class="img-thumbnail">
-				<img alt="" class="img-responsive" src="../upload/SNS/${ snsVO.fileName }" style="height: 700px;"> <!--  DB 첨부 이미지 값 -->
+				<img alt="" class="img-responsive hidden-xs" src="../upload/SNS/${ snsVO.fileName }" style="height: 700px;"> <!--  DB 첨부 이미지 값 -->
+				<img alt="" class="img-responsive hidden-lg hidden-md hidden-sm" src="../upload/SNS/${ snsVO.fileName }"> <!--  DB 첨부 이미지 값 -->
 			</span>
 				<%-- <!-- <a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a> -->
 				
