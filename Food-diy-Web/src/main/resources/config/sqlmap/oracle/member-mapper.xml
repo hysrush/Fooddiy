@@ -37,7 +37,7 @@
 	
 	<select id="selectAllOrder" resultMap="Map_MemberOrderVO" parameterType="java.lang.String">
 		<include refid="selectAll"/>
-		where user_id = #{id}
+		where user_id = #{id} order by order_no desc
   	</select>
 	
 	<select id="selectByNo"  parameterType="int" resultMap="Map_MemberOrderVO">
@@ -85,6 +85,22 @@
 		<result column="cart_sauce" property="sauce"/>
 		<result column="reg_at" property="regDate"/>
 	</resultMap>
+	
+	<resultMap type ="orderVO" id="Map_OrderVO">
+  		<result column = "order_no" property ="no"/>
+  		<result column = "sto_name" property ="storeName"/>
+  		<result column = "user_id" property ="id"/>
+  		<result column = "order_orderPrice" property ="order_price"/>
+  		<result column = "order_finalPrice" property ="final_price"/>
+  		<result column = "order_menu" property ="menu"/>
+  		<result column = "order_eat_type" property ="eatType"/>
+  		<result column = "order_payment" property ="payment"/>
+  		<result column = "order_status" property ="orderStatus"/>
+  		<result column = "reg_at" property ="regDate"/>
+  		<result column="order_num" property="num"/>
+  	</resultMap>
+	
+	
 	
 	<!-- sql문 적는 공간 -->
 	
@@ -173,16 +189,17 @@
 		where user_id = #{ id }
 	</select>
 	
-	<!-- myMenu 저장-->
-	<insert id="setmyMenu" parameterType="cartVO">
-		insert into t_mymenu(CART_NO, CART_ID, CART_NAME, CART_PRICE, CART_SIZE, CART_PIC, CART_BREAD, CART_CHEESE, CART_TOPPING, CART_VEGETABLE, CART_SAUCE)
-		values(seq_t_mymenu_no.nextval, #{id}, #{name}, #{price}, #{size}, #{pic}, #{bread}, #{cheese}, #{topping}, #{vegetable}, #{sauce})
+	<!-- myMenu 추가-->
+	<insert id="addMyMenu"  parameterType="java.util.Map">
+		insert into t_mymenu(mymenu_id, mymenu_ORDER_NO ) values(#{id}, #{no}) 
 	</insert>
 	
 	<!-- mymenu 목록 -->
-	<select id="getmyMenu" parameterType="java.lang.String" resultMap="Map_cartVO">
-		select CART_no, CART_ID, CART_NAME, CART_PRICE, CART_SIZE, CART_PIC, CART_QTY, CART_BREAD, CART_CHEESE, CART_TOPPING, CART_VEGETABLE, CART_SAUCE from t_mymenu
-		where cart_id = #{id}
+	<select id="selectMyMenu" parameterType="java.lang.String" resultMap="Map_MemberOrderVO">
+		<include refid="selectAll"/>
+		
+		where user_id = #{id} and order_no in ( select mymenu_order_no from t_mymenu where mymenu_id = #{id}) 
+		 order by order_no desc
 	</select>
 	
 	<select id="getmyMenuDetail" parameterType="java.lang.Integer" resultMap="Map_cartVO">

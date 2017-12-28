@@ -78,7 +78,7 @@ public class SnsController {
 		public String writeForm(String id, HttpServletRequest request, HttpServletResponse response, Model model) {
 
 			SnsBoardVO snsVO = new SnsBoardVO();
-			List<MemberOrderVO> todayOrderList = service.selectAll(id);	
+			List<MemberOrderVO> todayOrderList = service.selectFavoriteMenu(id);	
 			
 			for(int i = 0 ; i < todayOrderList.size(); ++i) {
 
@@ -180,7 +180,7 @@ public class SnsController {
 
 			
 			SnsBoardVO snsVO = snsService.selectOne(no);
-			List<MemberOrderVO> todayOrderList = service.selectAll(id);	
+			List<MemberOrderVO> todayOrderList = service.selectFavoriteMenu(id);	
 			
 			for(int i = 0 ; i < todayOrderList.size(); ++i) {
 
