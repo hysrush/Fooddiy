@@ -3741,14 +3741,22 @@ h2.word-rotator-title .word-rotate {
 		padding: 25px 0;
 	}
 	.cart-table tbody tr td {
-		display: block;
+		display: inline-block;
 		padding: 0 0 15px;
 		width: 100%;
 		border-width: 0;
 		text-align: center !important;
 	}
+	
+	.cart-table tbody tr td.info , .cart-table tbody tr td.ingredients, .cart-table tbody tr td.qty-total, .cart-table tbody tr td.price-total {
+		display: inline-block;
+		padding: 0 0 15px;
+		width: 49%;
+		border-width: 0;
+		text-align: center !important;
+	}
 	.cart-table tbody tr td:last-child {
-		padding-bottom: 0;
+		padding-bottom: 15px;
 	}
 	.cart-table tbody tr td .qty-holder {
 		width: 90px;
