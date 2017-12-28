@@ -50,14 +50,19 @@
 				</div>			
 			</div>	
 				 <div class="portfolio-info">
-					<hr style = "border-top: 1px solid #2f2c2c;width:465px"/>
+					<hr style = "border-top: 1px solid #2f2c2c;width:465px" class= "hidden-sm"/>
 				<div class="row">
 						<div class="col-md-3" align="left">
 						<button type="button"  onclick="like('${snsVO.no}')" class="btn btn-borders btn-success mr-xs mb-sm" style="width:70px"> 
 							Like! &nbsp;<i class="fa fa-thumbs-up"></i>
 						</button>
 						</div>
-					<div class="col-md-9 center">
+						<div class="hidden-md hidden-lg hidden-sm" align="center">
+						<button type="button"  onclick="like('${snsVO.no}')" class="btn btn-borders btn-success mr-xs mb-sm" style="width:70px"> 
+							Like! &nbsp;<i class="fa fa-thumbs-up"></i>
+						</button>
+						</div>
+					<div class="col-md-9 center" style= "padding-left:100px;">
 						 <ul>
 							<li>
 								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart" id="heart">${snsVO.like}</i></a>  <!--  좋아요 숫자  -->
@@ -93,13 +98,13 @@
         	</div>
 		
 		
-			<div class="row">
+			<div class="row" style="margin-top:50px;">
 				<div class="col-md-12">
 	
         						
 				 <div class="comment">
         							
-        					<div id="listReply" >
+        					<div id="listReply">
         					<c:forEach items="${ repList }" var="repList">
 							 	<div class="testimonial testimonial-style-3">
 									
@@ -224,9 +229,7 @@
                  	   	contents +=	'</div>';
                  	    contents +='</div>';
                  	    
-                 	    
-                 	
-						
+                 	  
                  	
                  	   //contents += '<span>안녕하세요</span>';
                  	
