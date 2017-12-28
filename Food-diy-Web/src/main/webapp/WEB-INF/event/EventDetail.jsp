@@ -131,7 +131,7 @@
 											</tr>
 											<tr>
 												<td>
-													<img src="../upload/${ eventVO.imgFileName }" >
+													<img src="../upload/${ eventVO.imgFileName }" class="img-responsive" >
 												</td>
 												
 											</tr>
