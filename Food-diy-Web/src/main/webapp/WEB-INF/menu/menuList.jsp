@@ -127,9 +127,7 @@ li { cursor: pointer; }
                <div class="col-md-3">
                   <aside class="sidebar hidden-sm hidden-xs" data-plugin-sticky>
                      <h4 class="heading-primary">MENU</h4>
-                     <ul class="nav nav-list sort-source">
-                        <!-- data-option-key="filter"
-                        data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"> -->
+                     <ul class="nav nav-list sort-source">                        
                         <li class="active" ><a onclick="btnClick('E')">전체메뉴</a></li>
                         <li><a onclick="btnClick('R')">추천메뉴</a></li>
                         <li><a onclick="btnClick('P')">프리미엄</a></li>
@@ -172,18 +170,11 @@ li { cursor: pointer; }
                <div class="col-md-9">
                
                   <div id="slidemenu">
-                     <!-- <ul class="nav nav-pills sort-source" data-sort-id="portfolio"
-                        data-option-key="filter"
-                       ></ul> -->
-                        
                      <div class="row">
-                        <!-- <div class="sort-destination-loader sort-destination-loader-showing"> -->
-                           <ul class="portfolio-list sort-destination">
-                           
-                              <c:forEach items="${ menuList }" var="menu">
-                              
+                     	<ul class="portfolio-list sort-destination">
+                        	<c:forEach items="${ menuList }" var="menu">                              
 
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
+                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item">
                                        <div class="portfolio-item">
                                           <span class="thumb-info thumb-info-lighten">
                                           <a onclick="detail('${ menu.no }','${ menu.name }')">
@@ -199,178 +190,18 @@ li { cursor: pointer; }
                                           </span>
                                        </div>
                                     </li>
-
-                                 <%-- <c:if test='${ type eq "R" and menu.type eq "R" }'>
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item recommend">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test='${ type eq "P" and menu.type eq "P" }'>
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item premium">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test='${ type eq "B" and menu.type eq "B" }'>
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item best">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test='${ type eq "C" and menu.type eq "C" }'>
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item classic">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test="${ type eq 'M' and menu.type eq 'M' }">
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item breakfast">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test="${ type eq 'S' and menu.type eq 'S' }">
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item salad">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test="${ type eq 'N' and menu.type eq 'N' }">
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item addition">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if>
-                                 <c:if test="${ type eq 'D' and menu.type eq 'D' }">
-
-                                    <li class="col-md-4 col-sm-6 col-xs-6 isotope-item beverage">
-                                       <div class="portfolio-item">
-                                          <span class="thumb-info thumb-info-lighten">
-                                          <a onclick="detail('${ menu.no }','${ menu.name }')">
-                                          <span class="thumb-info-wrapper">
-                                             <img src="${ pageContext.request.contextPath }/upload/menu/${ menu.imgFileName }"
-                                             class="img-responsive" alt="" style="margin-top: 65px; margin-bottom: 65px">
-                                             <span class="thumb-info-title">
-                                                <span class="thumb-info-inner">${ menu.name }</span>
-                                                <span class="thumb-info-type">${ menu.price }원</span>
-                                             </span>
-                                          </span>
-                                          </a>
-                                          </span>
-                                       </div>
-                                    </li>
-
-                                 </c:if> --%>
+                                 
                               </c:forEach>
 
                            </ul>
                         </div>
                      </div>
                   </div>
+                  
                </div>
             </div>
          </div>
       </div>
-   </div>
 
    <div class="container">
 
