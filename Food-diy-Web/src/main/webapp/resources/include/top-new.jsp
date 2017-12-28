@@ -303,7 +303,9 @@
 		//값 입력시 콤마찍기
 		function inputNumberFormat(obj) {
 		    obj.value = comma(uncomma(obj.value));
-		}	
+		}		
+		
+		
 
 	</script>
 

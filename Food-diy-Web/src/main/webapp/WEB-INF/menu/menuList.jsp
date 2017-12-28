@@ -67,14 +67,20 @@
 	          inner_scrolling : false
 	       });
 	   }
+	   
+	   /* //side active
+	   if() */
+	   
+	   
+	   
+	   
    });
 
    function detail(menuNo, menuName) {	   
 	   //공백, 특수문자 넘기기 위해서 인코딩
 	   var mn = encodeURIComponent(menuName);
        location.href = '${ pageContext.request.contextPath}/menu/menuDetail.do?no=' + menuNo + '&name=' + mn;
-   }
-   
+   }   
    
    // 메뉴 타입별 파라미터 같이 보냄
    function btnClick(type) {
@@ -125,7 +131,8 @@ li { cursor: pointer; }
          	<div class="row">
 
                <div class="col-md-3">
-                  <aside class="sidebar hidden-sm hidden-xs" data-plugin-sticky>
+                  <aside class="sidebar hidden-sm hidden-xs" data-plugin-sticky
+                  	data-plugin-options="{ 'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 150} }">
                      <h4 class="heading-primary">MENU</h4>
                      <ul class="nav nav-list sort-source">                        
                         <li class="active" ><a onclick="btnClick('E')">전체메뉴</a></li>
@@ -142,30 +149,21 @@ li { cursor: pointer; }
                </div>
 
                <!-- 모바일 크기에서 보이는 슬라이드 메뉴 -->
-               <%-- <aside class="sidebar hidden-md hidden-lg" id="lnb">
+               <aside class="sidebar hidden-md hidden-lg" id="lnb">
                   <nav>
                      <ul>
-                        <li class="active"><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do">전체메뉴</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#recommend">추천메뉴</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#premium">프리미엄</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#best">베스트</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#classic">클래식</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#breakfast">아침식사</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#salad">샐러드</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#addition">추가메뉴</a></li>
-                        <li><a
-                           href="${ pageContext.request.contextPath }/menu/menuAll.do#beverage">음료</a></li>
+                        <li class="active"><a onclick="btnClick('E')">전체메뉴</a></li>
+                        <li><a onclick="btnClick('R')">추천메뉴</a></li>
+                        <li><a onclick="btnClick('P')">프리미엄</a></li>
+                        <li><a onclick="btnClick('B')">베스트</a></li>
+                        <li><a onclick="btnClick('C')">클래식</a></li>
+                        <li><a onclick="btnClick('M')">아침식사</a></li>
+                        <li><a onclick="btnClick('S')">샐러드</a></li>
+                        <li><a onclick="btnClick('N')">추가메뉴</a></li>
+                        <li><a onclick="btnClick('D')">음료</a></li>
                      </ul>
                   </nav>
-               </aside> --%>
+               </aside>
 
                <div class="col-md-9">
                
