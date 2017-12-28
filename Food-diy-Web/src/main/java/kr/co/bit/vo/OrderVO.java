@@ -1,5 +1,7 @@
 package kr.co.bit.vo;
 
+import java.util.List;
+
 public class OrderVO {
 
 	private int no;
