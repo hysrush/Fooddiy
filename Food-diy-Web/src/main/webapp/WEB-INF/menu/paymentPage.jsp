@@ -187,24 +187,24 @@
 			
 																	<td class="product-action-td remove_product" style="display: none;"><a title="Remove product" class="btn-remove"><i class="fa fa-times"></i></a></td>
 																	<td class="product-image-td" style="display: none;"><a href="#" title="Product Name"> <img class="pic" src="${ cartVO.pic }" alt="Product Name"></a></td>
-																	<td class="product-name-td">
+																	<td class="product-name-td info">
 																		<h2 class="product-name">
-																			<a title="Product Name">
+																			<a title="Product Nameu ">
 																				<div class="menu">${ cartVO.name }</div>
 																				<div class="size">${ cartVO.size }</div>
 																				<div class="commaN price">${ cartVO.price }원</div>
 																			</a>
 																		</h2>
 																	</td>
-																	<td>
+																	<td class="ingredients">
 																		<div class="bread">${ cartVO.bread }</div>
 																		<div class="cheese">${ cartVO.cheese }</div>
 																		<div class="topping">${ cartVO.topping }</div>
 																		<div class="vegetable">${ cartVO.vegetable }</div>
 																		<div class="sauce">${ cartVO.sauce }</div>
 																		<div class="requirement">${ cartVO.requirement }</div>
-																	<td>
-																		<div class="qty-total">${ cartVO.qty }개</div>
+																	<td class="qty-total">
+																		<div class="total-qty">${ cartVO.qty }개</div>
 																	</td>
 																	<td class="price-total"><span class="text-primary commaN total-price" style="color: black">${ cartVO.qty*cartVO.total_price }원</span></td>
 																</tr>
@@ -414,7 +414,7 @@
 			   	order += oneCart.find('.requirement').text() + "*";
 			   	order += oneCart.find('.pic').attr('src') + "*";
 			   	order += oneCart.find('.size').text() + "*";
-			   	order += uncomma(oneCart.find('.qty-total').text()) + "*";
+			   	order += uncomma(oneCart.find('.total-qty').text()) + "*";
 			   	order += uncomma(oneCart.find('.price').text())  + "*";
 			   	order += uncomma(oneCart.find('.price-total').text()) ;
 				   	

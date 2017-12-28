@@ -16,7 +16,8 @@
 		</div> --%>
 		<input type ="hidden" value = "${loginVO.id }"/>
 			<span class="img-thumbnail">
-				<img alt="" class="img-responsive" src="../upload/SNS/${ snsVO.fileName }" style="height: 700px;"> <!--  DB 첨부 이미지 값 -->
+				<img alt="" class="img-responsive hidden-xs" src="../upload/SNS/${ snsVO.fileName }" style="height: 700px;"> <!--  DB 첨부 이미지 값 -->
+				<img alt="" class="img-responsive hidden-lg hidden-md hidden-sm" src="../upload/SNS/${ snsVO.fileName }"> <!--  DB 첨부 이미지 값 -->
 			</span>
 				<%-- <!-- <a href="#" class="btn btn-primary btn-icon"><i class="fa fa-external-link"></i>장바구니로!</a> -->
 				
@@ -40,24 +41,29 @@
 		</div> 
 			<div class="row">
 				<div class="col-md-12">
-					<div style = "width:400px;height:120px">${snsVO.content } </div>
+					<div style = "height:120px">${snsVO.content } </div>
 				</div>			
 			</div>	
 			
 			<div class="row">
 				<div class="col-md-12">
-					<div style = "width:400px;height:70px"><strong># ${snsVO.name } #${snsVO.bread } #${snsVO.cheese } #${snsVO.topping }<br/> #${snsVO.vegetable } #${snsVO.sauce }</strong> </div>
+					<div style = "height:70px"><strong># ${snsVO.name } #${snsVO.bread } #${snsVO.cheese } #${snsVO.topping }<br/> #${snsVO.vegetable } #${snsVO.sauce }</strong> </div>
 				</div>			
 			</div>	
 				 <div class="portfolio-info">
-					<hr style = "border-top: 1px solid #2f2c2c;width:465px"/>
+					<hr style = "border-top: 1px solid #2f2c2c;width:465px" class= "hidden-sm"/>
 				<div class="row">
 						<div class="col-md-3" align="left">
 						<button type="button"  onclick="like('${snsVO.no}')" class="btn btn-borders btn-success mr-xs mb-sm" style="width:70px"> 
 							Like! &nbsp;<i class="fa fa-thumbs-up"></i>
 						</button>
 						</div>
-					<div class="col-md-9 center">
+						<div class="hidden-md hidden-lg hidden-sm" align="center">
+						<button type="button"  onclick="like('${snsVO.no}')" class="btn btn-borders btn-success mr-xs mb-sm" style="width:70px"> 
+							Like! &nbsp;<i class="fa fa-thumbs-up"></i>
+						</button>
+						</div>
+					<div class="col-md-9 center" style= "padding-left:100px;">
 						 <ul>
 							<li>
 								<a href="#" data-tooltip data-original-title="Like"><i class="fa fa-heart" id="heart">${snsVO.like}</i></a>  <!--  좋아요 숫자  -->
@@ -93,13 +99,13 @@
         	</div>
 		
 		
-			<div class="row">
+			<div class="row" style="margin-top:50px;">
 				<div class="col-md-12">
 	
         						
 				 <div class="comment">
         							
-        					<div id="listReply" >
+        					<div id="listReply">
         					<c:forEach items="${ repList }" var="repList">
 							 	<div class="testimonial testimonial-style-3">
 									
@@ -185,7 +191,7 @@
 					data : {"no" : no},
 					success : function(responseData){
 						var data = JSON.parse(responseData);
-							swal("좋아요 " + " + "+ data.like);
+							swal("좋아요를 누르셨습니다!");
 							
 							var contents = '';
 							contents +=  data.like;
@@ -213,21 +219,19 @@
                  swal("댓글이 등록되었습니다.");
                   
           		       var contents = '';
-          		       
+          		    
           		        contents += '<div class="testimonial testimonial-style-3">';
-          		       contents += '<div class="testimonial-author">';	
-                 	   contents += 	'<div class ="testimonial-author-thumbnail">';
-                 	   contents +=		'<img src = "../upload/"\''+data.repList[0].pic+'\'" class ="img-responsive img-circle" alt="">';
-                 	   contents +=	'<div>';
-                 	   contents +=		'<p><strong>'+ data.repList[0].id+'</storong></p>';
-                 	   contents +=	'<span class="pull-right">';
-                 	   contents +=		'<span><a href="#"><i class="fa fa-reply"><i>Update</a></span>';
-                 	   contents +=	'</span>';
-                 	   contents +=		'<p><strong>' + data.repList[0].content + '</strong></p>';
-                 	   contents +=		'<span class="date pull-right">' +data.repList[0].regDate+'</span>';
-                 	   contents +=	'</div>';
-                 	   contents +='</div>';
-                 		 
+          		       	contents += '<div class="testimonial-author" >';	
+                 	 	contents += 	'<div class ="testimonial-author-thumbnail">';
+                 	  	contents +=			'<img src = "../upload/'+ data.repList[0].pic +'" class ="img-responsive img-circle" alt="" style= "width:45px;height:45px;">';
+                 	 	contents +=	    '</div>';
+                 	   	contents +=		'<p><strong>'+ data.repList[0].id+'</strong></p>';
+                 	   	contents +=		'<p><strong>' + data.repList[0].content + '</strong></p>';
+                 	   	contents +=	'</div>';
+                 	    contents +='</div>';
+                 	    
+                 	  
+                 	
                  	   //contents += '<span>안녕하세요</span>';
                  	
                  	/*   for(var i = 0 ; i<data.repList.length; i++){  

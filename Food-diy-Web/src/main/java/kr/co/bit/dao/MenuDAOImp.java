@@ -22,6 +22,13 @@ public class MenuDAOImp implements MenuDAO {
 		List<MenuVO> listAll = sqlSession.selectList(url + "selectAllMenu");
 		return listAll;
 	}
+	
+	@Override
+	public List<MenuVO> selectType(String type) {
+		List<MenuVO> listType = sqlSession.selectList(url + "selectTypeMenu", type);
+		return listType;
+	}	
+	
 	//번호별 메뉴보기(상세보기)
 	@Override
 	public MenuVO selectOne(int no) {

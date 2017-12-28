@@ -119,22 +119,62 @@
 	
 	<!-- 로그인 체크하는 인터셉터 -->
 	<mvc:interceptors>
+		<!-- 주문(재료선택) -->
 		<mvc:interceptor>  
             <mvc:mapping path="/menu/select_ingredients.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
+        <!-- 주문(매장찾기) -->
         <mvc:interceptor>  
             <mvc:mapping path="/store/findStore.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
+        <!-- 장바구니 -->
         <mvc:interceptor>  
             <mvc:mapping path="/menu/cart.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
+        <!-- 1:1문의 -->
         <mvc:interceptor>  
             <mvc:mapping path="/community/claim/claimWrite.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
+        <!-- sns페이지 -->
+        <mvc:interceptor>  
+            <mvc:mapping path="/community/snsPage.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>
+        <!-- sns등록 -->
+        <mvc:interceptor>  
+            <mvc:mapping path="/community/snsWrite.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>
+        <!-- sns상세페이지 -->
+        <mvc:interceptor>  
+            <mvc:mapping path="/community/snsDetail.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>        
+        <!-- 회원정보 -->
+        <mvc:interceptor>  
+            <mvc:mapping path="/member/memberDetail.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>
+        <!-- 주문내역 -->
+        <mvc:interceptor>  
+            <mvc:mapping path="/member/Latest-Order.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>
+        <!-- 나만의 메뉴 -->
+        <mvc:interceptor>  
+            <mvc:mapping path="/member/myMenu.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>
+        <!-- 나의 문의사항 -->
+        <mvc:interceptor>  
+            <mvc:mapping path="/member/myQnA.do" />
+            <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
+        </mvc:interceptor>
+        
     </mvc:interceptors>
 	
 </beans>
