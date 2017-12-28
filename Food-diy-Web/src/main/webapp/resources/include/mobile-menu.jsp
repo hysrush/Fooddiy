@@ -25,6 +25,13 @@
 					<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 				</ul>
 			</li>
+			<li><span class="mmenu-toggle"></span> <a href="#">Store
+					</a>
+				<ul>
+					<li><a href="${ pageContext.request.contextPath }/store/findStoreU.do">매장찾기</a></li>
+					
+				</ul>
+			</li>
 			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath }/community/qna/qna.do">Community
 					<span class="tip tip-hot">Hot!</span></a>
 				<ul>
