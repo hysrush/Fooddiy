@@ -61,7 +61,7 @@
 	</head>
 	<body>
 		<div class="body">
-			<header id="header"
+		<%-- 	<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
 			</header>
@@ -105,6 +105,57 @@
 								</ul>
 							</aside>
 						</div>
+						
+						 --%>
+
+		<header id="header"
+			data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
+			<jsp:include page="/resources/include/top-new.jsp" />
+		</header>
+		<!-- Mobile menu 부분 -->
+		<jsp:include page="/resources/include/mobile-menu.jsp" />
+		<div role="main" class="main">
+
+			<section class="page-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="breadcrumb">
+								<li><a
+									href="${ pageContext.request.contextPath}/event/eventPage.do">Event</a></li>
+								<li class="active">Event</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h1>Event게시판</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 hidden-xs hidden-sm">
+						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+							<h4 class="heading-primary"><strong>이벤트 </strong></h4>
+
+							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+									<li class="active"><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 이벤트</a></li>
+									<li>
+										<a href="${ pageContext.request.contextPath}/event/storeEventPage.do">점포별 이벤트</a>
+									</li>
+							</ul>
+						</aside>
+					</div>
+						
+						
+						
+		
+						
 						<div class="col-md-9">
 							<!-- START -->
 							<div class="row">
@@ -135,6 +186,10 @@
 																</div>
 																<div class="col-md-6" align="left"> 
 																	<h4><strong>${ eventVO.content }</strong></h4>
+																	<br/>
+																		
+																	<span><i class="fa fa-mobile"></i>모바일 &nbsp;&nbsp; <i class="fa fa-desktop"></i> 인터넷 &nbsp;&nbsp;<i class="fa fa-shopping-basket"></i>포장
+																		</span>
 																	<br/>
 																	<br/>
 																	<span> ${ eventVO.startDate } &nbsp; ~  ${ eventVO.endDate }</span>														

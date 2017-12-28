@@ -113,7 +113,7 @@
 											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 										</ul>
 									</li>
-									<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/claim/claimWriteForm.do">1:1 문의</a></li>
 									<li><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
 							</ul>
 						</aside>

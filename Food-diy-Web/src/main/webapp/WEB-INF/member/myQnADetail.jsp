@@ -91,13 +91,23 @@
 		border-left: 2px solid #7aa93c !important;
 		border-right: 2px solid #7aa93c !important;
 	}
-	img {
-		padding: 10px;
-		max-width: 200px;
-		max-height: 200px;
-	}
 	#totalImg {
 		max-width: 700px;
+	}
+	#typeLabel {
+		font-size: 15px;
+	}
+	.fileImg {
+		padding: 10px;
+		max-width: 150px;
+		max-height: 150px;
+	}
+	.plusIcon {
+		position:absolute;
+		margin: 30px;
+		top:15px;
+		left:30px;
+		z-index:100;
 	}
 </style>
 </head>
@@ -166,11 +176,7 @@
 										<tr>
 											<td> 
 												<!-- 타입 -->
-												<c:if test="${ claimVO.type eq 'I'}">문의</c:if>
-												<c:if test="${ claimVO.type eq 'P'}">칭찬</c:if>
-												<c:if test="${ claimVO.type eq 'S'}">제안</c:if>
-												<c:if test="${ claimVO.type eq 'C'}">불만</c:if>
-												<c:if test="${ claimVO.type eq 'X'}">기타</c:if>
+												<span class="label label-primary" id="typeLabel">${ claimVO.type }</span>
 											</td>
 											<td id="title">
 												<!-- 제목 -->
@@ -224,21 +230,38 @@
 										</tr>
 										<!-- 첨부파일 -->
 										<c:if test="${ not empty fileList }">
-											<tr>
-												<th width="15%">첨부파일</th>
-												<td colspan="3" id="totalImg">
-													<c:forEach items="${ fileList }" var="file">
-														<div class="col-md-4">
-															<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
-															<div class="text-left">
-																<i class="fa fa-file"></i>&nbsp;
-																<a onclick="action('F', ${ file.no })">
-																	<span class="text-muted fileName">${ file.fileOriName }</span>
-																</a>
-																	<span class="text-muted"> (${ file.fileSize }KB)</span>
-															</div>
-														</div>
-													</c:forEach>
+											<tr id="totalImg">
+												<th colspan="4" style="background-color: #eee">첨부파일</th>
+											</tr>
+											<tr id="totalImg">
+												<td colspan="4">
+													<table class="table table-bordered text-center">
+														<tr>
+															<c:forEach items="${ fileList }" var="file">
+															<th>
+																<div class="col-md-12 text-left">
+																	<i class="fa fa-file"></i>&nbsp;
+																	<a onclick="action('F', ${ file.no })">
+																		<span class="text-muted fileName">${ file.fileOriName }</span>
+																	</a>
+																		<span class="text-muted"> (${ file.fileSize }KB)</span>
+																</div>
+															</th>
+															</c:forEach>
+														</tr>
+														<tr>
+															<c:forEach items="${ fileList }" var="file">
+															<td>
+																<div class="col-md-12">
+																	<a href="${ pageContext.request.contextPath}/upload/${ file.filePath }" target="_blank">
+																		<img class="text-center fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
+																		<img class="plusIcon" src="${ pageContext.request.contextPath}/resources/img/icons/round-add-button.png">
+																	</a>
+																</div>
+															</td>
+															</c:forEach>
+														</tr>
+													</table>
 												</td>
 											</tr>
 										</c:if>
@@ -308,12 +331,44 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		// Claim 타입별 라벨 클래스명 & 텍스트 변경
+		if($('#typeLabel').text() == 'I'){
+			$('#typeLabel').attr("class","label label-primary");
+			$('#typeLabel').html("문의");
+		}
+		else if($('#typeLabel').text() == 'P'){
+			$('#typeLabel').attr("class","label label-warning");
+			$('#typeLabel').html("칭찬");
+		}
+		else if($('#typeLabel').text() == 'S'){
+			$('#typeLabel').attr("class","label label-tertiary");
+			$('#typeLabel').html("제안");
+		}
+		else if($('#typeLabel').text() == 'C'){
+			$('#typeLabel').attr("class","label label-danger");
+			$('#typeLabel').html("불만");
+		}
+		else if($('#typeLabel').text() == 'X'){
+			$('#typeLabel').attr("class","label label-default");
+			$('#typeLabel').html("기타");
+		}
+		
 		// 파일명 호버 효과
 		$(".fileName").hover( function () { 
 			$(this).css('text-decoration', 'underline');
 		}, function () { 
 			$(this).css('text-decoration', 'none');
 		} );
+		
+		// 이미지 호버 효과
+		$('.plusIcon').hide();
+		$(".fileImg").each(function () {
+			$(this).hover( function () { 
+				$(this).siblings('.plusIcon').show();
+			}, function () { 
+				$(this).siblings('.plusIcon').hide();
+			} );
+		});
 	    
 	});
 	

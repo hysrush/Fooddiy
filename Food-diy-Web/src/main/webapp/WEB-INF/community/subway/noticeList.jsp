@@ -128,7 +128,7 @@
 										<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 									</ul>
 								</li>
-								<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+								<li><a href="${ pageContext.request.contextPath }/community/claim/claimWriteForm.do">1:1 문의</a></li>
 								<li><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
 							</ul>
 						</aside>
@@ -148,7 +148,7 @@
 						</section>
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tabsNavigationSimple2" data-toggle="tab">보도자료</a></li>
+								<li class="active"><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
 							</ul>
 							<div>
 								<!-- 보도자료 -->
@@ -156,42 +156,27 @@
 									<div class="center">
 										<div class="col-md-12">
 											<!-- 필터 및 검색 -->
-											<!-- <div class="col-md-12">
-												<div class="col-md-3" style="float: right;">
-													<form action="">
-														<div class="input-group input-group-md">
-															<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
-															<span class="input-group-btn">
-																<button type="submit" class="btn btn-primary btn-md">
-																	<i class="fa fa-search"></i>
-																</button>
-															</span>
-														</div>
-													</form>
+											<form name="form1" method="post" action="${ pageContext.request.contextPath }/community/subway/notice.do">
+												<div class="col-md-3 input-group" style="float: right;">
+													<input name="keyword" value="${map.keyword}" type="text" aria-controls="DataTables_Table_0"
+															class="input-sm form-control" placeholder="검색어를 입력해주세요" >
+													<span class="input-group-btn">
+														<button type="submit" class="btn btn-sm btn-primary" id="searchBtn"><i class="fa fa-search"></i></button>
+													</span>
 												</div>
-												<div class="col-md-2" style="float: right;">
-													<select class="form-control">
-														<option value="title">제목</option>
-														<option value="content">내용</option>
-														<option value="title+content">제목+내용</option>
-													</select>
-												</div>
-											</div> -->
-											<div class="col-md-3 input-group" style="float: right;">
-												<input type="text" class="input-sm form-control" placeholder="검색어를 입력해주세요" aria-controls="DataTables_Table_0">
-												<span class="input-group-btn">
-													<button type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
-												</span>
-											</div>
-											<div class="filter">
-												<select class="form-control">
-													<option value="title">제목</option>
-													<option value="content">내용</option>
-													<option value="title+content">제목+내용</option>
-												</select>
-											</div>
+												<div class="filter">
+											        <select name="searchOption" class="form-control">
+											            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+											            <option value="notice_title" <c:out value="${map.searchOption == 'notice_title'?'selected':''}"/> >제목</option>
+											            <option value="notice_content" <c:out value="${map.searchOption == 'notice_content'?'selected':''}"/> >내용</option>
+											            <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+내용</option>
+											        </select>
+										        </div>
+										    </form>
 											<!-- 테이블 -->
 											<div class="table-responsive" style="width: 100%">
+												<!-- 레코드의 갯수를 출력 -->
+    											<%-- <span id="searchCnt">${map.count}개의 게시물이 있습니다.</span> --%>
 												<table class="footable table table-hover toggle-arrow-tiny dataTables-example" width="80%" data-page-size="100">
 													<thead>
 														<tr>
@@ -292,7 +277,7 @@
 			
 			// footable 시작
 			$('.footable').footable();
-		    
+			
 			// 데이터테이블 생성 & 옵션 변경
 			$('.footable').css("width","100%");
 			var table = $('.dataTables-example').DataTable({
@@ -357,7 +342,6 @@
 					$('#DataTables_Table_0_info').html(text.replace("*", "<br><strong>" + keyupWord + "</strong>와(과) 일치하는 검색결과입니다."));
 				} 
 			});
-			
 		});
 		
 	</script>		

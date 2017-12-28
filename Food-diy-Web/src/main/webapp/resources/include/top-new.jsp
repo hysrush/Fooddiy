@@ -303,7 +303,9 @@
 		//값 입력시 콤마찍기
 		function inputNumberFormat(obj) {
 		    obj.value = comma(uncomma(obj.value));
-		}	
+		}		
+		
+		
 
 	</script>
 
@@ -328,9 +330,9 @@
 											<div class="col-md-8">
 												<div class="row">
 													<div class="col-md-3">
-														<a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="cat-img">
+														<a href="${ pageContext.request.contextPath}/menu/menuList.do" class="cat-img">
 														<img src="${ pageContext.request.contextPath}/upload/top_img/all.png" alt="Category Name" style="margin-left: auto; margin-right: auto; display: block;"></a>
-														<a href="${ pageContext.request.contextPath}/menu/menuAll.do" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold; text-align: center;">&nbsp; 전체메뉴<br>ALL MENU</a>
+														<a href="${ pageContext.request.contextPath}/menu/menuList.do" class="dropdown-mega-sub-title" style="font-size: 10pt; font-weight: bold; text-align: center;">&nbsp; 전체메뉴<br>ALL MENU</a>
 													</div>
 													<div class="col-md-3">
 														<a href="${ pageContext.request.contextPath}/menu/menuAll.do#recommend" class="cat-img">

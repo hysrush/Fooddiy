@@ -1,6 +1,8 @@
 package kr.co.bit.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,26 @@ public class NoticeDAOImp implements NoticeDAO{
 	// <Notice DAO>
 	// Notice 전체보기
 	@Override
-	public List<NoticeBoardVO> selectAll() {
-		List<NoticeBoardVO> listAll = sqlSession.selectList(url + "selectAllNotice");
+	public List<NoticeBoardVO> selectAll(String type, String searchOption, String keyword) throws Exception {
+		// 검색옵션, 키워드 맵에 저장
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("type", type);
+	    map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+		List<NoticeBoardVO> listAll = sqlSession.selectList(url + "selectAllNotice", map);
 		return listAll;
 	}
-	// 보도자료 전체보기
+	// 게시글 레코드 갯수
+	@Override
+	public int searchCnt(String searchOption, String keyword) throws Exception {
+		// 검색옵션, 키워드 맵에 저장
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+	    int searchCnt = sqlSession.selectOne(url + "searchCnt", map);
+		return searchCnt;
+	}
+	// 타입별 전체보기
 	@Override
 	public List<NoticeBoardVO> selectType(String type) {
 		List<NoticeBoardVO> listType = sqlSession.selectList(url + "selectType", type);

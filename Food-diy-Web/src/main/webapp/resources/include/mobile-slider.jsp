@@ -14,11 +14,11 @@
 							</video><br/><br/>
 						</td>
 					</tr>
-					<tr>
-						<td align="center" colspan="2">
+					<tr style="background-color: #fdcb04">
+						<td align="center" colspan="2" style="padding: 2% ;">
 							<!-- <strong style="font-size: 20px; font-style: italic; color:#feca07;"> BEST </strong> -->
 							<a href="${ pageContext.request.contextPath }/community/snsPage.do">
-								<strong style="font-style: italic; font-size: 15px; color: #61bf99e0">&nbsp;What's BEST SNS</strong>
+								<strong style="font-style: italic; font-size: 15px;">&nbsp;What's BEST SNS</strong>
 							</a>
 							<strong style="font-size: 12px; text-align: right">
 								
@@ -27,11 +27,17 @@
 					</tr>
 					<tr>
 						<c:forEach items="${ sns }" var="s" begin="0" end="1">
-						<td><br/>
-							<table style="width: 100%">
+						<td>
+							<table style="width: 100%; table-layout:fixed">
 								<tr>
-									<th><strong style="font-weight: bolder; color:#333;">&nbsp;&nbsp;추천수 ${ s.like }</strong></th>
-									<th align="right"><strong style="font-weight: bolder; color:#333;">${ s.id }</strong></th>
+									<td align="left" width="30%" style="padding:2% 0">
+										<%-- <img width="30%" src="${pageContext.request.contextPath }/resources/img/AA.jpg"/> --%>
+										&nbsp;<i class="fa fa-thumbs-up" style="color: #f70000"></i>
+										<strong style="font-weight: bolder; color:#333;">${ s.like }</strong>
+									</td>
+									<td align="right"><i class="fa fa-user">
+										</i>&nbsp;<small style="font-weight: bolder; color:#333; font-size: 11px;">${ s.id }&nbsp;</small>
+									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
@@ -41,16 +47,16 @@
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2">
+									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%" title="${ s.title }">
 										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
 											<strong>${ s.title }</strong>
 										</a>
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2">
-										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<small>${ s.content }</small>
+									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%" title="${ s.content }">
+										<a style="href="${ pageContext.request.contextPath }/community/snsPage.do">
+											<nobr>${ s.content }</nobr>
 										</a>
 									</td>
 								</tr>
@@ -68,7 +74,7 @@
 					<tr>
 						<td>
 							<a href="${ pageContext.request.contextPath }/store/findStoreU.do">
-								<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
+								<img width="70%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 							</a>
 						</td>
 					</tr>

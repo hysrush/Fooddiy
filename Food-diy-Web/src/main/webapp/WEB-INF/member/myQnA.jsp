@@ -60,45 +60,16 @@
 		
 		
 <style type="text/css">
-#div01 {
-	width: 70px;
-	text-align: center;
-	border-width: 2px;
-	border-style: solid;
-}
+	#div01 {
+		width: 70px;
+		text-align: center;
+		border-width: 2px;
+		border-style: solid;
+	}
+	.label {
+		font-size: 12px;
+	}
 </style>
-		<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
-<script type="text/javascript">
-$(document).ready(function(){
-	//삭제
-	$("#del").click(function(){
-		
-		var no = [];
-		
-		$("input[name='cart']:checked").each(function() {
-			no.push($(this).val());
-	    });
-		
-		console.log(no);
-		
-		// controller로 배열 넘길 때 세팅 바꿔 줌
-		jQuery.ajaxSettings.traditional = true;
-	
-		$.ajax({
-			url : "${pageContext.request.contextPath}/member/myQnADel.do",
-			type : "post",
-			data : {
-				noList : no
-			},
-			success : function(data){
-				location.reload();
-			}
-		});
-		
-	});
-	});
-</script>
 </head>
 <body>
 	<div class="body">
@@ -155,9 +126,9 @@ $(document).ready(function(){
 											<tr style="font-size:15px; margin-top: 15%">
 												<th  data-hide="phone" data-sort-ignore="true"></th>
 												<th  data-hide="phone" data-sort-ignore="true">번호</th>
+												<th data-hide="phone" data-sort-ignore="true">유형</th>
 												<th data-hide="phone" data-sort-ignore="true">내용</th>
 												<th style="width: 70px" data-hide="phone" data-sort-ignore="true">등록일</th>
-												<th data-hide="phone" data-sort-ignore="true">조회수</th>
 												<th data-hide="phone" data-sort-ignore="true">답변여부</th>
 											</tr>
 										</thead>
@@ -166,12 +137,15 @@ $(document).ready(function(){
 										<c:when test="${ not empty claimList  }">
 										<c:forEach items="${ claimList  }" var="claim">
 
-											<tr class="cart-subtotal">
+											<tr class="claimList">
 													<td class="cartNo" style="display: none;">${ claim.no }</td>
 				                                    <td><input name="cart" type="checkbox" value="${ claim.no }"></td>
 													<td width="10%">
 														${ claim.no }
 													</td>	
+													<td class="col-md-2 convType" width="100px;">
+					                                    <span class="label label-primary">${ claim.type }</span>
+				                                    </td>								
 													<td class="col-md-3" >
 																<a class="amount" href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }">
 																<c:out value="${ claim.title }" /></a>
@@ -179,9 +153,6 @@ $(document).ready(function(){
 													
 													<td class="col-md-2" >
 																<span class="amount ">${ claim.regDate }</span>
-													</td>										
-													<td class="col-md-2" >
-																<span class="fa fa-eye">&nbsp;&nbsp;${ claim.viewCnt }</span>
 													</td>										
 													<td align="center">
 														<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3"> 접수완료 </button>
@@ -257,11 +228,68 @@ $(document).ready(function(){
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 
+<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+		
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		
+		// Claim 타입별 라벨 클래스명 & 텍스트 변경
+		for(var i = 0; i < $('.claimList').length; ++i) {    	
+			var claimType  = $('.claimList').eq(i).find('.label');
+			if(claimType.text() == 'I'){
+				claimType.attr("class","label label-primary");
+				claimType.html("문의");
+			}
+			else if(claimType.text() == 'P'){
+				claimType.attr("class","label label-warning");
+				claimType.html("칭찬");
+			}
+			else if(claimType.text() == 'S'){
+				claimType.attr("class","label label-tertiary");
+				claimType.html("제안");
+			}
+			else if(claimType.text() == 'C'){
+				claimType.attr("class","label label-danger");
+				claimType.html("불만");
+			}
+			else if(claimType.text() == 'X'){
+				claimType.attr("class","label label-default");
+				claimType.html("기타");
+			}
+		}
+		
+		
+		//삭제
+		$("#del").click(function(){
+			
+			var no = [];
+			
+			$("input[name='cart']:checked").each(function() {
+				no.push($(this).val());
+		    });
+			
+			console.log(no);
+			
+			// controller로 배열 넘길 때 세팅 바꿔 줌
+			jQuery.ajaxSettings.traditional = true;
+		
+			$.ajax({
+				url : "${pageContext.request.contextPath}/member/myQnADel.do",
+				type : "post",
+				data : {
+					noList : no
+				},
+				success : function(data){
+					location.reload();
+				}
+			});
+			
+		});
+		});
+</script>
 </body>
-
-
-
-
 
 
 </body>

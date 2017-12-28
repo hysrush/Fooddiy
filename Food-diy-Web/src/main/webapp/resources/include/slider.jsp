@@ -18,24 +18,26 @@
 							<tr>
 								<td>
 									<!-- 공지사항 -->
-									<table style="margin-top: 5%">
-										<tr style="border-bottom: 1px solid olive;">
-											<td style="width:100%">
+									<table style="margin-top: 5%; table-layout:fixed">
+										<tr style="background-color: #fdcb04">
+											<td style="width:100%; padding:3% 0">
 												<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/notice.do">
 													<strong style="font-style: italic; font-size: 15px;">&nbsp;What's New</strong>
 												</a>
 											</td>
-											<td>
-												<span style="display: inline-table; align: right; font-size: 11px;">
+											<td style="padding-right: 3%">
+												<span style="display: inline-table; align: right; font-size: 12px; font-weight: bolder;">
 													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/notice.do"> +more</a>
 												</span>
 											</td>
 										</tr>
 										<c:forEach items="${ notice }" var="n">
-										<tr style="border-bottom: 1px solid olive;">
-											<td colspan="2" style="width: 292px;">
+										<tr style="border-bottom: 1px solid #fdcb04;">
+											<td colspan="2" style="width: 292px; text-overflow: ellipsis; overflow: hidden">
 												<span style="font-size: 12px; text-overflow:ellipsis; overflow:hidden" class="heading-primary text-uppercase mb-md">
-													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">&nbsp;${ n.title }</a>
+													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">
+														<nobr>&nbsp;${ n.title }</nobr>
+													</a>
 												</span>
 											</td>
 										</tr>
@@ -49,7 +51,7 @@
 										<c:forEach items="${ event }" var="e">
 											<tr>
 												<td colspan="2">
-													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsDetail.do?no=${e.no}">
+													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${e.no}">
 														<img width="100%" src="${ pageContext.request.contextPath }/upload/${e.imgFileName}" />
 													</a>
 												</td>
@@ -67,7 +69,7 @@
 					</div>
 				</div>
 				<!--  슬라이드 -->
-				<div class="col-sm-6 main" st>
+				<div class="col-sm-6 main">
 					<table>
 						<tr>
 							<td>
@@ -118,42 +120,57 @@
 				</div>
 				<div class="col-sm-3 main">
 					<!-- 신메뉴  -->
-					<div class="col-sm-12 main">
+					<%-- <div class="col-sm-12 main">
 						<a style="text-decoration: none" href="${ pageContext.request.contextPath }/menu/menuAll.do#recommend">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/main_celeb.jpg" />
 						</a>
-					</div>
+					</div> --%>
 					<!-- SNS정보 -->
 					<div class="col-sm-12 main" >
-						<table style="width: 100%; margin-top: 2%">
-							<tr style="border-bottom: 1px solid olive;">
-								<td width="50%">
+						<table style="width: 100%; table-layout:fixed">
+							<tr style="/* border-bottom: 1px solid olive; */ background-color: #019847;">
+								<td width="50%" style="padding:3% 0">
 									<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do">
 										<strong style="font-style: italic; font-size: 15px;">&nbsp;What's BEST SNS</strong>
 									</a>
 								</td>
-								<td colspan="2" align="right">
-									<span style="display: inline-table; align-content : center; font-size: 11px;">
-										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do"> +more</a>
+								<td colspan="2" align="right" style="padding-right: 2%">
+									<span style="display: inline-table; align-content : center; font-size: 12px; font-weight: bolder;">
+										<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+											<span> +more </span>
+										</a>
 									</span>
 								</td>
 							</tr>
-							<c:forEach items="${ sns }" var="s" end="1">
-								<tr style="border-bottom: 1px solid olive;">
-									<td></td>
-									<td align="left"><strong style="font-size: 12px; margin-left: 5%">${ s.id }</strong></td>
-									<td align="right"><strong style="font-size: 12px; padding-top: 3%; padding-bottom: 3%">추천수 ${ s.like }</strong></td>
+							<c:forEach items="${ sns }" var="s" end="2">
+								<tr style="border-bottom: 1px solid #019847;">
+									<td colspan="3" align="right" style="padding: 2% 0">
+										<i class="fa fa-user"></i>&nbsp;<strong style="font-size: 12px; font-weight: bolder;">${ s.id }&nbsp;</strong>
+										<strong style="font-size: 12px;">
+											<%-- <img width="8%" src="${pageContext.request.contextPath }/resources/img/AA.jpg"/> --%>
+											&nbsp;<i class="fa fa-thumbs-up" style="color: #f70000;"></i>&nbsp;${ s.like }
+										</strong>
+									</td>
+								<!-- 	<td align="right">
+										
+									</td> -->
 								</tr>
-								<tr style="border-bottom: 1px solid olive;">
-									<td>
-										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
+								<tr  style="border-bottom: 1px solid #019847;">
+									<td rowspan="2">
+										<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="text-decoration:none">
 											<img style="width:100%; height: 175px;" src="../upload/${ s.fileName }" alt="Loading...">
 										</a>
 									</td>
-									<td align="center" colspan="2">
+									<td align="center" colspan="2" style="text-overflow: ellipsis; overflow: hidden;" title="${ s.title }">
+										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+											<nobr><strong style="font-size: 12px;">${ s.title }</strong></nobr>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td align="center" colspan="2" style="text-overflow: ellipsis; overflow: hidden;" title="${ s.content }">
 										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<strong> ${ s.title }</strong><br/>
-											<small>${ s.content }</small>
+											<nobr><small style="font-size: 11px; padding: 0 1%;">${ s.content }</small></nobr>
 										</a>
 									</td>
 								</tr>
@@ -161,7 +178,7 @@
 						</table>
 					</div>
 					<!-- 매장 찾기 -->
-					<div class="col-sm-12" style="margin-top: 2%">
+					<div class="col-sm-12" style="margin-top: 2%"><br/>
 						<a href="${ pageContext.request.contextPath }/store/findStoreU.do">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 						</a>

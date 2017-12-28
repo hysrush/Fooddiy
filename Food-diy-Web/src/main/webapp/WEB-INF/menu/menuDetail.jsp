@@ -155,15 +155,52 @@
 		});
 		
 		
-		
+		// 아침식사 주문 시간
+		var tt = new Date();
+		var hour = tt.getHours();
+		$('#bft').hide();
+		if(${ menuDetailVO.type == 'M' }){
+			if(hour < 8 || hour >= 11){
+				$('#order').attr("disabled", "disabled");
+				$('#bft span').css("color", "#CF1508");
+				$('#bft').show();
+			}
+		}
    });   
   
-
+   // sns 상세화면 모달창
    function modal(snsNo) {
 	   $('div.modal').modal().removeData();
        var url = '${ pageContext.request.contextPath}/community/snsDetail.do?no='+snsNo;
        $('div.modal').modal({ remote : url });
    }   
+   
+	// 좋아요 클릭
+   function like(no){
+	   
+		var btn = this;
+		var no = no;
+		
+		$.ajax({
+				url : "./like",
+				type : "post",
+				data : {"no" : no},
+				success : function(responseData){
+					var data = JSON.parse(responseData);
+						alert("좋아요가 완료되었습니다.!");
+						alert(data.like);
+						
+						var contents = '';
+						contents +=  data.like;
+						
+						$('#'+data.no+'').text(data.like);
+		    
+			    } 
+		});    
+	};
+   
+   
+   
    
    
 </script>
@@ -202,7 +239,7 @@
          	<div class="row">               
 
                <!-- 모바일 크기에서 보이는 슬라이드 메뉴 -->
-               <aside class="sidebar hidden-md hidden-lg" id="lnb">
+               <%-- <aside class="sidebar hidden-md hidden-lg" id="lnb">
                   <nav>
                      <ul>
                         <li class="active"><a
@@ -225,7 +262,7 @@
                            href="${ pageContext.request.contextPath }/menu/menuAll.do#beverage">음료</a></li>
                      </ul>
                   </nav>
-               </aside>
+               </aside> --%>
 
                <div class="col-md-12">
                
@@ -251,10 +288,10 @@
 						<div class="col-md-6">
 							<div class="summary entry-summary">
 								<h1 class="mb-none" >
-									<strong id="menuname" style="margin-bottom: 20px">${ menuDetailVO.name }</strong>
+									<strong id="menuname" style="margin-bottom: 20px; font-size: 40px">${ menuDetailVO.name }</strong>
 								</h1>
-								<div>${ menuDetailVO.mainmenu }</div>
-								<div class="review_num">
+								<div style="font-size: 20px;">${ menuDetailVO.mainmenu }</div>
+								<div class="review_num" style="font-size: 15px;">
 									<span class="count">0</span> reviews
 								</div>
 			
@@ -263,16 +300,19 @@
 										out of 5</span>
 								</div>
 			
-								<p class="price">
-									<span class="amount" id="price">${ menuDetailVO.price }원</span>
+								<p class="price" style="font-size: 30px;">
+									<span class="amount commaN" id="price">${ menuDetailVO.price }원</span>
 								</p>
 			
-								<p class="taller">${ menuDetailVO.detail }</p>
+								<p class="taller" style="font-size: 15px;">${ menuDetailVO.detail }</p>
 								<p class="inch">
 									<input type="radio" name="size" value="15cm" checked="checked"><span
-										style="font-size: 18px; margin-left: 5px; margin-right: 20px">15cm</span>
+										style="font-size: 25px; margin-left: 5px; margin-right: 20px;">15cm</span>
 									<input type="radio" name="size" value="30cm" id="half"><span
-										style="font-size: 18px; margin-left: 5px" id="half2">30cm</span>
+										style="font-size: 25px; margin-left: 5px" id="half2">30cm</span>
+								</p>
+								<p id="bft">
+									<span style="font-size: 20px;color: #00CF1508;"><strong>AM 08:00 부터 ~ AM 11:00 까지 주문 가능합니다.</strong></span>
 								</p>					
 								
 								<form:form commandName="cartVO" method="POST" id="submit">
@@ -282,9 +322,11 @@
 									<form:input path="price" type="hidden" id="sand_price" value="${ menuDetailVO.price }"/>
 									<form:input path="size" type="hidden" id="sand_size" value="15cm"/>
 									<form:input path="pic" type="hidden" id="sand_pic" value="${ pageContext.request.contextPath }/upload/menu/${ menuDetailVO.imgFileName }"/>
-									<button type="submit" class="btn btn-primary btn-icon" id="order" style="margin-bottom: 20px">주문하기</button>
-									<button type="button" class="btn btn-warning btn-icon" id="list" onclick="location.href='${ pageContext.request.contextPath }/menu/menuAll.do'"
-									 style="float: right">목록</button>
+									<div style="text-align: center;margin-bottom: 20px;">
+										<button type="submit" class="btn btn-primary btn-icon" id="order" style="width: 150px;font-size: 20px;">주문하기</button>
+										<button type="button" class="btn btn-warning btn-icon" id="list" onclick="location.href='${ pageContext.request.contextPath }/menu/menuAll.do'"
+										 style="margin-left: 30px;width: 150px;font-size: 20px;">목록보기</button>
+									</div>
 								</form:form>
 								
 								<div class="product_meta">
@@ -363,7 +405,7 @@
 														<button type="button"  onclick="like('${ snsHit.no }')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 														<i class="fa fa-thumbs-up"></i>
 														</button>
-														<i class="fa fa-heart" id="likey" style="color: red">&nbsp;${ snsHit.like }</i>
+														<i class="fa fa-heart" id="${ snsHit.no }" style="color: red">&nbsp;${ snsHit.like }</i>
 													</span>
 													<span class="thumb-info-caption-text">${ snsHit.title }</span>
 												</span>
