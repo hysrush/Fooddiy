@@ -42,6 +42,15 @@
 		ORDER BY menu_no ASC
 	</select>
 	
+	<!-- 타입별 -->
+	<select id="selectTypeMenu" parameterType="String" resultMap="Map_menuVO">
+		<include refid="selectAll_menu"/>
+		WHERE menu_type = #{type} 
+		ORDER BY menu_no ASC
+	</select>
+	
+	
+	
 	<!-- 번호별 Menu 조회 -->
 	<select id="selectOneMenu" parameterType="int" resultMap="Map_menuVO">
 		<include refid="selectAll_menu"/>

@@ -21,6 +21,13 @@ public class MenuServiceImp implements MenuService {
 		List<MenuVO> listAll = menuDAO.selectAll();
 		return listAll;
 	}
+	
+	@Override
+	public List<MenuVO> selectTypeMenu(String type) {
+		List<MenuVO> listType = menuDAO.selectType(type);
+		return listType;
+	}
+	
 	// 번호별 menu보기(상세보기)
 	@Override
 	public MenuVO selectOneMenu(int no) {
