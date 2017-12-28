@@ -63,7 +63,7 @@
 	</head>
 	<body>
 		<div class="body">
-			<header id="header"
+		<%-- 	<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
 			</header>
@@ -107,6 +107,54 @@
 								</ul>
 							</aside>
 						</div>
+						 --%>
+
+		<header id="header"
+			data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
+			<jsp:include page="/resources/include/top-new.jsp" />
+		</header>
+		<!-- Mobile menu 부분 -->
+		<jsp:include page="/resources/include/mobile-menu.jsp" />
+		<div role="main" class="main">
+
+			<section class="page-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="breadcrumb">
+								<li><a
+									href="${ pageContext.request.contextPath}/event/eventPage.do">Event</a></li>
+								<li class="active">Event</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h1>Event게시판</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 hidden-xs hidden-sm">
+						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+							<h4 class="heading-primary"><strong>이벤트 </strong></h4>
+
+							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+									<li><a href="${ pageContext.request.contextPath }/event/eventPage.do">브랜드 이벤트</a></li>
+									<li class="active">
+										<a href="${ pageContext.request.contextPath }/event/storeEventPage.jsp">점포별 이벤트</a>
+									</li>
+							</ul>
+						</aside>
+					</div>
+						
+
+						
 						<div class="col-md-9">
 							<!-- START -->
 							<div class="row">
@@ -163,13 +211,13 @@
 														<div class="col-md-12">
 																		<!--  ajax로 보내버리는 a태그  -->
 																	
-																		<input type="button" id="search" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading...">
+																		<!-- <input type="button" id="search" value="Search" class="btn btn-default pull-right mb-xl" data-loading-text="Loading..."> -->
 																	
 														</div>
 													</div>
 												
 													<!--  AJAX 테이블이 생성될 공간  -->
-														<div class="row">
+														<!-- <div class="row">
 															<div class="col-md-12">
 																<form action="storeEventPage.do" method ="post">
 																	<table class="table table-hover" width="80%">
@@ -189,7 +237,24 @@
 																	</table>
 																</form>
 															</div>
-														</div>
+														</div> -->
+																	
+											<h4 class="mt-xlg mb-none text-uppercase">&nbsp;&nbsp;<strong id="searchInfo" >지역을 선택해주세요</strong></h4>
+											<br>
+												<div  id="storeList">
+													<form action="storeEventPage.do" method ="post">
+														<table border="1">
+														
+															<tbody id ="storeList">
+																<!-- 매장 리스트 -->
+															</tbody>
+														</table>
+													</form>
+												</div>
+												
+														
+														
+														
 										</div>
 									</div>	
 												<!--  선택한 매점 이름과 매칭되는 이벤트 불러오기  -->
@@ -338,7 +403,7 @@
 				});  */
 			
 			
-				$("#search").click(function(){
+				/* $("#search").click(function(){
 					
 					var gugun = $("#gugun").val();
 					console.log( " 구군 값 : " + $("#gugun").val());
@@ -365,7 +430,7 @@
 										contents +=		'<td id="storeName" value="'+data.storeList[i].storeName +'">'+ data.storeList[i].storeName+'</td>';
 										contents +=		'<td >'+ data.storeList[i].storeAddr+'</td>';
 										contents +=		'<td>'+ data.storeList[i].storePhone+'</td>';
-										contents +=		'<td><input type="button" name = "storeChoice" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+										contents +=		'<td><input type="button" name = "storeChoice" class="btn btn-success btn-sm" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
 										contents += '</tr>';
 									
 										$('#storeList').append(contents);
@@ -375,7 +440,54 @@
 					});
 		
 				});
-				
+				 */
+				 
+					$("#gugun").change(function(){
+						
+						var gugun = $("#gugun").val();
+						console.log( " 구군 값 : " + $("#gugun").val());
+						
+						$.ajax({
+							url : "./test3",
+							type : "post",
+							data : {"gugun" : gugun},
+							success : function(responseData){
+										var data = JSON.parse(responseData);
+										
+										$('#storeList').empty();
+								
+										
+										$('#storeList').css("max-height","250px");
+										$('#storeList').css("overflow","auto");
+										$('#storeList').css("max-width","1000px");
+											
+											// 검색완료 시, 구군 이름 표시
+											$("strong#searchInfo").text('"' + data.locationName + '"(으)로 검색');
+											
+										 	for(var i = 0 ; i < data.storeList.length; i++){
+												var contents = '';
+												contents += '<tr>';
+												contents +=		'<td style = "width: 30%" nowrap>';
+												contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
+												contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '</strong>';
+												contents +=			'<div class="storePhone post-meta">' + data.storeList[i].storePhone +'</div>';
+												contents +=		'</td>';
+												contents +=		'<td class="storeAddr" style = "width: 65%">'+ data.storeList[i].storeAddr +'</td>';
+												contents +=		'<td><input type="button" name = "storeChoice" class="btn btn-success btn-sm" onclick="test(\''+data.storeList[i].storeName+'\')" value="선택" /></td>';
+												contents += '</tr>';
+											
+												$('#storeList').append(contents);
+										 	}
+											
+
+									 			
+							}
+						});
+			
+					});
+				 
+				 
+				 
  				function test(storeName){
  					alert('storeName = ' + storeName);
  					
@@ -399,7 +511,7 @@
 							contents += 	'<ul>';
 							contents += 		'<li>';
 							contents += 			'<div class="col-md-6">';
-							contents += 				'<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no=${ eventVO.no }">';
+							contents += 				'<a href="${ pageContext.request.contextPath }/event/eventDetail.do?no='+data.eventList[i].no +'">';
 							contents += 					'<img alt="" class="img-responsive img-rounded" src="../upload/'+data.eventList[i].imgFileName+'"  style=" width:600px;height:150px" ">';
 							contents += 				'</a>';
 							contents += 			'</div>';
