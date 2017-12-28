@@ -241,7 +241,7 @@ public class SignController {
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("loginVO", userVO);
 		
-		redirect.addFlashAttribute("msg", "[ "+userVO.getId()+" ] 님 가입 성공!");
+		redirect.addFlashAttribute("msg", "[ "+userVO.getName()+" ] 님 로그인 성공");
 		
 		return "redirect:/main/Start";
 
@@ -319,7 +319,7 @@ public class SignController {
 		
 		session.setAttribute("loginVO", user);
 		
-		redirect.addFlashAttribute("msg", "[ "+user.getName()+" ] 님 로그인 성공!");
+		redirect.addFlashAttribute("msg", "로그인 성공! 주문이 가능합니다.");
 		
 		return "redirect:/main/Start";
 	}
@@ -330,7 +330,7 @@ public class SignController {
 		
 		session.invalidate();
 		
-		return "main/index";
+		return "redirect:/main/Start";
 		
 	}
 	

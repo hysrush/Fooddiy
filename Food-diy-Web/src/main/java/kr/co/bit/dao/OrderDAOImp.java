@@ -1,6 +1,7 @@
 package kr.co.bit.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,12 @@ public class OrderDAOImp implements OrderDAO {
 	public void noninsert(OrderVO orderVO) {
 		sqlSession.insert(url + "noninsertOrder", orderVO);
 		
+	}
+	
+	
+	//주문취소
+	@Override
+	public void cancel(Map<String, String> info) {
+		sqlSession.update(url + "cancelOrder", info);
 	}
 }

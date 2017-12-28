@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.ClaimBoardVO;
+import kr.co.bit.vo.MemberOrderVO;
 import kr.co.bit.vo.UserVO;
 
 
@@ -15,7 +16,7 @@ public interface MemberDAO {
 	void update(UserVO member);
 	void delete(String id);
 	void setmyMenu(CartVO member);
-	List<CartVO> getmyMenu(String id);
+	List<MemberOrderVO> getmyMenu(String id);
 	List<CartVO> delmyMenu(List<String> noList);
 	CartVO getmyMenuDetail(int no);
 	List<ClaimBoardVO> delmyQnA(List<String> noList);

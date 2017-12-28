@@ -8,7 +8,8 @@ import kr.co.bit.vo.NoticeBoardVO;
 public interface NoticeDAO {
 
 	// Notice DAO
-	List<NoticeBoardVO> selectAll();
+	List<NoticeBoardVO> selectAll(String type, String searchOption, String keyword) throws Exception;
+	int searchCnt(String type, String searchOption, String keyword) throws Exception;
 	List<NoticeBoardVO> selectType(String type);
 	NoticeBoardVO selectOne(int no);
 	void insert(NoticeBoardVO noticeVO);

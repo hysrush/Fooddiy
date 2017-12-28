@@ -146,7 +146,7 @@
 											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
 										</ul>
 									</li>
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+									<li class="active"><a href="#">1:1 문의</a></li>
 									<li><a href="${ pageContext.request.contextPath }/notice/SNSBoard.jsp">SNS게시판</a></li>
 							</ul>
 						</aside>
@@ -174,7 +174,6 @@
 								</li>
 								<li>
 									<a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${ loginVO.id }">나의 문의내역</a>
-									<%-- <a href="${ pageContext.request.contextPath}/community/claim/claim.do">나의 문의내역</a> --%>
 								</li>
 							</ul>
 							<div class="tab-content">
@@ -325,8 +324,8 @@
 													</div>
 												</div>
 												<div class="center">
-													<button type="button" class="btn btn-default" id="eraser">지우기</button>
-													<button type="submit" class="btn btn-primary" id="claimSubmit">등록</button>
+													<button type="button" class="btn btn-default mr-xs mb-sm" id="eraser">지우기</button>
+													<button type="submit" class="btn btn-success mr-xs mb-sm" id="claimSubmit">등록</button>
 												</div>
 											</form:form>
 										</div>

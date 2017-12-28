@@ -30,6 +30,7 @@ import kr.co.bit.service.ClaimService;
 import kr.co.bit.service.FileService;
 import kr.co.bit.service.MemberOrderService;
 import kr.co.bit.service.MemberService;
+import kr.co.bit.service.OrderService;
 import kr.co.bit.service.SignService;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.ClaimBoardVO;
@@ -59,6 +60,8 @@ public class MemberController {
 	private MemberOrderService service;
 	@Autowired
 	private FileService fileService;
+	@Autowired
+	private OrderService orderService;
 	
 	// ---------------------------------------------------------------------------------------------------
 	// 회원정보 페이지 보여 주는 거
@@ -193,17 +196,47 @@ public class MemberController {
 	}
 	
 	//나만의 메뉴 select
-	@RequestMapping(value = "/myMenu.do")
-	public String myMenuSelect(String id, Model model) throws Exception {
+	@RequestMapping(value = "/myMenu.do" )
+	public String myMenuSelect(HttpSession session, Model model) throws Exception {
 
-		List<CartVO> cart = memberService.getmyMenu(id);
-		model.addAttribute("cartList", cart);
+		UserVO loginVO = (UserVO)session.getAttribute("loginVO");
+		String id = loginVO.getId();
+		
+		List<MemberOrderVO> orderList = memberService.getmyMenu(id);
+		
+		for (int i = 0; i < orderList.size(); ++i) {
+			List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
+			String menu = orderList.get(i).getMenu();
+			String[] menus = menu.split("\\|\\|");
+
+			for (int j = 0; j < menus.length; ++j) {
+				DetailOrderVO vo = new DetailOrderVO();
+				String[] oneMenu = menus[j].split("\\*");
+
+				vo.setName(oneMenu[0]);
+				vo.setBread(oneMenu[1]);
+				vo.setCheese(oneMenu[2]);
+				vo.setTopping(oneMenu[3]);
+				vo.setVegetable(oneMenu[4]);
+				vo.setSauce(oneMenu[5]);
+				vo.setRequirement(oneMenu[6]);
+				vo.setPic(oneMenu[7]);
+				vo.setSize(oneMenu[8]);
+				vo.setQty(new Integer(oneMenu[9]));
+				vo.setPrice(oneMenu[10]);
+				vo.setTotal_price(oneMenu[11]);
+				list.add(vo);
+			}
+			orderList.get(i).setDetailOrderList(list);
+		}
+		
+		model.addAttribute("orderList", orderList);
 		
 		return "member/myMenu";
 
 	}
 	
-//	나만의 메뉴 디테일
+	//나만의 메뉴 디테일
 	@RequestMapping(value ="/myMenuDetail.do")
 	public String myMenu(int no, Model model) throws Exception {
 		
@@ -228,22 +261,21 @@ public class MemberController {
 	}
 
 	//주문내역 
-	@RequestMapping("/Latest-Order.do")
-	public ModelAndView todayOrderList(String id, ModelAndView mav) {
+	@RequestMapping(value = "/Latest-Order.do", method = RequestMethod.GET)
+	public ModelAndView latestOrderList(HttpSession session, ModelAndView mav) {
 		
-		List<MemberOrderVO> todayOrderList = service.selectAll(id);
+		UserVO loginVO = (UserVO)session.getAttribute("loginVO");
+		String id = loginVO.getId();
 		
-		for(int i = 0 ; i < todayOrderList.size(); ++i) {
-
+		List<MemberOrderVO>  favoriteMenuList = service.selectFavoriteMenu(id);
+		for (int i = 0; i < favoriteMenuList.size(); ++i) {
 			List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
-			String menu = todayOrderList.get(i).getMenu();
-			String [] menus = menu.split("\\|\\|");
-			
-//			System.out.println("menus.length =  " + menus.length);
-			
-			for(int j = 0; j < menus.length; ++j) {
+			String menu = favoriteMenuList.get(i).getMenu();
+			String[] menus = menu.split("\\|\\|");
+
+			for (int j = 0; j < menus.length; ++j) {
 				DetailOrderVO vo = new DetailOrderVO();
-				String [] oneMenu = menus[j].split("\\*");
+				String[] oneMenu = menus[j].split("\\*");
 
 				vo.setName(oneMenu[0]);
 				vo.setBread(oneMenu[1]);
@@ -259,22 +291,34 @@ public class MemberController {
 				vo.setTotal_price(oneMenu[11]);
 				list.add(vo);
 			}
-			todayOrderList.get(i).setDetailOrderList(list);
+			favoriteMenuList.get(i).setDetailOrderList(list);
 		}
 		
-//		System.out.println(todayOrderList);
+		
 		mav.setViewName("member/Latest-Order");
-		mav.addObject("orderList", todayOrderList);
+		mav.addObject("orderList", favoriteMenuList);
 		return mav;
 	}
-	@RequestMapping(value = "/orderCancel.do", method = RequestMethod.GET)
-	public String cancelOrder(@RequestParam("no") int no) {
+	
+	//줄겨찾기 추가
+	@RequestMapping(value="/Favorite-menu", method = RequestMethod.POST)
+	public void addFavoriteMenu(HttpServletRequest request, HttpServletResponse response, HttpSession session, String no) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
 		
-		service.cancelOrder(no);
+		System.out.println(no);
+		System.out.println(no);
+		System.out.println(no);
+		UserVO loginVO = (UserVO)session.getAttribute("loginVO");
+		String id = loginVO.getId();
 		
-		return "redirect:/member/Latest-Order.do";
+		Map<String, String> info = new HashMap<>();
+		info.put("id", id);
+		info.put("no", no);
+		
+		service.addFavoriteMenu(info);
 		
 	}
+	
 	
 	// 주문 내역 상세 보기
 	@RequestMapping(value = "/Latest-OrderDetail.do",method = RequestMethod.GET) 
@@ -313,6 +357,25 @@ public class MemberController {
 		mav.setViewName("member/Latest-OrderDetail");
 		
 		return mav;
+	}
+	
+	// 주문취소
+	@RequestMapping(value = "/orderCancel.do", method = RequestMethod.GET)
+	public String cancelOrder(@RequestParam("no") String no, @RequestParam("url") String url, HttpServletRequest request,
+			HttpServletResponse response, HttpSession session){
+
+		UserVO loginVO = (UserVO)session.getAttribute("loginVO");
+		String id = loginVO.getId();
+		
+		Map<String, String> info = new HashMap<>();
+		info.put("no", no);
+		info.put("id", id);
+		
+		
+		orderService.cancelOrder(info);
+
+		return "redirect:/member/" + url + ".do?";
+
 	}
 	
 //	-------------------------------------------
@@ -359,7 +422,7 @@ public class MemberController {
 	}*/
 
 
-	
+/*	
 	// 최근 주문 내역 삭제
 	@RequestMapping(value="/deleteCart", method=RequestMethod.POST)
 	public String cartDelete(CartVO vo, Model model) throws Exception{
@@ -369,7 +432,7 @@ public class MemberController {
 		
 		return "member/Latest-Order";
 	}
-
+*/
 	// <Claim 컨트롤러>
 	// Claim 전체보기
 	@RequestMapping("/myQnA.do")
@@ -473,8 +536,4 @@ public class MemberController {
 		System.out.println(no);
 		return "member/myStampDetail";
 	}
-	
-	
-	
-	
 }		

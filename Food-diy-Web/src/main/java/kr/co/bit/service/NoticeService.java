@@ -10,7 +10,8 @@ import kr.co.bit.vo.NoticeBoardVO;
 public interface NoticeService {
 	
 	// Notice Service
-	List<NoticeBoardVO> selectAllNotice();
+	List<NoticeBoardVO> selectAllNotice(String type, String searchOption, String keyword) throws Exception;
+	int countNotice(String type, String searchOption, String keyword) throws Exception;
 	List<NoticeBoardVO> selectType(String type);
 	NoticeBoardVO selectOneNotice(int no);
 	void insertNotice(NoticeBoardVO noticeVO);

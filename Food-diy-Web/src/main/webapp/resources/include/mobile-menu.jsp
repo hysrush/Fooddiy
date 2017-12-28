@@ -49,7 +49,7 @@
 				</ul>
 			</li>
 			<!-- 비회원 로그인하면 주문내역 조회 -->
-			<c:if test="${ (empty loginVO) or (loginVO.type eq 'U') }">
+			<c:if test="${ (empty loginVO) or (loginVO.type != 'U') }">
 				<li><a href="${ pageContext.request.contextPath }/sign/orderCheck">주문내역조회</a></li>
 			</c:if>
 			<c:choose>

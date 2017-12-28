@@ -91,13 +91,23 @@
 		border-left: 2px solid #7aa93c !important;
 		border-right: 2px solid #7aa93c !important;
 	}
-	img {
-		padding: 10px;
-		max-width: 200px;
-		max-height: 200px;
-	}
 	#totalImg {
 		max-width: 700px;
+	}
+	#typeLabel {
+		font-size: 15px;
+	}
+	.fileImg {
+		padding: 10px;
+		max-width: 150px;
+		max-height: 150px;
+	}
+	.plusIcon {
+		position:absolute;
+		margin: 30px;
+		top:15px;
+		left:30px;
+		z-index:100;
 	}
 </style>
 </head>
@@ -149,7 +159,6 @@
 			<div class="body">
 		<div role="main" class="main">
 			<div class="col-md-9 center">
-				<h2>1:1 문의 리스트</h2>
 				<div class="tab-content">
 				<!-- 공지사항 / 보도자료 디테일 -->
 					<div class="blog-posts single-post">
@@ -164,13 +173,9 @@
 								<form action="/Mission-Web/fileDownload" method="post" id="dForm">
 									<table class="table table-bordered">
 										<tr>
-											<td> 
+											<td width="15%"> 
 												<!-- 타입 -->
-												<c:if test="${ claimVO.type eq 'I'}">문의</c:if>
-												<c:if test="${ claimVO.type eq 'P'}">칭찬</c:if>
-												<c:if test="${ claimVO.type eq 'S'}">제안</c:if>
-												<c:if test="${ claimVO.type eq 'C'}">불만</c:if>
-												<c:if test="${ claimVO.type eq 'X'}">기타</c:if>
+												<span class="label label-primary" id="typeLabel">${ claimVO.type }</span>
 											</td>
 											<td id="title">
 												<!-- 제목 -->
@@ -185,18 +190,40 @@
 												<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ claimVO.regDate }</td>
 											</div>
 										</tr>
-										<tr>
-											<td colspan="4" id="contents">
-												<!-- 방문일 / 방문매장명 -->
-												<c:choose>
-													<c:when test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
-														<table class="table table-bordered text-center col-md-12 visitTable">
+										<!-- 방문일 / 방문매장명 -->
+										<c:choose>
+											<c:when test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
+												<tr id="totalImg">
+													<th colspan="4" style="background-color: #eee">1:1문의 정보</th>
+												</tr>
+												<tr id="totalImg">
+													<td colspan="4">
+														<table class="table table-bordered text-center" style="margin-bottom: 0px">
 															<tr>
-																<th><i class="fa fa-building"></i> 방문매장</th>
-																<td>${ claimVO.visitStore }</td>
-																<th><i class="fa fa-calendar-o"></i> 방문일</th>
+																<th width="130px"><i class="fa fa-building"></i> 방문매장</th>
+																<td>${ claimVO.visitStore }점</td>
+																<th width="130px"><i class="fa fa-calendar-o"></i> 방문일</th>
 																<td>${ claimVO.visitDate }</td>
 															</tr>
+															<tr>
+																<th><i class="fa fa-send"></i> 답변 메일</th>
+																<td colspan="3">${ claimVO.emailID }@${ claimVO.emailDomain }</td>
+															</tr>
+															<tr>
+																<th><i class="fa fa-phone"></i> 연락처</th>
+																<td colspan="3">${ claimVO.phone1 }-${ claimVO.phone2 }-${ claimVO.phone3 }</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<tr id="totalImg">
+													<th colspan="4" style="background-color: #eee">1:1문의 정보</th>
+												</tr>
+												<tr id="totalImg">
+													<td colspan="4">
+														<table class="table table-bordered text-center" style="margin-bottom: 0px">
 															<tr>
 																<th><i class="fa fa-calendar-o"></i> 답변 메일</th>
 																<td colspan="3">${ claimVO.emailID }@${ claimVO.emailDomain }</td>
@@ -206,39 +233,53 @@
 																<td colspan="3">${ claimVO.phone1 }-${ claimVO.phone2 }-${ claimVO.phone3 }</td>
 															</tr>
 														</table>
-														<!-- 내용 -->
-														<p class="text-left col-md-12 content">
-															<!-- 자동 단락 나누기 (jstl - fn) -->
-															${ fn:replace(claimVO.content, cn, br) }
-														</p>
-													</c:when>
-													<c:otherwise>
-														<!-- 내용 -->
-														<p class="text-left contentOnly">
-															<!-- 자동 단락 나누기 (jstl - fn) -->
-															${ fn:replace(claimVO.content, cn, br) }
-														</p>
-													</c:otherwise>
-												</c:choose>
+													</td>
+												</tr>
+											</c:otherwise>
+										</c:choose>
+										<tr id="totalImg">
+											<td colspan="4">
+												<!-- 내용 -->
+												<p class="text-left contentOnly">
+													<!-- 자동 단락 나누기 (jstl - fn) -->
+													${ fn:replace(claimVO.content, cn, br) }
+												</p>
 											</td>
 										</tr>
 										<!-- 첨부파일 -->
 										<c:if test="${ not empty fileList }">
-											<tr>
-												<th width="15%">첨부파일</th>
-												<td colspan="3" id="totalImg">
-													<c:forEach items="${ fileList }" var="file">
-														<div class="col-md-4">
-															<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
-															<div class="text-left">
-																<i class="fa fa-file"></i>&nbsp;
-																<a onclick="action('F', ${ file.no })">
-																	<span class="text-muted fileName">${ file.fileOriName }</span>
-																</a>
-																	<span class="text-muted"> (${ file.fileSize }KB)</span>
-															</div>
-														</div>
-													</c:forEach>
+											<tr id="totalImg">
+												<th colspan="4" style="background-color: #eee">첨부파일</th>
+											</tr>
+											<tr id="totalImg">
+												<td colspan="4">
+													<table class="table table-bordered text-center">
+														<tr>
+															<c:forEach items="${ fileList }" var="file">
+															<th>
+																<div class="col-md-12 text-left">
+																	<i class="fa fa-file"></i>&nbsp;
+																	<a onclick="action('F', ${ file.no })">
+																		<span class="text-muted fileName">${ file.fileOriName }</span>
+																	</a>
+																		<span class="text-muted"> (${ file.fileSize }KB)</span>
+																</div>
+															</th>
+															</c:forEach>
+														</tr>
+														<tr>
+															<c:forEach items="${ fileList }" var="file">
+															<td>
+																<div class="col-md-12">
+																	<a href="${ pageContext.request.contextPath}/upload/${ file.filePath }" target="_blank">
+																		<img class="text-center fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
+																		<img class="plusIcon" src="${ pageContext.request.contextPath}/resources/img/icons/round-add-button.png">
+																	</a>
+																</div>
+															</td>
+															</c:forEach>
+														</tr>
+													</table>
 												</td>
 											</tr>
 										</c:if>
@@ -308,12 +349,44 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		// Claim 타입별 라벨 클래스명 & 텍스트 변경
+		if($('#typeLabel').text() == 'I'){
+			$('#typeLabel').attr("class","label label-primary");
+			$('#typeLabel').html("문의");
+		}
+		else if($('#typeLabel').text() == 'P'){
+			$('#typeLabel').attr("class","label label-warning");
+			$('#typeLabel').html("칭찬");
+		}
+		else if($('#typeLabel').text() == 'S'){
+			$('#typeLabel').attr("class","label label-tertiary");
+			$('#typeLabel').html("제안");
+		}
+		else if($('#typeLabel').text() == 'C'){
+			$('#typeLabel').attr("class","label label-danger");
+			$('#typeLabel').html("불만");
+		}
+		else if($('#typeLabel').text() == 'X'){
+			$('#typeLabel').attr("class","label label-default");
+			$('#typeLabel').html("기타");
+		}
+		
 		// 파일명 호버 효과
 		$(".fileName").hover( function () { 
 			$(this).css('text-decoration', 'underline');
 		}, function () { 
 			$(this).css('text-decoration', 'none');
 		} );
+		
+		// 이미지 호버 효과
+		$('.plusIcon').hide();
+		$(".fileImg").each(function () {
+			$(this).hover( function () { 
+				$(this).siblings('.plusIcon').show();
+			}, function () { 
+				$(this).siblings('.plusIcon').hide();
+			} );
+		});
 	    
 	});
 	

@@ -217,9 +217,11 @@
 			<div class="row">
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
+					
 					<div class="featured-boxes">
 						<div class="featured-box featured-box-primary align-left mt-xlg">
 							<div align="center" class="box-content">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								<h4>휴대전화 인증</h4><br/>
 								<p>본인 인증 서비스</p>
 								<div class="row mt-xlg">

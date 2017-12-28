@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.co.bit.dao.MemberDAO;
 import kr.co.bit.vo.CartVO;
 import kr.co.bit.vo.ClaimBoardVO;
+import kr.co.bit.vo.MemberOrderVO;
 import kr.co.bit.vo.UserVO;
 
 
@@ -57,7 +58,7 @@ public class MemberServiceImp  implements MemberService  {
 	}
 
 	@Override
-	public List<CartVO> getmyMenu(String id) {
+	public List<MemberOrderVO> getmyMenu(String id) {
 		return memberDAO.getmyMenu(id);
 	}
 
