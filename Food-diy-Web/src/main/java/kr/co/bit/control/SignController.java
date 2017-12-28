@@ -319,7 +319,7 @@ public class SignController {
 		
 		session.setAttribute("loginVO", user);
 		
-		redirect.addFlashAttribute("msg", "[ "+user.getName()+" ] 님 로그인 성공!");
+		redirect.addFlashAttribute("msg", "로그인 성공! 주문이 가능합니다.");
 		
 		return "redirect:/main/Start";
 	}
@@ -330,7 +330,7 @@ public class SignController {
 		
 		session.invalidate();
 		
-		return "main/index";
+		return "redirect:/main/Start";
 		
 	}
 	
