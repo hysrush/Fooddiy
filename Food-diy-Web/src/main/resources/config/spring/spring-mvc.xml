@@ -150,10 +150,10 @@
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
         <!-- sns상세페이지 -->
-        <mvc:interceptor>  
+        <!-- <mvc:interceptor>  
             <mvc:mapping path="/community/snsDetail.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
-        </mvc:interceptor>        
+        </mvc:interceptor> -->        
         <!-- 회원정보 -->
         <mvc:interceptor>  
             <mvc:mapping path="/member/memberDetail.do" />
