@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Fooddiy-Order</title>
+<title> | Menu | </title>
 
 <meta name="keywords" content="HTML5 Template" />
 <meta name="description" content="Porto - Responsive HTML5 Template">
@@ -221,20 +221,13 @@
          </div>
       </div>
 
-   <div class="container">
-
 	<footer class="light visible-lg" id="footer">
-		<jsp:include page="/resources/include/bottom.jsp"/>
+		<jsp:include page="/resources/include/bottom.jsp" />
 	</footer>
-	
 	<footer class="light hidden-lg" id="footer">
-		<jsp:include page="/resources/include/mobile-bottom.jsp"/>
+		<jsp:include page="/resources/include/mobile-bottom.jsp" />
 	</footer>
-
-   </div>
    
-   
-
    <!-- Vendor -->
    <script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
    <script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
