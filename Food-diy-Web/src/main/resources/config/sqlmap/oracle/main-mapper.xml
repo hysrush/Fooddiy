@@ -49,7 +49,7 @@
 	<select id="mainN" resultMap="Map_noticeVO">
 		select * from (select * from t_notice order by reg_at desc)
 		<![CDATA[
-		where rownum <=4
+		where rownum <=5
  		]]>
 	</select>
 	
