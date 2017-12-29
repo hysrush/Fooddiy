@@ -86,7 +86,7 @@ public class SignController {
 	public String signUp(UserVO phoneCert, Model model, RedirectAttributes redirect) {
 		
 		phoneCert.setType("U");
-		phoneCert.setFile("null");
+		phoneCert.setFile("person.png");
 		
 		/*System.out.println(phoneCert.toString());*/
 		signServiceImp.signUp(phoneCert);
@@ -315,6 +315,8 @@ public class SignController {
 	// 이메일 인증 후 session 객체에만 등록
 	@RequestMapping(value="/nonemailCheck")
 	public String nonMemberSign(UserVO nonMember, Model model, HttpSession session, RedirectAttributes redirect) {
+		
+		nonMember.setType("N");
 		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		

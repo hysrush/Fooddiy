@@ -158,7 +158,7 @@
 								<tr  style="border-bottom: 1px solid #019847;">
 									<td rowspan="2">
 										<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="text-decoration:none">
-											<img style="width:100%; height: 175px;" src="../upload/${ s.fileName }" alt="Loading...">
+											<img style="width:100%; height: 175px;" src="../upload/SNS/${ s.fileName }" alt="Loading...">
 										</a>
 									</td>
 									<td align="center" colspan="2" style="text-overflow: ellipsis; overflow: hidden;" title="${ s.title }">

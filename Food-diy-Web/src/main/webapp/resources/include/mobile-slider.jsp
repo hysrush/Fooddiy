@@ -42,7 +42,7 @@
 								<tr>
 									<td colspan="2">
 										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<img style="width: 200px; height: 170px;" src="../upload/${ s.fileName }"/><br/>
+											<img style="width: 200px; height: 170px;" src="../upload/SNS/${ s.fileName }"/><br/>
 										</a>
 									</td>
 								</tr>

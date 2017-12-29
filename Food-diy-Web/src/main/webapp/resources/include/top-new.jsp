@@ -453,14 +453,7 @@
 													<div class="col-md-8">
 														<div class="user-avatar">
 															<div class="img-thumbnail">
-																<c:choose>
-													                <c:when test="${ loginVO.file ne 'null' and loginVO.file ne null }">
-															                <img src="../upload/${ loginVO.file }">
-													                </c:when>
-																	<c:otherwise>
-																		<img src="${ pageContext.request.contextPath }/resources/img/AA.jpg" style="width: 150px; height: 50px;">
-																	</c:otherwise>
-																</c:choose>
+																<img src="../upload/${ loginVO.file }">
 															</div>
 															<p><strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span></p>
 														</div>
@@ -478,7 +471,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
-									<a href="${ pageContext.request.contextPath }/sign/nonlogout?id=${loginVO.id}"><i class="fa fa-user"></i> ${ loginVO.name }</a>
+									<a href="${ pageContext.request.contextPath }/sign/nonlogout?id=${loginVO.id}"><i class="fa fa-user"></i> 비회원 ${ loginVO.name } 님</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
