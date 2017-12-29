@@ -282,15 +282,12 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<div class="container">
-		<footer class="light visible-lg" id="footer">
-			<jsp:include page="/resources/include/bottom.jsp" />
-		</footer>
-		<footer class="light hidden-lg" id="footer">
-			<jsp:include page="/resources/include/mobile-bottom.jsp" />
-		</footer>
-	</div>
-
+	<footer class="light visible-lg" id="footer">
+		<jsp:include page="/resources/include/bottom.jsp" />
+	</footer>
+	<footer class="light hidden-lg" id="footer">
+		<jsp:include page="/resources/include/mobile-bottom.jsp" />
+	</footer>
 
 	<!-- 모달들 -->
 	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">

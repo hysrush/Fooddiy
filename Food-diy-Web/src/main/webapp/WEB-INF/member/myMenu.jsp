@@ -293,7 +293,6 @@ $(document).ready(function(){
 					<div style="width: 600px">
 						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3 hidden-xs">
 							<aside  class="sidebar">
-
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
@@ -305,13 +304,13 @@ $(document).ready(function(){
 						</div>
 					</div>
 				</div>	
-	
+				<div role="main" class="main shop">
 				<div class="row">
 							<div class="col-lg-9">
 								<div class="ibox">
 									<div class="ibox-content">
 										<div class="table-responsive">
-											 <table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
+											 <table class="table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
 												<thead>
 													<tr style="font-size:15px; margin-top: 15%">
 														<th  data-hide="phone" data-sort-ignore="true"></th>
@@ -374,6 +373,7 @@ $(document).ready(function(){
 							</div>
 						</div>
 					</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -388,14 +388,12 @@ $(document).ready(function(){
 	</div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
-	<div class="container">
 		<footer class="light visible-lg" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
 		<footer class="light hidden-lg" id="footer">
 			<jsp:include page="/resources/include/mobile-bottom.jsp" />
 		</footer>
-	</div>
 
 	<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
