@@ -217,26 +217,18 @@
 
 							<div style="margin-top: 1%;">
 							<div class="row">
-<<<<<<< HEAD
 							<div class="col-md-4"></div>
 							<div class="col-md-3"></div>
-							<div class="col-md-4 col-xs-10" style="margin-left:4%">
-									<button class="btn btn-primary"  data-toggle="modal" id="stamp">쿠폰북</button>
-									<button class="btn btn-primary" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
-									<button class="btn btn-primary" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
-=======
 							<div class="col-md-12 hidden-xs" style="margin-left:9%; padding-left: 53%">
 									<button class="btn basic-btn"  data-toggle="modal" id="stamp">쿠폰북</button>
 									<button class="btn basic-btn" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
 									<button class="btn basic-btn" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
 							</div>
 							<div class="col-xs-12 visible-xs" style="padding-left: 15%">
 									<button class="btn basic-btn"  data-toggle="modal" id="stamp">쿠폰북</button>
 									<button class="btn basic-btn" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
 									<button class="btn basic-btn" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
-									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
 							</div>
 							</div>
 									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">

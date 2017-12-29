@@ -52,8 +52,10 @@
 				<ul class="top-menu">
 					<li><a href="${ pageContext.request.contextPath }/main/Start">Home</a></li>
 					<li><a href="${ pageContext.request.contextPath }/main/siteT">Sitemap</a></li>
-					<li><a href="${ pageContext.request.contextPath }/sign/login.do">Log in</a></li>
-					<li><a href="${ pageContext.request.contextPath }/sign/signUp.do">Join</a></li>
+					<c:if test="${ empty loginVO }">
+						<li><a href="${ pageContext.request.contextPath }/sign/login.do">Log in</a></li>
+						<li><a href="${ pageContext.request.contextPath }/sign/signUp.do">Join</a></li>
+					</c:if>
 				</ul>
 			</div>
 			<p class="welcome-msg">Welcome to Subway!</p>
