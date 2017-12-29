@@ -53,13 +53,9 @@ public class MemberController {
 	@Autowired
 	private SignService signService;
 	@Autowired
-	private ClaimService claimService;
-	@Autowired
 	private CartService cart_Service;
 	@Autowired
 	private MemberOrderService service;
-	@Autowired
-	private FileService fileService;
 	@Autowired
 	private OrderService orderService;
 	
@@ -460,71 +456,6 @@ public class MemberController {
 		return "member/Latest-Order";
 	}
 */
-	// <Claim 컨트롤러>
-	// Claim 전체보기
-	@RequestMapping("/myQnA.do")
-	public ModelAndView listAll(@RequestParam(value="id", required=false) String id) {
-		
-		System.out.println(id);
-		List<ClaimBoardVO> claimList = claimService.selectClaim(id);
-		ModelAndView mav = new ModelAndView();
-		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("member/myQnA");
-		//addObject : key 와 value 를 담아 보내는 메서드 
-		mav.addObject("claimList", claimList);
-		
-
-		return mav;
-	}
-	
-	// Claim 글 상세내용 조회 & 게시글 조회수 증가 처리
-	// ex) community/claimDetail.do?no=15
-	@RequestMapping(value="/myQnADetail.do", method=RequestMethod.GET)
-	public ModelAndView detail(@RequestParam("no") int no, HttpSession session) {
-		
-		// 조회수 증가
-		claimService.updateViewcntClaim(no, session);
-		
-		ClaimBoardVO claimVO = claimService.selectOneClaim(no);
-		
-		ModelAndView mav = new ModelAndView();
-		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("member/myQnADetail");
-		//addObject : key 와 value 를 담아 보내는 메서드 
-		mav.addObject("claimVO", claimVO);
-		
-		// file 존재하면,
-		if (claimVO.getFileOX().equals("O")) {
-			// Mybatis에 매개변수 2개를 보내기 위해 map 생성
-			Map<String, Object> fileMap = new HashMap<>();
-			fileMap.put("boardNo", no);
-			fileMap.put("name", "claimFile");
-			// 해당 번호에 맞는 fileVO 읽어오기
-			/*FileVO fileVO = fileService.selectOneFile(fileMap);
-			mav.addObject("fileVO", fileVO);*/
-			List<FileVO> fileList = fileService.selectFileList(fileMap);
-			mav.addObject("fileList", fileList);
-		}
-
-		// 줄바꿈 
-		mav.addObject("br", "<br/>");
-		mav.addObject("cn", "\n");
-		
-		return mav;
-	}
-	//1:1문의 삭제
-	@RequestMapping(value = "/myQnADel.do")
-	
-		public String myQnADel(@RequestParam List<String> noList, Model model) throws Exception {
-		
-		System.out.println(noList.toString());
-		List<ClaimBoardVO> cart = memberService.delmyQnA(noList);
-		model.addAttribute("cartList", cart); 
-		
-		return "member/myQnA";
-
-	}
-	
 	@RequestMapping(value = "/productQtyUpdate", method = RequestMethod.POST)
 	public void ProductQtyUpdate(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "no") Integer no, @RequestParam(value = "totalQty") Integer totalQty,

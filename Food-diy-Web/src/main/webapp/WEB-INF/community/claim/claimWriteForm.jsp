@@ -173,7 +173,7 @@
 									<a href="#tabsNavigationSimple1" data-toggle="tab">1:1 문의하기</a>
 								</li>
 								<li>
-									<a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${ loginVO.id }">나의 문의내역</a>
+									<a href="${ pageContext.request.contextPath}/community/claim/claimList.do?id=${ loginVO.id }">나의 문의내역</a>
 								</li>
 							</ul>
 							<div class="tab-content">

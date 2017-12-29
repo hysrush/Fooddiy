@@ -192,7 +192,7 @@
 																<c:if test="${ not empty fileList }">
 																	<c:forEach items="${ fileList }" var="file">
 																		<div class="text-center">
-																			<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
+																			<img id="fileImg" class="img-responsive" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
 																		</div>
 																	</c:forEach>
 																</c:if>

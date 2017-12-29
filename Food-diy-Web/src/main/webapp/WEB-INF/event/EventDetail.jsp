@@ -141,59 +141,6 @@
 								</div>
 									<br/><br/>
 								
-									<!--  	<table class="table table-bordered">
-								            <tr>
-													<th width="10%">번호</th>
-													<td>${ eventVo.no }</td>
-												</tr>
-												<tr>
-													<th>제목</th>
-													<td>${ eventVO.title }</td>
-												</tr>
-												<tr>
-													<th></th>
-													<td>
-														<img src="../upload/${ eventVO.imgFileName }" width="250">
-													</td>
-												</tr>
-												
-												<tr>
-													<th>내용</th>
-													<td>${ eventVO.content }</td>
-												<%-- 	<td><c:out value="${ tvo.content }" /></td>  --%>
-												</tr>
-												<tr>
-													<th>시작일</th>
-													<td>${ eventVO.startDate }</td>
-												</tr>
-												<tr>
-													<th>종료일</th>
-													<td>${ eventVO.endDate }</td>
-												</tr>
-											
-												<tr>
-													<th>등록일</th>
-													<td>${ evenetVO.regDate }</td>
-												</tr>
-											</table>
-											
-											<br/><br/>
-											<div class="row" align="center">
-								    			<div class="col-md-12">
-													
-														<button onclick="doAction('U')">수정</button>&nbsp;&nbsp;
-														<button onclick="doAction('D')">삭제</button>&nbsp;&nbsp;
-													
-													<button onclick="doAction('L')">목록</button>
-													<button id="com" class="btn btn-secondary">답글</button>
-												</div>
-											</div>
-
-
-															-->	
-
-	
-
 					</div>
 				</div>
 			</div>
