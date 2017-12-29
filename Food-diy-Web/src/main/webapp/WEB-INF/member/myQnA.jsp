@@ -68,7 +68,7 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 		
-		
+<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>		
 <style type="text/css">
 	#div01 {
 		width: 70px;
@@ -209,6 +209,12 @@
 										</ul>
 									</div>
 								</div>
+<<<<<<< HEAD
+=======
+								<div align="right" style="margin-right: 2%; margin-top: 5%">
+									<button class="btn btn-primary btn-icon" id="del" style="width: 14%; height: 10%">삭제</button>
+								</div>
+>>>>>>> refs/remotes/origin/master
 							</div>
 						</div>
 					</div>
@@ -258,6 +264,7 @@
 	<!-- Theme Base, Components and Settings -->
 	<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
 
+<<<<<<< HEAD
 	<!-- Current Page Vendor and Views -->
 	<script
 		src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
@@ -285,6 +292,9 @@
 	<script
 		src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+=======
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+>>>>>>> refs/remotes/origin/master
 		
 	<!-- dataTables -->
 	<script src="${ pageContext.request.contextPath }/resources/js/dataTables/datatables.min.js"></script>

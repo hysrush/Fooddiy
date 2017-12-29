@@ -72,7 +72,7 @@ public class MemberServiceImp  implements MemberService  {
 	}
 
 	@Override
-	public CartVO getmyMenuDetail(int no) {
+	public MemberOrderVO getmyMenuDetail(int no) {
 		return memberDAO.getmyMenuDetail(no);
 	}
 

@@ -202,6 +202,7 @@ $(document).ready(function(){
 													<th data-hide="phone" data-sort-ignore="true">주문자</th>
 													<th data-hide="phone" data-sort-ignore="true">주문금액</th>
 													<th data-hide="phone" data-sort-ignore="true">결제방법</th>
+													<th data-hide="phone" data-sort-ignore="true">지점</th>
 													<th data-hide="phone" data-sort-ignore="true">주문상태</th>
 													<th data-hide="phone" data-sort-ignore="true">주문취소</th>
 												</tr>
@@ -238,6 +239,7 @@ $(document).ready(function(){
 																<td width="10%" nowrap>${ order.id }</td>
 																<td class="commaN finalPrice">${ order.final_price }원</td>
 																<td>${ order.payment }</td>
+																<td>${ order.storeName }</td>
 																<c:choose>
 																	<c:when test="${ order.orderStatus == '0'}">
 																		<td><span class="orderStatus label label-danger">주문취소</span></td>

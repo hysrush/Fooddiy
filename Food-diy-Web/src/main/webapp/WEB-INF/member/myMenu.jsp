@@ -220,39 +220,6 @@ $(document).ready(function(){
 	/* ----------------------------------------------------------------------------------------------------------------- */
   
 
-			
-			var totalFinalPrice = 0;
-			var orderCount = 0;
-			$('tbody.todayOrderList tr').each(function() {
-				
-				var status = $(this).find('.orderStatus');
-								
-				if(status.text() == '0') {
-					status.text('주문취소');
-					status.attr('class', 'label label-danger');
-				}else {
-					if (status.text() == '1') {
-						status.text('대기중');
-						status.attr('class', 'label label-primary');
-						$(this).find('.cancel-button').append('<button type="button" class="btn btn-outline btn-danger button-cancel">주문취소</button>');
-					}else if (status.text() == '2') {
-						status.text('준비중');
-						status.children().attr('class', 'label label-warning');
-					} else{
-						status.text('준비완료');
-						status.attr('class', 'label label-information');
-					}
-					
-					totalFinalPrice += uncomma($(this).find('.finalPrice').text())*1;
-					++orderCount;
-				}
-			}); 
-			$('.total-count-order').text(orderCount);
-			$('.total-order-price').text(comma(totalFinalPrice) + "원");
-			
-			
-			
-			
 			// 삭제 alert창
 			function orderCancel(no) {
 				swal({
@@ -282,11 +249,11 @@ $(document).ready(function(){
 });
 
 
-function mymodal(mymenuNo) {
-    $('div.modal').modal().removeData();
-    var url = '${ pageContext.request.contextPath}/member/myMenuDetail.do?no=' + mymenuNo;
-    $('div.modal').modal({ remote : url });
-} 
+	function mymodal(mymenuNo) {
+	    $('div.modal').modal().removeData();
+	    var url = '${ pageContext.request.contextPath}/member/myMenuDetail.do?no=' + mymenuNo;
+	    $('div.modal').modal({ remote : url });
+	} 
 </script>
 
 
@@ -322,7 +289,7 @@ function mymodal(mymenuNo) {
 				</section>
 				
 			<div class="container">
-				<div class="row">
+				<div class="row col-lg-3">
 					<div style="width: 600px">
 						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3 hidden-xs">
 							<aside  class="sidebar">
@@ -330,123 +297,79 @@ function mymodal(mymenuNo) {
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a> </li>
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a> </li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/member/myMenu.do">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
-		</aside></div></div>
+							</aside>		
+						</div>
+					</div>
+				</div>	
 	
-		<div class="row">
-					<div class="col-lg-9">
-						<div class="ibox">
-							<div class="ibox-content">
-								<div class="table-responsive">
-									<%-- <table class="footable table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="25">
-											<thead>
-												<tr style="font-size: 15px; margin-top: 15%">
-													<th style="width: 45px" data-hide="phone" data-sort-ignore="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-													<th data-hide="phone" data-sort-ignore="true">주문번호</th>
-													<th data-hide="phone" data-sort-ignore="true">메뉴</th>
-													<th data-hide="phone" data-sort-ignore="true">주문자</th>
-													<th data-hide="phone" data-sort-ignore="true">주문금액</th>
-												</tr>
-											</thead>
-											<tbody class="todayOrderList">
+				<div class="row">
+							<div class="col-lg-9">
+								<div class="ibox">
+									<div class="ibox-content">
+										<div class="table-responsive">
+											 <table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
+												<thead>
+													<tr style="font-size:15px; margin-top: 15%">
+														<th  data-hide="phone" data-sort-ignore="true"></th>
+														<th data-hide="phone" data-sort-ignore="true">메뉴</th>
+														<th style="width: 70px" data-hide="phone" data-sort-ignore="true">주문자</th>
+														<th data-hide="phone" data-sort-ignore="true">주문금액</th>
+													</tr>
+												</thead>
+												<tbody class= "todayOrderList">
 												<c:choose>
-													<c:when test="${ not empty orderList }">
-														<c:forEach items="${ orderList }" var="order">
-															<tr class="cart-subtotal">
-																<td class="id" style="display: none;">${ order.id }</td>
-																<td class="price" style="display: none;">${ order.final_price }</td>
-																<td class="product-thumbnail" style="width: 30px; height: 30px"><a><img style="width: 40px; height: 30px" alt="Product Name" class="img-responsive " src="${ pageContext.request.contextPath }/resources/img/AA.jpg"></a></td>
-																<c:forEach items="${ order.detailOrderList }" var="list" varStatus="status">
-																	<td class="size" style="display: none;">${ list.size }</td>
-																	<td class="name" style="display: none;">${ list.name }</td>
-																	<td class="pic" style="display: none;">${ list.pic }</td>
-																	<td class="bread" style="display: none;">${ list.bread }</td>
-																	<td class="cheese" style="display: none;">${ list.cheese }</td>
-																	<td class="topping" style="display: none;">${ list.topping }</td>
-																	<td class="vegetable" style="display: none;">${ list.vegetable }</td>
-																	<td class="sauce" style="display: none;">${ list.sauce }</td>
-																</c:forEach>
-																<td class="convType orderNumber" id="no" width="100px;">${ order.no }</td>
-																<td width = 20%>
-																	<div data-toggle="modal" data-target="#largeModal">
-																		<a onclick="modal('${ order.no }')"> 
-																			<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" varStatus="status">
-																				${ oneOrder.name }
-																				<c:if test="${ !status.last }">, </c:if>
-																			</c:forEach>
-																		</a>
-																	</div>
-																</td>
-																<td width="10%" nowrap>${ order.id }</td>
-																<td class="commaN finalPrice">${ order.final_price }원</td>
-															</tr>
-														</c:forEach>
-													</c:when>
-													<c:otherwise>
-														<h3 id="del">최근 주문 내용이 없습니다.</h3>
-													</c:otherwise>
+												<c:when test="${ not empty orderList }">
+												<c:forEach items="${ orderList }" var="order">
+		
+													<tr class="cart-subtotal">
+														<td class="cartNo" style="display: none;">${ order.no }</td>
+						                                <td><input name="cart" type="checkbox" value="${ order.no }"></td>
+														<td>
+															<a style=" width: 230px" onclick = "mymodal(${ order.no })">
+																<c:forEach items = "${  order.detailOrderList }" var = "oneOrder" varStatus="status">
+																	${ oneOrder.name }
+																<c:if test="${ !status.last }">, </c:if>
+															</c:forEach>
+															</a>
+					                             		</td>
+														<td width="20%" nowrap>
+															${ order.id }
+														</td>	
+														
+														<td class = "commaN finalPrice">${ order.final_price }원</td>											
+														<td>	
+															<span class="orderStatus label label-primary">장바구니 담기</span>
+														</td>
+													</tr>
+												</c:forEach>
+												</c:when>
+												<c:otherwise>
+													<tr>
+														<td colspan="8" align="center"><h3 id="del" style="font-weight:bold;"><br/>최근 주문 내용이 없습니다.</h3></td>
+													</tr>
+												</c:otherwise>
 												</c:choose>
-											</tbody>
-										</table> --%>
-									 <table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
-										<thead>
-											<tr style="font-size:15px; margin-top: 15%">
-												<th  data-hide="phone" data-sort-ignore="true"></th>
-												<th data-hide="phone" data-sort-ignore="true">메뉴</th>
-												<th style="width: 70px" data-hide="phone" data-sort-ignore="true">주문자</th>
-												<th data-hide="phone" data-sort-ignore="true">주문금액</th>
-											</tr>
-										</thead>
-										<tbody class= "todayOrderList">
-										<c:choose>
-										<c:when test="${ not empty menuList }">
-										<c:forEach items="${ menuList }" var="menu">
-
-											<tr class="cart-subtotal">
-													<td class="cartNo" style="display: none;">${ menu.no }</td>
-				                                    <td><input name="cart" type="checkbox" value="${ menu.no }"></td>
-													<td>
-													<a style=" width: 230px" onclick = "mymodal(${ menu.no })">
-														${menu.menu }
-														
-														</a>
-			                                   		</td>
-													<td width="20%" nowrap>
-														${ menu.id }
-													</td>	
-													
-													<td class = "commaN finalPrice">${ menu.finalPrice }원</td>											
-													<td class="qty-total" style="width: 150px">
-															<div class="qty-holder">
-																<a class="qty-dec-btn" title="Dec">-</a> <input type="text" class="qty-input" value=""> 
-																<a class="qty-inc-btn" title="Inc">+</a> <a class="edit-qty"></a>
-															</div>
-														</td> 
-															<td>
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn  btn-info col-md-3" id="order">결제 </button>
-															</td>
-														
-											</tr>
-											
-										</c:forEach>
-										</c:when>
-										<c:otherwise>
-											<tr>
-												<td colspan="8" align="center"><h3 id="del" style="font-weight:bold;"><br/>최근 주문 내용이 없습니다.</h3></td>
-											</tr>
-										</c:otherwise>
-										</c:choose>
-										</tbody>
-									</table>
-								</div>						
-																<div class="row">
-																<div class="col-md-8 col-xs-5"></div>	
-																<div class="col-md-4 col-xs-6" align="center" style="font-size:15; margin-top:7%; margin-left: 0%">	
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon" id="del">메뉴삭제</button>
-																<button style="margin-left:1%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon"> SNS글등록</button>
+												</tbody>
+											</table> 
+										</div>					
+										
+									<!-- 	<div  align="center" style="font-size:15; margin-top:8%; margin-left: 74%">	
+											<button class="btn btn-primary" data-toggle="modal" data-target="#formModal">메뉴삭제</button>
+											<button class="btn btn-primary" data-toggle="modal" data-target="#formModal">sns글 등록</button>
+											<button style=" width: 80px; height: 30px; font-size: 10px" type="button" class="btn btn-primary col-md-3" id="del">메뉴삭제</button>
+											<button style=" width: 80px; height: 30px; font-size: 10px" type="button" class="btn btn-primary col-md-3"> SNS글등록</button>
+										</div>   -->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-xs-6"></div>	
+									<div class="col-md-6 col-xs-12" align="right" style="font-size:15; margin-top:7%; margin-left: 0%">	
+										<button style=" /* width: 80px; height: 30px; */width:30%; height: 20%; font-size: 13px" type="button" class="btn btn-primary btn-icon" id="del">메뉴삭제</button>
+										<button style="margin-left:1%; width: 30%; height: 20%; font-size: 13px" type="button" class="btn btn-primary btn-icon"> SNS글등록</button>
 								</div>							
 							</div>
 						</div>
@@ -454,9 +377,6 @@ function mymodal(mymenuNo) {
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</div>
 	<!-- 모달 -->
 	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
@@ -464,7 +384,7 @@ function mymodal(mymenuNo) {
 				<!-- 모달내용 -->
 	
 		 	</div>
-			</div>
+		</div>
 	</div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->

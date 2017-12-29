@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div role="main" class="main"><br/>
 	<div class= "container"><br/>
 		<div class="row"  style="max-height: 760px;">
@@ -18,7 +19,7 @@
 							<tr>
 								<td>
 									<!-- 공지사항 -->
-									<table style="margin-top: 5%; table-layout:fixed">
+									<table style="table-layout:fixed">
 										<tr style="background-color: #fdcb04">
 											<td style="width:100%; padding:3% 0">
 												<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/notice.do">
@@ -119,12 +120,6 @@
 				</table>
 				</div>
 				<div class="col-sm-3 main">
-					<!-- 신메뉴  -->
-					<%-- <div class="col-sm-12 main">
-						<a style="text-decoration: none" href="${ pageContext.request.contextPath }/menu/menuAll.do#recommend">
-							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/main/main_celeb.jpg" />
-						</a>
-					</div> --%>
 					<!-- SNS정보 -->
 					<div class="col-sm-12 main" >
 						<table style="width: 100%; table-layout:fixed">
@@ -155,7 +150,63 @@
 										
 									</td> -->
 								</tr>
-								<tr  style="border-bottom: 1px solid #019847;">
+								<c:choose>
+									<c:when test="${fn:length(s.title) > 20}">
+										<tr>
+											<td rowspan="2">
+												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="text-decoration:none">
+													<img style="width:100%; height: 175px;" src="../upload/SNS/${ s.fileName }" alt="Loading...">
+												</a>
+											</td>
+											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden; */ padding-top: 3%; padding-left: 2%" title="${ s.title }">
+												<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+													<strong style="font-size: 13px; font-weight: bolder;">
+														<c:out value="${fn:substring(s.title,0,19)}"/>....
+													</strong>
+												</a>
+											</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td rowspan="2">
+												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="text-decoration:none">
+													<img style="width:100%; height: 175px;" src="../upload/SNS/${ s.fileName }" alt="Loading...">
+												</a>
+											</td>
+											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden; */ padding-top: 3%; padding-left: 2%" title="${ s.title }">
+												<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+													<strong style="font-size: 13px; font-weight: bolder;">
+														<c:out value="${s.title}"/>
+													</strong>
+												</a>
+											</td>
+										</tr>
+									</c:otherwise> 
+								</c:choose>
+								<c:choose>
+									<c:when test="${fn:length(s.content) > 30}">
+										<tr>
+											<td colspan="2" style="padding-top: 3%; padding-left: 2%" title="${ s.content }">
+												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
+													<small style="font-size: 11px; padding: 0 1%; font-weight: bold;">
+														<c:out value="${fn:substring(s.content,0,27)}"/>....
+													</small>
+												</a>
+											</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan="2" style="padding-top: 3%; padding-left: 2%" title="${ s.content }">
+												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
+													<small style="font-size: 11px; padding: 0 1%; font-weight: bold;">${ s.content }</small>
+												</a>
+											</td>
+										</tr>
+									</c:otherwise> 
+								</c:choose>
+							<%-- 	<tr  style="border-bottom: 1px solid #019847;">
 									<td rowspan="2">
 										<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="text-decoration:none">
 											<img style="width:100%; height: 175px;" src="../upload/SNS/${ s.fileName }" alt="Loading...">
@@ -163,22 +214,22 @@
 									</td>
 									<td align="center" colspan="2" style="text-overflow: ellipsis; overflow: hidden;" title="${ s.title }">
 										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<nobr><strong style="font-size: 12px;">${ s.title }</strong></nobr>
+											<nobr><strong style="font-size: 13px; font-weight: bolder;">${ s.title }</strong></nobr>
 										</a>
 									</td>
 								</tr>
 								<tr>
 									<td align="center" colspan="2" style="text-overflow: ellipsis; overflow: hidden;" title="${ s.content }">
 										<a href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<nobr><small style="font-size: 11px; padding: 0 1%;">${ s.content }</small></nobr>
+											<nobr><small style="font-size: 11px; padding: 0 1%; font-weight: bold;">${ s.content }</small></nobr>
 										</a>
 									</td>
-								</tr>
+								</tr> --%>
 						</c:forEach>
 						</table>
 					</div>
 					<!-- 매장 찾기 -->
-					<div class="col-sm-12" style="margin-top: 2%"><br/>
+					<div class="col-sm-12" style="margin-top: 1%"><br/>
 						<a href="${ pageContext.request.contextPath }/store/findStoreU.do">
 							<img width="100%" src="${ pageContext.request.contextPath }/resources/img/subway-nuevo-logo.jpg"/>
 						</a>

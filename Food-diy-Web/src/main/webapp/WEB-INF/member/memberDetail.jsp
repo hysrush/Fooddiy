@@ -74,10 +74,12 @@
 	       
 	       
 	       $("#stamp").click(function(){
-	    	   	$('div.modal').modal().removeData();
+	    	   	$('div.stamp').modal().removeData();
 				var url = '${ pageContext.request.contextPath}/member/myStamp.do?id=${loginVO.id}';
-	   	    	$('div.modal').modal({ remote : url });
+	   	    	$('div.stamp').modal({ remote : url });
 	       });
+	       
+	       
 		
 	});
 
@@ -129,8 +131,8 @@
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
+									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 								</aside>
@@ -217,16 +219,18 @@
 
 							<div style="margin-top: 1%;">
 							<div class="row">
+							<div class="col-md-4"></div>
+							<div class="col-md-3"></div>
 							<div class="col-md-12 hidden-xs" style="margin-left:9%; padding-left: 53%">
-									<button class="btn basic-btn"  data-toggle="modal" id="stamp">쿠폰북</button>
-									<button class="btn basic-btn" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
-									<button class="btn basic-btn" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
+									<button class="btn btn-primary btn-icon" id="stamp">쿠폰북</button>
+									<button class="btn btn-primary btn-icon" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
+									<button class="btn btn-primary btn-icon" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
 							</div>
 							<div class="col-xs-12 visible-xs" style="padding-left: 15%">
-									<button class="btn basic-btn"  data-toggle="modal" id="stamp">쿠폰북</button>
-									<button class="btn basic-btn" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
-									<button class="btn basic-btn" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
+									<button class="btn btn-primary btn-icon" id="stamp">쿠폰북</button>
+									<button class="btn btn-primary btn-icon" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
+									<button class="btn btn-primary btn-icon" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
 							</div>
 							</div>
@@ -247,7 +251,7 @@
 															</div>
 														</div>
 												<div class="modal-footer">
-														<input id="okay" type="submit" class="btn btn-primary" value="확인">
+														<input type="submit" class="btn btn-primary" value="확인">
 														<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 											</div>
 													</form>
@@ -274,7 +278,7 @@
 															</div>
 														</div>
 													<div class="modal-footer">
-														<input id="okay" type="submit" class="btn btn-primary" value="확인">
+														<input type="submit" class="btn btn-primary" value="확인">
 														<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 											    	</div>
 													</form>
@@ -284,10 +288,10 @@
 									</div>
 									
 										<!--쿠폰북 디테일  -->					
-										<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+										<div class="modal fade stamp" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<div class="modal-header">
+												<div class="modal-header modal-footer">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 													<h3 class="modal-title" id="formModalLabel"><strong>쿠폰북</strong></h3>
 												</div>
