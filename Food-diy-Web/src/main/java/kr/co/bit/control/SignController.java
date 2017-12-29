@@ -65,6 +65,7 @@ public class SignController {
 		
 		/*System.out.println(phoneCert.toString());*/
 		// 회원 가입했는지 확인(번호랑 이름)
+		phoneCert.setType("일반");
 		int num = signServiceImp.checkMember(phoneCert);
 		if(num == 1) {
 			model.addAttribute("msg", "이미 가입한 기록이 있습니다.");

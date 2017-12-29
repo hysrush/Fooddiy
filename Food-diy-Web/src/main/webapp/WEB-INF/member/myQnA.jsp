@@ -109,7 +109,7 @@
 
 					<div class="row">
 					<div style="width: 600px">
-						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
+						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3 hidden-xs">
 							<aside  class="sidebar">
 
 								<h3 class="heading-primary">Categories</h3>
@@ -162,7 +162,11 @@
 											
 										</c:forEach>
 										</c:when>
-										<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
+										<c:otherwise>
+											<tr>
+												<td colspan="8" align="center"><h3 style="font-weight:bold;"><br/>문의 내용이 없습니다.</h3></td>
+											</tr>
+										</c:otherwise>
 										</c:choose>
 										</tbody>
 									</table>

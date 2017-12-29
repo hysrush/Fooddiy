@@ -66,15 +66,35 @@
 	          offset_top : 72,
 	          inner_scrolling : false
 	       });
+	   }	   
+	   
+	   // 사이드바 활성화
+	   var t = $('#getType').text();
+	   var btn = $(".sort-source > li");
+	   btn.removeClass("active");
+	   switch(t){
+	   	case 'E':  $('.E').addClass("active");
+	   	$('#enav').text("All Menu");$('#knav').text("전체메뉴");break;   	
+	   	case 'R':  $('.R').addClass("active");
+ 	    $('#enav').text("Recommend");$('#knav').text("추천메뉴");break;   	
+	   	case 'P':  $('.P').addClass("active");
+	   	$('#enav').text("Premium");$('#knav').text("프리미엄");break;
+	   	case 'B':  $('.B').addClass("active");
+	   	$('#enav').text("Best");$('#knav').text("베스트");break;   	
+	   	case 'C':  $('.C').addClass("active");
+	   	$('#enav').text("Classic");$('#knav').text("클래식");break;   	
+	   	case 'M':  $('.M').addClass("active");
+	   	$('#enav').text("Breakfast");$('#knav').text("아침식사");break;
+	   	case 'S':  $('.S').addClass("active");
+	   	$('#enav').text("Salad");$('#knav').text("샐러드");break;
+	   	case 'N':  $('.N').addClass("active");
+	   	$('#enav').text("Side Menu");$('#knav').text("추가메뉴");break;
+	   	case 'D':  $('.D').addClass("active");
+	   	$('#enav').text("Beverage");$('#knav').text("음료");break;
 	   }
 	   
-	   /* //side active
-	   if() */
 	   
-	   
-	   
-	   
-   });
+   });   
 
    function detail(menuNo, menuName) {	   
 	   //공백, 특수문자 넘기기 위해서 인코딩
@@ -85,15 +105,14 @@
    // 메뉴 타입별 파라미터 같이 보냄
    function btnClick(type) {
 	   location.href = '${ pageContext.request.contextPath }/menu/menuList.do?type=' + type;
-   }
-   
-   
+   }   
    
    
 </script>
 
 <style>
-li { cursor: pointer; }
+.thumb-info-lighten { cursor: pointer; }
+.sort-source { cursor: pointer; }
 </style>
 
 
@@ -115,13 +134,13 @@ li { cursor: pointer; }
                   <div class="col-md-12">
                      <ul class="breadcrumb">
                         <li><a href="#">Menu</a></li>
-                        <li class="active">All menu</li>
+                        <li class="active" id="enav">All Menu</li>
                      </ul>
                   </div>
                </div>
                <div class="row">
                   <div class="col-md-12">
-                     <h1>전체메뉴</h1>
+                     <h1 id="knav">전체메뉴</h1>
                   </div>
                </div>
             </div>
@@ -135,32 +154,33 @@ li { cursor: pointer; }
                   	data-plugin-options="{ 'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 150} }">
                      <h4 class="heading-primary">MENU</h4>
                      <ul class="nav nav-list sort-source">                        
-                        <li class="active" ><a onclick="btnClick('E')">전체메뉴</a></li>
-                        <li><a onclick="btnClick('R')">추천메뉴</a></li>
-                        <li><a onclick="btnClick('P')">프리미엄</a></li>
-                        <li><a onclick="btnClick('B')">베스트</a></li>
-                        <li><a onclick="btnClick('C')">클래식</a></li>
-                        <li><a onclick="btnClick('M')">아침식사</a></li>
-                        <li><a onclick="btnClick('S')">샐러드</a></li>
-                        <li><a onclick="btnClick('N')">추가메뉴</a></li>
-                        <li><a onclick="btnClick('D')">음료</a></li>
+                        <li class="E" ><a onclick="btnClick('E')">전체메뉴</a></li>                        
+                        <li class="R"><a onclick="btnClick('R')">추천메뉴</a></li>
+                        <li class="P"><a onclick="btnClick('P')">프리미엄</a></li>
+                        <li class="B"><a onclick="btnClick('B')">베스트</a></li>
+                        <li class="C"><a onclick="btnClick('C')">클래식</a></li>
+                        <li class="M"><a onclick="btnClick('M')">아침식사</a></li>
+                        <li class="S"><a onclick="btnClick('S')">샐러드</a></li>
+                        <li class="N"><a onclick="btnClick('N')">추가메뉴</a></li>
+                        <li class="D"><a onclick="btnClick('D')">음료</a></li>
                      </ul>
                   </aside>
+	              <div id="getType" style="display: none" >${ type }</div>
                </div>
 
                <!-- 모바일 크기에서 보이는 슬라이드 메뉴 -->
                <aside class="sidebar hidden-md hidden-lg" id="lnb">
                   <nav>
                      <ul>
-                        <li class="active"><a onclick="btnClick('E')">전체메뉴</a></li>
-                        <li><a onclick="btnClick('R')">추천메뉴</a></li>
-                        <li><a onclick="btnClick('P')">프리미엄</a></li>
-                        <li><a onclick="btnClick('B')">베스트</a></li>
-                        <li><a onclick="btnClick('C')">클래식</a></li>
-                        <li><a onclick="btnClick('M')">아침식사</a></li>
-                        <li><a onclick="btnClick('S')">샐러드</a></li>
-                        <li><a onclick="btnClick('N')">추가메뉴</a></li>
-                        <li><a onclick="btnClick('D')">음료</a></li>
+                        <li class="E"><a onclick="btnClick('E')">전체메뉴</a></li>
+                        <li class="R"><a onclick="btnClick('R')">추천메뉴</a></li>
+                        <li class="P"><a onclick="btnClick('P')">프리미엄</a></li>
+                        <li class="B"><a onclick="btnClick('B')">베스트</a></li>
+                        <li class="C"><a onclick="btnClick('C')">클래식</a></li>
+                        <li class="M"><a onclick="btnClick('M')">아침식사</a></li>
+                        <li class="S"><a onclick="btnClick('S')">샐러드</a></li>
+                        <li class="N"><a onclick="btnClick('N')">추가메뉴</a></li>
+                        <li class="D"><a onclick="btnClick('D')">음료</a></li>
                      </ul>
                   </nav>
                </aside>
@@ -170,7 +190,7 @@ li { cursor: pointer; }
                   <div id="slidemenu">
                      <div class="row">
                      	<ul class="portfolio-list sort-destination">
-                        	<c:forEach items="${ menuList }" var="menu">                              
+                        	<c:forEach items="${ menuList }" var="menu"> 
 
                                     <li class="col-md-4 col-sm-6 col-xs-6 isotope-item">
                                        <div class="portfolio-item">

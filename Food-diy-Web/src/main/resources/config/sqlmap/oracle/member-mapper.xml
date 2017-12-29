@@ -108,7 +108,7 @@
 	<select id="checkMember" parameterType="userVO" resultType="java.lang.Integer">
 		select NVL(count(*), 0)
 		from t_user
-		where user_name = #{ name } and user_phone = #{ phone }
+		where user_name = #{ name } and user_phone = #{ phone } and user_type = #{type}
 	</select>
 	
 	<!-- 로그인 전 가입 확인 -->

@@ -176,7 +176,7 @@ $(document).ready(function(){
 			<div class="container">
 				<div class="row">
 					<div style="width: 600px">
-						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
+						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3 hidden-xs">
 							<aside class="sidebar">
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
@@ -263,7 +263,9 @@ $(document).ready(function(){
 														</c:forEach>
 													</c:when>
 													<c:otherwise>
-														<h3 id="del">최근 주문 내용이 없습니다.</h3>
+														<tr>
+															<td colspan="8" align="center"><h3 style="font-weight:bold;"><br/>최근 주문 내용이 없습니다.</h3></td>
+														</tr>
 													</c:otherwise>
 												</c:choose>
 											</tbody>

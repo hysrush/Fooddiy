@@ -324,7 +324,7 @@ function mymodal(mymenuNo) {
 			<div class="container">
 				<div class="row">
 					<div style="width: 600px">
-						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
+						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3 hidden-xs">
 							<aside  class="sidebar">
 
 								<h3 class="heading-primary">Categories</h3>
@@ -433,10 +433,13 @@ function mymodal(mymenuNo) {
 											
 										</c:forEach>
 										</c:when>
-										<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
+										<c:otherwise>
+											<tr>
+												<td colspan="8" align="center"><h3 style="font-weight:bold;"><br/>최근 주문 내용이 없습니다.</h3></td>
+											</tr>
+										</c:otherwise>
 										</c:choose>
 										</tbody>
-<<<<<<< HEAD
 									</table>
 								</div>						
 																<div class="row">
@@ -444,14 +447,7 @@ function mymodal(mymenuNo) {
 																<div class="col-md-4 col-xs-6" align="center" style="font-size:15; margin-top:7%; margin-left: 0%">	
 																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon" id="del">메뉴삭제</button>
 																<button style="margin-left:1%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon"> SNS글등록</button>
-=======
-									</table> 
-								</div>							<div  align="center" style="font-size:15; margin-top:8%; margin-left: 74%">	
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn basic-btn col-md-3" id="del">메뉴삭제</button>
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn basic-btn col-md-3"> SNS글등록</button>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
-																</div>  
-																</div>
+								</div>							
 							</div>
 						</div>
 					</div>
@@ -460,7 +456,7 @@ function mymodal(mymenuNo) {
 		</div>
 	</div>
 </div>
-
+</div>
 	<!-- 모달 -->
 	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
