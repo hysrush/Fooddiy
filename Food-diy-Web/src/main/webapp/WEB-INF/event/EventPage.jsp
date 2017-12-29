@@ -161,9 +161,9 @@
 							<div class="row">
 								<div class="col-md-12">
 		
-									<div class="tabs tabs-bottom tabs-center tabs-simple">
+									<div class="tabs tabs-bottom tabs-center tabs-simple" >
 										<ul class="nav nav-tabs">
-											<li class="active">
+											<li class="active"  >
 												<a href="#tabsNavigationSimple1" data-toggle="tab" aria-expanded="true">진행중인 이벤트</a>
 											</li>
 											<li class="">
@@ -184,7 +184,8 @@
 																	<img alt="" class="img-responsive img-rounded" src="../upload/${ eventVO.imgFileName }"  style=" width:600px;height:150px">
 																</a>
 																</div>
-																<div class="col-md-6" align="left"> 
+																
+																<div class="col-md-4" align="left"> 
 																	<h4><strong>${ eventVO.content }</strong></h4>
 																	<br/>
 																		
