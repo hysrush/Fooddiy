@@ -58,7 +58,7 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 		
-		
+<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>		
 <style type="text/css">
 	#div01 {
 		width: 70px;
@@ -171,10 +171,10 @@
 										</tbody>
 									</table>
 								</div>
-												<div align="right" style="margin-right: 15%; margin-top: 5%">
-													<button class="btn btn-primary btn-icon" id="del" style="width: 17%; height: 30px">삭제</button>
-												</div>
+								<div align="right" style="margin-right: 2%; margin-top: 5%">
+									<button class="btn btn-primary btn-icon" id="del" style="width: 14%; height: 10%">삭제</button>
 								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -233,7 +233,6 @@
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 
-<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 		
 <script type="text/javascript">

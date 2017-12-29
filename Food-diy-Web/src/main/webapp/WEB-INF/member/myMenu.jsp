@@ -347,26 +347,29 @@ $(document).ready(function(){
 													</tr>
 												</c:forEach>
 												</c:when>
-												<c:otherwise><h3 id="del">최근 주문 내용이 없습니다.</h3></c:otherwise>
+												<c:otherwise>
+													<tr>
+														<td colspan="8" align="center"><h3 id="del" style="font-weight:bold;"><br/>최근 주문 내용이 없습니다.</h3></td>
+													</tr>
+												</c:otherwise>
 												</c:choose>
 												</tbody>
 											</table> 
 										</div>					
 										
-										<div  align="center" style="font-size:15; margin-top:8%; margin-left: 74%">	
+									<!-- 	<div  align="center" style="font-size:15; margin-top:8%; margin-left: 74%">	
 											<button class="btn btn-primary" data-toggle="modal" data-target="#formModal">메뉴삭제</button>
 											<button class="btn btn-primary" data-toggle="modal" data-target="#formModal">sns글 등록</button>
-											<!-- <button style=" width: 80px; height: 30px; font-size: 10px" type="button" class="btn btn-primary col-md-3" id="del">메뉴삭제</button>
-											<button style=" width: 80px; height: 30px; font-size: 10px" type="button" class="btn btn-primary col-md-3"> SNS글등록</button> -->
-										</div>  
+											<button style=" width: 80px; height: 30px; font-size: 10px" type="button" class="btn btn-primary col-md-3" id="del">메뉴삭제</button>
+											<button style=" width: 80px; height: 30px; font-size: 10px" type="button" class="btn btn-primary col-md-3"> SNS글등록</button>
+										</div>   -->
 									</div>
 								</div>
-				
-																<div class="row">
-																<div class="col-md-8 col-xs-5"></div>	
-																<div class="col-md-4 col-xs-6" align="center" style="font-size:15; margin-top:7%; margin-left: 0%">	
-																<button style=" width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon" id="del">메뉴삭제</button>
-																<button style="margin-left:1%; width: 80px; height: 30px; font-size: 13px" type="button" class="btn btn-primary btn-icon"> SNS글등록</button>
+								<div class="row">
+									<div class="col-md-6 col-xs-6"></div>	
+									<div class="col-md-6 col-xs-12" align="right" style="font-size:15; margin-top:7%; margin-left: 0%">	
+										<button style=" /* width: 80px; height: 30px; */width:30%; height: 20%; font-size: 13px" type="button" class="btn btn-primary btn-icon" id="del">메뉴삭제</button>
+										<button style="margin-left:1%; width: 30%; height: 20%; font-size: 13px" type="button" class="btn btn-primary btn-icon"> SNS글등록</button>
 								</div>							
 							</div>
 						</div>
@@ -374,9 +377,6 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</div>
 	<!-- 모달 -->
 	<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
