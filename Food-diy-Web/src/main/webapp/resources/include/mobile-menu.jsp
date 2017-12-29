@@ -43,7 +43,7 @@
 				<ul>
 					<li><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
 					<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway소식</a></li>
-					<li><a href="${ pageContext.request.contextPath }/community/claimWrite.do">1:1 문의</a></li>
+					<li><a href="${ pageContext.request.contextPath }/community/claim/claimWriteForm.do">1:1 문의</a></li>
 					<li><a href="${ pageContext.request.contextPath }/community/snsPage.do"
 						data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/images(2).jpg">SNS 게시판</a></li>
 				</ul>
