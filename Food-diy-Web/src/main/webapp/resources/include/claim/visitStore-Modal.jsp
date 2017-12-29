@@ -49,7 +49,7 @@
 							class="text-center" aria-expanded="true"><i class="fa fa-map"></i>&nbsp;&nbsp;주소로 찾기</a></li>
 						<li class=""><a href="#StoreSearch" data-toggle="tab"
 							class="text-center" aria-expanded="false"><i
-								class="fa fa-home"></i>&nbsp;&nbsp;매장명으로 찾기</a></li>
+								class="fa fa-home"></i>&nbsp;매장명으로 찾기</a></li>
 					</ul>
 					<div class="tab-content">
 						<!-- 주소로 찾기 -->
@@ -107,6 +107,12 @@
 												<button type="button" class="btn btn-success btn-md" id="searchBtn">
 													<i class="fa fa-search"></i>
 												</button>
+											</span>
+										</div>
+										<div class="input-group input-group-md">
+											<input class="input-sm form-control" type="text" name="searchWord" id="searchWord" placeholder="검색어를 입력해주세요" >
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-sm btn-primary" id="searchBtn"><i class="fa fa-search"></i></button>
 											</span>
 										</div>
 									</div>

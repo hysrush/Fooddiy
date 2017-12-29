@@ -99,7 +99,7 @@
 </style>
 </head>
 <body>
-	<div class="body">
+	<div class="body" style="min-width: 360px;">
 		<header id="header"
 			data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 			<jsp:include page="/resources/include/top-new.jsp" />

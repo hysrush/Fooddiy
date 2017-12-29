@@ -72,9 +72,12 @@
 	td p {
 		padding: 20px 30px 30px 20px;
 	}
-	img {
-		padding-top: 10px;
-		max-width: 700px;
+	@media ( min-width : 760px) {
+		#fileImg {
+			padding-top: 10px;
+			max-width: 700px;
+			display: inline;
+		}
 	}
 </style>
 </head>
