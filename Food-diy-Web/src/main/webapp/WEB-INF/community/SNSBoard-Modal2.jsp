@@ -91,7 +91,7 @@
 				<hr style = "border-top: 1px solid #2f2c2c;width:450px; margin:15px;"/>	
 			</div> 
 			<c:choose>
-       			<c:when test="${loginVO.id == snsVO.id}">			
+       			<c:when test="${not empty loginVO }">			
 					<div class="row" >
 						<div class="col-md-12" style = "height:70px;">
 				 		
