@@ -119,7 +119,7 @@
 										<div class="col-xs-8">
 											<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
 											class="btn btn-info mb-md form-control btn-primary btn-icon"
-											 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:92%;">회원가입</a>
+											 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:92%;">로그인</a>
 										</div>
 									</div>
 								</form>
@@ -129,6 +129,7 @@
 									<div class="col-md-8">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
+									
 									<%-- <div class="col-xs-6 hidden-lg">
 										<jsp:include page="/resources/include/login/mobile-kakaoLogin.jsp"/>
 									</div> --%>
