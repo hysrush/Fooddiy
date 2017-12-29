@@ -143,19 +143,11 @@
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
        <br>
       </div>
-                <c:choose>
-                <c:when test="${ loginVO.file ne null }">
-	                <div class="col-md-3 col-lg-3 " align="center">
-		                <img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 10%; padding-right:10%; margin-top: 8%; height:300px; width: 90%;">
-	                </div>
-                </c:when>
-    	            <c:otherwise>
-                		<div class="col-md-3 col-lg-3 " align="left">
-		                	<img src="${ pageContext.request.contextPath }/resources/img/parallax-2.jpg" class="img-responsive" alt="" style="float:left; margin-left: 10%; margin-top: 8%; height:300px; width: 300px;">
-						</div>
-	                </c:otherwise>
-                </c:choose>
                 
+		<div class="col-md-3 col-lg-3 " align="center">
+			<img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 10%; padding-right:10%; margin-top: 8%; height:300px; width: 90%;">
+		</div>
+		
         <div  style="margin-top: 2%" class="col-xs-12 col-sm-12 col-md-6 col-lg-6  toppad" >
           <div class="panel panel-info">
             <div class="panel-heading">
