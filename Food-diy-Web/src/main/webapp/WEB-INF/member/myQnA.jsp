@@ -60,25 +60,21 @@
 		
 		
 <style type="text/css">
-#div01 {
-	width: 70px;
-	text-align: center;
-	border-width: 2px;
-	border-style: solid;
-}
-
-.label {
-	font-size: 12px;
-}
-
-#cnt {
-	width: 80px;
-	height: 30px;
-	font-size: 13px;
-	background-color: #d1dade;
-	color: #5e5e5e;
-	font-weight: bold;
-}
+	#div01 {
+		width: 70px;
+		text-align: center;
+		border-width: 2px;
+		border-style: solid;
+	}
+	
+	#cnt {
+		width: 80px;
+		height: 30px;
+		font-size: 13px;
+		background-color: #d1dade;
+		color: #5e5e5e;
+		font-weight: bold;
+	}
 </style>
 </head>
 <body>
@@ -252,7 +248,7 @@
 				claimType.html("칭찬");
 			}
 			else if(claimType.text() == 'S'){
-				claimType.attr("class","label label-tertiary");
+				claimType.attr("class","label label-success");
 				claimType.html("제안");
 			}
 			else if(claimType.text() == 'C'){
@@ -260,7 +256,7 @@
 				claimType.html("불만");
 			}
 			else if(claimType.text() == 'X'){
-				claimType.attr("class","label label-default");
+				claimType.attr("class","label label-information");
 				claimType.html("기타");
 			}
 		}

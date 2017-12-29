@@ -67,7 +67,7 @@
 									</div>
 								</div>
 								<div class="form-group mt-md">
-									<label for="selectAddress2" class="col-sm-3 control-label">시/도</label>
+									<label for="selectAddress2" class="col-sm-3 control-label">구/군</label>
 									<div class="col-sm-9">
 										<select class="form-control" id="gugun">
 											<option value="" selected="selected">구,군 을 선택해주세요 </option>

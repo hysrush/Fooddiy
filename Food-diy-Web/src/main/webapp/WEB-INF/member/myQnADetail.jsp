@@ -359,7 +359,7 @@
 			$('#typeLabel').html("칭찬");
 		}
 		else if($('#typeLabel').text() == 'S'){
-			$('#typeLabel').attr("class","label label-tertiary");
+			$('#typeLabel').attr("class","label label-success");
 			$('#typeLabel').html("제안");
 		}
 		else if($('#typeLabel').text() == 'C'){
@@ -367,7 +367,7 @@
 			$('#typeLabel').html("불만");
 		}
 		else if($('#typeLabel').text() == 'X'){
-			$('#typeLabel').attr("class","label label-default");
+			$('#typeLabel').attr("class","label label-information");
 			$('#typeLabel').html("기타");
 		}
 		
