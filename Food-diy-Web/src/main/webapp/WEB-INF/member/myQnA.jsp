@@ -168,7 +168,7 @@
 										</c:when>
 										<c:otherwise>
 											<tr>
-												<td colspan="6" align="center"><h2 id="del">문의 내용이 없습니다.</h2></td>
+												<td colspan="8" align="center"><h3 style="font-weight:bold;"><br/>문의 내용이 없습니다.</h3></td>
 											</tr>
 										</c:otherwise>
 										</c:choose>
