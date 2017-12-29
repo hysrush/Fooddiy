@@ -5,9 +5,9 @@
 <div role="main" class="main"><br/>
 	<div class= "container"><br/>
 		<div class="row"  style="max-height: 760px;">
-			<div class="col-sm-3 main">
+			<div class="col-md-3 main">
 				<!-- 동영상 -->
-					<div class="col-sm-12 main">
+					<div class="col-md-12 main">
 						<table>
 							<tr>
 								<td>
@@ -19,7 +19,7 @@
 							<tr>
 								<td>
 									<!-- 공지사항 -->
-									<table style="table-layout:fixed">
+									<table>
 										<tr style="background-color: #fdcb04">
 											<td style="width:100%; padding:3% 0">
 												<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/notice.do">
@@ -37,7 +37,7 @@
 											<td colspan="2" style="width: 292px; text-overflow: ellipsis; overflow: hidden">
 												<span style="font-size: 12px; text-overflow:ellipsis; overflow:hidden" class="heading-primary text-uppercase mb-md">
 													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">
-														<nobr>&nbsp;${ n.title }</nobr>
+														&nbsp;${ n.title }
 													</a>
 												</span>
 											</td>
