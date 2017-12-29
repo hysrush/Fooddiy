@@ -208,21 +208,19 @@
 																</span>
 														
 														</span>
-														 <span class="product-thumb-info-content">
-																	<span>
+														 <span class="product-thumb-info-content" style="padding: 2%">
+																	<span  style="padding: 3%">
 																		<!--  좋아요 버튼 누르면 snsVO.like 증가  -->
-																	<button type="button"  onclick="like('${snsHit.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
+																	<button type="button" onclick="like('${snsHit.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																		<i class="fa fa-thumbs-up"></i>
 																	</button>
-																	<i class="fa fa-heart" id="${snsHit.no}">${snsHit.like}</i>
-																	
-																	
-																</span> 
+																	<i class="fa fa-heart" style="color:red;" id="${snsHit.no}"></i>
+																	<strong>${snsHit.like}</strong>
+																</span><br/>
 																<span>
-																		<h4>${snsHit.title }</h4>
+																	<strong style="font-size: 17px; padding: 5%; margin-bottom: 2%">${snsHit.title }</strong>
 																</span>
-															
-														</span>
+															</span>
 														</span>
 													</div>
 												</li>
@@ -277,20 +275,18 @@
 															</span>
 													
 													</span>
-													 <span class="product-thumb-info-content">
-																<span>
+													 <span class="product-thumb-info-content" style="padding: 2%">
+																<span style="padding: 3%">
 																	<!--  좋아요 버튼 누르면 snsVO.like 증가  -->
 																<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
-																<i class="fa fa-heart" id="${snsVO.no}">${snsVO.like}</i>
-																
-																
-															</span> 
-															<span>
-																	<h4>${snsVO.title }</h4>
+																<i class="fa fa-heart" style="color:red;" id="${snsVO.no}"></i>
+																<strong>${snsVO.like}</strong>
+															</span><br/> 
+															<span style="padding: 3%">
+																<strong style="font-size: 17px;">${snsVO.title }</strong>
 															</span>
-														
 													</span>
 													</span>
 												</div>

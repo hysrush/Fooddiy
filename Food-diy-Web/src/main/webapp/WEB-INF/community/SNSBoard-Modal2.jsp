@@ -29,21 +29,20 @@
 		</div>
 
 		<div class="col-md-6">
-
-		
 				<div class="testimonial testimonial-style-3">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:35px;height:35px;">&times;</button>
 			<div class="testimonial-author">
+			<br/>
 				<div class="testimonial-author-thumbnail">
 					<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
 					
 				</div>
 					<p><strong>${snsVO.id}</strong></p>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:35px;height:35px;">&times;</button>
 			</div>
 		</div> 
 			<div class="row">
 				<div class="col-md-12">
-					<div style = "height:140px;margin:15px;">${snsVO.content } </div>
+					<div style = "height:140px;margin:15px;">${ snsVO.content } </div>
 				</div>			
 			</div>	
 			
@@ -230,7 +229,7 @@
                  	  	contents +=			'<img src = "../upload/'+ data.repList[0].pic +'" class ="img-responsive img-circle" alt="" style= "width:45px;height:45px;">';
                  	 	contents +=	    '</div>';
                  	   	contents +=		'<p><strong>'+ data.repList[0].id+'</strong></p>';
-                 	   	contents +=		'<p><strong>' + data.repList[0].content + '</strong></p>';
+                 	   	contents +=		'<p><strong>' +'&nbsp;'+ data.repList[0].content + '</strong></p>';
                  	   	contents +=	'</div>';
                  	    contents +='</div>';
                  	    
