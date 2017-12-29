@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <br/>
 <div role="main" class="main">
 	<div class="container">
@@ -46,20 +47,60 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%" title="${ s.title }">
+								<c:choose>
+									<c:when test="${fn:length(s.title) > 15}">
+										<tr>
+											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden; */ padding-top: 3%; padding-left: 2%" title="${ s.title }">
+												<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+													<strong><c:out value="${fn:substring(s.title,0,12)}"/>....</strong>
+												</a>
+											</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden; */ padding-top: 3%; padding-left: 2%" title="${ s.title }">
+												<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
+													<strong><c:out value="${s.title}"/></strong>
+												</a>
+											</td>
+										</tr>
+									</c:otherwise> 
+								</c:choose>
+								<c:choose>
+									<c:when test="${fn:length(s.content) > 25}">
+										<tr>
+											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden;  */padding-top: 3%; padding-left: 2%" title="${ s.content }">
+												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
+													<c:out value="${fn:substring(s.content,0,18)}"/>....
+												</a>
+											</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden;  */padding-top: 3%; padding-left: 2%" title="${ s.content }">
+												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
+													<nobr>${ s.content }</nobr>
+												</a>
+											</td>
+										</tr>
+									</c:otherwise> 
+								</c:choose>
+						<%-- 		<tr>
+									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%; padding-left: 2%" title="${ s.title }">
 										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<strong>${ s.title }</strong>
+											<strong><nobr>${ s.title }</nobr></strong>
 										</a>
 									</td>
-								</tr>
-								<tr>
-									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%" title="${ s.content }">
-										<a style="href="${ pageContext.request.contextPath }/community/snsPage.do">
+								</tr> --%>
+							<%-- 	<tr>
+									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%; padding-left: 2%" title="${ s.content }">
+										<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
 											<nobr>${ s.content }</nobr>
 										</a>
 									</td>
-								</tr>
+								</tr> --%>
 							</table>
 						</td>
 						</c:forEach>
