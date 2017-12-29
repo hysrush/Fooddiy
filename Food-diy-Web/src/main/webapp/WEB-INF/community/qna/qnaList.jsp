@@ -74,7 +74,7 @@
 		var windowWidth = $( window ).width();
 		if(windowWidth < 992){
 			   $('#cd').stick_in_parent({
-		       offset_top : 74,
+		       offset_top : 72,
 		       inner_scrolling : false
 		   	   });
 		}		
