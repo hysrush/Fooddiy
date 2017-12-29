@@ -18,7 +18,7 @@ public interface MemberDAO {
 	void setmyMenu(CartVO member);
 	List<MemberOrderVO> getmyMenu(String id);
 	List<CartVO> delmyMenu(List<String> noList);
-	CartVO getmyMenuDetail(int no);
+	MemberOrderVO getmyMenuDetail(int no);
 	List<ClaimBoardVO> delmyQnA(List<String> noList);
 	int selectStamp(String id);
 	

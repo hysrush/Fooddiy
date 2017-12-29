@@ -67,7 +67,20 @@
 	.toggle label {
 		font-weight: bold;
 	}
-</style>	
+</style>
+
+<script>
+	$(document).ready(function(){
+		var windowWidth = $( window ).width();
+		if(windowWidth < 992){
+			   $('#cd').stick_in_parent({
+		       offset_top : 72,
+		       inner_scrolling : false
+		   	   });
+		}		
+	});
+	
+</script>	
 </head>
 <body>
 	<div class="body">
@@ -136,7 +149,7 @@
 							</div>
 						</section>
 						<div class="tabs tabs-bottom tabs-center tabs-simple">
-							<ul class="nav nav-tabs">
+							<ul class="nav nav-tabs" id="ab">
 								<li class="active">
 									<a href="#tabsNavigationSimple1" data-toggle="tab">푸디오더</a>
 								</li>
@@ -153,6 +166,18 @@
 									<a href="#tabsNavigationSimple5" data-toggle="tab">기타</a>
 								</li>
 							</ul>
+							<!-- 991 밑으로 보이는 sticky 메뉴 -->
+							<aside class="sidebar hidden-md hidden-lg" id="cd">
+			                  <nav>
+			                     <ul>
+			                        <li><a href="#tabsNavigationSimple1" data-toggle="tab">푸디오더</a></li>
+			                        <li><a href="#tabsNavigationSimple2" data-toggle="tab">포인트</a></li>
+			                        <li><a href="#tabsNavigationSimple3" data-toggle="tab">단체주문</a></li>
+			                        <li><a href="#tabsNavigationSimple4" data-toggle="tab">회원정보</a></li>
+			                        <li><a href="#tabsNavigationSimple5" data-toggle="tab">기타</a></li>			                        
+			                     </ul>
+			                  </nav>
+			              	</aside>
 							<div class="tab-content">
 								<div class="tab-pane active" id="tabsNavigationSimple1">
 									<div class="center">

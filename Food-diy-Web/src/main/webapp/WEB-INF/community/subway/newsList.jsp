@@ -62,11 +62,6 @@
 	    <!-- FooTable -->
 	    <link href="${ pageContext.request.contextPath }/resources/css/footable/footable.core.css" rel="stylesheet">
 		
-		<!-- js -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
-		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-
 <style type="text/css">
 	#title a {
 		color: #666666 !important;
@@ -224,7 +219,7 @@
 			<jsp:include page="/resources/include/mobile-bottom.jsp"/>
 		</footer>
 	</div>
-
+	
 	<!-- Vendor -->
 	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
@@ -249,11 +244,6 @@
 	<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 	<script src="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
 	
-	<!-- dataTables -->
-	<script src="${ pageContext.request.contextPath }/resources/js/dataTables/datatables.min.js"></script>
-    <!-- FooTable -->
-    <script src="${ pageContext.request.contextPath }/resources/js/footable/footable.all.min.js"></script>
-	
 	<!-- Current Page Vendor and Views -->
 	<script src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script>
 
@@ -265,6 +255,14 @@
 	
 	<!-- Theme Initialization Files -->
 	<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+
+	<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+	
+	<!-- dataTables -->
+	<script src="${ pageContext.request.contextPath }/resources/js/dataTables/datatables.min.js"></script>
+    <!-- FooTable -->
+    <script src="${ pageContext.request.contextPath }/resources/js/footable/footable.all.min.js"></script>
 
 	<!-- Page-Level Scripts -->
     <script type="text/javascript">

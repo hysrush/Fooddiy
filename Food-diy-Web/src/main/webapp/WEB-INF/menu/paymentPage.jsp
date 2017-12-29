@@ -352,7 +352,7 @@
                <h4 class="modal-title" id="noAnimModalLabel" style="color: white;">Waring</h4>
             </div>
             <div class="modal-body" style="text-align: center; padding: 20px 20px 20px">
-               <h2 class="info">결제방법을 선택해 주세요!</h2>
+               <h3 class="info">결제방법을 선택해 주세요!</h3>
             </div>
             <div class="modal-footer" style="margin-top: 0px; padding: 10px 20px 20px;">
                <button type="button" class="btn btn-default" data-dismiss="modal" style="color: #7aa93c; background-color: white; border-color: #7aa93c">취소</button>

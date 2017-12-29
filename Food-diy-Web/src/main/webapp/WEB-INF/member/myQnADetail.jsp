@@ -285,9 +285,20 @@
 										</c:if>
 									</table>
 								</form>
-								<div class="center">
-									<button style="width: 100px" type="button" class="btn btn-primary" onclick="action('L')">목록</button>
-								</div>
+								<c:choose>
+									<c:when test="${ loginVO.id eq claimVO.writer }">
+										<div class="text-right">
+											<button class="btn btn-default" type="button" onclick="action('E', ${ claimVO.no })"><i class="fa fa-edit"></i>&nbsp;&nbsp;수정</button>
+											<button class="btn btn-default" type="button" onclick="action('D', ${ claimVO.no })"><i class="fa fa-trash"></i>&nbsp;&nbsp;삭제</button>
+											<button class="btn btn-default" type="button" onclick="action('L', ${ claimVO.no })"><i class="fa fa-list"></i>&nbsp;&nbsp;목록</button>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="center">
+											<button style="width: 100px" type="button" class="btn btn-primary" onclick="action('L')">목록</button>
+										</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -390,19 +401,47 @@
 	    
 	});
 	
-	// Notice action 함수
-	function action(btn, type) {
-		switch (btn) {
+	// Claim action 함수
+	function action(type, no) {
+		switch (type) {
+		case 'E':
+			// Claim 수정
+			location.href = '${ pageContext.request.contextPath}/community/claim/claimEditForm.do?no=' + no;
+			break;
+		case 'D':
+			// Claim 삭제
+			deleteClaim(no);
+			break;
 		case 'L':
-			history.back();   //이전페이지로 가기
+			// Claim 리스트
+			location.href = '${ pageContext.request.contextPath}/community/claim/claim.do';
 			break;
 		case 'F':
 			// File 다운로드
-			location.href = '${ pageContext.request.contextPath}/community/claim/downloadFile.do?no=' + type;
+			location.href = '${ pageContext.request.contextPath}/community/claim/downloadFile.do?no=' + no;
 			break;
 		default:
 			break;
 		}
+    }
+	
+	// 삭제 alert창
+	function deleteClaim(no) {
+		swal({
+	        title: "정말 삭제하시겠습니까?",
+	        type: "warning",
+	        showCancelButton: true,
+	        cancelButtonText: "취소",
+	        confirmButtonColor: "#DD6B55",
+	        confirmButtonText: "삭제",
+	        closeOnConfirm: false
+	    }, function () {
+	        swal("삭제되었습니다!", "", "success");
+	        // OK 누르면 삭제 실행
+	        $('.confirm').click(function () {
+	        	location.href = '${ pageContext.request.contextPath}/community/claim/claimDelete.do?no=' + no;
+			});
+	    });
 	}
 </script>
 </body>

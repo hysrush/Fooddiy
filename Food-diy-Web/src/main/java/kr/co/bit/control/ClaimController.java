@@ -1,6 +1,5 @@
 package kr.co.bit.control;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +27,6 @@ import kr.co.bit.service.FileService;
 import kr.co.bit.vo.CityVO;
 import kr.co.bit.vo.ClaimBoardVO;
 import kr.co.bit.vo.FileVO;
-import kr.co.bit.vo.NoticeBoardVO;
 import kr.co.bit.vo.StoreVO;
 import kr.co.bit.vo.UserVO;
 

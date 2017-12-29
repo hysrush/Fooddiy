@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title> | 최극 주문 내역 | </title>
+<title> | 회원 탈퇴 | </title>
 
 <meta name="keywords" content="HTML5 Template" />
 <meta name="description" content="Porto - Responsive HTML5 Template">

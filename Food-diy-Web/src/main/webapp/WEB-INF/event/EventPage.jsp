@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 진행중인 EVENT |  </title>	
+		<title> | EVENT |  </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -129,7 +129,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<h1>Event게시판</h1>
+							<h1>EVENT</h1>
 						</div>
 					</div>
 				</div>
@@ -144,9 +144,9 @@
 							<h4 class="heading-primary"><strong>이벤트 </strong></h4>
 
 							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li class="active"><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 이벤트</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
 									<li>
-										<a href="${ pageContext.request.contextPath}/event/storeEventPage.do">점포별 이벤트</a>
+										<a href="${ pageContext.request.contextPath}/event/storeEventPage.do">점포별 EVENT</a>
 									</li>
 							</ul>
 						</aside>

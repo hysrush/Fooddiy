@@ -51,6 +51,16 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/demos/demo-shop-9.css">
+		
+		<!-- dataTables -->
+		<link href="${ pageContext.request.contextPath }/resources/css/dataTables/datatables.min.css" rel="stylesheet">
+	    <!-- FooTable -->
+	    <link href="${ pageContext.request.contextPath }/resources/css/footable/footable.core.css" rel="stylesheet">
+		<!-- iCheck -->
+		<link href="${ pageContext.request.contextPath }/resources/css/iCheck/custom.css" rel="stylesheet">
+		<!-- sweetalert js & css -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> 
+		<link rel="stylesheet" href="https://wfolly.firebaseapp.com/node_modules/sweetalert/dist/sweetalert.css">
 
 		<!-- Head Libs -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/modernizr/modernizr.min.js"></script>
@@ -58,7 +68,7 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom.css">
 		
-		
+<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>		
 <style type="text/css">
 	#div01 {
 		width: 70px;
@@ -80,164 +90,220 @@
 <body>
 	<div class="body">
 		<header id="header"
-				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
-				<jsp:include page="/resources/include/top-new.jsp"/>
+			data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
+			<jsp:include page="/resources/include/top-new.jsp" />
 		</header>
 		<!-- Mobile menu 부분 -->
-			<jsp:include page="/resources/include/mobile-menu.jsp"/>
+		<jsp:include page="/resources/include/mobile-menu.jsp" />
 		<!-- ---------------------------------------------------------------------------------------------- -->
 		<section class="page-header">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="breadcrumb">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
-									<li class="active">나의 문의사항</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<h1>Left Sidebar</h1>
-							</div>
-						</div>
-					</div>
-				</section>
-				
 			<div class="container">
-				
-
-					<div class="row">
-					<div style="width: 600px">
-						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3 hidden-xs">
-							<aside  class="sidebar">
-
-								<h3 class="heading-primary">Categories</h3>
-								<ul class="nav nav-list mb-xlg">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
-								</ul>
-		</aside></div></div>
-			
-			<div role="main" class="main shop">
 				<div class="row">
-					<div class="col-lg-9">
-						<div class="ibox">
-							<div class="ibox-content">
-								<div class="table-responsive">
-									<table class="footable table table-stripped toggle-arrow-tiny dataTables-example"  data-page-size="25">
-										<thead>
-											<tr style="font-size:15px; margin-top: 15%">
-												<th  data-hide="phone" data-sort-ignore="true"></th>
-												<th data-hide="phone" data-sort-ignore="true">유형</th>
-												<th data-hide="phone" data-sort-ignore="true">제목</th>
-												<th style="width: 70px" data-hide="phone" data-sort-ignore="true">등록일</th>
-												<th data-hide="phone" data-sort-ignore="true">답변여부</th>
-											</tr>
-										</thead>
-										<tbody class= "todayOrderList">
-										<c:choose>
-										<c:when test="${ not empty claimList  }">
-										<c:forEach items="${ claimList  }" var="claim">
-											<tr class="claimList">
-												<td class="cartNo" style="display: none;">${ claim.no }</td>
-			                                    <td width="8%"><input name="cart" type="checkbox" value="${ claim.no }"></td>
-												<td class="convType" width="11%">
-				                                    <span class="label label-primary">${ claim.type }</span>
-			                                    </td>								
-												<td>
-													<a class="amount" href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }">
-													<c:out value="${ claim.title }" /></a>
-												</td>
-												
-												<td width="15%">
-													<span class="amount ">${ claim.regDate }</span>
-												</td>										
-												<td align="center" width="15%">
-													<button id="cnt" type="button" class="btn col-md-3"> 접수완료 </button>
-												</td>
-											</tr>
-											
-										</c:forEach>
-										</c:when>
-										<c:otherwise>
-											<tr>
-												<td colspan="8" align="center"><h3 id="del" style="font-weight:bold;"><br/>문의 내용이 없습니다.</h3></td>
-											</tr>
-										</c:otherwise>
-										</c:choose>
-										</tbody>
-									</table>
+					<div class="col-md-12">
+						<ul class="breadcrumb">
+							<li><a
+								href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My
+									Page</a></li>
+							<li class="active">나의 문의사항</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Left Sidebar</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="container">
+
+
+			<div class="row">
+				<div style="width: 600px">
+					<div style="margin-top: 2%; margin-right: 10%"
+						class="col-md-3 hidden-xs">
+						<aside class="sidebar">
+
+							<h3 class="heading-primary">Categories</h3>
+							<ul class="nav nav-list mb-xlg">
+								<li><a
+									href="${ pageContext.request.contextPath}/member/memberDetail.do">내
+										정보</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근
+										주문 내역</a></li>
+								<li><a
+									href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의
+										메뉴</a></li>
+								<li class="active"><a
+									href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의
+										문의사항</a></li>
+							</ul>
+						</aside>
+					</div>
+				</div>
+
+				<div role="main" class="main shop">
+					<div class="row">
+						<div class="col-lg-9">
+							<div class="ibox">
+								<div class="ibox-content">
+									<div class="table-responsive">
+										<table class="table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="60">
+											<thead>
+												<tr style="font-size: 15px; margin-top: 15%">
+													<td data-hide="phone" data-sort-ignore="true"width="45px;" align="center">
+														<div class ="total-select">
+															<input type="checkbox" class="i-checks" id="chkall">														
+														</div>
+													</td>
+													<th data-hide="phone" data-sort-ignore="true">유형</th>
+													<th data-hide="phone" data-sort-ignore="true">제목</th>
+													<th style="width: 10%" data-hide="phone"
+														data-sort-ignore="true">등록일</th>
+													<th data-hide="phone" data-sort-ignore="true">답변여부</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:choose>
+													<c:when test="${ not empty claimList  }">
+														<c:forEach items="${ claimList  }" var="claim">
+															<tr class="claimList">
+																<td>
+																	<input type="checkbox" class="i-checks" name="chk">
+																	<div style="display: none">${ claim.no }</div>
+																</td>
+																<td class="convType" width="11%"><span
+																	class="label label-primary">${ claim.type }</span></td>
+																<td><a class="amount"
+																	href="${ pageContext.request.contextPath }/member/myQnADetail.do?no=${ claim.no }">
+																		<c:out value="${ claim.title }" />
+																</a></td>
+																<td width="15%"><span class="amount ">${ claim.regDate }</span>
+																</td>
+																<td align="center" width="15%">
+																	<button id="cnt" type="button" class="btn col-md-3">
+																		접수완료</button>
+																</td>
+															</tr>
+														</c:forEach>
+													</c:when>
+													<c:otherwise>
+														<tr>
+															<td colspan="8" align="center">
+																<h3 style="font-weight: bold;">
+																	<br />문의 내용이 없습니다.
+																</h3>
+															</td>
+														</tr>
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+										</table>
+										<div align="right">
+											<button class="mb-xs mt-xs mr-xs btn btn-default" type="button" onclick="delRow();">
+											<i class="fa fa-trash" aria-hidden="true" ></i>&nbsp;&nbsp;선택삭제</button>&nbsp;
+										</div>
+									</div>
+									<!-- 페이지네이션 -->
+									<div class="col-md-12 center">
+										<ul class="pagination pull-center">
+										</ul>
+									</div>
 								</div>
-												<div align="right" style="margin-right: 15%; margin-top: 5%">
-													<button class="btn btn-primary btn-icon" id="del" style="width: 17%; height: 30px">삭제</button>
-												</div>
-								</div>
+								<!-- <div align="right" style="margin-right: 2%; margin-top: 5%">
+									<button class="btn btn-primary btn-icon" id="del" style="width: 14%; height: 10%">삭제</button>
+								</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
-						</div>
-						
-	
 
-			
+			</div>
 		</div>
 	</div>
-</div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
-	<div class="container">
 		<footer class="light visible-lg" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
 		<footer class="light hidden-lg" id="footer">
 			<jsp:include page="/resources/include/mobile-bottom.jsp" />
 		</footer>
-	</div>
 
 	<!-- Vendor -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/common/common.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/isotope/jquery.isotope.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
-		
-		<!-- Theme Base, Components and Settings -->
-		<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
-		
-		<!-- Current Page Vendor and Views -->
-		<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-		<script src="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
-		
-		<!-- Current Page Vendor and Views -->
-		<script src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
+	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery-cookie/jquery-cookie.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/common/common.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.validation/jquery.validation.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/isotope/jquery.isotope.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/vide/vide.min.js"></script>
 
-		<!-- Demo -->
-		<script src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
-		
-		<!-- Theme Custom -->
-		<script src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
-		
-		<!-- Theme Initialization Files -->
-		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+	<!-- Theme Base, Components and Settings -->
+	<script src="${ pageContext.request.contextPath}/resources/js/theme.js"></script>
 
-<script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+	<!-- Current Page Vendor and Views -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	<script
+		src="${ pageContext.request.contextPath}/resources/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+
+	<!-- Current Page Vendor and Views -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/views/view.contact.js"></script>
+
+	<!-- Demo -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/demos/demo-shop-9.js"></script>
+
+	<!-- Theme Custom -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/custom.js"></script>
+
+	<!-- Theme Initialization Files -->
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
+
+	<script
+		src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 		
-<script type="text/javascript">
+	<!-- dataTables -->
+	<script src="${ pageContext.request.contextPath }/resources/js/dataTables/datatables.min.js"></script>
+    <!-- FooTable -->
+    <script src="${ pageContext.request.contextPath }/resources/js/footable/footable.all.min.js"></script>
+	<!-- iCheck -->
+    <script src="${ pageContext.request.contextPath }/resources/js/iCheck/icheck.min.js"></script>
+
+
+	<script type="text/javascript">
 	$(document).ready(function(){
+		
+		// footable 시작
+		$('.footable').footable();
 		
 		
 		// Claim 타입별 라벨 클래스명 & 텍스트 변경
@@ -265,34 +331,102 @@
 			}
 		}
 		
+		// 체크박스
+		$('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
 		
-		//삭제
-		$("#del").click(function(){
-			
-			var no = [];
-			
-			$("input[name='cart']:checked").each(function() {
-				no.push($(this).val());
-		    });
-			
-			console.log(no);
-			
-			// controller로 배열 넘길 때 세팅 바꿔 줌
-			jQuery.ajaxSettings.traditional = true;
+		// 체크박스 전체 선택
+		var start = 4;
+		$('#chkall').on('ifChecked', function(){
+			$('.icheckbox_square-green').addClass("checked");
+		});
+		$('#chkall').on('ifUnchecked', function(){
+			$('.icheckbox_square-green').removeClass("checked");
+		});
 		
-			$.ajax({
-				url : "${pageContext.request.contextPath}/member/myQnADel.do",
-				type : "post",
-				data : {
-					noList : no
-				},
-				success : function(data){
-					location.reload();
-				}
+		// 체크박스 초기화
+		$(document).on('change', '.input-sm', function(){
+			$('.icheckbox_square-green').removeClass("checked");
+		});
+		$(document).on('click', '.pagination', function(){
+			$('.icheckbox_square-green').removeClass("checked");
+		});
+		
+		// 데이터테이블 생성 & 옵션 변경
+		$('.footable').css("width","100%");
+		var table = $('.dataTables-example').DataTable({
+			pageLength: 10,
+            bPaginate: true,
+            responsive: true,
+            dom: '<"html5buttons"B>',
+            "iDisplayLength": -1,
+            // 우선순위 Sort
+            "aaSorting": [[ 3, "desc" ]], // Sort by first column descending
+            // 컬럼 Sort 없애기
+            "aoColumnDefs": [
+                { "bSortable": false, "aTargets": [ 0 ] },
+                { "bSortable": false, "aTargets": [ 1 ] },
+                { "bSortable": false, "aTargets": [ 2 ] },
+                { "bSortable": false, "aTargets": [ 4 ] }
+            ],
+            // 버튼 옵션
+            buttons: [
+            ]
+        });
+		
+	});
+	
+	// 체크박스 선택삭제
+	var cnt = 0;
+	var nums = "";
+	function delRow() {﻿
+		cnt = 0;
+		nums = "";
+		$('.checked').each(function() {
+			cnt++;
+			nums += $(this).next().text() + ",";
+		});
+		if($('.icheckbox_square-green').eq(0).hasClass('checked')){
+			cnt--;
+		}
+		if(cnt != 0){
+			deleteRow(nums, cnt);
+		}
+		else{
+			deleteZero();
+		}
+	}
+	
+	// 선택삭제 alert 확인창
+	function deleteRow(nums, cnt) {
+		swal({
+	        title: "선택 삭제",
+	        text: cnt + "개의 게시물을 삭제하시겠습니까?",
+	        type: "warning",
+	        showCancelButton: true,
+	        cancelButtonText: "취소",
+	        confirmButtonColor: "#DD6B55",
+	        confirmButtonText: "삭제",
+	        closeOnConfirm: false
+	    }, function () {
+	        swal("삭제되었습니다!", "", "success");
+	        // OK 누르면 삭제 실행
+	        $('.confirm').click(function () {
+	        	location.href = '${ pageContext.request.contextPath}/community/claim/claimDeleteSome.do?nums=' + nums;
 			});
-			
-		});
-		});
+	    });
+	}
+	
+	// 선택한 메뉴 없을 때 alert
+	function deleteZero() {			
+        swal({
+            title: "선택한 게시물이 없습니다!",
+          	type: "error"
+        });	        
+	}
+	
 </script>
 </body>
 

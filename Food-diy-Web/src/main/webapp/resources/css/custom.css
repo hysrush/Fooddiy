@@ -253,6 +253,46 @@ li {
 
 
 
+#cd {
+    position: relative;
+    top: 0;
+    left: 0;
+    float: left;
+    width: 179px;
+    table-layout: fixed;
+    z-index: 5;
+}
+
+#cd > nav {
+    /* display: block; */
+}
+#cd > nav > ul {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+#cd > nav > ul > li {
+    border-bottom: 1px solid #cccccc;
+}
+
+#cd > nav > ul > li > a {
+    display: block;
+    padding: 0 15px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 40px;
+    color: #222222;
+    
+}
+
+
 
 .plus-minus-circle-button {
 	font-size: .8em;
@@ -339,7 +379,7 @@ li {
 /* Responsive */
 /* 991  */
 @media ( max-width : 991px) {
-		#heading-primary{
+	#heading-primary{
 		font-size: 10px;
 	}
 	
@@ -393,6 +433,59 @@ li {
 	    background: #ddd;
 	}
 	
+	
+	#ab {
+		display: none;
+	}
+	#cd {
+		float: none;
+		width: auto;
+		/* border-bottom: 1px solid #ccc; */
+	}
+	#cd > nav {
+	    height: 40px;
+	    overflow: hidden;
+	    text-align: center;
+	}
+	#cd > nav > ul {
+		margin: 0;
+	    padding: 0;
+	    display: -webkit-flex;
+	    display: flex;
+	    overflow-x: auto;
+	    overflow-y: hidden;
+	       
+	}
+	#cd > nav > ul > li {
+	    display: inline-block;
+	    position: relative;
+	    -webkit-flex: none;
+	    flex: none;
+	    border-bottom: 0 none;
+	}
+	#cd > nav > ul > li > a:hover, #cd > nav > ul > li.active > a {
+	    background: none;
+	    color: #7aa93c;
+	}
+	#cd > nav > ul > li > a {
+	    font-size: 13px;
+	    display: block;
+	    padding: 10px 15px;
+	    font-weight: 600;
+	    font-size: 14px;
+	    line-height: 20px;
+	    color: #777;
+		}
+	#cd > nav > ul > li:after {
+	    content: '';
+	    display: block;
+	    width: 1px;
+	    height: 40%;
+	    position: absolute;
+	    top: 30%;
+	    right: 0;
+	    background: #ddd;
+	}
 	
 	
 	.shop .actions-continue {

@@ -4,17 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<title> | 최극 주문 내역 | </title>
-
-<meta name="keywords" content="HTML5 Template" />
-<meta name="description" content="Porto - Responsive HTML5 Template">
-<meta name="author" content="okler.net">
-
 		<!-- Basic -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
@@ -157,31 +146,30 @@ $(document).ready(function(){
 		<!-- Mobile menu 부분 -->
 			<jsp:include page="/resources/include/mobile-menu.jsp"/>
 		<!-- ---------------------------------------------------------------------------------------------- -->
-	<div role="main" class="main">
-	<section class="page-header">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="breadcrumb">
-									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
+		<div role="main" class="main">
+			<section class="page-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="breadcrumb">
+								<li><a href="${ pageContext.request.contextPath}/member/memberDetail.jsp">My Page</a></li>
 									<li class="active">최근 주문 내역</li>
 								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<h1>내 정보</h1>
-							</div>
 						</div>
 					</div>
-				</section>
+					<div class="row">
+						<div class="col-md-12">
+							<h1>내 정보</h1>
+						</div>
+					</div>
+				</div>
+			</section>
 				
 			<div class="container">
 				<div class="row">
 					<div style="width: 600px">
 						<div style="margin-top: 2%; margin-right: 10%" class="col-md-3">
 							<aside  class="sidebar">
-
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
@@ -191,13 +179,13 @@ $(document).ready(function(){
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
-		</aside></div></div>
-	
-		<div role="main" class="main shop">
-
-				<div class="container">
-						<div class="col-md-12r">
-							<div class="featured-boxes">
+							</aside>
+						</div>
+					</div>
+					<div role="main" class="main shop">
+						<div class="container">
+							<div class="col-md-12r">
+								<div class="featured-boxes">
 									<div class="col-md-9 col-xs-12">
 										<div class="featured-box featured-box-primary mt-xlg">
 											<div class="box-content">
@@ -267,43 +255,25 @@ $(document).ready(function(){
 														</c:choose>
 													</tbody>
 												</table>
-												</div> 
+											</div> 
 										</div>	
-								<!-- 	<div class="header-search hidden-xs">
-										<form id="searchForm" action="page-search-results.html" method="get">
-											<div  class="input-group">
-												<input style="width: 400px; float: right;" type="text" class="form-control" name="q" id="q" placeholder="Search..." required>
-												<span style="" class="input-group-btn">
-													<button  class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-												</span>
-											</div>
-										</form>
-										
-									</div> -->
 									</div>
 								</div>
 							</div>
-							</div>
 						</div>
-	
-				<!-- <div class="row">
-								<div align="center" class="col-md-12">
-									<ul  class="pagination pull-center">
-										<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-									</ul>
-								</div>
-							</div> -->
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
+	</div>	
 	<!-- ---------------------------------------------------------------------------------------------- -->
-		<footer id="footer">
-			<jsp:include page="/resources/include/bottom.jsp"/>
+	
+		<footer class="light visible-lg" id="footer">
+			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
-	</div>
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp" />
+		</footer>
 
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
@@ -340,9 +310,6 @@ $(document).ready(function(){
 		
 		<!-- Theme Initialization Files -->
 		<script src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
-
-</body>
-
 
 </body>
 </html>

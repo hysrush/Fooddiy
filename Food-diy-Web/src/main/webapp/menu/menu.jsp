@@ -132,13 +132,8 @@
 					</div>
 					<div class="col-md-9">
 						<div role="main" class="main shop">
-
 							<div class="container">
-
 								<div class="row">
-									
-									
-
 									<div class="row">
 										<div class="col-md-6">
 											<h2 class="mb-none">
@@ -513,13 +508,14 @@
 				</div>
 			</div>
 		</div>
-		<footer id="footer">
+	</div>
+	
+		<footer class="light visible-lg" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
-
-	</div>
-
-
+		<footer class="light hidden-lg" id="footer">
+			<jsp:include page="/resources/include/mobile-bottom.jsp" />
+		</footer>
 
 		<!-- Vendor -->
 		<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
