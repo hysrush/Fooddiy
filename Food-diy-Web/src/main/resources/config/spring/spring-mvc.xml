@@ -140,10 +140,10 @@
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
         <!-- sns페이지 -->
-        <mvc:interceptor>  
+        <!-- <mvc:interceptor>  
             <mvc:mapping path="/community/snsPage.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
-        </mvc:interceptor>
+        </mvc:interceptor> -->
         <!-- sns등록 -->
         <mvc:interceptor>  
             <mvc:mapping path="/community/snsWrite.do" />
