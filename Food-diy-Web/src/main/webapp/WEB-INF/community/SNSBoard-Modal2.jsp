@@ -27,7 +27,6 @@
 					</button> --%>
 						
 		</div>
-
 		<div class="col-md-6">
 				<div class="testimonial testimonial-style-3">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:35px;height:35px;">&times;</button>

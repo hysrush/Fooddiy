@@ -105,8 +105,11 @@
 		WHERE SNS_NO = #{no}
 	
 	</delete>
-
-
-  	
+	
+	<!-- 댓글 수 -->
+	<select id="selectReplyNo" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select COUNT(*) from t_rep
+		where sns_no = #{no}
+	</select>  	
   	
 </mapper> 	

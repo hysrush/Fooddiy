@@ -20,7 +20,13 @@ public class SnsDAOImpl implements SnsDAO {
 	
 	@Override
 	public List<SnsBoardVO> selectSns(PagingVO paging) {
+		
 		List<SnsBoardVO> list = sqlSession.selectList(url + "selectSns",paging);
+		
+		for(int i=0; i<list.size(); i++) {
+			int replyNo = sqlSession.selectOne(url + "selectReplyNo", list.get(i).getNo());
+			list.get(i).setReplyNo(replyNo);
+		}
 		return list;
 	}
 
