@@ -53,9 +53,9 @@
 				</div>			
 			</div>	
 				 <div class="portfolio-info">
-					<hr style = "border-top: 1px solid #2f2c2c;width:465px" class= "hidden-sm"/>
+					<hr style = "border-top: 1px solid #2f2c2c;width:450px;margin:15px;" class= "hidden-sm"/>
 				<div class="row">
-						<div class="col-md-3" align="left">
+						<div class="col-md-3" align="left" style="padding-left:15%;">
 						<button type="button"  onclick="like('${snsVO.no}')" class="btn btn-borders btn-success mr-xs mb-sm" style="width:70px"> 
 							Like! &nbsp;<i class="fa fa-thumbs-up"></i>
 						</button>
@@ -88,7 +88,7 @@
 					 
 					</div>
 				</div>
-				<hr style = "border-top: 1px solid #2f2c2c;width:465px"/>	
+				<hr style = "border-top: 1px solid #2f2c2c;width:450px; margin:15px;"/>	
 			</div> 
 						
 			<div class="row" >

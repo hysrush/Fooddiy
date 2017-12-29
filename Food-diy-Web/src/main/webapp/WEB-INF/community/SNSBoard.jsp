@@ -285,7 +285,7 @@
 					</div>
 					<div class="col-md-2 hidden-xs">
 					</div>
-					<div class="col-md-12" align="center">
+					<div class="col-md-10" align="center">
 						<ul class="pagination">
 
 							<!-- 이전 페이지 이동  -->
@@ -438,7 +438,7 @@
 			    
 					 } 
 			});    
-	}	
+	};	
 	</script>
 	
 

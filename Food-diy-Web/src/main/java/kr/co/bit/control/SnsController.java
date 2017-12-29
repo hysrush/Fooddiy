@@ -119,17 +119,17 @@ public class SnsController {
 			
 
 			// 1. fileName 설정 + eventVO에 fileName 저장
-			/*String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
-			+ file.getOriginalFilename();*/
-			String fileName = "../upload/SNS/"
+			String fileName = "C:\\Users\\bit-user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"
+			+ file.getOriginalFilename();
+			/*String fileName = "../upload/SNS/"
 					+ file.getOriginalFilename();
-			
+			*/
 			
 			//String fileName = "C:\\Users\\user\\git\\Fooddiy\\Food-diy-Web\\src\\main\\webapp\\upload\\SNS\\"+ file.getOriginalFilename();
-			/*String uFileName = "C:\\Users\\bit-user\\git\\Fooddiy-manager\\Food-manager-Web\\src\\main\\webapp\\upload\\SNS\\"
-			+ file.getOriginalFilename();*/
-			String uFileName = "../upload/SNS/"
-					+ file.getOriginalFilename();
+			String uFileName = "C:\\Users\\bit-user\\git\\Fooddiy-manager\\Food-manager-Web\\src\\main\\webapp\\upload\\SNS\\"
+			+ file.getOriginalFilename();
+			/*String uFileName = "../upload/SNS/"
+					+ file.getOriginalFilename();*/
 					
 			String saveFileName = file.getOriginalFilename();
 				
