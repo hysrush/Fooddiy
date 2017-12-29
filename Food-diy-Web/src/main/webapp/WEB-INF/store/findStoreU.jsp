@@ -341,7 +341,7 @@
 											contents += '<tr>';
 											contents +=		'<td style = "width: 30%" nowrap>';
 											contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
-											contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '</strong>';
+											contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '점</strong>';
 											contents +=			'<div class="storePhone post-meta">' + data.storeList[i].storePhone +'</div>';
 											contents +=		'</td>';
 											contents +=		'<td class="storeAddr" style = "width: 65%">'+ data.storeList[i].storeAddr +'</td>';
