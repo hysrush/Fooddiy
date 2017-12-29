@@ -95,40 +95,68 @@
 									</div>
 									<div class="row">
 										<!-- 로그인 정보 저장 -->
-										<div class="col-xs-6 col-md-4">
+										<div class="col-md-6"></div>
+										<div class="col-xs-6 col-md-6 pull-right" style="padding-left: 18%">
 											<span class="remember-box checkbox">
-												<label for="idSaveCheck"><input type="checkbox" id="idSaveCheck" name="rememberid"/>아이디 저장</label>
+												<label for="idSaveCheck">
+													<input type="checkbox" id="idSaveCheck" name="rememberid"/>아이디 저장
+												</label>
 											</span>
-											<!-- <span class="remember-box checkbox">
-												<label for="rememberme"><input type="checkbox" id="rememberme" name="rememberme"/>자동로그인</label>
-											</span> -->
+										
 										</div>
-										<div class="col-xs-6 col-md-6 pull-right">
-											<input type="submit" value="로그인" class="btn btn-info pull-right mb-xl btn-primary btn-icon" data-loading-text="Loading...">
+									</div>
+									<div class="row mt-xs visible-lg">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<input type="submit" value="로그인" 
+											class="btn btn-info mb-md form-control btn-primary btn-icon"
+										 style="padding-top: 10px; padding-bottom: 30px; margin-left:4%; width:92%;" data-loading-text="Loading...">
+										</div>
+									</div>
+										<!-- 모바일 버전 -->
+									<div class="row mt-xs hidden-lg" align="center">
+										<div class="col-xs-2"></div>
+										<div class="col-xs-8">
+											<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
+											class="btn btn-info mb-md form-control btn-primary btn-icon"
+											 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:92%;">회원가입</a>
 										</div>
 									</div>
 								</form>
 								<!-- API 로그인 -->
 								<div class="row mt-xs" align="center">
-									<div class="col-md-8 visible-lg">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
-									<div class="col-xs-6 hidden-lg">
+									<%-- <div class="col-xs-6 hidden-lg">
 										<jsp:include page="/resources/include/login/mobile-kakaoLogin.jsp"/>
-									</div>
+									</div> --%>
 									<%-- <div class="col-xs-12 col-md-6">
 										<jsp:include page="/resources/include/login/naverLogin.jsp"/>
 									</div> --%>
-									<div class="col-xs-6 col-md-4">
+								<%-- 	<div class="col-xs-6 col-md-4">
 										<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
 										class="btn btn-info mb-md form-control btn-primary btn-icon" style="padding-top: 10px; padding-bottom: 30px;">회원가입</a>
+									</div> --%>
+								</div>
+								<div class="row mt-xs visible-lg" align="center">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
+										class="btn btn-info mb-md form-control btn-primary btn-icon"
+										 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:92%;">회원가입</a>
 									</div>
-								</div>    
-								<%-- <div class="row mt-xs">
-									<div class="col-md-12">
-										<a href="${ pageContext.request.contextPath }/sign/signUp.do" class="btn btn-info mb-md form-control">회원가입</a>
+								</div>
+								<!-- 모바일 버전 -->
+								<div class="row mt-xs hidden-lg" align="center">
+									<div class="col-xs-2"></div>
+									<div class="col-xs-8">
+										<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
+										class="btn btn-info mb-md form-control btn-primary btn-icon"
+										 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:92%;">회원가입</a>
 									</div>
-								</div> --%>
+								</div>
 							</div>
 						</div>
 					</div>

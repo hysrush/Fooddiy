@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<a id="kakao-login-btn"></a>
+<a id="kakao-login-btn" style="width: 200%"></a>
 <a href="http://developers.kakao.com/logout"></a>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="${ pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
