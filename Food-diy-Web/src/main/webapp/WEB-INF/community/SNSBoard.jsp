@@ -88,6 +88,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
 
+		<!-- js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 	
+		<script	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+
+
+
+
+
+
+
+
 <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
 </head>
@@ -124,7 +136,7 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-md-2 hidden-xs hidden-sm">
+					<%-- <div class="col-md-2 hidden-xs hidden-sm">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
@@ -140,9 +152,26 @@
 									<li class="active"><a href="#">SNS게시판</a></li>
 							</ul>
 						</aside>
+					</div> --%>
+					<div class="col-md-2 hidden-xs hidden-sm">
+						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
+
+							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+									<li><a href="#">자주묻는 질문</a></li>
+									<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway 소식</a>
+										<ul>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
+											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
+										</ul>
+									</li>
+									<li><a href="${ pageContext.request.contextPath }/community/claim/claimWriteForm.do">1:1 문의</a></li>
+									<li class="active"><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
+							</ul>
+						</aside>
 					</div>
 
-					<!-- START! -->
+					 <!-- START! -->
 					
 						<div class="col-md-10" style="height:30px;">
 							<span class="label label-lg label-danger">Best!!</span>
@@ -207,7 +236,7 @@
 						</div>				
 				
 					
-					<div class="col-md-2 hidden-xs">
+				 	<div class="col-md-2 hidden-xs">
 					</div>
 					<br/>
 					<br/>
@@ -285,7 +314,7 @@
 					</div>
 					<div class="col-md-2 hidden-xs">
 					</div>
-					<div class="col-md-12" align="center">
+					<div class="col-md-10" align="center">
 						<ul class="pagination">
 
 							<!-- 이전 페이지 이동  -->
@@ -313,12 +342,14 @@
 						</form>
 					</div>
 
-
-					<div class="col-md-12" align="right">
-						<a href="${ pageContext.request.contextPath }/community/snsWrite.do?id=${loginVO.id}"><button  class="btn btn-borders btn-success" >글 등록</button></a>
-					</div>
-
-
+				<c:choose>
+       				<c:when test="${not empty loginVO}">
+						<div class="col-md-12" align="right">
+							<a href="${ pageContext.request.contextPath }/community/snsWrite.do?id=${loginVO.id}"><button  class="btn btn-borders btn-success" >글 등록</button></a>
+						</div>
+					</c:when>
+				</c:choose>
+				
 
 
 
@@ -344,7 +375,7 @@
 		<div class="modal-dialog modal-lg" >
 			<div class="modal-content" >
 				<!-- 모달내용 -->
-			</div>
+			</div> 
 		</div>
 	</div>
 
@@ -359,7 +390,7 @@
 	     
 	   };
 
-	</script>
+	</script> 
 
 
 	<script>
@@ -438,7 +469,7 @@
 			    
 					 } 
 			});    
-	}	
+	};	
 	</script>
 	
 
@@ -505,8 +536,8 @@
 	<script
 		src="${ pageContext.request.contextPath}/resources/js/theme.init.js"></script>
 
-	<!-- 모달창 띄우는 js -->
+	 <!-- 모달창 띄우는 js -->
 	<script
-		src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script>
+		src="${ pageContext.request.contextPath}/resources/js/examples/examples.portfolio.js"></script> 
 </body>
 </html>

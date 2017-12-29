@@ -35,8 +35,10 @@
 			<div class="testimonial-author">
 				<div class="testimonial-author-thumbnail">
 					<img src="../upload/${snsVO.pic}" class="img-responsive img-circle" alt="" style= "width:45px;height:45px;">
+					
 				</div>
 					<p><strong>${snsVO.id}</strong></p>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:35px;height:35px;">&times;</button>
 			</div>
 		</div> 
 			<div class="row">
@@ -51,9 +53,9 @@
 				</div>			
 			</div>	
 				 <div class="portfolio-info">
-					<hr style = "border-top: 1px solid #2f2c2c;width:465px" class= "hidden-sm"/>
+					<hr style = "border-top: 1px solid #2f2c2c;width:450px;margin:15px;" class= "hidden-sm"/>
 				<div class="row">
-						<div class="col-md-3" align="left">
+						<div class="col-md-3" align="left" style="padding-left:15%;">
 						<button type="button"  onclick="like('${snsVO.no}')" class="btn btn-borders btn-success mr-xs mb-sm" style="width:70px"> 
 							Like! &nbsp;<i class="fa fa-thumbs-up"></i>
 						</button>
@@ -86,18 +88,20 @@
 					 
 					</div>
 				</div>
-				<hr style = "border-top: 1px solid #2f2c2c;width:465px"/>	
+				<hr style = "border-top: 1px solid #2f2c2c;width:450px; margin:15px;"/>	
 			</div> 
-						
-			<div class="row" >
-				<div class="col-md-12" style = "height:70px;">
+			<c:choose>
+       			<c:when test="${not empty loginVO }">			
+					<div class="row" >
+						<div class="col-md-12" style = "height:70px;">
 				 		
 							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:70%"/>
         				
         						<span style="align-content:inherit; "><button type="button" id="btnReply" class="btn btn-3d btn-success mr-xs mb-sm" style="align-self: baseline;">comment</button></span>
-        	</div>
-        	</div>
-		
+        				</div>
+        			</div>
+				</c:when>
+			</c:choose>
 		
 			<div class="row" style="margin-top:50px;">
 				<div class="col-md-12">

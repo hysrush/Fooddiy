@@ -74,7 +74,7 @@
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="skdml132@gmail.com" />
-		<property name="password" value="tkfkdgo931008" />
+		<property name="password" value="tkfkdgo1186!" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.transport.protocol">smtp</prop>
@@ -136,24 +136,24 @@
         </mvc:interceptor>
         <!-- 1:1문의 -->
         <mvc:interceptor>  
-            <mvc:mapping path="/community/claim/claimWrite.do" />
+            <mvc:mapping path="/community/claim/claimWriteForm.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
         <!-- sns페이지 -->
-        <mvc:interceptor>  
+        <!-- <mvc:interceptor>  
             <mvc:mapping path="/community/snsPage.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
-        </mvc:interceptor>
+        </mvc:interceptor> -->
         <!-- sns등록 -->
         <mvc:interceptor>  
             <mvc:mapping path="/community/snsWrite.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
         </mvc:interceptor>
         <!-- sns상세페이지 -->
-        <mvc:interceptor>  
+        <!-- <mvc:interceptor>  
             <mvc:mapping path="/community/snsDetail.do" />
             <bean class="kr.co.bit.util.LoginCheckInterceptor" />  
-        </mvc:interceptor>        
+        </mvc:interceptor> -->        
         <!-- 회원정보 -->
         <mvc:interceptor>  
             <mvc:mapping path="/member/memberDetail.do" />

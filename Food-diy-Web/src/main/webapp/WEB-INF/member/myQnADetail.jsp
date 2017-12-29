@@ -159,7 +159,6 @@
 			<div class="body">
 		<div role="main" class="main">
 			<div class="col-md-9 center">
-				<h2>1:1 문의 리스트</h2>
 				<div class="tab-content">
 				<!-- 공지사항 / 보도자료 디테일 -->
 					<div class="blog-posts single-post">
@@ -174,7 +173,7 @@
 								<form action="/Mission-Web/fileDownload" method="post" id="dForm">
 									<table class="table table-bordered">
 										<tr>
-											<td> 
+											<td width="15%"> 
 												<!-- 타입 -->
 												<span class="label label-primary" id="typeLabel">${ claimVO.type }</span>
 											</td>
@@ -191,18 +190,40 @@
 												<td width="15%"><i class="fa fa-calendar"></i>&nbsp;${ claimVO.regDate }</td>
 											</div>
 										</tr>
-										<tr>
-											<td colspan="4" id="contents">
-												<!-- 방문일 / 방문매장명 -->
-												<c:choose>
-													<c:when test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
-														<table class="table table-bordered text-center col-md-12 visitTable">
+										<!-- 방문일 / 방문매장명 -->
+										<c:choose>
+											<c:when test="${ not empty claimVO.visitDate && not empty claimVO.visitStore }">
+												<tr id="totalImg">
+													<th colspan="4" style="background-color: #eee">1:1문의 정보</th>
+												</tr>
+												<tr id="totalImg">
+													<td colspan="4">
+														<table class="table table-bordered text-center" style="margin-bottom: 0px">
 															<tr>
-																<th><i class="fa fa-building"></i> 방문매장</th>
-																<td>${ claimVO.visitStore }</td>
-																<th><i class="fa fa-calendar-o"></i> 방문일</th>
+																<th width="130px"><i class="fa fa-building"></i> 방문매장</th>
+																<td>${ claimVO.visitStore }점</td>
+																<th width="130px"><i class="fa fa-calendar-o"></i> 방문일</th>
 																<td>${ claimVO.visitDate }</td>
 															</tr>
+															<tr>
+																<th><i class="fa fa-send"></i> 답변 메일</th>
+																<td colspan="3">${ claimVO.emailID }@${ claimVO.emailDomain }</td>
+															</tr>
+															<tr>
+																<th><i class="fa fa-phone"></i> 연락처</th>
+																<td colspan="3">${ claimVO.phone1 }-${ claimVO.phone2 }-${ claimVO.phone3 }</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<tr id="totalImg">
+													<th colspan="4" style="background-color: #eee">1:1문의 정보</th>
+												</tr>
+												<tr id="totalImg">
+													<td colspan="4">
+														<table class="table table-bordered text-center" style="margin-bottom: 0px">
 															<tr>
 																<th><i class="fa fa-calendar-o"></i> 답변 메일</th>
 																<td colspan="3">${ claimVO.emailID }@${ claimVO.emailDomain }</td>
@@ -212,20 +233,17 @@
 																<td colspan="3">${ claimVO.phone1 }-${ claimVO.phone2 }-${ claimVO.phone3 }</td>
 															</tr>
 														</table>
-														<!-- 내용 -->
-														<p class="text-left col-md-12 content">
-															<!-- 자동 단락 나누기 (jstl - fn) -->
-															${ fn:replace(claimVO.content, cn, br) }
-														</p>
-													</c:when>
-													<c:otherwise>
-														<!-- 내용 -->
-														<p class="text-left contentOnly">
-															<!-- 자동 단락 나누기 (jstl - fn) -->
-															${ fn:replace(claimVO.content, cn, br) }
-														</p>
-													</c:otherwise>
-												</c:choose>
+													</td>
+												</tr>
+											</c:otherwise>
+										</c:choose>
+										<tr id="totalImg">
+											<td colspan="4">
+												<!-- 내용 -->
+												<p class="text-left contentOnly">
+													<!-- 자동 단락 나누기 (jstl - fn) -->
+													${ fn:replace(claimVO.content, cn, br) }
+												</p>
 											</td>
 										</tr>
 										<!-- 첨부파일 -->
@@ -341,7 +359,7 @@
 			$('#typeLabel').html("칭찬");
 		}
 		else if($('#typeLabel').text() == 'S'){
-			$('#typeLabel').attr("class","label label-tertiary");
+			$('#typeLabel').attr("class","label label-success");
 			$('#typeLabel').html("제안");
 		}
 		else if($('#typeLabel').text() == 'C'){
@@ -349,7 +367,7 @@
 			$('#typeLabel').html("불만");
 		}
 		else if($('#typeLabel').text() == 'X'){
-			$('#typeLabel').attr("class","label label-default");
+			$('#typeLabel').attr("class","label label-information");
 			$('#typeLabel').html("기타");
 		}
 		

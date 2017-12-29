@@ -65,6 +65,7 @@ public class SignController {
 		
 		/*System.out.println(phoneCert.toString());*/
 		// 회원 가입했는지 확인(번호랑 이름)
+		phoneCert.setType("일반");
 		int num = signServiceImp.checkMember(phoneCert);
 		if(num == 1) {
 			model.addAttribute("msg", "이미 가입한 기록이 있습니다.");
@@ -85,7 +86,7 @@ public class SignController {
 	public String signUp(UserVO phoneCert, Model model, RedirectAttributes redirect) {
 		
 		phoneCert.setType("U");
-		phoneCert.setFile("null");
+		phoneCert.setFile("person.png");
 		
 		/*System.out.println(phoneCert.toString());*/
 		signServiceImp.signUp(phoneCert);
@@ -315,11 +316,13 @@ public class SignController {
 	@RequestMapping(value="/nonemailCheck")
 	public String nonMemberSign(UserVO nonMember, Model model, HttpSession session, RedirectAttributes redirect) {
 		
+		nonMember.setType("N");
+		
 		UserVO user = signServiceImp.nonSignUp(nonMember);
 		
 		session.setAttribute("loginVO", user);
 		
-		redirect.addFlashAttribute("msg", "[ "+user.getName()+" ] 님 로그인 성공!");
+		redirect.addFlashAttribute("msg", "로그인 성공! 주문이 가능합니다.");
 		
 		return "redirect:/main/Start";
 	}
@@ -330,7 +333,7 @@ public class SignController {
 		
 		session.invalidate();
 		
-		return "main/index";
+		return "redirect:/main/Start";
 		
 	}
 	

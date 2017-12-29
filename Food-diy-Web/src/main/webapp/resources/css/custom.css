@@ -24,13 +24,11 @@ td.cancel-button button.button-cancel{
  	font-size: 10px;
  	background-color: #ed5565;
  	color: #FFFFFF;
- 	
  	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
  	font-weight: 600;
  	padding: 3px 8px;
  	text-shadow: none;
  }
- 
  td span.label-warning {
  	font-size: 10px;
  	background-color: #f8ac59;
@@ -43,9 +41,8 @@ td.cancel-button button.button-cancel{
  }
  td span.label-primary {
  	font-size: 10px;
- 	background-color: #1ab394;
+ 	background-color: #7aa93c;
  	color: #FFFFFF;
- 	
  	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
  	font-weight: 600;
  	padding: 3px 8px;
@@ -55,7 +52,15 @@ td.cancel-button button.button-cancel{
  	font-size: 10px;
  	background-color: #d1dade;
  	color: #5e5e5e;
- 	
+ 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	font-weight: 600;
+ 	padding: 3px 8px;
+ 	text-shadow: none;
+ }
+ td span.label-success {
+ 	font-size: 10px;
+ 	background-color: #1c84c6;
+ 	color: #FFFFFF;
  	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
  	font-weight: 600;
  	padding: 3px 8px;

@@ -123,7 +123,7 @@
 
 					<div class="row">
 					<div style="width: 550px">
-						<div style="margin-top: 2%" class="col-md-3">
+						<div style="margin-top: 2%" class="col-md-3 hidden-xs">
 							<aside  class="sidebar">
 
 								<h3 class="heading-primary">Categories</h3>
@@ -133,7 +133,9 @@
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
-		</aside></div></div>
+								</aside>
+								</div>
+							</div>
 		
 		
 		<div class=" container">
@@ -141,19 +143,11 @@
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
        <br>
       </div>
-                <c:choose>
-                <c:when test="${ loginVO.file ne null }">
-	                <div class="col-md-3 col-lg-3 " align="left">
-		                <img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 7%; padding-right:10%; margin-top: 8%; height:300px; width: 300px;">
-	                </div>
-                </c:when>
-    	            <c:otherwise>
-                		<div class="col-md-3 col-lg-3 " align="left">
-		                	<img src="${ pageContext.request.contextPath }/resources/img/parallax-2.jpg" class="img-responsive" alt="" style="float:left; margin-left: 10%; margin-top: 8%; height:300px; width: 300px;">
-						</div>
-	                </c:otherwise>
-                </c:choose>
                 
+		<div class="col-md-3 col-lg-3 " align="center">
+			<img src="../upload/${ loginVO.file }" class="img-responsive" alt="" style="float:left; margin-left: 10%; padding-right:10%; margin-top: 8%; height:300px; width: 90%;">
+		</div>
+		
         <div  style="margin-top: 2%" class="col-xs-12 col-sm-12 col-md-6 col-lg-6  toppad" >
           <div class="panel panel-info">
             <div class="panel-heading">
@@ -223,13 +217,27 @@
 
 							<div style="margin-top: 1%;">
 							<div class="row">
+<<<<<<< HEAD
 							<div class="col-md-4"></div>
 							<div class="col-md-3"></div>
 							<div class="col-md-4 col-xs-10" style="margin-left:4%">
 									<button class="btn btn-primary"  data-toggle="modal" id="stamp">쿠폰북</button>
 									<button class="btn btn-primary" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
 									<button class="btn btn-primary" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
+=======
+							<div class="col-md-12 hidden-xs" style="margin-left:9%; padding-left: 53%">
+									<button class="btn basic-btn"  data-toggle="modal" id="stamp">쿠폰북</button>
+									<button class="btn basic-btn" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
+									<button class="btn basic-btn" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
+							</div>
+							<div class="col-xs-12 visible-xs" style="padding-left: 15%">
+									<button class="btn basic-btn"  data-toggle="modal" id="stamp">쿠폰북</button>
+									<button class="btn basic-btn" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
+									<button class="btn basic-btn" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
+									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
+							</div>
 							</div>
 									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
@@ -285,7 +293,7 @@
 									</div>
 									
 										<!--쿠폰북 디테일  -->					
-									<%-- 	<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+										<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -306,8 +314,8 @@
 												</div>
 											</div>
 										</div>
-									</div> --%>
-							</div>
+									</div> 
+							
 						</div>
 					</div>
 				</div>

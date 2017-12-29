@@ -7,7 +7,7 @@ public class StoreVO {
 	public String storeName;
 	public String storePhone;
 	public String storeAddr;
-	public String storeZip;
+	
 	
 	public String regDate;
 	public int getStoreNo() {
@@ -47,20 +47,13 @@ public class StoreVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	
-	public String getStoreZip() {
-		return storeZip;
-	}
-	public void setStoreZip(String storeZip) {
-		this.storeZip = storeZip;
-	}
 	@Override
 	public String toString() {
 		return "StoreVO [storeNo=" + storeNo + ", locationNo=" + locationNo + ", storeName=" + storeName
-				+ ", storePhone=" + storePhone + ", storeAddr=" + storeAddr + ", storeZip=" + storeZip + ", regDate="
-				+ regDate + "]";
+				+ ", storePhone=" + storePhone + ", storeAddr=" + storeAddr + ", regDate=" + regDate + "]";
 	}
-
+	
+	
 	
 	
 

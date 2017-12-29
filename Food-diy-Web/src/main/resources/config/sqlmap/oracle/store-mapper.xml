@@ -12,8 +12,7 @@
   		<result column = "loc_no" property = "locationNo"/>
   		<result column = "sto_name" property ="storeName"/>
   		<result column = "sto_phone" property ="storePhone"/>
-  		<result column = "sto_addr" property ="storeAddr"/>
-  		<result column = "sto_zip" property ="storeZip"/>  		
+  		<result column = "sto_addr" property ="storeAddr"/>	
   		<result column = "reg_at" property ="regDate"/>
   	</resultMap>
 
@@ -68,7 +67,7 @@
 		
 	<!--  매장데이터 전체 불러오기  -->		
 		<select id = "selectStoreAll" resultMap="Map_StoreVO">
-			SELECT STO_NO, STO_NAME, STO_PHONE, STO_ADDR ,STO_ZIP
+			SELECT STO_NO, STO_NAME, STO_PHONE, STO_ADDR 
 			FROM T_STORE
 			
 		

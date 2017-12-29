@@ -30,15 +30,32 @@ $(document).ready(function(){
 
 		<!-- 모달 속 상세내용 -->
 		<table class="table table-bordered">
+			<c:forEach items="${ member.detailOrderList }" var="Menu">
+				<thead>
+				<tr>
+					<th style="text-align: center" width="15%">메뉴 사진</th>
+				</tr>
+				</thead>
+				<tr>
+					<td align="center"><img style=" width: 40%" src="${ Menu.pic}"/></td>
+				</tr>
+			</c:forEach>
+		</table>
+		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th  style="text-align: center" colspan="2"><h4>주문 결제정보</h4> </th>
+					<th style="text-align: center" colspan="2"><h4>주문 결제정보</h4> </th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody >
 				<tr >
+<<<<<<< HEAD
 					<th width="9%">주문번호</th>
 					<td>${ orderList.no }</td>
+=======
+					<th class="col-xs-4" width="10%">주문번호</th>
+					<td>${ member.no }</td>
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 				</tr>
 				<tr>
 					<th>주문시간</th>
@@ -57,14 +74,18 @@ $(document).ready(function(){
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th width="9%">메뉴</th>
+						<th class="col-xs-3" width="9%">메뉴</th>
 						<th>주문옵션</th>
 						<th>수량</th>
 						<th>합계금액</th>
 					</tr>
 				</thead>
 				<tbody>
+<<<<<<< HEAD
 					<c:forEach items="${ orderList.detailOrderList }" var="oneMenu">
+=======
+				<c:forEach items="${ member.detailOrderList }" var="oneMenu">
+>>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 						<tr >
 							<td>
 								${ oneMenu.name} <br>

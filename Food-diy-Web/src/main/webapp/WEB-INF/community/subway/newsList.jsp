@@ -156,47 +156,29 @@
 									<div class="center">
 										<div class="col-md-12">
 											<!-- 필터 및 검색 -->
-											<!-- <div class="col-md-12">
-												<div class="col-md-3" style="float: right;">
-													<form action="">
-														<div class="input-group input-group-md">
-															<input class="form-control" type="text" name="search" id="search" placeholder="Search..."> 
-															<span class="input-group-btn">
-																<button type="submit" class="btn btn-primary btn-md">
-																	<i class="fa fa-search"></i>
-																</button>
-															</span>
-														</div>
-													</form>
+											<form name="form1" method="post" action="${ pageContext.request.contextPath }/community/subway/news.do">
+												<div class="col-md-3 input-group" style="float: right;">
+													<input name="keyword" value="${map.keyword}" type="text" aria-controls="DataTables_Table_0"
+															class="input-sm form-control" placeholder="검색어를 입력해주세요" >
+													<span class="input-group-btn">
+														<button type="submit" class="btn btn-sm btn-primary" id="searchBtn"><i class="fa fa-search"></i></button>
+													</span>
 												</div>
-												<div class="col-md-2" style="float: right;">
-													<select class="form-control">
-														<option value="title">제목</option>
-														<option value="content">내용</option>
-														<option value="title+content">제목+내용</option>
-													</select>
-												</div>
-											</div> -->
-											<div class="col-md-3 input-group" style="float: right;">
-												<input type="text" class="input-sm form-control" placeholder="검색어를 입력해주세요" aria-controls="DataTables_Table_0">
-												<span class="input-group-btn">
-													<button type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
-												</span>
-											</div>
-											<div class="filter">
-												<select class="form-control">
-													<option value="title">제목</option>
-													<option value="content">내용</option>
-													<option value="title+content">제목+내용</option>
-												</select>
-											</div>
+												<div class="filter">
+											        <select name="searchOption" class="form-control">
+											            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+											            <option value="notice_title" <c:out value="${map.searchOption == 'notice_title'?'selected':''}"/> >제목</option>
+											            <option value="notice_content" <c:out value="${map.searchOption == 'notice_content'?'selected':''}"/> >내용</option>
+											            <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+내용</option>
+											        </select>
+										        </div>
+										    </form>
 											<!-- 테이블 -->
 											<div class="table-responsive" style="width: 100%">
 												<table class="footable table table-hover toggle-arrow-tiny dataTables-example" width="80%" data-page-size="100">
 													<thead>
 														<tr>
-														    <th data-hide="phone" data-sort-ignore="true">번호</th>
-														    <th data-toggle="true" data-sort-ignore="true">제목</th>
+														    <th data-toggle="phone" data-sort-ignore="true">제목</th>
 														    <th data-hide="phone" data-sort-ignore="true">등록일</th>
 														    <th data-hide="phone" data-sort-ignore="true">조회수</th>
 														</tr>
@@ -205,14 +187,13 @@
 														<c:forEach items="${ newsList }" var="news">
 															<c:if test="${ news.type eq 'B' }">
 																<tr>
-																	<td>${ news.no }</td>
 																	<td id="title">
 																		<a href="${ pageContext.request.contextPath }/community/subway/noticeDetail.do?no=${ news.no }">
 																			<c:out value="${ news.title }" />
 																		</a>
 																	</td>
-																	<td>${ news.regDate }</td>
-																	<td>${ news.viewCnt }</td>
+																	<td width="100px">${ news.regDate }</td>
+																	<td width="50px">${ news.viewCnt }</td>
 																</tr>
 															</c:if>
 														</c:forEach>
@@ -245,7 +226,6 @@
 	</div>
 
 	<!-- Vendor -->
-	<%-- <script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script> --%>
 	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>

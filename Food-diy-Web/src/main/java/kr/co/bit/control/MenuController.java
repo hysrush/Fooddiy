@@ -55,7 +55,7 @@ public class MenuController {
 	
 	// menu 타입별 분류
 	@RequestMapping(value="/menuList.do", method=RequestMethod.GET)
-	public ModelAndView listType(@RequestParam(value="type", defaultValue="E") String type) {		
+	public ModelAndView listType(@RequestParam(value="type", defaultValue="E") String type, Model model) {		
 		
 		List<MenuVO> menuList = null;
 		
@@ -68,8 +68,8 @@ public class MenuController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("menu/menuList");
 		mav.addObject("menuList", menuList);
-		/*mav.addObject("type", type);*/
-		
+		mav.addObject("type", type);
+		/*model.addAttribute("type", type);*/		
 		return mav;
 		
 	}
@@ -165,43 +165,6 @@ public class MenuController {
 		response.getWriter().print(jsonObj.toString());
 		
 	}
-	
-/*	// '주문하기'선택 후 매장화면으로	
-	@RequestMapping(value="/findStore.do", method=RequestMethod.POST)
-	public String Session(HttpSession session, String name, String price, String size, String pic) {
-		
-		UserVO user = (UserVO)session.getAttribute("loginVO");		
-		String id = user.getId();
-		
-		// Form에서 가져온 Data를 CartVO 객체형태로 저장
-		CartVO cartVO = new CartVO();
-		
-		cartVO.setName(name);
-		cartVO.setPrice(price);
-		cartVO.setSize(size);
-		cartVO.setPic(pic);
-		cartVO.setId(id);
-	
-		System.out.println(cartVO);
-		
-		
-        StoreVO storeVO = (StoreVO)session.getAttribute("storeVO");
-        if (storeVO == null) {  
-        	return "/store/findStore";
-        }
-        else {
-        	return "/menu/select_ingredients";
-        }
-		
-		//ModelAndView  mav = new ModelAndView();
-		//mav.setViewName("menu/select_ingredients");
-		//mav.addObject("cartVO", cartVO);
-		
-		
-		// return cartVO;				
-	}
-	
-*/
 	
 	
 }	
