@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Fooddiy-Order</title>
+<title> | 최근 주문 내역 | </title>
 
 <meta name="keywords" content="HTML5 Template" />
 <meta name="description" content="Porto - Responsive HTML5 Template">
@@ -282,15 +282,12 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<div class="container">
-		<footer class="light visible-lg" id="footer">
-			<jsp:include page="/resources/include/bottom.jsp" />
-		</footer>
-		<footer class="light hidden-lg" id="footer">
-			<jsp:include page="/resources/include/mobile-bottom.jsp" />
-		</footer>
-	</div>
-
+	<footer class="light visible-lg" id="footer">
+		<jsp:include page="/resources/include/bottom.jsp" />
+	</footer>
+	<footer class="light hidden-lg" id="footer">
+		<jsp:include page="/resources/include/mobile-bottom.jsp" />
+	</footer>
 
 	<!-- 모달들 -->
 	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">

@@ -5,9 +5,9 @@
 <div role="main" class="main"><br/>
 	<div class= "container"><br/>
 		<div class="row"  style="max-height: 760px;">
-			<div class="col-sm-3 main">
+			<div class="col-md-3 main">
 				<!-- 동영상 -->
-					<div class="col-sm-12 main">
+					<div class="col-md-12 main">
 						<table>
 							<tr>
 								<td>
@@ -19,25 +19,46 @@
 							<tr>
 								<td>
 									<!-- 공지사항 -->
-									<table style="table-layout:fixed">
+									<table>
 										<tr style="background-color: #fdcb04">
 											<td style="width:100%; padding:3% 0">
-												<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/notice.do">
+												<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/subway/notice.do">
 													<strong style="font-style: italic; font-size: 15px;">&nbsp;What's New</strong>
 												</a>
 											</td>
 											<td style="padding-right: 3%">
 												<span style="display: inline-table; align: right; font-size: 12px; font-weight: bolder;">
-													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/notice.do"> +more</a>
+													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/subway/notice.do"> +more</a>
 												</span>
 											</td>
 										</tr>
 										<c:forEach items="${ notice }" var="n">
 										<tr style="border-bottom: 1px solid #fdcb04;">
-											<td colspan="2" style="width: 292px; text-overflow: ellipsis; overflow: hidden">
-												<span style="font-size: 12px; text-overflow:ellipsis; overflow:hidden" class="heading-primary text-uppercase mb-md">
-													<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/noticeDetail.do?no=${n.no}">
-														<nobr>&nbsp;${ n.title }</nobr>
+											<td colspan="2" style="width: 292px;">
+												<span style="font-size: 12px;" class="heading-primary text-uppercase mb-md">
+													<a href="${ pageContext.request.contextPath }/community/subway/noticeDetail.do?no=${n.no}" title="${ n.title }">
+														<c:choose >
+															<c:when test="${ n.type eq 'A' }">
+																<c:choose>
+																	<c:when test="${fn:length(n.title) > 23}">
+																		<strong>[공지사항]&nbsp;</strong><span><c:out value="${fn:substring(n.title,0,21)}"/>....</span>
+																	</c:when>
+																	<c:otherwise>
+																		<strong>[공지사항]&nbsp;</strong><span><c:out value=" ${n.title}"/></span>
+																	</c:otherwise>
+																</c:choose>
+															</c:when>
+															<c:otherwise>
+																<c:choose>
+																	<c:when test="${fn:length(n.title) > 23}">
+																		<strong>[보도자료]&nbsp;</strong><span><c:out value="${fn:substring(n.title,0,21)}"/>....</span>
+																	</c:when>
+																	<c:otherwise>
+																		<strong>[보도자료]&nbsp;</strong><span><c:out value=" ${n.title}"/></span>
+																	</c:otherwise>
+																</c:choose>
+															</c:otherwise>
+														</c:choose>
 													</a>
 												</span>
 											</td>
@@ -123,7 +144,7 @@
 					<!-- SNS정보 -->
 					<div class="col-sm-12 main" >
 						<table style="width: 100%; table-layout:fixed">
-							<tr style="/* border-bottom: 1px solid olive; */ background-color: #019847;">
+							<tr style="background-color: #019847;">
 								<td width="50%" style="padding:3% 0">
 									<a style="text-decoration: none" href="${ pageContext.request.contextPath }/community/snsPage.do">
 										<strong style="font-style: italic; font-size: 15px;">&nbsp;What's BEST SNS</strong>

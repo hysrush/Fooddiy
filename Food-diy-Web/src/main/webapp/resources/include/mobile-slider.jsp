@@ -17,7 +17,6 @@
 					</tr>
 					<tr style="background-color: #fdcb04">
 						<td align="center" colspan="2" style="padding: 2% ;">
-							<!-- <strong style="font-size: 20px; font-style: italic; color:#feca07;"> BEST </strong> -->
 							<a href="${ pageContext.request.contextPath }/community/snsPage.do">
 								<strong style="font-style: italic; font-size: 15px;">&nbsp;What's BEST SNS</strong>
 							</a>
@@ -32,7 +31,6 @@
 							<table style="width: 100%; table-layout:fixed">
 								<tr>
 									<td align="left" width="30%" style="padding:2% 0">
-										<%-- <img width="30%" src="${pageContext.request.contextPath }/resources/img/AA.jpg"/> --%>
 										&nbsp;<i class="fa fa-thumbs-up" style="color: #f70000"></i>
 										<strong style="font-weight: bolder; color:#333;">${ s.like }</strong>
 									</td>
@@ -50,7 +48,7 @@
 								<c:choose>
 									<c:when test="${fn:length(s.title) > 15}">
 										<tr>
-											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden; */ padding-top: 3%; padding-left: 2%" title="${ s.title }">
+											<td colspan="2" style="padding-top: 3%; padding-left: 2%" title="${ s.title }">
 												<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
 													<strong><c:out value="${fn:substring(s.title,0,12)}"/>....</strong>
 												</a>
@@ -59,7 +57,7 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden; */ padding-top: 3%; padding-left: 2%" title="${ s.title }">
+											<td colspan="2" style="padding-top: 3%; padding-left: 2%" title="${ s.title }">
 												<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
 													<strong><c:out value="${s.title}"/></strong>
 												</a>
@@ -70,7 +68,7 @@
 								<c:choose>
 									<c:when test="${fn:length(s.content) > 25}">
 										<tr>
-											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden;  */padding-top: 3%; padding-left: 2%" title="${ s.content }">
+											<td colspan="2" style="padding-top: 3%; padding-left: 2%" title="${ s.content }">
 												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
 													<c:out value="${fn:substring(s.content,0,18)}"/>....
 												</a>
@@ -79,7 +77,7 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td colspan="2" style="/* text-overflow: ellipsis; overflow: hidden;  */padding-top: 3%; padding-left: 2%" title="${ s.content }">
+											<td colspan="2" style="padding-top: 3%; padding-left: 2%" title="${ s.content }">
 												<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
 													<nobr>${ s.content }</nobr>
 												</a>
@@ -87,20 +85,6 @@
 										</tr>
 									</c:otherwise> 
 								</c:choose>
-						<%-- 		<tr>
-									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%; padding-left: 2%" title="${ s.title }">
-										<a style="text-decoration:none" href="${ pageContext.request.contextPath }/community/snsPage.do">
-											<strong><nobr>${ s.title }</nobr></strong>
-										</a>
-									</td>
-								</tr> --%>
-							<%-- 	<tr>
-									<td colspan="2" style="text-overflow: ellipsis; overflow: hidden; padding-top: 3%; padding-left: 2%" title="${ s.content }">
-										<a href="${ pageContext.request.contextPath }/community/snsPage.do" style="font-size: 11px">
-											<nobr>${ s.content }</nobr>
-										</a>
-									</td>
-								</tr> --%>
 							</table>
 						</td>
 						</c:forEach>

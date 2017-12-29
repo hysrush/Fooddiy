@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title> | 최근 주문 내역 | </title>
 <script>
 $(document).ready(function(){	
 	

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> | 주문 조회 | </title>
+<title> | 비회원 주문 조회 | </title>
 <%-- <script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script> --%>
 <script>
 	$(".close").click(function(){

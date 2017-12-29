@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title> | 매장별 EVENT |  </title>	
+		<title> | 매장찾기 |  </title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -341,7 +341,7 @@
 											contents += '<tr>';
 											contents +=		'<td style = "width: 30%" nowrap>';
 											contents +=			'<i class="fa fa-map-marker" style="color:green;"></i>&nbsp;&nbsp;';
-											contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '</strong>';
+											contents +=			'<strong class="storeName" value="'+ data.storeList[i].storeName +'" >'+ data.storeList[i].storeName + '점</strong>';
 											contents +=			'<div class="storePhone post-meta">' + data.storeList[i].storePhone +'</div>';
 											contents +=		'</td>';
 											contents +=		'<td class="storeAddr" style = "width: 65%">'+ data.storeList[i].storeAddr +'</td>';
