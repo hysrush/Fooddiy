@@ -117,9 +117,9 @@
 									<div class="row mt-xs hidden-lg" align="center">
 										<div class="col-xs-2"></div>
 										<div class="col-xs-8">
-											<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
+											<input type="submit" value="로그인" 
 											class="btn btn-info mb-md form-control btn-primary btn-icon"
-											 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:92%;">회원가입</a>
+										 style="padding-top: 10px; padding-bottom: 30px; width:94%;" data-loading-text="Loading...">
 										</div>
 									</div>
 								</form>
@@ -129,6 +129,7 @@
 									<div class="col-md-8">
 										<jsp:include page="/resources/include/login/kakaoLogin.jsp"/>
 									</div>
+									
 									<%-- <div class="col-xs-6 hidden-lg">
 										<jsp:include page="/resources/include/login/mobile-kakaoLogin.jsp"/>
 									</div> --%>
@@ -154,7 +155,7 @@
 									<div class="col-xs-8">
 										<a href="${ pageContext.request.contextPath }/sign/signUp.do" 
 										class="btn btn-info mb-md form-control btn-primary btn-icon"
-										 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:92%;">회원가입</a>
+										 style="padding-top: 10px; padding-bottom: 30px; /* margin-left:3%; */ width:93%;">회원가입</a>
 									</div>
 								</div>
 							</div>
