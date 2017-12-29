@@ -1,21 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+	// 메뉴 타입별 파라미터 같이 보냄
+	function btnClick(type) {
+		   location.href = '${ pageContext.request.contextPath }/menu/menuList.do?type=' + type;
+	}
+</script>
 <div class="mobile-nav">
 	<div class="mobile-nav-wrapper">
 		<ul class="mobile-side-menu">
 			<li><a href="${ pageContext.request.contextPath}/main/Start">Home</a></li>
-			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath}/menu/menuAll.do">Menu</a>
+			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath}/menu/menuList.do">Menu</a>
 				<ul>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do">전체메뉴 ALL MENU</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#recommend">추천메뉴 FAVORITES</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#premium">프리미엄 PREMIUM</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#best">베스트 SIGNATURE</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#classic">클래식 CLASSICS</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#breakfast">아침식사 Breakfast</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#salad">찹샐러드 Chopped Salads</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#addition">추가메뉴 Extras</a></li>
-					<li><a href="${ pageContext.request.contextPath}/menu/menuAll.do#beverage">음료 Drink</a></li>
+					<li><a href="${ pageContext.request.contextPath}/menu/menuList.do">전체메뉴 ALL MENU</a></li>
+					<li><a onclick="btnClick('R')">추천메뉴 FAVORITES</a></li>
+					<li><a onclick="btnClick('P')">프리미엄 PREMIUM</a></li>
+					<li><a onclick="btnClick('B')">베스트 SIGNATURE</a></li>
+					<li><a onclick="btnClick('C')">클래식 CLASSICS</a></li>
+					<li><a onclick="btnClick('M')">아침식사 Breakfast</a></li>
+					<li><a onclick="btnClick('S')">찹샐러드 Chopped Salads</a></li>
+					<li><a onclick="btnClick('N')">추가메뉴 Extras</a></li>
+					<li><a onclick="btnClick('D')">음료 Drink</a></li>
 				</ul>
 			</li>
 			<li><span class="mmenu-toggle"></span> <a href="#">EVENT

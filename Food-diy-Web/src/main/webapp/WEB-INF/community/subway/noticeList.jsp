@@ -151,7 +151,7 @@
 								<li class="active"><a href="#tabsNavigationSimple1" data-toggle="tab">공지사항</a></li>
 							</ul>
 							<div>
-								<!-- 보도자료 -->
+								<!-- 공지사항 -->
 								<div class="tab-pane" id="tabsNavigationSimple2">
 									<div class="center">
 										<div class="col-md-12">
@@ -175,13 +175,10 @@
 										    </form>
 											<!-- 테이블 -->
 											<div class="table-responsive" style="width: 100%">
-												<!-- 레코드의 갯수를 출력 -->
-    											<%-- <span id="searchCnt">${map.count}개의 게시물이 있습니다.</span> --%>
 												<table class="footable table table-hover toggle-arrow-tiny dataTables-example" width="80%" data-page-size="100">
 													<thead>
 														<tr>
-														    <th data-hide="phone" data-sort-ignore="true">번호</th>
-														    <th data-toggle="true" data-sort-ignore="true">제목</th>
+														    <th data-toggle="phone" data-sort-ignore="true">제목</th>
 														    <th data-hide="phone" data-sort-ignore="true">등록일</th>
 														    <th data-hide="phone" data-sort-ignore="true">조회수</th>
 														</tr>
@@ -190,14 +187,13 @@
 														<c:forEach items="${ noticeList }" var="notice">
 															<c:if test="${ notice.type eq 'A' }">
 																<tr>
-																	<td>${ notice.no }</td>
 																	<td id="title">
 																		<a href="${ pageContext.request.contextPath }/community/subway/noticeDetail.do?no=${ notice.no }">
 																			<c:out value="${ notice.title }" />
 																		</a>
 																	</td>
-																	<td>${ notice.regDate }</td>
-																	<td>${ notice.viewCnt }</td>
+																	<td width="100px">${ notice.regDate }</td>
+																	<td width="50px">${ notice.viewCnt }</td>
 																</tr>
 															</c:if>
 														</c:forEach>
@@ -230,7 +226,6 @@
 	</div>
 
 	<!-- Vendor -->
-	<%-- <script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script> --%>
 	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.appear/jquery.appear.min.js"></script>
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
