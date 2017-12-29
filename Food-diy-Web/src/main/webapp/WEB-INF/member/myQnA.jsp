@@ -150,17 +150,17 @@
 							<div class="ibox">
 								<div class="ibox-content">
 									<div class="table-responsive">
-										<table class="footable table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="60">
+										<table class="table table-stripped toggle-arrow-tiny dataTables-example" data-page-size="60">
 											<thead>
 												<tr style="font-size: 15px; margin-top: 15%">
-													<th data-hide="phone" data-sort-ignore="true" width="45px;">
-														<div class ="total-select" >
+													<td data-hide="phone" data-sort-ignore="true"width="45px;" align="center">
+														<div class ="total-select">
 															<input type="checkbox" class="i-checks" id="chkall">														
 														</div>
-													</th>
+													</td>
 													<th data-hide="phone" data-sort-ignore="true">유형</th>
 													<th data-hide="phone" data-sort-ignore="true">제목</th>
-													<th style="width: 7%" data-hide="phone"
+													<th style="width: 10%" data-hide="phone"
 														data-sort-ignore="true">등록일</th>
 													<th data-hide="phone" data-sort-ignore="true">답변여부</th>
 												</tr>
@@ -191,17 +191,20 @@
 													</c:when>
 													<c:otherwise>
 														<tr>
-															<td colspan="8" align="center"><h3 id="del"
-																	style="font-weight: bold;">
+															<td colspan="8" align="center">
+																<h3 style="font-weight: bold;">
 																	<br />문의 내용이 없습니다.
-																</h3></td>
+																</h3>
+															</td>
 														</tr>
 													</c:otherwise>
 												</c:choose>
 											</tbody>
 										</table>
-									<button class="mb-xs mt-xs mr-xs btn btn-default" type="button" onclick="delRow();">
-										<i class="fa fa-trash" aria-hidden="true" ></i>&nbsp;&nbsp;선택삭제</button> 
+										<div align="right">
+											<button class="mb-xs mt-xs mr-xs btn btn-default" type="button" onclick="delRow();">
+											<i class="fa fa-trash" aria-hidden="true" ></i>&nbsp;&nbsp;선택삭제</button>&nbsp;
+										</div>
 									</div>
 									<!-- 페이지네이션 -->
 									<div class="col-md-12 center">
@@ -209,9 +212,9 @@
 										</ul>
 									</div>
 								</div>
-								<div align="right" style="margin-right: 2%; margin-top: 5%">
+								<!-- <div align="right" style="margin-right: 2%; margin-top: 5%">
 									<button class="btn btn-primary btn-icon" id="del" style="width: 14%; height: 10%">삭제</button>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -222,14 +225,12 @@
 	</div>
 
 	<!-- ---------------------------------------------------------------------------------------------- -->
-	<div class="container">
 		<footer class="light visible-lg" id="footer">
 			<jsp:include page="/resources/include/bottom.jsp" />
 		</footer>
 		<footer class="light hidden-lg" id="footer">
 			<jsp:include page="/resources/include/mobile-bottom.jsp" />
 		</footer>
-	</div>
 
 	<!-- Vendor -->
 	<script src="${ pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
