@@ -49,13 +49,10 @@ $(document).ready(function(){
 			</thead>
 			<tbody >
 				<tr >
-<<<<<<< HEAD
 					<th width="9%">주문번호</th>
 					<td>${ orderList.no }</td>
-=======
 					<th class="col-xs-4" width="10%">주문번호</th>
 					<td>${ member.no }</td>
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 				</tr>
 				<tr>
 					<th>주문시간</th>
@@ -81,11 +78,7 @@ $(document).ready(function(){
 					</tr>
 				</thead>
 				<tbody>
-<<<<<<< HEAD
 					<c:forEach items="${ orderList.detailOrderList }" var="oneMenu">
-=======
-				<c:forEach items="${ member.detailOrderList }" var="oneMenu">
->>>>>>> branch 'master' of https://github.com/hysrush/Fooddiy.git
 						<tr >
 							<td>
 								${ oneMenu.name} <br>
