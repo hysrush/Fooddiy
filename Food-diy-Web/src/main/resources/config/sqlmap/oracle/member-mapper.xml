@@ -202,9 +202,9 @@
 		 order by order_no desc
 	</select>
 	
-	<select id="getmyMenuDetail" parameterType="java.lang.Integer" resultMap="Map_cartVO">
-		select CART_no, CART_ID, CART_NAME, CART_PRICE, CART_SIZE, CART_PIC, CART_QTY, CART_BREAD, CART_CHEESE, CART_TOPPING, CART_VEGETABLE, CART_SAUCE from t_mymenu
-		where cart_no = #{no}
+	<select id="getmyMenuDetail" parameterType="java.lang.Integer" resultMap="Map_OrderVO">
+		<include refid="selectAll"/>
+		where order_no = #{no}
 	</select>
 	
 	<!-- mymenu 삭제 -->

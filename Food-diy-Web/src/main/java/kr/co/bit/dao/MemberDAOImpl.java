@@ -88,7 +88,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	// 나만의 메뉴 디테일
-	public CartVO getmyMenuDetail(int no) {
+	public MemberOrderVO getmyMenuDetail(int no) {
 		return sqlSession.selectOne("kr.co.bit.member.dao.getmyMenuDetail", no);
 	}
 

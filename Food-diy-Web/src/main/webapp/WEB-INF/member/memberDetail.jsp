@@ -129,8 +129,8 @@
 								<h3 class="heading-primary">Categories</h3>
 								<ul class="nav nav-list mb-xlg">
 									<li class="active"><a href="${ pageContext.request.contextPath}/member/memberDetail.do">내 정보</a></li>
-									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
+									<li> <a href="${ pageContext.request.contextPath}/member/Latest-Order.do">최근 주문 내역</a></li>
+									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?">나만의 메뉴</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
 								</ul>
 		</aside></div></div>
@@ -226,9 +226,9 @@
 							<div class="col-md-4"></div>
 							<div class="col-md-3"></div>
 							<div class="col-md-4 col-xs-10" style="margin-left:4%">
-									<button class="btn basic-btn"  data-toggle="modal" id="stamp">쿠폰북</button>
-									<button class="btn basic-btn" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
-									<button class="btn basic-btn" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
+									<button class="btn btn-primary"  data-toggle="modal" id="stamp">쿠폰북</button>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#formModal">회원정보 수정</button>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#frmSignIn">회원탈퇴</button>
 									<!-- <button id="delete" type="button" class="btn  btn-info">회원탈퇴</button> -->
 							</div>
 									<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">

@@ -72,8 +72,6 @@
 	<jsp:include page="/resources/include/mobile-menu.jsp" />
 
 	<div role="main" class="main">
-
-
 		<section class="page-header">
 			<div class="container">
 				<div class="row">

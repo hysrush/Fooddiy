@@ -38,19 +38,19 @@ $(document).ready(function(){
 			<tbody>
 				<tr >
 					<th width="9%">주문번호</th>
-					<td>${ member.no }</td>
+					<td>${ orderList.no }</td>
 				</tr>
 				<tr>
 					<th>주문시간</th>
-					<td>${ member.regDate }</td>
+					<td>${ orderList.regDate }</td>
 				</tr>
 				<tr>
 					<th>결제방법</th>
-					<td>${ member.payment }</td>
+					<td>${ orderList.payment }</td>
 				</tr>
 				<tr>
 					<th>결제금액</th>
-					<td class = "commaN">${ member.final_price }원</td>
+					<td class = "commaN">${ orderList.final_price }원</td>
 				</tr>
 			</tbody>
 		</table>
@@ -64,7 +64,7 @@ $(document).ready(function(){
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ member.detailOrderList }" var="oneMenu">
+					<c:forEach items="${ orderList.detailOrderList }" var="oneMenu">
 						<tr >
 							<td>
 								${ oneMenu.name} <br>

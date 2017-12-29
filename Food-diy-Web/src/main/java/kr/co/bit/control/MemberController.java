@@ -238,13 +238,40 @@ public class MemberController {
 	
 	//나만의 메뉴 디테일
 	@RequestMapping(value ="/myMenuDetail.do")
-	public String myMenu(int no, Model model) throws Exception {
+	public ModelAndView myMenu(int no, ModelAndView mav) throws Exception {
 		
-		CartVO cart = memberService.getmyMenuDetail(no);
+		MemberOrderVO orderList = service.selectByNo(no);
 		
-
-		model.addAttribute("cartList", cart);
-		return "member/myMenuDetail";
+		String menu = orderList.getMenu();
+		String [] menus = menu.split("\\|\\|");
+		
+		
+		List<DetailOrderVO> list = new LinkedList<DetailOrderVO>();
+		for(int i = 0 ; i < menus.length; ++i) {
+			DetailOrderVO vo = new DetailOrderVO();
+			String [] oneMenu = menus[i].split("\\*");
+			
+			vo.setName(oneMenu[0]);
+			vo.setBread(oneMenu[1]);
+			vo.setCheese(oneMenu[2]);
+			vo.setTopping(oneMenu[3]);
+			vo.setVegetable(oneMenu[4]);
+			vo.setSauce(oneMenu[5]);
+			vo.setRequirement(oneMenu[6]);
+			vo.setPic(oneMenu[7]);
+			vo.setSize(oneMenu[8]);
+			vo.setQty(new Integer(oneMenu[9]));
+			vo.setPrice(oneMenu[10]);
+			vo.setTotal_price(oneMenu[11]);
+			
+			list.add(vo);
+		}
+		
+		orderList.setDetailOrderList(list);
+		
+		mav.addObject("orderList", orderList);
+		mav.setViewName("member/myMenuDetail");
+		return mav;
 	}
 
 	
@@ -324,9 +351,9 @@ public class MemberController {
 	@RequestMapping(value = "/Latest-OrderDetail.do",method = RequestMethod.GET) 
 	public ModelAndView orderDetail(ModelAndView mav, @RequestParam("no") int no) {
 		
-		MemberOrderVO todayOrderList = service.selectByNo(no);
+		MemberOrderVO orderList = service.selectByNo(no);
 		
-		String menu = todayOrderList.getMenu();
+		String menu = orderList.getMenu();
 		String [] menus = menu.split("\\|\\|");
 		
 		
@@ -351,9 +378,9 @@ public class MemberController {
 			list.add(vo);
 		}
 		
-		todayOrderList.setDetailOrderList(list);
+		orderList.setDetailOrderList(list);
 		
-		mav.addObject("member", todayOrderList);
+		mav.addObject("orderList", orderList);
 		mav.setViewName("member/Latest-OrderDetail");
 		
 		return mav;
