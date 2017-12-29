@@ -313,12 +313,14 @@
 						</form>
 					</div>
 
-
-					<div class="col-md-12" align="right">
-						<a href="${ pageContext.request.contextPath }/community/snsWrite.do?id=${loginVO.id}"><button  class="btn btn-borders btn-success" >글 등록</button></a>
-					</div>
-
-
+				<c:choose>
+       				<c:when test="${loginVO.id == snsVO.id}">
+						<div class="col-md-12" align="right">
+							<a href="${ pageContext.request.contextPath }/community/snsWrite.do?id=${loginVO.id}"><button  class="btn btn-borders btn-success" >글 등록</button></a>
+						</div>
+					</c:when>
+				</c:choose>
+				
 
 
 

@@ -90,16 +90,18 @@
 				</div>
 				<hr style = "border-top: 1px solid #2f2c2c;width:450px; margin:15px;"/>	
 			</div> 
-						
-			<div class="row" >
-				<div class="col-md-12" style = "height:70px;">
+			<c:choose>
+       			<c:when test="${loginVO.id == snsVO.id}">			
+					<div class="row" >
+						<div class="col-md-12" style = "height:70px;">
 				 		
 							<input type="text" id="content" placeholder="댓글을 작성해주세요" style="width:70%"/>
         				
         						<span style="align-content:inherit; "><button type="button" id="btnReply" class="btn btn-3d btn-success mr-xs mb-sm" style="align-self: baseline;">comment</button></span>
-        	</div>
-        	</div>
-		
+        				</div>
+        			</div>
+				</c:when>
+			</c:choose>
 		
 			<div class="row" style="margin-top:50px;">
 				<div class="col-md-12">
