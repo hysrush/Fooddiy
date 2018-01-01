@@ -217,6 +217,10 @@
 																	<i class="fa fa-heart" style="color:red;" id="${snsHit.no}"></i>
 																	<strong>${snsHit.like}</strong>
 																</span>
+																<span>
+																<i class="fa fa-pencil"></i>
+																	<strong>${snsHit.replyNo }</strong>
+																</span>
 																<br/>
 																<span>
 																	<strong style="font-size: 17px; padding: 5%; margin-bottom: 2%">${snsHit.title }</strong>
@@ -286,7 +290,8 @@
 																<strong>${snsVO.like}</strong>
 															</span>
 															<span>
-																<strong style="font-size: 13px; padding: 5%; margin-bottom: 2%">댓글수 ${snsVO.replyNo }</strong>
+																<i class="fa fa-pencil"></i>
+																<strong>${snsVO.replyNo }</strong>
 															</span>
 															<br/> 
 															<span style="padding: 3%">
