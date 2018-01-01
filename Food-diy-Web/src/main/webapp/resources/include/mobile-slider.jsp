@@ -31,7 +31,7 @@
 							<table style="width: 100%; table-layout:fixed">
 								<tr>
 									<td align="left" width="30%" style="padding:2% 0">
-										&nbsp;<i class="fa fa-thumbs-up" style="color: #f70000"></i>
+										&nbsp;<i class="fa fa-heart" style="color: #f70000"></i>
 										<strong style="font-weight: bolder; color:#333;">${ s.like }</strong>
 									</td>
 									<td align="right"><i class="fa fa-user">

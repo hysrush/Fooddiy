@@ -161,10 +161,10 @@
 							<c:forEach items="${ sns }" var="s" end="2">
 								<tr style="border-bottom: 1px solid #019847;">
 									<td colspan="3" align="right" style="padding: 2% 0">
-										<i class="fa fa-user"></i>&nbsp;<strong style="font-size: 12px; font-weight: bolder;">${ s.id }&nbsp;</strong>
+										<i class="fa fa-user" style="color:#fdcb04"></i>&nbsp;<strong style="font-size: 12px; font-weight: bolder;">${ s.id }&nbsp;</strong>
 										<strong style="font-size: 12px;">
 											<%-- <img width="8%" src="${pageContext.request.contextPath }/resources/img/AA.jpg"/> --%>
-											&nbsp;<i class="fa fa-thumbs-up" style="color: #f70000;"></i>&nbsp;${ s.like }
+											&nbsp;<i class="fa fa-heart" style="color: #f70000;"></i>&nbsp;${ s.like }
 										</strong>
 									</td>
 								<!-- 	<td align="right">

@@ -24,19 +24,16 @@
 					<li><a onclick="btnClick('D')">음료 Drink</a></li>
 				</ul>
 			</li>
-			<li><span class="mmenu-toggle"></span> <a href="#">EVENT
+			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath}/event/eventPage.do">EVENT
 					<span class="tip tip-new">New</span></a>
 				<ul>
 					<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
 					<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 				</ul>
 			</li>
-			<li><span class="mmenu-toggle"></span> <a href="#">Store
-					</a>
-				<ul>
-					<li><a href="${ pageContext.request.contextPath }/store/findStoreU.do">매장찾기</a></li>
-					
-				</ul>
+			<li><a href="${ pageContext.request.contextPath }/store/findStoreU.do">
+				<i class="fa fa-map-marker"></i> Store
+				</a>
 			</li>
 			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath }/community/qna/qna.do">Community
 					<span class="tip tip-hot">Hot!</span></a>
@@ -55,10 +52,10 @@
 			<c:choose>
 				<c:when test="${ empty loginVO }">
 					<li><a href="${ pageContext.request.contextPath }/sign/login.do">
-						<i class="fa fa-user"></i> 로그인</a>
+						<i class="fa fa-user"></i>&nbsp;로그인</a>
 					</li>
 					<li><a href="${ pageContext.request.contextPath }/sign/signUp.do">
-						<i class="fa fa-user"></i> 회원가입</a>
+						<i class="fa fa-user"></i>&nbsp;회원가입</a>
 					</li>
 				</c:when>
 				<c:when test="${ not empty loginVO }">
