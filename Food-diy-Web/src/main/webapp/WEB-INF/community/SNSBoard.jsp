@@ -199,8 +199,9 @@
 																	<button type="button" onclick="like('${snsHit.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																		<i class="fa fa-thumbs-up"></i>
 																	</button>
-																	<i class="fa fa-heart" style="color:red;" id="${snsHit.no}"></i>
-																	<strong>${snsHit.like}</strong>
+																	<i class="fa fa-heart" style="color:red;" ></i>
+																	<strong id="${snsHit.no}">${snsHit.like}</strong>
+																	
 																</span>
 																<span>
 																<i class="fa fa-pencil"></i>
@@ -271,8 +272,8 @@
 																<button type="button"  onclick="like('${snsVO.no}')" class="mb-xs mt-xs mr-xs btn btn-borders btn-info"> 
 																	<i class="fa fa-thumbs-up"></i>
 																</button>
-																<i class="fa fa-heart" style="color:red;" id="${snsVO.no}"></i>
-																<strong>${snsVO.like}</strong>
+																<i class="fa fa-heart" style="color:red;" ></i>
+																<strong id="${snsVO.no}">${snsVO.like}</strong>
 															</span>
 															<span>
 																<i class="fa fa-pencil"></i>
