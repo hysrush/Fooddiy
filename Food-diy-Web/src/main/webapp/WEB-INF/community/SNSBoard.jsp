@@ -136,11 +136,12 @@
 
 			<div class="container">
 				<div class="row">
-					<%-- <div class="col-md-2 hidden-xs hidden-sm">
+					 <div class="col-md-2 hidden-xs hidden-sm">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
 
-							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+							<!-- <ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}"> -->
+							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio">
 									<li ><a href="${ pageContext.request.contextPath }/community/qna/qna.do">자주묻는 질문</a></li>
 									<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway 소식</a>
 										<ul>
@@ -152,25 +153,9 @@
 									<li class="active"><a href="#">SNS게시판</a></li>
 							</ul>
 						</aside>
-					</div> --%>
-					<div class="col-md-2 hidden-xs hidden-sm">
-						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
-							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
-
-							<ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-									<li><a href="#">자주묻는 질문</a></li>
-									<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">Subway 소식</a>
-										<ul>
-											<li><a href="${ pageContext.request.contextPath }/community/subway/notice.do">공지사항</a></li>
-											<li><a href="${ pageContext.request.contextPath }/community/subway/news.do">보도자료</a></li>
-										</ul>
-									</li>
-									<li><a href="${ pageContext.request.contextPath }/community/claim/claimWriteForm.do">1:1 문의</a></li>
-									<li class="active"><a href="${ pageContext.request.contextPath }/community/snsPage.do">SNS게시판</a></li>
-							</ul>
-						</aside>
-					</div>
-
+					</div> 
+					
+			
 					 <!-- START! -->
 					
 						<div class="col-md-10" style="height:30px;">
