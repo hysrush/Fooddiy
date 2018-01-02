@@ -103,7 +103,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<h1>Select</h1>
+							<h1>재료선택</h1>
 						</div>
 					</div>
 				</div>

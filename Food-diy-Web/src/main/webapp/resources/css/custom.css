@@ -66,6 +66,24 @@ td.cancel-button button.button-cancel{
  	padding: 3px 8px;
  	text-shadow: none;
  }
+ td span.label-repO {
+ 	font-size: 12px;
+ 	background-color: #009847;
+ 	color: #FFFFFF;
+ 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	font-weight: 600;
+ 	padding: 3px 8px;
+ 	text-shadow: none;
+ }
+ td span.label-repX {
+ 	font-size: 12px;
+ 	background-color: #808080;
+ 	color: #ffffff;
+ 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	font-weight: 600;
+ 	padding: 3px 8px;
+ 	text-shadow: none;
+ }
 
 
 /*  결제 화면  */

@@ -24,19 +24,16 @@
 					<li><a onclick="btnClick('D')">음료 Drink</a></li>
 				</ul>
 			</li>
-			<li><span class="mmenu-toggle"></span> <a href="#">EVENT
+			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath}/event/eventPage.do">EVENT
 					<span class="tip tip-new">New</span></a>
 				<ul>
 					<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
 					<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 				</ul>
 			</li>
-			<li><span class="mmenu-toggle"></span> <a href="#">Store
-					</a>
-				<ul>
-					<li><a href="${ pageContext.request.contextPath }/store/findStoreU.do">매장찾기</a></li>
-					
-				</ul>
+			<li><a href="${ pageContext.request.contextPath }/store/findStoreU.do">
+				<i class="fa fa-map-marker"></i> Store
+				</a>
 			</li>
 			<li><span class="mmenu-toggle"></span> <a href="${ pageContext.request.contextPath }/community/qna/qna.do">Community
 					<span class="tip tip-hot">Hot!</span></a>
@@ -55,10 +52,10 @@
 			<c:choose>
 				<c:when test="${ empty loginVO }">
 					<li><a href="${ pageContext.request.contextPath }/sign/login.do">
-						<i class="fa fa-user"></i> 로그인</a>
+						<i class="fa fa-user"></i>&nbsp;로그인</a>
 					</li>
 					<li><a href="${ pageContext.request.contextPath }/sign/signUp.do">
-						<i class="fa fa-user"></i> 회원가입</a>
+						<i class="fa fa-user"></i>&nbsp;회원가입</a>
 					</li>
 				</c:when>
 				<c:when test="${ not empty loginVO }">
@@ -68,7 +65,7 @@
 							<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
 							<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a></li>
 							<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
-							<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
+							<li><a href="${ pageContext.request.contextPath}/community/claim/claimList.do?id=${loginVO.id}">나의 1:1문의</a></li>
 						</ul>
 					</li>
 					<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">

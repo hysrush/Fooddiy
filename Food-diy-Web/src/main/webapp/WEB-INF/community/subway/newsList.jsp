@@ -72,8 +72,11 @@
 	}
 	.filter {
 		float: right;
-		width: 140px;
+		max-width: 20%;
 		padding-right: 10px;
+	}
+	.searchInput {
+		max-width: 30%;
 	}
 </style>		
 </head>
@@ -152,7 +155,7 @@
 										<div class="col-md-12">
 											<!-- 필터 및 검색 -->
 											<form name="form1" method="post" action="${ pageContext.request.contextPath }/community/subway/news.do">
-												<div class="col-md-3 input-group" style="float: right;">
+												<div class="col-md-3 input-group searchInput" style="float: right;">
 													<input name="keyword" value="${map.keyword}" type="text" aria-controls="DataTables_Table_0"
 															class="input-sm form-control" placeholder="검색어를 입력해주세요" >
 													<span class="input-group-btn">

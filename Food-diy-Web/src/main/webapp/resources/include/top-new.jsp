@@ -404,12 +404,11 @@
 								<li><a href="${ pageContext.request.contextPath}/event/eventPage.do">브랜드 EVENT</a></li>
 								<li><a href="${ pageContext.request.contextPath}/event/storeEventPage.do">매장별 EVENT</a></li>
 							</ul></li>
-							<li class="dropdown"><a href="${ pageContext.request.contextPath }/store/findStoreU.do" class="dropdown-toggle"> STORE 
-						</a>
-							<%-- <ul class="dropdown-menu">
-								<li><a href="${ pageContext.request.contextPath}/store/findStoreU.do">매장찾기</a></li>
+							<li class="dropdown">
 								
-							</ul> --%>
+								<a href="${ pageContext.request.contextPath }/store/findStoreU.do">
+								<i class="fa fa-map-marker" style="color:#019847"></i> STORE&nbsp;
+								</a>
 							</li>
 						<li class="dropdown"><a class="dropdown-toggle" href="${ pageContext.request.contextPath }/community/qna/qna.do"> Community <span class="tip tip-hot">Hot!</span></a>
 							<ul class="dropdown-menu">
@@ -419,7 +418,7 @@
 								<li><a href="${ pageContext.request.contextPath }/community/snsPage.do" data-thumb-preview="${ pageContext.request.contextPath }/resources/img/previews/images(2).jpg">SNS 게시판</a></li>
 							</ul></li>
 							<c:if test="${ (empty loginVO) or (loginVO.type eq 'N') }">
-								<li class="dropdown"><a href="${ pageContext.request.contextPath }/sign/orderCheck">주문내역조회</a></li>
+								<li class="dropdown"><a href="${ pageContext.request.contextPath }/sign/orderCheck">주문내역조회&nbsp;</a></li>
 							</c:if>
 						<!-- 회원 로그인하면 My page -->
 						<c:if test="${ (not empty loginVO) and (loginVO.type eq 'U')  }">
@@ -428,7 +427,7 @@
 									<li><a href="${ pageContext.request.contextPath}/member/memberDetail.do">회원 정보</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/Latest-Order.do?id=${loginVO.id}">최근 주문 내역</a></li>
 									<li><a href="${ pageContext.request.contextPath}/member/myMenu.do?id=${loginVO.id}">나만의 메뉴</a></li>
-									<li><a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${loginVO.id}">나의 문의사항</a></li>
+									<li><a href="${ pageContext.request.contextPath}/community/claim/claimList.do?id=${loginVO.id}">나의 1:1문의</a></li>
 								</ul>
 							</li>
 						</c:if>
@@ -436,12 +435,12 @@
 							<c:when test="${ empty loginVO }">
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
 									<a href="${ pageContext.request.contextPath }/sign/login.do">
-										<i class="fa fa-user"></i> Sign IN
+										<i class="fa fa-user" style="color:#fdcb04"></i> Sign IN&nbsp;
 									</a>
 								</li>
 								<li class="dropdown dropdown-mega dropdown-mega-signin signin" id="headerAccount">
 									<a href="${ pageContext.request.contextPath }/sign/signUp.do">
-										<i class="fa fa-user"></i> Sign UP
+										<i class="fa fa-user" style="color:#019847"></i> Sign UP&nbsp;
 									</a>
 								</li>
 							</c:when>
@@ -457,7 +456,7 @@
 															<div class="img-thumbnail">
 																<img src="../upload/${ loginVO.file }">
 															</div>
-															<p><strong>${ loginVO.type }</strong> <span>${ loginVO.grade }</span></p>
+															<p><strong>${ loginVO.id }</strong> <span>${ loginVO.grade }</span></p>
 														</div>
 													</div>
 													<div class="col-md-4">

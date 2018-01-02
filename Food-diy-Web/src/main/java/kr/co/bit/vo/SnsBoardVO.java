@@ -17,6 +17,16 @@ public class SnsBoardVO {
 	private int like;
 	private String regDate;
 	private int viewCnt;
+	private int replyNo;
+	
+	
+	
+	public int getReplyNo() {
+		return replyNo;
+	}
+	public void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -112,15 +122,6 @@ public class SnsBoardVO {
 		return "SnsBoardVO [no=" + no + ", id=" + id + ", pic=" + pic + ", title=" + title + ", content=" + content
 				+ ", fileName=" + fileName + ", name=" + name + ", bread=" + bread + ", cheese=" + cheese + ", topping="
 				+ topping + ", vegetable=" + vegetable + ", sauce=" + sauce + ", like=" + like + ", regDate=" + regDate
-				+ ", viewCnt=" + viewCnt + "]";
+				+ ", viewCnt=" + viewCnt + ", replyNo=" + replyNo + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

@@ -72,9 +72,12 @@
 	td p {
 		padding: 20px 30px 30px 20px;
 	}
-	img {
-		padding-top: 10px;
-		max-width: 700px;
+	@media ( min-width : 760px) {
+		#fileImg {
+			padding-top: 10px;
+			max-width: 700px;
+			display: inline;
+		}
 	}
 </style>
 </head>
@@ -192,7 +195,7 @@
 																<c:if test="${ not empty fileList }">
 																	<c:forEach items="${ fileList }" var="file">
 																		<div class="text-center">
-																			<img id="fileImg" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
+																			<img id="fileImg" class="img-responsive" alt="첨부파일" src="${ pageContext.request.contextPath}/upload/${ file.filePath }">
 																		</div>
 																	</c:forEach>
 																</c:if>

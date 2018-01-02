@@ -63,10 +63,8 @@
 		<link rel="stylesheet" href="${ pageContext.request.contextPath}/resources/css/custom2.css">
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
 
 		<!-- sweetalert js & css -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> 
@@ -89,7 +87,6 @@
 		color: black;
 	}
 	#noticeForm th {
-		min-width: 78px;
 		background-color: #7aa93c;
 		color: white;
 		font-weight: bold;
@@ -101,10 +98,15 @@
 		font-size: 6px;
 		color: red;
 	}
+	@media ( max-width : 560px) {
+		.phone_sel, .phone_input, .mail_input, .mail_sel  {
+			width: 100%;
+		}
+	}
 </style>
 </head>
 <body>
-	<div class="body" style="min-width: 320px;">
+	<div class="body" style="min-width: 360px;">
 		<header id="header"
 				data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 53, 'stickySetTop': '-53px', 'stickyChangeLogo': false}">
 				<jsp:include page="/resources/include/top-new.jsp"/>
@@ -134,6 +136,7 @@
 		
 			<div class="container">
 				<div class="row">
+					<!-- 스티키 사이드바 -->
 					<div class="col-md-2 hidden-xs hidden-sm">
 						<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 							<h4 class="heading-primary"><strong>커뮤니티 </strong></h4>
@@ -173,7 +176,7 @@
 									<a href="#tabsNavigationSimple1" data-toggle="tab">1:1 문의하기</a>
 								</li>
 								<li>
-									<a href="${ pageContext.request.contextPath}/member/myQnA.do?id=${ loginVO.id }">나의 문의내역</a>
+									<a href="${ pageContext.request.contextPath}/community/claim/claimList.do?id=${ loginVO.id }">나의 문의내역</a>
 								</li>
 							</ul>
 							<div class="tab-content">

@@ -31,20 +31,6 @@ public class NoticeController {
 	
 	// <Notice 컨트롤러>
 	// 공지사항 전체보기
-	/*@RequestMapping("/notice.do")
-	public ModelAndView	listNotice() {
-		
-		List<NoticeBoardVO> noticeList = noticeService.selectType("A");
-		
-		ModelAndView mav = new ModelAndView();
-		//setViewName : 어떤 페이지를 보여줄것인가
-		mav.setViewName("community/subway/noticeList");
-		//addObject : key 와 value 를 담아 보내는 메서드 
-		mav.addObject("noticeList", noticeList);
-		
-		return mav;
-	}*/
-	// 공지사항 전체보기
 	@RequestMapping("/notice.do")
 	public ModelAndView	listNotice(@RequestParam(defaultValue="notice_title") String searchOption,
             @RequestParam(defaultValue="") String keyword) throws Exception {
@@ -110,12 +96,8 @@ public class NoticeController {
 
 		// file 존재하면,
 		if (noticeVO.getFileOX().equals("O")) {
-			// Mybatis에 매개변수 2개를 보내기 위해 map 생성
-			Map<String, Object> fileMap = new HashMap<>();
-			fileMap.put("boardNo", no);
-			fileMap.put("name", "noticeFile");
 			// 해당 번호에 맞는 fileVO 읽어오기
-			List<FileVO> fileList = fileService.selectFileList(fileMap);
+			List<FileVO> fileList = fileService.selectFileList(no, "noticeFile");
 			mav.addObject("fileList",fileList);
 		}
 
